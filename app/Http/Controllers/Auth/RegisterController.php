@@ -51,6 +51,14 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'cityName' => 'required|string',
+            'livingPlace' => 'required|integer',
+            'country' => 'required|string',
+            'gender' => 'required|integer',
+            'currentWork' => 'required|string',
+            'educationalLevel' => 'required|integer',
+            'preVoluntary' => 'required|integer',
+            'voluntaryYears' => 'required|integer',
         ]);
     }
 
@@ -65,7 +73,24 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            // 'userType' => $data['userType'],
             'password' => bcrypt($data['password']),
         ]);
+
+        return Individuals::create([
+            'nameInEnglish' => $data['name'],
+            'nameInArabic' => $data['name'],
+            'dateOfBirth' => $data['name'],    
+            'email' => $data['email'],
+            'cityName' => $data['cityName'],
+            'livingPlace' => $data['livingPlace'],
+            'country' => $data['country'],
+            'gender' => $data['gender'],
+            'currentWork' => $data['currentWork'],
+            'educationalLevel' => $data['educationalLevel'],
+            'preVoluntary' => $data['preVoluntary'],
+            'voluntaryYears' => $data['voluntaryYears'],
+        ]);
+
     }
 }
