@@ -2,6 +2,10 @@
 
 @section('content')
 
+<<<<<<< HEAD
+=======
+    <header>
+>>>>>>> 8cc3bb278479a0c839705aa0ecadd253847bf67e
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -41,6 +45,10 @@
             </a>
         </div>
        
+<<<<<<< HEAD
+=======
+    </header>
+>>>>>>> 8cc3bb278479a0c839705aa0ecadd253847bf67e
 
     <!-- Page Content -->
     <div class="container-fluid">
