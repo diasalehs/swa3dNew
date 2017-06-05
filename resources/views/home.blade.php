@@ -8,12 +8,11 @@
                 <img class="  profile-pic" src="vendor/img/user.png">
             </div>
             <ul class="list-group">
-                <li class="list-group-item justify-content-between"><a href="#">Dashbourd</a>    <span class="badge badge-default badge-pill">14</span>
-</li>
-                <li class="list-group-item  justify-content-between"><a href="#">Followers</a>    <span class="badge badge-default badge-pill">14</span></li>
-                <li class="list-group-item  justify-content-between"><a href="#">Following</a>    <span class="badge badge-default badge-pill">14</span></li>
-                <li class="list-group-item  justify-content-between"><a href="#">Activities</a>    <span class="badge badge-default badge-pill">14</span></li>
-                <li class="list-group-item  justify-content-between"><a href="#">Messages</a>    <span class="badge badge-default badge-pill">14</span></li>
+                <a href="#" class="list-group-item justify-content-between">Dashbourd   <span class="badge badge-default badge-pill"></span></a>
+                <a href="#" class="list-group-item  justify-content-between">Followers    <span class="badge badge-default badge-pill">14</span></a>
+                <a href="#" class="list-group-item  justify-content-between">Following    <span class="badge badge-default badge-pill">32</span></a>
+                <a href="#" class="list-group-item  justify-content-between">Activities    <span class="badge badge-default badge-pill">4</span></a>
+                <a href="#" class="list-group-item  justify-content-between">Messages   <span class="badge badge-default badge-pill">1</span></a>
             </ul>
          </div>
          <div class="col-lg-9">
