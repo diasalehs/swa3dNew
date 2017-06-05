@@ -16,14 +16,8 @@
         <li class="nav-item">
         <a class="nav-link" href="#">Voluntary Opportunitie</a>
       </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">Who we are</a>
-      </li>
        <li class="nav-item">
-        <a class="nav-link" href="#">Supporters</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#">Contact us</a>
+        <a class="nav-link" href="#">About us</a>
       </li>
     
     </ul>
