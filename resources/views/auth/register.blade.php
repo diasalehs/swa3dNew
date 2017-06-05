@@ -50,11 +50,24 @@
                                 required="required" />
                             </div>
                         </div>
+                             <div class="form-group">
+                            <label  class="col-lg-4 form-control-label" for="exampleSelect1">Example select</label>
+                            <div class="col-lg-6">
+                            <select class="form-control" id="exampleSelect1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            </select>
+                        </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-lg-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">Register</button>
                             </div>
                         </div>
+                     
                     </form>
                 </div>
             </div>

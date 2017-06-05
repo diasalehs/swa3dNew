@@ -32,8 +32,9 @@
       <li class="nav-item ">
        @if (Auth::guest())
 
-        <a class="nav-link" href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-user" aria-hidden="true"></i>
-Sign in <span class="sr-only"></span></a>
+        <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-user" aria-hidden="true" data-backdrop="static"
+></i>
+Login <span class="sr-only"></span></a>
  @else
                             <li class="dropdown nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -66,7 +67,7 @@ Sign in <span class="sr-only"></span></a>
   </div>
 </nav>
 
-<div class="modal fade" id="login-modal">
+<div class="modal fade" id="login-modal" >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

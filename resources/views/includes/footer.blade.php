@@ -29,7 +29,9 @@
 	    <script src="{{URL::asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 	    <script src="{{URL::asset('vendor/js/scripts.js')}}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-
+    <script>
+     
+    </script>
 </body>
 
 </html>
