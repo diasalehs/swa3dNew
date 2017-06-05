@@ -56,6 +56,10 @@ footer{
 		height: 120px;
 		
 }
+.profile-pic{
+		height: 150px;
+		margin-bottom: 10px;
+}
 .bv{
 		padding: 14px 80px;
 		background-color: rgba(26, 176, 139, 0.52);

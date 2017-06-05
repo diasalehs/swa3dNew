@@ -36,12 +36,20 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu" role="menu">
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                  <li>
+                                            <a class="dropdown-item" href="#">Your Profile</a>
+
+                                  </li>
+    <div class="dropdown-divider"></div>
+
                                     <li>
-                                        <a class="dropdown-item"  href="{{ route('logout') }}"
+                                        <a class="dropdown-item text-danger"  href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                                     
+                                          <i class="fa fa-sign-out" aria-hidden="true"></i>
+  Logout
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
