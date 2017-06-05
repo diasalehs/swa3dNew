@@ -38,7 +38,7 @@
 
                                 <ul class="dropdown-menu dropdown-menu-right" role="menu">
                                   <li>
-                                            <a class="dropdown-item" href="#">Your Profile</a>
+                                            <a class="dropdown-item" href="{{ route('home') }}">Your Profile</a>
 
                                   </li>
     <div class="dropdown-divider"></div>
