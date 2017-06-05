@@ -13,9 +13,12 @@
                             <div class="col-lg-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
                                 required="required" autofocus="autofocus" />
-                                @if ($errors->has('email')) <span class="help-block">
+                                @if ($errors->has('email')) 
+                                
+                                <div class="alert alert-danger" role="alert">
+                                    <strong>Oh snap! </strong>{{ $errors->first('email') }}
+                                </div>
 
-                                        <strong>{{ $errors->first('email') }}</strong>
 
                                     </span>
                                 @endif

@@ -11,12 +11,13 @@
                             <label for="name" class="col-lg-4 form-control-label">Name</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
-                                required="required" autofocus="autofocus" />@if ($errors->has('name')) <span class="help-block">
+                                required="required" autofocus="autofocus" />
+                                @if ($errors->has('name')) 
+                                        <div class="alert alert-danger" role="alert">
+                                        <strong>Warning!</strong> {{ $errors->first('name') }}
+                                        </div>
 
-                                        <strong>{{ $errors->first('name') }}</strong>
-
-                                    </span>
-@endif
+                                @endif
 
 </div>
                         </div>
@@ -24,11 +25,12 @@
                             <label for="email" class="col-lg-4 form-control-label">E-Mail Address</label>
                             <div class="col-lg-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
-                                required="required" />@if ($errors->has('email')) <span class="help-block">
+                                required="required" />
+                                @if ($errors->has('email'))
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Warning!</strong> {{ $errors->first('email') }}
+                                    </div>
 
-                                        <strong>{{ $errors->first('email') }}</strong>
-
-                                    </span>
 @endif
 </div>
                         </div>
@@ -36,12 +38,15 @@
                             <label for="password" class="col-lg-4 form-control-label">Password</label>
                             <div class="col-lg-6">
                                 <input id="password" type="password" class="form-control" name="password"
-                                required="required" />@if ($errors->has('password')) <span class="help-block">
+                                required="required" />
+                                @if ($errors->has('password')) 
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Warning!</strong> {{ $errors->first('password') }}
+                                    </div>
 
-                                        <strong>{{ $errors->first('password') }}</strong>
-
-                                    </span>
-@endif</div>
+                                      
+@endif
+</div>
                         </div>
                         <div class="form-group">
                             <label for="password-confirm" class="col-lg-4 form-control-label">Confirm Password</label>
