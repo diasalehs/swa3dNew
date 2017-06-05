@@ -16,12 +16,11 @@ Route::get('/', array('as' => 'main', function() {
     return view('main');
 }));
 
-Route::post('/register', array('as' => 'register', [
-	'uses' => 'registerController@postRegister',
-	]));
 
 Auth::routes();
 
 Route::get('/registerStep2', 'registerStep2Controller@index')->name('registerStep2');
+Route::get('/home', 'homeController@index')->name('home');
+
 
 });
