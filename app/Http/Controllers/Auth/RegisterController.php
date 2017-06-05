@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Individuals;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/registerStep2';
 
     /**
      * Create a new controller instance.
@@ -51,14 +52,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'cityName' => 'required|string',
-            'livingPlace' => 'required|integer',
-            'country' => 'required|string',
-            'gender' => 'required|integer',
-            'currentWork' => 'required|string',
-            'educationalLevel' => 'required|integer',
-            'preVoluntary' => 'required|integer',
-            'voluntaryYears' => 'required|integer',
+            'userType' => 'required|integer',
         ]);
     }
 
@@ -73,23 +67,8 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            // 'userType' => $data['userType'],
+            'userType' => $data['userType'],
             'password' => bcrypt($data['password']),
-        ]);
-
-        return Individuals::create([
-            'nameInEnglish' => $data['name'],
-            'nameInArabic' => $data['name'],
-            'dateOfBirth' => $data['name'],    
-            'email' => $data['email'],
-            'cityName' => $data['cityName'],
-            'livingPlace' => $data['livingPlace'],
-            'country' => $data['country'],
-            'gender' => $data['gender'],
-            'currentWork' => $data['currentWork'],
-            'educationalLevel' => $data['educationalLevel'],
-            'preVoluntary' => $data['preVoluntary'],
-            'voluntaryYears' => $data['voluntaryYears'],
         ]);
 
     }

@@ -21,4 +21,16 @@
          </div>
     </div>
 </div>
-@endsection
+
+                        <div class="form-group">
+                            <div class="col-lg-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">Register</button>
+                            </div>
+                        </div>
+                     
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>@endsection
