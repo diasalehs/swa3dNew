@@ -1,0 +1,10 @@
+.signupform{
+    padding-top: 130px;
+    padding-bottom: 150px;
+}
+.signupbtn {
+    background-color: #1ab08b;
+}
+.signupbtn:hover{
+    background-color: #22d5a9;
+}
