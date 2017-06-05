@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-lg-8 ">
-                                <button type="submit" class="btn btn-primary">Login</button> 
+                                <button type="submit" class="btn btn-success btn-lg">Login</button> 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
 
                                     Forgot Your Password?
