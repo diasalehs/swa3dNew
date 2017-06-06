@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid" style="margin:120px auto">
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-3 sidebar">
             <div class="text-center">
 
             <div class=" circular--landscape"> 
@@ -28,15 +28,6 @@
     </div>
 </div>
 
-                        <div class="form-group">
-                            <div class="col-lg-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">Register</button>
-                            </div>
-                        </div>
+                   
                      
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>@endsection
+@endsection

@@ -15,6 +15,9 @@ Route::group(['middleware' => ['web']], function () {
 Route::get('/', array('as' => 'main', function() {
     return view('main');
 }));
+Route::get('/admin', array('as' => 'main', function() {
+    return view('adminDashboard');
+}));
 
 
 Auth::routes();
@@ -26,6 +29,5 @@ Route::get('/ResearcherRegister', 'ResearcherRegister@index')->name('ResearcherR
 
 Route::get('/choose', 'chooseController@index')->name('choose');
 Route::get('/home', 'homeController@index')->name('home');
-
 
 });

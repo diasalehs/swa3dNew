@@ -27,7 +27,7 @@ footer{
     -o-background-size: cover;
     background-size: cover;
 }
-.navbar{
+.mainNavbar{
 		z-index: 99;
 		padding-top: 17px;
 		padding-bottom: 17px;
@@ -54,7 +54,6 @@ footer{
 }
 .logo{
 		height: 120px;
-		
 }
 .image-cropper {
     width: 150px;
@@ -66,7 +65,9 @@ footer{
 .circular--square {
   border-radius: 50%;
 }
-
+.sidebar{
+	border-right: 1px solid #ccc;
+}
 .circular--landscape {
   display: inline-block;
   position: relative;

@@ -10,21 +10,16 @@
                     <form class="" role="form" method="POST" action="{{ route('register') }}">{{ csrf_field() }}
                             <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
-                                <button type="submit" class="btn btn-success btn-block">Individual</button>
+                                <button value="0" type="submit" class="btn btn-success btn-block">Individual</button>
                             </div>
                         </div>
-                    </form>
 
-                    <form class="" role="form" method="POST" action="{{ route('register') }}">{{ csrf_field() }}
                             <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
                                 <button type="submit" class="btn btn-success btn-block">Institute</button>
                             </div>
                         </div>
-                    </form>
 
-
-                    <form class="" role="form" method="POST" action="{{ route('register') }}">{{ csrf_field() }}
                             <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
                                 <button type="submit" class="btn btn-success btn-block">Researcher</button>
