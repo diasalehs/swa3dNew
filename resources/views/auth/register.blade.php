@@ -4,10 +4,12 @@
     <div class="row">
         <div class="col-lg-8 offset-md-2">
             <div class="card">
+
                 <div class="card-header">Register</div>
                 <div class="card-block">
-                    <form class="" role="form" method="POST" action="{{ route('registerStep2') }}">{{ csrf_field() }}
+                    <form class="" role="form" method="POST" action="{{ route('register') }}">{{ csrf_field() }}
                     {{ csrf_field() }}
+
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Name</label>
                             <div class="col-lg-6">
@@ -34,19 +36,13 @@
                         </div>
                         </div> -->
 
-                        <div class="class has('userType') ? ' has->error' : '' }}">
-                            <label for="name" class="col-lg-4 form-control-label">User Type</label>
+                             
                             <div class="col-lg-6">
-                                <input id="name" type="text" class="form-control" name="userType" value="{{ old('userType') }}"
-                                required="required" />
-                                @if ($errors->has('userType'))
-                                    <div class="alert alert-danger" role="alert">
-                                        <strong>Warning!</strong> {{ $errors->first('userType') }}
-                                    </div>
-
-@endif
-</div>
-                        </div>
+                                <input id="name" type="text" style="display: none;" class="form-control" name="userType" value="{{ $user_type }}"
+                                />
+                                
+                            </div>
+                        
 
                         <div class="class has('name') ? ' has->error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">E-Mail Address</label>
@@ -93,4 +89,5 @@
             </div>
         </div>
     </div>
-</div>@endsection
+</div>
+@endsection

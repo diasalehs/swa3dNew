@@ -7,6 +7,7 @@ use App\Individuals;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use \Illuminate\Http\Request;
 
 
 class RegisterController extends Controller
@@ -29,13 +30,15 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/registerStep2';
+     protected $redirectTo = '/redirect';
+    
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('guest');
@@ -71,6 +74,7 @@ class RegisterController extends Controller
             'userType' => $data['userType'],
             'password' => bcrypt($data['password']),
         ]);
+        
 
     }
 }
