@@ -113,51 +113,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label  class="col-lg-4 form-control-label" for="exampleSelect1">Gender</label>
-                            <div class="col-lg-6">
-                            <select name="gender" class="form-control" id="exampleSelect1">
-                            <option value="0">male</option>
-                            <option value="1">female</option>
-                            </select>
-                        </div>
-                        </div>
-
-                        
-                        
-                        <div class="form-group">
-                            <label  class="col-lg-4 form-control-label" for="exampleSelect1">Your educational level</label>
-                            <div class="col-lg-6">
-                            <select name="educationalLevel" class="form-control" id="exampleSelect1">
-                            <option value="0">school</option>
-                            <option value="1">colage</option>
-                            </select>
-                        </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label  class="col-lg-4 form-control-label" for="exampleSelect1">Do you have any expriments on Voluntary</label>
-                            <div class="col-lg-6">
-                            <select name="preVoluntary" class="form-control" id="exampleSelect1">
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
-                            </select>
-                        </div>
-                        </div>
-
-                        <div class="class has('voluntaryYears') ? ' has->error' : '' }}">
-                            <label for="name" class="col-lg-4 form-control-label">Voluntary Years</label>
-                            <div class="col-lg-6">
-                                <input id="name" type="text" class="form-control" name="voluntaryYears" value="{{ old('voluntaryYears') }}"
-                                required="required" />
-                                @if ($errors->has('voluntaryYears'))
-                                    <div class="alert alert-danger" role="alert">
-                                        <strong>Warning!</strong> {{ $errors->first('voluntaryYears') }}
-                                    </div>
-
-@endif
-</div>
-                        </div>
-                        <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
                                 <button type="submit" class="btn btn-success btn-block">Register</button>
                             </div>
