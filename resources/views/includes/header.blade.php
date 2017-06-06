@@ -24,7 +24,7 @@
     <div class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-        <a class="nav-link"  href="{{ route('register') }}">Join Us</a>
+        <a class="nav-link"  href="{{ route('choose') }}">Join Us</a>
       </li>
       <li class="nav-item ">
        @if (Auth::guest())

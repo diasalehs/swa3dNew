@@ -4,9 +4,9 @@
     <div class="row">
         <div class="col-lg-8 offset-md-2">
             <div class="card">
-                <div class="card-header">Register</div>
+                <div class="card-header">Researcher Register</div>
                 <div class="card-block">
-                    <form class="" role="form" method="POST" action="{{ route('register') }}">{{ csrf_field() }}
+                    <form class="" role="form" method="POST" action="{{ route('home') }}">{{ csrf_field() }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Name</label>
                             
@@ -104,4 +104,16 @@
 @endif
 </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-lg-4 offset-md-4">
+                                <button type="submit" class="btn btn-success btn-block">Register</button>
+                            </div>
+                        </div>
+                     
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

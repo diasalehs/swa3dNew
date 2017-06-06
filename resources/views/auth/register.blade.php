@@ -2,11 +2,11 @@
  @section('content')
 <div class="container" style="margin:100px auto">
     <div class="row">
-        <div class="col-lg-10 offset-md-1">
+        <div class="col-lg-8 offset-md-2">
             <div class="card">
                 <div class="card-header">Register</div>
                 <div class="card-block">
-                    <form class="" role="form" method="POST" action="{{ route('register') }}">
+                    <form class="" role="form" method="POST" action="{{ route('registerStep2') }}">{{ csrf_field() }}
                     {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Name</label>
@@ -47,7 +47,7 @@
 @endif
 </div>
                         </div>
-                        
+
                         <div class="class has('name') ? ' has->error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">E-Mail Address</label>
                             <div class="col-lg-6">
@@ -84,7 +84,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
-                                <button type="submit" class="btn btn-success btn-block">Register</button>
+                                <button type="submit" class="btn btn-success btn-block">next step</button>
                             </div>
                         </div>
                      
