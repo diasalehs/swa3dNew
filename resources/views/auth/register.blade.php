@@ -8,7 +8,6 @@
                 <div class="card-header">Register</div>
                 <div class="card-block">
                     <form class="" role="form" method="POST" action="{{ route('register') }}">{{ csrf_field() }}
-                    {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Name</label>
@@ -22,7 +21,7 @@
 
                                 @endif
 
-</div>
+                </div>
                         </div>
 
                                                 <!-- <div class="form-group">

@@ -10,6 +10,7 @@
                     <form class="" role="form" method="POST" action="{{ route('registerer') }}">{{ csrf_field() }}
                             <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
+
                                 <button type="submit" value="0" name="submit" class="btn btn-success btn-block">Individual</button>
                             </div>
                         </div>
@@ -20,6 +21,7 @@
                                 <button type="submit" value="1" name="submit" class="btn btn-success btn-block">Institute</button>
                             </div>
                         </div>
+
 
 
                                                 <div class="form-group">
