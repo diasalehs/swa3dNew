@@ -33,7 +33,7 @@ Route::get('/IndividualRegister', 'IndividualRegister@index')->name('IndividualR
 Route::get('/InstituteRegister', 'InstituteRegister@index')->name('InstituteRegister');
 Route::get('/ResearcherRegister', 'ResearcherRegister@index')->name('ResearcherRegister');
 Route::get('/home', 'homeController@index')->name('home');
-Route::get('/step', 'registerStep2Controller@index')->name('step');
+Route::get('/step', function() {return view('step');})->name('step');
 Route::get('/choose', function() {return view('choose');})->name('choose');
 
 Route::post('/registerer', function(\Illuminate\Http\Request $request) {

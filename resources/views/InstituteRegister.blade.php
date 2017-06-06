@@ -5,7 +5,6 @@
         <div class="col-lg-8 offset-md-2">
             <div class="card">
                 <div class="card-header">Institute Register</div>
-                {{$userType}}
                 <div class="card-block">
                     <form class="" role="form" method="POST" action="{{ route('home') }}">{{ csrf_field() }}
                             
