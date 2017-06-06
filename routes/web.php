@@ -29,9 +29,9 @@ Route::group(['prefix'=>'admin'], function() {
 
 
 Auth::routes();
-Route::get('/home', 'registerStep2Controller@IndividualRegister')->name('IndividualRegister');
-Route::get('/home', 'registerStep2Controller@InstituteRegister')->name('InstituteRegister');
-Route::get('/home', 'registerStep2Controller@ResearcherRegister')->name('ResearcherRegister');
+Route::post('/IndividualRegister', ['uses'=>'registerStep2Controller@IndividualRegister','as'=>'IndividualRegister']);
+Route::post('/InstituteRegister', ['uses'=>'registerStep2Controller@InstituteRegister','as'=>'InstituteRegister']);
+Route::post('/ResearcherRegister', ['uses'=>'registerStep2Controller@ResearcherRegister','as'=>'ResearcherRegister']);
 Route::get('/home', 'homeController@index')->name('home');
 Route::get('/step', function() {return view('step');})->name('step');
 Route::get('/choose', function() {return view('choose');})->name('choose');

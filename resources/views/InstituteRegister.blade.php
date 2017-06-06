@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">Institute Register</div>
                 <div class="card-block">
-                    <form class="" role="form" method="POST" action="{{ route('home') }}">{{ csrf_field() }}
+                    <form class="" role="form" method="POST" action="{{ route('InstituteRegister') }}">{{ csrf_field() }}
                             
 
                         <div class="class has('license') ? ' has->error' : '' }}">

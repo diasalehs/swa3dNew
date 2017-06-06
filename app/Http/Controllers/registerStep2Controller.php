@@ -3,56 +3,60 @@ namespace App\Http\Controllers;
 
 use \Illuminate\Http\Request;
 use App\Individuals;
+use App\Institute;
+use App\Researcher;
+use App\User;
+use Illuminate\Support\Facades\auth;
+
+
 class registerStep2Controller extends Controller
 {
 	// check the user type !!
+	
 	public function IndividualRegister(Request $request){
-		$this->validate($request, [
-				'name' => 'required|alpha'
-			]);
+		$user = Auth::user();
 		$Individuals = new Individuals();
-        $Individuals->nameInEnglish = $request['nameInEnglish'];
+        $Individuals->nameInEnglish = $user->name;
+        $Individuals->nameInArabic = $user->name;
+        $Individuals->email = $user->email;
         $Individuals->cityName = $request['cityName'];
         $Individuals->country = $request['country'];
-        $Individuals->dateOfBirth = $request['dateOfBirth'];
-        $Individuals->email = $request['email'];
+        $Individuals->dateOfBirth =  " ";
         $Individuals->save();
 
 		return redirect()->route('home');
 	}
 
 	public function InstituteRegister(Request $request){
-		$this->validate($request, [
-				'name' => 'required|alpha'
-			]);
+		$user = Auth::user();
+
 		$Institute = new Institute();
+		$Institute->nameInEnglish = $user->name;
+        $Institute->nameInArabic = $user->name;
+        $Institute->email = $user->email;
         $Institute->license = $request['license'];
         $Institute->cityName = $request['cityName'];
         $Institute->country = $request['country'];
         $Institute->livingPlace = $request['livingPlace'];
-        $Institute->email = $request['email'];
         $Institute->workSummary = $request['workSummary'];
         $Institute->activities = $request['activities'];
         $Institute->mobileNumber = $request['mobileNumber'];
         $Institute->address = $request['address'];
-        $Institute->mobileNumber = $request['mobileNumber'];
-        $Institute->mobileNumber = $request['mobileNumber'];
-
         $Institute->save();
 
 		return redirect()->route('home');
 	}
 
 	public function ResearcherRegister(Request $request){
-		$this->validate($request, [
-				'name' => 'required|alpha'
-			]);
+		$user = Auth::user();
+
 		$Researcher = new Researcher();
-        $Researcher->nameInEnglish = $request['nameInEnglish'];
+		$Researcher->nameInEnglish = $user->name;
+        $Researcher->nameInArabic = $user->name;
+        $Researcher->email = $user->email;
         $Researcher->cityName = $request['cityName'];
         $Researcher->country = $request['country'];
-        $Researcher->dateOfBirth = $request['dateOfBirth'];
-        $Researcher->email = $request['email'];
+        $Researcher->dateOfBirth = " ";
         $Researcher->save();
 
 		return redirect()->route('home');
