@@ -8,9 +8,9 @@ $type= Auth::user()->userType;
  @section('content')
 
 
+<div class="container" style="margin:100px auto">
 
-
-<div class="container" style="margin:100px auto;display: 
+    <div class="row" style="display: 
  <?php
 if ($type== 0){
 	echo "block";
@@ -19,9 +19,10 @@ else{
 	echo "none";
 }
 
- ?>">
-    <div class="row">
+ ?>"">
         <div class="col-lg-8 offset-md-2">
+        {{ Auth::user()->userType
+ }}
             <div class="card">
                 <div class="card-header">Individual Register</div>
                 <div class="card-block">
@@ -39,7 +40,7 @@ else{
                             </select>
                         </div>
                         </div>
-                        <div class="class has('cityName') ? ' has->error' : '' }}">
+                        <div class="form-group class has('cityName') ? ' has->error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">Your city name</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="cityName" value="{{ old('cityName') }}"
@@ -52,7 +53,7 @@ else{
 @endif
 </div>
                         </div>
-                        <div class="class has('country') ? ' has->error' : '' }}">
+                        <div class="form-group class has('country') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your country name</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="country" value="{{ old('country') }}"
@@ -76,7 +77,7 @@ else{
                         </div>
                         </div>
 
-                        <div class="class has('currentWork') ? ' has->error' : '' }}">
+                        <div class="form-group class has('currentWork') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your curren tWork</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="currentWork" value="{{ old('currentWork') }}"
@@ -110,7 +111,7 @@ else{
                         </div>
                         </div>
 
-                        <div class="class has('voluntaryYears') ? ' has->error' : '' }}">
+                        <div class="form-group class has('voluntaryYears') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Voluntary Years</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="voluntaryYears" value="{{ old('voluntaryYears') }}"
@@ -149,7 +150,16 @@ else{
  ?>
 
  ">
-    <div class="row">
+    <div class="row" style="display: 
+ <?php
+if ($type== 1){
+	echo "block";
+}
+else{
+	echo "none";
+}
+
+ ?>">
         <div class="col-lg-8 offset-md-2">
             <div class="card">
                 <div class="card-header">Institute Register</div>
@@ -157,7 +167,7 @@ else{
                     <form class="" role="form" method="POST" action="{{ route('home') }}">{{ csrf_field() }}
                             
 
-                        <div class="class has('license') ? ' has->error' : '' }}">
+                        <div class="form-group class has('license') ? ' has->error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">The license number</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="license" value="{{ old('license') }}"
@@ -182,7 +192,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="class has('cityName') ? ' has->error' : '' }}">
+                        <div class=" form-group class has('cityName') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">City name</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="cityName" value="{{ old('cityName') }}"
@@ -195,7 +205,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="class has('country') ? ' has->error' : '' }}">
+                        <div class="form-group class has('country') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your country name</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="country" value="{{ old('country') }}"
@@ -208,7 +218,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="class has('workSummary') ? ' has->error' : '' }}">
+                        <div class="form-group class has('workSummary') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Work summary</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="workSummary" value="{{ old('workSummary') }}"
@@ -221,7 +231,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="class has('activities') ? ' has->error' : '' }}">
+                        <div class="form-group class has('activities') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">The institute activities</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="activities" value="{{ old('activities') }}"
@@ -234,7 +244,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="class has('mobileNumber') ? ' has->error' : '' }}">
+                        <div class="form-group class has('mobileNumber') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Mobile number</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="mobileNumber" value="{{ old('mobileNumber') }}"
@@ -247,7 +257,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="class has('address') ? ' has->error' : '' }}">
+                        <div class="form-group class has('address') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Address</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="address" value="{{ old('address') }}"
@@ -292,7 +302,7 @@ else{
                         </div>
                         </div>
 
-                        <div class="class has('voluntaryYears') ? ' has->error' : '' }}">
+                        <div class="form-group class has('voluntaryYears') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Voluntary Years</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="voluntaryYears" value="{{ old('voluntaryYears') }}"
@@ -331,7 +341,16 @@ else{
 
  ?>
 ">
-    <div class="row">
+    <div class="row" style="display: 
+ <?php
+if ($type== 2){
+	echo "block";
+}
+else{
+	echo "none";
+}
+
+ ?>">
         <div class="col-lg-8 offset-md-2">
             <div class="card">
                 <div class="card-header">Researcher Register</div>
@@ -350,7 +369,7 @@ else{
                             </select>
                         </div>
                         </div>
-                        <div class="class has('cityName') ? ' has->error' : '' }}">
+                        <div class="form-group class has('cityName') ? ' has->error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">Your city name</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="cityName" value="{{ old('cityName') }}"
@@ -363,7 +382,7 @@ else{
 @endif
 </div>
                         </div>
-                        <div class="class has('country') ? ' has->error' : '' }}">
+                        <div class="form-group class has('country') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your country name</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="country" value="{{ old('country') }}"
@@ -387,7 +406,7 @@ else{
                         </div>
                         </div>
 
-                        <div class="class has('currentWork') ? ' has->error' : '' }}">
+                        <div class="form-group class has('currentWork') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your curren tWork</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="currentWork" value="{{ old('currentWork') }}"
@@ -421,7 +440,7 @@ else{
                         </div>
                         </div>
 
-                        <div class="class has('voluntaryYears') ? ' has->error' : '' }}">
+                        <div class="form-group class has('voluntaryYears') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Voluntary Years</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="voluntaryYears" value="{{ old('voluntaryYears') }}"

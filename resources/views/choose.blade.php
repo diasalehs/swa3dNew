@@ -24,7 +24,7 @@
 
 
 
-                                                <div class="form-group">
+                        <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
                                 <button type="submit" value="2" name= "submit" class="btn btn-success btn-block">Researcher</button>
                             </div>
