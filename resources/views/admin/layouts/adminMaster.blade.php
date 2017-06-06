@@ -22,8 +22,8 @@
 </head>
 
 <body>
-    @include('includes.adminHeader')
+    @include('admin/includes.adminHeader')
     <div class="">
         @yield('content')
     </div>
-    @include('includes.footer')
+    @include('admin/includes.footer')

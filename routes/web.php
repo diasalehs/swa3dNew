@@ -15,9 +15,16 @@ Route::group(['middleware' => ['web']], function () {
 Route::get('/', array('as' => 'main', function() {
     return view('main');
 }));
-Route::get('/admin', array('as' => 'admin', function() {
-    return view('adminDashboard');
-}));
+Route::group(['prefix'=>'admin'], function() {
+    Route::get('/', array('as' => 'admin', function() {
+        return view('admin/adminDashboard');
+    }));
+
+    Route::get('/news', array('as' => 'news', function() {
+    return view('admin/adminNews');
+    }));
+
+});
 
 
 Auth::routes();
@@ -31,7 +38,7 @@ Route::get('/choose', function() {
 })->name('choose');
 Route::post('/registerer', function(\Illuminate\Http\Request $request) {
 
-    return view('auth\register',['user_type'=>$request['submit']]);
+    return view('auth/register',['user_type'=>$request['submit']]);
 })->name('registerer');
 
 Route::get('/redirect', 'registerStep2Controller@index')->name('redirect');
