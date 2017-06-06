@@ -7,27 +7,24 @@
                 <div class="card-header">Register</div>
                 <div class="card-block">
 
-                    <form class="" role="form" method="POST" action="{{ route('register') }}">{{ csrf_field() }}
+                    <form class="" role="form" method="POST" action="{{ route('registerer') }}">{{ csrf_field() }}
                             <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
-                                <button type="submit" class="btn btn-success btn-block">Individual</button>
+                                <button type="submit" value="0" name="submit" class="btn btn-success btn-block">Individual</button>
                             </div>
                         </div>
-                    </form>
+                 
 
-                    <form class="" role="form" method="POST" action="{{ route('register') }}">{{ csrf_field() }}
                             <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
-                                <button type="submit" class="btn btn-success btn-block">Institute</button>
+                                <button type="submit" value="1" name="submit" class="btn btn-success btn-block">Institute</button>
                             </div>
                         </div>
-                    </form>
 
 
-                    <form class="" role="form" method="POST" action="{{ route('register') }}">{{ csrf_field() }}
-                            <div class="form-group">
+                                                <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
-                                <button type="submit" class="btn btn-success btn-block">Researcher</button>
+                                <button type="submit" value="2" name= "submit" class="btn btn-success btn-block">Researcher</button>
                             </div>
                         </div>
                     </form>

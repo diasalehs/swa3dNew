@@ -19,13 +19,17 @@ Route::get('/', array('as' => 'main', function() {
 
 Auth::routes();
 
-Route::get('/registerStep2', 'registerStep2Controller@index')->name('registerStep2');
 Route::get('/IndividualRegister', 'IndividualRegister@index')->name('IndividualRegister');
 Route::get('/InstituteRegister', 'InstituteRegister@index')->name('InstituteRegister');
 Route::get('/ResearcherRegister', 'ResearcherRegister@index')->name('ResearcherRegister');
-
-Route::get('/choose', 'chooseController@index')->name('choose');
 Route::get('/home', 'homeController@index')->name('home');
+Route::get('/choose', function() {
+    return view('choose');
+})->name('choose');
+Route::post('/registerer', function(\Illuminate\Http\Request $request) {
 
+    return view('auth\register',['user_type'=>$request['submit']]);
+})->name('registerer');
 
+Route::get('/redirect', 'registerStep2Controller@index')->name('redirect');
 });
