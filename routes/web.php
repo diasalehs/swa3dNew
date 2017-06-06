@@ -15,7 +15,7 @@ Route::group(['middleware' => ['web']], function () {
 Route::get('/', array('as' => 'main', function() {
     return view('main');
 }));
-Route::get('/admin', array('as' => 'main', function() {
+Route::get('/admin', array('as' => 'admin', function() {
     return view('adminDashboard');
 }));
 
@@ -31,12 +31,9 @@ Route::get('/choose', function() {
 })->name('choose');
 Route::post('/registerer', function(\Illuminate\Http\Request $request) {
 
-<<<<<<< HEAD
-});
-=======
     return view('auth\register',['user_type'=>$request['submit']]);
 })->name('registerer');
 
 Route::get('/redirect', 'registerStep2Controller@index')->name('redirect');
+
 });
->>>>>>> d3be5856cce09b7bc152d8e9fdf353e32f3383ca
