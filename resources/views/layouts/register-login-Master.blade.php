@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-  @include('includes.header')
+  @include('includes.register-login-header')
         @yield('content')
     </div>
 

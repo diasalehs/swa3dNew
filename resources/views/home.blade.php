@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.profileMaster')
 
 @section('content')
 <div class="container-fluid" style="margin:120px auto">
