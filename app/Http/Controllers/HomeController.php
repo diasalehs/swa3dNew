@@ -1,28 +1,28 @@
-<?php
 
-namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
-class HomeController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
+
+                return view('home');
         $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
+     *
      *
      * @return \Illuminate\Http\Response
+     * @return void
+     * Create a new controller instance.
+     * Show the application dashboard.
      */
+     */
+    /**
+    /**
+    public function __construct()
     public function index()
     {
-        return view('home');
+    { 
     }
+    }
+<?php
+class HomeController extends Controller
+namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+{
 }

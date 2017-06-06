@@ -12,24 +12,24 @@
 */
 Route::group(['middleware' => ['web']], function () {
 
-Route::get('/', array('as' => 'main', function() {
+Route::get('/', function() {
     return view('main');
-}));
-
+})->name('main');
 
 Auth::routes();
-
 Route::get('/IndividualRegister', 'IndividualRegister@index')->name('IndividualRegister');
 Route::get('/InstituteRegister', 'InstituteRegister@index')->name('InstituteRegister');
 Route::get('/ResearcherRegister', 'ResearcherRegister@index')->name('ResearcherRegister');
 Route::get('/home', 'homeController@index')->name('home');
+Route::get('/step', 'registerStep2Controller@index')->name('step');
 Route::get('/choose', function() {
     return view('choose');
 })->name('choose');
-Route::post('/registerer', function(\Illuminate\Http\Request $request) {
 
-    return view('auth\register',['user_type'=>$request['submit']]);
+Route::post('/registerer', function(\Illuminate\Http\Request $request) {
+    return view('auth/register',['user_type'=>$request['submit']]);
+
 })->name('registerer');
 
-Route::get('/redirect', 'registerStep2Controller@index')->name('redirect');
+
 });
