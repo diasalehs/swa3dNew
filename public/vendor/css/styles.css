@@ -206,6 +206,11 @@ footer{
 	border: 0px;
 
 }
+.news-item a img{
+	 width: 100%;
+   
+
+}
 .card-text{
 	color: #1ab08b;
 }
@@ -220,11 +225,37 @@ footer{
 }
 .news-item > .card-block img{
 		padding: 1px 1px !important;
+    height: 20px;
 }
 .tab-pane {
     height: 450px;
 }
+.nav-tabs{
+  margin-top: 30px;
+}
+.nav-tabs .nav-item{
+    text-align: center;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+.nav-tabs{
+    border-bottom: 1px solid #eee !important;
+}
+.nav-tabs .nav-item a{
+    background-color: #eee;
+    font-size: 20px;
+}
+.news-tab-item a {
+    color: #1ab08b !important;
+}
+.researchs-tab-item a{
+  color: #f70087 !important;
 
+}
+.dashboard-tab-item a{
+  color: #ffe034 !important;
+
+}
 .news-title{
 	color: #1ab08b !important;
 }
@@ -235,21 +266,25 @@ footer{
 		background-color: #fff;
   	border-bottom: 0px;
 		font-size: 18px;
+    color: #777 !important;
 }
 .research-card .card-block{
 	 	padding-top: 0px;
 
 }
+.research-card .card-block a{
+    color: #f70087;
+}
 .research-card .card-text{
 		font-size: 14px;
+    color: #f70087;
 }
 .more-researches{
-		background-color: #fdf092 !important;
-		color: #777 !important;
+		background-color: #f70087 !important;
+		color: #fff !important;
 }
 .research-section-title{
-		color: #fdf092;
-		text-shadow: 0px 2px 3px #999;
+		color: #f70087;
 }
 .show-more-btn{
 		padding-right: 80px;
