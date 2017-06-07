@@ -24,22 +24,21 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function step()
-    {
-        if(Auth::user()->flag == 1){
-            return view('home');
-        }elseif(Auth::user()->flag == 0){
-            return redirect()->route('step');
+    public function index()
+    {           
+        if(Auth::attempt() || Auth::user()){
+            $user = Auth::user();
+            $users_record= DB::table('users')->get();
+            if ($user->userType=== 10 ) {
+                return view('admin/adminDashboard',["users_record"=>$users_record]);
+            }
+            if($user->flag == 1){
+                return view('home');
+            }elseif($user->flag == 0){
+                return redirect()->route('step');
+            }
+        }else{
+                return redirect()->route('main');
         }
-    }   
-
-    public function admin()
-    {
-        $user = Auth::user();
-        $users_record= DB::table('users')->get();
-        if ($user->userType=== 10 ) {
-            return view('admin/adminDashboard',["users_record"=>$users_record]);
-        }
-        return view('home');
     }
 }
