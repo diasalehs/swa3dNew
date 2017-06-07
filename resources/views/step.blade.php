@@ -21,17 +21,15 @@ else{
 
  ?>"">
         <div class="col-lg-8 offset-md-2">
-        {{ Auth::user()->userType}}
             <div class="card">
                 <div class="card-header">Individual Register</div>
                 <div class="card-block">
                     <form class="" role="form" method="POST" action="{{ route('IndividualRegister') }}">{{ csrf_field() }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-lg-4 form-control-label">Name</label>
                             
-                             <div class="form-group">
+                        <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Where are you from</label>
-                            <div class="col-lg-6">
+                        <div class="col-lg-6">
                             <select name="livingPlace" class="form-control" id="exampleSelect1">
                             <option value="0">city</option>
                             <option value="1">camp</option>
@@ -39,6 +37,7 @@ else{
                             </select>
                         </div>
                         </div>
+
                         <div class="form-group class has('cityName') ? ' has->error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">Your city name</label>
                             <div class="col-lg-6">
@@ -49,9 +48,10 @@ else{
                                         <strong>Warning!</strong> {{ $errors->first('cityName') }}
                                     </div>
 
-@endif
-</div>
+                                @endif
+                            </div>
                         </div>
+
                         <div class="form-group class has('country') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your country name</label>
                             <div class="col-lg-6">
@@ -62,18 +62,31 @@ else{
                                         <strong>Warning!</strong> {{ $errors->first('country') }}
                                     </div>
 
-@endif
-</div>
+                                @endif
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Gender</label>
-                            <div class="col-lg-6">
+                        <div class="col-lg-6">
                             <select name="gender" class="form-control" id="exampleSelect1">
                             <option value="0">male</option>
                             <option value="1">female</option>
                             </select>
                         </div>
+                        </div>
+
+                        <div class="class has('dateOfBirth') ? ' has->error' : '' }}">
+                            <label for="name" class="col-lg-4 form-control-label">Your date of birth</label>
+                            <div class="col-lg-6">
+                                <input id="name" type="date" class="form-control" name="dateOfBirth" value="2011-08-19"
+                                required="required" />
+                                @if ($errors->has('dateOfBirth'))
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Warning!</strong> {{ $errors->first('dateOfBirth') }}
+                                    </div>
+                                @endif
+                            </div>
                         </div>
 
                         <div class="form-group class has('currentWork') ? ' has->error' : '' }}">
@@ -86,13 +99,13 @@ else{
                                         <strong>Warning!</strong> {{ $errors->first('currentWork') }}
                                     </div>
 
-@endif
-</div>
+                                @endif
+                            </div>
                         </div>
                         
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Your educational level</label>
-                            <div class="col-lg-6">
+                        <div class="col-lg-6">
                             <select name="educationalLevel" class="form-control" id="exampleSelect1">
                             <option value="0">school</option>
                             <option value="1">colage</option>
@@ -102,7 +115,7 @@ else{
 
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Do you have any expriments on Voluntary</label>
-                            <div class="col-lg-6">
+                        <div class="col-lg-6">
                             <select name="preVoluntary" class="form-control" id="exampleSelect1">
                             <option value="0">No</option>
                             <option value="1">Yes</option>
@@ -119,9 +132,8 @@ else{
                                     <div class="alert alert-danger" role="alert">
                                         <strong>Warning!</strong> {{ $errors->first('voluntaryYears') }}
                                     </div>
-
-@endif
-</div>
+                                @endif
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
@@ -322,11 +334,10 @@ else{
                 <div class="card-block">
                     <form class="" role="form" method="POST" action="{{ route('ResearcherRegister') }}">{{ csrf_field() }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-lg-4 form-control-label">Name</label>
                             
-                             <div class="form-group">
+                        <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Where are you from</label>
-                            <div class="col-lg-6">
+                        <div class="col-lg-6">
                             <select name="livingPlace" class="form-control" id="exampleSelect1">
                             <option value="0">city</option>
                             <option value="1">camp</option>
@@ -334,6 +345,7 @@ else{
                             </select>
                         </div>
                         </div>
+
                         <div class="form-group class has('cityName') ? ' has->error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">Your city name</label>
                             <div class="col-lg-6">
@@ -343,10 +355,10 @@ else{
                                     <div class="alert alert-danger" role="alert">
                                         <strong>Warning!</strong> {{ $errors->first('cityName') }}
                                     </div>
-
-@endif
-</div>
+                                @endif
+                            </div>
                         </div>
+
                         <div class="form-group class has('country') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your country name</label>
                             <div class="col-lg-6">
@@ -356,9 +368,8 @@ else{
                                     <div class="alert alert-danger" role="alert">
                                         <strong>Warning!</strong> {{ $errors->first('country') }}
                                     </div>
-
-@endif
-</div>
+                                @endif
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -371,6 +382,19 @@ else{
                         </div>
                         </div>
 
+                        <div class="class has('dateOfBirth') ? ' has->error' : '' }}">
+                            <label for="name" class="col-lg-4 form-control-label">Your date of birth</label>
+                            <div class="col-lg-6">
+                                <input id="name" type="date" class="form-control" name="dateOfBirth" value="2011-08-19"
+                                required="required" />
+                                @if ($errors->has('dateOfBirth'))
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Warning!</strong> {{ $errors->first('dateOfBirth') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group class has('currentWork') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your curren tWork</label>
                             <div class="col-lg-6">
@@ -380,9 +404,8 @@ else{
                                     <div class="alert alert-danger" role="alert">
                                         <strong>Warning!</strong> {{ $errors->first('currentWork') }}
                                     </div>
-
-@endif
-</div>
+                                @endif
+                            </div>
                         </div>
                         
                         <div class="form-group">
@@ -414,9 +437,8 @@ else{
                                     <div class="alert alert-danger" role="alert">
                                         <strong>Warning!</strong> {{ $errors->first('voluntaryYears') }}
                                     </div>
-
-@endif
-</div>
+                                @endif
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
