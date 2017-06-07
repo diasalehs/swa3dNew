@@ -101,7 +101,7 @@
         <h1 class="my-4 research-section-title text-center">Researchs</h1>
   <!-- Marketing Icons Section -->
         <div class="row">
-            <div class="col-lg-4 mb-4">
+            <div class="col-lg-4 col-sm-6">
                 <div class="card research-card">
                     <h4 class="card-header">Research Title</h4>
                     <div class="card-block">
@@ -112,7 +112,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-4 mb-4">
+            <div class="col-lg-4 col-sm-6">
                 <div class="card research-card">
                     <h4 class="card-header">Research Title</h4>
                     <div class="card-block">
@@ -124,7 +124,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-4 mb-4">
+            <div class="col-lg-4 col-sm-6">
                 <div class="card research-card">
                     <h4 class="card-header">Research Title</h4>
                     <div class="card-block">
@@ -150,6 +150,48 @@
         <!-- Marketing Icons Section -->
 
         <hr class="my-4">
+        <div class="container text-center">
+          <h1>Top 5</h1>
+          <div class="row justify-content-center">
+              <div class="col-lg-2 col-sm-4 mb-4 ">
+                  <img class="img-fluid" src="vendor/img/user.png" alt="">
+                  <div class="text-center">
+                    <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
+                    <small><a href="#">@m.shanti</a></small>
+                  </div>
+
+              </div>
+              <div class="col-lg-2 col-sm-4 mb-4">
+                  <img class="img-fluid" src="vendor/img/user.png" alt="">
+                  <div class="text-center">
+                    <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
+                    <small><a href="#">@m.shanti</a></small>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-sm-4 mb-4">
+                  <img class="img-fluid" src="vendor/img/user.png" alt="">
+                  <div class="text-center">
+                    <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
+                    <small><a href="#">@m.shanti</a></small>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-sm-4 mb-4">
+                  <img class="img-fluid" src="vendor/img/user.png" alt="">
+                  <div class="text-center">
+                    <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
+                    <small><a href="#">@m.shanti</a></small>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-sm-4 mb-4">
+                  <img class="img-fluid" src="vendor/img/user.png" alt="">
+                  <div class="text-center">
+                    <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
+                    <small><a href="#">@m.shanti</a></small>
+                  </div>
+              </div>
+
+          </div>
+        </div>
 
 
 
