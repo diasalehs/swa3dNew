@@ -42,17 +42,33 @@
         </div>
     </header>
     <!-- Page Content -->
-    <div class="container-fluid">
-    
+    <div class="container">
+        <!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item col-sm-4 col-lg-4 news-tab-item">
+    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">News</a>
+  </li>
+  <li class="nav-item col-sm-4 col-lg-4 researchs-tab-item">
+    <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Researches</a>
+  </li>
+  <li class="nav-item col-sm-4 col-lg-4 dashboard-tab-item">
+    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Dashboard</a>
+  </li>
+
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="home" role="tabpanel">
     <div class="section">
-        <h1 class="my-4 section-title text-center">The Latest</h1>
+        <h1 class="my-4 news-section-title text-center">The Latest</h1>
 
         <div class="row">
             <div class="col-lg-4 col-sm-6 ">
                 <div class="card news-item">
                     <a href="#"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
                     <div class="card-block">
-                        <a href="#" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</a>
+                        <a href="#" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Volul, dolorem!</a>
                     </div>
                 </div>
             </div>
@@ -68,23 +84,21 @@
                 <div class="card news-item">
                     <a href="#"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
                     <div class="card-block">
-                        <a href="#" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</a>
+                        <a href="#" class="card-text">Lorem ipsum dolor sit amo velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</a>
                     </div>
                 </div>
             </div>
-          
+
             </div>
               <div class="text-center ">
-                <button type="button" class="btn btn-primary btn-lg show-more-btn">More News</button>
+                <button type="button" class="btn btn-primary  show-more-btn">More News</button>
             </div>
             </div>
-        <!-- Marketing Icons Section -->
-       
-        <hr class="my-4">
 
-        <!-- Portfolio Section -->
-        <div class="section ">
-        <h1 class="my-4 section-title text-center">Researchs</h1>
+  </div><!-- news tab -->
+  <div class="tab-pane fade" id="profile" role="tabpanel">
+    <div class="section researches">
+        <h1 class="my-4 research-section-title text-center">Researchs</h1>
   <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-4 mb-4">
@@ -93,10 +107,9 @@
                     <div class="card-block">
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
                         <p class="RN">Researcher Name.</p>
+                        <a href="#"> Learn More</a>
                     </div>
-                    <div class="card-footer text-center ">
-                        <a href="#" class="btn btn-primary">Learn More</a>
-                    </div>
+
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
@@ -105,11 +118,10 @@
                     <div class="card-block">
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
                         <p class="RN">Researcher Name.</p>
+                        <a href="#"> Learn More</a>
 
                     </div>
-                    <div class="card-footer text-center ">
-                        <a href="#" class="btn btn-primary">Learn More</a>
-                    </div>
+
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
@@ -118,51 +130,26 @@
                     <div class="card-block">
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
                         <p class="RN">Researcher Name.</p>
+                        <a href="#"> Learn More</a>
 
                     </div>
-                    <div class="card-footer text-center ">
-                        <a href="#" class="btn  btn-primary">Learn More</a>
-                    </div>
+
                 </div>
             </div>
         </div>
         <!-- /.row -->
 
         </div>
-                    <hr class="my-4">
+            <div class="text-center ">
+                <button type="button" class="btn btn-primary show-more-btn more-researches">More Researchs</button>
+            </div>
+    </div>
+  <div class="tab-pane fade" id="messages" role="tabpanel">.vvv..</div>
+</div>
 
-        <!-- Features Section -->
-        <div class="row">
-            <div class="col-lg-6">
-                <h2>Modern Business Features</h2>
-                <p>The Modern Business template by Start Bootstrap includes:</p>
-                <ul>
-                    <li><strong>Bootstrap v4</strong>
-                    </li>
-                    <li>jQuery</li>
-                    <li>Font Awesome</li>
-                    <li>Working contact form with validation</li>
-                    <li>Unstyled page elements for easy customization</li>
-                </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-            </div>
-            <div class="col-lg-6">
-                <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
-            </div>
-        </div>
-        <!-- /.row -->
+        <!-- Marketing Icons Section -->
 
-        <hr>
-
-        <!-- Call to Action Section -->
-        <div class="row mb-4">
-            <div class="col-md-8">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
-            </div>
-            <div class="col-md-4">
-                <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
-            </div>
-        </div>
+        <hr class="my-4">
 
 
 

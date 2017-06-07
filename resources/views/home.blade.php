@@ -10,6 +10,7 @@
                 <img class="profile-pic text-center" src="vendor/img/user.png">
             </div>
                 <h5 class="profile-name">Mazen Shanti</h5>
+              {{ Auth::user()->userType}}
                 <small><a href="#">@m.shanti</a></small>
             </div>
             <hr>

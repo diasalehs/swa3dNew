@@ -29,13 +29,12 @@ Route::group(['prefix'=>'admin'], function() {
 Auth::routes();
 
 Route::post('/allRegister', ['uses'=>'registerStep2Controller@allRegister','as'=>'allRegister']);
-Route::get('/home', 'homeController@index')->name('home');
+Route::get('/home', 'homeController@step')->name('home');
 Route::get('/step', ['uses'=>'stepController@step','as'=>'step']);
 Route::get('/choose', ['uses'=>'chooseController@choose','as'=>'choose']);
 
 Route::post('/registerer', function(\Illuminate\Http\Request $request) {
     return view('auth/register',['user_type'=>$request['submit']]);
 })->name('registerer');
-
-
+Route::get('/admin', 'adminController@admin')->name('admin');
 });
