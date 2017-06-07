@@ -1,7 +1,7 @@
 
 
 body {
-    
+
 }
 
 @media (min-width: 992px) {
@@ -98,7 +98,7 @@ footer{
 		background-color: #1ab08b;
 		width: 300px;
 		border: 5px solid #1ab08b;
-		
+
 }
 .navbar-brand{
 		color: #1ab08b !important;
@@ -187,26 +187,22 @@ footer{
 }
 
 .section {
-		min-height: 100vh;
-		padding-top: 1px;
-}
+]}
 .section-title{
-		padding-top: 20px;
-		padding-bottom: 20px;
-		color: #1ab08b;
+	margin-top: 0px !important;
 }
 .researchs{
-	
+
 }
 .research-card{
-	height: 400px;
+	height: 300px;
 }
 .RN{
-	font-size: 13px;
+	font-size: 11px;
 	color: #777;
 }
 .news-item{
-	height: 400px ;
+	height: 350px ;
 	border: 0px;
 
 }
@@ -214,14 +210,48 @@ footer{
 	color: #1ab08b;
 }
 .news-item > .card-block{
-		padding: 3px 4px !important;
+		height: 20px;
+    padding: 0;
 
 }
+.news-item > .card-block a{
+		font-size: 14px;
+
+}
+.news-item > .card-block img{
+		padding: 1px 1px !important;
+}
+.tab-pane {
+    height: 450px;
+}
+
 .news-title{
 	color: #1ab08b !important;
 }
+.news-section-title{
+    color: #1ab08b;
+}
+.research-card .card-header{
+		background-color: #fff;
+  	border-bottom: 0px;
+		font-size: 18px;
+}
+.research-card .card-block{
+	 	padding-top: 0px;
+
+}
+.research-card .card-text{
+		font-size: 14px;
+}
+.more-researches{
+		background-color: #fdf092 !important;
+		color: #777 !important;
+}
+.research-section-title{
+		color: #fdf092;
+		text-shadow: 0px 2px 3px #999;
+}
 .show-more-btn{
-		margin-top: 40px;
 		padding-right: 80px;
 		padding-left: 80px;
 		background-color: #1ab08b;
@@ -233,5 +263,5 @@ footer{
 
 }
 .show-more-btn:hover{
-		background-color: rgba(26, 176, 139, 0.82);;		
+		background-color: rgba(26, 176, 139, 0.82);;
 }
