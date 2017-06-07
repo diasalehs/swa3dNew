@@ -35,10 +35,8 @@ Route::post('/ResearcherRegister', ['uses'=>'registerStep2Controller@ResearcherR
 Route::get('/home', 'homeController@index')->name('home');
 Route::get('/step', function() {return view('step');})->name('step');
 Route::get('/choose', function() {return view('choose');})->name('choose');
-
 Route::post('/registerer', function(\Illuminate\Http\Request $request) {
     return view('auth/register',['user_type'=>$request['submit']]);
 })->name('registerer');
-
-
+Route::get('/admin', 'adminController@index')->name('admin');
 });
