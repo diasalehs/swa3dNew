@@ -20,7 +20,7 @@ footer{
 	margin-top: 78px;
 }
 .carousel-item {
-    height: 55vh;
+    height: 60vh;
     min-height: 300px;
     background: no-repeat center center scroll;
     -webkit-background-size: cover;
@@ -243,7 +243,7 @@ footer{
     border-bottom: 1px solid #eee !important;
 }
 .nav-tabs .nav-item a{
-    background-color: #888;
+    background-color: #eee;
     font-size: 18px;
 }
 .news-tab-item a {
