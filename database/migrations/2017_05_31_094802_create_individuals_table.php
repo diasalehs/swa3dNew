@@ -34,7 +34,6 @@ class CreateIndividualsTable extends Migration
             //$table->index('qualifications'); Optional
             $table->date('availableFrom')->nullable();
             $table->date('availableTo')->nullable();
-            $table->rememberToken();
             $table->timestamps();
         });
     }

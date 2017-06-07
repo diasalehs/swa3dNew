@@ -24,7 +24,7 @@ else{
             <div class="card">
                 <div class="card-header">Individual Register</div>
                 <div class="card-block">
-                    <form class="" role="form" method="POST" action="{{ route('IndividualRegister') }}">{{ csrf_field() }}
+                    <form class="" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             
                         <div class="form-group">
@@ -175,7 +175,7 @@ else{
             <div class="card">
                 <div class="card-header">Institute Register</div>
                 <div class="card-block">
-                    <form class="" role="form" method="POST" action="{{ route('InstituteRegister') }}">{{ csrf_field() }}
+                    <form class="" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
                             
 
                         <div class="class has('license') ? ' has->error' : '' }}">
@@ -332,7 +332,7 @@ else{
             <div class="card">
                 <div class="card-header">Researcher Register</div>
                 <div class="card-block">
-                    <form class="" role="form" method="POST" action="{{ route('ResearcherRegister') }}">{{ csrf_field() }}
+                    <form class="" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             
                         <div class="form-group">
