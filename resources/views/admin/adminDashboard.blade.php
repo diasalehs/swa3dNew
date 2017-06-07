@@ -1,4 +1,4 @@
-<?php 
+<?php
 use App\User;
 ?>
 @extends('admin/layouts.adminMaster')
@@ -59,28 +59,40 @@ use App\User;
 
 
           <h2>Section title</h2>
-          <div class="table-responsive">
+          <div class="table-responsive" style="min-height: 300px;">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Register Date</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-              <?php 
+              <?php
               foreach ($users_record as $user) {
                  echo "<tr>
                   <td>".$user->id."</td>
                   <td>".$user->name."</td>
                   <td>".$user->email."</td>
                   <td>".$user->created_at."</td>
+                  <td><div class='dropdown'>
+                  <button class='btn btn-info dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                    Action
+                  </button>
+                  <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                    <a class='dropdown-item' href='#'>Show</a>
+                    <a class='dropdown-item' href='#'>Edit</a>
+                    <a class='dropdown-item' href='#'>Delete</a>
+                  </div>
+                </div></td>
+
                 </tr>";
                 # code...
               }?>
-               
+
               </tbody>
             </table>
           </div>
