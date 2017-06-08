@@ -9,7 +9,15 @@ use Illuminate\Support\Facades\auth;
 
 class adminController extends Controller
 {
-    
+    public function delete($userId)
+    {
+          $data['$userId'] = $userId;
+
+        DB::table('users')->where('id', '=', $data)->delete();
+         return redirect()->route('home');
+
+    	# code...
+    }
  public function index()
     {
         if(Auth::attempt() || Auth::user()){
