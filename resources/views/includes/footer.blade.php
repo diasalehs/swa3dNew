@@ -29,7 +29,7 @@
                     </ul>
                 </div>
                 <div class="col-sm-3">
-                    <div class="social-networks">
+                    <div class="social-networks" id="w">
                         <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                         <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
                         <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
