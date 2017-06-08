@@ -1,0 +1,143 @@
+#myFooter {
+    background-color: #eee;
+    color: white;
+    padding-top: 30px;
+
+}
+
+#myFooter .footer-copyright {
+    background-color: #1ab08b;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+#myFooter .row {
+    margin-bottom: 60px;
+}
+
+#myFooter .navbar-brand {
+    margin-top: 45px;
+    height: 65px;
+}
+
+#myFooter .footer-copyright p {
+    margin: 10px;
+    color: #fff;
+}
+
+#myFooter ul {
+    list-style-type: none;
+    padding-left: 0;
+    line-height: 1.7;
+}
+
+#myFooter h5 {
+    font-size: 18px;
+    color: #1ab08b;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#myFooter h2 a{
+    font-size: 50px;
+    text-align: center;
+    color: #fff;
+}
+
+#myFooter a {
+    color: #f70087;
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 2px;
+    transition: all 1s ease-out;
+
+}
+#myFooter ul a:after {
+  display:block;
+  content: '';
+  border-bottom: solid 3px #f70087;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+#myFooter ul a:hover:after { transform: scaleX(1); }
+
+#myFooter .social-networks {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 16px;
+}
+
+#myFooter .social-networks a {
+    font-size: 32px;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+#myFooter .social-networks a:hover {
+    text-decoration: none;
+    color: #1ab08b;
+}
+
+#myFooter .facebook {
+    color: #0077e2;
+}
+
+#myFooter .google {
+    color: #ef1a1a;
+}
+
+#myFooter .twitter {
+    color: #00aced;
+}
+
+#myFooter .btn {
+    color: #555;
+    background-color: #f1e483;
+    border-radius: 20px;
+    border: none;
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    line-height: 25px;
+    cursor: pointer;
+}
+#myFooter .btn:hover {
+    color: #fff;
+    background-color: #d1c565;
+
+}
+
+@media screen and (max-width: 767px) {
+    #myFooter {
+        text-align: center;
+    }
+}
+
+
+/* CSS used for positioning the footers at the bottom of the page. */
+/* You can remove this. */
+
+html{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    height: 100%;
+}
+
+.content{
+   flex: 1 0 auto;
+   -webkit-flex: 1 0 auto;
+   min-height: 200px;
+}
+
+#myFooter{
+   flex: 0 0 auto;
+   -webkit-flex: 0 0 auto;
+}

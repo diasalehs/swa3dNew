@@ -1,4 +1,4 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 @section('content')
 <div class="container" style="margin: 120px auto">
     <div class="row">
@@ -13,8 +13,8 @@
                             <div class="col-lg-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
                                 required="required" autofocus="autofocus" />
-                                @if ($errors->has('email')) 
-                                
+                                @if ($errors->has('email'))
+
                                 <div class="alert alert-danger" role="alert">
                                     <strong>Oh snap! </strong>{{ $errors->first('email') }}
                                 </div>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-lg-8 ">
-                                <button type="submit" class="btn btn-success btn-lg">Login</button> 
+                                <button type="submit" class="btn btn-success choose-btn">Login</button> 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
 
                                     Forgot Your Password?

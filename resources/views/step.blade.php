@@ -1,4 +1,4 @@
-<?php 
+<?php
 use App\User;
 use Illuminate\Support\Facades\auth;
 
@@ -10,7 +10,7 @@ $type= Auth::user()->userType;
 
 <div class="container" style="margin:100px auto">
 
-    <div class="row" style="display: 
+    <div class="row" style="display:
  <?php
 if ($type== 0){
 	echo "block";
@@ -19,14 +19,14 @@ else{
 	echo "none";
 }
 
- ?>"">
+ ?>">
         <div class="col-lg-8 offset-md-2">
             <div class="card">
                 <div class="card-header">Individual Register</div>
                 <div class="card-block">
                     <form class="" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            
+
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Where are you from</label>
                         <div class="col-lg-6">
@@ -102,7 +102,7 @@ else{
                                 @endif
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Your educational level</label>
                         <div class="col-lg-6">
@@ -140,16 +140,17 @@ else{
                                 <button type="submit" class="btn btn-success btn-block">Register</button>
                             </div>
                         </div>
-                     
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
+  </div>
 </div>
 
- 
- <div class="container" style=" margin:100px auto; display: 
+
+ <div class="container" style=" margin:100px auto; display:
  <?php
 if ($type== 1){
 	echo "block";
@@ -161,7 +162,7 @@ else{
  ?>
 
  ">
-    <div class="row" style="display: 
+    <div class="row" style="display:
  <?php
 if ($type== 1){
 	echo "block";
@@ -176,7 +177,7 @@ else{
                 <div class="card-header">Institute Register</div>
                 <div class="card-block">
                     <form class="" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
-                            
+
 
                         <div class="class has('license') ? ' has->error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">The license number</label>
@@ -297,7 +298,7 @@ else{
                                 <button type="submit" class="btn btn-success btn-block">Register</button>
                             </div>
                         </div>
-                     
+
                     </form>
                 </div>
             </div>
@@ -307,7 +308,7 @@ else{
 
 
 
-<div class="container" style="margin:100px auto;display: 
+<div class="container" style="margin:100px auto;display:
  <?php
 if ($type== 2){
 	echo "block";
@@ -318,7 +319,7 @@ else{
 
  ?>
 ">
-    <div class="row" style="display: 
+    <div class="row" style="display:
  <?php
 if ($type== 2){
 	echo "block";
@@ -334,7 +335,7 @@ else{
                 <div class="card-block">
                     <form class="" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            
+
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Where are you from</label>
                         <div class="col-lg-6">
@@ -407,7 +408,7 @@ else{
                                 @endif
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Your educational level</label>
                             <div class="col-lg-6">
@@ -445,7 +446,7 @@ else{
                                 <button type="submit" class="btn btn-success btn-block">Register</button>
                             </div>
                         </div>
-                     
+
                     </form>
                 </div>
             </div>
