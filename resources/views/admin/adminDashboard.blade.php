@@ -85,9 +85,10 @@ use App\User;
                   <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
                     <a class='dropdown-item' href='#'>Show</a>
                     <a class='dropdown-item' href='#'>Edit</a>
-                    <a class='dropdown-item' href='#'>Delete</a>
+                    <a class='dropdown-item'  href='admin/delete/".$user->id."'>Delete</a>
                   </div>
-                </div></td>
+                </div>
+                </td>
 
                 </tr>";
                 # code...

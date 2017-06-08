@@ -39,4 +39,6 @@ Route::post('/registerer', function(\Illuminate\Http\Request $request) {
     return view('auth/register',['user_type'=>$request['submit']]);
 })->name('registerer');
 Route::get('/admin', 'adminController@index')->name('admin');
+Route::get('/admin/delete/{userId}', ['uses' =>'adminController@delete', 'as'=>'delete_user']);
+
 });
