@@ -70,7 +70,7 @@
 
 #myFooter .social-networks a:hover {
     text-decoration: none;
-    color: #333;
+    color: #1ab08b;
 }
 
 #myFooter .facebook {
@@ -86,7 +86,7 @@
 }
 
 #myFooter .btn {
-    color: #888;
+    color: #555;
     background-color: #f1e483;
     border-radius: 20px;
     border: none;
@@ -96,6 +96,11 @@
     margin-top: 10px;
     line-height: 25px;
     cursor: pointer;
+}
+#myFooter .btn:hover {
+    color: #fff;
+    background-color: #d1c565;
+
 }
 
 @media screen and (max-width: 767px) {

@@ -14,7 +14,7 @@
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
                                 required="required" autofocus="autofocus" />
-                                @if ($errors->has('name')) 
+                                @if ($errors->has('name'))
                                         <div class="alert alert-danger" role="alert">
                                         <strong>Warning!</strong> {{ $errors->first('name') }}
                                         </div>
@@ -35,13 +35,13 @@
                         </div>
                         </div> -->
 
-                             
+
                             <div class="col-lg-6">
                                 <input id="name" type="text" style="display: none;" class="form-control" name="userType" value="{{ $user_type }}"
                                 />
-                                
+
                             </div>
-                        
+
 
                         <div class="class has('name') ? ' has->error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">E-Mail Address</label>
@@ -61,12 +61,12 @@
                             <div class="col-lg-6">
                                 <input id="password" type="password" class="form-control" name="password"
                                 required="required" />
-                                @if ($errors->has('password')) 
+                                @if ($errors->has('password'))
                                     <div class="alert alert-danger" role="alert">
                                         <strong>Warning!</strong> {{ $errors->first('password') }}
                                     </div>
 
-                                      
+
 @endif
 </div>
                         </div>
@@ -79,10 +79,10 @@
                         </div>
                         <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
-                                <button type="submit" class="btn btn-success btn-block">next step</button>
+                                <button type="submit" class="btn btn-success choose-btn btn-block">Next</button>
                             </div>
                         </div>
-                     
+
                     </form>
                 </div>
             </div>

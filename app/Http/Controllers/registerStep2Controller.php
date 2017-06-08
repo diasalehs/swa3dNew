@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Http\Controllers;
 
 use \Illuminate\Http\Request;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\auth;
 class registerStep2Controller extends Controller
 {
 	// check the user type !!
-	
+
 	public function allRegister(Request $request){
         	$user = Auth::user();
                 if($user->flag == 0){
@@ -67,7 +67,7 @@ class registerStep2Controller extends Controller
                                 $Researcher->dateOfBirth =  $request['dateOfBirth'];
                                 $Researcher->save();
                                 $user->flag = 1;
-                                $user->save()
+                                $user->save();
                         }
                         return redirect()->route('home');
 

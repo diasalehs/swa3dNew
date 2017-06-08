@@ -1,9 +1,13 @@
 
-
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 body {
+  font-family: 'Ubuntu', sans-serif !important;
 
 }
+button{
+  font-family: 'Ubuntu', sans-serif !important;
 
+}
 @media (min-width: 992px) {
     body {
 
@@ -281,6 +285,10 @@ body {
 		background-color: #f70087 !important;
 		color: #fff !important;
 }
+.more-researches:hover{
+		background-color: #b70056 !important;
+		color: #fff !important;
+}
 .research-section-title{
 		color: #f70087;
 }
@@ -296,9 +304,20 @@ body {
     margin-top: 30px;
 }
 .show-more-btn:hover{
-		background-color: rgba(26, 176, 139, 0.82);;
+		background-color: #008f6c;
 }
-.top-5{
+.choose-btn{
+		
+		background-color: #1ab08b;
+		border: 5px solid #1ab08b;
+		display: inline-block !important;
+		color: white;
+		border: 0px solid #1ab08b;
+		cursor: pointer;
+}
+.choose-btn:hover{
+		background-color: #008f6c;
+}.top-5{
     margin-top: 70px;
     margin-bottom: 70px;
 }
