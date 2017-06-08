@@ -61,7 +61,7 @@
 <div class="tab-content">
   <div class="tab-pane fade show active" id="home" role="tabpanel">
     <div class="section">
-        <h1 class="my-4 news-section-title text-center">The Latest</h1>
+        <h1 class="my-4 news-section-title text-center"></h1>
 
         <div class="row">
             <div class="col-lg-4 col-sm-6 ">
@@ -98,14 +98,14 @@
   </div><!-- news tab -->
   <div class="tab-pane fade" id="profile" role="tabpanel">
     <div class="section researches">
-        <h1 class="my-4 research-section-title text-center">Researchs</h1>
+        <h1 class="my-4 research-section-title text-center"></h1>
   <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-4 col-sm-6">
                 <div class="card research-card">
                     <h4 class="card-header">Research Title</h4>
                     <div class="card-block">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicinecessitatibus neque.</p>
                         <p class="RN">Researcher Name.</p>
                         <a href="#"> Learn More</a>
                     </div>
@@ -116,7 +116,7 @@
                 <div class="card research-card">
                     <h4 class="card-header">Research Title</h4>
                     <div class="card-block">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
                         <p class="RN">Researcher Name.</p>
                         <a href="#"> Learn More</a>
 
@@ -150,7 +150,7 @@
         <!-- Marketing Icons Section -->
 
         <hr class="my-4">
-        <div class="container text-center">
+        <div class="container text-center top-5">
           <h1>Top 5</h1>
           <div class="row justify-content-center">
               <div class="col-lg-2 col-sm-4 mb-4 ">

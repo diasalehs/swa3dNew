@@ -18,6 +18,8 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ URL::asset('vendor/css/styles.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('vendor/css/footer.css')}}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">

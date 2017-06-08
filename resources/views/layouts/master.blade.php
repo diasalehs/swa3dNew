@@ -16,20 +16,21 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ URL::asset('vendor/css/styles.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('vendor/css/footer.css')}}" rel="stylesheet">
     @yield('styles')
     <!-- Temporary navbar container fix -->
   <style>
     .navbar-toggler {
         z-index: 1;
     }
-    
+
     @media (max-width: 576px) {
         nav > .container {
             width: 100%;
         }
     }
     /* Temporary fix for img-fluid sizing within the carousel */
-    
+
     .carousel-item.active,
     .carousel-item-next,
     .carousel-item-prev {
