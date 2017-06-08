@@ -12,7 +12,7 @@ class usersSeeder extends Seeder
     public function run()
     {
 
-    	$users = new users();
+    	$users = new user();
         $users->name = "laith";
         $users->email = "laith";
         $users->password = bcrypt('laith');

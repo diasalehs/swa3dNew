@@ -19,6 +19,8 @@ class registerStep2Controller extends Controller
                         if($user->userType == 0){
                         	$Individuals = new Individuals();
                                 $Individuals->nameInEnglish = $user->name;
+                                $Individuals->user_id = $user->id;
+
                                 $Individuals->nameInArabic = $user->name;
                                 $Individuals->email = $user->email;
                                 $Individuals->livingPlace = $request['livingPlace'];
@@ -37,6 +39,7 @@ class registerStep2Controller extends Controller
                         elseif($user->userType == 1){
                                 $Institute = new Institute();
                                 $Institute->nameInEnglish = $user->name;
+                                $Institute->user_id = $user->id;
                                 $Institute->nameInArabic = $user->name;
                                 $Institute->email = $user->email;
                                 $Institute->license = $request['license'];
@@ -54,6 +57,9 @@ class registerStep2Controller extends Controller
                         elseif($user->userType == 2){
                                 $Researcher = new Researcher();
                                 $Researcher->nameInEnglish = $user->name;
+
+                                $Researcher->user_id = $user->id;
+
                                 $Researcher->nameInArabic = $user->name;
                                 $Researcher->email = $user->email;
                                 $Researcher->gender = $request['gender'];
@@ -67,7 +73,7 @@ class registerStep2Controller extends Controller
                                 $Researcher->dateOfBirth =  $request['dateOfBirth'];
                                 $Researcher->save();
                                 $user->flag = 1;
-                                $user->save()
+                                $user->save();
                         }
                         return redirect()->route('home');
 

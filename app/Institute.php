@@ -12,4 +12,7 @@ class Institute extends Model
     public function achievementAndAward(){
     	return $this->belongsTo('achievementAndAward');
     }
+       public function User(){
+        return $this->belongsTo('App\User');
+    }
 }

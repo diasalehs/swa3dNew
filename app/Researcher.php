@@ -21,4 +21,7 @@ class Researcher extends Model
     public function Qualification(){
     	return $this->belongsTo('Qualification');
     }
+       public function User(){
+        return $this->belongsTo('App\User');
+    }
 }

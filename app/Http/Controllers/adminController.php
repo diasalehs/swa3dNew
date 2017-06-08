@@ -5,15 +5,20 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Individuals;
 use Illuminate\Support\Facades\auth;
+use Illuminate\Database\Query\Builder;
 
 class adminController extends Controller
 {
     public function delete($userId)
     {
-          $data['$userId'] = $userId;
+        $user = User::find($userId);
+        if($user->userType== 0){        $user->Individuals()->delete();}
+        if($user->userType== 1){        $user->Institute()->delete(); }
+        if($user->userType== 2){        $user->Researcher()->delete(); }
 
-        DB::table('users')->where('id', '=', $data)->delete();
+        $user->delete();
          return redirect()->route('home');
 
     	# code...

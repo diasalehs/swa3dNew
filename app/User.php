@@ -1,20 +1,18 @@
 <?php
 
 namespace App;
+use Illuminate\Database\Query\Builder;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 //ind res inst one to one
 class User extends Authenticatable
 {
-    // public function institute(){
-    //     return $this->hasone('institute');
-    // }
-    // public function Researcher(){
-    //     return $this->hasone('Researcher');
-    // }
-    // public function Individuals(){
-    //     return $this->hasone('Individuals');
-    // }
+     public function Institute(){
+        return $this->hasone('App\Institute','user_id');
+     }
+     public function Researcher(){
+         return $this->hasone('App\Researcher','user_id');
+     }
     /**
      * The attributes that are mass assignable.
      *
@@ -32,4 +30,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function Individuals()
+    {
+        return $this->hasOne('App\Individuals','user_id');
+    }
 }
