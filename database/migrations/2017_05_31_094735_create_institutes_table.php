@@ -39,7 +39,6 @@ class CreateInstitutesTable extends Migration
             $table->date('establishmentYear')->nullable();
             //main achievements and awards and date
             //Names of Board of directors and their job title
-            $table->rememberToken();
             $table->timestamps();
         });
     }

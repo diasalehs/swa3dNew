@@ -20,21 +20,18 @@ class adminController extends Controller
     }
  public function index()
     {
-    	$user = Auth::user();
-    	$users_record= DB::table('users')->get();
-
-    	if (Auth::attempt()) {
-    		return redirect()->route('main');
-    	}
-    	elseif ($user->userType=== 10 ) {
-    		return view('admin/adminDashboard',["users_record"=>$users_record]);
-    	}
-    	
-    	else{ return redirect()->route('home');
-}
-
-    
-    //
-}
+        if(Auth::attempt() || Auth::user()){
+        	$user = Auth::user();
+        	$users_record= DB::table('users')->get();
+        	if ($user->userType=== 10 ) {
+        		return view('admin/adminDashboard',["users_record"=>$users_record]);
+        	}
+        	else{
+                return redirect()->route('home');
+            }
+        }else{
+                return redirect()->route('main');
+        }
+    }
 
 }

@@ -45,18 +45,16 @@
     <div class="container">
         <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Home</a>
+  <li class="nav-item col-sm-4 col-lg-4 news-tab-item">
+    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">News</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
+  <li class="nav-item col-sm-4 col-lg-4 researchs-tab-item">
+    <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Researches</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Messages</a>
+  <li class="nav-item col-sm-4 col-lg-4 dashboard-tab-item">
+    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Dashboard</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a>
-  </li>
+
 </ul>
 
 <!-- Tab panes -->
@@ -103,7 +101,7 @@
         <h1 class="my-4 research-section-title text-center">Researchs</h1>
   <!-- Marketing Icons Section -->
         <div class="row">
-            <div class="col-lg-4 mb-4">
+            <div class="col-lg-4 col-sm-6">
                 <div class="card research-card">
                     <h4 class="card-header">Research Title</h4>
                     <div class="card-block">
@@ -114,7 +112,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-4 mb-4">
+            <div class="col-lg-4 col-sm-6">
                 <div class="card research-card">
                     <h4 class="card-header">Research Title</h4>
                     <div class="card-block">
@@ -126,7 +124,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-4 mb-4">
+            <div class="col-lg-4 col-sm-6">
                 <div class="card research-card">
                     <h4 class="card-header">Research Title</h4>
                     <div class="card-block">
@@ -147,44 +145,52 @@
             </div>
     </div>
   <div class="tab-pane fade" id="messages" role="tabpanel">.vvv..</div>
-  <div class="tab-pane fade" id="settings" role="tabpanel">..xxx.</div>
 </div>
 
         <!-- Marketing Icons Section -->
 
         <hr class="my-4">
+        <div class="container text-center">
+          <h1>Top 5</h1>
+          <div class="row justify-content-center">
+              <div class="col-lg-2 col-sm-4 mb-4 ">
+                  <img class="img-fluid" src="vendor/img/user.png" alt="">
+                  <div class="text-center">
+                    <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
+                    <small><a href="#">@m.shanti</a></small>
+                  </div>
 
-        <!-- Features Section -->
-        <div class="row">
-            <div class="col-lg-6">
-                <h2>Modern Business Features</h2>
-                <p>The Modern Business template by Start Bootstrap includes:</p>
-                <ul>
-                    <li><strong>Bootstrap v4</strong>
-                    </li>
-                    <li>jQuery</li>
-                    <li>Font Awesome</li>
-                    <li>Working contact form with validation</li>
-                    <li>Unstyled page elements for easy customization</li>
-                </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-            </div>
-            <div class="col-lg-6">
-                <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
-            </div>
-        </div>
-        <!-- /.row -->
+              </div>
+              <div class="col-lg-2 col-sm-4 mb-4">
+                  <img class="img-fluid" src="vendor/img/user.png" alt="">
+                  <div class="text-center">
+                    <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
+                    <small><a href="#">@m.shanti</a></small>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-sm-4 mb-4">
+                  <img class="img-fluid" src="vendor/img/user.png" alt="">
+                  <div class="text-center">
+                    <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
+                    <small><a href="#">@m.shanti</a></small>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-sm-4 mb-4">
+                  <img class="img-fluid" src="vendor/img/user.png" alt="">
+                  <div class="text-center">
+                    <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
+                    <small><a href="#">@m.shanti</a></small>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-sm-4 mb-4">
+                  <img class="img-fluid" src="vendor/img/user.png" alt="">
+                  <div class="text-center">
+                    <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
+                    <small><a href="#">@m.shanti</a></small>
+                  </div>
+              </div>
 
-        <hr>
-
-        <!-- Call to Action Section -->
-        <div class="row mb-4">
-            <div class="col-md-8">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
-            </div>
-            <div class="col-md-4">
-                <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
-            </div>
+          </div>
         </div>
 
 

@@ -35,7 +35,6 @@ class CreateResearchersTable extends Migration
             $table->date('availableFrom')->nullable();
             $table->date('availableTo')->nullable();
             //articles table
-            $table->rememberToken();
             $table->timestamps();
         });
     }
