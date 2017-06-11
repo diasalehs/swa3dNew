@@ -27,6 +27,7 @@ button{
 		width: 300px;
 		display: inline-block !important;
 		color: white;
+    margin: 5px 5px;
 }
 .mg:hover{
 		padding: 14px 40px;
@@ -42,6 +43,8 @@ button{
 		width: 300px;
 		display: inline-block !important;
 		color: white;
+    margin: 5px 5px;
+
 }
 .bv:hover{
 		padding: 14px 40px;
@@ -55,12 +58,82 @@ button{
   color: #51c2c0;
 }
 .sidebar a{
-  color: #51c2c0;
+  color: #008988;
 }
 .sidebar a:hover{
-  color: #008988;
+  color: #51c2c0;
 
 }
 .jumbotron .display-3{
   color: #51c2c0;
+}
+.yrp{
+  margin-bottom: 10px;
+}
+.yrp h3{
+  display: inline-block;
+  color: #51c2c0;
+}
+.edit-btn {
+    color: #fff;
+    background-color: #51c2c0;
+    border-radius: 20px;
+    border: none;
+    width: 150px;
+    cursor: pointer;
+    margin-right: 0px;
+}
+.edit-btn:hover {
+    color: #fff;
+    background-color: #008988;
+
+}
+@media only screen and (min-width: 50px) {
+  .jumbotron{
+    display: none;
+  }
+  .sidebar{
+    margin-bottom: 20px;
+  	border-right: 0px solid #ccc;
+    color: #51c2c0
+
+
+  }
+}
+@media only screen and (min-width: 300px) {
+
+}
+@media only screen and (min-width: 500px) {
+  .jumbotron{
+    display: block;
+  }
+  .mg{
+  		padding: 14px 40px;
+  		width: 300px;
+
+  }
+  .mg:hover{
+  		padding: 14px 40px;
+  		width: 300px;
+  }
+  .bv{
+  		padding: 14px 40px;
+  		width: 300px;
+      margin: 5px 5px;
+
+  }
+  .bv:hover{
+  		padding: 14px 40px;
+  		width: 300px;
+
+  }
+}
+@media only screen and (min-width: 570px) {
+
+}
+@media only screen and (min-width: 768px) {
+  .sidebar{
+    border-right: 1px solid #ccc;
+    color: #51c2c0;
+  }
 }

@@ -39,6 +39,12 @@ button{
 .mainNavbar .nav-item .nav-link{
 
 }
+.dropdown-menu-nav li a:active{
+    background-color: #51c2c0;
+}
+.dropdown-menu-nav li.logout-dropdown-item a:active{
+    color: white !important;
+}
 #navtop{
 		display: block;
 		position: fixed;

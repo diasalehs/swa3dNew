@@ -34,7 +34,7 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                <ul class="dropdown-menu dropdown-menu-right dropdown-menu-nav" role="menu">
                                   <li><a class="dropdown-item" href="{{ route('home') }}">Your Profile</a></li>
                                   <li><a class="dropdown-item" href="{{ route('home') }}">Followers</a></li>
                                   <li><a class="dropdown-item" href="{{ route('home') }}">Following</a></li>
@@ -42,13 +42,13 @@
                                   <li><a class="dropdown-item" href="{{ route('home') }}">Messages</a></li>
                                     <div class="dropdown-divider"></div>
 
-                                    <li>
+                                    <li class="logout-dropdown-item">
                                         <a class="dropdown-item text-danger"  href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
 
                                           <i class="fa fa-sign-out" aria-hidden="true"></i>
-  Logout
+                                            Logout
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
