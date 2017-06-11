@@ -31,9 +31,9 @@ else{
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Where are you from</label>
                         <div class="col-lg-6">
                             <select name="livingPlace" class="form-control" id="exampleSelect1">
-                            <option value="0">city</option>
-                            <option value="1">camp</option>
-                            <option value="2">vilage</option>
+                            <option value="city">city</option>
+                            <option value="camp">camp</option>
+                            <option value="village">vilage</option>
                             </select>
                         </div>
                         </div>
@@ -70,8 +70,8 @@ else{
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Gender</label>
                         <div class="col-lg-6">
                             <select name="gender" class="form-control" id="exampleSelect1">
-                            <option value="0">male</option>
-                            <option value="1">female</option>
+                            <option value="male">male</option>
+                            <option value="female">female</option>
                             </select>
                         </div>
                         </div>
@@ -107,8 +107,8 @@ else{
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Your educational level</label>
                         <div class="col-lg-6">
                             <select name="educationalLevel" class="form-control" id="exampleSelect1">
-                            <option value="0">school</option>
-                            <option value="1">colage</option>
+                            <option value="school">school</option>
+                            <option value="colleage">colleage</option>
                             </select>
                         </div>
                         </div>
@@ -197,9 +197,9 @@ else{
                                 <label  class="col-lg-4 form-control-label" for="exampleSelect1">Where are you from</label>
                             <div class="col-lg-6">
                                 <select name="livingPlace" class="form-control" id="exampleSelect1">
-                                <option value="0">city</option>
-                                <option value="1">camp</option>
-                                <option value="2">vilage</option>
+                                <option value="city">city</option>
+                                <option value="camp">camp</option>
+                                <option value="village">village</option>
                                 </select>
                             </div>
                         </div>
@@ -340,9 +340,9 @@ else{
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Where are you from</label>
                         <div class="col-lg-6">
                             <select name="livingPlace" class="form-control" id="exampleSelect1">
-                            <option value="0">city</option>
-                            <option value="1">camp</option>
-                            <option value="2">vilage</option>
+                            <option value="city">city</option>
+                            <option value="camp">camp</option>
+                            <option value="village">village</option>
                             </select>
                         </div>
                         </div>
@@ -377,8 +377,8 @@ else{
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Gender</label>
                             <div class="col-lg-6">
                             <select name="gender" class="form-control" id="exampleSelect1">
-                            <option value="0">male</option>
-                            <option value="1">female</option>
+                            <option value="male">male</option>
+                            <option value="female">female</option>
                             </select>
                         </div>
                         </div>
@@ -413,8 +413,8 @@ else{
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Your educational level</label>
                             <div class="col-lg-6">
                             <select name="educationalLevel" class="form-control" id="exampleSelect1">
-                            <option value="0">school</option>
-                            <option value="1">colage</option>
+                            <option value="school">school</option>
+                            <option value="colleage">colleage</option>
                             </select>
                         </div>
                         </div>
