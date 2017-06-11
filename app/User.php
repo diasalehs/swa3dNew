@@ -16,6 +16,19 @@ class User extends Authenticatable
     public function Individuals(){
         return $this->hasOne('App\Individuals','user_id');
     }
+
+
+    /**
+     * A user can have many friends.
+     *  
+     * @return Collection
+     *
+     */
+    public function friends()
+    {
+        return $this->belongsToMany(Self::class, 'friends', 'requested_id', 'requester_id')->withTimestamps();
+    }
+    
     /**
      * The attributes that are mass assignable.
      *
