@@ -13,6 +13,9 @@ class User extends Authenticatable
      public function Researcher(){
          return $this->hasone('App\Researcher','user_id');
      }
+    public function Individuals(){
+        return $this->hasOne('App\Individuals','user_id');
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -30,8 +33,5 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function Individuals()
-    {
-        return $this->hasOne('App\Individuals','user_id');
-    }
+
 }
