@@ -1,5 +1,7 @@
 <?php
 use App\User;
+use App\news;
+
 ?>
 @extends('admin/layouts.adminMaster')
 
@@ -21,17 +23,21 @@ use App\User;
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6">
-                    <div class="card card-inverse card-danger">
+                 <div class="col-xl-3 col-lg-6">
+                    <a href="{{route('news')}}">
+                 <div class="card card-inverse card-danger">
                         <div class="card-block bg-danger">
                             <div class="rotate">
                                 <i class="fa fa-list fa-4x"></i>
                             </div>
-                            <h6 class="text-uppercase">Posts</h6>
-                            <h1 class="display-1">87</h1>
+
+                            <h6 class="text-uppercase">News</h6>
+                            <h1 class="display-1">{{news::count()}}</h1>
                         </div>
                     </div>
+                </a>
                 </div>
+                
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-inverse card-info">
                         <div class="card-block bg-info">
@@ -85,7 +91,7 @@ use App\User;
                   <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
                     <a class='dropdown-item' href='#'>Show</a>
                     <a class='dropdown-item' href='#'>Edit</a>
-                    <a class='dropdown-item'  href='admin/delete/".$user->id."'>Delete</a>
+                    <a class='dropdown-item'  href='admin/userdelete/".$user->id."'>Delete</a>
                   </div>
                 </div>
                 </td>

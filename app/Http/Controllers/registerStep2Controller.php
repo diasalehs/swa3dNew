@@ -20,7 +20,6 @@ class registerStep2Controller extends Controller
                         	$Individuals = new Individuals();
                                 $Individuals->nameInEnglish = $user->name;
                                 $Individuals->user_id = $user->id;
-
                                 $Individuals->nameInArabic = $user->name;
                                 $Individuals->email = $user->email;
                                 $Individuals->livingPlace = $request['livingPlace'];
