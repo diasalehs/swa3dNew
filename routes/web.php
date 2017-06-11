@@ -13,7 +13,7 @@
 Route::get('/', ['uses'=>'mainController@main','as'=>'main']);
 
 Route::get('/news',function() {
-   return view('singelNews');
+   return view('singleNews');
 })->name('news');
 Route::group(['prefix'=>'admin'], function() {
     // Route::get('/', array('as' => 'admin', function() {
