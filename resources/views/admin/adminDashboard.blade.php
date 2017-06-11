@@ -23,7 +23,7 @@ use App\news;
                         </div>
                     </div>
                 </div>
-                 <div class="col-xl-3 col-lg-6">
+                 <div class="col-xl-3 col-lg-6 ">
                     <a href="{{route('news')}}">
                  <div class="card card-inverse card-danger">
                         <div class="card-block bg-danger">
@@ -37,7 +37,7 @@ use App\news;
                     </div>
                 </a>
                 </div>
-                
+
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-inverse card-info">
                         <div class="card-block bg-info">
