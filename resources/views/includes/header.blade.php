@@ -19,7 +19,9 @@
        <li class="nav-item">
         <a class="nav-link" href="#">About us</a>
       </li>
-    
+      <li class="nav-item">
+       <a class="nav-link" href="#" style="color: #f06493">DONATE NOW</a>
+     </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto">
@@ -27,7 +29,7 @@
             <li class="nav-item">
             @if (Auth::guest())
               <a class="nav-link"  href="{{ route('choose') }}">Join Us</a>
-              
+
             </li>
 
       <li class="nav-item ">
@@ -50,7 +52,7 @@
                                         <a class="dropdown-item text-danger"  href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                                     
+
                                           <i class="fa fa-sign-out" aria-hidden="true"></i>
   Logout
                                         </a>
@@ -66,9 +68,9 @@
       <li class="nav-item ">
           <input type="text" name="search" class="search form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
 
-   
+
       </li>
-    
+
       </ul>
     </div>
   </div>

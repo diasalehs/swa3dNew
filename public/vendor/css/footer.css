@@ -1,12 +1,12 @@
 #myFooter {
-    background-color: #eee;
+    background-color: #133C55;
     color: white;
     padding-top: 30px;
 
 }
 
 #myFooter .footer-copyright {
-    background-color: #1ab08b;
+    background-color: #51c2c0;
     padding-top: 3px;
     padding-bottom: 3px;
     text-align: center;
@@ -34,7 +34,7 @@
 
 #myFooter h5 {
     font-size: 18px;
-    color: #1ab08b;
+    color: #51c2c0;
     font-weight: bold;
     margin-top: 30px;
 }
@@ -46,7 +46,7 @@
 }
 
 #myFooter a {
-    color: #f70087;
+    color: #eee;
     text-decoration: none;
     display: inline-block;
     padding-bottom: 2px;
@@ -56,7 +56,7 @@
 #myFooter ul a:after {
   display:block;
   content: '';
-  border-bottom: solid 3px #f70087;
+  border-bottom: solid 3px #eee;
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
 }
@@ -65,47 +65,47 @@
 #myFooter .social-networks {
     text-align: center;
     padding-top: 30px;
-    padding-bottom: 16px;
+    padding-bottom: 0px;
 }
 
 #myFooter .social-networks a {
     font-size: 32px;
     padding: 10px;
-    transition: 0.2s;
+    transition: 0.5s;
 }
 
-#myFooter .social-networks a:hover {
+#myFooter .social-networks a {
     text-decoration: none;
-    color: #1ab08b;
+    color: #51c2c0;
 }
 
-#myFooter .facebook {
+#myFooter .facebook:hover  {
     color: #0077e2;
 }
 
-#myFooter .google {
+#myFooter .google:hover  {
     color: #ef1a1a;
 }
 
-#myFooter .twitter {
+#myFooter .twitter:hover  {
     color: #00aced;
 }
 
 #myFooter .btn {
-    color: #555;
-    background-color: #f1e483;
+    color: #fff;
+    background-color: #51c2c0;
     border-radius: 20px;
     border: none;
     width: 150px;
     display: block;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 00px;
     line-height: 25px;
     cursor: pointer;
 }
 #myFooter .btn:hover {
     color: #fff;
-    background-color: #d1c565;
+    background-color: #008988;
 
 }
 

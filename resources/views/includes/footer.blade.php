@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
-                    <img class="img-fluid" src="vendor/img/logo.png" alt="" style="height: 180px">   </div>
+                    <img class="img-fluid" src="vendor/img/newlogo.png" alt="" style="height: 180px">   </div>
                 <div class="col-sm-2">
                     <h5>Get started</h5>
                     <ul>
@@ -34,7 +34,7 @@
                         <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
                         <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
                     </div>
-                    <button type="button" class="btn btn-default">Contact us</button>
+                    <button type="button" class="btn btn-default">DONATE NOW</button>
                 </div>
             </div>
         </div>
