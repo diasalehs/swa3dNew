@@ -28,12 +28,17 @@ class HomeController extends Controller
     {           
         if(Auth::attempt() || Auth::user()){
             $user = Auth::user();
+            $userIndividual = Auth::user()->Individuals;
+            $userInstitute = Auth::user()->Institute;
+            $userResearcher = Auth::user()->Researcher;
             $users_record= DB::table('users')->get();
             if ($user->userType=== 10 ) {
                 return view('admin/adminDashboard',["users_record"=>$users_record]);
             }
             if($user->flag == 1){
-                return view('home');
+                if($user->userType == 0){return view('homeIndividual',compact('user','userIndividual'));}
+                if($user->userType == 1){return view('homeInstitute',compact('user','userInstitute'));}
+                if($user->userType == 2){return view('homeResearcher',compact('user','userResearcher'));}
             }elseif($user->flag == 0){
                 return redirect()->route('step');
             }

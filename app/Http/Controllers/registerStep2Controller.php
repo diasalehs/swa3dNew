@@ -30,7 +30,9 @@ class registerStep2Controller extends Controller
                                 $Individuals->currentWork = $request['currentWork'];
                                 $Individuals->educationalLevel = $request['educationalLevel'];
                                 $Individuals->preVoluntary = $request['preVoluntary'];
-                                $Individuals->voluntaryYears = $request['voluntaryYears'];
+                                if($request['preVoluntary'] == 1){
+                                        $Individuals->voluntaryYears = $request['voluntaryYears'];
+                                }else{$Individuals->voluntaryYears = 0;}
                                 $Individuals->dateOfBirth =  $request['dateOfBirth'];
                                 $Individuals->save();
                                 $user->flag = 1;
@@ -69,7 +71,9 @@ class registerStep2Controller extends Controller
                                 $Researcher->currentWork = $request['currentWork'];
                                 $Researcher->educationalLevel = $request['educationalLevel'];
                                 $Researcher->preVoluntary = $request['preVoluntary'];
-                                $Researcher->voluntaryYears = $request['voluntaryYears'];
+                                if($request['preVoluntary'] == 1){
+                                        $Researcher->voluntaryYears = $request['voluntaryYears'];
+                                }else{$Researcher->voluntaryYears = 0;}
                                 $Researcher->dateOfBirth =  $request['dateOfBirth'];
                                 $Researcher->save();
                                 $user->flag = 1;

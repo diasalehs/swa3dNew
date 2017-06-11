@@ -20,7 +20,7 @@ class CreateInstitutesTable extends Migration
 
             $table->string('nameInEnglish');
             $table->string('nameInArabic');
-            $table->unsignedSmallInteger('livingPlace');
+            $table->string('livingPlace');
             $table->string('cityName');
             $table->string('country');
             $table->unsignedInteger('workSummary'); //300 word

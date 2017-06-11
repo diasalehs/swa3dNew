@@ -16,18 +16,17 @@ class CreateResearchersTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
             $table->string('nameInEnglish');
             $table->string('nameInArabic');
-            $table->unsignedSmallInteger('livingPlace');
+            $table->string('livingPlace');
             $table->string('cityName');
             $table->string('country');
-            $table->boolean('gender');
+            $table->string('gender');
             $table->string('currentWork'); 
-            $table->unsignedSmallInteger('educationalLevel');
+            $table->string('educationalLevel');
             $table->date('dateOfBirth');
             $table->string('email')->unique();
-            $table->unsignedInteger('mobileNumber')->nullable(); 
+            $table->unsignedInteger('mobileNumber')->nullable()->unique();
             $table->string('address')->nullable();
             $table->string('picture')->nullable();
             $table->boolean('preVoluntary');
