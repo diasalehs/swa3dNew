@@ -13,6 +13,7 @@ use App\news;
           <h1>Dashboard</h1>
             <div class="row mb-3">
                 <div class="col-xl-3 col-lg-6">
+                  <a href="{{route('news')}}" style="text-decoration:none">
                     <div class="card card-inverse card-success">
                         <div class="card-block bg-success">
                             <div class="rotate">
@@ -22,9 +23,10 @@ use App\news;
                             <h1 class="display-1">{{User::count()}}</h1>
                         </div>
                     </div>
+                  </a>
                 </div>
                  <div class="col-xl-3 col-lg-6 ">
-                    <a href="{{route('news')}}">
+                    <a href="{{route('news')}}" style="text-decoration:none">
                  <div class="card card-inverse card-danger">
                         <div class="card-block bg-danger">
                             <div class="rotate">

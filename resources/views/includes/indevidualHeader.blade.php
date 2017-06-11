@@ -17,13 +17,13 @@
         <a class="nav-link" href="#"><i class="fa fa-users" aria-hidden="true"></i> Make Groupe</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #1ab08b;">Volunteer</a>
+        <a class="nav-link" href="#" style="color: #f1ae3a;">Volunteer</a>
       </li>
-    
+
     </ul>
     <div class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto">
-         
+
       <li class="nav-item ">
        @if (Auth::guest())
 
@@ -34,7 +34,7 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                <ul class="dropdown-menu dropdown-menu-right dropdown-menu-nav" role="menu">
                                   <li><a class="dropdown-item" href="{{ route('home') }}">Your Profile</a></li>
                                   <li><a class="dropdown-item" href="{{ route('home') }}">Followers</a></li>
                                   <li><a class="dropdown-item" href="{{ route('home') }}">Following</a></li>
@@ -42,13 +42,13 @@
                                   <li><a class="dropdown-item" href="{{ route('home') }}">Messages</a></li>
                                     <div class="dropdown-divider"></div>
 
-                                    <li>
+                                    <li class="logout-dropdown-item">
                                         <a class="dropdown-item text-danger"  href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                                     
+
                                           <i class="fa fa-sign-out" aria-hidden="true"></i>
-  Logout
+                                            Logout
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -62,9 +62,9 @@
       <li class="nav-item ">
           <input type="text" name="search" class="search form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
 
-   
+
       </li>
-    
+
       </ul>
     </div>
   </div>
