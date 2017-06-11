@@ -36,11 +36,14 @@ button{
 		position: fixed;
 		top: 4px;
 }
+.mainNavbar .nav-item .nav-link{
+
+}
 #navtop{
 		display: block;
 		position: fixed;
 		height: 4px;
-		background-color: #1ab08b;
+		background-color: #51c2c0;
 		width: 100%;
 		z-index: 44;
 		top: 0;
@@ -103,7 +106,7 @@ button{
 
 }
 .navbar-brand{
-		color: #1ab08b !important;
+		color: #51c2c0 !important;
 }
 .donate-btn{
 		margin-left: 30px;
@@ -181,9 +184,9 @@ button{
 
 .search:focus {
     width: 300px !important;
-    border-color: #1ab08b;
+    border-color: #51c2c0;
     border: 2px solid;
-    color: #1ab08b;
+    color: #51c2c0;
 		top: 0px;
 
 }
@@ -203,6 +206,12 @@ button{
 	font-size: 11px;
 	color: #777;
 }
+.user a{
+  color: #f1ae3b;
+}
+.user a:hover{
+  color: #c08301;
+}
 .news-item{
 	height: 330px ;
 	border: 0px;
@@ -213,8 +222,11 @@ button{
 
 
 }
-.card-text{
-	color: #1ab08b;
+.news-item .card-text{
+	color: #51c2c0;
+}
+.news-item .card-text:hover{
+	color: #008988;
 }
 .news-item > .card-block{
 		height: 20px;
@@ -244,26 +256,63 @@ button{
     border-bottom: 1px solid #eee !important;
 }
 .nav-tabs .nav-item a{
-    background-color: #eee;
+    color: #fff;
     font-size: 18px;
 }
+.nav-tabs .news-tab-item a.nav-link{
+    background-color: #43b7b5 ;
+    border-color: #43b7b5 #43b7b5 #43b7b5 ;
+}
+.nav-tabs .researchs-tab-item a.nav-link{
+    background-color: #e15687 ;
+    border-color: #e15687 #e15687 #e15687 ;
+
+}
+.nav-tabs .dashboard-tab-item a.nav-link{
+    background-color: #e4a32d ;
+    border-color: #e4a32d #e4a32d #e4a32d ;
+
+}
+.nav-tabs .news-tab-item a.nav-link:hover{
+    background-color: #5fd0cd ;
+    border-color: #5fd0cd #5fd0cd #5fd0cd ;
+}
+.nav-tabs .researchs-tab-item a.nav-link:hover{
+    background-color: #ff75a3 ;
+    border-color: #ff75a3 #ff75a3 #ff75a3 ;
+
+}
+.nav-tabs .dashboard-tab-item a.nav-link:hover{
+    background-color: #ffc14c ;
+    border-color: #ffc14c #ffc14c #ffc14c ;
+
+}
+.nav-tabs .news-tab-item a.active{
+    background-color: #51c2c0 ;
+    border-color: #51c2c0 #51c2c0 #51c2c0 ;
+}
+.nav-tabs .researchs-tab-item a.active{
+    background-color: #f06593 ;
+    border-color: #f06593 #f06593 #f06593 ;
+
+}
+.nav-tabs .dashboard-tab-item a.active{
+    background-color: #f1ae3a ;
+    border-color: #f1ae3a #f1ae3a #f1ae3a ;
+
+}
 .news-tab-item a {
-    color: #6bc6b2 !important;
+    color: #fff !important;
 }
 .researchs-tab-item a{
-  color: #f1a6c9 !important;
+  color: #fff !important;
 
 }
 .dashboard-tab-item a{
-  color: #FFDC00 !important;
+  color: #fff !important;
 
 }
-.news-title{
-	color: #1ab08b !important;
-}
-.news-section-title{
-    color: #1ab08b;
-}
+
 .research-card .card-header{
 		background-color: #fff;
   	border-bottom: 0px;
@@ -275,18 +324,18 @@ button{
 
 }
 .research-card .card-block a{
-    color: #f70087;
+    color: #f06493;
 }
 .research-card .card-text{
 		font-size: 14px;
-    color: #f70087;
+    color: #f06493;
 }
 .more-researches{
-		background-color: #f70087 !important;
+		background-color: #f06493 !important;
 		color: #fff !important;
 }
 .more-researches:hover{
-		background-color: #b70056 !important;
+		background-color: #ab1e5a !important;
 		color: #fff !important;
 }
 .research-section-title{
@@ -295,37 +344,43 @@ button{
 .show-more-btn{
 		padding-right: 80px;
 		padding-left: 80px;
-		background-color: #1ab08b;
-		border: 5px solid #1ab08b;
+		background-color: #51c2c0;
+		border: 5px solid #51c2c0;
 		display: inline-block !important;
 		color: white;
-		border: 0px solid #1ab08b;
+		border: 0px solid #51c2c0;
 		cursor: pointer;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 .show-more-btn:hover{
-		background-color: #008f6c;
+		background-color: #008988;
 }
 .choose-btn{
-		
-		background-color: #1ab08b;
-		border: 5px solid #1ab08b;
+
+		background-color: #51c2c0;
+		border: 5px solid #51c2c0;
 		display: inline-block !important;
 		color: white;
-		border: 0px solid #1ab08b;
+		border: 0px solid #51c2c0;
 		cursor: pointer;
 }
 .choose-btn:hover{
-		background-color: #008f6c;
-}.top-5{
-    margin-top: 70px;
-    margin-bottom: 70px;
+		background-color: #008988;
+}
+.top-5{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding-top: 20px;
+    border-radius: 10px;
 }
 .top-5 h1{
-    color: #1ab08b;
+    color: #f1ae3b;
     margin-bottom: 20px;
 }
-
+.top-5 .profile-name{
+		color: #f1ae3b;
+		margin-top: 10px;
+}
 @media only screen and (min-width: 50px) {
   .tab-pane {
       height: 1150px;
