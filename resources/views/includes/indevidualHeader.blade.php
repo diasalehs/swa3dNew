@@ -17,13 +17,13 @@
         <a class="nav-link" href="#"><i class="fa fa-users" aria-hidden="true"></i> Make Groupe</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #1ab08b;">Volunteer</a>
+        <a class="nav-link" href="#" style="color: #f1ae3a;">Volunteer</a>
       </li>
-    
+
     </ul>
     <div class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto">
-         
+
       <li class="nav-item ">
        @if (Auth::guest())
 
@@ -46,7 +46,7 @@
                                         <a class="dropdown-item text-danger"  href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                                     
+
                                           <i class="fa fa-sign-out" aria-hidden="true"></i>
   Logout
                                         </a>
@@ -62,9 +62,9 @@
       <li class="nav-item ">
           <input type="text" name="search" class="search form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
 
-   
+
       </li>
-    
+
       </ul>
     </div>
   </div>
