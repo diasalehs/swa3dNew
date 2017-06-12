@@ -17,9 +17,8 @@ class allusers extends Controller
     public function allusers()
     {
             $user = Auth::user();
-            $users = User::all();
-            $followers = friend::where('requested_id', $user->id);
-            $following = friend::where('requester_id', $user->id);
+            $followers = friend::where('requested_id', $user->id)->get();
+            $following = friend::where('requester_id', $user->id)->get();
             $users_record= DB::table('users')->get();
             return view('individual/allusers',compact('user','users_record','following','followers'));
     }
@@ -33,7 +32,7 @@ class allusers extends Controller
     {
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id)->get();
-        $following = friend::where('requester_id', $user->id);
+        $following = friend::where('requester_id', $user->id)->get();
         return view('individual/followers',compact('user','followers','following'));
     }
 
@@ -60,12 +59,16 @@ class allusers extends Controller
     public function follow( $userId)
     {
         $user = Auth::user();
-        $friend = new friend();
-        $friend->requester_id = Auth::user()->id;
-        $friend->requested_id = $userId;
-        $friend->save();
+        $friend = DB::table('friends')->where('requester_id', '=', $user->id)
+                      ->where('requested_id', '=', $userId)->first();
+        if(!$friend){
+            $friend = new friend();
+            $friend->requester_id = Auth::user()->id;
+            $friend->requested_id = $userId;
+            $friend->save();
+        }
         // $user->friend()->attach($userId, ['requested_id' => $user->id, 'requester_id' => $userId]);
-        return redirect()->route('allusers');
+        return redirect()->back();
     }
 
     /**
@@ -74,15 +77,13 @@ class allusers extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function unfollow()
+    public function unfollow($userId)
     {
         $user = Auth::user();
-        $friend = new friend();
-        $friend->requester_id = Auth::user()->id;
-        $friend->requested_id = $userId;
-        $friend->save();
+        $friend = DB::table('friends')->where('requester_id', '=', $user->id)
+                      ->where('requested_id', '=', $userId)->delete();
         // $user->friend()->attach($userId, ['requested_id' => $user->id, 'requester_id' => $userId]);
-        return redirect()->route('allusers');
+        return redirect()->back();
     }
 
     /**

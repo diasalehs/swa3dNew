@@ -28,8 +28,8 @@
                         <div class="form-group">
                             <button class="btn btn-primary " name="submit" type="submit">Submit</button>
                         </div>
-                        
-                    </form>		
+
+                    </form>
                 </div>
             </div>
             <h1>All News</h1>
@@ -40,7 +40,7 @@
                         <div class="card-block">
                             <h5 class="card-title">{{$news->title}}</h5>
                         </div>
-                     
+
                         <div class="card-block">
                             <a href="{{route('edit',[$news->id])}}" class="card-link">Edit</a>
                             <a href="news/delete/{{$news->id}}" class="card-link text-danger">Delete</a>
@@ -48,8 +48,8 @@
                         </div>
                 </div>
             @endforeach
-             
-         
+
+
 
 
             </div>
@@ -68,13 +68,13 @@
     @endsection('content')
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=cj3pbv1qaurvgj16g8omheozohrxpv8yemit6uehwf7sxtlm	"></script>    <script>tinymce.init({
   selector: 'textarea',
-  height: 500,
+  height: 200,
   plugins: [
         "advlist autolink lists link image charmap print preview anchor",
         "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste imagetools"
+        "insertdatetime media table contextmenu paste autoresize imagetools textcolor colorpicker emoticons"
     ],
-    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | image",
+    toolbar: "forecolor backcolor | insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | image | emoticons",
  });
 
  </script>
