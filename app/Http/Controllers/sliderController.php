@@ -15,7 +15,7 @@ class sliderController extends Controller
       public function add_element(Request $request)
     {
         # code...
-         $slide=new slider; 	
+         $slide=new slider;
         $slide->title = $request['title'];
         $slide->textarea = $request['textarea'];
         if ($request->hasFile('mainImg')){
@@ -29,7 +29,7 @@ class sliderController extends Controller
         return redirect()->route('slider');
     }
       public function index()
-    {	 
+    {
     	return view('admin/sliderconfig');
         # code...
     }
