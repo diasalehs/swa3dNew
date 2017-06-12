@@ -110,30 +110,24 @@
         <h1 class="my-4 news-section-title text-center"></h1>
 
         <div class="row">
+        @foreach($news_record as $news)
             <div class="col-lg-4 col-sm-6 ">
                 <div class="card news-item">
-                    <a href="#"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
+                    <a href="#"><img  class="card-img-top img-fluid" src="uploads/{{$news->mainImgpath}}" style="width: 250px; height: 250px" alt=""></a>
                     <div class="card-block">
-                        <a href="#" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Volul, dolorem!</a>
+                        <a href="#" class="card-text">{{$news->title}}
+
+                        <br/>
+                        {{$news->created_at}}
+
+                        </a>
+
+                    </div>
+                    <div class="card-block">
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6 ">
-                <div class="card news-item">
-                    <a href="#"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
-                    <div class="card-block">
-                        <a href="#" class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 ">
-                <div class="card news-item">
-                    <a href="#"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
-                    <div class="card-block">
-                        <a href="#" class="card-text">Lorem ipsum dolor sit amo velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</a>
-                    </div>
-                </div>
-            </div>
+          @endforeach
 
             </div>
               <div class="text-center ">

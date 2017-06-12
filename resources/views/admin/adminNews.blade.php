@@ -9,7 +9,7 @@
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
             <div class="row">
                 <div class="col-lg-12">
-                    <form method="POST" action="{{route('news')}}">{{ csrf_field() }}
+                    <form enctype="multipart/form-data" method="POST" action="{{route('news')}}">{{ csrf_field() }}
 
                         <div class="form-group"> <!-- title field -->
                             <label class="control-label " for="title">Title</label>
@@ -17,14 +17,14 @@
                         </div>
                          <div class="form-group">
                             <label for="exampleInputFile">File input</label>
-                            <input type="file" class="form-control-file" name="mainImg"  id="exampleInputFile" aria-describedby="fileHelp">
+                            <input type="file" class="form-control-file" name="mainImg" aria-describedby="fileHelp">
                             <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
                         </div>
                         <div class="form-group"> <!-- Message field -->
                             <label class="control-label " for="message">Body</label>
                             <textarea name="textarea"></textarea>
                         </div>
-                        
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <button class="btn btn-primary " name="submit" type="submit">Submit</button>
                         </div>
@@ -43,7 +43,7 @@
                      
                         <div class="card-block">
                             <a href="#" class="card-link">Edit</a>
-                            <a href="admin/news/delete/{{$news->id}}" class="card-link text-danger">Delete</a>
+                            <a href="news/delete/{{$news->id}}" class="card-link text-danger">Delete</a>
                         </div>
                         </div>
                 </div>
