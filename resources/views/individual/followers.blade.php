@@ -3,7 +3,6 @@
 @section('content')
 <div class="container-fluid" style="margin:120px auto">
     <div class="row">
-      @include('includes.sidebar')
 
          <div class="col-lg-9">
         <h2>all followers</h2>

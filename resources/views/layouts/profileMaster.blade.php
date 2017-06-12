@@ -25,7 +25,7 @@
 <body>
     <div id="app">
       @include('includes.indevidualHeader')
-        @yield('content')
+      @yield('content')
     </div>
 
     @include('includes.footer')

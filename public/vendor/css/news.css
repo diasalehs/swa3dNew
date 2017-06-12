@@ -1,0 +1,39 @@
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+body {
+  font-family: 'Ubuntu', sans-serif !important;
+
+}
+button{
+  font-family: 'Ubuntu', sans-serif !important;
+
+}
+@media (min-width: 992px) {
+    body {
+
+    }
+}
+
+.container-fluid{
+		padding: 0 50px;
+}
+.news{
+  margin-bottom: 100px;
+}
+.news .card{
+  border: 0;
+}
+.news .card img{
+  max-height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+.news .card-img-overlay{
+    background-color: rgba(15, 15, 15, 0.49);
+    display: flex;
+      align-items: center;
+
+}
+.news .card h2{
+
+}
