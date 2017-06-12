@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-      @include('includes.indevidualHeader')
+      @include('institute/includes.instituteHeader')
       @yield('content')
     </div>
 

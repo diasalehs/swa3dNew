@@ -1,15 +1,15 @@
 <?php
 use App\user;
 ?>
-@extends('layouts.profileMaster')
+@extends('individual/layouts.profileMaster')
 
 @section('content')
 <div class="container-fluid" style="margin:120px auto">
     <div class="row">
-      @include('includes.sidebar')
+      @include('individual/includes.sidebar')
          <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
           <h1>Followers</h1>
-          
+
           <table class="table">
               <thead>
                 <tr>

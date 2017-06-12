@@ -21,8 +21,12 @@
                             <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
                         </div>
                         <div class="form-group"> <!-- Message field -->
-                            <label class="control-label " for="message">Body</label>
-                            <textarea name="textarea"></textarea>
+                            <label class="control-label " for="body">Body</label>
+                            <textarea name="textarea" id="body"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="Introduction">Introduction</label>
+                          <textarea class="form-control" maxlength="100" rows="5" id="Introduction"></textarea>
                         </div>
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
@@ -67,7 +71,7 @@
 
     @endsection('content')
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=cj3pbv1qaurvgj16g8omheozohrxpv8yemit6uehwf7sxtlm	"></script>    <script>tinymce.init({
-  selector: 'textarea',
+  selector: '#body',
   height: 200,
   plugins: [
         "advlist autolink lists link image charmap print preview anchor",
