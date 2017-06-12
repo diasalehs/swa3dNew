@@ -11,7 +11,7 @@
 |
 */
 Route::get('/', ['uses'=>'mainController@main','as'=>'main']);
-Route::get('/{newsId}',  ['uses' =>'newsController@view', 'as'=>'view']);
+Route::get('/view/{newsId}',  ['uses' =>'newsController@view', 'as'=>'view']);
 
 
 Route::group(['prefix'=>'admin'], function() {
