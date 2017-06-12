@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
-                    <img class="img-fluid" src="vendor/img/newlogo.png" alt="" style="height: 180px">   </div>
+                    <img class="img-fluid" src="{{ URL::to('/vendor/img/newlogo.png') }} " alt="" style="height: 180px">   </div>
                 <div class="col-sm-2">
                     <h5>Get started</h5>
                     <ul>

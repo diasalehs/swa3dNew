@@ -2,7 +2,7 @@
     <div class="text-center">
 
     <div class=" circular--landscape">
-        <img class="profile-pic text-center" src="vendor/img/user.png">
+        <img class="profile-pic text-center" src="{{URL::to('vendor/img/user.png')}}">
     </div>
         <h5 class="profile-name-indi">{{$user->name}}</h5>
         <small><a href="#">{{$user->email}}</a></small>
