@@ -22,10 +22,11 @@ Route::group(['prefix'=>'admin'], function() {
 
     Route::get('/', 'adminController@index')->name('admin');
     Route::get('/userdelete/{userId}', ['uses' =>'adminController@delete', 'as'=>'delete_user']);
-    Route::get('/news', ['uses' =>'newsController@index', 'as'=>'news']);
+    Route::get('/news',  ['uses' =>'newsController@index', 'as'=>'news']);
     Route::post('/news', ['uses' =>'newsController@Create', 'as'=>'news']);
     Route::get('/news/delete/{newsId}', ['uses' =>'newsController@delete', 'as'=>'delete_news']);
-
+    Route::post('/slider',['uses' =>'sliderController@add_element', 'as'=>'slider']);
+    Route::get('/slider', ['uses' =>'sliderController@index', 'as'=>'slider']);
 
 
 });
