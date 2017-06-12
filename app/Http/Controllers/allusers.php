@@ -14,7 +14,7 @@ class allusers extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function allusers()
     {
             $user = Auth::user();
             $users = User::all();
@@ -29,7 +29,7 @@ class allusers extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function followers()
     {
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id)->get();
@@ -38,12 +38,26 @@ class allusers extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function following()
+    {
+        $user = Auth::user();
+        $followers = friend::where('requested_id', $user->id);
+        $following = friend::where('requester_id', $user->id)->get();
+        return view('individual/following',compact('user','followers','following'));
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store( $userId)
+    public function follow( $userId)
     {
         $user = Auth::user();
         $friend = new friend();
@@ -55,28 +69,20 @@ class allusers extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-        $user = Auth::user();
-        $followers = friend::where('requested_id', $user->id);
-        $following = friend::where('requester_id', $user->id)->get();
-        return view('individual/following',compact('user','followers','following'));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function unfollow()
     {
-        //
+        $user = Auth::user();
+        $friend = new friend();
+        $friend->requester_id = Auth::user()->id;
+        $friend->requested_id = $userId;
+        $friend->save();
+        // $user->friend()->attach($userId, ['requested_id' => $user->id, 'requester_id' => $userId]);
+        return redirect()->route('allusers');
     }
 
     /**

@@ -43,7 +43,7 @@ use App\user;
               <td>".$usere->name."</td>
               <td>".$usere->email."</td>
               <td>
-              <a class='btn btn-success btn-block'  href='allusers/".$usere->id."'>unfollow</a>
+              <a class='btn btn-success btn-block'  href='allusers/unfollow/".$usere->id."'>unfollow</a>
               </td>
                 </tr>";
 

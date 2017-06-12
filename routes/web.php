@@ -45,10 +45,10 @@ Route::group(['prefix'=>'home'], function() {
 
 Route::get('/', 'homeController@index')->name('home');
 
-Route::get('/allusers',['uses'=>'allusers@index'])->name('allusers');
+Route::get('/allusers',['uses'=>'allusers@allusers'])->name('allusers');
 
 Route::get('/allusers/follow/{userId}', ['uses'=>'allusers@store']);
-Route::get('/allusers/unfollow/{userId}', ['uses'=>'allusers@store']);
-Route::get('/followers', ['uses'=>'allusers@create'])->name('followers');
-Route::get('/following', ['uses'=>'allusers@show'])->name('following');
+Route::get('/allusers/unfollow/{userId}', ['uses'=>'allusers@edit']);
+Route::get('/followers', ['uses'=>'allusers@followers'])->name('followers');
+Route::get('/following', ['uses'=>'allusers@following'])->name('following');
 });
