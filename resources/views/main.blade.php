@@ -38,13 +38,14 @@
 
          @foreach($volunteers as $volunteer)
           <div class="col-lg-2 col-sm-4 mb-4 user">
-              <img class="img-fluid" src="vendor/img/user.png" alt="">
+              <img class="img-fluid" src="{{$volunteer->picture}}" alt="">
               <div class="text-center">
-                <h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->name}}</h5>
+                <h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->nameInEnglish}}</h5>
                 <small><a href="#">{{$volunteer->email}}</a></small>
               </div>
+            </div>
+
          @endforeach
-          </div>
 
       </div>
     </div>

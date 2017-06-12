@@ -8,7 +8,7 @@ use App\Researcher;
 use App\news;
 use App\slider;
 use Faker\Factory as Faker;
- 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 	            $users->save();
 
 	            $i = 0;
-    	foreach (range(1,3) as $index) {
+    	foreach (range(1,5) as $index) {
 	       		$users = new user();
 	            $users->name = $faker->name;
 	            $users->email = $i."@".$faker->freeEmailDomain;
@@ -51,6 +51,7 @@ class DatabaseSeeder extends Seeder
 		        $Individuals->email = $users->email;
 		        $Individuals->preVoluntary = 0;
 		        $Individuals->voluntaryYears = 0;
+            $Individuals->picture = $faker->imageUrl($width = 640, $height = 480 ,'people');
 		        $Individuals->save();
 
 		        $i++;
@@ -75,6 +76,7 @@ class DatabaseSeeder extends Seeder
 		        $Institute->mobileNumber = $faker->ean8;
 		        $Institute->email = $users->email;
 		        $Institute->address = $faker->address;
+
 		        $Institute->save();
 
 		        $i++;
