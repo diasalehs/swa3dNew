@@ -105,7 +105,10 @@
                     <a href="{{route('view',[$news->id])}}"><img  class="card-img-top img-fluid" src="{{$news->mainImgpath}}" alt=""></a>
                     <div class="card-block">
                         <a href="{{route('view',[$news->id])}}" class="card-text">{{$news->title}}</a>
-                        <br/>
+                        <p>
+                          This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.
+
+                        </p>
                           <span class="text-muted"> {{$news->created_at}} </span>
                     </div>
                     <div class="card-block">
