@@ -39,7 +39,7 @@
               <td>".$user->name."</td>
               <td>".$user->email."</td>
               <td>
-              <a class='btn btn-success btn-block'  href='allusers/".$user->id."'>follow</a>
+              <a class='btn btn-success btn-block'  href='allusers/follow/".$user->id."'>follow</a>
               </td>
                 </tr>";
 

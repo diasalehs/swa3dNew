@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\auth;
 use App\friend;
+use App\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,8 +17,9 @@ class allusers extends Controller
     public function index()
     {
             $user = Auth::user();
-            $followers = friend::where('requester_id', $user->id);
-            $following = friend::where('requested_id', $user->id);
+            $users = User::all();
+            $followers = friend::where('requested_id', $user->id);
+            $following = friend::where('requester_id', $user->id);
             $users_record= DB::table('users')->get();
             return view('individual/allusers',compact('user','users_record','following','followers'));
     }
@@ -30,8 +32,8 @@ class allusers extends Controller
     public function create()
     {
         $user = Auth::user();
-        $followers = friend::where('requester_id', $user->id);
-        $following = friend::where('requested_id', $user->id);
+        $followers = friend::where('requested_id', $user->id)->get();
+        $following = friend::where('requester_id', $user->id);
         return view('individual/followers',compact('user','followers','following'));
     }
 
@@ -61,8 +63,8 @@ class allusers extends Controller
     public function show()
     {
         $user = Auth::user();
-        $followers = friend::where('requester_id', $user->id);
-        $following = friend::where('requested_id', $user->id);
+        $followers = friend::where('requested_id', $user->id);
+        $following = friend::where('requester_id', $user->id)->get();
         return view('individual/following',compact('user','followers','following'));
     }
 

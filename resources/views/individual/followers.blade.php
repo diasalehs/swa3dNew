@@ -1,3 +1,6 @@
+<?php 
+use App\user;
+?>
 @extends('layouts.profileMaster')
 
 @section('content')
@@ -34,12 +37,13 @@
               </thead>
               <tbody>
               <?php
-              foreach ($followers as $user) {
+              foreach ($followers as $follower) {
+                $usere=User::findOfFail($follower->requested_id);
                  echo "<tr>
-              <td>".$user->name."</td>
-              <td>".$user->email."</td>
+              <td>".$usere->name."</td>
+              <td>".$usere->email."</td>
               <td>
-              <a class='btn btn-success btn-block'  href='allusers/".$user->id."'>follow</a>
+              <a class='btn btn-success btn-block'  href='allusers/".$usere->id."'>follow</a>
               </td>
                 </tr>";
 
