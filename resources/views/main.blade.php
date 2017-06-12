@@ -11,14 +11,15 @@
             <div class="carousel-inner" role="listbox">
             @foreach($_3slides as $slide)
                 <!-- Slide One - Set the background image for this slide in the line below -->
-                <div class="carousel-item active" style="background-image:linear-gradient(rgba(0, 0, 0,.5),rgba(0, 0, 0, .5)), url('sliderimages/'.{{$slide->mainImgpath}})">
+                <div class="carousel-item @if ($loop->first) active @endif "
+                  style="background-image:linear-gradient(rgba(0, 0, 0,.5),rgba(0, 0, 0, .5)), url('sliderimages/{{$slide->mainImgpath}}')">
                     <div class="carousel-caption d-none d-md-block">
                         <h3>{{$slide->title}}</h3>
                         <p>{{$slide->textarea}}</p>
                     </div>
                 </div>
                 @endforeach
-               
+
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
