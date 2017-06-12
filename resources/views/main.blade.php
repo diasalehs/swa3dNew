@@ -12,7 +12,7 @@
             @foreach($_3slides as $slide)
                 <!-- Slide One - Set the background image for this slide in the line below -->
                 <div class="carousel-item @if ($loop->first) active @endif "
-                  style="background-image:linear-gradient(rgba(0, 0, 0,.5),rgba(0, 0, 0, .5)), url('sliderimages/{{$slide->mainImgpath}}')">
+                  style="background-image:linear-gradient(rgba(0, 0, 0,.5),rgba(0, 0, 0, .5)), url('{{$slide->mainImgpath}}')">
                     <div class="carousel-caption d-none d-md-block">
                         <h3>{{$slide->title}}</h3>
                         <p>{{$slide->textarea}}</p>
@@ -102,7 +102,7 @@
         @foreach($news_record as $news)
             <div class="col-lg-4 col-sm-6 ">
                 <div class="card news-item">
-                    <a href="{{route('view',[$news->id])}}"><img  class="card-img-top img-fluid" src="uploads/{{$news->mainImgpath}}" alt=""></a>
+                    <a href="{{route('view',[$news->id])}}"><img  class="card-img-top img-fluid" src="{{$news->mainImgpath}}" alt=""></a>
                     <div class="card-block">
                         <a href="{{route('view',[$news->id])}}" class="card-text">{{$news->title}}</a>
                         <br/>
