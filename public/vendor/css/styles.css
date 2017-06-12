@@ -17,9 +17,7 @@ button{
 .container-fluid{
 		padding: 0 50px;
 }
-#carouselExampleIndicators{
-	margin-top: 78px;
-}
+
 .carousel-item {
     height: 60vh;
     min-height: 300px;
@@ -38,6 +36,9 @@ button{
 }
 .mainNavbar .nav-item .nav-link{
 
+}
+.main{
+  margin-top: 78px;
 }
 .dropdown-menu-nav li a:active{
     background-color: #51c2c0;
