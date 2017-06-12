@@ -1,3 +1,6 @@
+<?php
+use App\user;
+?>
 @extends('layouts.profileMaster')
 
 @section('content')
@@ -15,15 +18,33 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td><a class="btn btn-primary" href="#" role="button">Link</a></td>
-                </tr>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td><a class="btn btn-primary" href="#" role="button">Link</a></td>
-              </tr>
+              <?php
+              foreach ($users_record as $user) {
+                  $flag = 0;
+                  foreach ($following as $followi) {
+                    $userei=User::findOrFail($followi->requested_id);
+                    if($user->id == $userei->id){
+                      echo "<tr>
+                      <td>".$user->name."</td>
+                      <td>".$user->email."</td>
+                      <td>
+                      <a class='btn btn-success btn-block'  href='allusers/unfollow/".$user->id."'>unfollow</a>
+                      </td>
+                      </tr>";
+                      $flag = 1;
+                    }
+                  }
+                  if($flag == 0){
+                      echo "<tr>
+                      <td>".$user->name."</td>
+                      <td>".$user->email."</td>
+                      <td>
+                      <a class='btn btn-success btn-block'  href='allusers/follow/".$user->id."'>follow</a>
+                      </td>
+                      </tr>";
+                  }
+              }
+                ?>
               </tbody>
           </table>
 
