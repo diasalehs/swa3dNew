@@ -20,7 +20,7 @@ class newsController extends Controller
         if ($request->hasFile('mainImg')){
            $mainImg=$request->file('mainImg');
             $imagename=time().'.'.$mainImg->getClientOriginalExtension();
-            Image::make($mainImg)->resize(350,200)->save(public_path('uploads/'.$imagename) );
+            Image::make($mainImg)->resize(350,200)->save(public_path('uploads/'.$imagename));
         $anew->mainImgpath = $imagename;
         }
 
@@ -45,5 +45,6 @@ class newsController extends Controller
 
     	# code...
     }
-    //
+    
+   
 }

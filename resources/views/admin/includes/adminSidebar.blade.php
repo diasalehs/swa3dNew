@@ -17,7 +17,7 @@
 
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-              <a class="nav-link" href="#">Nav item</a>
+              <a class="nav-link" href="{{route('slider')}}">Slider config</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Nav item again</a>
