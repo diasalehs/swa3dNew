@@ -47,8 +47,9 @@ Route::get('/', 'homeController@index')->name('home');
 
 Route::get('/allusers',['uses'=>'allusers@allusers'])->name('allusers');
 
-Route::get('/allusers/follow/{userId}', ['uses'=>'allusers@store']);
-Route::get('/allusers/unfollow/{userId}', ['uses'=>'allusers@edit']);
+Route::get('/allusers/follow/{userId}', ['uses'=>'allusers@follow']);
+Route::get('/allusers/unfollow/{userId}', ['uses'=>'allusers@unfollow']);
 Route::get('/followers', ['uses'=>'allusers@followers'])->name('followers');
 Route::get('/following', ['uses'=>'allusers@following'])->name('following');
+
 });

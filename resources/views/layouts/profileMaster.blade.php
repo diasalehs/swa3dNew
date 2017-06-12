@@ -24,8 +24,8 @@
 </head>
 <body>
     <div id="app">
-  @include('includes.indevidualHeader')
-        @yield('content')
+      @include('includes.indevidualHeader')
+      @yield('content')
     </div>
 
     @include('includes.footer')

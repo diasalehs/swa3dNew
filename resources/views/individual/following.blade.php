@@ -6,14 +6,16 @@ use App\user;
 @section('content')
 <div class="container-fluid" style="margin:120px auto">
     <div class="row">
-        <div class="col-lg-3 sidebar">
-            <div class="text-center">
-
-            <div class=" circular--landscape"> 
-                <img class="profile-pic text-center" src="vendor/img/user.png">
-            </div>
-                <h5 class="profile-name">{{$user->name}}</h5>
-                <small><a href="#">{{$user->email}}</a></small>
+      @include('includes.sidebar')
+         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
+           <div class="jumbotron">
+              <h1 class="display-3" style="">Hello, {{$user->name}}!</h1>
+              <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+              <hr class="my-4">
+              <p class="lead">
+                <a class="btn btn-primary btn-lg bv" href="#" role="button">Volunteer Now</a>
+                <a class="btn btn-primary btn-lg mg" href="#" role="button">Make Group</a>
+              </p>
             </div>
             <hr>
             <ul class="list-group">
@@ -45,11 +47,11 @@ use App\user;
               <td>
               <a class='btn btn-success btn-block'  href='allusers/unfollow/".$usere->id."'>unfollow</a>
               </td>
-                </tr>";
+                </tr>";}
+              ?>
 
-              }?></tbody>
-                       </div>
+         </div>
     </div>
 </div>
-   
+
 @endsection
