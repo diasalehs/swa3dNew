@@ -104,13 +104,13 @@ class DatabaseSeeder extends Seeder
 
 		        $i++;
 		        $news = new news();
-	            $news->mainImgpath = $faker->imageUrl($width = 640, $height = 480, 'cats');
+	            $news->mainImgpath = $faker->imageUrl($width = 640, $height = 480);
 	            $news->title = $faker->word;
 	            $news->textarea = $faker->text;
 	            $news->save();
 
 	            $sliders = new slider();
-	            $sliders->mainImgpath = $faker->imageUrl($width = 640, $height = 480, 'cats');
+	            $sliders->mainImgpath = $faker->imageUrl($width = 640, $height = 480);
 	            $sliders->title = $faker->word;
 	            $sliders->textarea = $faker->text;
 	            $sliders->save();
