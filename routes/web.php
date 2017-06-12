@@ -12,7 +12,9 @@
 */
 Route::get('/', ['uses'=>'mainController@main','as'=>'main']);
 
-
+Route::get('/news',function() {
+   return view('singleNews');
+})->name('news');
 Route::group(['prefix'=>'admin'], function() {
     // Route::get('/', array('as' => 'admin', function() {
     //     return view('admin/adminDashboard');
@@ -25,15 +27,27 @@ Route::group(['prefix'=>'admin'], function() {
     Route::get('/news/delete/{newsId}', ['uses' =>'newsController@delete', 'as'=>'delete_news']);
 
 
+
 });
 
 
 Auth::routes();
 Route::post('/allRegister', ['uses'=>'registerStep2Controller@allRegister','as'=>'allRegister']);
-Route::get('/home', 'homeController@index')->name('home');
 Route::get('/step', ['uses'=>'stepController@step','as'=>'step']);
 Route::get('/choose', ['uses'=>'chooseController@choose','as'=>'choose']);
 
 Route::post('/registerer', function(\Illuminate\Http\Request $request) {
     return view('auth/register',['user_type'=>$request['submit']]);
 })->name('registerer');
+
+
+Route::group(['prefix'=>'home'], function() {
+
+Route::get('/', 'homeController@index')->name('home');
+
+Route::get('/allusers',['uses'=>'allusers@index'])->name('allusers');
+
+Route::get('/allusers/{userId}', ['uses'=>'allusers@store']);
+Route::get('/followers', ['uses'=>'allusers@create'])->name('followers');
+Route::get('/following', ['uses'=>'allusers@show'])->name('following');
+});
