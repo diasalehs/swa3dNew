@@ -9,7 +9,7 @@
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
             <div class="row">
                 <div class="col-lg-12">
-                    <form enctype="multipart/form-data" method="POST" 
+                    <form enctype="multipart/form-data" method="POST"
                     action="{{route('edit',[$news->id])}}">{{ csrf_field() }}
 
                         <div class="form-group"> <!-- title field -->
@@ -17,11 +17,11 @@
                             <input class="form-control" id="title" name="title" type="text" value="{{$news->title}}" />
                         </div>
                          <div class="form-group">
-                         <img src="{{ URL::to('/') }}uploads/{{$news->mainImgpath}}">
+                         <img src="{{$news->mainImgpath}}" style="height:200px; width:400px">
                          <br>
                             <label for="exampleInputFile">choose another image</label>
                             <input type="file"  class="form-control-file" name="mainImg" aria-describedby="fileHelp">
-                            <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                            <small id="fileHelp" class="form-text text-muted">if you don't select other img, the old img will not be change.</small>
                         </div>
                         <div class="form-group"> <!-- Message field -->
                             <label class="control-label " for="message">Body</label>
@@ -31,10 +31,10 @@
                         <div class="form-group">
                             <button class="btn btn-primary " name="submit" type="submit">Submit</button>
                         </div>
-                        
-                    </form>		
+
+                    </form>
                 </div>
-            </div>         
+            </div>
             </div>
 
 
