@@ -1,5 +1,4 @@
 <?php
-use App\User;
 use App\news;
 
 ?>
@@ -19,7 +18,7 @@ use App\news;
                                 <i class="fa fa-user fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase">Users</h6>
-                            <h1 class="display-1">{{User::count()}}</h1>
+                            <h1 class="display-1">{{$users_record->count()}}</h1>
                         </div>
                     </div>
                 </div>

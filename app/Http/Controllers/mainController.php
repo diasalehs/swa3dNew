@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\auth;
-
-
+use Illuminate\Support\Facades\DB;
+use App\news;
 class mainController extends Controller
 {
 	public function main() {
@@ -13,7 +13,9 @@ class mainController extends Controller
 		// 		return view('main');
 		// 	}
 		// }else{
-				return view('main');
+		$news_record=news::orderBy('created_at','desc')->take(3)->get();
+         return view('main',["news_record"=>$news_record]);
+
 		// }
 	}
 }
