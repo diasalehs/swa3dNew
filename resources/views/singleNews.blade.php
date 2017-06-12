@@ -17,12 +17,12 @@
             <hr>
 
             <!-- Date/Time -->
-            <p style="color:#777"> created at: {{$news->created_at}}</p>
+            <p style="color:#777"> Posted on {{$news->created_at}}</p>
 
             <hr>
 
             <!-- Post Content -->
-            <p class="lead"> <?php  echo"".$news->textarea ;?> </p>
+            <p class=""> <?php  echo"".$news->textarea ;?> </p>
 
             <hr>
 
