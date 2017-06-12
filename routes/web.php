@@ -46,8 +46,11 @@ Route::group(['prefix'=>'home'], function() {
 
 Route::get('/', 'homeController@index')->name('home');
 
-Route::get('/allusers',['uses'=>'homeController@allusers'])->name('allusers');
-Route::get('/allusers/{userId}', ['uses'=>'homeController@follow']);
-Route::get('/followers', ['uses'=>'homeController@followers'])->name('followers');
-Route::get('/following', ['uses'=>'homeController@following'])->name('following');
+Route::get('/allusers',['uses'=>'allusers@allusers'])->name('allusers');
+
+Route::get('/allusers/follow/{userId}', ['uses'=>'allusers@follow']);
+Route::get('/allusers/unfollow/{userId}', ['uses'=>'allusers@unfollow']);
+Route::get('/followers', ['uses'=>'allusers@followers'])->name('followers');
+Route::get('/following', ['uses'=>'allusers@following'])->name('following');
+
 });
