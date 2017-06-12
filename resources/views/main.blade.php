@@ -35,41 +35,15 @@
     <div class="container text-center top-5">
       <h1>Top 5 volunteers</h1>
       <div class="row justify-content-center">
-          <div class="col-lg-2 col-sm-4 mb-4 user">
-              <img class="img-fluid" src="vendor/img/user.png" alt="">
-              <div class="text-center">
-                <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
-                <small><a href="#">@m.shanti</a></small>
-              </div>
 
-          </div>
+         @foreach($volunteers as $volunteer)
           <div class="col-lg-2 col-sm-4 mb-4 user">
               <img class="img-fluid" src="vendor/img/user.png" alt="">
               <div class="text-center">
-                <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
-                <small><a href="#">@m.shanti</a></small>
+                <h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->name}}</h5>
+                <small><a href="#">{{$volunteer->email}}</a></small>
               </div>
-          </div>
-          <div class="col-lg-2 col-sm-4 mb-4 user">
-              <img class="img-fluid" src="vendor/img/user.png" alt="">
-              <div class="text-center">
-                <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
-                <small><a href="#">@m.shanti</a></small>
-              </div>
-          </div>
-          <div class="col-lg-2 col-sm-4 mb-4 user">
-              <img class="img-fluid" src="vendor/img/user.png" alt="">
-              <div class="text-center">
-                <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
-                <small><a href="#" >@m.shanti</a></small>
-              </div>
-          </div>
-          <div class="col-lg-2 col-sm-4 mb-4 user">
-              <img class="img-fluid" src="vendor/img/user.png" alt="">
-              <div class="text-center">
-                <h5 class="profile-name " style="margin-bottom: 0px;">Mazen Shanti</h5>
-                <small><a href="#">@m.shanti</a></small>
-              </div>
+         @endforeach
           </div>
 
       </div>

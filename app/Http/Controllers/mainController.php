@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\auth;
 use Illuminate\Support\Facades\DB;
 use App\news;
+use App\Individuals;
 use App\slider;
 class mainController extends Controller
 {
@@ -16,9 +17,9 @@ class mainController extends Controller
 		// }else{
 
 		$_3slides=slider::orderBy('created_at','desc')->take(3)->get();
-
+		$volunteers=Individuals::orderBy('created_at','desc')->take(3)->get();
 		$news_record=news::orderBy('created_at','desc')->take(3)->get();
-         return view('main',["news_record"=>$news_record],["_3slides"=>$_3slides]);
+         return view('main',compact('volunteers','_3slides','news_record'));
 
 		// }
 	}
