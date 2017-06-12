@@ -14,7 +14,7 @@ class newsController extends Controller
     {
 
      // extract img path from img  object in the request    
-        $anew=new news; 	
+        $anew=new news;     
         $anew->title = $request['title'];
         $anew->textarea = $request['textarea'];
         if ($request->hasFile('mainImg')){
@@ -28,8 +28,35 @@ class newsController extends Controller
         return redirect()->route('news');
 
 
-    	 # code...
+         # code...
+    } 
+    public function editor(Request $request,$newsID)
+
+    {
+        $anew = news::find($newsID);
+        $anew->title = $request['title'];
+        $anew->textarea = $request['textarea'];
+        if ($request->hasFile('mainImg')){
+           $mainImg=$request->file('mainImg');
+            $imagename=time().'.'.$mainImg->getClientOriginalExtension();
+            Image::make($mainImg)->resize(350,200)->save(public_path('uploads/'.$imagename));
+        $anew->mainImgpath = $imagename;
+        }
+
+        $anew->save();
+        return redirect()->route('edit',["news"=>$anew]);
+
+
+    }  
+
+    public function edit($newsID)
+
+    {
+        $news = news::find($newsID);
+        return view('admin/editingpage',["news"=>$news]);
     }
+
+
     public function index()
     {   $news_record= DB::table('news')->get();
          return view('admin/adminNews',["news_record"=>$news_record]);

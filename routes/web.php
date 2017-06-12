@@ -24,6 +24,8 @@ Route::group(['prefix'=>'admin'], function() {
     Route::get('/news',  ['uses' =>'newsController@index', 'as'=>'news']);
     Route::post('/news', ['uses' =>'newsController@Create', 'as'=>'news']);
     Route::get('/news/delete/{newsId}', ['uses' =>'newsController@delete', 'as'=>'delete_news']);
+    Route::get('/news/edit/{newsId}', ['uses' =>'newsController@edit', 'as'=>'edit']);
+    Route::post('/news/edit/{newsId}', ['uses' =>'newsController@editor', 'as'=>'edit']);
     Route::post('/slider',['uses' =>'sliderController@add_element', 'as'=>'slider']);
     Route::get('/slider', ['uses' =>'sliderController@index', 'as'=>'slider']);
 
