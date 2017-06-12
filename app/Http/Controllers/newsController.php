@@ -31,11 +31,11 @@ class newsController extends Controller
     	 # code...
     }
     public function index()
-    {  	$news_record= DB::table('news')->get();
+    {   $news_record= DB::table('news')->get();
          return view('admin/adminNews',["news_record"=>$news_record]);
 
 
-    	# code...
+        # code...
     }
     public function delete($newsID)
     {
@@ -45,6 +45,13 @@ class newsController extends Controller
 
     	# code...
     }
-    
+     public function view($newsID)
+    {    $news = news::find($newsID);
+
+         return view('singleNews',["news"=>$news]);
+
+
+        # code...
+    }
    
 }

@@ -101,22 +101,18 @@
         @foreach($news_record as $news)
             <div class="col-lg-4 col-sm-6 ">
                 <div class="card news-item">
-                    <a href="#"><img  class="card-img-top img-fluid" src="uploads/{{$news->mainImgpath}}" style="width: 250px; height: 250px" alt=""></a>
+                    <a href="{{route('view',[$news->id])}}"><img  class="card-img-top img-fluid" src="uploads/{{$news->mainImgpath}}" style="width: 250px; height: 250px" alt=""></a>
                     <div class="card-block">
-                        <a href="#" class="card-text">{{$news->title}}
-
+                        <a href="{{route('view',[$news->id])}}" class="card-text">{{$news->title}}
                         <br/>
                         {{$news->created_at}}
-
                         </a>
-
                     </div>
                     <div class="card-block">
                     </div>
                 </div>
             </div>
           @endforeach
-
             </div>
               <div class="text-center ">
                 <button type="button" class="btn btn-primary  show-more-btn">More News</button>
