@@ -5,7 +5,6 @@
 
     <div class="container-fluid">
     @include('admin/includes.adminSidebar')
-
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
           <a role="button" class="btn btn-warning " href="{{route('adminNewsView')}}">View/Edit All News</a>
           <hr />
@@ -41,12 +40,6 @@
 
         </main>
 </div>
-
-
-
-
-
-
 
     @endsection('content')
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=cj3pbv1qaurvgj16g8omheozohrxpv8yemit6uehwf7sxtlm	"></script>    <script>tinymce.init({

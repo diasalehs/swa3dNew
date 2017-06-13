@@ -22,12 +22,12 @@ Route::group(['prefix'=>'admin'], function() {
 
     Route::get('/', 'adminController@index')->name('admin');
     Route::get('/userdelete/{userId}', ['uses' =>'adminController@delete', 'as'=>'delete_user']);
-    Route::get('/news',  ['uses' =>'newsController@index', 'as'=>'news']);
+    Route::get('/news',  ['uses' =>'adminController@indexx', 'as'=>'news']);
     Route::post('/news', ['uses' =>'newsController@Create', 'as'=>'news']);
     Route::get('/news/delete/{newsId}', ['uses' =>'newsController@delete', 'as'=>'delete_news']);
-    Route::get('/news/edit/{newsId}', ['uses' =>'newsController@edit', 'as'=>'edit']);
+    Route::get('/news/edit/{newsId}',  ['uses' =>'adminController@edit', 'as'=>'edit']);
     Route::post('/news/edit/{newsId}', ['uses' =>'newsController@editor', 'as'=>'edit']);
-    Route::get('/news/adminNewsView',  ['uses' =>'newsController@adminNewsView', 'as'=>'adminNewsView']);
+    Route::get('/news/adminNewsView',  ['uses' =>'adminController@adminNewsView', 'as'=>'adminNewsView']);
 
     Route::post('/slider',['uses' =>'sliderController@add_element', 'as'=>'slider']);
     Route::get('/slider', ['uses' =>'sliderController@index', 'as'=>'slider']);
@@ -39,16 +39,16 @@ Route::post('/allRegister', ['uses'=>'registerStep2Controller@allRegister','as'=
 Route::get('/step', ['uses'=>'stepController@step','as'=>'step']);
 Route::get('/choose', ['uses'=>'chooseController@choose','as'=>'choose']);
 Route::post('/registerer', function(\Illuminate\Http\Request $request) {
-return view('auth/register',['user_type'=>$request['submit']]);
+    return view('auth/register',['user_type'=>$request['submit']]);
 })->name('registerer');
 
 
 Route::group(['prefix'=>'home'], function() {
-Route::get('/', 'homeController@index')->name('home');
-Route::get('/allusers',['uses'=>'allusers@allusers'])->name('allusers');
-Route::get('/allusers/follow/{userId}', ['uses'=>'allusers@follow']);
-Route::get('/allusers/unfollow/{userId}', ['uses'=>'allusers@unfollow']);
-Route::get('/followers', ['uses'=>'allusers@followers'])->name('followers');
-Route::get('/following', ['uses'=>'allusers@following'])->name('following');
+    Route::get('/', 'homeController@index')->name('home');
+    Route::get('/allusers',['uses'=>'allusers@allusers'])->name('allusers');
+    Route::get('/allusers/follow/{userId}', ['uses'=>'allusers@follow']);
+    Route::get('/allusers/unfollow/{userId}', ['uses'=>'allusers@unfollow']);
+    Route::get('/followers', ['uses'=>'allusers@followers'])->name('followers');
+    Route::get('/following', ['uses'=>'allusers@following'])->name('following');
 
 });

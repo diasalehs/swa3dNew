@@ -63,8 +63,6 @@ use App\news;
                 </div>
             </div>
             <!--/row-->
-
-
           <h2>Section title</h2>
           <div class="table-responsive" style="min-height: 300px;">
             <table class="table table-striped">
@@ -100,11 +98,13 @@ use App\news;
                 </tr>";
                 # code...
               }?>
-
               </tbody>
             </table>
           </div>
+                            {{$users_record->links()}}
+
         </main>
+
       </div>
     </div>
 
