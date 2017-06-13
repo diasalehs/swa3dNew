@@ -55,7 +55,17 @@ button{
 		z-index: 44;
 		top: 0;
 }
+.btn-green{
+  background-color: #51c2c0;
+  border: 0px solid #51c2c0;
+  display: inline-block !important;
+  color: white;
+  cursor: pointer;
 
+}
+.btn-green:hover{
+  background-color: #008988;
+}
 .circular--landscape {
   display: inline-block;
   position: relative;
