@@ -86,6 +86,14 @@ class newsController extends Controller
 
 
         # code...
+    } 
+    public function adminNewsView()
+    {    
+        $news_record= DB::table('news')->get();
+         return view('admin/adminNewsView',["news_record"=>$news_record]);
+
+
+        # code...
     }
    
 }
