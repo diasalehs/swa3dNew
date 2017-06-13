@@ -19,6 +19,7 @@
                             <label for="exampleInputFile">File input</label>
                             <input type="file" class="form-control-file" name="mainImg" aria-describedby="fileHelp">
                             <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                        <button class="btn btn-primary"><a href="#">View all news</a></button>
                         </div>
                         <div class="form-group"> <!-- Message field -->
                             <label class="control-label " for="body">Body</label>
