@@ -48,6 +48,7 @@ use App\user;
               </tbody>
           </table>
 
+                {{$users_record->links()}}
 
          </div>
     </div>

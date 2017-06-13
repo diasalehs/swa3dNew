@@ -19,7 +19,7 @@ class allusers extends Controller
             $user = Auth::user();
             $followers = friend::where('requested_id', $user->id)->get();
             $following = friend::where('requester_id', $user->id)->get();
-            $users_record= DB::table('users')->get();
+            $users_record= User::paginate(10);
             return view('individual/allusers',compact('user','users_record','following','followers'));
     }
 

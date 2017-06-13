@@ -29,9 +29,8 @@ class adminController extends Controller
     {
         if(Auth::attempt() || Auth::user()){
         	$user = Auth::user();
-        	$users_record= DB::table('users')->get();
         	if ($user->userType=== 10 ) {
-        		return view('admin/adminDashboard',["users_record"=>User::paginate(10)]);
+        		return view('admin/adminDashboard',["users_record"=>User::paginate()]);
         	}
         	else{
                 return redirect()->route('home');
