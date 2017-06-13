@@ -101,7 +101,6 @@ use App\news;
               </tbody>
             </table>
           </div>
-                            {{$users_record->links()}}
 
         </main>
 

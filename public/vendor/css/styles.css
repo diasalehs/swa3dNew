@@ -209,16 +209,18 @@ button{
 }
 .nav-tabs .news-tab-item a.nav-link{
     background-color: #43b7b5 ;
+    border: 0;
     border-top: 5px solid #43b7b5 !important;
-
 }
 .nav-tabs .researchs-tab-item a.nav-link{
     background-color: #e15687 ;
+    border: 0;
     border-top: 5px solid #e15687 !important;
 
 }
 .nav-tabs .dashboard-tab-item a.nav-link{
     background-color: #e4a32d ;
+    border: 0;
     border-top: 5px solid #e4a32d !important;
 }
 .nav-tabs .news-tab-item a.nav-link:hover{
@@ -328,6 +330,20 @@ button{
 .top-5 .profile-name{
 		color: #f1ae3b;
 		margin-top: 10px;
+}
+.pagination .page-link{
+  color: #333 ;
+}
+.pagination .page-item.disabled .page-link{
+  color: #aaa !important ;
+}
+.pagination .page-item.disabled{
+  cursor: not-allowed;
+}
+.my-active span{
+  background-color: #51c2c0 !important;
+  color: white !important;
+  border-color: #51c2c0 !important;
 }
 @media only screen and (min-width: 50px) {
   .tab-pane {

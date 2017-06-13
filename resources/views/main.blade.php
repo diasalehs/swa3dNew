@@ -37,7 +37,7 @@
       <div class="row justify-content-center">
 
          @foreach($volunteers as $volunteer)
-          <div class="col-lg-2 col-sm-4 mb-4 user">
+          <div class="col-lg-2 col-sm-2 col-xs-2 user">
               <img class="img-fluid" src="{{$volunteer->picture}}" alt="">
               <div class="text-center">
                 <h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->nameInEnglish}}</h5>
@@ -54,8 +54,9 @@
       <hr class="my-4">
 
         <!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
-  <li class="nav-item offset-md-1 col-sm-4 col-lg-3 news-tab-item">
+<ul class="nav nav-tabs row justify-content-center" role="tablist">
+
+  <li class="nav-item  col-sm-4 col-lg-3 news-tab-item">
     <a class="nav-link active" data-toggle="tab" href="#home" role="tab">News</a>
   </li>
   <li class="nav-item col-sm-4 col-lg-3 researchs-tab-item">

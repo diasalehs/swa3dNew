@@ -17,7 +17,7 @@
         <a class="nav-link" href="#"><i class="fa fa-users" aria-hidden="true"></i> Make Groupe</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #f1ae3a;">Find</a>
+        <a class="nav-link" href="#" style="color: #f1ae3a;">Find Volunteers</a>
       </li>
 
     </ul>
