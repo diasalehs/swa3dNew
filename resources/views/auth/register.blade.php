@@ -46,6 +46,7 @@
                                 </div>
 
 
+                            <div class="form-group  has('name') ? ' has->error' : '' }}">
                                 <label for="email" class="form-control-label">E-Mail Address</label>
                                 <div class="">
                                     <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
