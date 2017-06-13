@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
     	foreach (range(1,5) as $index) {
 	       		$users = new user();
 	            $users->name = $faker->name;
-	            $users->email = $i."@".$faker->freeEmailDomain;
+	            $users->email = "user".$i."@swa3d.com";
 	            $users->userType = 0;
 	            $users->flag = 1;
 	            $users->password = bcrypt('secret');
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
 		        $i++;
 	            $users = new user();
 	            $users->name = $faker->name;
-	            $users->email = $i."@".$faker->freeEmailDomain;
+	            $users->email = "user".$i."@swa3d.com";
 	            $users->userType = 1;
 	            $users->flag = 1;
 	            $users->password = bcrypt('secret');
@@ -76,13 +76,12 @@ class DatabaseSeeder extends Seeder
 		        $Institute->mobileNumber = $faker->ean8;
 		        $Institute->email = $users->email;
 		        $Institute->address = $faker->address;
-
 		        $Institute->save();
 
 		        $i++;
 	            $users = new user();
 	            $users->name = $faker->name;
-	            $users->email = $i."@".$faker->freeEmailDomain;
+	            $users->email = "user".$i."@swa3d.com";
 	            $users->userType = 2;
 	            $users->flag = 1;
 	            $users->password = bcrypt('secret');

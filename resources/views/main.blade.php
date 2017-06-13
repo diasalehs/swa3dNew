@@ -93,7 +93,7 @@
           @endforeach
             </div>
               <div class="text-center ">
-                <button type="button" class="btn btn-primary  show-more-btn">More News</button>
+                <a href="{{route('allNews')}}"><button type="button" class="btn btn-primary  show-more-btn">More News</button></a>
             </div>
             </div>
 

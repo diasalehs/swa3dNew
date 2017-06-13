@@ -29,7 +29,7 @@ button{
   object-fit: cover;
 }
 .news .card-img-overlay{
-    background-color: rgba(81, 194, 192, 0.57);
+    background-color: rgba(81, 194, 192, 0.3);
     display: flex;
     align-items: center;
 }

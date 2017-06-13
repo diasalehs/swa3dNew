@@ -80,5 +80,12 @@ class newsController extends Controller
 
         # code...
     }
+    public function allNews()
+    {    
+         return view('allNews');
+
+
+        # code...
+    }
    
 }
