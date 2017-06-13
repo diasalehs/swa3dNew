@@ -12,6 +12,7 @@
 */
 Route::get('/', ['uses'=>'mainController@main','as'=>'main']);
 Route::get('/view/{newsId}',  ['uses' =>'newsController@view', 'as'=>'view']);
+Route::get('/allNews',  ['uses' =>'newsController@allNews', 'as'=>'allNews']);
 
 
 Route::group(['prefix'=>'admin'], function() {
@@ -21,15 +22,15 @@ Route::group(['prefix'=>'admin'], function() {
 
     Route::get('/', 'adminController@index')->name('admin');
     Route::get('/userdelete/{userId}', ['uses' =>'adminController@delete', 'as'=>'delete_user']);
-    Route::get('/news',  ['uses' =>'newsController@index', 'as'=>'news']);
+    Route::get('/news',  ['uses' =>'adminController@indexx', 'as'=>'news']);
     Route::post('/news', ['uses' =>'newsController@Create', 'as'=>'news']);
     Route::get('/news/delete/{newsId}', ['uses' =>'newsController@delete', 'as'=>'delete_news']);
-    Route::get('/news/edit/{newsId}', ['uses' =>'newsController@edit', 'as'=>'edit']);
+    Route::get('/news/edit/{newsId}',  ['uses' =>'adminController@edit', 'as'=>'edit']);
     Route::post('/news/edit/{newsId}', ['uses' =>'newsController@editor', 'as'=>'edit']);
+    Route::get('/news/adminNewsView',  ['uses' =>'adminController@adminNewsView', 'as'=>'adminNewsView']);
+
     Route::post('/slider',['uses' =>'sliderController@add_element', 'as'=>'slider']);
     Route::get('/slider', ['uses' =>'sliderController@index', 'as'=>'slider']);
-
-
 });
 
 
@@ -37,7 +38,6 @@ Auth::routes();
 Route::post('/allRegister', ['uses'=>'registerStep2Controller@allRegister','as'=>'allRegister']);
 Route::get('/step', ['uses'=>'stepController@step','as'=>'step']);
 Route::get('/choose', ['uses'=>'chooseController@choose','as'=>'choose']);
-
 Route::post('/registerer', function(\Illuminate\Http\Request $request) {
     return view('auth/register',['user_type'=>$request['submit']]);
 })->name('registerer');
@@ -62,4 +62,5 @@ Route::get('/makeEvent', ['uses'=>'instituteController@makeEvent'])->name('makeE
 Route::post('/event', ['uses'=>'instituteController@event'])->name('event');
 Route::get('/myEvents', ['uses'=>'instituteController@myEvents'])->name('myEvents');
 });
+
 });

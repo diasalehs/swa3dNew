@@ -29,10 +29,28 @@ button{
   object-fit: cover;
 }
 .news .card-img-overlay{
-    background-color: rgba(81, 194, 192, 0.57);
+    background-color: rgba(81, 194, 192, 0.3);
     display: flex;
     align-items: center;
 }
 .news .card h1{
+
+}
+.btn-green{
+  background-color: #51c2c0;
+  border: 0px solid #51c2c0;
+  display: inline-block !important;
+  color: white;
+  cursor: pointer;
+
+}
+.btn-green:hover{
+  background-color: #008988;
+}
+.all-news-img{
+  min-height: 200px;
+  max-height: 200px;
+  width: 100%;
+  object-fit: cover;
 
 }

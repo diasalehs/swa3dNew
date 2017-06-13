@@ -8,7 +8,9 @@ use App\User;
 use App\Individuals;
 use Illuminate\Support\Facades\auth;
 use Illuminate\Database\Query\Builder;
-
+use App\Http\Requests;
+use App\news;
+use Image;
 class adminController extends Controller
 {
     public function delete($userId)
@@ -29,7 +31,7 @@ class adminController extends Controller
         	$user = Auth::user();
         	$users_record= DB::table('users')->get();
         	if ($user->userType=== 10 ) {
-        		return view('admin/adminDashboard',["users_record"=>$users_record]);
+        		return view('admin/adminDashboard',["users_record"=>User::paginate(10)]);
         	}
         	else{
                 return redirect()->route('home');
@@ -39,4 +41,26 @@ class adminController extends Controller
         }
     }
 
+
+    public function indexx()
+    {   $news_record= DB::table('news')->get();
+         return view('admin/adminNews',["news_record"=>$news_record]);
+
+
+        # code...
+    }
+    public function edit($newsID)
+
+    {
+        $news = news::find($newsID);
+        return view('admin/editingpage',["news"=>$news]);
+    }
+     public function adminNewsView()
+    {    
+        $news_record= DB::table('news')->get();
+         return view('admin/adminNewsView',["news_record"=>$news_record]);
+
+
+        # code...
+    }
 }
