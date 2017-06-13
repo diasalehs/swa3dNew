@@ -51,18 +51,17 @@
     </div>
 
     <div class="container">
-      <hr class="my-4">
 
         <!-- Nav tabs -->
 <ul class="nav nav-tabs row justify-content-center" role="tablist">
 
-  <li class="nav-item  col-sm-4 col-lg-3 news-tab-item">
+  <li class="nav-item col-4 col-lg-3 news-tab-item">
     <a class="nav-link active" data-toggle="tab" href="#home" role="tab">News</a>
   </li>
-  <li class="nav-item col-sm-4 col-lg-3 researchs-tab-item">
+  <li class="nav-item col-4 col-lg-3 researchs-tab-item">
     <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Researches</a>
   </li>
-  <li class="nav-item col-sm-4 col-lg-3 dashboard-tab-item">
+  <li class="nav-item col-4 col-lg-3 dashboard-tab-item">
     <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Dashboard</a>
   </li>
 
