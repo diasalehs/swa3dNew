@@ -13,7 +13,7 @@ use App\user;
               <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
               <hr class="my-4">
               <p class="lead">
-                <a class="btn btn-primary btn-lg bv" href="#" role="button">Volunteer Now</a>
+                <a class="btn btn-primary btn-lg bv" href="{{route('upComingEvents')}}" role="button">Volunteer Now</a>
                 <a class="btn btn-primary btn-lg mg" href="#" role="button">Make Group</a>
               </p>
             </div>

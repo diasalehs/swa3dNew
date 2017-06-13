@@ -1,3 +1,4 @@
+
 <div class="col-sm-12  col-md-4  col-lg-3 sidebar">
     <div class="text-center">
 
@@ -10,7 +11,8 @@
     <hr>
     <ul class="list-group">
         <a href="{{route('home')}}" class="list-group-item justify-content-between">Dashbourd   <span class="badge badge-default badge-pill"></span></a>
-
-        <a href="{{route('makeEvent')}}" class="list-group-item  justify-content-between">Make Event</a>
-        <a href="{{route('myEvents')}}" class="list-group-item  justify-content-between">My Events<span class="badge badge-default badge-pill">{{$events->count()}}</span></a>
+        <a href="{{route('followersInstitute')}}" class="list-group-item  justify-content-between">Followers<span class="badge badge-default badge-pill">{{$followers->count()}}</span></a>
+        <a href="{{route('followingInstitute')}}" class="list-group-item  justify-content-between">Following<span class="badge badge-default badge-pill">{{$following->count()}}</span></a>
+        <a href="{{route('myEvents')}}" class="list-group-item  justify-content-between">Up Coming Events<span class="badge badge-default badge-pill">{{$events->count()}}</span></a>
+        <a href="{{route('archiveMyEvents')}}" class="list-group-item  justify-content-between">Archived Events<span class="badge badge-default badge-pill">{{$events->count()}}</span></a>
  </div>

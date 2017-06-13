@@ -6,13 +6,10 @@ use App\user;
 @section('content')
 <div class="container-fluid" style="margin:120px auto">
     <div class="row">
-          @include('institute/includes.sidebar')
-
-
-	         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
-          <h1>Followers</h1>
-
-          <table class="table">
+      @include('institute/includes.sidebar')
+         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
+           <h1>All Users</h1>
+            <table class="table">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -22,8 +19,10 @@ use App\user;
               </thead>
               <tbody>
               <?php
-             foreach ($followers as $follower) {
+              foreach ($users_record as $user) {
+
                   $flag = 0;
+                  if($user->userType == 0){
                   foreach ($following as $followi) {
                     $userei=User::findOrFail($followi->requested_id);
                     if($user->id == $userei->id){
@@ -45,14 +44,16 @@ use App\user;
                       <a class='btn btn-success btn-block'  href='allusers/follow/".$user->id."'>follow</a>
                       </td>
                       </tr>";
-                      $flag = 1;
+                    }
                   }
-              }?>
+              }
+                ?>
               </tbody>
           </table>
+
 
          </div>
     </div>
 </div>
 
-@endsection('content')
+@endsection

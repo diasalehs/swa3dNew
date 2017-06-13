@@ -18,7 +18,8 @@ class IndividualsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function allusers()
+    
+     public function allusers()
     {
             $user = Auth::user();
             $followers = friend::where('requested_id', $user->id)->get();
@@ -89,6 +90,7 @@ class IndividualsController extends Controller
         // $user->friend()->attach($userId, ['requested_id' => $user->id, 'requester_id' => $userId]);
         return redirect()->back();
     }
+   
 
     /**
      * Update the specified resource in storage.

@@ -1,13 +1,13 @@
-@extends('institute/layouts.profileMaster')
+@extends('layouts.master')
 
 @section('content')
 
 <div class="news">
   <div class="card card-inverse">
-    <img class="card-img" src="{{$news->mainImgpath}}" alt="Card image">
+    <img class="card-img" src="https://dummyimage.com/600x400/000/fff" alt="Card image">
 
     <div class="card-img-overlay">
-      <h1 class="card-title">{{$news->title}}</h1>
+      <h1 class="card-title">{{$event->title}}</h1>
     </div>
   </div>
   <div class="container">
@@ -18,12 +18,12 @@
             <hr>
 
             <!-- Date/Time -->
-            <p style="color:#777"> Posted on {{$news->created_at}}</p>
+            <p style="color:#777"> Posted on {{$event->created_at}}</p>
 
             <hr>
 
             <!-- Post Content -->
-            <p class=""> <?php  echo"".$news->textarea ;?> </p>
+            <p class=""> <?php  echo"".$event->description ;?> </p>
 
             <hr>
 
