@@ -43,12 +43,24 @@ Route::post('/registerer', function(\Illuminate\Http\Request $request) {
 })->name('registerer');
 
 
-Route::group(['prefix'=>'home'], function() {
-    Route::get('/', 'homeController@index')->name('home');
-    Route::get('/allusers',['uses'=>'allusers@allusers'])->name('allusers');
-    Route::get('/allusers/follow/{userId}', ['uses'=>'allusers@follow']);
-    Route::get('/allusers/unfollow/{userId}', ['uses'=>'allusers@unfollow']);
-    Route::get('/followers', ['uses'=>'allusers@followers'])->name('followers');
-    Route::get('/following', ['uses'=>'allusers@following'])->name('following');
+Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
+
+Route::get('/', 'homeController@index')->name('home');
+
+Route::group(['prefix'=>'individual' ,'routeMiddleware'=>'individual'], function() {
+Route::get('/', 'homeController@index')->name('home');
+Route::get('/allusers',['uses'=>'individualsController@allusers'])->name('allusers');
+Route::get('/allusers/follow/{userId}', ['uses'=>'individualsController@follow']);
+Route::get('/allusers/unfollow/{userId}', ['uses'=>'individualsController@unfollow']);
+Route::get('/followers', ['uses'=>'individualsController@followers'])->name('followers');
+Route::get('/following', ['uses'=>'individualsController@following'])->name('following');
+});
+
+Route::group(['prefix'=>'institute'], function() {
+Route::get('/', 'homeController@index')->name('home');
+Route::get('/makeEvent', ['uses'=>'instituteController@makeEvent'])->name('makeEvent');
+Route::post('/event', ['uses'=>'instituteController@event'])->name('event');
+Route::get('/myEvents', ['uses'=>'instituteController@myEvents'])->name('myEvents');
+});
 
 });
