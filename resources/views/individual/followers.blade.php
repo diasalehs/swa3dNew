@@ -20,8 +20,8 @@ use App\user;
               </thead>
               <tbody>
               <?php
-              foreach ($followers as $follower) {
-                $userer=User::findOrFail($follower->requested_id);
+              foreach ($followers as $follower){
+                $userer=User::findOrFail($follower->requester_id);
                 foreach ($following as $followi) {
                   $userei=User::findOrFail($followi->requested_id);
                   if($userer->id == $userei->id){
