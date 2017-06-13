@@ -10,7 +10,7 @@ $type= Auth::user()->userType;
 
 <div class="container" style="margin:100px auto">
 
-    <div class="row" style="display:
+    <div class="row " style="display:
  <?php
 if ($type== 0){
 	echo "block";
