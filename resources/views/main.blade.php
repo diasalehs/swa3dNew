@@ -55,13 +55,13 @@
 
         <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
-  <li class="nav-item col-sm-4 col-lg-4 news-tab-item">
+  <li class="nav-item offset-md-1 col-sm-4 col-lg-3 news-tab-item">
     <a class="nav-link active" data-toggle="tab" href="#home" role="tab">News</a>
   </li>
-  <li class="nav-item col-sm-4 col-lg-4 researchs-tab-item">
+  <li class="nav-item col-sm-4 col-lg-3 researchs-tab-item">
     <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Researches</a>
   </li>
-  <li class="nav-item col-sm-4 col-lg-4 dashboard-tab-item">
+  <li class="nav-item col-sm-4 col-lg-3 dashboard-tab-item">
     <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Dashboard</a>
   </li>
 
@@ -80,7 +80,7 @@
                     <a href="{{route('view',[$news->id])}}"><img  class="card-img-top img-fluid" src="{{$news->mainImgpath}}" alt=""></a>
                     <div class="card-block">
                         <a href="{{route('view',[$news->id])}}" class="card-text">{{$news->title}}</a>
-                        <p>
+                        <p style="margin-bottom:5px">
                           This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.
 
                         </p>

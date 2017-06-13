@@ -157,7 +157,7 @@ button{
   color: #c08301;
 }
 .news-item{
-	height: 330px ;
+	min-height: 370px ;
 	border: 0px;
 
 }
@@ -199,8 +199,6 @@ button{
 }
 .nav-tabs .nav-item{
     text-align: center;
-    padding-right: 4px;
-    padding-left: 4px;
 }
 .nav-tabs{
     border-bottom: 1px solid #eee !important;
@@ -211,17 +209,17 @@ button{
 }
 .nav-tabs .news-tab-item a.nav-link{
     background-color: #43b7b5 ;
-    border-color: #43b7b5 #43b7b5 #43b7b5 ;
+    border-top: 5px solid #43b7b5 !important;
+
 }
 .nav-tabs .researchs-tab-item a.nav-link{
     background-color: #e15687 ;
-    border-color: #e15687 #e15687 #e15687 ;
+    border-top: 5px solid #e15687 !important;
 
 }
 .nav-tabs .dashboard-tab-item a.nav-link{
     background-color: #e4a32d ;
-    border-color: #e4a32d #e4a32d #e4a32d ;
-
+    border-top: 5px solid #e4a32d !important;
 }
 .nav-tabs .news-tab-item a.nav-link:hover{
     background-color: #5fd0cd ;
@@ -239,16 +237,16 @@ button{
 }
 .nav-tabs .news-tab-item a.active{
     background-color: #51c2c0 ;
-    border-color: #51c2c0 #51c2c0 #51c2c0 ;
+    border-top: 5px solid #777 !important;
 }
 .nav-tabs .researchs-tab-item a.active{
     background-color: #f06593 ;
-    border-color: #f06593 #f06593 #f06593 ;
+    border-top: 5px solid #777 !important;
 
 }
 .nav-tabs .dashboard-tab-item a.active{
     background-color: #f1ae3a ;
-    border-color: #f1ae3a #f1ae3a #f1ae3a ;
+    border-top: 5px solid #777 !important;
 
 }
 .news-tab-item a {
@@ -339,7 +337,6 @@ button{
   .nav-tabs .nav-item a{
       background-color: #eee;
       font-size: 12px;
-      padding: 0;
   }
   .show-more-btn{
       padding-right: 5px;
@@ -365,7 +362,7 @@ button{
       margin-bottom: 10px;
   }
   .news-item {
-      height: 400px;
+
   }
   }
 }
@@ -389,7 +386,7 @@ button{
       font-size: 14px;
   }
   .news-item {
-      height: 330px;
+
   }
   .nav-tabs .nav-item a{
       background-color: #eee;

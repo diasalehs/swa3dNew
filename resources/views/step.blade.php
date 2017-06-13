@@ -79,7 +79,7 @@ else{
                         <div class="class has('dateOfBirth') ? ' has->error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your date of birth</label>
                             <div class="col-lg-6">
-                                <input id="name" type="date" class="form-control" name="dateOfBirth" value="2011-08-19"
+                                <input id="theDate" type="date" class="form-control" name="dateOfBirth"  min="" value=""
                                 required="required" />
                                 @if ($errors->has('dateOfBirth'))
                                     <div class="alert alert-danger" role="alert">

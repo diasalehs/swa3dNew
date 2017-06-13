@@ -40,14 +40,12 @@
             </div>
         </div>
         <div class="footer-copyright">
-            <p>© Copyright <?php echo date("Y"); ?> SWA3ED </p>
+            <p>© Copyright <?php echo date('Y'); ?> SWA3ED </p>
         </div>
     </footer>
     </div>
-    <!-- /.container -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery.js"> </script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -57,6 +55,7 @@
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
+
     </script>
 
 
