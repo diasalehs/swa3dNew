@@ -53,15 +53,11 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
 
     Route::get('/', 'homeController@index')->name('home');
 
-    Route::group(['prefix'=>'individual' ,'routeMiddleware'=>'individual'], function() {
-        Route::get('/', 'homeController@index')->name('home');
-
-        Route::get('/allusers',['uses'=>'IndividualsController@allusers'])->name('allusers');
-        Route::get('/allusers/follow/{userId}', ['uses'=>'IndividualsController@follow']);
-        Route::get('/allusers/unfollow/{userId}', ['uses'=>'IndividualsController@unfollow']);
-        Route::get('/followers', ['uses'=>'IndividualsController@followers'])->name('followers');
-        Route::get('/following', ['uses'=>'IndividualsController@following'])->name('following');
-    });
+    Route::get('/allusers',['uses'=>'homeController@allusers'])->name('allusers');
+    Route::get('/allusers/follow/{userId}', ['uses'=>'homeController@follow']);
+    Route::get('/allusers/unfollow/{userId}', ['uses'=>'homeController@unfollow']);
+    Route::get('/followers', ['uses'=>'homeController@followers'])->name('followers');
+    Route::get('/following', ['uses'=>'homeController@following'])->name('following');
 
     Route::group(['prefix'=>'institute','routeMiddleware'=>'institute'], function() {
         Route::get('/', 'homeController@index')->name('home');
@@ -74,20 +70,9 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
 
         Route::get('/makeEvent', ['uses'=>'instituteController@makeEvent'])->name('makeEvent');
         Route::post('/event', ['uses'=>'instituteController@eventInstitute'])->name('eventInstitute');
-        Route::get('/eventView/{eventId}', ['uses'=>'instituteController@eventView'])->name('eventView');
         Route::get('/eventDelete/{eventId}', ['uses'=>'instituteController@eventDelete'])->name('eventDelete');
         Route::get('/myEvents', ['uses'=>'instituteController@myEvents'])->name('myEvents');
         Route::get('/archiveMyEvents', ['uses'=>'instituteController@archiveMyEvents'])->name('archiveMyEvents');
-    });
-
-    Route::group(['prefix'=>'researcher' ,'routeMiddleware'=>'researcher'], function() {
-        Route::get('/', 'homeController@index')->name('home');
-
-        Route::get('/allusers',['uses'=>'researcherController@allusers'])->name('allusersResearcher');
-        Route::get('/allusers/follow/{userId}', ['uses'=>'researcherController@follow']);
-        Route::get('/allusers/unfollow/{userId}', ['uses'=>'researcherController@unfollow']);
-        Route::get('/followers', ['uses'=>'researcherController@followers'])->name('followersResearcher');
-        Route::get('/following', ['uses'=>'researcherController@following'])->name('followingResearcher');
     });
 
 });

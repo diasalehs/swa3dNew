@@ -17,8 +17,6 @@
               <tbody>
               <?php
               foreach ($events as $event) {
-                    $date = date('Y-m-d');
-                    if($event->startDate < $date){
                     echo "<tr>
                     <td>
                     <a class='btn'  href='event/".$event->id."'>{$event->title}</a>
@@ -26,7 +24,6 @@
                     <td>".$event->startDate."</td>
                     <td>".$event->endDate."</td>
                     </tr>";
-                  } 
               }?>
               </tbody>
           </table>

@@ -14,7 +14,7 @@
         <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i> Timeline</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fa fa-users" aria-hidden="true"></i> Find Volunteers</a>
+        <a class="nav-link" href="{{route('findVolunteers')}}"><i class="fa fa-users" aria-hidden="true"></i> Find Volunteers</a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="{{route('makeEvent')}}" style="color: #f1ae3a;">Create Event</a>

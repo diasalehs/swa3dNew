@@ -8,6 +8,12 @@ use App\slider;
 use App\event;
 class mainController extends Controller
 {
+
+	public function __construct()
+    {
+            $this->date = date('Y-m-d');
+    }
+
 	public function main() {
 		// if(Auth::attempt() || Auth::user()){
 		// 	if(Auth::user()->flag == 0){
@@ -27,18 +33,27 @@ class mainController extends Controller
 
 	public function upComingEvents() {
     	$user = Auth::user();
-    	$events = event::all();
+    	$date = $this->date;
+        $events = event::where('startDate','>',$date)->get();
 		return view('upComingEvents',compact('events'));
 	}
 
 	public function archiveEvents() {
     	$user = Auth::user();
-    	$events = event::all();
+    	$date = $this->date;
+    	$events = event::where('startDate','<',$date)->get();
 		return view('archiveEvents',compact('events'));
 	}
 
 	public function event($eventId){
     	$event = event::find($eventId);
-		return view('event',compact('event'));
+    	$flag = false;
+    	if(Auth::attempt() || Auth::user()){
+    		$user = Auth::user();
+    		if($user->userType == 1 && $event->user_id == $user->id){
+    			$flag = true;
+    		}
+    	}
+		return view('event',compact('event','flag'));
 	}
 }

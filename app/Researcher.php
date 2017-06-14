@@ -6,9 +6,6 @@ use Illuminate\Database\Eloquent\Model;
  
 class Researcher extends Model
 {
-    public function article(){
-    	return $this->hasMany('article');
-    }
     public function Intrest(){
         return $this->belongsToMany('Intrest','ResearcherIntrest');
     }
@@ -21,7 +18,10 @@ class Researcher extends Model
     public function Qualification(){
     	return $this->belongsTo('Qualification');
     }
-       public function User(){
+    public function User(){
         return $this->belongsTo('App\User');
+    }
+    public function article(){
+        return $this->hasMany('App\Article','user_id');
     }
 }
