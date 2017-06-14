@@ -32,23 +32,7 @@
     </header>
 
     <!-- Page Content -->
-    <div class="container text-center top-5">
-      <h1>Top 5 volunteers</h1>
-      <div class="row justify-content-center">
 
-         @foreach($volunteers as $volunteer)
-          <div class="col-lg-2 col-sm-2 col-xs-2 user">
-              <img class="img-fluid" src="{{$volunteer->picture}}" alt="">
-              <div class="text-center">
-                <h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->nameInEnglish}}</h5>
-                <small><a href="#">{{$volunteer->email}}</a></small>
-              </div>
-            </div>
-
-         @endforeach
-
-      </div>
-    </div>
 
     <div class="container">
 
@@ -80,7 +64,7 @@
                     <a href="{{route('view',[$news->id])}}"><img  class="card-img-top img-fluid" src="{{$news->mainImgpath}}" alt=""></a>
                     <div class="card-block">
                         <a href="{{route('view',[$news->id])}}" class="card-text">{{$news->title}}</a>
-                        <p style="margin-bottom:5px">
+                        <p style="margin-bottom:5px; overflow:hidden;" class="line-clamp">
                           This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.
 
                         </p>
@@ -152,7 +136,24 @@
 
         <!-- Marketing Icons Section -->
 
+        <div class="container text-center top-5">
+          <hr />
+          <h1>Top 5 volunteers</h1>
+          <div class="row justify-content-center">
 
+             @foreach($volunteers as $volunteer)
+              <div class="col-lg-2 col-sm-2 col-xs-2 user">
+                  <img class="img-fluid" src="{{$volunteer->picture}}" alt="">
+                  <div class="text-center">
+                    <h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->nameInEnglish}}</h5>
+                    <small><a href="#">{{$volunteer->email}}</a></small>
+                  </div>
+                </div>
+
+             @endforeach
+
+          </div>
+        </div>
 
 
 
