@@ -70,6 +70,8 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::get('/makeEvent', ['uses'=>'instituteController@makeEvent'])->name('makeEvent');
         Route::post('/event', ['uses'=>'instituteController@eventInstitute'])->name('eventInstitute');
         Route::get('/eventDelete/{eventId}', ['uses'=>'instituteController@eventDelete'])->name('eventDelete');
+        Route::get('/eventVeiwEdit/{eventId}', ['uses'=>'instituteController@eventVeiwEdit'])->name('eventVeiwEdit');
+        Route::post('/eventEdit', ['uses'=>'instituteController@eventEdit'])->name('eventEdit');
         Route::get('/myEvents', ['uses'=>'instituteController@myEvents'])->name('myEvents');
         Route::get('/archiveMyEvents', ['uses'=>'instituteController@archiveMyEvents'])->name('archiveMyEvents');
     });

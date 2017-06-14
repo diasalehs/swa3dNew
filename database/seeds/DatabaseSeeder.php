@@ -51,7 +51,6 @@ class DatabaseSeeder extends Seeder
 		        $Individuals->email = $users->email;
 		        $Individuals->preVoluntary = 0;
 		        $Individuals->voluntaryYears = 0;
-           		$Individuals->picture = "default.png";
 		        $Individuals->save();
 
 		        $i++;

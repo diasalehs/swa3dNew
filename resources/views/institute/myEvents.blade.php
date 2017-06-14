@@ -26,7 +26,16 @@
                     <td>".$event->startDate."</td>
                     <td>".$event->endDate."</td>
                     <td>
-                    <a class='btn btn-success btn-block'  href='".route('eventDelete',[$event->id])."'>delete</a>
+                        <div class='btn-group' style='width:100%'>
+                          <button type='button' class='btn btn-danger btn-block dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                            Action
+                          </button>
+                          <div class='dropdown-menu'>
+                            <a class='dropdown-item' href='".route('eventDelete',[$event->id])."'>Delete</a>
+                            <a class='dropdown-item' href='".route('eventVeiwEdit',[$event->id])."'>Edit</a>
+
+                          </div>
+                        </div>
                     </td>
                     </tr>";
               }?>
