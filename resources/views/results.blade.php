@@ -27,7 +27,7 @@
 
               </div>
               <div class="col-lg-6">
-                <a href="{{route('profile',[$result->name,$result->id,$result->userType])}}"><h2 class="card-title">{{$result->name}}</h2></a>
+                <a href="{{route('profile',[$result->id])}}"><h2 class="card-title">{{$result->name}}</h2></a>
                 <p class="card-text">
                     @if($result->userType==0)
                     Volunteer

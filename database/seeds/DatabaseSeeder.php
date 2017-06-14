@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
 		        $Individuals->email = $users->email;
 		        $Individuals->preVoluntary = 0;
 		        $Individuals->voluntaryYears = 0;
-            $Individuals->picture = $faker->imageUrl($width = 640, $height = 480 ,'people');
+           		$Individuals->picture = "default.png";
 		        $Individuals->save();
 
 		        $i++;
