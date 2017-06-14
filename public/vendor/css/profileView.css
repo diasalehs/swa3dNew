@@ -1,0 +1,10 @@
+.viewProfile .jumbotron{
+  padding-top: 25px;
+  padding-bottom: 15px;
+}
+.table td, .table th{
+  border: 0px;
+}
+.dcb{
+  padding: 1px;
+}

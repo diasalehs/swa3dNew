@@ -37,7 +37,7 @@
     <div class="container">
 
         <!-- Nav tabs -->
-<ul class="nav nav-tabs row justify-content-center" id="nnnn"role="tablist">
+<ul class="nav nav-tabs nav-tabs-main row justify-content-center" id="nnnn"role="tablist">
 
   <li class="nav-item col-4 col-lg-3 news-tab-item">
     <a class="nav-link active" id="ntab" data-toggle="tab" href="#home" role="tab">News</a>
@@ -64,7 +64,7 @@
                     <a href="{{route('view',[$news->id])}}"><img  class="card-img-top img-fluid" src="{{$news->mainImgpath}}" alt=""></a>
                     <div class="card-block">
                         <a href="{{route('view',[$news->id])}}" class="card-text">{{$news->title}}</a>
-                        <p style="margin-bottom:5px; overflow:hidden;" class="line-clamp">
+                        <p style="margin-bottom:5px; overflow:hidden;" class="line-clamp-3">
                           This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.
 
                         </p>
@@ -82,7 +82,6 @@
             </div>
 
   </div><!-- news tab -->
-
   <div class="tab-pane fade" id="profile" role="tabpanel">
     <div class="section researches">
         <h1 class="my-4 research-section-title text-center"></h1>
@@ -90,9 +89,9 @@
         <div class="row">
             <div class="col-lg-4 col-sm-6">
                 <div class="card research-card">
-                    <h4 class="card-header">Research Title</h4>
+                    <h4 class="card-header"><span class="line-clamp-2 ">Research Title</span></h4>
                     <div class="card-block">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicinecessitatibus neque.</p>
+                        <p class="card-text line-clamp-10">Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur  Lorem ipsum dolor sit amet, consectetur adipisicinecessitatibus neque.Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur </p>
                         <p class="RN">Researcher Name.</p>
                         <a href="#"> Learn More</a>
                     </div>
@@ -145,7 +144,7 @@
               <div class="col-lg-2 col-sm-2 col-xs-2 user">
                   <a href="{{URL::to('/')}}/profile/{{$volunteer->user_id }}"><img class="img-fluid" src="{{ URL::to('/') }}/pp/{{$volunteer->picture}}" alt=""></a>
                   <div class="text-center">
-                   <a href="{{URL::to('/')}}/profile/{{$volunteer->user_id }}"><h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->nameInEnglish}}</h5></a> 
+                   <a href="{{URL::to('/')}}/profile/{{$volunteer->user_id }}"><h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->nameInEnglish}}</h5></a>
                     <small><a href="#">{{$volunteer->email}}</a></small>
                   </div>
                 </div>

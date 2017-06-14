@@ -2,31 +2,32 @@
 
 @section('content')
 
-<div class="container-fluid" style="margin:120px auto">
+<div class="container-fluid" style="margin:30px auto">
     <div class="row">
-         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
-          <h1>Up Coming Events</h1>
-          <table class="table">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-                </tr>
-              </thead>
-              <tbody>
-              <?php
-              foreach ($events as $event) {
-                    echo "<tr>
-                    <td>
-                    <a class='btn'  href='event/".$event->id."'>{$event->title}</a>
-                    </td>
-                    <td>".$event->startDate."</td>
-                    <td>".$event->endDate."</td>
-                    </tr>";
-              }?>
-              </tbody>
-          </table>
+         <div class="col-12" style="color: #333">
+          <h1 class="pinkcolor">UpComing Events</h1>
+          <div class="row">
+
+          @foreach($events as $event)
+              <div class="col-6 ">
+                <div class="card" style="">
+                  <img class="card-img-top" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image cap">
+                  <div class="card-block">
+                    <h4 class="card-title">{{$event->title}}</h4>
+                    <p class="card-text">{{$event->description}}</p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{$event->startDate}}</li>
+                    <li class="list-group-item">{{$event->endDate}}</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                  </ul>
+                  <div class="card-block">
+                    <a href='event/".$event->id."' class="card-link">View Event</a>
+                  </div>
+                </div>
+              </div>
+            @endforeach
+              </div>
 
          </div>
 
