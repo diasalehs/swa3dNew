@@ -22,12 +22,12 @@
                 <div class="col-lg-6">
                     <a href="#">
                         <!--{$result->mainImgpath}}-->
-                      <img class="img-fluid rounded all-news-img" src="" alt="">
+                      <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->picture}}" alt="">
                   </a>
 
               </div>
               <div class="col-lg-6">
-                <a href="#"><h2 class="card-title">{{$result->name}}</h2></a>
+                <a href="{{route('profile',[$result->name,$result->id,$result->userType])}}"><h2 class="card-title">{{$result->name}}</h2></a>
                 <p class="card-text">
                     @if($result->userType==0)
                     Volunteer
@@ -71,8 +71,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <a href="#">
-                        <!--{$result->mainImgpath}}-->
-                      <img class="img-fluid rounded all-news-img" src="" alt="">
+                      <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->picture}}" alt="">
                   </a>
 
               </div>
