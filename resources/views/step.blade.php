@@ -25,20 +25,19 @@ else{
                 <div class="card-header">Individual Register</div>
                 <div class="card-block">
                     <form class="" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Where are you from</label>
                         <div class="col-lg-6">
-                            <select name="livingPlace" class="form-control" id="exampleSelect1">
+                            <select name="livingPlace" value="{{ old('livingPlace') }}" class="form-control" id="exampleSelect1">
                             <option value="city">city</option>
                             <option value="camp">camp</option>
-                            <option value="village">vilage</option>
+                            <option value="village">village</option>
                             </select>
                         </div>
                         </div>
 
-                        <div class="form-group class has('cityName') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">Your city name</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="cityName" value="{{ old('cityName') }}"
@@ -52,7 +51,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="form-group class has('country') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your country name</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="country" value="{{ old('country') }}"
@@ -69,17 +68,17 @@ else{
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Gender</label>
                         <div class="col-lg-6">
-                            <select name="gender" class="form-control" id="exampleSelect1">
+                            <select name="gender" value="{{ old('gender') }}" class="form-control" id="exampleSelect1">
                             <option value="male">male</option>
                             <option value="female">female</option>
                             </select>
                         </div>
                         </div>
 
-                        <div class="class has('dateOfBirth') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('dateOfBirth') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your date of birth</label>
                             <div class="col-lg-6">
-                                <input id="theDate" type="date" class="form-control" name="dateOfBirth"  min="" value=""
+                                <input id="theDate" type="date" class="form-control" name="dateOfBirth"  min="" value="{{ old('dateOfBirth') }}"
                                 required="required" />
                                 @if ($errors->has('dateOfBirth'))
                                     <div class="alert alert-danger" role="alert">
@@ -89,7 +88,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="form-group class has('currentWork') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('currentWork') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your curren tWork</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="currentWork" value="{{ old('currentWork') }}"
@@ -106,7 +105,7 @@ else{
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Your educational level</label>
                         <div class="col-lg-6">
-                            <select name="educationalLevel" class="form-control" id="exampleSelect1">
+                            <select name="educationalLevel" value="{{ old('educationalLevel') }}" class="form-control" id="exampleSelect1">
                             <option value="school">school</option>
                             <option value="colleage">colleage</option>
                             </select>
@@ -116,14 +115,14 @@ else{
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Do you have any expriments on Voluntary</label>
                         <div class="col-lg-6">
-                            <select name="preVoluntary" class="form-control" id="exampleSelect1">
+                            <select name="preVoluntary" value="{{ old('preVoluntary') }}" class="form-control" id="exampleSelect1">
                             <option value="0">No</option>
                             <option value="1">Yes</option>
                             </select>
                         </div>
                         </div>
 
-                        <div class="form-group class has('voluntaryYears') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('voluntaryYears') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Voluntary Years</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="voluntaryYears" value="{{ old('voluntaryYears') }}"
@@ -334,12 +333,11 @@ else{
                 <div class="card-header">Researcher Register</div>
                 <div class="card-block">
                     <form class="" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Where are you from</label>
                         <div class="col-lg-6">
-                            <select name="livingPlace" class="form-control" id="exampleSelect1">
+                            <select name="livingPlace" value="{{ old('livingPlace') }}" class="form-control" id="exampleSelect1">
                             <option value="city">city</option>
                             <option value="camp">camp</option>
                             <option value="village">village</option>
@@ -347,7 +345,7 @@ else{
                         </div>
                         </div>
 
-                        <div class="form-group class has('cityName') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">Your city name</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="cityName" value="{{ old('cityName') }}"
@@ -356,11 +354,12 @@ else{
                                     <div class="alert alert-danger" role="alert">
                                         <strong>Warning!</strong> {{ $errors->first('cityName') }}
                                     </div>
+
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group class has('country') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your country name</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="country" value="{{ old('country') }}"
@@ -369,24 +368,25 @@ else{
                                     <div class="alert alert-danger" role="alert">
                                         <strong>Warning!</strong> {{ $errors->first('country') }}
                                     </div>
+
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Gender</label>
-                            <div class="col-lg-6">
-                            <select name="gender" class="form-control" id="exampleSelect1">
+                        <div class="col-lg-6">
+                            <select name="gender" value="{{ old('gender') }}" class="form-control" id="exampleSelect1">
                             <option value="male">male</option>
                             <option value="female">female</option>
                             </select>
                         </div>
                         </div>
 
-                        <div class="class has('dateOfBirth') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('dateOfBirth') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your date of birth</label>
                             <div class="col-lg-6">
-                                <input id="name" type="date" class="form-control" name="dateOfBirth" value="2011-08-19"
+                                <input id="theDate" type="date" class="form-control" name="dateOfBirth"  min="" value="{{ old('dateOfBirth') }}"
                                 required="required" />
                                 @if ($errors->has('dateOfBirth'))
                                     <div class="alert alert-danger" role="alert">
@@ -396,7 +396,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="form-group class has('currentWork') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('currentWork') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your curren tWork</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="currentWork" value="{{ old('currentWork') }}"
@@ -405,14 +405,15 @@ else{
                                     <div class="alert alert-danger" role="alert">
                                         <strong>Warning!</strong> {{ $errors->first('currentWork') }}
                                     </div>
+
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Your educational level</label>
-                            <div class="col-lg-6">
-                            <select name="educationalLevel" class="form-control" id="exampleSelect1">
+                        <div class="col-lg-6">
+                            <select name="educationalLevel" value="{{ old('educationalLevel') }}" class="form-control" id="exampleSelect1">
                             <option value="school">school</option>
                             <option value="colleage">colleage</option>
                             </select>
@@ -421,15 +422,15 @@ else{
 
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Do you have any expriments on Voluntary</label>
-                            <div class="col-lg-6">
-                            <select name="preVoluntary" class="form-control" id="exampleSelect1">
+                        <div class="col-lg-6">
+                            <select name="preVoluntary" value="{{ old('preVoluntary') }}" class="form-control" id="exampleSelect1">
                             <option value="0">No</option>
                             <option value="1">Yes</option>
                             </select>
                         </div>
                         </div>
 
-                        <div class="form-group class has('voluntaryYears') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('voluntaryYears') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Voluntary Years</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="voluntaryYears" value="{{ old('voluntaryYears') }}"
@@ -446,6 +447,7 @@ else{
                                 <button type="submit" class="btn btn-success btn-block">Register</button>
                             </div>
                         </div>
+
 
                     </form>
                 </div>

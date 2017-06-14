@@ -96,6 +96,58 @@ class HomeController extends Controller
         return view('follow/following',compact('user','followers','following'));
     }
 
+    public function profileViewEdit()
+    {
+        $user = Auth::user();
+        $followers = friend::where('requested_id', $user->id);
+        $following = friend::where('requester_id', $user->id);
+        $userIndividual = Auth::user()->Individuals;
+        return view('follow/profileViewEdit',compact('user','userIndividual','followers','following'));
+    }
+
+    public function profileEdit(Request $request)
+    {
+        $user = Auth::user();
+            if($user->userType == 0){
+                $Individuals = Auth::user()->Individuals;
+                $Individuals->nameInEnglish = $user->name;
+                $Individuals->user_id = $user->id;
+                $Individuals->nameInArabic = $user->name;
+                $Individuals->email = $user->email;
+                $Individuals->livingPlace = $request['livingPlace'];
+                $Individuals->gender = $request['gender'];
+                $Individuals->cityName = $request['cityName'];
+                $Individuals->country = $request['country'];
+                $Individuals->currentWork = $request['currentWork'];
+                $Individuals->educationalLevel = $request['educationalLevel'];
+                $Individuals->preVoluntary = $request['preVoluntary'];
+                if($request['preVoluntary'] == 1){
+                        $Individuals->voluntaryYears = $request['voluntaryYears'];
+                }else{$Individuals->voluntaryYears = 0;}
+                $Individuals->dateOfBirth =  $request['dateOfBirth'];
+                $Individuals->save();
+            }elseif ($user->userType == 2) {
+                $Researcher = Auth::user()->Researcher;
+                $Researcher->nameInEnglish = $user->name;
+                $Researcher->user_id = $user->id;
+                $Researcher->nameInArabic = $user->name;
+                $Researcher->email = $user->email;
+                $Researcher->gender = $request['gender'];
+                $Researcher->livingPlace = $request['livingPlace'];
+                $Researcher->cityName = $request['cityName'];
+                $Researcher->country = $request['country'];
+                $Researcher->currentWork = $request['currentWork'];
+                $Researcher->educationalLevel = $request['educationalLevel'];
+                $Researcher->preVoluntary = $request['preVoluntary'];
+                if($request['preVoluntary'] == 1){
+                        $Researcher->voluntaryYears = $request['voluntaryYears'];
+                }else{$Researcher->voluntaryYears = 0;}
+                $Researcher->dateOfBirth =  $request['dateOfBirth'];
+                $Researcher->save();
+            }
+        return redirect()->route('home');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
