@@ -4,7 +4,7 @@
 
 <div class="news">
   <div class="card card-inverse">
-    <img class="card-img" src="https://dummyimage.com/600x400/000/fff" alt="Card image">
+    <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
 
     <div class="card-img-overlay">
       <h1 class="card-title">{{$event->title}}</h1>
