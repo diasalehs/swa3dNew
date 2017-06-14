@@ -2,11 +2,9 @@
 
 @section('content')
 
-<?php
-if($flag){
-echo "hhhhhhhhhhhhhhhhhhhhhhhhh";
-}
-  ?>
+@if($flag)
+hhhhhhhhhhhhhhhhhhhhhhhhh
+@endif
 
 <div class="news">
   <div class="card card-inverse">
@@ -14,6 +12,19 @@ echo "hhhhhhhhhhhhhhhhhhhhhhhhh";
 
     <div class="card-img-overlay">
       <h1 class="card-title">{{$event->title}}</h1>
+      <p class="card-text text-right"><div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+</div></p>
+
     </div>
   </div>
   <div class="container">
