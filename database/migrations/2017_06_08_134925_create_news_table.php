@@ -17,7 +17,7 @@ class CreateNewsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('mainImgpath')->default('default.jpg');
-            $table->string ('textarea');    
+            $table->string ('textarea',9999);    
 
             $table->timestamps();
         });

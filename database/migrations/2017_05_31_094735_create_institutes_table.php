@@ -24,7 +24,7 @@ class CreateInstitutesTable extends Migration
             $table->string('country');
             $table->unsignedInteger('workSummary'); //300 word
             //$table->string('feildNGO'); // separate table
-            $table->string('activities'); // or string
+            $table->string('activities',9999); // or string
             $table->string('email')->unique();
             $table->unsignedInteger('mobileNumber')->unique();
             $table->string('address');

@@ -17,7 +17,7 @@ class CreateSlidersTable extends Migration
             $table->increments('id');
             $table->string('mainImgpath')->default('head4.jpg');
             $table->string('title');
-            $table->string ('textarea');    
+            $table->string ('textarea',9999);    
             $table->timestamps();
         });
     }
