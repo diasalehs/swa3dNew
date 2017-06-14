@@ -1,72 +1,32 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\auth;
-use Illuminate\Support\Facades\DB;
-use App\User;
 use App\friend;
-use App\event;
+use App\user;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class HomeController extends Controller
+class researcherController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('researcher');
     }
-
-    /**
-     * Show the application dashboard.
+	/**
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        if(Auth::attempt() || Auth::user()){
-            $user = Auth::user();
-            $userIndividual = Auth::user()->Individuals;
-            $userInstitute = Auth::user()->Institute;
-            $userResearcher = Auth::user()->Researcher;
-            $followers = friend::where('requester_id', $user->id);
-            $following = friend::where('requested_id', $user->id);
-            $users_record= DB::table('users')->get();
-            $date = date('Y-m-d');
-            if ($user->userType=== 10 ) {
-                return view('admin/adminDashboard',["users_record"=>$users_record]);
-            }
-            if($user->flag == 1){
-                if($user->userType == 0){
-                    return view('Individual/homeIndividual',compact('user','userIndividual','followers','following'));
-                }
-                if($user->userType == 1){
-                    $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
-                    $Uevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
-                    return view('Institute/homeInstitute',compact('user','userInstitute','Aevents','Uevents','followers','following'));
-                }
-                if($user->userType == 2){
-                    return view('Researcher/homeResearcher',compact('user','userResearcher','followers','following'));
-                }
-            }elseif($user->flag == 0){
-                return redirect()->route('step');
-            }
-        }else{
-                return redirect()->route('main');
-        }
-    }
-
-         public function allusers()
+    
+     public function allusers()
     {
             $user = Auth::user();
             $followers = friend::where('requested_id', $user->id)->get();
             $following = friend::where('requester_id', $user->id)->get();
             $users_record= DB::table('users')->get();
-            return view('follow/allusers',compact('user','users_record','following','followers'));
+            return view('researcher/allusers',compact('user','users_record','following','followers'));
     }
 
     /**
@@ -79,7 +39,7 @@ class HomeController extends Controller
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id)->get();
         $following = friend::where('requester_id', $user->id)->get();
-        return view('follow/followers',compact('user','followers','following'));
+        return view('researcher/followers',compact('user','followers','following'));
     }
 
     /**
@@ -93,7 +53,7 @@ class HomeController extends Controller
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id);
         $following = friend::where('requester_id', $user->id)->get();
-        return view('follow/following',compact('user','followers','following'));
+        return view('researcher/following',compact('user','followers','following'));
     }
 
     /**
@@ -131,5 +91,4 @@ class HomeController extends Controller
         // $user->friend()->attach($userId, ['requested_id' => $user->id, 'requester_id' => $userId]);
         return redirect()->back();
     }
-
 }

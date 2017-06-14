@@ -26,7 +26,7 @@
               </div>
               <div class="col-lg-6">
                 <h2 class="card-title">{{$anew->title}}</h2>
-                <p class="card-text"></p>
+                <p class="card-text line-clamp">{{$anew->textarea}}</p>
                 <a href="{{route('view',[$anew->id])}}" class="btn btn-primary btn-green">Read More &rarr;</a>
             </div>
         </div>

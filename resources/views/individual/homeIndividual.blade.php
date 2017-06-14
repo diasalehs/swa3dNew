@@ -1,6 +1,4 @@
-<?php
-use App\user;
-?>
+
 @extends('individual/layouts.profileMaster')
 
 @section('content')

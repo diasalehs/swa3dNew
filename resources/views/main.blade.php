@@ -32,37 +32,21 @@
     </header>
 
     <!-- Page Content -->
-    <div class="container text-center top-5">
-      <h1>Top 5 volunteers</h1>
-      <div class="row justify-content-center">
 
-         @foreach($volunteers as $volunteer)
-          <div class="col-lg-2 col-sm-2 col-xs-2 user">
-              <img class="img-fluid" src="{{$volunteer->picture}}" alt="">
-              <div class="text-center">
-                <h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->nameInEnglish}}</h5>
-                <small><a href="#">{{$volunteer->email}}</a></small>
-              </div>
-            </div>
-
-         @endforeach
-
-      </div>
-    </div>
 
     <div class="container">
 
         <!-- Nav tabs -->
-<ul class="nav nav-tabs row justify-content-center" role="tablist">
+<ul class="nav nav-tabs row justify-content-center" id="nnnn"role="tablist">
 
   <li class="nav-item col-4 col-lg-3 news-tab-item">
-    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">News</a>
+    <a class="nav-link active" id="ntab" data-toggle="tab" href="#home" role="tab">News</a>
   </li>
   <li class="nav-item col-4 col-lg-3 researchs-tab-item">
-    <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Researches</a>
+    <a class="nav-link" data-toggle="tab" id="rtab" href="#profile" role="tab">Researches</a>
   </li>
   <li class="nav-item col-4 col-lg-3 dashboard-tab-item">
-    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Dashboard</a>
+    <a class="nav-link" data-toggle="tab" id="dtab" href="#messages" role="tab">Dashboard</a>
   </li>
 
 </ul>
@@ -80,7 +64,7 @@
                     <a href="{{route('view',[$news->id])}}"><img  class="card-img-top img-fluid" src="{{$news->mainImgpath}}" alt=""></a>
                     <div class="card-block">
                         <a href="{{route('view',[$news->id])}}" class="card-text">{{$news->title}}</a>
-                        <p style="margin-bottom:5px">
+                        <p style="margin-bottom:5px; overflow:hidden;" class="line-clamp">
                           This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.
 
                         </p>
@@ -152,7 +136,24 @@
 
         <!-- Marketing Icons Section -->
 
+        <div class="container text-center top-5">
+          <hr />
+          <h1>Top 5 volunteers</h1>
+          <div class="row justify-content-center">
 
+             @foreach($volunteers as $volunteer)
+              <div class="col-lg-2 col-sm-2 col-xs-2 user">
+                  <img class="img-fluid" src="{{$volunteer->picture}}" alt="">
+                  <div class="text-center">
+                    <h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->nameInEnglish}}</h5>
+                    <small><a href="#">{{$volunteer->email}}</a></small>
+                  </div>
+                </div>
+
+             @endforeach
+
+          </div>
+        </div>
 
 
 

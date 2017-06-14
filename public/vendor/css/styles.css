@@ -13,11 +13,24 @@ button{
 
     }
 }
-
+:root{
+    --gray:#eee;
+    --dark-gray:#777;
+    --green:#51c2c0;
+    --green-hover:#008988;
+    --pink:#f06493;
+    --pink-hover:#e15687;
+    --yellow:#f1ae3b;
+    --yellow-hover:#f1ae3a;
+}
 .container-fluid{
 		padding: 0 50px;
 }
-
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
 .carousel-item {
     height: 60vh;
     min-height: 300px;
@@ -136,7 +149,7 @@ form input:focus{
 
 }
 .research-card{
-	height: 300px;
+	min-height: 350px;
 }
 .RN{
 	font-size: 11px;
@@ -149,7 +162,7 @@ form input:focus{
   color: #c08301;
 }
 .news-item{
-	min-height: 370px ;
+	min-height: 350px ;
 	border: 0px;
 
 }
@@ -193,67 +206,100 @@ form input:focus{
 .nav-tabs .nav-item{
     text-align: center;
 }
-.nav-tabs{
-
-    border-bottom: 3px solid #ddd !important;
+#nnnn{
+border-bottom: 3px solid #51c2c0 !important;
 }
 .nav-tabs .nav-item a{
     color: #fff;
     font-size: 18px;
 }
 .nav-tabs .news-tab-item a.nav-link{
-    background-color: #43b7b5 ;
+    background-color: var(--gray);
     border: 0;
-    border-top: 5px solid #43b7b5 !important;
+    border-top: 5px solid var(--gray) !important;
+    transition: all .3s;
+
 }
 .nav-tabs .researchs-tab-item a.nav-link{
-    background-color: #e15687 ;
+    background-color: var(--gray);
     border: 0;
-    border-top: 5px solid #e15687 !important;
+    border-top: 5px solid var(--gray) !important;
+    transition: all .3s;
 
 }
 .nav-tabs .dashboard-tab-item a.nav-link{
-    background-color: #e4a32d ;
+    background-color:var(--gray);
     border: 0;
-    border-top: 5px solid #e4a32d !important;
+    border-top: 5px solid var(--gray)!important;
+    transition: all .3s;
+
 }
 .nav-tabs .news-tab-item a.nav-link:hover{
-    background-color: #5fd0cd ;
-    border-color: #5fd0cd #5fd0cd #5fd0cd ;
+  border-top: 5px solid var(--green) !important;
 }
 .nav-tabs .researchs-tab-item a.nav-link:hover{
-    background-color: #ff75a3 ;
-    border-color: #ff75a3 #ff75a3 #ff75a3 ;
+  border-top: 5px solid var(--pink) !important;
 
 }
 .nav-tabs .dashboard-tab-item a.nav-link:hover{
-    background-color: #ffc14c ;
-    border-color: #ffc14c #ffc14c #ffc14c ;
+    border-top: 5px solid var(--yellow) !important;
 
 }
 .nav-tabs .news-tab-item a.active{
-    background-color: #51c2c0 ;
-    border-top: 5px solid #777 !important;
+    background-color: var(--green) ;
+    border-top: 5px solid var(--dark-gray) !important;
 }
 .nav-tabs .researchs-tab-item a.active{
-    background-color: #f06593 ;
-    border-top: 5px solid #777 !important;
-
+    background-color: var(--pink) ;
+    border-top: 5px solid  var(--dark-gray)  !important;
 }
 .nav-tabs .dashboard-tab-item a.active{
-    background-color: #f1ae3a ;
-    border-top: 5px solid #777 !important;
+    background-color: var(--yellow);
+    border-top: 5px solid var(--dark-gray) !important;
 
 }
-.news-tab-item a {
+.news-tab-item a.active {
     color: #fff !important;
 }
+.news-tab-item a.active:hover {
+    color: #fff !important;
+}
+.news-tab-item a:hover {
+    color: var(--green) !important;
+}
+.news-tab-item a {
+    color: #666 !important;
+}
+.researchs-tab-item a.active{
+  color: #fff !important;
+
+}
+.researchs-tab-item a.active:hover{
+  color: #fff !important;
+
+}
+.researchs-tab-item a:hover{
+  color: var(--pink) !important;
+
+}
 .researchs-tab-item a{
+  color: #666 !important;
+
+}
+.dashboard-tab-item a:hover{
+  color:  var(--yellow) !important;
+
+}
+.dashboard-tab-item a.active{
+  color: #fff !important;
+
+}
+.dashboard-tab-item a.active:hover{
   color: #fff !important;
 
 }
 .dashboard-tab-item a{
-  color: #fff !important;
+  color: #666 !important;
 
 }
 .researches .col-lg-4{
@@ -294,8 +340,8 @@ form input:focus{
 		border: 0px solid #51c2c0;
 		cursor: pointer;
     width: 150px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
 .show-more-btn:hover{
 		background-color: #008988;
@@ -316,11 +362,11 @@ form input:focus{
 .top-5{
     margin-top: 20px;
     margin-bottom: 40px;
-    padding-top: 20px;
     border-radius: 10px;
 }
 .top-5 h1{
     color: #f1ae3b;
+    margin-top: 30px;
     margin-bottom: 20px;
 }
 .top-5 .profile-name{

@@ -36,10 +36,8 @@
 
                                 <ul class="dropdown-menu dropdown-menu-right dropdown-menu-nav" role="menu">
                                   <li><a class="dropdown-item" href="{{ route('home') }}">Your Profile</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('home') }}">Followers</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('home') }}">Following</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('home') }}">Activities</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('home') }}">Messages</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('followers') }}">Followers</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('following') }}">Following</a></li>
                                     <div class="dropdown-divider"></div>
 
                                     <li class="logout-dropdown-item">

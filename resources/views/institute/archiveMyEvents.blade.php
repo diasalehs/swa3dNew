@@ -19,7 +19,7 @@
               foreach ($Aevents as $event) {
                     echo "<tr>
                     <td>
-                    <a class='btn'  href='eventView/".$event->id."'>{$event->title}</a>
+                    <a class='btn'  href='event/".$event->id."'>{$event->title}</a>
                     </td>
                     <td>".$event->startDate."</td>
                     <td>".$event->endDate."</td>
