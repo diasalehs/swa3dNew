@@ -80,6 +80,16 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::get('/archiveMyEvents', ['uses'=>'instituteController@archiveMyEvents'])->name('archiveMyEvents');
     });
 
+    Route::group(['prefix'=>'researcher' ,'routeMiddleware'=>'researcher'], function() {
+        Route::get('/', 'homeController@index')->name('home');
+
+        Route::get('/allusers',['uses'=>'researcherController@allusers'])->name('allusersResearcher');
+        Route::get('/allusers/follow/{userId}', ['uses'=>'researcherController@follow']);
+        Route::get('/allusers/unfollow/{userId}', ['uses'=>'researcherController@unfollow']);
+        Route::get('/followers', ['uses'=>'researcherController@followers'])->name('followersResearcher');
+        Route::get('/following', ['uses'=>'researcherController@following'])->name('followingResearcher');
+    });
+
 });
 
 Route::get('/upComingEvents', ['uses'=>'mainController@upComingEvents'])->name('upComingEvents');

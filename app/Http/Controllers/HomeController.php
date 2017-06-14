@@ -49,7 +49,9 @@ class HomeController extends Controller
                     $Uevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
                     return view('Institute/homeInstitute',compact('user','userInstitute','Aevents','Uevents','followers','following'));
                 }
-                if($user->userType == 2){return view('Researcher/homeResearcher',compact('user','userResearcher'));}
+                if($user->userType == 2){
+                    return view('Researcher/homeResearcher',compact('user','userResearcher','followers','following'));
+                }
             }elseif($user->flag == 0){
                 return redirect()->route('step');
             }
