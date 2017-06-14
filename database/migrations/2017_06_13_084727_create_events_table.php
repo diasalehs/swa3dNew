@@ -18,7 +18,7 @@ class CreateEventsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('institute')->onDelete('cascade');
             $table->string('title');
-            $table->string('description');
+            $table->string('description',9999);
             $table->string('cover')->nullable();
             $table->date('startDate');
             $table->date('endDate');
