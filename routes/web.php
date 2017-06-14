@@ -18,8 +18,7 @@ Route::get('/', ['uses'=>'mainController@main','as'=>'main']);
 Route::get('/view/{newsId}',  ['uses' =>'newsController@view', 'as'=>'view']);
 Route::get('/allNews',  ['uses' =>'newsController@allNews', 'as'=>'allNews']);
 Route::get('/results/',  ['uses' =>'searchController@basic', 'as'=>'search']);
-
-
+Route::get('/profile/{username}/{userId}/{userType}',  ['uses' =>'profilesController@index', 'as'=>'profile']);
 
 Route::group(['prefix'=>'admin'], function() {
     // Route::get('/', array('as' => 'admin', function() {

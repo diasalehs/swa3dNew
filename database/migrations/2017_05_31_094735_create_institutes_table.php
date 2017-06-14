@@ -28,7 +28,7 @@ class CreateInstitutesTable extends Migration
             $table->string('email')->unique();
             $table->unsignedInteger('mobileNumber')->unique();
             $table->string('address');
-            $table->string('logo')->nullable();
+            $table->string('picture')->default('default.png');
             $table->string('website')->nullable();
             $table->string('PObox')->nullable();
             $table->unsignedInteger('fax')->nullable();

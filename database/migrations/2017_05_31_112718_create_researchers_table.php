@@ -28,7 +28,7 @@ class CreateResearchersTable extends Migration
             $table->string('email')->unique();
             $table->unsignedInteger('mobileNumber')->nullable()->unique();
             $table->string('address')->nullable();
-            $table->string('picture')->nullable();
+            $table->string('picture')->default('default.png');
             $table->boolean('preVoluntary');
             $table->integer('voluntaryYears');
             //$table->index('skills');
