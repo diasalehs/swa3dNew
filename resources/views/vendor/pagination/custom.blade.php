@@ -1,6 +1,6 @@
 
 <style type="text/css">
-  
+
 	</style>
 @if ($paginator->hasPages())
 

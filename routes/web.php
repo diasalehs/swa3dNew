@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
+
 Route::get('/', ['uses'=>'mainController@main','as'=>'main']);
 Route::get('/view/{newsId}',  ['uses' =>'newsController@view', 'as'=>'view']);
 Route::get('/allNews',  ['uses' =>'newsController@allNews', 'as'=>'allNews']);
