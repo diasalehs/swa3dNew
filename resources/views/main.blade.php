@@ -37,7 +37,7 @@
     <div class="container">
 
         <!-- Nav tabs -->
-<ul class="nav nav-tabs row justify-content-center" id="nnnn"role="tablist">
+<ul class="nav nav-tabs nav-tabs-main row justify-content-center" id="nnnn"role="tablist">
 
   <li class="nav-item col-4 col-lg-3 news-tab-item">
     <a class="nav-link active" id="ntab" data-toggle="tab" href="#home" role="tab">News</a>
