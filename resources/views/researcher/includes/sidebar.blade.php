@@ -9,11 +9,10 @@
     </div>
     <hr>
     <ul class="list-group">
-        <a href="" class="list-group-item justify-content-between">Dashbourd   <span class="badge badge-default badge-pill"></span></a>
-        <a href="" class="list-group-item  justify-content-between">All users<span class="badge badge-default badge-pill">2</span></a>
-        <a href="" class="list-group-item  justify-content-between">Followers<span class="badge badge-default badge-pill">2</span></a>
-        <a href="" class="list-group-item  justify-content-between">Following<span class="badge badge-default badge-pill">2</span></a>
+        <a href="{{route('home')}}" class="list-group-item justify-content-between">Dashboard   <span class="badge badge-default badge-pill"></span></a>
+        <a href="{{route('allusersResearcher')}}" class="list-group-item  justify-content-between">All users<span class="badge badge-default badge-pill">{{$user->count()}}</span></a>
+        <a href="{{route('followersResearcher')}}" class="list-group-item  justify-content-between">Followers<span class="badge badge-default badge-pill">{{$followers->count()}}</span></a>
+        <a href="{{route('followingResearcher')}}" class="list-group-item  justify-content-between">Following<span class="badge badge-default badge-pill">{{$following->count()}}</span></a>
 
-        <a href="#" class="list-group-item  justify-content-between">Messages   <span class="badge badge-default badge-pill">16</span></a>
     </ul>
  </div>

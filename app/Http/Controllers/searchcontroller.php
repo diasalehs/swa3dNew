@@ -11,11 +11,10 @@ class searchController extends Controller
     public function basic(Request $request)
 
     {
-    $results = DB::table('users')->where('name', 'like','%'.$request['search'].'%')->paginate(10);
-    $indiv=User::with('Individuals')->get();
-    $individuals=DB::table('users')->where('name', 'like','%'.$request['search'].'%')->get();
+    $users = DB::table('users')->where('name', 'like','%'.$request['search'].'%')->paginate(2, ['*'], 'users');
+    $Events=DB::table('events')->where('title', 'like','%'.$request['search'].'%')->paginate(2,['*'],'events');
 
-    	return view('results',['results'=>$results,'indivi'=>$individuals]);
+    	return view('results',['users'=>$users,'events'=>$Events]);
     	# code...
     }
     //
