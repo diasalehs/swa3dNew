@@ -14,10 +14,10 @@
         <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i> Timeline</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fa fa-users" aria-hidden="true"></i> Find Volunteers</a>
+        <a class="nav-link" href="#"><i class="fa fa-users" aria-hidden="true"></i> Make Groupe</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="{{route('makeEvent')}}" style="color: #f1ae3a;">Create Event</a>
+        <a class="nav-link" href="#" style="color: #f06493;">New Research</a>
       </li>
 
     </ul>
@@ -36,10 +36,10 @@
 
                                 <ul class="dropdown-menu dropdown-menu-right dropdown-menu-nav" role="menu">
                                   <li><a class="dropdown-item" href="{{ route('home') }}">Your Profile</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('followersInstitute') }}">Followers</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('followingInstitute') }}">Following</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('makeEvent') }}">Make Event</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('findVolunteers') }}">Find Volunteers</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('home') }}">Followers</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('home') }}">Following</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('home') }}">Activities</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('home') }}">Messages</a></li>
                                     <div class="dropdown-divider"></div>
 
                                     <li class="logout-dropdown-item">
