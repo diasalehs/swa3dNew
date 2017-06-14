@@ -193,9 +193,8 @@ form input:focus{
 .nav-tabs .nav-item{
     text-align: center;
 }
-.nav-tabs{
-
-    border-bottom: 3px solid #ddd !important;
+#nnnn{
+border-bottom: 3px solid #51c2c0 !important;
 }
 .nav-tabs .nav-item a{
     color: #fff;
@@ -238,12 +237,10 @@ form input:focus{
 .nav-tabs .researchs-tab-item a.active{
     background-color: #f06593 ;
     border-top: 5px solid #777 !important;
-
 }
 .nav-tabs .dashboard-tab-item a.active{
     background-color: #f1ae3a ;
     border-top: 5px solid #777 !important;
-
 }
 .news-tab-item a {
     color: #fff !important;

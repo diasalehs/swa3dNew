@@ -45,31 +45,43 @@
     </footer>
     </div>
 
-    <script src="js/jquery.js"> </script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
     <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-
-    </script>
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	    <!-- Bootstrap core JavaScript -->
 	    <script src="{{URL::asset('vendor/js/jquery.js')}} "></script>
-	    <script src="{{URL::asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script
+	    <script src="{{URL::asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 	    <script src="{{URL::asset('vendor/js/scripts.js')}}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script>
 
+    <script type="text/javascript">
+    $(document).ready(function()
+        {
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    });
+    $('#ntab').on('click',function(){
+
+              $('#nnnn').attr('style', 'border-bottom: 3px solid #51c2c0 !important');
+
+            });
+            $('#rtab').on('click',function(){
+
+              $('#nnnn').attr('style', 'border-bottom: 3px solid #e15687 !important');
+
+            });
+            $('#dtab').on('click',function(){
+
+              $('#nnnn').attr('style', 'border-bottom: 3px solid #e4a32d !important');
+
+            });
+          });
     </script>
+
 </body>
 
 </html>
