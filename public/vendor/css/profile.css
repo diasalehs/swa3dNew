@@ -20,6 +20,10 @@ button{
 .profile-name-indi{
   color: #f1ae3a;
 }
+.profile-name-re{
+  color: #f06493;
+
+}
 .mg{
 		padding: 14px 40px;
 		background-color: #5fd0cd;
@@ -53,6 +57,23 @@ button{
 		border: 5px solid #e4a32d;
 
 }
+.ar{
+		padding: 14px 40px;
+		background-color: #f06493;
+		border: 5px solid #e15687;
+		width: 300px;
+		display: inline-block !important;
+		color: white;
+    margin: 5px 5px;
+}
+.ar:hover{
+		padding: 14px 40px;
+		background-color: #e15687;
+		width: 300px;
+		border: 5px solid #e15687;
+
+}
+
 .sidebar{
 	border-right: 1px solid #ccc;
   color: #51c2c0;
