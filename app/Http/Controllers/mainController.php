@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\news;
 use App\Individuals;
 use App\slider;
+use App\event;
 class mainController extends Controller
 {
 	public function main() {
@@ -22,5 +23,22 @@ class mainController extends Controller
          return view('main',compact('volunteers','_3slides','news_record'));
 
 		// }
+	}
+
+	public function upComingEvents() {
+    	$user = Auth::user();
+    	$events = event::all();
+		return view('upComingEvents',compact('events'));
+	}
+
+	public function archiveEvents() {
+    	$user = Auth::user();
+    	$events = event::all();
+		return view('archiveEvents',compact('events'));
+	}
+
+	public function event($eventId){
+    	$event = event::find($eventId);
+		return view('event',compact('event'));
 	}
 }

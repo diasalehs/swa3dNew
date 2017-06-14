@@ -20,7 +20,8 @@ use App\user;
               </thead>
               <tbody>
               <?php
-              foreach ($followers as $follower){
+              foreach ($followers as $follower) {
+                $flag = 0;
                 $userer=User::findOrFail($follower->requester_id);
                 foreach ($following as $followi) {
                   $userei=User::findOrFail($followi->requested_id);
@@ -29,19 +30,20 @@ use App\user;
                     <td>".$userer->name."</td>
                     <td>".$userer->email."</td>
                     <td>
-                    <a class='btn btn-success btn-block'  href='allusers/unfollow/".$userer->id."'>unfollow</a>
+                    <a class='btn btn-success btn-block'  href='allusers/follow/".$userer->id."'>follow</a>
                     </td>
                     </tr>";
-                }else{
-                  if($userer->id != $user->id){
+                    $flag = 1;
+                }
+                if($flag == 0){
                     echo "<tr>
                     <td>".$userer->name."</td>
                     <td>".$userer->email."</td>
                     <td>
-                    <a class='btn btn-success btn-block'  href='allusers/follow/".$userer->id."'>follow</a>
+                    <a class='btn btn-success btn-block'  href='allusers/unfollow/".$userer->id."'>unfollow</a>
                     </td>
                     </tr>";
-                  }
+                    $flag = 1;
                 }
               }
 

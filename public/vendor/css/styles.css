@@ -55,6 +55,15 @@ button{
 		z-index: 44;
 		top: 0;
 }
+.card-header{
+  color: #555;
+}
+form label{
+  color: #555 !important;
+}
+form input:focus{
+  border-color: #51c2c0 !important;
+}
 .btn-green{
   background-color: #51c2c0;
   border: 0px solid #51c2c0;
@@ -65,6 +74,13 @@ button{
 }
 .btn-green:hover{
   background-color: #008988;
+}
+.link-green{
+  color: #008988;
+  cursor: pointer;
+}
+.link-green:hover{
+  color: #51c2c0;
 }
 .circular--landscape {
   display: inline-block;
@@ -169,6 +185,7 @@ button{
 }
 .tab-pane {
   margin-top: 50px;
+  min-height: 450px;
 }
 .nav-tabs{
   margin-top: 30px;
@@ -177,7 +194,8 @@ button{
     text-align: center;
 }
 .nav-tabs{
-    border-bottom: 1px solid #eee !important;
+
+    border-bottom: 3px solid #ddd !important;
 }
 .nav-tabs .nav-item a{
     color: #fff;
@@ -238,7 +256,9 @@ button{
   color: #fff !important;
 
 }
-
+.researches .col-lg-4{
+  margin-bottom: 10px;
+}
 .research-card .card-header{
 		background-color: #fff;
   	border-bottom: 0px;
@@ -247,7 +267,6 @@ button{
 }
 .research-card .card-block{
 	 	padding-top: 0px;
-
 }
 .research-card .card-block a{
     color: #f06493;
@@ -268,15 +287,15 @@ button{
 		color: #f70087;
 }
 .show-more-btn{
-		padding-right: 80px;
-		padding-left: 80px;
 		background-color: #51c2c0;
 		border: 5px solid #51c2c0;
 		display: inline-block !important;
 		color: white;
 		border: 0px solid #51c2c0;
 		cursor: pointer;
-    margin-top: 10px;
+    width: 150px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 .show-more-btn:hover{
 		background-color: #008988;
@@ -289,6 +308,7 @@ button{
 		color: white;
 		border: 0px solid #51c2c0;
 		cursor: pointer;
+    width: 200px;
 }
 .choose-btn:hover{
 		background-color: #008988;
@@ -322,32 +342,30 @@ button{
   border-color: #51c2c0 !important;
 }
 @media only screen and (min-width: 50px) {
-  .tab-pane {
-      height: 1150px;
 
+  .nav-tabs .nav-item{
+    padding: 1px;
   }
   .nav-tabs .nav-item a{
       background-color: #eee;
       font-size: 12px;
   }
   .show-more-btn{
-      padding-right: 5px;
-      padding-left: 5px;
+
 
   }
 }
 @media only screen and (min-width: 300px) {
-  .tab-pane {
-      height: 1350px;
 
-  }
+    .nav-tabs .nav-item{
+      padding: 1px;
+    }
   .nav-tabs .nav-item a{
       background-color: #eee;
       font-size: 14px;
   }
   .show-more-btn{
-  		padding-right: 30px;
-  		padding-left: 30px;
+    width: 200px;
 
   }
   .research-card {
@@ -359,20 +377,18 @@ button{
   }
 }
 @media only screen and (min-width: 500px) {
-  .tab-pane {
-      height: 1350px;
 
-  }
   .nav-tabs .nav-item a{
       background-color: #eee;
       font-size: 14px;
   }
-}
-@media only screen and (min-width: 570px) {
-  .tab-pane {
-      height: 780px;
+  .show-more-btn{
+    width: 200px !important;
 
   }
+}
+@media only screen and (min-width: 570px) {
+
   .nav-tabs .nav-item a{
       background-color: #eee;
       font-size: 14px;
@@ -380,6 +396,14 @@ button{
   .news-item {
 
   }
+  .show-more-btn{
+    width: 300px !important;
+
+  }
+  .nav-tabs .nav-item{
+    padding-right: 10px;
+    padding-left: : 10px;
+    }
   .nav-tabs .nav-item a{
       background-color: #eee;
       font-size: 16px;
@@ -387,18 +411,13 @@ button{
   }
 }
 @media only screen and (min-width: 768px) {
-  .tab-pane {
-      height: 780px;
-  }
+
   .nav-tabs .nav-item a{
       background-color: #eee;
       font-size: 20px;
   }
-  .tab-pane {
-      height: 450px;
-  }
+
   .show-more-btn{
-      padding-right: 50px;
-      padding-left: 50px;
+
   }
 }

@@ -3,6 +3,8 @@
 <div class="container" style="margin:100px auto">
     <div class="row justify-content-center">
         <div class="col-lg-6">
+          <a type="" href="{{ route('choose') }}" class="btn btn-success btn-green" style="margin-bottom:10px;">← Back</a>
+
             <div class="card">
 
                 <div class="card-header">Register</div>
@@ -44,7 +46,7 @@
                                 </div>
 
 
-                            <div class="class has('name') ? ' has->error' : '' }}">
+                            <div class="form-group  has('name') ? ' has->error' : '' }}">
                                 <label for="email" class="form-control-label">E-Mail Address</label>
                                 <div class="">
                                     <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
@@ -57,7 +59,7 @@
                       @endif
                       </div>
                             </div>
-                            <div class="class has('password') ? ' has->error' : '' }}">
+                            <div class="form-group  has('password') ? ' has->error' : '' }}">
                                 <label for="password" class="form-control-label">Password</label>
                                 <div class="">
                                     <input id="password" type="password" class="form-control" name="password"
@@ -78,9 +80,9 @@
                                     required="required" />
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-lg-4 offset-md-4">
-                                    <button type="submit" class="btn btn-success choose-btn btn-block">Next</button>
+                            <div class="form-group" style="margin-bottom:0">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success choose-btn btn-block">Next →</button>
                                 </div>
                             </div>
 

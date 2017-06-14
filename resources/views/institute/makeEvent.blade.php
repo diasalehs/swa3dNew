@@ -9,7 +9,7 @@
                   <div class="card-header">Create Event</div>
                   <div class="card-block">
 
-                      <form class="" role="form" method="POST" action="{{route('event') }}">{{ csrf_field() }}
+                      <form class="" role="form" method="POST" action="{{route('eventInstitute') }}">{{ csrf_field() }}
 
                           <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                               <label for="name" class="form-control-label">Title</label>
