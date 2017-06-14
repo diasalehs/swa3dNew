@@ -8,7 +8,7 @@ use App\user;
     <div class="row">
       @include('institute/includes.sidebar')
          <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
-           <h1>All Users</h1>
+           <h1>All Volunteers</h1>
             <table class="table">
               <thead>
                 <tr>
@@ -20,9 +20,7 @@ use App\user;
               <tbody>
               <?php
               foreach ($users_record as $user) {
-
                   $flag = 0;
-                  if($user->userType == 0){
                   foreach ($following as $followi) {
                     $userei=User::findOrFail($followi->requested_id);
                     if($user->id == $userei->id){
@@ -46,7 +44,7 @@ use App\user;
                       </tr>";
                     }
                   }
-              }
+              
                 ?>
               </tbody>
           </table>

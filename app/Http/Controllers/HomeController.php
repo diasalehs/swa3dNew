@@ -35,8 +35,8 @@ class HomeController extends Controller
             $userResearcher = Auth::user()->Researcher;
             $followers = friend::where('requester_id', $user->id);
             $following = friend::where('requested_id', $user->id);
-            $events = event::where('user_id', $user->id)->get();
             $users_record= DB::table('users')->get();
+            $date = date('Y-m-d');
             if ($user->userType=== 10 ) {
                 return view('admin/adminDashboard',["users_record"=>$users_record]);
             }
@@ -45,8 +45,9 @@ class HomeController extends Controller
                     return view('Individual/homeIndividual',compact('user','userIndividual','followers','following'));
                 }
                 if($user->userType == 1){
-                    
-                    return view('Institute/homeInstitute',compact('user','userInstitute','events','followers','following'));
+                    $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
+                    $Uevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
+                    return view('Institute/homeInstitute',compact('user','userInstitute','Aevents','Uevents','followers','following'));
                 }
                 if($user->userType == 2){return view('Researcher/homeResearcher',compact('user','userResearcher'));}
             }elseif($user->flag == 0){

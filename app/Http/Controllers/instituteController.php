@@ -14,16 +14,19 @@ class instituteController extends Controller
 	public function __construct()
     {
     	$this->middleware('auth');
+        $this->date = date('Y-m-d');
     }
     public function makeEvent(){
     	$user = Auth::user();
         $followers = friend::where('requested_id', $user->id);
         $following = friend::where('requester_id', $user->id);
-    	$events = event::where('user_id', $user->id);
-    	return view('institute/makeEvent',compact('user','events','followers','following'));
+        $date = $this->date;
+    	$Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+    	return view('institute/makeEvent',compact('user','Aevents','Uevents','followers','following'));
     }
 
-    public function event(Request $request){
+    public function eventInstitute(Request $request){
     	$user = Auth::user();
 
     	$this->validate($request, [
@@ -41,39 +44,46 @@ class instituteController extends Controller
     	$event->endDate = $request['endDate'];
     	$event->save();
 
-    	return view('institute/eventView',compact('user','event'));
+    	return redirect()->route('eventView',compact('event'));
     }
     public function myEvents(){
     	$user = Auth::user();
         $followers = friend::where('requested_id', $user->id);
         $following = friend::where('requester_id', $user->id);
-    	$events = event::where('user_id', $user->id)->get();
-    	return view('institute/myEvents',compact('user','events','followers','following'));
+        $date = $this->date;
+    	$Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date)->get();
+    	return view('institute/myEvents',compact('user','Aevents','Uevents','followers','following'));
     }
 
     public function archiveMyEvents() {
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id);
         $following = friend::where('requester_id', $user->id);
-        $events = event::where('user_id', $user->id)->get();
-        return view('institute/archiveMyEvents',compact('user','events','followers','following'));
+        $date = $this->date;
+        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
+        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+        return view('institute/archiveMyEvents',compact('user','Aevents','Uevents','followers','following'));
     }
 
     public function eventView($eventId){
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id);
         $following = friend::where('requester_id', $user->id);
-        $events = event::where('user_id', $user->id)->get();
+        $date = $this->date;
+        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
         $event = event::find($eventId);
-        return view('institute/eventView',compact('user','event','events','followers','following'));
+        return view('institute/eventView',compact('user','event','Aevents','Uevents','followers','following'));
     }
 
     public function eventDelete($eventId){
         $user = Auth::user();
-        $followers = friend::where('requested_id', $user->id);
-        $following = friend::where('requester_id', $user->id);
-        $events = event::where('user_id', $user->id)->get();
+        $date = date('Y-m-d');
         $event = event::find($eventId);
+        if($event->startDate > $date){
+            $event->delete();
+        }
         return redirect()->back();
     }
      public function findVolunteers()
@@ -81,9 +91,11 @@ class instituteController extends Controller
             $user = Auth::user();
             $followers = friend::where('requested_id', $user->id)->get();
             $following = friend::where('requester_id', $user->id)->get();
-            $events = event::where('user_id', $user->id);
-            $users_record= DB::table('users')->get();
-            return view('institute/findVolunteers',compact('user','users_record','following','followers','events'));
+            $date = $this->date;
+            $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+            $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+            $users_record= DB::table('users')->where('userType',0)->get();
+            return view('institute/findVolunteers',compact('user','users_record','following','followers','Aevents','Uevents'));
     }
 
     /**
@@ -96,8 +108,10 @@ class instituteController extends Controller
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id)->get();
         $following = friend::where('requester_id', $user->id)->get();
-        $events = event::where('user_id', $user->id);
-        return view('institute/followers',compact('user','followers','following','events'));
+        $date = $this->date;
+        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+        return view('institute/followers',compact('user','followers','following','Aevents','Uevents'));
     }
 
     /**
@@ -111,8 +125,10 @@ class instituteController extends Controller
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id);
         $following = friend::where('requester_id', $user->id)->get();
-        $events = event::where('user_id', $user->id);
-        return view('institute/following',compact('user','followers','following','events'));
+        $date = $this->date;
+        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+        return view('institute/following',compact('user','followers','following','Aevents','Uevents'));
     }
 
     /**
