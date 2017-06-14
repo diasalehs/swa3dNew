@@ -48,7 +48,6 @@ use App\user;
               </tbody>
           </table>
 
-
          </div>
     </div>
 </div>

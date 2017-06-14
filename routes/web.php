@@ -17,6 +17,8 @@ Route::get('/profile', function () {
 Route::get('/', ['uses'=>'mainController@main','as'=>'main']);
 Route::get('/view/{newsId}',  ['uses' =>'newsController@view', 'as'=>'view']);
 Route::get('/allNews',  ['uses' =>'newsController@allNews', 'as'=>'allNews']);
+Route::get('/results/',  ['uses' =>'searchController@basic', 'as'=>'search']);
+
 
 
 Route::group(['prefix'=>'admin'], function() {
