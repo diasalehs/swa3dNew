@@ -21,12 +21,12 @@
                     $date = date('Y-m-d');
                     echo "<tr>
                     <td>
-                    <a class='btn'  href='eventView/".$event->id."'>{$event->title}</a>
+                    <a class='btn'  href='".route('event',[$event->id])."'>{$event->title}</a>
                     </td>
                     <td>".$event->startDate."</td>
                     <td>".$event->endDate."</td>
                     <td>
-                    <a class='btn btn-success btn-block'  href='eventDelete/".$event->id."'>delete</a>
+                    <a class='btn btn-success btn-block'  href='".route('eventDelete',[$event->id])."'>delete</a>
                     </td>
                     </tr>";
               }?>

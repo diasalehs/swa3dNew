@@ -44,7 +44,7 @@ class instituteController extends Controller
     	$event->endDate = $request['endDate'];
     	$event->save();
 
-    	return redirect()->route('eventView',compact('event'));
+    	return redirect()->route('event',compact('event'));
     }
     public function myEvents(){
     	$user = Auth::user();
@@ -81,9 +81,11 @@ class instituteController extends Controller
         $user = Auth::user();
         $date = date('Y-m-d');
         $event = event::find($eventId);
-        if($event->startDate > $date){
-            $event->delete();
-        }
+        if($event->user_id == $user->id){
+            if($event->startDate > $date){
+                $event->delete();
+            }
+        }   
         return redirect()->back();
     }
      public function findVolunteers()

@@ -2,6 +2,12 @@
 
 @section('content')
 
+<?php
+if($flag){
+echo "hhhhhhhhhhhhhhhhhhhhhhhhh";
+}
+  ?>
+
 <div class="news">
   <div class="card card-inverse">
     <img class="card-img" src="https://dummyimage.com/600x400/000/fff" alt="Card image">
@@ -31,6 +37,5 @@
         </div>
       </div>
 </div>
-
 
 @endsection('content')
