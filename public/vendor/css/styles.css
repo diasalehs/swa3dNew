@@ -26,9 +26,29 @@ button{
 .container-fluid{
 		padding: 0 50px;
 }
-.line-clamp {
+.greencolor{
+  color: var(--green);
+}
+.pinkcolor{
+  color: var(--pink);
+}
+.yellowcolor{
+  color: var(--yellow);
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.line-clamp-3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.line-clamp-10 {
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
   -webkit-box-orient: vertical;
 }
 .carousel-item {
@@ -141,7 +161,7 @@ form input:focus{
 }
 
 .section {
-]}
+}
 .section-title{
 	margin-top: 0px !important;
 }
@@ -311,6 +331,11 @@ border-bottom: 3px solid #51c2c0 !important;
 		font-size: 18px;
     color: #777 !important;
 }
+.research-card h4.card-header {
+    overflow: hidden;
+    padding-bottom:0px;
+    margin-bottom:5px;
+}
 .research-card .card-block{
 	 	padding-top: 0px;
 }
@@ -320,6 +345,7 @@ border-bottom: 3px solid #51c2c0 !important;
 .research-card .card-text{
 		font-size: 14px;
     color: #f06493;
+    overflow: hidden;
 }
 .more-researches{
 		background-color: #f06493 !important;
