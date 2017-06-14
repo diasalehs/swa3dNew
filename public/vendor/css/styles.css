@@ -13,7 +13,9 @@ button{
 
     }
 }
-
+:root{
+    --main-color:#eee;
+}
 .container-fluid{
 		padding: 0 50px;
 }
@@ -201,56 +203,68 @@ border-bottom: 3px solid #51c2c0 !important;
     font-size: 18px;
 }
 .nav-tabs .news-tab-item a.nav-link{
-    background-color: #43b7b5 ;
+    background-color: var(--main-color);
     border: 0;
-    border-top: 5px solid #43b7b5 !important;
+    border-top: 5px solid var(--main-color) !important;
 }
 .nav-tabs .researchs-tab-item a.nav-link{
-    background-color: #e15687 ;
+    background-color: var(--main-color);
     border: 0;
-    border-top: 5px solid #e15687 !important;
+    border-top: 5px solid var(--main-color) !important;
 
 }
 .nav-tabs .dashboard-tab-item a.nav-link{
-    background-color: #e4a32d ;
+    background-color:var(--main-color);
     border: 0;
-    border-top: 5px solid #e4a32d !important;
+    border-top: 5px solid var(--main-color)!important;
 }
 .nav-tabs .news-tab-item a.nav-link:hover{
-    background-color: #5fd0cd ;
-    border-color: #5fd0cd #5fd0cd #5fd0cd ;
+    background-color: var(--main-color) ;
+    border-color: var(--main-color) var(--main-color) var(--main-color) ;
 }
 .nav-tabs .researchs-tab-item a.nav-link:hover{
-    background-color: #ff75a3 ;
-    border-color: #ff75a3 #ff75a3 #ff75a3 ;
+    background-color: var(--main-color) ;
+    border-color: var(--main-color) var(--main-color) var(--main-color) ;
 
 }
 .nav-tabs .dashboard-tab-item a.nav-link:hover{
-    background-color: #ffc14c ;
-    border-color: #ffc14c #ffc14c #ffc14c ;
+    background-color: var(--main-color) ;
+    border-color: var(--main-color) var(--main-color) var(--main-color);
 
 }
 .nav-tabs .news-tab-item a.active{
-    background-color: #51c2c0 ;
-    border-top: 5px solid #777 !important;
+    background-color: var(--main-color) ;
+    border-top: 5px solid #51c2c0 !important;
 }
 .nav-tabs .researchs-tab-item a.active{
-    background-color: #f06593 ;
-    border-top: 5px solid #777 !important;
+    background-color: var(--main-color) ;
+    border-top: 5px solid #f06593 !important;
 }
 .nav-tabs .dashboard-tab-item a.active{
-    background-color: #f1ae3a ;
-    border-top: 5px solid #777 !important;
+    background-color: var(--main-color) ;
+    border-top: 5px solid #f1ae3a !important;
+
+}
+.news-tab-item a.active {
+    color: #51c2c0 !important;
 }
 .news-tab-item a {
-    color: #fff !important;
+    color: #666 !important;
+}
+.researchs-tab-item a.active{
+  color: #e15687 !important;
+
 }
 .researchs-tab-item a{
-  color: #fff !important;
+  color: #666 !important;
+
+}
+.dashboard-tab-item a.active{
+  color: #e4a32d !important;
 
 }
 .dashboard-tab-item a{
-  color: #fff !important;
+  color: #666 !important;
 
 }
 .researches .col-lg-4{
