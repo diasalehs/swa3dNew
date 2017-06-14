@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use App\event;
-
-
+use Image;
 class instituteController extends Controller
 {
 	public function __construct()
@@ -42,6 +41,12 @@ class instituteController extends Controller
     	$event->description = $request['description'];
     	$event->startDate = $request['startDate'];
     	$event->endDate = $request['endDate'];
+        if ($request->hasFile('cover')){
+            $mainImg=$request->file('cover');
+            $imagename=time().'.'.$mainImg->getClientOriginalExtension();
+            Image::make($mainImg)->resize(350,200)->save(public_path('events/'.$imagename));
+            $event->cover = $imagename;
+        }
     	$event->save();
 
     	return redirect()->route('event',compact('event'));
