@@ -10,6 +10,7 @@
     <hr>
     <ul class="list-group">
         <a href="{{route('home')}}" class="list-group-item justify-content-between">Dashbourd   <span class="badge badge-default badge-pill"></span></a>
+
         <a href="{{route('makeEvent')}}" class="list-group-item  justify-content-between">Make Event</a>
         <a href="{{route('myEvents')}}" class="list-group-item  justify-content-between">My Events<span class="badge badge-default badge-pill">{{$events->count()}}</span></a>
  </div>

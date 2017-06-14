@@ -55,7 +55,17 @@ button{
 		z-index: 44;
 		top: 0;
 }
+.btn-green{
+  background-color: #51c2c0;
+  border: 0px solid #51c2c0;
+  display: inline-block !important;
+  color: white;
+  cursor: pointer;
 
+}
+.btn-green:hover{
+  background-color: #008988;
+}
 .circular--landscape {
   display: inline-block;
   position: relative;
@@ -74,40 +84,6 @@ button{
 }
 .btn{
 		border-radius: 200px !important;
-}
-
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
-}
-.form-signin .checkbox {
-  font-weight: normal;
-}
-.form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
 .sign-in-btn{
 	background-color: #1ab08b;
@@ -157,7 +133,7 @@ button{
   color: #c08301;
 }
 .news-item{
-	height: 330px ;
+	min-height: 370px ;
 	border: 0px;
 
 }
@@ -199,8 +175,6 @@ button{
 }
 .nav-tabs .nav-item{
     text-align: center;
-    padding-right: 4px;
-    padding-left: 4px;
 }
 .nav-tabs{
     border-bottom: 1px solid #eee !important;
@@ -211,17 +185,19 @@ button{
 }
 .nav-tabs .news-tab-item a.nav-link{
     background-color: #43b7b5 ;
-    border-color: #43b7b5 #43b7b5 #43b7b5 ;
+    border: 0;
+    border-top: 5px solid #43b7b5 !important;
 }
 .nav-tabs .researchs-tab-item a.nav-link{
     background-color: #e15687 ;
-    border-color: #e15687 #e15687 #e15687 ;
+    border: 0;
+    border-top: 5px solid #e15687 !important;
 
 }
 .nav-tabs .dashboard-tab-item a.nav-link{
     background-color: #e4a32d ;
-    border-color: #e4a32d #e4a32d #e4a32d ;
-
+    border: 0;
+    border-top: 5px solid #e4a32d !important;
 }
 .nav-tabs .news-tab-item a.nav-link:hover{
     background-color: #5fd0cd ;
@@ -239,16 +215,16 @@ button{
 }
 .nav-tabs .news-tab-item a.active{
     background-color: #51c2c0 ;
-    border-color: #51c2c0 #51c2c0 #51c2c0 ;
+    border-top: 5px solid #777 !important;
 }
 .nav-tabs .researchs-tab-item a.active{
     background-color: #f06593 ;
-    border-color: #f06593 #f06593 #f06593 ;
+    border-top: 5px solid #777 !important;
 
 }
 .nav-tabs .dashboard-tab-item a.active{
     background-color: #f1ae3a ;
-    border-color: #f1ae3a #f1ae3a #f1ae3a ;
+    border-top: 5px solid #777 !important;
 
 }
 .news-tab-item a {
@@ -331,6 +307,20 @@ button{
 		color: #f1ae3b;
 		margin-top: 10px;
 }
+.pagination .page-link{
+  color: #333 ;
+}
+.pagination .page-item.disabled .page-link{
+  color: #aaa !important ;
+}
+.pagination .page-item.disabled{
+  cursor: not-allowed;
+}
+.my-active span{
+  background-color: #51c2c0 !important;
+  color: white !important;
+  border-color: #51c2c0 !important;
+}
 @media only screen and (min-width: 50px) {
   .tab-pane {
       height: 1150px;
@@ -339,7 +329,6 @@ button{
   .nav-tabs .nav-item a{
       background-color: #eee;
       font-size: 12px;
-      padding: 0;
   }
   .show-more-btn{
       padding-right: 5px;
@@ -365,7 +354,7 @@ button{
       margin-bottom: 10px;
   }
   .news-item {
-      height: 400px;
+
   }
   }
 }
@@ -389,7 +378,7 @@ button{
       font-size: 14px;
   }
   .news-item {
-      height: 330px;
+
   }
   .nav-tabs .nav-item a{
       background-color: #eee;

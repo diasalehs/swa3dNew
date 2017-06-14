@@ -6,12 +6,14 @@
     <div class="container-fluid">
     @include('admin/includes.adminSidebar')
 
-        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">     
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+
+
             <h1>All News</h1>
             <div class="row">
              @foreach($news_record as $news)
                 <div class="col-lg-4">
-                    <div class="card" style="width: 20rem;">
+                    <div class="card" style="width: 20rem; margin-bottom:20px;">
                         <div class="card-block">
                             <h5 class="card-title">{{$news->title}}</h5>
                         </div>
@@ -25,9 +27,6 @@
             </div>
         </main>
 </div>
-
-
-
 
 
 

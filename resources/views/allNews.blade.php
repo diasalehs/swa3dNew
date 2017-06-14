@@ -39,10 +39,8 @@
 
 <!-- Pagination -->
 <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    {{$news->links()}}
+    {{$news->links('vendor.pagination.custom')}}
 
-</ul>
 </nav>
 
 </div>

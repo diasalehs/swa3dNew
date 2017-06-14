@@ -14,6 +14,6 @@
         <a href="{{route('followers')}}" class="list-group-item  justify-content-between">Followers<span class="badge badge-default badge-pill">{{$followers->count()}}</span></a>
         <a href="{{route('following')}}" class="list-group-item  justify-content-between">Following<span class="badge badge-default badge-pill">{{$following->count()}}</span></a>
 
-        <a href="#" class="list-group-item  justify-content-between">Messages   <span class="badge badge-default badge-pill">1</span></a>
+        <a href="#" class="list-group-item  justify-content-between">Messages   <span class="badge badge-default badge-pill">16</span></a>
     </ul>
  </div>
