@@ -60,8 +60,10 @@
                         @endif
       </li>
       <li class="nav-item ">
-          <input type="text" name="search" class="search form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
-
+      <form action="{{route('search')}}" method="get" >
+        <input type="text" name="search" class="search form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
+        <button type="submit" style="display: none;"></button>
+      </form>
 
       </li>
 

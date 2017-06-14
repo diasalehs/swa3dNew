@@ -77,7 +77,7 @@
 
               </div>
               <div class="col-lg-6">
-                <a href="#"><h2 class="card-title">{{$event->title}}</h2></a>
+                <a href="#"><h2 class="card-title">{{$result->title}}</h2></a>
                 <p class="card-text">
                 </p>
                 d
@@ -85,9 +85,9 @@
         </div>
     </div>
         <div class="card-footer text-muted">
-        @if(date(Y-m-d) > $result->endDate)
-        Fininshed
-        @elseif(date(Y-m-d) <= $result->endDate)
+        @if(date('Y-m-d') > $result->endDate)
+         This event has Ended
+        @elseif(date('Y-m-d') <= $result->endDate)
             Starts on :{{$result->startDate}}
             <br>
             Ends on:{{$result->endDate}}
