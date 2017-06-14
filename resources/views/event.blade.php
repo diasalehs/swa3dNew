@@ -35,8 +35,8 @@
                 Action
               </button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Delete</a>
-                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="{{route('eventDelete',[$event->id])}}">Delete</a>
+                <a class="dropdown-item" href="{{route('eventVeiwEdit',[$event->id])}}">Edit</a>
 
               </div>
             </div>

@@ -71,7 +71,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <a href="#">
-                      <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->picture}}" alt="">
+                      <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->cover}}" alt="">
                   </a>
 
               </div>
