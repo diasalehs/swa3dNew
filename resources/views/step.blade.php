@@ -90,7 +90,7 @@ else{
                         </div>
 
                         <div class="form-group class has('currentWork') ? ' has->error' : '' }}">
-                            <label for="name" class="col-lg-4 form-control-label">Your curren tWork</label>
+                            <label for="name" class="col-lg-4 form-control-label">Your current Work</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="currentWork" value="{{ old('currentWork') }}"
                                 required="required" />

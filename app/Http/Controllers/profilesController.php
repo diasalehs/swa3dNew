@@ -31,7 +31,7 @@ class profilesController extends Controller
 		
 		}
 		elseif ($userType==2) {
-			$user=DB::table('resercheres')->where('user_id','=',$userId)->get();
+			$user=DB::table('researchers')->where('user_id','=',$userId)->get();
 			return view('Resprofile',['user'=>$user]);
 
 			# code...
