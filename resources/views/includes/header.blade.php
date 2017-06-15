@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link" href="{{route('upComingEvents')}}">Up Coming Events</a>
+        <a class="nav-link" href="{{route('upComingEvents')}}">Upcoming Events</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Volunteers</a>
@@ -38,7 +38,7 @@
       @else
                             <li class="dropdown nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu dropdown-menu-right" role="menu">

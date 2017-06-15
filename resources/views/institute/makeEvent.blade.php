@@ -22,6 +22,19 @@
                                   @endif
                           </div>
 
+                          <div class="form-group {{ $errors->has('country') ? ' has-error' : '' }}">
+                                  <div class="form-group"> <!-- Description field -->
+                                    <label class="control-label " for="country">Counrty</label>
+                                    <textarea class="form-control" value="{{ old('country') }}" required="required" name="country" id="counrty">{{ old('country') }}</textarea>
+                                  </div>
+                                  @if ($errors->has('country'))
+                                      <div class="alert alert-danger" role="alert">
+                                          <strong>Warning!</strong> {{ $errors->first('country') }}
+                                      </div>
+                                  @endif
+                          </div>
+
+
                           <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                                   <div class="form-group"> <!-- Description field -->
                                     <label class="control-label " for="description">Description</label>

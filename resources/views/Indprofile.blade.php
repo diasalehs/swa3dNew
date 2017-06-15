@@ -12,6 +12,7 @@
       <h1 class="display-7">{{$Individual[0]->nameInEnglish}}</h1>
       <p class=""><span>Volunteer</span> <span>{{$Individual[0]->country}}</span> <span>{{$Individual[0]->cityName}}</span> </p>  
 
+
     </div>
   </div>
   <div class="container">

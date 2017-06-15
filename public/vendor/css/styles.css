@@ -17,11 +17,11 @@ button{
     --gray:#eee;
     --dark-gray:#777;
     --green:#51c2c0;
-    --green-hover:#008988;
+    --green-hover:#209e9d;
     --pink:#f06493;
-    --pink-hover:#e15687;
+    --pink-hover:#d2487a;
     --yellow:#f1ae3b;
-    --yellow-hover:#f1ae3a;
+    --yellow-hover:#d89824;
 }
 .container-fluid{
 		padding: 0 50px;
@@ -35,7 +35,33 @@ button{
 .yellowcolor{
   color: var(--yellow);
 }
+.pink-link{
+  color: var(--pink) !important;
+  transition: all .3s;
+}
+.pink-link:hover{
+  color: var(--pink-hover) !important;
+  border-bottom: 1px solid var(--pink-hover);
 
+}
+.yellow-link{
+  color: var(--yellow) !important;
+  transition: all .3s;
+}
+.yellow-link:hover{
+  color: var(--yellow-hover) !important;
+  border-bottom: 1px solid var(--yellow-hover);
+
+}
+.green-link{
+  color: var(--green) !important;
+  transition: all .3s;
+}
+.green-link:hover{
+  color: var(--green-hover) !important;
+  border-bottom: 1px solid var(--green-hover);
+
+}
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -44,6 +70,11 @@ button{
 .line-clamp-3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
 .line-clamp-10 {
@@ -69,6 +100,28 @@ button{
 }
 .mainNavbar .nav-item .nav-link{
 
+}
+.event{
+  margin-top: 20px;
+  min-height: 260px;
+}
+
+.event .card-img-overlay{
+  background-color: rgba(19, 60, 85, 0.8);
+  overflow: hidden;
+  color:  rgba(255,255,255,1);
+
+}
+.event .card-text {
+    height: 104px;
+    font-size: 18px;
+    color:  rgba(255,255,255,1);
+
+}
+.event .card-img {
+  max-height: 260px;
+  width: 100%;
+  object-fit: cover;
 }
 .main{
   margin-top: 78px;

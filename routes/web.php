@@ -81,5 +81,8 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
 });
 
 Route::get('/upComingEvents', ['uses'=>'mainController@upComingEvents'])->name('upComingEvents');
+Route::get('/allLocal', ['uses'=>'mainController@allLocal'])->name('allLocal');
+Route::get('/allEvents', ['uses'=>'mainController@allEvents'])->name('allEvents');
+
 Route::get('/archiveEvents', ['uses'=>'mainController@archiveEvents'])->name('archiveEvents');
 Route::get('/event/{eventId}', ['uses'=>'mainController@event'])->name('event');

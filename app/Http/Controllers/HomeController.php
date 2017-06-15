@@ -123,15 +123,20 @@ class HomeController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255',
         ]);
-        echo $user->password;
-        echo $request['password'];
             if($user->userType == 0){
                 $user->name = $request['name'];
                 if($user->email != $request['email']){
                     $this->validate($request, [
                         'email' => 'required|string|email|max:255|unique:users',
                     ]);
-                    $user->email = $request['email'];}
+                    $user->email = $request['email'];
+                }
+                if(isset($request->password)){
+                    $this->validate($request, [
+                        'password' => 'required|string|min:6|confirmed',
+                    ]);
+                    $user->password = bcrypt($request->password);
+                }
                 $user->save();
                 $Individuals = Auth::user()->Individuals;
                 $Individuals->nameInEnglish = $user->name;
@@ -157,7 +162,14 @@ class HomeController extends Controller
                     $this->validate($request, [
                         'email' => 'required|string|email|max:255|unique:users',
                     ]);
-                    $user->email = $request['email'];}
+                    $user->email = $request['email'];
+                }
+                if(isset($request->password)){
+                    $this->validate($request, [
+                        'password' => 'required|string|min:6|confirmed',
+                    ]);
+                    $user->password = bcrypt($request->password);
+                }
                 $user->save();
                 $Researcher = Auth::user()->Researcher;
                 $Researcher->nameInEnglish = $user->name;
@@ -182,7 +194,14 @@ class HomeController extends Controller
                     $this->validate($request, [
                         'email' => 'required|string|email|max:255|unique:users',
                     ]);
-                    $user->email = $request['email'];}
+                    $user->email = $request['email'];
+                }
+                if(isset($request->password)){
+                    $this->validate($request, [
+                        'password' => 'required|string|min:6|confirmed',
+                    ]);
+                    $user->password = bcrypt($request->password);
+                }
                 $user->save();
                 $Institute = Auth::user()->Institute;
                 $Institute->nameInEnglish = $user->name;

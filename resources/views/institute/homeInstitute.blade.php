@@ -10,7 +10,7 @@
              <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
              <hr class="my-4">
              <p class="lead">
-               <a class="btn btn-primary btn-lg bv" href="{{route('makeEvent')}}" role="button">Make Event</a>
+               <a class="btn btn-primary btn-lg bv" href="{{route('makeEvent')}}" role="button">Create an Event</a>
                <a class="btn btn-primary btn-lg mg" href="{{route('findVolunteers')}}" role="button">Find Volunteers</a>
              </p>
            </div>
@@ -19,7 +19,7 @@
                <h3>Your Info</h3>
              </div>
              <div class="col-sm-6 col-xs-6 col-md-6 text-xs-right text-md-right text-sm-right">
-                <form class="" role="form" method="GET" action="{{route('profileViewEdit')}}">{{ csrf_field() }}
+                <form class="" role="form" method="GET" action="{{route('profileViewEdit')}}">
                         <div class="form-group">
                                 <button type="submit" class="btn edit-btn">Edit</button>
                         </div>
