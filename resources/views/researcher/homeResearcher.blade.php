@@ -19,8 +19,11 @@
                 <h3>Your Info</h3>
               </div>
               <div class="col-sm-6 col-xs-6 col-md-6 text-xs-right text-md-right text-sm-right">
-                <button type="button" class="btn edit-btn">Edit</button>
-
+                <form class="" role="form" method="GET" action="{{route('profileViewEdit')}}">{{ csrf_field() }}
+                        <div class="form-group">
+                                <button type="submit" class="btn edit-btn">Edit</button>
+                        </div>
+                </form>
               </div>
             </div>
             <ul class="list-group">

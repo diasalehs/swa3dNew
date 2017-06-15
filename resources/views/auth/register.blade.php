@@ -27,17 +27,6 @@
                       </div>
                             </div>
 
-                                                    <!-- <div class="form-group">
-                                <label  class="col-lg-4 form-control-label" for="exampleSelect1">Your account type</label>
-                                <div class="col-lg-6">
-                                <select name="userType" class="form-control" id="exampleSelect1">
-                                <option value="1">Individual</option>
-                                <option value="2">Institute</option>
-                                <option value="3">Researcher</option>
-                                </select>
-                            </div>
-                            </div> -->
-
 
                                 <div class="">
                                     <input id="name" type="text" style="display: none;" class="form-control" name="userType" value="{{ $user_type }}"
@@ -46,7 +35,7 @@
                                 </div>
 
 
-                            <div class="form-group  has('name') ? ' has->error' : '' }}">
+                            <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email" class="form-control-label">E-Mail Address</label>
                                 <div class="">
                                     <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
@@ -59,7 +48,7 @@
                       @endif
                       </div>
                             </div>
-                            <div class="form-group  has('password') ? ' has->error' : '' }}">
+                            <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password" class="form-control-label">Password</label>
                                 <div class="">
                                     <input id="password" type="password" class="form-control" name="password"
