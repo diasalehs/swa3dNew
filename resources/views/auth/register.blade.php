@@ -21,10 +21,8 @@
                                             <div class="alert alert-danger" role="alert">
                                             <strong>Warning!</strong> {{ $errors->first('name') }}
                                             </div>
-
                                     @endif
-
-                      </div>
+                                </div>
                             </div>
 
 
@@ -44,10 +42,10 @@
                                         <div class="alert alert-danger" role="alert">
                                             <strong>Warning!</strong> {{ $errors->first('email') }}
                                         </div>
-
-                      @endif
-                      </div>
+                                    @endif
+                                </div>
                             </div>
+
                             <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password" class="form-control-label">Password</label>
                                 <div class="">
@@ -57,11 +55,10 @@
                                         <div class="alert alert-danger" role="alert">
                                             <strong>Warning!</strong> {{ $errors->first('password') }}
                                         </div>
-
-
-                      @endif
-                      </div>
+                                    @endif
+                                </div>
                             </div>
+
                             <div class="form-group">
                                 <label for="password-confirm" class=" form-control-label">Confirm Password</label>
                                 <div class="">
@@ -69,6 +66,7 @@
                                     required="required" />
                                 </div>
                             </div>
+                            
                             <div class="form-group" style="margin-bottom:0">
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success choose-btn btn-block">Next →</button>

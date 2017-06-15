@@ -53,12 +53,13 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     Route::get('/', 'homeController@index')->name('home');
 
     Route::get('/allusers',['uses'=>'homeController@allusers'])->name('allusers');
-    Route::get('/allusers/follow/{userId}', ['uses'=>'homeController@follow']);
-    Route::get('/allusers/unfollow/{userId}', ['uses'=>'homeController@unfollow']);
+    Route::get('/allusers/follow/{userId}', ['uses'=>'homeController@follow'])->name('follow');
+    Route::get('/allusers/unfollow/{userId}', ['uses'=>'homeController@unfollow'])->name('unfollow');
     Route::get('/followers', ['uses'=>'homeController@followers'])->name('followers');
     Route::get('/following', ['uses'=>'homeController@following'])->name('following');
     Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
     Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
+    Route::get('/resetPassword', ['uses'=>'homeController@resetPassword'])->name('resetPassword');
 
     Route::group(['prefix'=>'institute','routeMiddleware'=>'institute'], function() {
 

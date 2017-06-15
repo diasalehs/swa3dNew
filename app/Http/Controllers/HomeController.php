@@ -19,6 +19,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->date = date('Y-m-d');
     }
 
     /**
@@ -36,7 +37,7 @@ class HomeController extends Controller
             $followers = friend::where('requester_id', $user->id);
             $following = friend::where('requested_id', $user->id);
             $users_record= DB::table('users')->get();
-            $date = date('Y-m-d');
+            $date = $this->date;
             if ($user->userType=== 10 ) {
                 return view('admin/adminDashboard',["users_record"=>$users_record]);
             }
@@ -60,7 +61,7 @@ class HomeController extends Controller
         }
     }
 
-         public function allusers()
+    public function allusers()
     {
             $user = Auth::user();
             $followers = friend::where('requested_id', $user->id)->get();
@@ -101,14 +102,37 @@ class HomeController extends Controller
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id);
         $following = friend::where('requester_id', $user->id);
-        $userIndividual = Auth::user()->Individuals;
+        $date = $this->date;
+        if($user->userType == 0){
+            $userIndividual = Auth::user()->Individuals;
+        }elseif ($user->userType == 1) {
+            $userInstitute = Auth::user()->Institute;
+            $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+            $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+            return view('institute/profileViewEdit',compact('userInstitute',
+            'user','Aevents','Uevents','followers','following'));
+        }elseif ($user->userType == 2) {
+            $userIndividual = Auth::user()->Researcher;
+        }
         return view('follow/profileViewEdit',compact('user','userIndividual','followers','following'));
     }
 
     public function profileEdit(Request $request)
     {
         $user = Auth::user();
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+        ]);
+        echo $user->password;
+        echo $request['password'];
             if($user->userType == 0){
+                $user->name = $request['name'];
+                if($user->email != $request['email']){
+                    $this->validate($request, [
+                        'email' => 'required|string|email|max:255|unique:users',
+                    ]);
+                    $user->email = $request['email'];}
+                $user->save();
                 $Individuals = Auth::user()->Individuals;
                 $Individuals->nameInEnglish = $user->name;
                 $Individuals->user_id = $user->id;
@@ -126,14 +150,22 @@ class HomeController extends Controller
                 }else{$Individuals->voluntaryYears = 0;}
                 $Individuals->dateOfBirth =  $request['dateOfBirth'];
                 $Individuals->save();
-            }elseif ($user->userType == 2) {
+            }if ($user->userType == 2) {
+
+                $user->name = $request['name'];
+                if($user->email != $request['email']){
+                    $this->validate($request, [
+                        'email' => 'required|string|email|max:255|unique:users',
+                    ]);
+                    $user->email = $request['email'];}
+                $user->save();
                 $Researcher = Auth::user()->Researcher;
                 $Researcher->nameInEnglish = $user->name;
                 $Researcher->user_id = $user->id;
                 $Researcher->nameInArabic = $user->name;
                 $Researcher->email = $user->email;
-                $Researcher->gender = $request['gender'];
                 $Researcher->livingPlace = $request['livingPlace'];
+                $Researcher->gender = $request['gender'];
                 $Researcher->cityName = $request['cityName'];
                 $Researcher->country = $request['country'];
                 $Researcher->currentWork = $request['currentWork'];
@@ -144,6 +176,28 @@ class HomeController extends Controller
                 }else{$Researcher->voluntaryYears = 0;}
                 $Researcher->dateOfBirth =  $request['dateOfBirth'];
                 $Researcher->save();
+            }elseif ($user->userType == 1) {
+                $user->name = $request['name'];
+                if($user->email != $request['email']){
+                    $this->validate($request, [
+                        'email' => 'required|string|email|max:255|unique:users',
+                    ]);
+                    $user->email = $request['email'];}
+                $user->save();
+                $Institute = Auth::user()->Institute;
+                $Institute->nameInEnglish = $user->name;
+                $Institute->user_id = $user->id;
+                $Institute->nameInArabic = $user->name;
+                $Institute->email = $user->email;
+                $Institute->license = $request['license'];
+                $Institute->cityName = $request['cityName'];
+                $Institute->country = $request['country'];
+                $Institute->livingPlace = $request['livingPlace'];
+                $Institute->workSummary = $request['workSummary'];
+                $Institute->activities = $request['activities'];
+                $Institute->mobileNumber = $request['mobileNumber'];
+                $Institute->address = $request['address'];
+                $Institute->save();
             }
         return redirect()->route('home');
     }
@@ -182,6 +236,13 @@ class HomeController extends Controller
                       ->where('requested_id', '=', $userId)->delete();
         // $user->friend()->attach($userId, ['requested_id' => $user->id, 'requester_id' => $userId]);
         return redirect()->back();
+    }
+
+    public function resetPassword()
+    {
+        $user = Auth::user();
+        $userId = $user->id;
+        return view('auth/passwords/reset',compact('userId'));
     }
 
 }
