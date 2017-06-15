@@ -6,17 +6,11 @@
   <div class="jumbotron jumbotron-fluid text-center">
     <div class="container">
       <div class=" circular--landscape">
-          <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$user->picture}}">
+          <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$Individual[0]->picture}}">
       </div>
 
-      <h1 class="display-7">{{$user[0]->nameInEnglish}}</h1>
-      <p class=""><span>Volunteer</span> <span>{{$user[0]->country}}</span> <span>{{$user[0]->cityName}}</span> </p>
-
-        @if($flag)
-             <a class='btn btn-success'  href="{{route('unfollow',$user->id)}}">unfollow</a>
-        @elseif
-             <a class='btn btn-success'  href="{{route('follow',$user->id)}}">follow</a>
-        @endif
+      <h1 class="display-7">{{$Individual[0]->nameInEnglish}}</h1>
+      <p class=""><span>Volunteer</span> <span>{{$Individual[0]->country}}</span> <span>{{$Individual[0]->cityName}}</span> </p>  
 
     </div>
   </div>
@@ -31,11 +25,11 @@
                     <h4 class="card-title">User Informations</h4>
                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                     <p class="card-text">
-                    Gender: {{$user[0]->gender}}<br>
-                    Birth Date: {{$user[0]->dateOfBirth}}<br>
-                    Education: {{$user[0]->educationalLevel}}<br>
-                    Current Work: {{$user[0]->currentWork}}<br>
-                    Availabel from: {{$user[0]->availableFrom}} to: {{$user[0]->availableTo}}<br>
+                    Gender: {{$Individual[0]->gender}}<br>
+                    Birth Date: {{$Individual[0]->dateOfBirth}}<br>
+                    Education: {{$Individual[0]->educationalLevel}}<br>
+                    Current Work: {{$Individual[0]->currentWork}}<br>
+                    Availabel from: {{$Individual[0]->availableFrom}} to: {{$Individual[0]->availableTo}}<br>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                   </div>
@@ -46,9 +40,9 @@
                     <h4 class="card-title">Contact Informations</h4>
                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                     <p class="card-text">
-                    Email: {{$user[0]->email}}<br>
-                    Adress: {{$user[0]->address}}<br>
-                    Mobile number: {{$user[0]->mobileNumber}}<br>
+                    Email: {{$Individual[0]->email}}<br>
+                    Adress: {{$Individual[0]->address}}<br>
+                    Mobile number: {{$Individual[0]->mobileNumber}}<br>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                   </div>
@@ -68,7 +62,7 @@
                   <tbody>
                     <tr>
                       <td>Voluntary years</td>
-                      <td>{{$user[0]->voluntaryYears}}</td>
+                      <td>{{$Individual[0]->voluntaryYears}}</td>
                     </tr>
                     <tr>
                       <td>Otto</td>

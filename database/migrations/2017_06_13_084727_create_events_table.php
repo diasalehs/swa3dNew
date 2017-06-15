@@ -20,6 +20,8 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->string('description',9999);
             $table->string('cover')->nullable();
+            $table->string('country');
+            $table->string('city');
             $table->date('startDate');
             $table->date('endDate');
             $table->timestamps();

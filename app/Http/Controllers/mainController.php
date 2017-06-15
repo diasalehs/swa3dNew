@@ -35,7 +35,14 @@ class mainController extends Controller
     	$user = Auth::user();
     	$date = $this->date;
         $events = event::where('startDate','>',$date)->get();
+
+    	if (Auth::attempt()||$user) {
+    	$Iuser=$user->Individuals;
+        $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->get();
+		return view('upComingEvents',compact('events','localevents'));
+    	}   
 		return view('upComingEvents',compact('events'));
+
 	}
 
 	public function archiveEvents() {
