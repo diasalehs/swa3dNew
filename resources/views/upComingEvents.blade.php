@@ -22,7 +22,7 @@
                     <li class="list-group-item">Vestibulum at eros</li>
                   </ul>
                   <div class="card-block">
-                    <a href='event/".$event->id."' class="card-link">View Event</a>
+                    <a href='event/{{$event->id}}' class="card-link">View Event</a>
                   </div>
                 </div>
               </div>
