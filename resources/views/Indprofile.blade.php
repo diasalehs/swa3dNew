@@ -6,13 +6,19 @@
   <div class="jumbotron jumbotron-fluid text-center">
     <div class="container">
       <div class=" circular--landscape">
-          <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$user[0]->picture}}">
+          <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$user->picture}}">
       </div>
-      <h1 class="display-7">{{$user[0]->nameInEnglish}}</h1>
+      <h1 class="display-7">{{$user->name}}</h1>
       <p class=""><span>da</span> <span>dasd</span> <span>fs</span> </p>
-       <p class="lead ">
-         <a class="btn btn-green" href="#" role="button"><i class="fa fa-user-plus" aria-hidden="true"></i>  Follow</a>
-       </p>
+
+       @if($flag)
+             <a class='btn btn-success'  href="{{route('unfollow',$user->id)}}">unfollow</a>
+        @elseif
+             <a class='btn btn-success'  href="{{route('follow',$user->id)}}">follow</a>
+        @endif
+
+
+
     </div>
   </div>
 

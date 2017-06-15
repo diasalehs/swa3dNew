@@ -178,7 +178,7 @@ else{
                     <form class="" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
 
 
-                        <div class="class has('license') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('license') ? ' has-error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">The license number</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="license" value="{{ old('license') }}"
@@ -203,7 +203,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="class has('cityName') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">City name</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="cityName" value="{{ old('cityName') }}"
@@ -216,7 +216,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="class has('country') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your country name</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="country" value="{{ old('country') }}"
@@ -229,7 +229,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="class has('workSummary') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('workSummary') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Work summary</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="workSummary" value="{{ old('workSummary') }}"
@@ -253,7 +253,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="class has('activities') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('activities') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">The institute activities</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="activities" value="{{ old('activities') }}"
@@ -266,7 +266,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="class has('mobileNumber') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('mobileNumber') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Mobile number</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="mobileNumber" value="{{ old('mobileNumber') }}"
@@ -279,7 +279,7 @@ else{
                             </div>
                         </div>
 
-                        <div class="class has('address') ? ' has->error' : '' }}">
+                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Address</label>
                             <div class="col-lg-6">
                                 <input id="name" type="text" class="form-control" name="address" value="{{ old('address') }}"

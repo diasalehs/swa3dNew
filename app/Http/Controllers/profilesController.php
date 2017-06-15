@@ -17,22 +17,27 @@ class profilesController extends Controller
 
 		$user=User::find($userId);
 		$userType=$user->userType;
+		$friend = DB::table('friends')->where('requester_id', '=', $user->id)
+                      ->where('requested_id', '=', $userId)->first();
+        $flag = false;
+        if($friend){$flag = true;}
 		if ($userType==0) {
-			$user=DB::table('individuals')->where('user_id','=',$userId)->get();
-			return view('Indprofile',['user'=>$user]);
+			$Individual=DB::table('Individuals')->where('user_id','=',$userId)->get();
+			return view('Indprofile',['user'=>$user,'Individual'=>$Individual,'friend'=>$friend]);
 
 			# code...
 		} 
 		elseif ($userType==1) {
-			$user=DB::table('institutes')->where('user_id','=',$userId)->get();
-		    return view('Insprofile',['user'=>$user]);
+			$Institute=DB::table('Institutes')->where('user_id','=',$userId)->get();
+		    return view('Insprofile',['user'=>$user,'Institute'=>$friend,'flag'=>$friend]);
 
 		    # code...
 		
 		}
 		elseif ($userType==2) {
-			$user=DB::table('resercheres')->where('user_id','=',$userId)->get();
-			return view('Resprofile',['user'=>$user]);
+
+			$researcher=DB::table('researcheres')->where('user_id','=',$userId)->get();
+			return view('Resprofile',['user'=>$user,'researcher'=>$friend,'flag'=>$friend]);
 
 			# code...
 		
@@ -40,7 +45,7 @@ class profilesController extends Controller
 
 
 
-		return view('profile',['user'=>$user]);
+		return view('profile',['user'=>$user,'flag'=>$flag]);
 
 		
 		# code...
