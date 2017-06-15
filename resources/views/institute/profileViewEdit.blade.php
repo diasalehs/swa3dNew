@@ -9,14 +9,6 @@
                   <div class="card-header">Edit Your Information</div>
                   <div class="card-block">
 
-            <div class="col-sm-6 col-xs-6 col-md-6 text-xs-right text-md-right text-sm-right">
-                <form class="" role="form" method="GET" action="{{route('resetPassword')}}">{{ csrf_field() }}
-                        <div class="form-group">
-                                <button type="submit" class="btn edit-btn">Reset Password</button>
-                        </div>
-                </form>
-            </div>
-
 
                     <form class="" role="form" method="POST" action="{{ route('profileEdit') }}">{{ csrf_field() }}
 
@@ -46,6 +38,25 @@
                                 </div>
                             </div>
 
+                            <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+                                <label for="password" class="col-lg-4 form-control-label">Password</label>
+                                <div class="col-lg-6">
+                                    <input id="password" type="password" class="form-control" name="password" />
+                                    @if ($errors->has('password'))
+                                        <div class="alert alert-danger" role="alert">
+                                            <strong>Warning!</strong> {{ $errors->first('password') }}
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password-confirm" class="col-lg-4 form-control-label">Confirm Password</label>
+                                <div class="col-lg-6">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"/>
+                                </div>
+                            </div>
+
 
                         <div class="form-group{{ $errors->has('license') ? ' has-error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">The license number</label>
@@ -56,7 +67,6 @@
                                     <div class="alert alert-danger" role="alert">
                                         <strong>Warning!</strong> {{ $errors->first('license') }}
                                     </div>
-
                                 @endif
                             </div>
                         </div>

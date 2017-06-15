@@ -12,9 +12,9 @@
       <h1 class="display-7">{{$user[0]->nameInEnglish}}</h1>
       <p class=""><span>Volunteer</span> <span>{{$user[0]->country}}</span> <span>{{$user[0]->cityName}}</span> </p>
 
-        @if($flag)
+        @if($friend)
              <a class='btn btn-success'  href="{{route('unfollow',$user->id)}}">unfollow</a>
-        @elseif
+        @else
              <a class='btn btn-success'  href="{{route('follow',$user->id)}}">follow</a>
         @endif
 
