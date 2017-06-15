@@ -36,7 +36,7 @@ class profilesController extends Controller
 		}
 		elseif ($userType==2) {
 
-			$researcher=DB::table('researcheres')->where('user_id','=',$userId)->get();
+			$researcher=DB::table('researchers')->where('user_id','=',$userId)->get();
 			return view('Resprofile',['user'=>$user,'researcher'=>$friend,'flag'=>$friend]);
 
 			# code...

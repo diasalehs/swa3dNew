@@ -8,20 +8,18 @@
       <div class=" circular--landscape">
           <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$user->picture}}">
       </div>
-      <h1 class="display-7">{{$user->name}}</h1>
-      <p class=""><span>da</span> <span>dasd</span> <span>fs</span> </p>
 
-       @if($flag)
+      <h1 class="display-7">{{$user[0]->nameInEnglish}}</h1>
+      <p class=""><span>Volunteer</span> <span>{{$user[0]->country}}</span> <span>{{$user[0]->cityName}}</span> </p>
+
+        @if($flag)
              <a class='btn btn-success'  href="{{route('unfollow',$user->id)}}">unfollow</a>
         @elseif
              <a class='btn btn-success'  href="{{route('follow',$user->id)}}">follow</a>
         @endif
 
-
-
     </div>
   </div>
-
   <div class="container">
     <div class="row">
 
@@ -30,13 +28,32 @@
 
                 <div class="card">
                   <div class="card-block">
-                    <h4 class="card-title">Card title</h4>
+                    <h4 class="card-title">User Informations</h4>
                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="card-text">
+                    Gender: {{$user[0]->gender}}<br>
+                    Birth Date: {{$user[0]->dateOfBirth}}<br>
+                    Education: {{$user[0]->educationalLevel}}<br>
+                    Current Work: {{$user[0]->currentWork}}<br>
+                    Availabel from: {{$user[0]->availableFrom}} to: {{$user[0]->availableTo}}<br>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                   </div>
                 </div>
+                <br>
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title">Contact Informations</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">
+                    Email: {{$user[0]->email}}<br>
+                    Adress: {{$user[0]->address}}<br>
+                    Mobile number: {{$user[0]->mobileNumber}}<br>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                  </div>
+                </div>
+                <br>
 
 
           </div>
@@ -50,8 +67,8 @@
 
                   <tbody>
                     <tr>
-                      <td>Otto</td>
-                      <td>@mdo</td>
+                      <td>Voluntary years</td>
+                      <td>{{$user[0]->voluntaryYears}}</td>
                     </tr>
                     <tr>
                       <td>Otto</td>
