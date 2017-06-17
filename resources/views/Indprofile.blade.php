@@ -12,6 +12,15 @@
       <h1 class="display-7">{{$Individual[0]->nameInEnglish}}</h1>
       <p class=""><span>Volunteer</span> <span>{{$Individual[0]->country}}</span> <span>{{$Individual[0]->cityName}}</span> </p>  
 
+      @if(Auth::guest())
+             <a class='btn btn-green'  href="{{route('login')}}">follow</a>
+      @else
+        @if($friend)
+             <a class='btn btn-green'  href="{{route('unfollow',$user->id)}}">unfollow</a>
+        @elseif(!$friend)
+             <a class='btn btn-green'  href="{{route('follow',$user->id)}}">follow</a>
+        @endif
+      @endif
 
     </div>
   </div>
