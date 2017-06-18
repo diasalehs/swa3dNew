@@ -6,11 +6,11 @@
   <div class="jumbotron jumbotron-fluid text-center">
     <div class="container">
       <div class=" circular--landscape">
-          <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$Individual[0]->picture}}">
+          <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$Individual->picture}}">
       </div>
 
-      <h1 class="display-7">{{$Individual[0]->nameInEnglish}}</h1>
-      <p class=""><span>Volunteer</span> <span>{{$Individual[0]->country}}</span> <span>{{$Individual[0]->cityName}}</span> </p>  
+      <h1 class="display-7">{{$Individual->nameInEnglish}}</h1>
+      <p class=""><span>Volunteer</span> <span>{{$Individual->country}}</span> <span>{{$Individual->cityName}}</span> </p>  
 
       @if(Auth::guest())
              <a class='btn btn-green'  href="{{route('login')}}">follow</a>
@@ -35,11 +35,11 @@
                     <h4 class="card-title">User Informations</h4>
                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                     <p class="card-text">
-                    Gender: {{$Individual[0]->gender}}<br>
-                    Birth Date: {{$Individual[0]->dateOfBirth}}<br>
-                    Education: {{$Individual[0]->educationalLevel}}<br>
-                    Current Work: {{$Individual[0]->currentWork}}<br>
-                    Availabel from: {{$Individual[0]->availableFrom}} to: {{$Individual[0]->availableTo}}<br>
+                    Gender: {{$Individual->gender}}<br>
+                    Birth Date: {{$Individual->dateOfBirth}}<br>
+                    Education: {{$Individual->educationalLevel}}<br>
+                    Current Work: {{$Individual->currentWork}}<br>
+                    Availabel from: {{$Individual->availableFrom}} to: {{$Individual->availableTo}}<br>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                   </div>
@@ -50,11 +50,25 @@
                     <h4 class="card-title">Contact Informations</h4>
                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                     <p class="card-text">
-                    Email: {{$Individual[0]->email}}<br>
-                    Adress: {{$Individual[0]->address}}<br>
-                    Mobile number: {{$Individual[0]->mobileNumber}}<br>
+                    Email: {{$Individual->email}}<br>
+                    Adress: {{$Individual->address}}<br>
+                    Mobile number: {{$Individual->mobileNumber}}<br>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
+                  </div>
+                </div>
+                <br>
+
+                <br>
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title">Achievements</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">
+                    @foreach($events as $event)
+                      Event Title: {{$event->title}}<br>
+                      End Date: {{$event->endDate}}<br>
+                    @endforeach
                   </div>
                 </div>
                 <br>
@@ -72,27 +86,27 @@
                   <tbody>
                     <tr>
                       <td>Voluntary years</td>
-                      <td>{{$Individual[0]->voluntaryYears}}</td>
+                      <td>{{$Individual->voluntaryYears}}</td>
                     </tr>
                     <tr>
                       <td>cat1</td>
-                      <td>{{$Individual[0]->cat1}}</td>
+                      <td>{{$Individual->cat1}}</td>
                     </tr>
                     <tr>
                       <td>cat2</td>
-                      <td>{{$Individual[0]->cat2}}</td>
+                      <td>{{$Individual->cat2}}</td>
                     </tr>
                      <tr>
                       <td>cat3</td>
-                      <td>{{$Individual[0]->cat3}}</td>
+                      <td>{{$Individual->cat3}}</td>
                     </tr>
                      <tr>
                       <td>cat4</td>
-                      <td>{{$Individual[0]->cat4}}</td>
+                      <td>{{$Individual->cat4}}</td>
                     </tr>
                      <tr>
                       <td>acc </td>
-                      <td>{{$Individual[0]->acc_avg}}</td>
+                      <td>{{$Individual->acc_avg}}</td>
                     </tr>
                     <tr>
                       <td> </td>
@@ -128,7 +142,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{route('rank',$Individual[0]->id)}}" method="get">
+      <form action="{{route('rank',$Individual->id)}}" method="get">
       <div class="modal-body">
         <label>cat1</label>
         <input type="text" name="cat1"><br>

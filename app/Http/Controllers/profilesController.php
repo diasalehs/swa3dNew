@@ -12,8 +12,14 @@ use App\Resercher;
 use App\User;
 use Illuminate\Support\Facades\auth;
 use App\friend;
+use App\volunteer;
+
 class profilesController extends Controller
 {
+	public function __construct()
+    {
+        $this->date = date('Y-m-d');
+    }
 	public function index($userId)
 	{	
 
@@ -34,8 +40,10 @@ class profilesController extends Controller
 		$user=User::find($userId);
 		$userType=$user->userType;
 		if ($userType==0) {
-			$Individual=DB::table('Individuals')->where('user_id','=',$userId)->get();
-			return view('Indprofile',['user'=>$user,'Individual'=>$Individual,'friend'=>$friend]);
+			$Individual=DB::table('Individuals')->where('user_id','=',$userId)->first();
+			$date = $this->date;
+			$events = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$Individual->id)->where('events.endDate','<',$date)->where('accepted',1)->get();
+			return view('Indprofile',['user'=>$user,'Individual'=>$Individual,'friend'=>$friend,'events'=>$events]);
 
 		} 
 		elseif ($userType==1) {
