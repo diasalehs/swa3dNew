@@ -107,6 +107,13 @@ button{
 }
 
 .event .card-img-overlay{
+  background-color: rgba(19, 60, 85, 0.7);
+  overflow: hidden;
+  color:  rgba(255,255,255,1);
+  transition: all .5s;
+
+}
+.event .card-img-overlay:hover{
   background-color: rgba(19, 60, 85, 0.8);
   overflow: hidden;
   color:  rgba(255,255,255,1);

@@ -8,14 +8,12 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link" href="{{route('upComingEvents')}}">Up Coming Events</a>
+        <a class="nav-link" href="{{route('upComingEvents')}}">UpComing Events</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Volunteers</a>
       </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">Voluntary Opportunitie</a>
-      </li>
+
        <li class="nav-item">
         <a class="nav-link" href="#">About us</a>
       </li>
@@ -25,7 +23,16 @@
     </ul>
     <div class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto">
+          <li class="nav-item ">
 
+          <form action="{{route('search')}}" method="get" >
+            <input type="text" name="search" class="search form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
+            <button type="submit" style="display: none;"></button>
+          </form>
+
+
+
+          </li>
             <li class="nav-item">
             @if (Auth::guest())
               <a class="nav-link"  href="{{ route('choose') }}">Join Us</a>
@@ -65,16 +72,7 @@
                             </li>
                         @endif
       </li>
-      <li class="nav-item ">
 
-      <form action="{{route('search')}}" method="get" >
-        <input type="text" name="search" class="search form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
-        <button type="submit" style="display: none;"></button>
-      </form>
-          
-
-
-      </li>
 
       </ul>
     </div>
