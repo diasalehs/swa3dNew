@@ -32,11 +32,61 @@ class mainController extends Controller
 	}
 
 	public function upComingEvents() {
-    	$user = Auth::user();
-    	$date = $this->date;
-        $events = event::where('startDate','>',$date)->get();
-		return view('upComingEvents',compact('events'));
-	}
+        $user = Auth::user();
+        $date = $this->date;
+        $events = event::where('startDate','>',$date)->paginate(5,['*'],'events');
+
+        if (Auth::attempt()||$user) {
+            if($user->userType==0){
+            $Iuser=$user->Individuals;
+
+            } 
+            elseif ($user->userType==1) {
+            $Iuser=$user->Institute;
+
+                # code...
+              } 
+            elseif ($user->userType==2) {
+            $Iuser=$user->Researcher;
+
+                # code...
+              } 
+            $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->paginate(5,['*'],'areaEvents');
+        return view('upComingEvents',compact('events','localevents'));
+        }   
+        return view('upComingEvents',compact('events'));
+
+    }
+    public function allLocal() {
+        $user = Auth::user();
+        $date = $this->date;
+
+        if (Auth::attempt()||$user) {
+            if($user->userType==0){
+            $Iuser=$user->Individuals;
+
+            } 
+            elseif ($user->userType==1) {
+            $Iuser=$user->Institute;
+
+                # code...
+              } 
+            elseif ($user->userType==2) {
+            $Iuser=$user->Researcher;
+
+                # code...
+              } 
+            $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->paginate(10,['*'],'areaEvents');
+        return view('allLocal',compact('localevents'));
+        }   
+
+    }
+    public function allEvents() {
+        $user = Auth::user();
+        $date = $this->date;
+        $events = event::where('startDate','>',$date)->paginate(10,['*'],'events');
+        return view('allEvents',compact('events'));
+    }
 
 	public function archiveEvents() {
     	$user = Auth::user();

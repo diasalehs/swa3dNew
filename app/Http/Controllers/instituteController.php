@@ -30,7 +30,8 @@ class instituteController extends Controller
 
     	$this->validate($request, [
 		    'title' => 'required|string|max:100',
-		    'description' => 'required|string',
+            'description' => 'required|string',
+            'country' => 'required|string',
 		    'startDate' => 'required|date|after:tomorrow',
 		    'endDate' => 'required|date|after:start_date',
 		]);
@@ -38,7 +39,8 @@ class instituteController extends Controller
     	$event = new event();
     	$event->title = $request['title'];
     	$event->user_id = $user->id;
-    	$event->description = $request['description'];
+        $event->description = $request['description'];
+        $event->country = $request['country'];
     	$event->startDate = $request['startDate'];
     	$event->endDate = $request['endDate'];
         if ($request->hasFile('cover')){

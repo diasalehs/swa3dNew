@@ -16,11 +16,12 @@
 
     <!-- Blog Post -->
     @foreach($users as $result)
+    @continue($result->userType==10)
     <div class="card mb-4">
         <div class="card-block">
             <div class="row">
                 <div class="col-lg-6">
-                    <a href="#">
+                    <a href="{{route('profile',[$result->id])}}">
                         <!--{$result->mainImgpath}}-->
                       <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->picture}}" alt="">
                   </a>
@@ -70,13 +71,13 @@
         <div class="card-block">
             <div class="row">
                 <div class="col-lg-6">
-                    <a href="#">
-                      <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->cover}}" alt="">
+                    <a href="event/{{$result->id}}">
+                      <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/events/{{$result->cover}}" alt="">
                   </a>
 
               </div>
               <div class="col-lg-6">
-                <a href="#"><h2 class="card-title">{{$result->title}}</h2></a>
+                <a href="event/{{$result->id}}"><h2 class="card-title">{{$result->title}}</h2></a>
                 <p class="card-text">
                 </p>
                 d
