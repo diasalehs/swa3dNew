@@ -6,6 +6,7 @@ use App\news;
 use App\Individuals;
 use App\slider;
 use App\event;
+use App\volunteer;
 class mainController extends Controller
 {
 
@@ -36,7 +37,7 @@ class mainController extends Controller
         $date = $this->date;
         $events = event::where('startDate','>',$date)->paginate(5,['*'],'events');
 
-        if (Auth::attempt()||$user) {
+        if (Auth::check()) {
             if($user->userType==0){
             $Iuser=$user->Individuals;
 
@@ -52,7 +53,8 @@ class mainController extends Controller
                 # code...
               } 
             $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->paginate(5,['*'],'areaEvents');
-        return view('upComingEvents',compact('events','localevents'));
+            $volEvents = volunteer::where('individual_id', $Iuser->id)->get();
+            return view('upComingEvents',compact('events','localevents','volEvents','user'));
         }   
         return view('upComingEvents',compact('events'));
 
@@ -61,7 +63,7 @@ class mainController extends Controller
         $user = Auth::user();
         $date = $this->date;
 
-        if (Auth::attempt()||$user) {
+        if (Auth::check()) {
             if($user->userType==0){
             $Iuser=$user->Individuals;
 
@@ -77,15 +79,20 @@ class mainController extends Controller
                 # code...
               } 
             $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->paginate(10,['*'],'areaEvents');
-        return view('allLocal',compact('localevents'));
+            $volEvents = volunteer::where('individual_id', $Iuser->id)->get();
+            return view('allLocal',compact('localevents','volEvents','user'));
         }   
 
     }
     public function allEvents() {
         $user = Auth::user();
+        if($user->userType==0){
+            $Iuser=$user->Individuals;
+        } 
         $date = $this->date;
+        $volEvents = volunteer::where('individual_id', $Iuser->id)->get();
         $events = event::where('startDate','>',$date)->paginate(10,['*'],'events');
-        return view('allEvents',compact('events'));
+        return view('allEvents',compact('events','volEvents','user'));
     }
 
 	public function archiveEvents() {

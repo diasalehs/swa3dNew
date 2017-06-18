@@ -31,6 +31,7 @@ class CreateIndividualsTable extends Migration
             $table->string('picture')->default('default.png');
             $table->boolean('preVoluntary');
             $table->integer('voluntaryYears');
+            $table->integer('researcher')->default(0);
             //$table->index('skills');
             //$table->index('intrests');
             //$table->index('qualifications'); Optional

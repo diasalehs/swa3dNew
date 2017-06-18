@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('researchers');
             $table->string('title');
-            $table->string('abstract',9999);
+            $table->text('abstract');
             $table->string('cover')->nullable();
             $table->date('publicationDate');
             $table->timestamps();
