@@ -36,7 +36,7 @@ class HomeController extends Controller
             $userResearcher = Auth::user()->Researcher;
             $followers = friend::where('requester_id', $user->id);
             $following = friend::where('requested_id', $user->id);
-            $users_record= DB::table('users')->get();
+            $users_record= User::paginate();
             $date = $this->date;
             if ($user->userType=== 10 ) {
                 return view('admin/adminDashboard',["users_record"=>$users_record]);
@@ -45,13 +45,16 @@ class HomeController extends Controller
                 if($user->userType == 0){
                     return view('Individual/homeIndividual',compact('user','userIndividual','followers','following'));
                 }
-                if($user->userType == 1){
+                elseif($user->userType == 1){
                     $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
                     $Uevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
                     return view('Institute/homeInstitute',compact('user','userInstitute','Aevents','Uevents','followers','following'));
                 }
-                if($user->userType == 2){
+                elseif($user->userType == 2){
                     return view('Researcher/homeResearcher',compact('user','userResearcher','followers','following'));
+                }
+                elseif($user->userType == 10){
+                    return view('admin.adminDashboard',compact("users_record"));
                 }
             }elseif($user->flag == 0){
                 return redirect()->route('step');
@@ -255,13 +258,6 @@ class HomeController extends Controller
                       ->where('requested_id', '=', $userId)->delete();
         // $user->friend()->attach($userId, ['requested_id' => $user->id, 'requester_id' => $userId]);
         return redirect()->back();
-    }
-
-    public function resetPassword()
-    {
-        $user = Auth::user();
-        $userId = $user->id;
-        return view('auth/passwords/reset',compact('userId'));
     }
 
 }

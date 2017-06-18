@@ -19,6 +19,7 @@ class CreateResearchersTable extends Migration
             $table->string('nameInEnglish');
             $table->string('nameInArabic');
             $table->string('livingPlace');
+            
             $table->string('cityName');
             $table->string('country');
             $table->string('gender');

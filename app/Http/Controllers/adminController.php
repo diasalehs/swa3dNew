@@ -25,20 +25,6 @@ class adminController extends Controller
 
     	# code...
     }
- public function index()
-    {
-        if(Auth::attempt() || Auth::user()){
-        	$user = Auth::user();
-        	if ($user->userType=== 10 ) {
-        		return view('admin/adminDashboard',["users_record"=>User::paginate()]);
-        	}
-        	else{
-                return redirect()->route('home');
-            }
-        }else{
-                return redirect()->route('main');
-        }
-    }
 
 
     public function indexx()
