@@ -61,9 +61,10 @@
     <script type="text/javascript">
     $(document).ready(function()
         {
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    });
+              $('.carousel').carousel({
+                  interval: 5000 //changes the speed
+              });
+
             $('#ntab').on('click',function(){
 
               $('#nnnn').attr('style', 'border-bottom: 3px solid #51c2c0 !important');

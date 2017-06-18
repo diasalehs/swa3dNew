@@ -82,6 +82,79 @@ button{
   -webkit-line-clamp: 9;
   -webkit-box-orient: vertical;
 }
+.search-nav-tabs  .nav-item{
+    text-align: center;
+}
+#nnnn{
+  border-bottom: 3px solid #51c2c0 !important;
+}
+.search-nav-tabs  .nav-item a{
+    color: #fff;
+    font-size: 18px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.search-nav-tabs  .users-tab a.nav-link{
+    background-color: var(--gray);
+    border: 0;
+    border-top: 5px solid var(--gray) !important;
+    transition: all .3s;
+
+}
+.search-nav-tabs .events-tab a.nav-link{
+    background-color: var(--gray);
+    border: 0;
+    border-top: 5px solid var(--gray) !important;
+    transition: all .3s;
+
+}
+.search-nav-tabs  .users-tab a.nav-link:hover{
+  border-top: 5px solid var(--green) !important;
+}
+.search-nav-tabs  .revents-tab a.nav-link:hover{
+  border-top: 5px solid var(--pink) !important;
+
+}
+.search-nav-tabs .users-tab a.active{
+    background-color: var(--green) ;
+    border-top: 5px solid var(--dark-gray) !important;
+}
+.search-nav-tabs .events-tab a.active{
+    background-color: var(--pink) ;
+    border-top: 5px solid  var(--dark-gray)  !important;
+}
+
+.users-tab a.active {
+    color: #fff !important;
+}
+.users-tab a.active:hover {
+    color: #fff !important;
+}
+.users-tab a:hover {
+    color: var(--green) !important;
+}
+.users-tab a {
+    color: #666 !important;
+}
+.events-tab a.active{
+  color: #fff !important;
+
+}
+.events-tab a.active:hover{
+  color: #fff !important;
+
+}
+.events-tab a:hover{
+  color: var(--pink) !important;
+
+}
+.events-tab a{
+  color: #666 !important;
+
+}
+.search-nav-tabs li a{
+
+}
 .carousel-item {
     height: 60vh;
     min-height: 300px;
@@ -107,6 +180,13 @@ button{
 }
 
 .event .card-img-overlay{
+  background-color: rgba(19, 60, 85, 0.7);
+  overflow: hidden;
+  color:  rgba(255,255,255,1);
+  transition: all .5s;
+
+}
+.event .card-img-overlay:hover{
   background-color: rgba(19, 60, 85, 0.8);
   overflow: hidden;
   color:  rgba(255,255,255,1);
