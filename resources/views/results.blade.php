@@ -15,45 +15,41 @@
     </ol>
 
     <!-- Blog Post -->
+    <div class="row">
+
     @foreach($users as $result)
     @continue($result->userType==10)
-    <div class="card mb-4">
-        <div class="card-block">
-            <div class="row">
-                <div class="col-lg-6">
+    <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom:25px;">
+        <div class="card h-100">
                     <a href="{{route('profile',[$result->id])}}">
                         <!--{$result->mainImgpath}}-->
                       <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->picture}}" alt="">
                   </a>
-
-              </div>
-              <div class="col-lg-6">
-                <a href="{{route('profile',[$result->id])}}"><h2 class="card-title">{{$result->name}}</h2></a>
+                    <div class="card-block">
+                      <a href="{{route('profile',[$result->id])}}"><h2 class="card-title">{{$result->name}}</h2></a>
                 <p class="card-text">
-                    @if($result->userType==0)
-                    Volunteer
-                    @elseif($result->userType==1)
-                    Institute
-                    @elseif($result->userType==2)
-                    Resercher
-                    @else
-                    ADMIN
-                    @endif
+                  @if($result->userType==0)
+                  Volunteer
+                  @elseif($result->userType==1)
+                  Institute
+                  @elseif($result->userType==2)
+                  Resercher
+                  @else
+                  ADMIN
+                  @endif
+
                 </p>
-                
             </div>
         </div>
     </div>
-    <div class="card-footer text-muted">
-        joined on {{$result->created_at}}
-    </div>
-</div>
+
 @endforeach
+</div>
 
 <!-- Pagination -->
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
-  {{$users->links()}}
+  {{$users->links('vendor.pagination.custom')}}
 </ul>
 </nav>
 {{-- events earch results --}}
