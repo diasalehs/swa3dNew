@@ -19,6 +19,7 @@ Route::get('/view/{newsId}',  ['uses' =>'newsController@view', 'as'=>'view']);
 Route::get('/allNews',  ['uses' =>'newsController@allNews', 'as'=>'allNews']);
 Route::get('/results/',  ['uses' =>'searchController@basic', 'as'=>'search']);
 Route::get('/profile/{userId}',  ['uses' =>'profilesController@index', 'as'=>'profile']);
+Route::get('/profilerank/{id}',  ['uses' =>'profilesController@rank', 'as'=>'rank']);
 
 Route::group(['prefix'=>'admin'], function() {
     // Route::get('/', array('as' => 'admin', function() {
@@ -83,6 +84,5 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
 Route::get('/upComingEvents', ['uses'=>'mainController@upComingEvents'])->name('upComingEvents');
 Route::get('/allLocal', ['uses'=>'mainController@allLocal'])->name('allLocal');
 Route::get('/allEvents', ['uses'=>'mainController@allEvents'])->name('allEvents');
-
 Route::get('/archiveEvents', ['uses'=>'mainController@archiveEvents'])->name('archiveEvents');
 Route::get('/event/{eventId}', ['uses'=>'mainController@event'])->name('event');

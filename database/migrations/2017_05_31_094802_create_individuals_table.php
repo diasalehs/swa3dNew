@@ -18,7 +18,13 @@ class CreateIndividualsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('nameInEnglish');
             $table->string('nameInArabic');
+            $table->float('acc_avg')->unsigned()->default(0);
+            $table->float('cat1')->unsigned()->default(0);
+            $table->float('cat2')->unsigned()->default(0);
+            $table->float('cat3')->unsigned()->default(0);
+            $table->float('cat4')->unsigned()->default(0);
             $table->string('livingPlace');
+        
             $table->string('cityName');
             $table->string('country');
             $table->string('gender');
