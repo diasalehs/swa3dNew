@@ -47,6 +47,16 @@
                                   @endif
                           </div>
 
+                          <div class="form-group">
+                            <label  class="col-lg-4 form-control-label" for="exampleSelect1">Privacy</label>
+                        <div class="col-lg-6">
+                            <select name="open" value="{{ old('open') }}" class="form-control" id="exampleSelect1">
+                            <option value="1">open</option>
+                            <option value="0">close</option>
+                            </select>
+                        </div>
+                        </div>
+
                           <div class="form-group{{ $errors->has('cover') ? ' has-error' : '' }}">
                               <label for="name" class="col-lg-4 form-control-label">uplode cover</label>
                                   <input id="name" type="file" accept="image/*" class="form-control" name="cover" />
