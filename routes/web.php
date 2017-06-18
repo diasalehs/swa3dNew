@@ -60,6 +60,7 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
     Route::get('/volunteer/{eventId}', ['uses'=>'eventController@volunteer'])->name('volunteer');
     Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
+    Route::get('/acceptVolunteer/{volunteerId}/{eventId}', ['uses'=>'eventController@acceptVolunteer'])->name('acceptVolunteer');
 
 
     Route::group(['prefix'=>'institute','routeMiddleware'=>'institute'], function() {

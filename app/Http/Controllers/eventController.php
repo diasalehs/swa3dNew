@@ -17,6 +17,7 @@ class eventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function volunteer($eventId)
     {
         if(Auth::check()){
@@ -68,13 +69,19 @@ class eventController extends Controller
         }
     }
     /**
-     * Show the form for creating a new resource.
+     * accept Volunteer -- verify from the institue that made this event.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function acceptVolunteer($volunteerId,$eventId)
     {
-        //
+        $user = Auth::user();
+        if($user->userType == 1){
+            $volunteer = volunteer::where('individual_id',$volunteerId)->where('event_id',$eventId)->first();
+            $volunteer->accepted = 1;
+            $volunteer->save();
+        }
+        return redirect()->back();
     }
 
     /**

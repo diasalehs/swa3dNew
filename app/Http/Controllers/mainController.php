@@ -104,13 +104,30 @@ class mainController extends Controller
 
 	public function event($eventId){
     	$event = event::find($eventId);
-    	$flag = false;
-    	if(Auth::attempt() || Auth::user()){
-    		$user = Auth::user();
-    		if($user->userType == 1 && $event->user_id == $user->id){
-    			$flag = true;
-    		}
-    	}
-		return view('event',compact('event','flag'));
+        if($event){
+        	if(Auth::check()){
+        		$user = Auth::user();
+                $mine = false;
+                $request = false;
+                $eventAcceptedVols = volunteer::where('event_id',$eventId)->where('accepted',1)->get();
+        		if($user->userType == 1 && $event->user_id == $user->id){
+        			$mine = true;
+                    $eventVols = volunteer::where('event_id',$eventId)->get();
+                    $Individuals = Individuals::all();
+                    return view('event',compact('event','request','mine','user','eventVols','eventAcceptedVols','Individuals'));
+        		}elseif ($user->userType == 0) {
+                    $individual = $user->Individuals;
+                    $volunteer = volunteer::where('event_id',$eventId)->where('individual_id',$individual->id)->first();
+                    if($volunteer){
+                        $request = true;
+                    }
+                }
+                return view('event',compact('event','eventAcceptedVols','mine','request','user'));
+        	}
+            return view('event',compact('event','eventAcceptedVols'));
+        }else{
+            return redirect()->route('upComingEvents');
+        }
+
 	}
 }

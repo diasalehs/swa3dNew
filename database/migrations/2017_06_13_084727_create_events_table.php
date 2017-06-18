@@ -24,6 +24,7 @@ class CreateEventsTable extends Migration
             $table->string('city')->default('null');
             $table->date('startDate');
             $table->date('endDate');
+            $table->boolean('open')->default(1);
             $table->timestamps();
         });
     }
