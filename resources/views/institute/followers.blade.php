@@ -28,7 +28,9 @@ use App\user;
                     $userei=User::findOrFail($followi->requested_id);
                     if($user->id == $userei->id){
                       echo "<tr>
-                      <td>".$user->name."</td>
+                      <td>
+                      <a class='btn'  href='".route('profile',[$usere->id])."'>{$usere->name}</a>
+                      </td>
                       <td>".$user->email."</td>
                       <td>
                       <a class='btn btn-success btn-block'  href='allusers/unfollow/".$user->id."'>unfollow</a>

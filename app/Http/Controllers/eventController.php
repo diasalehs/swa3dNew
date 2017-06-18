@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\auth;
 use App\User;
 use App\volunteer;
-
+use App\event;
 
 
 class eventController extends Controller
@@ -17,6 +17,7 @@ class eventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function volunteer($eventId)
     {
         if(Auth::check()){
@@ -68,24 +69,38 @@ class eventController extends Controller
         }
     }
     /**
-     * Show the form for creating a new resource.
+     * accept Volunteer -- verify from the institue that made this event.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function acceptVolunteer($volunteerId,$eventId)
     {
-        //
+        $user = Auth::user();
+        $event = event::find($eventId);
+        if($user->userType == 1 && $event->user_id == $user->id){
+            $volunteer = volunteer::where('individual_id',$volunteerId)->where('event_id',$eventId)->first();
+            $volunteer->accepted = 1;
+            $volunteer->save();
+        }
+        return redirect()->back();
     }
 
     /**
-     * Store a newly created resource in storage.
+     * unAccept Volunteer which accepted before.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function unAcceptVolunteer($volunteerId,$eventId)
     {
-        //
+        $user = Auth::user();
+        $event = event::find($eventId);
+        if($user->userType == 1 && $event->user_id == $user->id){
+            $volunteer = volunteer::where('individual_id',$volunteerId)->where('event_id',$eventId)->first();
+            $volunteer->accepted = 0;
+            $volunteer->save();
+        }
+        return redirect()->back();
     }
 
     /**

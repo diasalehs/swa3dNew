@@ -17,6 +17,7 @@ class CreateVolunteersTable extends Migration
             $table->increments('id');
             $table->integer('event_id')->index();
             $table->integer('individual_id')->index();
+            $table->boolean('accepted')->default(0);
             $table->timestamps();
         });
     }
