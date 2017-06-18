@@ -112,7 +112,7 @@ class mainController extends Controller
                 $eventAcceptedVols = volunteer::where('event_id',$eventId)->where('accepted',1)->get();
         		if($user->userType == 1 && $event->user_id == $user->id){
         			$mine = true;
-                    $eventVols = volunteer::where('event_id',$eventId)->get();
+                    $eventVols = volunteer::where('event_id',$eventId)->where('accepted',0)->get();
                     $Individuals = Individuals::all();
                     return view('event',compact('event','request','mine','user','eventVols','eventAcceptedVols','Individuals'));
         		}elseif ($user->userType == 0) {

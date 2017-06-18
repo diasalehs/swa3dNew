@@ -20,11 +20,10 @@ use App\Individuals;
                   @if($user->userType == 0)
                       @if($request)
                         <a href="{{route('disVolunteer',[$event->id])}}" class="card-link pink-link">Cancel Volunteer Request</a>
-                        <a href='event/{{$event->id}}' class="card-link yellow-link ">Follow</a>
                       @elseif(!$request)
                         <a href="{{route('volunteer',[$event->id])}}" class="card-link pink-link">Volunteer Request</a>
-                        <a href='event/{{$event->id}}' class="card-link yellow-link ">Follow</a>
                       @endif
+                      <a href='event/{{$event->id}}' class="card-link yellow-link ">Follow</a>
                   @elseif($mine)
                     <a class="card-link pink-link" href="{{route('eventDelete',[$event->id])}}">Delete</a>
                     <a class="card-link yellow-link" href="{{route('eventVeiwEdit',[$event->id])}}">Edit</a>
@@ -74,10 +73,13 @@ use App\Individuals;
             <hr>
 
             <table class="table table-responsive text-center table-sm table-fixed">
+            <h1>Volunteers</h1>
             <thead class="text-center">
               <tr>
                 <th>Name</th>
+                @if($mine)
                 <th>Action</th>
+                @endif
               </tr>
             </thead>
             <tbody>
@@ -87,9 +89,11 @@ use App\Individuals;
                   <td>
                   <a class='btn'  href="{{route('profile',[$individual->user_id])}}">{{$individual->nameInEnglish}}</a>
                   </td>
+                  @if($mine)
                   <td>
-                  <a class="btn btn-primary btn-sm" href="{{route('acceptVolunteer',['volunteerId'=>$individual->id , 'eventId' => $event->id])}}">Accept</a>
-                  </td>
+                <a class="btn btn-primary btn-sm" href="{{route('unAcceptVolunteer',['volunteerId'=>$individual->id , 'eventId' => $event->id])}}">unAccept</a>
+                </td>
+                @endif
                 </tr>
               @endforeach
 

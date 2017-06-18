@@ -61,7 +61,7 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     Route::get('/volunteer/{eventId}', ['uses'=>'eventController@volunteer'])->name('volunteer');
     Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
     Route::get('/acceptVolunteer/{volunteerId}/{eventId}', ['uses'=>'eventController@acceptVolunteer'])->name('acceptVolunteer');
-
+    Route::get('/unAcceptVolunteer/{volunteerId}/{eventId}', ['uses'=>'eventController@unAcceptVolunteer'])->name('unAcceptVolunteer');
 
     Route::group(['prefix'=>'institute','routeMiddleware'=>'institute'], function() {
 
