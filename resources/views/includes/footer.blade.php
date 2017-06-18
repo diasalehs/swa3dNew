@@ -1,5 +1,5 @@
     <!-- Footer -->
-    <footer id="myFooter">
+    <footer id="myFooter" style="background-image: linear-gradient(rgba(19, 58, 83, 0.9),rgba(19, 58, 83, 0.9)),url(newlogo.png);">
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
@@ -67,17 +67,17 @@
 
             $('#ntab').on('click',function(){
 
-              $('#nnnn').attr('style', 'border-bottom: 3px solid #51c2c0 !important');
+              $('#nnnn').attr('style', 'border-bottom: 3px solid var(--green) !important');
 
             });
             $('#rtab').on('click',function(){
 
-              $('#nnnn').attr('style', 'border-bottom: 3px solid #e15687 !important');
+              $('#nnnn').attr('style', 'border-bottom: 3px solid var(--pink)  !important');
 
             });
             $('#dtab').on('click',function(){
 
-              $('#nnnn').attr('style', 'border-bottom: 3px solid #e4a32d !important');
+              $('#nnnn').attr('style', 'border-bottom: 3px solid var(--yellow) !important');
 
             });
           });

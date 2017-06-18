@@ -1,12 +1,13 @@
 #myFooter {
-    background-color: #133C55;
     color: white;
     padding-top: 30px;
-
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
 }
 
 #myFooter .footer-copyright {
-    background-color: #51c2c0;
+    background-color: rgba(81, 194, 192, 0.64);
     padding-top: 3px;
     padding-bottom: 3px;
     text-align: center;

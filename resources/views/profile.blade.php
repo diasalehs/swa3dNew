@@ -4,10 +4,10 @@
 
 <div class="news">
   <div class="card card-inverse">
-    <img class="card-img" src="{{$news->mainImgpath}}" alt="Card image">
+    <img class="card-img" src="" alt="Card image">
 
     <div class="card-img-overlay">
-      <h1 class="card-title">{{$news->title}}</h1>
+      <h1 class="card-title">dd</h1>
     </div>
   </div>
   <div class="container">
@@ -18,12 +18,12 @@
             <hr>
 
             <!-- Date/Time -->
-            <p class="news-date"> Posted on {{$news->created_at}}</p>
+            <p style="color:#777"> </p>
 
             <hr>
 
             <!-- Post Content -->
-            <p class="news-text"> <?php  echo"".$news->textarea ;?> </p>
+            <p class=""> <?php  echo"";?> </p>
 
             <hr>
 

@@ -42,7 +42,23 @@
             </div>
             @endif
 
+            <table class="table table-responsive text-center table-sm table-fixed">
+            <thead class="text-center">
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
 
+                <td>Otto</td>
+                <td><button type="button" class="btn btn-primary btn-sm">Small button</button></td>
+              </tr>
+
+
+            </tbody>
+          </table>
           </div>
         </div>
       </div>

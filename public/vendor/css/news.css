@@ -20,6 +20,9 @@ button{
 .news{
   margin-bottom: 100px;
 }
+.news .card-title{
+  color: #fff;
+}
 .news .card{
   border: 0;
 }
@@ -29,9 +32,15 @@ button{
   object-fit: cover;
 }
 .news .card-img-overlay{
-    background-color: rgba(81, 194, 192, 0.3);
+    background-color: rgba(81, 194, 192, 0.4);
     display: flex;
     align-items: center;
+}
+.news .news-text{
+  color: var(--dark-navy);
+}
+.news .news-date{
+  color: var(--navy);
 }
  p.card-text{
   overflow: hidden;

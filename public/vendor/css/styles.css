@@ -2,18 +2,18 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 body {
   font-family: 'Ubuntu', sans-serif !important;
-
+  color: var(--dark-navy);
 }
 button{
   font-family: 'Ubuntu', sans-serif !important;
 
 }
 @media (min-width: 992px) {
-    body {
 
-    }
 }
 :root{
+    --navy:#133c55;
+    --dark-navy: #002c44;
     --gray:#eee;
     --dark-gray:#777;
     --green:#51c2c0;
@@ -23,6 +23,32 @@ button{
     --yellow:#f1ae3b;
     --yellow-hover:#d89824;
 }
+.dropdown-item{
+  color: var(--dark-navy);
+}
+.dropdown-item:hover{
+  color: var(--navy);
+}
+.carousel-indicators-numbers li {
+  text-indent: 0;
+  margin: 0 2px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 100%;
+  line-height: 30px;
+  color: #fff;
+  background-color: var(--green);
+  transition: all 0.25s ease;
+  text-align: center;
+}
+.carousel-indicators-numbers li.active, .carousel-indicators-numbers li:hover {
+  margin: 0 2px;
+  width: 30px;
+  height: 30px;
+  background-color: var(--pink);
+}
+
 .container-fluid{
 		padding: 0 50px;
 }
@@ -34,6 +60,9 @@ button{
 }
 .yellowcolor{
   color: var(--yellow);
+}
+.mytext-danger{
+  color: #d9534f;
 }
 .pink-link{
   color: var(--pink) !important;
@@ -81,6 +110,21 @@ button{
   display: -webkit-box;
   -webkit-line-clamp: 9;
   -webkit-box-orient: vertical;
+}
+#search::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    var(--green-hover);
+}
+#search::-webkit-input-placeholder:hover { /* WebKit, Blink, Edge */
+    color: var(--green);
+}
+.mainNavbar .nav-item .nav-link {
+  color: var(--green-hover);
+}
+.mainNavbar .nav-item .nav-link:hover{
+  color: var(--green);
+}
+.mainNavbar .nav-item .nav-link:focus{
+  color: var(--green);
 }
 .search-nav-tabs  .nav-item{
     text-align: center;
@@ -400,15 +444,15 @@ border-bottom: 3px solid #51c2c0 !important;
 }
 .nav-tabs-main  .news-tab-item a.active{
     background-color: var(--green) ;
-    border-top: 5px solid var(--dark-gray) !important;
+    border-top: 5px solid var(--navy) !important;
 }
 .nav-tabs-main  .researchs-tab-item a.active{
     background-color: var(--pink) ;
-    border-top: 5px solid  var(--dark-gray)  !important;
+    border-top: 5px solid  var(--navy)  !important;
 }
 .nav-tabs-main  .dashboard-tab-item a.active{
     background-color: var(--yellow);
-    border-top: 5px solid var(--dark-gray) !important;
+    border-top: 5px solid var(--navy) !important;
 
 }
 .news-tab-item a.active {
@@ -421,7 +465,7 @@ border-bottom: 3px solid #51c2c0 !important;
     color: var(--green) !important;
 }
 .news-tab-item a {
-    color: #666 !important;
+    color: var(--navy) !important;
 }
 .researchs-tab-item a.active{
   color: #fff !important;
@@ -436,7 +480,7 @@ border-bottom: 3px solid #51c2c0 !important;
 
 }
 .researchs-tab-item a{
-  color: #666 !important;
+  color: var(--navy) !important;
 
 }
 .dashboard-tab-item a:hover{
@@ -452,7 +496,7 @@ border-bottom: 3px solid #51c2c0 !important;
 
 }
 .dashboard-tab-item a{
-  color: #666 !important;
+  color: var(--navy) !important;
 
 }
 .researches .col-lg-4{
@@ -519,18 +563,36 @@ border-bottom: 3px solid #51c2c0 !important;
 		background-color: #008988;
 }
 .top-5{
-    margin-top: 20px;
-    margin-bottom: 40px;
-    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 40px;
+    background-color: var(--green);
 }
 .top-5 h1{
-    color: #f1ae3b;
+    color: #fff;
     margin-top: 30px;
     margin-bottom: 20px;
+    display: block;
+}
+.top-5 h1:after {
+    height: 5px;
+    display: block;
+    width: 100px;
+    background: #fff;
+    border-right: 1px white;
+    content: '';
+    margin: auto;
+    margin-top: 10px;
 }
 .top-5 .profile-name{
-		color: #f1ae3b;
+		color:#fff;
 		margin-top: 10px;
+}
+.top-5 .user a{
+  color: #fff;
+}
+
+.top-5 .user a:hover{
+  color: var(--yellow-hover);
 }
 .pagination .page-link{
   color: #333 ;
@@ -558,6 +620,11 @@ border-bottom: 3px solid #51c2c0 !important;
   .show-more-btn{
 
 
+  }
+  .table-fixed{
+    height: 300px;
+    overflow: scroll;
+    border: 1px solid #aaa;
   }
 }
 @media only screen and (min-width: 300px) {

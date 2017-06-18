@@ -2,33 +2,37 @@
 
 @section('content')
  <header>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
+   <div id="carousel-example-generic" class="carousel slide">
+          <ol class="carousel-indicators carousel-indicators-numbers">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active">1</li>
+            <li data-target="#carousel-example-generic" data-slide-to="1">2</li>
+            <li data-target="#carousel-example-generic" data-slide-to="2">3</li>
+          </ol>
             <div class="carousel-inner" role="listbox">
             @foreach($_3slides as $slide)
                 <!-- Slide One - Set the background image for this slide in the line below -->
                 <div class="carousel-item @if ($loop->first) active @endif "
-                  style="background-image:linear-gradient(rgba(0, 0, 0,.5),rgba(0, 0, 0, .5)), url('{{$slide->mainImgpath}}')">
-                    <div class="carousel-caption d-none d-md-block">
+                  style="background-image:linear-gradient(rgba(0, 0, 0,.5),rgba(0, 0, 0, .5)), url('{{$slide->mainImgpath}}'); ">
+                    <div class="carousel-caption d-none d-md-block " style="padding-bottom:40px;">
                         <h3>{{$slide->title}}</h3>
                         <p>{{$slide->textarea}}</p>
                     </div>
                 </div>
                 @endforeach
 
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+              </div>
+
+                <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-example-generic" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+
+
+              </div>
     </header>
 
     <!-- Page Content -->
@@ -68,7 +72,7 @@
                           This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.
 
                         </p>
-                          <span class="text-muted"> {{$news->created_at}} </span>
+                          <small class=""style="color: var(--navy)"> {{$news->created_at}} </small>
                     </div>
                     <div class="card-block">
                     </div>
@@ -132,11 +136,14 @@
     </div>
   <div class="tab-pane fade" id="messages" role="tabpanel">.</div>
 </div>
+</div>
 
         <!-- Marketing Icons Section -->
+        <div class="top-5" style="background-image: url(topp.png);    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: contain" >
 
-        <div class="container text-center top-5">
-          <hr />
+        <div class="container text-center ">
           <h1>Top 5 volunteers</h1>
           <div class="row justify-content-center">
 
@@ -152,6 +159,7 @@
 
           </div>
         </div>
+      </div>
 
 
 

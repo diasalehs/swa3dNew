@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('institute/layouts.profileMaster')
 
 @section('content')
 
@@ -18,12 +18,12 @@
             <hr>
 
             <!-- Date/Time -->
-            <p class="news-date"> Posted on {{$news->created_at}}</p>
+            <p style="color:#777"> Posted on {{$news->created_at}}</p>
 
             <hr>
 
             <!-- Post Content -->
-            <p class="news-text"> <?php  echo"".$news->textarea ;?> </p>
+            <p class=""> <?php  echo"".$news->textarea ;?> </p>
 
             <hr>
 

@@ -16,7 +16,7 @@
                                 @if ($errors->has('email'))
 
                                 <div class="alert alert-danger" role="alert">
-                                    <strong>Oh snap! </strong>{{ $errors->first('email') }}
+                                    <strong>Error! </strong>{{ $errors->first('email') }}
                                 </div>
 
 

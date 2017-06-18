@@ -27,7 +27,7 @@
           <li class="nav-item ">
 
           <form action="{{route('search')}}" method="get" >
-            <input type="text" name="search" class="search form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
+            <input type="text" name="search" id="search"class="search form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
             <button type="submit" style="display: none;"></button>
           </form>
 
@@ -44,7 +44,7 @@
 
         <a class="nav-link" href="{{ route('login') }}">Login <span class="sr-only"></span></a>
       @else
-                            <li class="dropdown nav-item">
+                            <li class="dropdown dropdown-menu-nav  nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -57,7 +57,7 @@
     <div class="dropdown-divider"></div>
 
                                     <li>
-                                        <a class="dropdown-item text-danger"  href="{{ route('logout') }}"
+                                        <a class="dropdown-item mytext-danger"  href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
 
