@@ -37,13 +37,11 @@ class profilesController extends Controller
 			$Individual=DB::table('Individuals')->where('user_id','=',$userId)->get();
 			return view('Indprofile',['user'=>$user,'Individual'=>$Individual,'friend'=>$friend]);
 
-			# code...
 		} 
 		elseif ($userType==1) {
 			$Institute=DB::table('Institutes')->where('user_id','=',$userId)->get();
-		    return view('Insprofile',['user'=>$user,'Institute'=>$friend,'flag'=>$friend]);
+		    return view('Insprofile',['user'=>$user,'Institute'=>$Institute,'flag'=>$friend]);
 
-		    # code...
 		
 		}
 		elseif ($userType==2) {
@@ -59,6 +57,33 @@ class profilesController extends Controller
 		return view('profile',['user'=>$user,'flag'=>$flag]);
 
 		
+		# code...
+	}
+	public function rank(Request $request,$id)
+	{	$usere=user::find($id);
+		if($usere->userType==0){
+		$user =Individuals::find($id);
+		$user->cat1=($user->cat1+$request['cat1'])/2.00;
+		$user->cat2=($user->cat2+$request['cat2'])/2.00;
+		$user->cat3=($user->cat3+$request['cat3'])/2.00;
+		$user->cat4=($user->cat4+$request['cat4'])/2.00;
+		$avg=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
+		$user->acc_avg=($user->acc_avg + $avg)/2.00;
+		$user->save();
+	}
+		elseif($usere->userType==1){
+		$user =Institute::find($id);
+		$user->cat1=($user->cat1+$request['cat1'])/2.00;
+		$user->cat2=($user->cat2+$request['cat2'])/2.00;
+		$user->cat3=($user->cat3+$request['cat3'])/2.00;
+		$user->cat4=($user->cat4+$request['cat4'])/2.00;
+		$avg=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
+		$user->acc_avg=($user->acc_avg + $avg)/2.00;
+		$user->save();
+	}
+
+	
+        return redirect()->back();
 		# code...
 	}
     //
