@@ -7,6 +7,7 @@ use App\Individuals;
 use App\slider;
 use App\event;
 use App\volunteer;
+use App\UserIntrest;
 class mainController extends Controller
 {
 
@@ -52,6 +53,8 @@ class mainController extends Controller
 
                 # code...
               } 
+            $userintrest=UserIntrest::where('user_id','=',auth::user()->id)->get();
+            $userevent=DB::table($userintrest)->join('event_Intrests','intrest_id','=','event_Intrests.intrest_id');
             $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->paginate(5,['*'],'areaEvents');
             $volEvents = volunteer::where('individual_id', $Iuser->id)->get();
             return view('upComingEvents',compact('events','localevents','volEvents','user'));

@@ -46,6 +46,17 @@
                                       </div>
                                   @endif
                           </div>
+                          <div class="form-group {{ $errors->has('cat') ? ' has-error' : '' }}">
+                                  <div class="form-group"> <!-- cat field -->
+                                    <label class="control-label " for="cat">cat</label>
+                                    <textarea class="form-control" value="{{ old('cat') }}" required="required" name="cat" id="cat">{{ old('cat') }}</textarea>
+                                  </div>
+                                  @if ($errors->has('cat'))
+                                      <div class="alert alert-danger" role="alert">
+                                          <strong>Warning!</strong> {{ $errors->first('cat') }}
+                                      </div>
+                                  @endif
+                          </div>
 
                           <div class="form-group{{ $errors->has('cover') ? ' has-error' : '' }}">
                               <label for="name" class="col-lg-4 form-control-label">uplode cover</label>

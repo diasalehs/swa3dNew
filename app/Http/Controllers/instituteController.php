@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use App\event;
+use App\EventIntrest;
 use Image;
 class instituteController extends Controller
 {
@@ -50,7 +51,10 @@ class instituteController extends Controller
             $event->cover = $imagename;
         }
     	$event->save();
-
+        $eveint= new  EventIntrest();
+        $eveint->event_id=$event->id;
+        $eveint->intrest_id=$request['cat'];
+        $eveint->save();
     	return redirect()->route('event',compact('event'));
     }
     public function myEvents(){
