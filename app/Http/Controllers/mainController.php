@@ -52,12 +52,17 @@ class mainController extends Controller
             $Iuser=$user->Researcher;
 
                 # code...
-              } 
-            $userintrest=UserIntrest::where('user_id','=',auth::user()->id)->get();
-            $userevent=DB::table($userintrest)->join('event_Intrests','intrest_id','=','event_Intrests.intrest_id');
+              }
+            // $userintrest=UserIntrest::where('user_id','=',auth::user()->id)->get();
+            // $userevent=DB::table($userintrest)->join('event_Intrests','intrest_id','=','event_Intrests.intrest_id');
+           $userevent= DB::table('user_intrests')->join('event_intrests', function ($join) {
+            $join->on('user_intrests.intrest_id', '=', 'event_intrests.intrest_id')
+                 ->where('user_intrests.user_id', '=', auth::user()->id);
+        })
+        ->get();
             $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->paginate(5,['*'],'areaEvents');
             $volEvents = volunteer::where('individual_id', $Iuser->id)->get();
-            return view('upComingEvents',compact('events','localevents','volEvents','user'));
+            return view('upComingEvents',compact('events','localevents','volEvents','user','userevent'));
         }   
         return view('upComingEvents',compact('events'));
 
