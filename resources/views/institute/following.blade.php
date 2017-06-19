@@ -11,6 +11,7 @@ use App\user;
 
 	         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
           <h1>Following</h1>
+          <div class="row  justify-content-between">
 
           <table class="table">
               <thead>

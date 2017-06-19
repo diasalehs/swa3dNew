@@ -112,27 +112,33 @@ class mainController extends Controller
 
 	public function event($eventId){
     	$event = event::find($eventId);
+        $date = $this->date;
         if($event){
         	if(Auth::check()){
         		$user = Auth::user();
                 $mine = false;
                 $request = false;
+                $eventCloseAllowed = false;
                 $eventAcceptedVols = volunteer::where('event_id',$eventId)->where('accepted',1)->get();
         		if($user->userType == 1 && $event->user_id == $user->id){
         			$mine = true;
                     $eventVols = volunteer::where('event_id',$eventId)->where('accepted',0)->get();
                     $Individuals = Individuals::all();
-                    return view('event',compact('event','request','mine','user','eventVols','eventAcceptedVols','Individuals'));
+                    return view('event',compact('date','event','request','mine','user','eventVols','eventAcceptedVols','Individuals','eventCloseAllowed'));
         		}elseif ($user->userType == 0) {
                     $individual = $user->Individuals;
+                    $flag = volunteer::where('event_id',$eventId)->where('individual_id',$individual->id)->where('accepted',1)->first();
+                    if($flag){
+                        $eventCloseAllowed = true;
+                    }
                     $volunteer = volunteer::where('event_id',$eventId)->where('individual_id',$individual->id)->first();
                     if($volunteer){
                         $request = true;
                     }
                 }
-                return view('event',compact('event','eventAcceptedVols','mine','request','user'));
+                return view('event',compact('date','event','eventCloseAllowed','eventAcceptedVols','mine','request','user'));
         	}
-            return view('event',compact('event','eventAcceptedVols'));
+            return view('event',compact('date','event','eventAcceptedVols','eventCloseAllowed'));
         }else{
             return redirect()->route('upComingEvents');
         }

@@ -8,6 +8,7 @@ use App\User;
 use App\friend;
 use App\event;
 use Illuminate\Http\Request;
+use App\volunteer;
 
 class HomeController extends Controller
 {
@@ -43,7 +44,9 @@ class HomeController extends Controller
             }
             if($user->flag == 1){
                 if($user->userType == 0){
-                    return view('Individual/homeIndividual',compact('user','userIndividual','followers','following'));
+                    $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
+                    $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
+                    return view('Individual/homeIndividual',compact('user','myUpComingEvents','myArchiveEvents','userIndividual','followers','following'));
                 }
                 elseif($user->userType == 1){
                     $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
@@ -67,10 +70,14 @@ class HomeController extends Controller
     public function allusers()
     {
             $user = Auth::user();
+            $date = $this->date;
             $followers = friend::where('requested_id', $user->id)->get();
             $following = friend::where('requester_id', $user->id)->get();
+            $date = $this->date;
+            $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
+            $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
             $users_record= DB::table('users')->get();
-            return view('follow/allusers',compact('user','users_record','following','followers'));
+            return view('follow/allusers',compact('user','myUpComingEvents','myArchiveEvents','users_record','following','followers'));
     }
 
     /**
@@ -83,7 +90,10 @@ class HomeController extends Controller
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id)->get();
         $following = friend::where('requester_id', $user->id)->get();
-        return view('follow/followers',compact('user','followers','following'));
+        $date = $this->date;
+        $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
+        $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
+        return view('follow/followers',compact('user','myUpComingEvents','myArchiveEvents','followers','following'));
     }
 
     /**
@@ -97,7 +107,10 @@ class HomeController extends Controller
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id);
         $following = friend::where('requester_id', $user->id)->get();
-        return view('follow/following',compact('user','followers','following'));
+        $date = $this->date;
+        $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
+        $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
+        return view('follow/following',compact('user','myUpComingEvents','myArchiveEvents','followers','following'));
     }
 
     public function profileViewEdit()
@@ -108,6 +121,9 @@ class HomeController extends Controller
         $date = $this->date;
         if($user->userType == 0){
             $userIndividual = Auth::user()->Individuals;
+            $date = $this->date;
+            $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
+            $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
         }elseif ($user->userType == 1) {
             $userInstitute = Auth::user()->Institute;
             $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
@@ -117,7 +133,7 @@ class HomeController extends Controller
         }elseif ($user->userType == 2) {
             $userIndividual = Auth::user()->Researcher;
         }
-        return view('follow/profileViewEdit',compact('user','userIndividual','followers','following'));
+        return view('follow/profileViewEdit',compact('user','myUpComingEvents','myArchiveEvents','userIndividual','followers','following'));
     }
 
     public function profileEdit(Request $request)
@@ -258,6 +274,38 @@ class HomeController extends Controller
                       ->where('requested_id', '=', $userId)->delete();
         // $user->friend()->attach($userId, ['requested_id' => $user->id, 'requester_id' => $userId]);
         return redirect()->back();
+    }
+
+    public function myUpComingEvents()
+    {
+        $user = Auth::user();
+        $followers = friend::where('requested_id', $user->id);
+        $following = friend::where('requester_id', $user->id);
+        $date = $this->date;
+        if($user->userType == 0){
+            $userIndividual = Auth::user()->Individuals;
+            $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
+            $acceptedEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date)->where('accepted',1)->get();
+            $requestedEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date)->where('accepted',0)->get();
+            $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date)->where('accepted',1);
+            return view('follow.myUpComingEvents',compact('user','myUpComingEvents','myArchiveEvents','userIndividual','followers','following','requestedEvents','acceptedEvents','date'));
+        }
+        return redirect()->route('home');
+    }
+
+    public function myArchiveEvents()
+    {
+        $user = Auth::user();
+        $followers = friend::where('requested_id', $user->id);
+        $following = friend::where('requester_id', $user->id);
+        $date = $this->date;
+        if($user->userType == 0){
+            $userIndividual = Auth::user()->Individuals;
+            $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
+            $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date)->where('accepted',1)->get();
+            return view('follow.myArchiveEvents',compact('user','myUpComingEvents','myArchiveEvents','userIndividual','followers','following','acceptedEvents','date'));
+        }
+        return redirect()->route('home');
     }
 
 }
