@@ -29,25 +29,7 @@ button{
 .dropdown-item:hover{
   color: var(--navy);
 }
-.carousel-indicators-numbers li {
-  text-indent: 0;
-  margin: 0 2px;
-  width: 30px;
-  height: 30px;
-  border: none;
-  border-radius: 100%;
-  line-height: 30px;
-  color: #fff;
-  background-color: var(--green);
-  transition: all 0.25s ease;
-  text-align: center;
-}
-.carousel-indicators-numbers li.active, .carousel-indicators-numbers li:hover {
-  margin: 0 2px;
-  width: 30px;
-  height: 30px;
-  background-color: var(--pink);
-}
+.
 
 .container-fluid{
 		padding: 0 50px;
@@ -286,6 +268,7 @@ form input:focus{
   background-color: #008988;
   color: #fff;
 }
+
 .link-green{
   color: #008988;
   cursor: pointer;
