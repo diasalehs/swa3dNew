@@ -43,6 +43,7 @@ class instituteController extends Controller
         $event->country = $request['country'];
     	$event->startDate = $request['startDate'];
     	$event->endDate = $request['endDate'];
+        $event->open = $request['open'];
         if ($request->hasFile('cover')){
             $mainImg=$request->file('cover');
             $imagename=time().'.'.$mainImg->getClientOriginalExtension();

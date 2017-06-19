@@ -60,6 +60,10 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
     Route::get('/volunteer/{eventId}', ['uses'=>'eventController@volunteer'])->name('volunteer');
     Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
+    Route::get('/acceptVolunteer/{volunteerId}/{eventId}', ['uses'=>'eventController@acceptVolunteer'])->name('acceptVolunteer');
+    Route::get('/unAcceptVolunteer/{volunteerId}/{eventId}', ['uses'=>'eventController@unAcceptVolunteer'])->name('unAcceptVolunteer');
+    Route::get('/myUpComingEvents', ['uses'=>'homeController@myUpComingEvents'])->name('myUpComingEvents');
+    Route::get('/myArchiveEvents', ['uses'=>'homeController@myArchiveEvents'])->name('myArchiveEvents');
 
 
     Route::group(['prefix'=>'institute','routeMiddleware'=>'institute'], function() {
