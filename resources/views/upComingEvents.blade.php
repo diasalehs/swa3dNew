@@ -55,7 +55,6 @@
     <div class="row">
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
-Events all over
               @foreach($events as $event)
               <div class="col-md-8 col-sm-12">
                   <div class="card card-inverse event">
@@ -84,19 +83,21 @@ Events all over
                 </div>
 
                 @endforeach
-                <form action="{{route('allEvents')}}" method="GET"><button class="btn btn-green">View more</button></form>
 
                   </div>
+                  <br>
+                            <div class="row justify-content-center">
+                <form action="{{route('allEvents')}}" method="GET"><button class="btn btn-green">View more</button></form>
+</div>
              </div>
         </div>
     </div>
 
-  <div class="tab-pane active" id="home" role="tabpanel">
+  <div class="tab-pane" id="home" role="tabpanel">
     <div class="container-fluid" style="margin:30px auto; padding:5px;">
         <div class="row">
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
-Events in your counrty
               @foreach($localevents as $event)
               <div class="col-md-8 col-sm-12">
                   <div class="card card-inverse event">
@@ -125,11 +126,14 @@ Events in your counrty
                 </div>
 
                 @endforeach
-                  <form action="{{route('allLocal')}}" method="GET">
+                <br>
+                
+                </div>
+                  <div class="row justify-content-center">
+                  <form class="col-12" action="{{route('allLocal')}}" method="GET">
                     <button class="btn btn-pink" >View more</button>
                   </form>
-                </div>
-
+                  </div>
              </div>
         </div>
       </div>
@@ -138,9 +142,7 @@ Events in your counrty
     <div class="row">
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
-Events matches your intrests
               @foreach($localevents as $event)
-
                 @foreach($userevent as $eve)
                   @if($event->id == $eve->event_id)
                    <div class="col-md-8 col-sm-12">
@@ -176,9 +178,14 @@ Events matches your intrests
 
                 @endforeach
                 @endforeach
-                <form action="{{route('allLocal')}}" method="GET"><button class="btn btn-yellow">View more</button></form>
+                
 
                   </div>
+                  <br>
+                  {{-- needs to be routed to  an allmatched page  --}}
+                  <div class="row justify-content-center" >
+                  <form action="{{route('allLocal')}}" method="GET"><button class="btn btn-yellow">View more</button></form>
+                    </div>
              </div>
 
         </div>

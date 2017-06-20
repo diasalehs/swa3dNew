@@ -17,7 +17,7 @@ class User extends Authenticatable
         return $this->hasOne('App\Individuals','user_id');
     }
      public function Intrest(){
-        return $this->belongsToMany('Intrest','user_intrest');
+        return $this->belongsToMany('Intrest','user_intrests');
     }
 
 
