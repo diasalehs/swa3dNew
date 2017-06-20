@@ -13,7 +13,7 @@
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
-
+ 
 Route::get('/', ['uses'=>'mainController@main','as'=>'main']);
 Route::get('/view/{newsId}',  ['uses' =>'newsController@view', 'as'=>'view']);
 Route::get('/allNews',  ['uses' =>'newsController@allNews', 'as'=>'allNews']);
@@ -29,6 +29,7 @@ Route::get('/choose', ['uses'=>'chooseController@choose','as'=>'choose']);
 Route::post('/registerer', function(\Illuminate\Http\Request $request) {
     return view('auth/register',['user_type'=>$request['submit']]);
 })->name('registerer');
+
 
 
 Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
@@ -85,7 +86,7 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
 
 });
 
-Route::get('/upComingEvents', ['uses'=>'mainController@upComingEvents'])->name('upComingEvents');
+Route::get('/upComingEvents', ['uses'=>'mainController@upComingEvents'] )->name('upComingEvents');
 Route::get('/allLocal', ['uses'=>'mainController@allLocal'])->name('allLocal');
 Route::get('/allEvents', ['uses'=>'mainController@allEvents'])->name('allEvents');
 Route::get('/archiveEvents', ['uses'=>'mainController@archiveEvents'])->name('archiveEvents');

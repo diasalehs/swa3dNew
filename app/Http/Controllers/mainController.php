@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use App\news;
 use App\Individuals;
 use App\slider;
@@ -33,10 +34,20 @@ class mainController extends Controller
 		// }
 	}
 
-	public function upComingEvents() {
+	public function upComingEvents(Request $request) {
         $user = Auth::user();
         $date = $this->date;
+        $events = new event;
         $events = event::where('startDate','>',$date)->paginate(5,['*'],'events');
+        if(request()->has('location')){
+             if(request()->has('cat')){
+             $events= DB::table("events")->join('event_intrests', function ($join) {
+             $join->on('events.id', '=', 'event_intrests.event_id')
+                  ->where([['event_intrests.intrest_id', '=', request('cat')],['events.startDate','>',$this->date],['events.country','=',request('location')]]);})->paginate(5,['*'],'events');
+         }
+         else{$events = event::where([['startDate','>',$date],['country','=',$request['location']]])->paginate(5,['*'],'events');} 
+         }
+        // ['event_intrests.intrest_id', '=', request('cat')[x]],
 
         if (Auth::check()) {
             if($user->userType==0){
@@ -53,8 +64,6 @@ class mainController extends Controller
 
                 # code...
               }
-            // $userintrest=UserIntrest::where('user_id','=',auth::user()->id)->get();
-            // $userevent=DB::table($userintrest)->join('event_Intrests','intrest_id','=','event_Intrests.intrest_id');
            $userevent= DB::table('user_intrests')->join('event_intrests', function ($join) {
             $join->on('user_intrests.intrest_id', '=', 'event_intrests.intrest_id')
                  ->where('user_intrests.user_id', '=', auth::user()->id);

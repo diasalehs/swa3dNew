@@ -10,6 +10,6 @@ class Event extends Model
         return $this->belongsTo('App\Institute');
     }
      public function Intrest(){
-        return $this->belongsToMany('Intrest','event_intrest');
+        return $this->belongsToMany('Intrest','event_intrests');
     }
 }

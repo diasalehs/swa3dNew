@@ -2,7 +2,11 @@
 
 @section('content')
 
-
+<form action="{{route('upComingEvents')}}" method="GET">
+<input type="text" name="location">
+<input type="text" name="cat">  
+<button type="submit">save</button>
+</form>
 @if(Auth::guest())
 <div class="container-fluid" style="margin:30px auto; padding:5px;">
     <div class="row">
@@ -17,7 +21,7 @@
                 <div class="card-img-overlay">
                   <h3 class="card-title">{{$event->title}}</h3>
                   <p class="card-text line-clamp-4">{{$event->description}}</p>
-                  <p class="">{{$event->startDate}} To {{$event->endDate}} - in Nablus</p>
+                  <p class="">{{$event->startDate}} To {{$event->endDate}} - in {{$event->city}}</p>
                   <a href='event/{{$event->id}}' class="card-link green-link" >View</a>
                   <a href="{{route('login')}}" class="card-link pink-link">Volunteer</a>
                   <a href="{{route('login')}}" class="card-link yellow-link ">Follow</a>
@@ -138,7 +142,7 @@
                 <div class="card-img-overlay">
                   <h3 class="card-title">{{$event->title}}</h3>
                   <p class="card-text line-clamp-4">{{$event->description}}</p>
-                  <p class="">{{$event->startDate}} To {{$event->endDate}} - in Nablus</p>
+                  <p class="">{{$event->startDate}} To {{$event->endDate}} - in {{$event->city}}</p>
                   <a href='event/{{$event->id}}' class="card-link green-link" >View</a>
                   @if($user->userType != 1)
                   <?php $flag = 0; ?>

@@ -1,0 +1,8 @@
+1- sign-up ,,,counrty in a combo box
+2- home ,,, add intrests in combos 
+3- upcomming events <styling>
+4- profile cat is a way of eveluation << star rating system (input & output )styling >>
+5- home << star rating system(output)styling
+6- institute home create events counrty drop down
+7- cat is intrest --- put it in a way that user cant put any dump text
+

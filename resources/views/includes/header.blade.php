@@ -51,10 +51,10 @@
 
                                 <ul class="dropdown-menu dropdown-menu-right" role="menu">
                                   <li>
-                                            <a class="dropdown-item" href="{{ route('home') }}">Your Profile</a>
+                                   <a class="dropdown-item" href="{{ route('home') }}">Your Profile</a>
 
                                   </li>
-    <div class="dropdown-divider"></div>
+                                    <div class="dropdown-divider"></div>
 
                                     <li>
                                         <a class="dropdown-item mytext-danger"  href="{{ route('logout') }}"
@@ -62,10 +62,14 @@
                                                      document.getElementById('logout-form').submit();">
 
                                           <i class="fa fa-sign-out" aria-hidden="true"></i>
-  Logout
+                                                Logout
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                           @if(auth::user()->flag == 0)
+                                                     {{auth::user()->delete()}}
+                                           @endif
+                                                     
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
