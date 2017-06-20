@@ -71,7 +71,7 @@ button{
 .green-link:hover{
   color: var(--green-hover) !important;
   border-bottom: 1px solid var(--green-hover);
-
+  text-decoration: none;
 }
 .line-clamp-2 {
   display: -webkit-box;
@@ -108,73 +108,103 @@ button{
 .mainNavbar .nav-item .nav-link:focus{
   color: var(--green);
 }
-.search-nav-tabs  .nav-item{
+.sw-nav-tabs  .nav-item{
     text-align: center;
 }
 #nnnn{
   border-bottom: 3px solid #51c2c0 !important;
 }
-.search-nav-tabs  .nav-item a{
+.sw-nav-tabs  .nav-item a{
     color: #fff;
     font-size: 18px;
     padding-left: 30px;
     padding-right: 30px;
+    border-radius: 0px;
+    margin-right: 10px;
 }
-.search-nav-tabs  .users-tab a.nav-link{
+.sw-nav-tabs  .first-tab a.nav-link{
     background-color: var(--gray);
-    border: 0;
+    border: 0 ;
     border-top: 5px solid var(--gray) !important;
     transition: all .3s;
 
 }
-.search-nav-tabs .events-tab a.nav-link{
+.sw-nav-tabs .second-tab a.nav-link{
     background-color: var(--gray);
-    border: 0;
+    border: 0 ;
+    border-top: 5px solid var(--gray) !important;
+    transition: all .3s;
+}
+.sw-nav-tabs .third-tab a.nav-link{
+    background-color: var(--gray);
+    border: 0 ;
     border-top: 5px solid var(--gray) !important;
     transition: all .3s;
 
 }
-.search-nav-tabs  .users-tab a.nav-link:hover{
+.sw-nav-tabs  .first-tab a.nav-link:hover{
   border-top: 5px solid var(--green) !important;
 }
-.search-nav-tabs  .revents-tab a.nav-link:hover{
+.sw-nav-tabs  .rsecond-tab a.nav-link:hover{
   border-top: 5px solid var(--pink) !important;
-
 }
-.search-nav-tabs .users-tab a.active{
+.sw-nav-tabs  .third-tab a.nav-link:hover{
+  border-top: 5px solid var(--yellow) !important;
+}
+.sw-nav-tabs .first-tab a.active{
     background-color: var(--green) ;
     border-top: 5px solid var(--dark-gray) !important;
 }
-.search-nav-tabs .events-tab a.active{
+.sw-nav-tabs .second-tab a.active{
     background-color: var(--pink) ;
     border-top: 5px solid  var(--dark-gray)  !important;
 }
+.sw-nav-tabs .third-tab a.active{
+    background-color: var(--yellow) ;
+    border-top: 5px solid var(--dark-gray) !important;
+}
 
-.users-tab a.active {
+.first-tab a.active {
     color: #fff !important;
 }
-.users-tab a.active:hover {
+.first-tab a.active:hover {
     color: #fff !important;
 }
-.users-tab a:hover {
+.first-tab a:hover {
     color: var(--green) !important;
 }
-.users-tab a {
+.first-tab a {
     color: #666 !important;
 }
-.events-tab a.active{
+.second-tab a.active{
   color: #fff !important;
 
 }
-.events-tab a.active:hover{
+.second-tab a.active:hover{
   color: #fff !important;
 
 }
-.events-tab a:hover{
+.second-tab a:hover{
   color: var(--pink) !important;
 
 }
-.events-tab a{
+.second-tab a{
+  color: #666 !important;
+
+}
+.third-tab a.active{
+  color: #fff !important;
+
+}
+.third-tab a.active:hover{
+  color: #fff !important;
+
+}
+.third-tab a:hover{
+  color: var(--yellow) !important;
+
+}
+.third-tab a{
   color: #666 !important;
 
 }
@@ -257,18 +287,41 @@ form input:focus{
   border-color: #51c2c0 !important;
 }
 .btn-green{
-  background-color: #51c2c0;
-  border: 0px solid #51c2c0;
+  background-color: var(--green);
+  border: 0px solid var(--green);
   display: inline-block !important;
   color: white;
   cursor: pointer;
 
 }
 .btn-green:hover{
-  background-color: #008988;
+  background-color: var(--green-hover);
   color: #fff;
 }
+.btn-pink{
+  background-color: var(--pink);
+  border: 0px solid var(--pink);
+  display: inline-block !important;
+  color: white;
+  cursor: pointer;
 
+}
+.btn-pink:hover{
+  background-color: var(--pink-hover);
+  color: #fff;
+}
+.btn-yellow{
+  background-color: var(--yellow);
+  border: 0px solid var(--yellow);
+  display: inline-block !important;
+  color: white;
+  cursor: pointer;
+
+}
+.btn-yellow:hover{
+  background-color: var(--yellow-hover);
+  color: #fff;
+}
 .link-green{
   color: #008988;
   cursor: pointer;
@@ -549,6 +602,12 @@ border-bottom: 3px solid #51c2c0 !important;
     padding-top: 10px;
     padding-bottom: 40px;
     background-color: var(--green);
+    transition: all .4s;
+}
+.top-5:hover{
+    padding-top: 10px;
+    padding-bottom: 40px;
+    background-color: var(--green-hover);
 }
 .top-5 h1{
     color: #fff;

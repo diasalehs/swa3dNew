@@ -4,11 +4,11 @@
 <div class="container">
   <h1 class="mt-4 mb-3" style="color: var(--green);">Results <small></small></h1>
 
-    <ul class="nav search-nav-tabs" role="tablist" id ="nnnn">
-      <li class="nav-item users-tab">
+    <ul class="nav sw-nav-tabs" role="tablist" id ="nnnn">
+      <li class="nav-item first-tab">
         <a class="nav-link  active" data-toggle="tab" id="ntab" href="#home" role="tab">Users</a>
       </li>
-      <li class="nav-item events-tab">
+      <li class="nav-item second-tab">
         <a class="nav-link" data-toggle="tab" id="rtab" href="#profile" role="tab">Events</a>
       </li>
 
