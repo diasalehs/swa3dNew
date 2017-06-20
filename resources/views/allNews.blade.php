@@ -4,11 +4,11 @@
 <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">All News <small></small></h1>
+    <h1 class="mt-4 mb-3 greencolor">All News <small></small></h1>
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="{{ route('main') }}">Home</a>
+            <a class="green-link" href="{{ route('main') }}">Home</a>
         </li>
         <li class="breadcrumb-item active">All News</li>
     </ol>
@@ -25,13 +25,13 @@
 
               </div>
               <div class="col-lg-6">
-                <h2 class="card-title">{{$anew->title}}</h2>
+                <h2 class="card-title greencolor">{{$anew->title}}</h2>
                 <p class="card-text line-clamp">{{$anew->textarea}}</p>
                 <a href="{{route('view',[$anew->id])}}" class="btn btn-primary btn-green">Read More &rarr;</a>
             </div>
         </div>
     </div>
-    <div class="card-footer text-muted">
+    <div class="card-footer text-mute">
         Posted on {{$anew->created_at}}
     </div>
 </div>

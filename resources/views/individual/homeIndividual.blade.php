@@ -8,7 +8,7 @@
          <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
            <div class="jumbotron">
               <h1 class="display-4" style="">Hello, {{$user->name}}!</h1>
-              <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+              <p class="lead">This is a V simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
               <hr class="my-4">
               <p class="lead">
                 <a class="btn btn-primary btn-lg bv" href="{{route('upComingEvents')}}" role="button">Volunteer Now</a>
