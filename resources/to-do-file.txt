@@ -5,4 +5,5 @@
 5- home << star rating system(output)styling
 6- institute home create events counrty drop down
 7- cat is intrest --- put it in a way that user cant put any dump text
-
+8- researcher
+9- stars initial value problem 0+ val\2 will result in half of the value
