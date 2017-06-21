@@ -21,16 +21,16 @@
                     $date = date('Y-m-d');
                     echo "<tr>
                     <td>
-                    <a class='btn'  href='".route('event',[$event->id])."'>{$event->title}</a>
+                    <a class='green-link'  href='".route('event',[$event->id])."'>{$event->title}</a>
                     </td>
                     <td>".$event->startDate."</td>
                     <td>".$event->endDate."</td>
                     <td>
                         <div class='btn-group' style='width:100%'>
-                          <button type='button' class='btn btn-danger btn-block dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                          <button type='button' class='btn btn-green btn-block dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                             Action
                           </button>
-                          <div class='dropdown-menu'>
+                          <div class='dropdown-menu '>
                             <a class='dropdown-item' href='".route('eventDelete',[$event->id])."'>Delete</a>
                             <a class='dropdown-item' href='".route('eventVeiwEdit',[$event->id])."'>Edit</a>
 

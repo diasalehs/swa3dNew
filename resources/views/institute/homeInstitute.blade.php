@@ -5,10 +5,14 @@
     <div class="row">
       @include('institute/includes.sidebar')
         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
-          <div class="jumbotron">
-             <h1 class="display-4" style="">Hello, {{$user->name}}!</h1>
-             <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-             <hr class="my-4">
+          <div class="jumbotron" style="background-image: linear-gradient(rgba(19, 58, 83, 0.6),rgba(19, 58, 83, 0.6)),url({{ URL::to('/vendor/img/newlogo.png')}});
+          background-size:contain;background-repeat: no-repeat;
+          background-position: right top;
+          background-attachment: fixed;
+          ">
+             <h1 class="display-4 " style="color:#fff">Hello, {{$user->name}}!</h1>
+             <p class="lead" style="color:#fff">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+             <hr class="my-4 " style="background-color: #fff">
              <p class="lead">
                <a class="btn btn-primary btn-lg bv" href="{{route('makeEvent')}}" role="button">Create an Event</a>
                <a class="btn btn-primary btn-lg mg" href="{{route('findVolunteers')}}" role="button">Find Volunteers</a>

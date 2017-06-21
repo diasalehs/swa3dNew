@@ -1,4 +1,4 @@
-<?php 
+<?php
 use App\Individuals;
 ?>
 @extends('layouts.master')
@@ -66,10 +66,10 @@ use App\Individuals;
 
         @if($mine)
 
-          <div class="col-lg-3">
+          <div class="col-lg-12">
             <hr>
 
-            <table class="table table-responsive text-center table-sm table-fixed">
+            <table class="table table-responsive text-center  table-fixed">
             <thead class="text-center">
               <tr>
                 <th>Name</th>

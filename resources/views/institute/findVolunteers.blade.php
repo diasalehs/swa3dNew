@@ -9,11 +9,13 @@ use App\user;
       @include('institute/includes.sidebar')
          <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
            <h1>All Volunteers</h1>
-            <table class="table">
+           <div class="table-responsive">
+
+            <table class="table  ">
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Email</th>
+                  <th class='hidden-xs-down'>Email</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -26,10 +28,10 @@ use App\user;
                     if($user->id == $userei->id){
                       echo "<tr>
                       <td>
-                      <a class='btn'  href='".route('profile',[$usere->id])."'>{$usere->name}</a>
-                      <td>".$user->email."</td>
+                      <a class='green-link'  href='".route('profile',[$userei->id])."'>{$userei->name}</a>
+                      <td class='hidden-xs-down'>".$user->email."</td>
                       <td>
-                      <a class='btn btn-success btn-block'  href='allusers/unfollow/".$user->id."'>unfollow</a>
+                      <a class='btn btn-pink btn-block'  href='allusers/unfollow/".$user->id."'>Unfollow</a>
                       </td>
                       </tr>";
                       $flag = 1;
@@ -37,21 +39,22 @@ use App\user;
                   }
                   if($flag == 0){
                       echo "<tr>
-                      <td>".$user->name."</td>
-                      <td>".$user->email."</td>
+                      <td><a class='green-link'  href='".route('profile',[$userei->id])."'>".$user->name."</a></td>
+                      <td class='hidden-xs-down'>".$user->email."</td>
                       <td>
-                      <a class='btn btn-success btn-block'  href='allusers/follow/".$user->id."'>follow</a>
+                      <a class='btn btn-green btn-block'  href='allusers/follow/".$user->id."'>Follow</a>
                       </td>
                       </tr>";
                     }
                   }
-              
+
                 ?>
               </tbody>
           </table>
 
 
-         </div>
+        </div>
+      </div>
     </div>
 </div>
 

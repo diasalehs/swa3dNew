@@ -139,7 +139,7 @@
 </div>
 
         <!-- Marketing Icons Section -->
-        <div class="top-5" style="background-image: url(q.png);    background-repeat: no-repeat;
+        <div class="top-5" style="  background-repeat: no-repeat;
     background-position: right top;
     background-size: contain" >
 

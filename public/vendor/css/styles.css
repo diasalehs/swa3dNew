@@ -29,19 +29,25 @@ button{
 .dropdown-item:hover{
   color: var(--navy);
 }
-.
+.dropdown-menu a:active{
+    background-color: #51c2c0;
+    color: #fff;
+}
+.dropdown-menu li.logout-dropdown-item a:active{
+    color: white !important;
+}
 
 .container-fluid{
 		padding: 0 50px;
 }
 .greencolor{
-  color: var(--green);
+  color: var(--green) !important;
 }
 .pinkcolor{
-  color: var(--pink);
+  color: var(--pink) !important;
 }
 .yellowcolor{
-  color: var(--yellow);
+  color: var(--yellow) !important;
 }
 .mytext-danger{
   color: #d9534f;
@@ -262,12 +268,7 @@ button{
 .main{
   margin-top: 76px;
 }
-.dropdown-menu-nav li a:active{
-    background-color: #51c2c0;
-}
-.dropdown-menu-nav li.logout-dropdown-item a:active{
-    color: white !important;
-}
+
 #navtop{
 		display: block;
 		position: fixed;
@@ -598,17 +599,7 @@ border-bottom: 3px solid #51c2c0 !important;
 .choose-btn:hover{
 		background-color: #008988;
 }
-.top-5{
-    padding-top: 10px;
-    padding-bottom: 40px;
-    background-color: var(--green);
-    transition: all .4s;
-}
-.top-5:hover{
-    padding-top: 10px;
-    padding-bottom: 40px;
-    background-color: var(--green-hover);
-}
+
 .top-5 h1{
     color: #fff;
     margin-top: 30px;
@@ -651,8 +642,28 @@ border-bottom: 3px solid #51c2c0 !important;
   border-color: #51c2c0 !important;
 }
 @media only screen and (min-width: 50px) {
-
+  .top-5{
+      padding-top: 10px;
+      padding-bottom: 40px;
+      transition: all .4s;
+      background-color: var(--green);
+      margin-top: 30px;
+  }
+  .top-5:hover{
+      padding-top: 10px;
+      padding-bottom: 40px;
+      background-color: var(--green-hover);
+  }
   .nav-tabs-main  .nav-item{
+    padding: 1px;
+  }
+  .sw-nav-tabs  .nav-item a{
+      background-color: #eee;
+      font-size: 16px;
+      padding: 1px;
+      margin: 1px;
+  }
+  .sw-nav-tabs  .nav-item{
     padding: 1px;
   }
   .nav-tabs-main  .nav-item a{
@@ -664,9 +675,12 @@ border-bottom: 3px solid #51c2c0 !important;
 
   }
   .table-fixed{
-    height: 300px;
+    max-height: 300px;
     overflow: scroll;
-    border: 1px solid #aaa;
+  }
+  .table-fixedd{
+    max-height: 300px;
+    overflow: scroll;
   }
 }
 @media only screen and (min-width: 300px) {
@@ -702,7 +716,18 @@ border-bottom: 3px solid #51c2c0 !important;
   }
 }
 @media only screen and (min-width: 570px) {
-
+    .top-5{
+        padding-top: 10px;
+        padding-bottom: 40px;
+        transition: all .4s;
+        background-color: var(--green);
+        background-image: url('../../q.png');
+    }
+    .top-5:hover{
+        padding-top: 10px;
+        padding-bottom: 40px;
+        background-color: var(--green-hover);
+    }
   .nav-tabs-main  .nav-item a{
       background-color: #eee;
       font-size: 14px;
@@ -714,7 +739,16 @@ border-bottom: 3px solid #51c2c0 !important;
     width: 300px !important;
 
   }
-  .nav-tabs-main  .nav-item{
+  .  .nav-item{
+    padding-right: 10px;
+    padding-left: : 10px;
+    }
+  .sw-nav-tabs .nav-item a{
+      background-color: #eee;
+      font-size: 16px;
+      padding: 8px;
+  }
+  .sw-nav-tabs  .nav-item{
     padding-right: 10px;
     padding-left: : 10px;
     }
@@ -730,7 +764,10 @@ border-bottom: 3px solid #51c2c0 !important;
       background-color: #eee;
       font-size: 20px;
   }
-
+  .sw-nav-tabs  .nav-item a{
+      background-color: #eee;
+      font-size: 18px;
+  }
   .show-more-btn{
 
   }

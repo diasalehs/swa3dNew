@@ -38,13 +38,13 @@
 @if(Auth::check())
 
 <ul class="nav nav-tabs sw-nav-tabs " role="tablist">
-  <li class="nav-item first-tab">
-    <a class="nav-link active" data-toggle="tab" href="#messages" role="tab">Events all over</a>
+  <li class="nav-item col-4 col-lg-3  first-tab">
+    <a class="nav-link active" data-toggle="tab" href="#messages" role="tab">Events All Over / Search</a>
   </li>
-  <li class="nav-item second-tab">
+  <li class="nav-item col-4 col-lg-3  second-tab">
     <a class="nav-link " data-toggle="tab" href="#home" role="tab">Events in your counrty</a>
   </li>
-  <li class="nav-item third-tab ">
+  <li class="nav-item col-4 col-lg-3  third-tab ">
     <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Events matches your intrests</a>
   </li>
 

@@ -57,7 +57,7 @@
                                     <div class="dropdown-divider"></div>
 
                                     <li>
-                                        <a class="dropdown-item mytext-danger"  href="{{ route('logout') }}"
+                                        <a class="dropdown-item pinkcolor"  href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
 
@@ -69,7 +69,7 @@
                                            @if(auth::user()->flag == 0)
                                                      {{auth::user()->delete()}}
                                            @endif
-                                                     
+
                                             {{ csrf_field() }}
                                         </form>
                                     </li>

@@ -3,14 +3,18 @@
 @section('content')
 
 <div class="viewProfile">
-  <div class="jumbotron jumbotron-fluid text-center">
+  <div class="jumbotron jumbotron-fluid text-center"style="background-image: linear-gradient(rgba(19, 58, 83, 0.6),rgba(19, 58, 83, 0.6)),url({{ URL::to('/vendor/img/newlogo.png')}});
+  background-size:contain;background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+  ">
     <div class="container">
       <div class=" circular--landscape">
           <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$Individual->picture}}">
       </div>
 
-      <h1 class="display-7">{{$Individual->nameInEnglish}}</h1>
-      <p class=""><span>Volunteer</span> <span>{{$Individual->country}}</span> <span>{{$Individual->cityName}}</span> </p>
+      <h1 class="display-7" style="color:#fff">{{$Individual->nameInEnglish}}</h1>
+      <p class=""style="color:#fff"><span>Volunteer</span> <span>{{$Individual->country}}</span> <span>{{$Individual->cityName}}</span> </p>
 
       @if(Auth::guest())
              <a class='btn btn-green'  href="{{route('login')}}">follow</a>
