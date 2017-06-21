@@ -46,14 +46,25 @@
                                       </div>
                                   @endif
                           </div>
-                          <div class="form-group {{ $errors->has('cat') ? ' has-error' : '' }}">
-                                  <div class="form-group"> <!-- cat field -->
-                                    <label class="control-label " for="cat">cat</label>
-                                    <textarea class="form-control" value="{{ old('cat') }}" required="required" name="cat" id="cat">{{ old('cat') }}</textarea>
+                          <div class="form-group {{ $errors->has('intrests') ? ' has-error' : '' }}">
+                                  <div class="form-group"> <!-- intrests field -->
+                                    <label class="control-label " for="intrests">intrests</label>
+                                    <textarea class="form-control" value="{{ old('intrests') }}" required="required" name="intrests" id="intrests">{{ old('intrests') }}</textarea>
                                   </div>
-                                  @if ($errors->has('cat'))
+                                  @if ($errors->has('intrests'))
                                       <div class="alert alert-danger" role="alert">
-                                          <strong>Warning!</strong> {{ $errors->first('cat') }}
+                                          <strong>Warning!</strong> {{ $errors->first('intrests') }}
+                                      </div>
+                                  @endif
+                          </div>
+                           <div class="form-group {{ $errors->has('target') ? ' has-error' : '' }}">
+                                  <div class="form-group"> <!-- target field -->
+                                    <label class="control-label " for="target">target</label>
+                                    <textarea class="form-control" value="{{ old('target') }}" required="required" name="target" id="target">{{ old('target') }}</textarea>
+                                  </div>
+                                  @if ($errors->has('target'))
+                                      <div class="alert alert-danger" role="alert">
+                                          <strong>Warning!</strong> {{ $errors->first('target') }}
                                       </div>
                                   @endif
                           </div>
