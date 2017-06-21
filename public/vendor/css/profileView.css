@@ -11,3 +11,6 @@
 .rate-modal input{
   display: none;
 }
+.rate-table tbody tr td span{
+  display: none;
+}

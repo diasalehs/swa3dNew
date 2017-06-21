@@ -61,36 +61,35 @@
 
 
       <div class="tab-pane" id="profile" role="tabpanel">
-
-        {{-- events earch results --}}
-            <div class="row">
-
-            <!-- Blog Post -->
-            @foreach($events as $result)
-            <div class="col-lg-4 col-sm-6" style="margin-bottom:25px;">
-                <div class="card h-100">
-                    <a href="event/{{$result->id}}">
-                      <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/events/{{$result->cover}}" alt="">
-                    </a>
-                        <div class="card-block">
-                          <a href="event/{{$result->id}}"><h2 class="card-title">{{$result->title}}</h2></a>
-                        <p class="card-text"></p>
+        <div class="row">
+                 <div class="col-12" style="color: #333">
+                  <div class="row justify-content-center">
+                  @foreach($events as $event)
+                  <div class="col-md-8 col-sm-12">
+                      <div class="card card-inverse event">
+                        <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
+                        <div class="card-img-overlay">
+                          <h3 class="card-title">{{$event->title}}</h3>
+                          <p class="card-text line-clamp-4">{{$event->description}}</p>
+                          <p class="">{{$event->startDate}} To {{$event->endDate}} - in Nablus</p>
+                          <a href='event/{{$event->id}}' class="card-link green-link" >View</a>
+                          <a href='event/{{$event->id}}' class="card-link yellow-link ">Follow</a>
+                        </div>
+                      </div>
                     </div>
-                    <div class="card-footer text-muted">
-                    @if(date('Y-m-d') > $result->endDate)
-                     This event has Ended
-                    @elseif(date('Y-m-d') <= $result->endDate)
-                        Starts on :{{$result->startDate}}
-                        <br>
-                        Ends on:{{$result->endDate}}
-                    @endif
-                    </div>
-                </div>
+
+                    @endforeach
+
+                      </div>
+                      <br>
+
+                                <div class="row justify-content-center">
+                    <form action="{{route('allEvents')}}" method="GET"><button class="btn btn-pink">View more</button></form>
+    </div>
+                 </div>
             </div>
 
 
-            @endforeach
-          </div>
 
         <!-- Pagination -->
         <nav aria-label="Page navigation example">

@@ -91,11 +91,30 @@
         changeable:true,
         buttons:10
       });
+      $('.showrate').starbox({
+      average: 0.5,
+      autoUpdateAverage: false,
+      ghosting: false,
+      changeable:false,
+      buttons:10
+    });
       function rate(r) {
-          alert($('#r'+r).starbox('getValue'));
+        //  alert($('#r'+r).starbox('getValue'));
           $('.cat'+r).val($('#r'+r).starbox('getValue'));
 
        }
+
+         //  alert($('#r'+r).starbox('getValue'));
+         var i = 0;
+         while (true) {
+           i++;
+           $('#sh'+i).starbox('setValue',$('#shr'+i).text());
+           if (i > 7) {
+             break;
+           }
+         }
+
+
     </script>
 </body>
 
