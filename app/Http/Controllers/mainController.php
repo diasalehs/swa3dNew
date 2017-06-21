@@ -45,8 +45,9 @@ class mainController extends Controller
              $join->on('events.id', '=', 'event_intrests.event_id')
                   ->where([['event_intrests.intrest_id', '=', request('cat')],['events.startDate','>',$this->date],['events.country','=',request('location')]]);})->paginate(5,['*'],'events');
          }
-         else{$events = event::where([['startDate','>',$date],['country','=',$request['location']]])->paginate(5,['*'],'events');} 
-         }
+            else{$events = event::where([['startDate','>',$date],['country','=',$request['location']]])->paginate(5,['*'],'events');
+        } 
+    }
         // ['event_intrests.intrest_id', '=', request('cat')[x]],
 
         if (Auth::check()) {
