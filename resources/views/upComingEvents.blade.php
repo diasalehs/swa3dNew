@@ -86,6 +86,7 @@
 
                   </div>
                   <br>
+
                             <div class="row justify-content-center">
                 <form action="{{route('allEvents')}}" method="GET"><button class="btn btn-green">View more</button></form>
 </div>
@@ -127,7 +128,7 @@
 
                 @endforeach
                 <br>
-                
+
                 </div>
                   <div class="row justify-content-center">
                   <form class="col-12" action="{{route('allLocal')}}" method="GET">
@@ -178,7 +179,7 @@
 
                 @endforeach
                 @endforeach
-                
+
 
                   </div>
                   <br>
