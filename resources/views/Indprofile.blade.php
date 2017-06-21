@@ -27,34 +27,30 @@
   <div class="container">
     <div class="row">
 
-        <div class="col-8">
+        <div class="col-lg-8">
 
 
                 <div class="card">
                   <div class="card-block">
                     <h4 class="card-title">User Informations</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                     <p class="card-text">
                     Gender: {{$Individual->gender}}<br>
                     Birth Date: {{$Individual->dateOfBirth}}<br>
                     Education: {{$Individual->educationalLevel}}<br>
                     Current Work: {{$Individual->currentWork}}<br>
                     Availabel from: {{$Individual->availableFrom}} to: {{$Individual->availableTo}}<br>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
                   </div>
                 </div>
                 <br>
                 <div class="card">
                   <div class="card-block">
                     <h4 class="card-title">Contact Informations</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                     <p class="card-text">
                     Email: {{$Individual->email}}<br>
                     Adress: {{$Individual->address}}<br>
                     Mobile number: {{$Individual->mobileNumber}}<br>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <a href="#" class="card-link pink-link">Send Email</a>
+                    <a href="#" class="card-link green-link">Send Message</a>
                   </div>
                 </div>
                 <br>
@@ -63,7 +59,6 @@
                 <div class="card">
                   <div class="card-block">
                     <h4 class="card-title">Achievements</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                     <p class="card-text">
                     @foreach($events as $event)
                       Event Title: {{$event->title}}<br>
@@ -75,46 +70,48 @@
 
 
           </div>
-          <div class="col-4">
+          <div class=" col-lg-4">
             <div class="card">
               <div class="card-header">
                 Dashboard
               </div>
               <div class="card-block dcb">
-                <table class="table">
+                <table class="table rate-table">
 
                   <tbody>
                     <tr>
                       <td>Voluntary years</td>
-                      <td>{{$Individual->voluntaryYears}}</td>
+                      <td><div class="showrate" id="sh1"></div><span id="shr1">{{$Individual->voluntaryYears}}</span></td>
                     </tr>
                     <tr>
                       <td>cat1</td>
-                      <td>{{$Individual->cat1}}</td>
+                      <td><div class="showrate" id="sh2"></div><span id="shr2">{{$Individual->cat1}}</span></td>
                     </tr>
                     <tr>
                       <td>cat2</td>
-                      <td>{{$Individual->cat2}}</td>
+                      <td><div class="showrate" id="sh3"></div><span id="shr3">{{$Individual->cat2}}</span></td>
                     </tr>
                      <tr>
                       <td>cat3</td>
-                      <td>{{$Individual->cat3}}</td>
+                      <td><div class="showrate" id="sh4"></div><span id="shr4">{{$Individual->cat3}}</span></td>
                     </tr>
                      <tr>
                       <td>cat4</td>
-                      <td>{{$Individual->cat4}}</td>
+                      <td><div class="showrate" id="sh5"></div><span id="shr5">{{$Individual->cat4}}</span></td>
                     </tr>
                      <tr>
                       <td>acc </td>
-                      <td>{{$Individual->acc_avg}}</td>
+                      <td><div class="showrate" id="sh6"></div><span id="shr6">{{$Individual->acc_avg}}</span></td>
                     </tr>
                     <tr>
                       <td> </td>
                       <td>
                       {{-- @if(auth::check()) --}}
-                      <button type="button" class="btn btn-green" data-toggle="modal" data-target="#myModal">
+
+                      <button type="button" class="btn btn-green btn-block" data-toggle="modal" data-target="#myModal">
                        Rate!
                       </button>
+
                       {{-- @endif --}}
                     </td>
                     </tr>

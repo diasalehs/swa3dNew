@@ -18,9 +18,6 @@ class CreateEventsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('institutes')->onDelete('cascade');
             $table->string('title');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('institutes');
-
             $table->text('description');
             $table->string('cover')->default('default.jpg');
             $table->string('country');

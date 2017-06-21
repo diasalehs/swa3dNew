@@ -87,18 +87,19 @@
                   </div>
                   <br>
 
-                            <div class="row justify-content-center">
-                <form action="{{route('allEvents')}}" method="GET"><button class="btn btn-green">View more</button></form>
-</div>
+                    <div class="row justify-content-center">
+                <form action="{{route('allEvents')}}" method="GET">
+                  <button class="btn btn-green">View more</button></form>
+                  </div>
              </div>
         </div>
     </div>
 
   <div class="tab-pane" id="home" role="tabpanel">
-    <div class="container-fluid" style="margin:30px auto; padding:5px;">
-        <div class="row">
+            <div class="row">
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
+
               @foreach($localevents as $event)
               <div class="col-md-8 col-sm-12">
                   <div class="card card-inverse event">
@@ -131,13 +132,12 @@
 
                 </div>
                   <div class="row justify-content-center">
-                  <form class="col-12" action="{{route('allLocal')}}" method="GET">
-                    <button class="btn btn-pink" >View more</button>
-                  </form>
+                    <form class="" action="{{route('allLocal')}}" method="GET">
+                        <button class="btn btn-pink" >View more</button>
+                    </form>
                   </div>
              </div>
         </div>
-      </div>
     </div>
   <div class="tab-pane" id="profile" role="tabpanel">
     <div class="row">
