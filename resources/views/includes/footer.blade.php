@@ -50,13 +50,12 @@
     <!-- Script to Activate the Carousel -->
 
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 	    <!-- Bootstrap core JavaScript -->
-	    <script src="{{URL::asset('vendor/js/jquery.js')}} "></script>
+      <script src="{{URL::asset('vendor/js/jquery.js')}} "></script>
 	    <script src="{{URL::asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 	    <script src="{{URL::asset('vendor/js/scripts.js')}}"></script>
+      <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
 
     <script type="text/javascript">
     $(document).ready(function()
@@ -81,8 +80,23 @@
 
             });
           });
+
     </script>
 
+    <script>
+        $('.c').starbox({
+        average: 0.5,
+        autoUpdateAverage: true,
+        ghosting: true,
+        changeable:true,
+        buttons:10
+      });
+      function rate(r) {
+          alert($('#r'+r).starbox('getValue'));
+          $('.cat'+r).val($('#r'+r).starbox('getValue'));
+
+       }
+    </script>
 </body>
 
 </html>

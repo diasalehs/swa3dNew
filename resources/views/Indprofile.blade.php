@@ -10,7 +10,7 @@
       </div>
 
       <h1 class="display-7">{{$Individual->nameInEnglish}}</h1>
-      <p class=""><span>Volunteer</span> <span>{{$Individual->country}}</span> <span>{{$Individual->cityName}}</span> </p>  
+      <p class=""><span>Volunteer</span> <span>{{$Individual->country}}</span> <span>{{$Individual->cityName}}</span> </p>
 
       @if(Auth::guest())
              <a class='btn btn-green'  href="{{route('login')}}">follow</a>
@@ -112,14 +112,14 @@
                       <td> </td>
                       <td>
                       {{-- @if(auth::check()) --}}
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                      <button type="button" class="btn btn-green" data-toggle="modal" data-target="#myModal">
                        Rate!
                       </button>
                       {{-- @endif --}}
                     </td>
                     </tr>
 
-                     
+
 
 
                   </tbody>
@@ -143,20 +143,24 @@
         </button>
       </div>
       <form action="{{route('rank',$Individual->id)}}" method="get">
-      <div class="modal-body">
+      <div class="modal-body rate-modal">
         <label>cat1</label>
-        <input type="text" name="cat1"><br>
+        <input type="text" name="cat1" class="cat1">
+        <div id="r1" class="c"onclick="rate(1)"></div>
         <label>cat2</label>
-        <input type="text" name="cat2"><br>
+        <input type="text" name="cat2" class="cat2">
+        <div id="r2" class="c" onclick="rate(2)"></div>
         <label>cat3</label>
-        <input type="text" name="cat3"><br>
+        <input type="text" name="cat3" class="cat3">
+        <div id="r3" class="c" onclick="rate(3)"></div>
         <label>cat4</label>
-        <input type="text" name="cat4"><br>
-          
+        <input type="text" name="cat4" class="cat4">
+        <div id="r4" class="c" onclick="rate(4)"></div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit"  class="btn btn-primary">Save</button>
+        <button type="submit"  class="btn btn-green">Save</button>
 
       </div>
       </form>
@@ -164,4 +168,5 @@
     </div>
   </div>
 </div>
+
 @endsection('content')

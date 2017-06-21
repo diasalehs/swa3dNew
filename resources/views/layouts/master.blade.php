@@ -19,6 +19,8 @@
     <link href="{{ URL::asset('vendor/css/news.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/profileView.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/footer.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('vendor/css/jstarbox.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('vendor/css/ie7.css')}}" rel="stylesheet">
     @yield('styles')
     <!-- Temporary navbar container fix -->
   <style>
@@ -47,4 +49,5 @@
     <div class="main">
         @yield('content')
     </div>
+
     @include('includes.footer')

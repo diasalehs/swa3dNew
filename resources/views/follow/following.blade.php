@@ -9,7 +9,9 @@ use App\user;
       @include('individual/includes.sidebar')
          <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
            <h1>Following</h1>
-           <div class="row justify-content-between">
+           <hr>
+
+           <div class="row justify-content-around">
 
               <?php
               foreach ($following as $followi) {
@@ -20,14 +22,14 @@ use App\user;
                           <div class="row">
                               <div class="col-6">
                                   <a href="#">
-                                    <img class="img-fluid rounded all-news-img" src="" alt="">
+                                    <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$user->picture}}" alt="">
                                 </a>
 
                             </div>
                             <div class="col-6">
                               <h5 class="card-title greencolor">{{$usere->name}}</h5>
                               <p class="card-text line-clamp">{{$usere->email}}</p>
-                              <a class='btn btn-danger'  href='allusers/unfollow/".$usere->id."'>unfollow</a>
+                              <a class='btn btn-danger'  href='allusers/unfollow/".$usere->id."'>Unfollow</a>
                           </div>
                       </div>
                   </div>

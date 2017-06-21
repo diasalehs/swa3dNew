@@ -8,3 +8,6 @@
 .dcb{
   padding: 1px;
 }
+.rate-modal input{
+  display: none;
+}
