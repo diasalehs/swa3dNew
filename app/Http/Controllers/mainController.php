@@ -39,16 +39,70 @@ class mainController extends Controller
         $date = $this->date;
         $events = new event;
         $events = event::where('startDate','>',$date)->paginate(5,['*'],'events');
+        // location filter
         if(request()->has('location')){
-             if(request()->has('cat')){
-             $events= DB::table("events")->join('event_intrests', function ($join) {
-             $join->on('events.id', '=', 'event_intrests.event_id')
-                  ->where([['event_intrests.intrest_id', '=', request('cat')],['events.startDate','>',$this->date],['events.country','=',request('location')]]);})->paginate(5,['*'],'events');
-         }
+            // intrest in location
+             if(request()->has('intrest')){ 
+                 $events= DB::table("events")->join('event_intrests', function ($join) {
+                 $join->on('events.id', '=', 'event_intrests.event_id')
+                  ->where([['event_intrests.intrest_id', '=', request('intrest')],['events.startDate','>',$this->date],['events.country','=',request('location')]]);})->paginate(5,['*'],'events');
+
+          // location &intrest & target
+
+             $str=['event_intrests.intrest_id'=>request('intrest'),'events.country'=>request('location')];      
+            if(request()->has('target')){ 
+             $events = DB::table('events')
+             ->join('event_intrests', 'events.id', '=', 'event_intrests.event_id')
+             ->join('event_targets', 'events.id', '=', 'event_targets.event_id')
+             ->whereIn('event_targets.target_id',$request['target'])
+             ->where($str)
+              ->where('events.startDate','>',$this->date)->paginate(5,['*'],'events');
+             }
+              }
+            // location & target
+             if(request()->has('target')){
+                 $events= DB::table("events")->join('event_targets', function ($join) {
+                 $join->on('events.id', '=', 'event_targets.event_id')
+                 ->whereIn('event_targets.target_id',$request['target'])
+                 ->where([['events.startDate','>',$this->date],['events.country','=',request('location')]]);})->paginate(5,['*'],'events');
+            }
+
+         // location only filter
             else{$events = event::where([['startDate','>',$date],['country','=',$request['location']]])->paginate(5,['*'],'events');
-        } 
-    }
-        // ['event_intrests.intrest_id', '=', request('cat')[x]],
+             } 
+             }
+            // intrest filter
+        elseif(request()->has('intrest')){
+             // intrest & target
+             if(request()->has('target')){
+
+                 $events = DB::table('events')
+                 ->join('event_intrests', 'events.id', '=', 'event_intrests.event_id')
+                 ->join('event_targets', 'events.id', '=', 'event_targets.event_id')
+                 ->whereIn('event_targets.target_id',$request['target'])
+                 ->where([['event_intrests.intrest_id', '=', request('intrest')],['events.startDate','>',$this->date]])
+                 ->where('events.startDate','>',$this->date)->paginate(5,['*'],'events');
+             }
+                // intrest only
+             else { 
+
+                    $events= DB::table("events")
+                    ->join('event_intrests', function ($join) {
+
+
+                  $join->on('events.id', '=', 'event_intrests.event_id')
+                  ->where([['event_intrests.intrest_id', '=', request('intrest')],['events.startDate','>',$this->date]]);})->paginate(5,['*'],'events');
+                }
+         }
+         // target only filter
+        elseif(request()->has('target')) {
+             $events= DB::table("events")
+             ->join('event_targets', function ($join) {
+             $join->on('events.id', '=', 'event_targets.event_id')
+             ->whereIn('event_targets.target_id',request('target'))
+             ->where('events.startDate','>',$this->date);})->paginate(5,['*'],'events');
+         }
+
 
         if (Auth::check()) {
             if($user->userType==0){
@@ -67,9 +121,8 @@ class mainController extends Controller
               }
            $userevent= DB::table('user_intrests')->join('event_intrests', function ($join) {
             $join->on('user_intrests.intrest_id', '=', 'event_intrests.intrest_id')
-                 ->where('user_intrests.user_id', '=', auth::user()->id);
-        })
-        ->get();
+                 ->where('user_intrests.user_id', '=', auth::user()->id);})->get();
+
             $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->paginate(5,['*'],'areaEvents');
             $volEvents = volunteer::where('individual_id', $Iuser->id)->get();
             return view('upComingEvents',compact('events','localevents','volEvents','user','userevent'));

@@ -52,6 +52,17 @@
 </ul>
 <div class="tab-content">
   <div class="tab-pane active" id="messages" role="tabpanel">
+  <form>
+   <select name="target[]" multiple>
+   <option value="1">1</option>
+   <option value="2">2</option>
+   <option value="3">3</option>
+   </select>
+   
+    <input type="text" name="location">
+    <input type="text" name="intrest">
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
     <div class="row">
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
