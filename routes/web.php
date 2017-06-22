@@ -35,6 +35,8 @@ Route::post('/registerer', function(\Illuminate\Http\Request $request) {
 Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
 
     Route::get('/', 'homeController@index')->name('home');
+    Route::get('/message/{receiverId?}', ['uses'=>'homeController@message'])->name('message');
+    Route::post('/sendMessage/{receiverId?}', ['uses'=>'homeController@sendMessage'])->name('sendMessage');
 
     Route::group(['prefix'=>'admin' , 'routeMiddleware'=>'admin'], function() {
         Route::get('/userdelete/{userId}', ['uses' =>'adminController@delete', 'as'=>'delete_user']);
@@ -52,19 +54,21 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::get('/slider', ['uses' =>'sliderController@index', 'as'=>'slider']);
     });
 
-    Route::get('/allusers',['uses'=>'homeController@allusers'])->name('allusers');
-    Route::get('/allusers/follow/{userId}', ['uses'=>'homeController@follow'])->name('follow');
-    Route::get('/allusers/unfollow/{userId}', ['uses'=>'homeController@unfollow'])->name('unfollow');
-    Route::get('/followers', ['uses'=>'homeController@followers'])->name('followers');
-    Route::get('/following', ['uses'=>'homeController@following'])->name('following');
-    Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
-    Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
-    Route::get('/volunteer/{eventId}', ['uses'=>'eventController@volunteer'])->name('volunteer');
-    Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
-    Route::get('/acceptVolunteer/{volunteerId}/{eventId}', ['uses'=>'eventController@acceptVolunteer'])->name('acceptVolunteer');
-    Route::get('/unAcceptVolunteer/{volunteerId}/{eventId}', ['uses'=>'eventController@unAcceptVolunteer'])->name('unAcceptVolunteer');
-    Route::get('/myUpComingEvents', ['uses'=>'homeController@myUpComingEvents'])->name('myUpComingEvents');
-    Route::get('/myArchiveEvents', ['uses'=>'homeController@myArchiveEvents'])->name('myArchiveEvents');
+    Route::group(['prefix'=>'/' , 'routeMiddleware'=>'individual'], function() {
+        Route::get('/allusers',['uses'=>'homeController@allusers'])->name('allusers');
+        Route::get('/allusers/follow/{userId}', ['uses'=>'homeController@follow'])->name('follow');
+        Route::get('/allusers/unfollow/{userId}', ['uses'=>'homeController@unfollow'])->name('unfollow');
+        Route::get('/followers', ['uses'=>'homeController@followers'])->name('followers');
+        Route::get('/following', ['uses'=>'homeController@following'])->name('following');
+        Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
+        Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
+        Route::get('/volunteer/{eventId}', ['uses'=>'eventController@volunteer'])->name('volunteer');
+        Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
+        Route::get('/acceptVolunteer/{volunteerId}/{eventId}', ['uses'=>'eventController@acceptVolunteer'])->name('acceptVolunteer');
+        Route::get('/unAcceptVolunteer/{volunteerId}/{eventId}', ['uses'=>'eventController@unAcceptVolunteer'])->name('unAcceptVolunteer');
+        Route::get('/myUpComingEvents', ['uses'=>'homeController@myUpComingEvents'])->name('myUpComingEvents');
+        Route::get('/myArchiveEvents', ['uses'=>'homeController@myArchiveEvents'])->name('myArchiveEvents');
+    });
 
 
     Route::group(['prefix'=>'institute','routeMiddleware'=>'institute'], function() {
@@ -91,3 +95,4 @@ Route::get('/allLocal', ['uses'=>'mainController@allLocal'])->name('allLocal');
 Route::get('/allEvents', ['uses'=>'mainController@allEvents'])->name('allEvents');
 Route::get('/archiveEvents', ['uses'=>'mainController@archiveEvents'])->name('archiveEvents');
 Route::get('/event/{eventId}', ['uses'=>'mainController@event'])->name('event');
+

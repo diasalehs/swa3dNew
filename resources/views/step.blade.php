@@ -46,7 +46,6 @@ else{
                                     <div class="alert alert-danger" role="alert">
                                         <strong>Warning!</strong> {{ $errors->first('cityName') }}
                                     </div>
-
                                 @endif
                             </div>
                         </div>
