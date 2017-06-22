@@ -3,14 +3,14 @@
 @section('content')
 
 
-<div class="container" style="margin:30px auto; padding:5px;">
+<div class="container min" style="margin:30px auto; padding:5px;">
   @if(Auth::guest())
 
     <div class="row">
          <div class="col-12" style="color: #333">
           <div class="row justify-content-center">
             <h1 class="pinkcolor col-md-8 col-sm-12">UpComing Events</h1>
-
+            
           @foreach($events as $event)
           <div class="col-md-8 col-sm-12">
               <div class="card card-inverse event">
@@ -58,7 +58,7 @@
    <option value="2">2</option>
    <option value="3">3</option>
    </select>
-   
+
     <input type="text" name="location">
     <input type="text" name="intrest">
   <button type="submit" class="btn btn-primary">Submit</button>
