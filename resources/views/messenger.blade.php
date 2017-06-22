@@ -113,7 +113,7 @@
                 <tr>
                   <th>Title</th>
                   <th>sender</th>
-                  <th>send Date</th>
+                  <th>receive Date</th>
                 </tr>
               </thead>
               <tbody>
