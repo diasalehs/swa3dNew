@@ -22,14 +22,6 @@
                                 <button type="submit" value="1" name="submit" class="btn btn-success choose-btn ">Institute</button>
                             </div>
                         </div>
-
-
-
-                        <div class="form-group">
-                            <div class=" ">
-                                <button type="submit" value="2" name= "submit" class="btn btn-success choose-btn  ">Researcher</button>
-                            </div>
-                        </div>
                     </form>
 
 

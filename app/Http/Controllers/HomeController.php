@@ -35,7 +35,6 @@ class HomeController extends Controller
             $user = Auth::user();
             $userIndividual = Auth::user()->Individuals;
             $userInstitute = Auth::user()->Institute;
-            $userResearcher = Auth::user()->Researcher;
             $followers = friend::where('requester_id', $user->id);
             $following = friend::where('requested_id', $user->id);
             $users_record= User::paginate();
@@ -54,9 +53,7 @@ class HomeController extends Controller
                     $Uevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
                     return view('Institute/homeInstitute',compact('user','userInstitute','Aevents','Uevents','followers','following'));
                 }
-                elseif($user->userType == 2){
-                    return view('Researcher/homeResearcher',compact('user','userResearcher','followers','following'));
-                }
+                
                 elseif($user->userType == 10){
                     return view('admin.adminDashboard',compact("users_record"));
                 }
@@ -131,8 +128,6 @@ class HomeController extends Controller
             $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
             return view('institute/profileViewEdit',compact('userInstitute',
             'user','Aevents','Uevents','followers','following'));
-        }elseif ($user->userType == 2) {
-            $userIndividual = Auth::user()->Researcher;
         }
         return view('follow/profileViewEdit',compact('user','myUpComingEvents','myArchiveEvents','userIndividual','followers','following'));
     }
@@ -175,40 +170,8 @@ class HomeController extends Controller
                 }else{$Individuals->voluntaryYears = 0;}
                 $Individuals->dateOfBirth =  $request['dateOfBirth'];
                 $Individuals->save();
-            }if ($user->userType == 2) {
-
-                $user->name = $request['name'];
-                if($user->email != $request['email']){
-                    $this->validate($request, [
-                        'email' => 'required|string|email|max:255|unique:users',
-                    ]);
-                    $user->email = $request['email'];
-                }
-                if(isset($request->password)){
-                    $this->validate($request, [
-                        'password' => 'required|string|min:6|confirmed',
-                    ]);
-                    $user->password = bcrypt($request->password);
-                }
-                $user->save();
-                $Researcher = Auth::user()->Researcher;
-                $Researcher->nameInEnglish = $user->name;
-                $Researcher->user_id = $user->id;
-                $Researcher->nameInArabic = $user->name;
-                $Researcher->email = $user->email;
-                $Researcher->livingPlace = $request['livingPlace'];
-                $Researcher->gender = $request['gender'];
-                $Researcher->cityName = $request['cityName'];
-                $Researcher->country = $request['country'];
-                $Researcher->currentWork = $request['currentWork'];
-                $Researcher->educationalLevel = $request['educationalLevel'];
-                $Researcher->preVoluntary = $request['preVoluntary'];
-                if($request['preVoluntary'] == 1){
-                        $Researcher->voluntaryYears = $request['voluntaryYears'];
-                }else{$Researcher->voluntaryYears = 0;}
-                $Researcher->dateOfBirth =  $request['dateOfBirth'];
-                $Researcher->save();
-            }elseif ($user->userType == 1) {
+            } 
+                elseif ($user->userType == 1) {
                 $user->name = $request['name'];
                 if($user->email != $request['email']){
                     $this->validate($request, [

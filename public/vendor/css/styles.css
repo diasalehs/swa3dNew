@@ -11,6 +11,9 @@ button{
 @media (min-width: 992px) {
 
 }
+.min{
+  min-height: 500px;
+}
 :root{
     --navy:#133c55;
     --dark-navy: #002c44;

@@ -1,9 +1,11 @@
-1- sign-up ,,,counrty in a combo box
-2- home ,,, add intrests in combos 
-3- upcomming events <styling>
-4- profile cat is a way of eveluation << star rating system (input & output )styling >>
-5- home << star rating system(output)styling
-6- institute home create events counrty drop down
-7- cat is intrest --- put it in a way that user cant put any dump text
-8- researcher
-9- stars initial value problem 0+ val\2 will result in half of the value
+- sign-up ,,,counrty in a combo box
+- home ,,, add intrests in combos 
+- upcomming events <styling>
+- profile cat is a way of eveluation << star rating system (input & output )styling >>
+- home << star rating system(output)styling
+- institute home create events counrty drop down
+- intrest in event make checkbox or list// needs some backend evolutions ;)
+- cat is intrest --- put it in a way that user cant put any dump text
+- researcher
+- resercher checkbox on individual signup// backend too.
+- stars initial value problem 0+ val\2 will result in half of the value

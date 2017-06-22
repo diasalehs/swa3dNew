@@ -38,7 +38,7 @@
     <!-- Page Content -->
 
 
-    <div class="container">
+    <div class="container ">
 
         <!-- Nav tabs -->
 <ul class="nav nav-tabs nav-tabs-main row justify-content-center" id="nnnn"role="tablist">

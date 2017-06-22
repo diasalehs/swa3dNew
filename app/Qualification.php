@@ -9,7 +9,5 @@ class Qualification extends Model
     public function Individuals(){
     	return $this->hasMany('Individuals');
     }
-    public function Researcher(){
-    	return $this->hasMany('Researcher');
-    }
+  
 }

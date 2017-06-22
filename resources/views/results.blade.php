@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
+<div class="container min">
   <h1 class="mt-4 mb-3" style="color: var(--green);">Results <small></small></h1>
 
     <ul class="nav sw-nav-tabs" role="tablist" id ="nnnn">

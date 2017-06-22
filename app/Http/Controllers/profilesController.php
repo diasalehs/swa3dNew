@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Query\Builder;
 use App\Individuals;
 use App\Institute;
-use App\Resercher;
 use App\User;
 use Illuminate\Support\Facades\auth;
 use App\friend;
@@ -52,16 +51,7 @@ class profilesController extends Controller
 
 		
 		}
-		elseif ($userType==2) {
-			$researcher=DB::table('researchers')->where('user_id','=',$userId)->get();
-			return view('Resprofile',['user'=>$user,'researcher'=>$friend,'flag'=>$friend]);
-
-			# code...
-		
-		}
-
-
-
+	
 		return view('profile',['user'=>$user,'flag'=>$flag]);
 
 		

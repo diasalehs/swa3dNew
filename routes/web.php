@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,8 +19,6 @@ Route::get('/allNews',  ['uses' =>'newsController@allNews', 'as'=>'allNews']);
 Route::get('/results/',  ['uses' =>'searchController@basic', 'as'=>'search']);
 Route::get('/profile/{userId}',  ['uses' =>'profilesController@index', 'as'=>'profile']);
 Route::get('/profilerank/{id}',  ['uses' =>'profilesController@rank', 'as'=>'rank']);
-
-
 Auth::routes();
 Route::post('/allRegister', ['uses'=>'registerStep2Controller@allRegister','as'=>'allRegister']);
 Route::get('/step', ['uses'=>'stepController@step','as'=>'step']);
@@ -29,19 +26,15 @@ Route::get('/choose', ['uses'=>'chooseController@choose','as'=>'choose']);
 Route::post('/registerer', function(\Illuminate\Http\Request $request) {
     return view('auth/register',['user_type'=>$request['submit']]);
 })->name('registerer');
-
-
-
 Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
-
     Route::get('/', 'homeController@index')->name('home');
+    
     Route::get('/messenger/{email?}', ['uses'=>'messageController@messenger'])->name('messenger');
     Route::post('/sendMessage', ['uses'=>'messageController@sendMessage'])->name('sendMessage');
     Route::get('/message/{messageId}', ['uses'=>'messageController@message'])->name('message');
 
     Route::group(['prefix'=>'admin' , 'routeMiddleware'=>'admin'], function() {
         Route::get('/userdelete/{userId}', ['uses' =>'adminController@delete', 'as'=>'delete_user']);
-
         Route::group(['prefix'=>'news'], function() {
             Route::get('/',  ['uses' =>'adminController@indexx', 'as'=>'news']);
             Route::post('/', ['uses' =>'newsController@Create', 'as'=>'news']);
@@ -50,11 +43,9 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
             Route::post('/edit/{newsId}', ['uses' =>'newsController@editor', 'as'=>'edit']);
             Route::get('/adminNewsView',  ['uses' =>'adminController@adminNewsView', 'as'=>'adminNewsView']);
         });
-
         Route::post('/slider',['uses' =>'sliderController@add_element', 'as'=>'slider']);
         Route::get('/slider', ['uses' =>'sliderController@index', 'as'=>'slider']);
     });
-
     Route::group(['prefix'=>'/' , 'routeMiddleware'=>'individual'], function() {
         Route::get('/allusers',['uses'=>'homeController@allusers'])->name('allusers');
         Route::get('/allusers/follow/{userId}', ['uses'=>'homeController@follow'])->name('follow');
@@ -70,16 +61,12 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::get('/myUpComingEvents', ['uses'=>'homeController@myUpComingEvents'])->name('myUpComingEvents');
         Route::get('/myArchiveEvents', ['uses'=>'homeController@myArchiveEvents'])->name('myArchiveEvents');
     });
-
-
     Route::group(['prefix'=>'institute','routeMiddleware'=>'institute'], function() {
-
         Route::get('/findVolunteers',['uses'=>'instituteController@findVolunteers'])->name('findVolunteers');
         Route::get('/allusers/follow/{userId}', ['uses'=>'instituteController@follow']);
         Route::get('/allusers/unfollow/{userId}', ['uses'=>'instituteController@unfollow']);
         Route::get('/followers', ['uses'=>'instituteController@followers'])->name('followersInstitute');
         Route::get('/following', ['uses'=>'instituteController@following'])->name('followingInstitute');
-
         Route::get('/makeEvent', ['uses'=>'instituteController@makeEvent'])->name('makeEvent');
         Route::post('/event', ['uses'=>'instituteController@eventInstitute'])->name('eventInstitute');
         Route::get('/eventDelete/{eventId}', ['uses'=>'instituteController@eventDelete'])->name('eventDelete');
@@ -88,12 +75,9 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::get('/myEvents', ['uses'=>'instituteController@myEvents'])->name('myEvents');
         Route::get('/archiveMyEvents', ['uses'=>'instituteController@archiveMyEvents'])->name('archiveMyEvents');
     });
-
 });
-
 Route::get('/upComingEvents', ['uses'=>'mainController@upComingEvents'] )->name('upComingEvents');
 Route::get('/allLocal', ['uses'=>'mainController@allLocal'])->name('allLocal');
 Route::get('/allEvents', ['uses'=>'mainController@allEvents'])->name('allEvents');
 Route::get('/archiveEvents', ['uses'=>'mainController@archiveEvents'])->name('archiveEvents');
 Route::get('/event/{eventId}', ['uses'=>'mainController@event'])->name('event');
-

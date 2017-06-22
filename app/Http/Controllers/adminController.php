@@ -18,7 +18,6 @@ class adminController extends Controller
         $user = User::find($userId);
         if($user->userType== 0){        $user->Individuals()->delete();}
         if($user->userType== 1){        $user->Institute()->delete(); }
-        if($user->userType== 2){        $user->Researcher()->delete(); }
 
         $user->delete();
          return redirect()->route('home');
