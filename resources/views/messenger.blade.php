@@ -121,7 +121,7 @@
         @foreach($receivedMessages as $receivedMessage)
                     <tr>
                     <td>
-                    <a class="green-link"  href="{{route('message',$sentMessage->id)}}">{{$receivedMessage->title}}</a>
+                    <a class="green-link"  href="{{route('message',$receivedMessage->id)}}">{{$receivedMessage->title}}</a>
                     </td>
                     <td>
                     <a href="{{route('profile',$receivedMessage->sender_id)}}">{{$receivedMessage->name}}</a>

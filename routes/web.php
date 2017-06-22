@@ -26,6 +26,8 @@ Route::get('/choose', ['uses'=>'chooseController@choose','as'=>'choose']);
 Route::post('/registerer', function(\Illuminate\Http\Request $request) {
     return view('auth/register',['user_type'=>$request['submit']]);
 })->name('registerer');
+
+
 Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     Route::get('/', 'homeController@index')->name('home');
     
