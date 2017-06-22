@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use \Illuminate\Http\Request;
 use App\Individuals;
 use App\Institute;
-use App\Researcher;
 use App\User;
 use Illuminate\Support\Facades\auth;
 
@@ -55,29 +54,7 @@ class registerStep2Controller extends Controller
                                 $user->flag = 1;
                                 $user->save();
                         }
-                        elseif($user->userType == 2){
-                                $Researcher = new Researcher();
-                                $Researcher->nameInEnglish = $user->name;
-
-                                $Researcher->user_id = $user->id;
-
-                                $Researcher->nameInArabic = $user->name;
-                                $Researcher->email = $user->email;
-                                $Researcher->gender = $request['gender'];
-                                $Researcher->livingPlace = $request['livingPlace'];
-                                $Researcher->cityName = $request['cityName'];
-                                $Researcher->country = $request['country'];
-                                $Researcher->currentWork = $request['currentWork'];
-                                $Researcher->educationalLevel = $request['educationalLevel'];
-                                $Researcher->preVoluntary = $request['preVoluntary'];
-                                if($request['preVoluntary'] == 1){
-                                        $Researcher->voluntaryYears = $request['voluntaryYears'];
-                                }else{$Researcher->voluntaryYears = 0;}
-                                $Researcher->dateOfBirth =  $request['dateOfBirth'];
-                                $Researcher->save();
-                                $user->flag = 1;
-                                $user->save();
-                        }
+                        
                         return redirect()->route('home');
 
                 }

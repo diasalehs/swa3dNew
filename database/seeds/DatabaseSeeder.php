@@ -78,31 +78,6 @@ class DatabaseSeeder extends Seeder
 		        $Institute->save();
 
 		        $i++;
-	            $users = new user();
-	            $users->name = $faker->name;
-	            $users->email = "user".$i."@swa3d.com";
-	            $users->userType = 2;
-	            $users->flag = 1;
-	            $users->password = bcrypt('secret');
-	            $users->save();
-
-	            $Researcher = new Researcher();
-		        $Researcher->nameInEnglish = $users->name;
-		        $Researcher->nameInArabic = $users->name;
-		        $Researcher->user_id = $users->id;
-		        $Researcher->livingPlace = "camp";
-		        $Researcher->cityName = "nablus";
-		        $Researcher->country = "pal";
-		        $Researcher->gender = "male";
-		        $Researcher->currentWork = "all";
-		        $Researcher->educationalLevel = "school";
-		        $Researcher->dateOfBirth = "2011-1-1";
-		        $Researcher->email = $users->email;
-		        $Researcher->preVoluntary = 0;
-		        $Researcher->voluntaryYears = 0;
-		        $Researcher->save();
-
-		        $i++;
 		        $news = new news();
 	            $news->mainImgpath = $faker->imageUrl($width = 640, $height = 480);
 	            $news->title = $faker->word;

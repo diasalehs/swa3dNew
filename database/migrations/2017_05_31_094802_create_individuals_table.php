@@ -24,7 +24,6 @@ class CreateIndividualsTable extends Migration
             $table->float('cat3')->unsigned()->default(0);
             $table->float('cat4')->unsigned()->default(0);
             $table->string('livingPlace');
-        
             $table->string('cityName');
             $table->string('country');
             $table->string('gender');
