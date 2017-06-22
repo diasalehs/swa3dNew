@@ -15,4 +15,5 @@
         <a href="{{route('followingInstitute')}}" class="list-group-item  justify-content-between">Following<span class="badge badge-default badge-pill">{{$following->count()}}</span></a>
         <a href="{{route('myEvents')}}" class="list-group-item  justify-content-between">Up Coming Events<span class="badge badge-default badge-pill">{{$Uevents->count()}}</span></a>
         <a href="{{route('archiveMyEvents')}}" class="list-group-item  justify-content-between">Archived Events<span class="badge badge-default badge-pill">{{$Aevents->count()}}</span></a>
+        <a href="{{route('message')}}" class="list-group-item  justify-content-between">Messenger<span class="badge badge-default badge-pill"></span></a>
  </div>

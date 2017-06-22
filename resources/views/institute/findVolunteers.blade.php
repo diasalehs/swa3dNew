@@ -28,7 +28,7 @@ use App\user;
                     if($user->id == $userei->id){
                       echo "<tr>
                       <td>
-                      <a class='green-link'  href='".route('profile',[$userei->id])."'>{$userei->name}</a>
+                      <a class='green-link'  href='".route('profile',[$user->id])."'>{$user->name}</a>
                       <td class='hidden-xs-down'>".$user->email."</td>
                       <td>
                       <a class='btn btn-pink btn-block'  href='allusers/unfollow/".$user->id."'>Unfollow</a>
@@ -39,7 +39,7 @@ use App\user;
                   }
                   if($flag == 0){
                       echo "<tr>
-                      <td><a class='green-link'  href='".route('profile',[$userei->id])."'>".$user->name."</a></td>
+                      <td><a class='green-link'  href='".route('profile',[$user->id])."'>".$user->name."</a></td>
                       <td class='hidden-xs-down'>".$user->email."</td>
                       <td>
                       <a class='btn btn-green btn-block'  href='allusers/follow/".$user->id."'>Follow</a>
