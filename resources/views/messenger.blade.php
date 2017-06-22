@@ -1,9 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.master')
  @section('content')
 
 
 <div class="container" style="margin:100px auto">
-    <div class="row " style="display:block">        
 
 <ul class="nav nav-tabs sw-nav-tabs " role="tablist">
   <li class="nav-item col-4 col-lg-3  first-tab">
