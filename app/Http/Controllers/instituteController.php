@@ -177,7 +177,7 @@ class instituteController extends Controller
     public function followers()
     {
         $user = Auth::user();
-        $followers = friend::where('requested_id', $user->id)->get();
+        $followers = friend::join('users','friends.requester_id','=','users.id')->where('requested_id', $user->id)->get();
         $following = friend::where('requester_id', $user->id)->get();
         $date = $this->date;
         $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
@@ -195,7 +195,7 @@ class instituteController extends Controller
     {
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id);
-        $following = friend::where('requester_id', $user->id)->get();
+        $following = friend::join('users','friends.requested_id','=','users.id')->where('requester_id', $user->id)->get();
         $date = $this->date;
         $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
         $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);

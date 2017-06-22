@@ -48,7 +48,7 @@ class profilesController extends Controller
 		} 
 		elseif ($userType==1) {
 			$Institute=DB::table('Institutes')->where('user_id','=',$userId)->get();
-		    return view('Insprofile',['user'=>$user,'Institute'=>$Institute,'flag'=>$friend]);
+		    return view('Insprofile',['user'=>$user,'Institute'=>$Institute,'friend'=>$friend]);
 
 		
 		}

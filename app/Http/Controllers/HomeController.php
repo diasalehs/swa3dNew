@@ -89,8 +89,8 @@ class HomeController extends Controller
     public function followers()
     {
         $user = Auth::user();
-        $followers = friend::where('requested_id', $user->id)->get();
-        $following = friend::where('requester_id', $user->id)->get();
+        $followers = friend::join('users','friends.requester_id','=','users.id')->where('requested_id', $user->id)->get();
+        $following = friend::join('users','friends.requested_id','=','users.id')->where('requester_id', $user->id)->get();
         $date = $this->date;
         $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
         $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
@@ -107,7 +107,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id);
-        $following = friend::where('requester_id', $user->id)->get();
+        $following = friend::join('users','friends.requested_id','=','users.id')->where('requester_id', $user->id)->get();
         $date = $this->date;
         $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
         $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
@@ -307,30 +307,6 @@ class HomeController extends Controller
             return view('follow.myArchiveEvents',compact('user','myUpComingEvents','myArchiveEvents','userIndividual','followers','following','acceptedEvents','date'));
         }
         return redirect()->route('home');
-    }
-
-    public function message(){
-        $user = Auth::user();
-        $sentMessages = message::join('users', 'messages.receiver_id' ,'=','users.id')->where('sender_id',$user->id)->get();
-        $receivedMessages = message::join('users', 'messages.sender_id' ,'=','users.id')->where('receiver_id',$user->id)->get();
-        return view('messenger',compact('sentMessages','receivedMessages'));
-    }
-
-    public function sendMessage(Request $request){
-        $user = Auth::user();
-        $message = new message();
-        $message->title = $request['title'];
-        $message->body = $request['body'];
-        $receiver = User::where('email',$request['email'])->first();
-        if($receiver){
-            $message->receiver_id = $receiver->id;
-            $message->sender_id = $user->id;
-            $message->save();
-        }
-
-        $sentMessages = message::join('users', 'messages.receiver_id' ,'=','users.id')->where('sender_id',$user->id)->get();
-        $receivedMessages = message::join('users', 'messages.sender_id' ,'=','users.id')->where('receiver_id',$user->id)->get();
-        return view('messenger',compact('sentMessages','receivedMessages'));
     }
 
 }

@@ -35,8 +35,9 @@ Route::post('/registerer', function(\Illuminate\Http\Request $request) {
 Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
 
     Route::get('/', 'homeController@index')->name('home');
-    Route::get('/message/{receiverId?}', ['uses'=>'homeController@message'])->name('message');
-    Route::post('/sendMessage/{receiverId?}', ['uses'=>'homeController@sendMessage'])->name('sendMessage');
+    Route::get('/messenger/{email?}', ['uses'=>'messageController@messenger'])->name('messenger');
+    Route::post('/sendMessage', ['uses'=>'messageController@sendMessage'])->name('sendMessage');
+    Route::get('/message/{messageId}', ['uses'=>'messageController@message'])->name('message');
 
     Route::group(['prefix'=>'admin' , 'routeMiddleware'=>'admin'], function() {
         Route::get('/userdelete/{userId}', ['uses' =>'adminController@delete', 'as'=>'delete_user']);

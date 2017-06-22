@@ -15,6 +15,6 @@
         <a href="{{route('following')}}" class="list-group-item  justify-content-between">Following<span class="badge badge-default badge-pill">{{$following->count()}}</span></a>
         <a href="{{route('myUpComingEvents')}}" class="list-group-item  justify-content-between">My UpComing Events<span class="badge badge-default badge-pill">{{$myUpComingEvents->count()}}</span></a>
         <a href="{{route('myArchiveEvents')}}" class="list-group-item  justify-content-between">My Archive Events<span class="badge badge-default badge-pill">{{$myArchiveEvents->count()}}</span></a>
-        <a href="{{route('message')}}" class="list-group-item  justify-content-between">Messenger<span class="badge badge-default badge-pill"></span></a>
+        <a href="{{route('messenger')}}" class="list-group-item  justify-content-between">Messenger</a>
     </ul>
  </div>
