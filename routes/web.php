@@ -28,13 +28,19 @@ Route::get('/choose', ['uses'=>'chooseController@choose','as'=>'choose']);
 Route::post('/registerer', function(\Illuminate\Http\Request $request) {
     return view('auth/register',['user_type'=>$request['submit']]);
 })->name('registerer');
+
+
 Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     Route::get('/', 'homeController@index')->name('home');
     Route::get('/researcher',['uses'=>'homeController@researcher'])->name('researcher');
     Route::get('/addresearch',['uses'=>'homeController@addResearch'])->name('addResearch');
     Route::post('/addresearch',['uses'=>'homeController@submitResearch'])->name('addResearch');
     Route::get('/message/{receiverId?}', ['uses'=>'homeController@message'])->name('message');
-    Route::post('/sendMessage/{receiverId?}', ['uses'=>'homeController@sendMessage'])->name('sendMessage');
+    Route::post('/sendMessage/{receiverId?}', ['uses'=>'homeController@sendMessage'])->name('sendMessage');    
+    Route::get('/messenger/{email?}', ['uses'=>'messageController@messenger'])->name('messenger');
+    Route::post('/sendMessage', ['uses'=>'messageController@sendMessage'])->name('sendMessage');
+    Route::get('/message/{messageId}', ['uses'=>'messageController@message'])->name('message');
+
     Route::group(['prefix'=>'admin' , 'routeMiddleware'=>'admin'], function() {
         Route::get('/userdelete/{userId}', ['uses' =>'adminController@delete', 'as'=>'delete_user']);
         Route::group(['prefix'=>'news'], function() {
@@ -78,6 +84,7 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::post('/eventEdit', ['uses'=>'instituteController@eventEdit'])->name('eventEdit');
         Route::get('/myEvents', ['uses'=>'instituteController@myEvents'])->name('myEvents');
         Route::get('/archiveMyEvents', ['uses'=>'instituteController@archiveMyEvents'])->name('archiveMyEvents');
+        Route::post('/post', ['uses'=>'postController@create'])->name('post');
     });
 });
 Route::get('/upComingEvents', ['uses'=>'mainController@upComingEvents'] )->name('upComingEvents');

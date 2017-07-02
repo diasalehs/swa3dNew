@@ -53,8 +53,7 @@
                     Email: {{$Individual->email}}<br>
                     Adress: {{$Individual->address}}<br>
                     Mobile number: {{$Individual->mobileNumber}}<br>
-                    <a href="#" class="card-link pink-link">Send Email</a>
-                    <a href="#" class="card-link green-link">Send Message</a>
+                    <a href="{{route('messenger',$Individual->email)}}" class="card-link green-link">Send Message</a>
                   </div>
                 </div>
                 <br>

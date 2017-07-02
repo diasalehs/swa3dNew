@@ -61,6 +61,7 @@
                     Facebook Page: <a href="{{$Institute[0]->facebookPage}}">{{$Institute[0]->facebookPage}}</a><br>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
+                    <a href="{{route('messenger',$Institute[0]->email)}}" class="card-link green-link">Send Message</a>
                   </div>
                 </div>
                 <br>

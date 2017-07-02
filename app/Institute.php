@@ -18,4 +18,7 @@ class Institute extends Model
     public function Event(){
         return $this->hasMany('App\Event','user_id');
     }
+    public function Post(){
+        return $this->hasMany('App\Post');
+    }
 }

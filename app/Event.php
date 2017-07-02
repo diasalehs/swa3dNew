@@ -14,4 +14,12 @@ class Event extends Model
      public function targetedGroups(){
         return $this->belongsToMany('targetedGroups','event_targets');
     }
+
+    public function Institute(){
+        return $this->belongsTo('App\Institute');
+    }
+
+    public function Post(){
+        return $this->hasMany('App\Post');
+    }
 }
