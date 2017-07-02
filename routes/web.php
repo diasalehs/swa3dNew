@@ -76,6 +76,7 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::post('/eventEdit', ['uses'=>'instituteController@eventEdit'])->name('eventEdit');
         Route::get('/myEvents', ['uses'=>'instituteController@myEvents'])->name('myEvents');
         Route::get('/archiveMyEvents', ['uses'=>'instituteController@archiveMyEvents'])->name('archiveMyEvents');
+        Route::post('/post', ['uses'=>'postController@create'])->name('post');
     });
 });
 Route::get('/upComingEvents', ['uses'=>'mainController@upComingEvents'] )->name('upComingEvents');

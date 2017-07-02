@@ -9,6 +9,8 @@ use App\slider;
 use App\event;
 use App\volunteer;
 use App\UserIntrest;
+use App\Post;
+
 class mainController extends Controller
 {
 
@@ -175,14 +177,19 @@ class mainController extends Controller
         	if(Auth::check()){
         		$user = Auth::user();
                 $mine = false;
+                $archived = 0;
                 $request = false;
                 $eventCloseAllowed = false;
-                $eventAcceptedVols = volunteer::where('event_id',$eventId)->where('accepted',1)->get();
+                $posts = post::where('event_id',$eventId)->get();
+                $eventAcceptedVols = volunteer::join('individuals','volunteers.individual_id','=','individuals.id')->where('event_id',$eventId)->where('accepted',1)->get();
         		if($user->userType == 1 && $event->user_id == $user->id){
         			$mine = true;
-                    $eventVols = volunteer::where('event_id',$eventId)->where('accepted',0)->get();
-                    $Individuals = Individuals::all();
-                    return view('event',compact('date','event','request','mine','user','eventVols','eventAcceptedVols','Individuals','eventCloseAllowed'));
+                    if($event->startDate < $date){
+                        $archived = 1;
+                        if($event->endDate > $date){$archived = 2;}
+                    }
+                    $eventVols = volunteer::join('individuals','volunteers.individual_id','=','individuals.id')->where('event_id',$eventId)->where('accepted',0)->get();
+                    return view('event',compact('date','event','request','archived','mine','user','eventVols','posts','eventAcceptedVols','Individuals','eventCloseAllowed'));
         		}elseif ($user->userType == 0) {
                     $individual = $user->Individuals;
                     $flag = volunteer::where('event_id',$eventId)->where('individual_id',$individual->id)->where('accepted',1)->first();
@@ -194,9 +201,9 @@ class mainController extends Controller
                         $request = true;
                     }
                 }
-                return view('event',compact('date','event','eventCloseAllowed','eventAcceptedVols','mine','request','user'));
+                return view('event',compact('date','event','eventCloseAllowed','posts','eventAcceptedVols','archived','mine','request','user'));
         	}
-            return view('event',compact('date','event','eventAcceptedVols','eventCloseAllowed'));
+            return view('event',compact('date','event','posts','eventAcceptedVols','eventCloseAllowed'));
         }else{
             return redirect()->route('upComingEvents');
         }
