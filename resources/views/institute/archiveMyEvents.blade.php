@@ -15,16 +15,15 @@
                 </tr>
               </thead>
               <tbody>
-              <?php
-              foreach ($Aevents as $event) {
-                    echo "<tr>
+            @foreach ($Aevents as $event)
+                    <tr>
                     <td>
-                    <a class='btn'  href='event/".$event->id."'>{$event->title}</a>
+                    <a class='btn'  href="{{route('event',$event->id)}}">{{$event->title}}</a>
                     </td>
-                    <td>".$event->startDate."</td>
-                    <td>".$event->endDate."</td>
-                    </tr>";
-              }?>
+                    <td>{{$event->startDate}}</td>
+                    <td>{{$event->endDate}}</td>
+                    </tr>
+           @endforeach
               </tbody>
           </table>
 

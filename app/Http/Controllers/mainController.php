@@ -9,6 +9,12 @@ use App\slider;
 use App\event;
 use App\volunteer;
 use App\UserIntrest;
+use App\researches;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\Response;
+use App\Post;
+
 class mainController extends Controller
 {
 
@@ -29,7 +35,8 @@ class mainController extends Controller
 		$_3slides=slider::orderBy('created_at','desc')->take(3)->get();
 		$volunteers=Individuals::orderBy('created_at','desc')->take(5)->get();
 		$news_record=news::orderBy('created_at','desc')->take(3)->get();
-         return view('main',compact('volunteers','_3slides','news_record'));
+        $researches=researches::orderby('created_at','desc')->take(3)->get();
+         return view('main',compact('volunteers','_3slides','news_record','researches'));
 
 		// }
 	}
@@ -162,11 +169,12 @@ class mainController extends Controller
     }
 
 	public function archiveEvents() {
-    	$user = Auth::user();
-    	$date = $this->date;
-    	$events = event::where('startDate','<',$date)->get();
-		return view('archiveEvents',compact('events'));
-	}
+        $user = Auth::user();
+        $date = $this->date;
+        $events = event::where('startDate','<',$date)->get();
+        return view('archiveEvents',compact('events'));
+    }
+
 
 	public function event($eventId){
     	$event = event::find($eventId);
@@ -175,14 +183,19 @@ class mainController extends Controller
         	if(Auth::check()){
         		$user = Auth::user();
                 $mine = false;
+                $archived = 0;
                 $request = false;
                 $eventCloseAllowed = false;
-                $eventAcceptedVols = volunteer::where('event_id',$eventId)->where('accepted',1)->get();
+                $posts = post::where('event_id',$eventId)->get();
+                $eventAcceptedVols = volunteer::join('individuals','volunteers.individual_id','=','individuals.id')->where('event_id',$eventId)->where('accepted',1)->get();
         		if($user->userType == 1 && $event->user_id == $user->id){
         			$mine = true;
-                    $eventVols = volunteer::where('event_id',$eventId)->where('accepted',0)->get();
-                    $Individuals = Individuals::all();
-                    return view('event',compact('date','event','request','mine','user','eventVols','eventAcceptedVols','Individuals','eventCloseAllowed'));
+                    if($event->startDate < $date){
+                        $archived = 1;
+                        if($event->endDate > $date){$archived = 2;}
+                    }
+                    $eventVols = volunteer::join('individuals','volunteers.individual_id','=','individuals.id')->where('event_id',$eventId)->where('accepted',0)->get();
+                    return view('event',compact('date','event','request','archived','mine','user','eventVols','posts','eventAcceptedVols','Individuals','eventCloseAllowed'));
         		}elseif ($user->userType == 0) {
                     $individual = $user->Individuals;
                     $flag = volunteer::where('event_id',$eventId)->where('individual_id',$individual->id)->where('accepted',1)->first();
@@ -194,12 +207,26 @@ class mainController extends Controller
                         $request = true;
                     }
                 }
-                return view('event',compact('date','event','eventCloseAllowed','eventAcceptedVols','mine','request','user'));
+                return view('event',compact('date','event','eventCloseAllowed','posts','eventAcceptedVols','archived','mine','request','user'));
         	}
-            return view('event',compact('date','event','eventAcceptedVols','eventCloseAllowed'));
+            return view('event',compact('date','event','posts','eventAcceptedVols','eventCloseAllowed'));
         }else{
             return redirect()->route('upComingEvents');
         }
 
 	}
+    public function researchView($researchID) {
+        $research = researches::where('id',$researchID)->first();
+        return view('researchView',compact('research'));
+      
+    }
+    public function download($researchID) {
+        $research = researches::where('id',$researchID)->first();
+            $entry = researches::where('filename', '=', $research->filename)->firstOrFail();
+        $file = Storage::disk('local')->get($entry->filename);
+ 
+        return (new Response($file, 200))
+              ->header('Content-Type', $entry->mime);
+    }
+
 }

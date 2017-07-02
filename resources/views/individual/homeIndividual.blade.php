@@ -13,6 +13,39 @@
               <p class="lead">
                 <a class="btn btn-primary btn-lg bv" href="{{route('upComingEvents')}}" role="button">Volunteer Now</a>
                 <a class="btn btn-primary btn-lg mg" href="#" role="button">Make Group</a>
+                @if(auth::user()->Individuals->researcher==1)
+                <a class="btn btn-primary btn-lg mg" href="{{route('addResearch')}}" role="button">add researches</a>
+                @endif
+                @if(auth::user()->Individuals->researcher==0)
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                      join Researchers
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                          </div>
+                          <div class="modal-body">
+                            ...
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                         
+                              <a class="btn btn-primary" href="{{route('researcher')}}" role="button">agree</a>
+
+                          
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>              
+                @endif            
               </p>
             </div>
             <div class="row yrp">

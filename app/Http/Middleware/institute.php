@@ -17,8 +17,9 @@ class institute
     {
         $user = Auth::user();
         if($user->userType != 1){
-            return redirect()->route('home');
+            return $next($request);
         }
-        return $next($request);
+        return redirect()->route('home');
+        
     }
 }

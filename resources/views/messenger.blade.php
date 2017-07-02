@@ -9,10 +9,10 @@
     <a class="nav-link active" data-toggle="tab" href="#Messenger" role="tab">Messanger</a>
   </li>
 <li class="nav-item col-4 col-lg-3  second-tab">
-    <a class="nav-link " data-toggle="tab" href="#sentMessages" role="tab">Sent Messages</a>
+    <a class="nav-link " data-toggle="tab" href="#sentMessages" role="tab">Sent Messages    <span class="badge badge-default badge-pill">{{$sentMessages->count()}}</span></a>
   </li>
   <li class="nav-item col-4 col-lg-3  third-tab ">
-    <a class="nav-link" data-toggle="tab" href="#receivedMessages" role="tab">Received Messages</a>
+    <a class="nav-link" data-toggle="tab" href="#receivedMessages" role="tab">Received Messages    <span class="badge badge-default badge-pill">{{$receivedMessages->count()}}</span></a>
   </li>
 
 </ul>
@@ -43,7 +43,7 @@
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">Email</label>
                             <div class="col-lg-6">
-                                <input id="name" type="email" class="form-control" name="email" value="{{ old('email') }}"
+                                <input id="name" type="email" class="form-control" name="email" value="{{ $email }}"
                                 required="required" />
                                 @if ($errors->has('email'))
                                     <div class="alert alert-danger" role="alert">
@@ -93,9 +93,11 @@
               @foreach ($sentMessages as $sentMessage)
                     <tr>
                     <td>
-                    <a class="green-link"  href="">{{$sentMessage->title}}</a>
+                    <a class="green-link"  href="{{route('message',$sentMessage->id)}}">{{$sentMessage->title}}</a>
                     </td>
-                    <td>{{$sentMessage->name}}</td>
+                    <td>
+                    <a href="{{route('profile',$sentMessage->receiver_id)}}">{{$sentMessage->name}}</a>
+                    </td>
                     <td>{{$sentMessage->created_at}}</td>
                     </tr>
               @endforeach
@@ -119,9 +121,11 @@
         @foreach($receivedMessages as $receivedMessage)
                     <tr>
                     <td>
-                    <a class="green-link"  href="">{{$receivedMessage->title}}</a>
+                    <a class="green-link"  href="{{route('message',$receivedMessage->id)}}">{{$receivedMessage->title}}</a>
                     </td>
-                    <td>{{$receivedMessage->name}}</td>
+                    <td>
+                    <a href="{{route('profile',$receivedMessage->sender_id)}}">{{$receivedMessage->name}}</a>
+                    </td>
                     <td>{{$receivedMessage->created_at}}</td>
                     </tr>
         @endforeach

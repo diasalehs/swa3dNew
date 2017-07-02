@@ -1,6 +1,3 @@
-<?php
-use App\Individuals;
-?>
 @extends('layouts.master')
 
 @section('content')
@@ -51,7 +48,7 @@ use App\Individuals;
                         <a href="{{route('volunteer',[$event->id])}}" class="card-link pink-link">Volunteer Request</a>
                       @endif
                       <a href='event/{{$event->id}}' class="card-link yellow-link ">Follow</a>
-                  @elseif($mine)
+                  @elseif($mine && $archived == 0)
                     <a class="card-link pink-link" href="{{route('eventDelete',[$event->id])}}">Delete</a>
                     <a class="card-link yellow-link" href="{{route('eventVeiwEdit',[$event->id])}}">Edit</a>
                   @endif
@@ -66,6 +63,30 @@ use App\Individuals;
 
         @if($mine)
 
+        @if($archived == 0 || $archived == 2)
+        <form class="" role="form" method="POST" action="{{ route('post') }}">{{ csrf_field() }}
+          <div class="">
+            <input id="name" type="text" style="display: none;" class="form-control" name="event_id" value="{{ $event->id }}"/>
+          </div>
+            <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
+                <label for="title" class="col-lg-4 form-control-label">make a post</label>
+                <div class="col-lg-6">
+                    <textarea class="form-control" required="required" name="body" id="body">{{ old('body') }}</textarea>
+                    @if ($errors->has('body'))
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Warning!</strong> {{ $errors->first('body') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-2">
+                    <button type="submit" class="btn btn-green btn-block">post</button>
+                </div>
+            </div>
+          </form>
+          @endif
+
           <div class="col-lg-12">
             <hr>
 
@@ -78,13 +99,12 @@ use App\Individuals;
             </thead>
             <tbody>
               @foreach($eventVols as $eventVol)
-                <?php $individual = Individuals::where('id',$eventVol->individual_id)->first();?>
                 <tr>
                   <td>
-                  <a class='btn'  href="{{route('profile',[$individual->user_id])}}">{{$individual->nameInEnglish}}</a>
+                  <a class='btn'  href="{{route('profile',[$eventVol->user_id])}}">{{$eventVol->nameInEnglish}}</a>
                   </td>
                   <td>
-                  <a class="btn btn-primary btn-sm" href="{{route('acceptVolunteer',['volunteerId'=>$individual->id , 'eventId' => $event->id])}}">Accept</a>
+                  <a class="btn btn-primary btn-sm" href="{{route('acceptVolunteer',['volunteerId'=>$eventVol->id , 'eventId' => $event->id])}}">Accept</a>
                   </td>
                 </tr>
               @endforeach
@@ -96,6 +116,14 @@ use App\Individuals;
         @endif
 
         @if($event->open)
+
+        <h1>Posts</h1>
+        @foreach($posts as $post)
+          <hr>
+          <h3>{{$post->body}}</h3>
+          <hr>
+        @endforeach
+
           <div class="col-lg-3">
             <hr>
 
@@ -111,14 +139,13 @@ use App\Individuals;
             </thead>
             <tbody>
               @foreach($eventAcceptedVols as $eventAcceptedVol)
-                <?php $individual = Individuals::where('id',$eventAcceptedVol->individual_id)->first();?>
                 <tr>
                   <td>
-                  <a class='btn'  href="{{route('profile',[$individual->user_id])}}">{{$individual->nameInEnglish}}</a>
+                  <a class='btn'  href="{{route('profile',[$eventAcceptedVol->user_id])}}">{{$eventAcceptedVol->nameInEnglish}}</a>
                   </td>
                   @if($mine)
                   <td>
-                <a class="btn btn-primary btn-sm" href="{{route('unAcceptVolunteer',['volunteerId'=>$individual->id , 'eventId' => $event->id])}}">unAccept</a>
+                <a class="btn btn-primary btn-sm" href="{{route('unAcceptVolunteer',['volunteerId'=>$eventAcceptedVol->id , 'eventId' => $event->id])}}">unAccept</a>
                 </td>
                 @endif
                 </tr>
@@ -129,6 +156,14 @@ use App\Individuals;
           </div>
         @elseif(!$event->open)
           @if($eventCloseAllowed || $mine)
+
+          <h1>Posts</h1>
+          @foreach($posts as $post)
+            <hr>
+            <h3>{{$post->body}}</h3>
+            <hr>
+          @endforeach
+
           <div class="col-lg-3">
             <hr>
 
@@ -144,14 +179,13 @@ use App\Individuals;
             </thead>
             <tbody>
               @foreach($eventAcceptedVols as $eventAcceptedVol)
-                <?php $individual = Individuals::where('id',$eventAcceptedVol->individual_id)->first();?>
                 <tr>
                   <td>
-                  <a class='btn'  href="{{route('profile',[$individual->user_id])}}">{{$individual->nameInEnglish}}</a>
+                  <a class='btn'  href="{{route('profile',[$eventAcceptedVol->user_id])}}">{{$eventAcceptedVol->nameInEnglish}}</a>
                   </td>
                   @if($mine)
                   <td>
-                <a class="btn btn-primary btn-sm" href="{{route('unAcceptVolunteer',['volunteerId'=>$individual->id , 'eventId' => $event->id])}}">unAccept</a>
+                <a class="btn btn-primary btn-sm" href="{{route('unAcceptVolunteer',['volunteerId'=>$eventAcceptedVol->id , 'eventId' => $event->id])}}">unAccept</a>
                 </td>
                 @endif
                 </tr>
@@ -194,6 +228,14 @@ use App\Individuals;
 </div>
 @if(Auth::check())
 @if($event->open)
+
+          <h1>Posts</h1>
+          @foreach($posts as $post)
+            <hr>
+            <h3>{{$post->body}}</h3>
+            <hr>
+          @endforeach
+
           <div class="col-lg-3">
             <hr>
 
@@ -209,14 +251,13 @@ use App\Individuals;
             </thead>
             <tbody>
               @foreach($eventAcceptedVols as $eventAcceptedVol)
-                <?php $individual = Individuals::where('id',$eventAcceptedVol->individual_id)->first();?>
                 <tr>
                   <td>
-                  <a class='btn'  href="{{route('profile',[$individual->user_id])}}">{{$individual->nameInEnglish}}</a>
+                  <a class='btn'  href="{{route('profile',[$eventAcceptedVol->user_id])}}">{{$eventAcceptedVol->nameInEnglish}}</a>
                   </td>
                   @if($mine)
                   <td>
-                <a class="btn btn-primary btn-sm" href="{{route('unAcceptVolunteer',['volunteerId'=>$individual->id , 'eventId' => $event->id])}}">unAccept</a>
+                <a class="btn btn-primary btn-sm" href="{{route('unAcceptVolunteer',['volunteerId'=>$eventAcceptedVol->id , 'eventId' => $event->id])}}">unAccept</a>
                 </td>
                 @endif
                 </tr>
@@ -227,6 +268,14 @@ use App\Individuals;
           </div>
         @elseif(!$event->open)
           @if($eventCloseAllowed || $mine)
+
+          <h1>Posts</h1>
+          @foreach($posts as $post)
+            <hr>
+            <h3>{{$post->body}}</h3>
+            <hr>
+          @endforeach
+
           <div class="col-lg-3">
             <hr>
 
@@ -239,10 +288,9 @@ use App\Individuals;
             </thead>
             <tbody>
               @foreach($eventAcceptedVols as $eventAcceptedVol)
-                <?php $individual = Individuals::where('id',$eventAcceptedVol->individual_id)->first();?>
                 <tr>
                   <td>
-                  <a class='btn'  href="{{route('profile',[$individual->user_id])}}">{{$individual->nameInEnglish}}</a>
+                  <a class='btn'  href="{{route('profile',[$eventAcceptedVol->user_id])}}">{{$eventAcceptedVol->nameInEnglish}}</a>
                   </td>
                 </tr>
               @endforeach

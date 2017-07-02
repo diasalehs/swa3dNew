@@ -15,15 +15,20 @@ class CreateResearchesTable extends Migration
     {
         Schema::create('researches', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('abstract');
-            $table->string('recommendations');
-            $table->string('creation_date');
-            $table->string('findings');
-            $table->string('tools');
-            // o Check box that ensure the credibility of the researcher and the research is accurate
-            $table->boolean('confirmed');   
+            $table->string('researcher_name');
             $table->integer('ind_id')->unsigned();
             $table->foreign('ind_id')->references('id')->on('individuals')->onDelete('cascade');
+            $table->string('title')->nullable();
+            $table->string('abstract')->nullable();
+            $table->string('recommendations')->nullable();
+            $table->string('creation_date')->nullable();
+            $table->string('findings')->nullable();
+            $table->string('tool1')->nullable();
+            $table->string('tool2')->nullable();
+            $table->integer('credit')->nullable();
+            $table->string('filename');
+            $table->string('mime');
+            $table->string('original_filename');
             $table->timestamps();
         });
     }

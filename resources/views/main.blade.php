@@ -90,42 +90,21 @@
     <div class="section researches">
         <h1 class="my-4 research-section-title text-center"></h1>
   <!-- Marketing Icons Section -->
+
         <div class="row">
+        @foreach($researches as $research)
             <div class="col-lg-4 col-sm-6">
                 <div class="card research-card">
-                    <h4 class="card-header"><span class="line-clamp-2 ">Research Title</span></h4>
+                    <h4 class="card-header"><span class="line-clamp-2 ">{{$research->title}}</span></h4>
                     <div class="card-block">
-                        <p class="card-text line-clamp-10">Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur  Lorem ipsum dolor sit amet, consectetur adipisicinecessitatibus neque.Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur </p>
-                        <p class="RN">Researcher Name.</p>
-                        <a href="#"> Learn More</a>
+                        <p class="card-text line-clamp-10">{{$research->abstract}} </p>
+                        <p class="RN">{{$research->researcher_name}}</p>
+                        <a href="{{route('researchView',[$research->id])}}"> Learn More</a>
                     </div>
 
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-                <div class="card research-card">
-                    <h4 class="card-header">Research Title</h4>
-                    <div class="card-block">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consecteturas commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
-                        <p class="RN">Researcher Name.</p>
-                        <a href="#"> Learn More</a>
-
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <div class="card research-card">
-                    <h4 class="card-header">Research Title</h4>
-                    <div class="card-block">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                        <p class="RN">Researcher Name.</p>
-                        <a href="#"> Learn More</a>
-
-                    </div>
-
-                </div>
-            </div>
+      @endforeach
         </div>
         <!-- /.row -->
 
@@ -149,10 +128,10 @@
 
              @foreach($volunteers as $volunteer)
               <div class="col-lg-2 col-sm-2 col-xs-2 user">
-                  <a href="{{URL::to('/')}}/profile/{{$volunteer->user_id }}"><img class="img-fluid" src="{{ URL::to('/') }}/pp/{{$volunteer->picture}}" alt=""></a>
+                  <a href="#"><img class="img-fluid" src="{{ URL::to('/') }}/pp/{{$volunteer->picture}}" alt=""></a>
                   <div class="text-center">
-                   <a href="{{URL::to('/')}}/profile/{{$volunteer->user_id }}"><h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->nameInEnglish}}</h5></a>
-                    <small><a href="#">{{$volunteer->email}}</a></small>
+                   <a href="{{route('profile',$volunteer->user_id)}}"><h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->nameInEnglish}}</h5></a>
+                    <small><a href="{{route('messenger',$volunteer->email)}}">{{$volunteer->email}}</a></small>
                   </div>
                 </div>
              @endforeach
