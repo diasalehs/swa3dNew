@@ -9,6 +9,10 @@ use App\slider;
 use App\event;
 use App\volunteer;
 use App\UserIntrest;
+use App\researches;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\Response;
 class mainController extends Controller
 {
 
@@ -29,7 +33,8 @@ class mainController extends Controller
 		$_3slides=slider::orderBy('created_at','desc')->take(3)->get();
 		$volunteers=Individuals::orderBy('created_at','desc')->take(5)->get();
 		$news_record=news::orderBy('created_at','desc')->take(3)->get();
-         return view('main',compact('volunteers','_3slides','news_record'));
+        $researches=researches::orderby('created_at','desc')->take(3)->get();
+         return view('main',compact('volunteers','_3slides','news_record','researches'));
 
 		// }
 	}
@@ -162,11 +167,12 @@ class mainController extends Controller
     }
 
 	public function archiveEvents() {
-    	$user = Auth::user();
-    	$date = $this->date;
-    	$events = event::where('startDate','<',$date)->get();
-		return view('archiveEvents',compact('events'));
-	}
+        $user = Auth::user();
+        $date = $this->date;
+        $events = event::where('startDate','<',$date)->get();
+        return view('archiveEvents',compact('events'));
+    }
+
 
 	public function event($eventId){
     	$event = event::find($eventId);
@@ -202,4 +208,18 @@ class mainController extends Controller
         }
 
 	}
+    public function researchView($researchID) {
+        $research = researches::where('id',$researchID)->first();
+        return view('researchView',compact('research'));
+      
+    }
+    public function download($researchID) {
+        $research = researches::where('id',$researchID)->first();
+            $entry = researches::where('filename', '=', $research->filename)->firstOrFail();
+        $file = Storage::disk('local')->get($entry->filename);
+ 
+        return (new Response($file, 200))
+              ->header('Content-Type', $entry->mime);
+    }
+
 }

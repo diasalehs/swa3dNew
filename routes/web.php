@@ -14,6 +14,8 @@ Route::get('/profile', function () {
 })->name('profile');
  
 Route::get('/', ['uses'=>'mainController@main','as'=>'main']);
+Route::get('/researchView/{researchID}',['uses'=>'mainController@researchView','as'=>'researchView']);
+Route::get('/researchView/download/{researchID}',['uses'=>'mainController@download','as'=>'download']);
 Route::get('/view/{newsId}',  ['uses' =>'newsController@view', 'as'=>'view']);
 Route::get('/allNews',  ['uses' =>'newsController@allNews', 'as'=>'allNews']);
 Route::get('/results/',  ['uses' =>'searchController@basic', 'as'=>'search']);
@@ -28,6 +30,9 @@ Route::post('/registerer', function(\Illuminate\Http\Request $request) {
 })->name('registerer');
 Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     Route::get('/', 'homeController@index')->name('home');
+    Route::get('/researcher',['uses'=>'homeController@researcher'])->name('researcher');
+    Route::get('/addresearch',['uses'=>'homeController@addResearch'])->name('addResearch');
+    Route::post('/addresearch',['uses'=>'homeController@submitResearch'])->name('addResearch');
     Route::get('/message/{receiverId?}', ['uses'=>'homeController@message'])->name('message');
     Route::post('/sendMessage/{receiverId?}', ['uses'=>'homeController@sendMessage'])->name('sendMessage');
     Route::group(['prefix'=>'admin' , 'routeMiddleware'=>'admin'], function() {
@@ -53,8 +58,10 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
         Route::get('/volunteer/{eventId}', ['uses'=>'eventController@volunteer'])->name('volunteer');
         Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
-        Route::get('/acceptVolunteer/{volunteerId}/{eventId}', ['uses'=>'eventController@acceptVolunteer'])->name('acceptVolunteer');
-        Route::get('/unAcceptVolunteer/{volunteerId}/{eventId}', ['uses'=>'eventController@unAcceptVolunteer'])->name('unAcceptVolunteer');
+        Route::get('/acceptVolunteer/{volunteerId}/{eventId}', ['uses'=>'eventController@acceptVolunteer'])
+        ->name('acceptVolunteer');
+        Route::get('/unAcceptVolunteer/{volunteerId}/{eventId}', ['uses'=>'eventController@unAcceptVolunteer'])
+        ->name('unAcceptVolunteer');
         Route::get('/myUpComingEvents', ['uses'=>'homeController@myUpComingEvents'])->name('myUpComingEvents');
         Route::get('/myArchiveEvents', ['uses'=>'homeController@myArchiveEvents'])->name('myArchiveEvents');
     });

@@ -10,7 +10,10 @@ use App\event;
 use Illuminate\Http\Request;
 use App\volunteer;
 use App\message;
-
+use App\researches;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\Response;
 class HomeController extends Controller
 {
     /**
@@ -57,10 +60,14 @@ class HomeController extends Controller
                 elseif($user->userType == 10){
                     return view('admin.adminDashboard',compact("users_record"));
                 }
-            }elseif($user->flag == 0){
-                return redirect()->route('step');
             }
-        }else{
+
+            elseif($user->flag == 0){
+            return redirect()->route('step');
+            }
+        }
+        else
+        {
                 return redirect()->route('main');
         }
     }
@@ -130,6 +137,42 @@ class HomeController extends Controller
             'user','Aevents','Uevents','followers','following'));
         }
         return view('follow/profileViewEdit',compact('user','myUpComingEvents','myArchiveEvents','userIndividual','followers','following'));
+    }
+     public function researcher()
+    {   
+        auth::user()->Individuals->researcher=1;
+        auth::user()->Individuals->save();
+        return redirect()->route('home');
+    }
+    public function addResearch()
+    {           $success=0;
+
+        return  view('individual/researches',compact('success'));
+    }
+    public function submitResearch(Request $request)
+    {   
+        $research=new researches();
+        $research->title=$request['title'];
+        $research->ind_id=auth::user()->individuals->id;
+        $research->researcher_name=auth::user()->individuals->nameInEnglish;
+        $research->abstract=$request['abstract'];
+        $research->recommendations=$request['recommendations'];
+        $research->creation_date=$request['creation_date'];
+        $research->findings=$request['findings'];
+        $research->tool1=$request->input('tool1');
+        $research->tool2=$request->input('tool2');
+        $research->credit=$request->input('credit');
+ 
+        $file = $request->file('filefield');
+        $extension = $file->getClientOriginalExtension();
+        Storage::disk('local')->put($file->getFilename().'.'.$extension,  File::get($file));
+        $research->mime = $file->getClientMimeType();
+        $research->original_filename = $file->getClientOriginalName();
+        $research->filename = $file->getFilename().'.'.$extension;
+  
+        $research->save();
+        $success=1;
+        return  view('individual/researches',compact('success'));
     }
 
     public function profileEdit(Request $request)
@@ -295,5 +338,7 @@ class HomeController extends Controller
         $receivedMessages = message::join('users', 'messages.sender_id' ,'=','users.id')->where('receiver_id',$user->id)->get();
         return view('messenger',compact('sentMessages','receivedMessages'));
     }
+   
+
 
 }
