@@ -114,6 +114,18 @@
     #myFooter {
         text-align: center;
     }
+    #myFooter .container{
+      width: 100%;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+}
+@media only screen and (min-width: 768px) {
+
+  .brand-img{
+    height: 180px;
+    width: 180px;
+  }
 }
 
 

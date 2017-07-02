@@ -104,14 +104,14 @@
                       <td> </td>
                       <td>
                       {{-- @if(auth::check()) --}}
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate-modal">
                        Rate!
                       </button>
                       {{-- @endif --}}
                     </td>
                     </tr>
 
-                     
+
 
 
                   </tbody>
@@ -124,7 +124,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="rate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -143,7 +143,7 @@
         <input type="text" name="cat3"><br>
         <label>cat4</label>
         <input type="text" name="cat4"><br>
-          
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

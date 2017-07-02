@@ -1,9 +1,8 @@
 @extends('layouts.app')
  @section('content')
-<div class="container" style="margin:100px auto">
+<div class="container" style="margin-top:100px;margin-bottom:40px;">
     <div class="row justify-content-center">
         <div class="col-lg-6">
-          <a type="" href="{{ route('choose') }}" class="btn btn-success btn-green" style="margin-bottom:10px;">← Back</a>
 
             <div class="card">
 
@@ -66,7 +65,7 @@
                                     required="required" />
                                 </div>
                             </div>
-                            
+
                             <div class="form-group" style="margin-bottom:0">
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success choose-btn btn-block">Next →</button>

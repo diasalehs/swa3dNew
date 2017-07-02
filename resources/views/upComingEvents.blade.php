@@ -55,27 +55,60 @@
 </ul>
 <div class="tab-content">
   <div class="tab-pane active" id="messages" role="tabpanel">
-  <form>
-  <label>location</label>
-      <input type="text" name="location">
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" class="green-link" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Advance Search
+        </a>
+      </h5>
+    </div>
 
-  <label>target</label>
-   <select name="target[]" multiple>
-   <option value="1">1</option>
-   <option value="2">2</option>
-   <option value="3">3</option>
-   </select>
+    <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne">
+      <div class="card-block"class="">
 
+        <form id="myform"class=""style="display: flex;
+          justify-content:center;
+          flex-wrap: wrap;
+       align-items: flex-start;
+      ">
 
-   <label>intrest</label>
-   <select name="intrest[]" multiple>
-   <option value="1">1</option>
-   <option value="2">2</option>
-   <option value="3">3</option>
-   </select>
-    <input type="text" name="location">
-  <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+          <div class="form-group">
+            <label for="location" >Location</label>
+            <input type="text" id="location" class="form-control" name="location" placeholder="e.g. Nablus">
+          </div>
+          <div class="form-group"style="margin-left:15px;">
+
+          <label for="Select1" style="align-self: flex-start;">target</label>
+           <select name="target[]"class="form-control" id="Select1" multiple>
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+           </select>
+         </div>
+
+         <div class="form-group" style="margin-left:15px;">
+           <label for="Select2" style="align-self: flex-start;">intrest</label>
+           <select name="intrest[]" class="form-control" id="Select2"  multiple>
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+           </select>
+         </div>
+
+        </form>
+        <div class="row justify-content-center">
+          <div class="col-4">
+          <button type="submit"form="myform" class="btn btn-block btn-green" >Search</button>
+        </div>
+      </div>
+
+      </div>
+    </div>
+</div>
+</div>
+
     <div class="row">
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
@@ -224,5 +257,7 @@
 
 </div>
 
+<script>
 
+</script>
 @endsection('content')

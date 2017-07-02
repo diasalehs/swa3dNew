@@ -26,6 +26,23 @@ button{
     --yellow:#f1ae3b;
     --yellow-hover:#d89824;
 }
+.block {
+  text-align: center;
+  white-space: nowrap;
+}
+.block:before {
+ content: '';
+ display: inline-block;
+ height: 100%;
+ vertical-align: middle;
+ margin-right: -0.25em;
+}
+
+.centered {
+ display: inline-block;
+ vertical-align: middle;
+ width: 300px;
+}
 .dropdown-item{
   color: var(--dark-navy);
 }
@@ -643,6 +660,10 @@ border-bottom: 3px solid #51c2c0 !important;
   background-color: #51c2c0 !important;
   color: white !important;
   border-color: #51c2c0 !important;
+}
+#Select1, #Select2{
+  width: 150px;
+  height: 120px;
 }
 @media only screen and (min-width: 50px) {
   .top-5{

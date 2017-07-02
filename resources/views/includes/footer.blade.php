@@ -2,15 +2,15 @@
     <footer id="myFooter" style="background-image: linear-gradient(rgba(19, 58, 83, 0.9),rgba(19, 58, 83, 0.9)),url({{ URL::to('/vendor/img/newlogo.png')}});">
         <div class="container">
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-2 block col-md-3">
 
-                    <img class="img-fluid" src="{{ URL::to('/vendor/img/newlogo.png') }} " alt="" style="height: 180px"></div>
+                    <img class="centered img-fluid brand-img" src="{{ URL::to('/vendor/img/newlogo.png') }} " alt="" style=""></div>
                 <div class="col-sm-2">
                     <h5>Get started</h5>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Sign up</a></li>
-                        <li><a href="#">Downloads</a></li>
+                        <li><a href="{{route('main')}}">Home</a></li>
+                        <li><a href="#"data-toggle="modal" data-target="#myModal">Join us</a></li>
+                        <li><a href="{{route('upComingEvents')}}">Volunteer Now</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-2">
@@ -26,10 +26,9 @@
                     <ul>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Help desk</a></li>
-                        <li><a href="#">Forums</a></li>
                     </ul>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4 col-md-3">
                     <div class="social-networks" id="w">
                         <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                         <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
@@ -60,6 +59,12 @@
     <script type="text/javascript">
     $(document).ready(function()
         {
+          $('option').mousedown(function(e) {
+              e.preventDefault();
+              $(this).prop('selected', $(this).prop('selected') ? false : true);
+              return false;
+          });
+
               $('.carousel').carousel({
                   interval: 5000 //changes the speed
               });
