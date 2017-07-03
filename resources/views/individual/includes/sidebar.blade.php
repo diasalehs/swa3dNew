@@ -2,14 +2,14 @@
     <div class="text-center">
 
     <div class=" circular--landscape">
-        <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{auth::user()->picture}}">
+        <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$user->picture}}">
     </div>
-        <h5 class="profile-name-indi">{{auth::user()->name}}</h5>
-        <small><a href="#">{{auth::user()->email}}</a></small>
+        <h5 class="profile-name-indi">{{$user->name}}</h5>
+        <small><a href="#">{{$user->email}}</a></small>
     </div>
     <hr>
     <ul class="list-group">
-        <a href="{{route('home')}}" class="list-group-item justify-content-between">Dashboard   <span class="badge badge-default badge-pill"></span></a>
+        <a href="{{route('home')}}" class="list-group-item justify-content-between">Dashboard  <span class="badge badge-default badge-pill"></span></a>
         <a href="{{route('allusers')}}" class="list-group-item  justify-content-between">All users<span class="badge badge-default badge-pill">{{auth::user()->count()}}</span></a>
         <a href="{{route('followers')}}" class="list-group-item  justify-content-between">Followers<span class="badge badge-default badge-pill">{{$followers->count()}}</span></a>
         <a href="{{route('following')}}" class="list-group-item  justify-content-between">Following<span class="badge badge-default badge-pill">{{$following->count()}}</span></a>

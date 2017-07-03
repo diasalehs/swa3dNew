@@ -40,8 +40,6 @@ class HomeController extends Controller
             $userInstitute = Auth::user()->Institute;
             $followers = friend::where('requested_id', $user->id)->get();
             $following = friend::where('requester_id', $user->id)->get();
-            $researches=researches::where('ind_id',auth::user()->individuals->id)->get();
-
             $users_record= User::paginate();
             $date = $this->date;
             if ($user->userType=== 10 ) {
@@ -51,6 +49,8 @@ class HomeController extends Controller
                 if($user->userType == 0){
                     $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
                     $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
+                    $researches=researches::where('ind_id',auth::user()->individuals->id)->get();
+
                     return view('Individual/homeIndividual',compact('researches','user','myUpComingEvents','myArchiveEvents','userIndividual','following','followers'));
                 }
                 elseif($user->userType == 1){

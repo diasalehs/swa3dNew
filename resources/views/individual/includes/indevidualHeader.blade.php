@@ -16,6 +16,7 @@
         <li class="nav-item">
         <a class="nav-link" href="#"><i class="fa fa-users" aria-hidden="true"></i> Make Groupe</a>
       </li>
+      
       @if(auth::user()->Individuals->researcher==0)
 
       <li class="nav-item">
