@@ -63,7 +63,7 @@
               e.preventDefault();
               $(this).prop('selected', $(this).prop('selected') ? false : true);
               return false;
-          });
+          }); 
 
               $('.carousel').carousel({
                   interval: 5000 //changes the speed

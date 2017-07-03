@@ -1,15 +1,31 @@
-@extends('institute/layouts.profileMaster')
+@extends('layouts.master')
+ @section('content')
 
-@section('content')
-<div class="container-fluid" style="margin:120px auto">
-    <div class="row">
-      @include('institute/includes.sidebar')
-        <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
-              <div class="card">
-                  <div class="card-header">Create Event</div>
-                  <div class="card-block">
 
-                      <form  enctype="multipart/form-data" class="" role="form" method="POST" action="{{route('eventInstitute') }}">{{ csrf_field() }}
+<div class="container" style="margin:100px auto">
+
+<ul class="nav nav-tabs sw-nav-tabs " role="tablist">
+
+  <li class="nav-item col-4 col-lg-3  first-tab">
+    <a class="nav-link active" data-toggle="tab" href="#createInitiative" role="tab">Create Event</a>
+  </li>
+  <li class="nav-item col-4 col-lg-3  second-tab">
+    <a class="nav-link " data-toggle="tab" href="#upComingInitiatives" role="tab">Up Coming Events    <span class="badge badge-default badge-pill">{{$Uevents->count()}}</span></a>
+  </li>
+  <li class="nav-item col-4 col-lg-3  third-tab ">
+    <a class="nav-link" data-toggle="tab" href="#myArchivedInitiatives" role="tab">My Archived Events    <span class="badge badge-default badge-pill">{{$Aevents->count()}}</span></a>
+  </li>
+
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="createInitiative" role="tabpanel">
+
+        <div class="col-lg-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">Create Initiative</div>
+                <div class="card-block">
+                    <form class="" role="form" method="POST" action="{{ route('makeEventPost') }}">{{ csrf_field() }}
 
                           <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                               <label for="name" class="form-control-label">Title</label>
@@ -70,17 +86,15 @@
                           </div>
 
                           <div class="form-group">
-                            <label  class="col-lg-4 form-control-label" for="exampleSelect1">Privacy</label>
-                        <div class="col-lg-6">
+                            <label  class="control-label" for="exampleSelect1">Privacy</label>
                             <select name="open" value="{{ old('open') }}" class="form-control" id="exampleSelect1">
                             <option value="1">open</option>
                             <option value="0">close</option>
                             </select>
                         </div>
-                        </div>
 
                           <div class="form-group{{ $errors->has('cover') ? ' has-error' : '' }}">
-                              <label for="name" class="col-lg-4 form-control-label">uplode cover</label>
+                              <label for="name" class="control-label">uplode cover</label>
                                   <input id="name" type="file" accept="image/*" class="form-control" name="cover" />
                                   @if ($errors->has('cover'))
                                       <div class="alert alert-danger" role="alert">
@@ -112,10 +126,26 @@
                           </div>
 
                           <div class="form-group">
-                                  <button type="submit" class="btn btn-success btn-green btn-block">Create Event</button>
+                                  <button id="register" type="submit" class="btn btn-success btn-green btn-block">Create Event</button>
                           </div>
 
                       </form>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="tab-pane" id="upComingEvents" role="tabpanel">
+        <div class="col-lg-8 offset-md-2">
+
+        </div>
+        </div>
+
+        <div class="tab-pane" id="myArchivedEvents" role="tabpanel">
+        <div class="col-lg-8 offset-md-2">
+
+        </div>
+        </div>
                   </div>
               </div>
         </div>

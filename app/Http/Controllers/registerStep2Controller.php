@@ -16,6 +16,18 @@ class registerStep2Controller extends Controller
         	$user = Auth::user();
                 if($user->flag == 0){
                         if($user->userType == 0){
+                            $this->validate($request, [
+                                'livingPlace' => 'required',
+                                'gender' => 'required',
+                                'cityName' => 'required',
+                                'country' => 'required',
+                                'currentWork' => 'required',
+                                'educationalLevel' => 'required',
+                                'preVoluntary' => 'required',
+                                'voluntaryYears' => 'integer',
+                                'dateOfBirth' => 'required',
+                            ]);
+
                         	$Individuals = new Individuals();
                                 $Individuals->nameInEnglish = $user->name;
                                 $Individuals->user_id = $user->id;
@@ -37,6 +49,17 @@ class registerStep2Controller extends Controller
                                 $user->save();
                         }
                         elseif($user->userType == 1){
+                                $this->validate($request, [
+                                    'livingPlace' => 'required',
+                                    'license' => 'required',
+                                    'cityName' => 'required',
+                                    'country' => 'required',
+                                    'workSummary' => 'required',
+                                    'activities' => 'required',
+                                    'mobileNumber' => 'integer',
+                                    'address' => 'required',
+                                ]);
+
                                 $Institute = new Institute();
                                 $Institute->nameInEnglish = $user->name;
                                 $Institute->user_id = $user->id;

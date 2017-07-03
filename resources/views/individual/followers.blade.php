@@ -25,12 +25,12 @@
               <?php $flag = 0; ?>
                 @foreach($following as $followi)
                   @if($followi->email == $follower->email && $flag == 0)
-                               <a class='btn btn-danger'  href='allusers/unfollow/{{$follower->id}}'>Unfollow</a>
+                               <a class='btn btn-danger'  href="{{route('unfollow',$follower->id)}}">Unfollow</a>
                     <?php $flag = 1; ?>
                     @endif
                 @endforeach
                 @if($flag == 0)
-                               <a class='btn btn-danger'  href='allusers/follow/{{$follower->id}}'>follow</a>
+                               <a class='btn btn-danger'  href="{{route('follow',$follower->id)}}">follow</a>
                     <?php $flag = 1; ?>
                 @endif
                         </div>

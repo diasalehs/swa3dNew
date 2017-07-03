@@ -12,7 +12,7 @@
               <hr class="my-4">
               <p class="lead">
                 <a class="btn btn-primary btn-lg bv" href="{{route('upComingEvents')}}" role="button">Volunteer Now</a>
-                <a class="btn btn-primary btn-lg mg" href="#" role="button">Make Group</a>
+                <a class="btn btn-primary btn-lg mg" href="{{route('makeInitiative')}}" role="button">Make Initiative</a>
                 @if(auth::user()->Individuals->researcher==1)
                 <a class="btn btn-primary btn-lg mg" href="{{route('addResearch')}}" role="button">add researches</a>
                 @endif

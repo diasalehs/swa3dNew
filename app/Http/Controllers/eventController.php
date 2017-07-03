@@ -7,10 +7,82 @@ use Illuminate\Support\Facades\auth;
 use App\User;
 use App\volunteer;
 use App\event;
+use App\EventIntrest;
+use App\EventTarget;
+use App\friend;
 
 
 class eventController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->date = date('Y-m-d');
+    }
+
+    public function makeEvent(){
+        $user = Auth::user();
+        $date = $this->date;
+        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+        return view('shared/makeEvent',compact('user','Aevents','Uevents'));
+    }
+
+    public function makeEventPost(Request $request){
+        $user = Auth::user();
+        $this->validate($request, [
+            'title' => 'required|string|max:100',
+            'description' => 'required|string',
+            'country' => 'required|string',
+            'startDate' => 'required|date|after:today',
+            'endDate' => 'required|date|after:start_date',
+        ]);
+
+        $event = new event();
+        $event->title = $request['title'];
+        $event->user_id = $user->id;
+        $event->description = $request['description'];
+        $event->country = $request['country'];
+        $event->startDate = $request['startDate'];
+        $event->endDate = $request['endDate'];
+        $event->open = $request['open'];
+        if ($request->hasFile('cover')){
+            $mainImg=$request->file('cover');
+            $imagename=time().'.'.$mainImg->getClientOriginalExtension();
+            Image::make($mainImg)->resize(350,200)->save(public_path('events/'.$imagename));
+            $event->cover = $imagename;
+        }
+        $event->save();
+        $eveint= new  eventIntrest();
+        $eveint->event_id=$event->id;
+        $eveint->intrest_id=$request['intrests'];
+        $eveint->save();
+
+        $evetarget= new EventTarget();
+        $evetarget->event_id=$event->id;
+        $evetarget->target_id=$request['target'];
+        $evetarget->save();
+
+        return redirect()->route('event',compact('event'));
+    }
+
+    public function myEvents(){
+        $user = Auth::user();
+        $date = $this->date;
+        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date)->get();
+        return view('institute/myEvents',compact('user','Aevents','Uevents'));
+    }
+
+    public function archiveMyEvents() {
+        $user = Auth::user();
+        $date = $this->date;
+        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
+        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+        return view('institute/archiveMyEvents',compact('user','Aevents','Uevents'));
+    }
+
     /**
      * volunteer button on the event clicked by individual
      * but not virefied from the institue that made this event.
@@ -77,7 +149,7 @@ class eventController extends Controller
     {
         $user = Auth::user();
         $event = event::find($eventId);
-        if($user->userType == 1 && $event->user_id == $user->id){
+        if($event->user_id == $user->id){
             $volunteer = volunteer::where('individual_id',$volunteerId)->where('event_id',$eventId)->first();
             $volunteer->accepted = 1;
             $volunteer->save();
@@ -95,7 +167,7 @@ class eventController extends Controller
     {
         $user = Auth::user();
         $event = event::find($eventId);
-        if($user->userType == 1 && $event->user_id == $user->id){
+        if($event->user_id == $user->id){
             $volunteer = volunteer::where('individual_id',$volunteerId)->where('event_id',$eventId)->first();
             $volunteer->accepted = 0;
             $volunteer->save();

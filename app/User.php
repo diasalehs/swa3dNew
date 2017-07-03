@@ -14,6 +14,11 @@ class User extends Authenticatable
     public function Individuals(){
         return $this->hasOne('App\Individuals','user_id');
     }
+
+    public function Initiative(){
+        return $this->hasOne('App\Initiative','user_id');
+    }
+
      public function Intrest(){
         return $this->belongsToMany('Intrest','user_intrests');
     }

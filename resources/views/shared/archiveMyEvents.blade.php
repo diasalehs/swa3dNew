@@ -1,10 +1,9 @@
-@extends('institute/layouts.profileMaster')
+@extends('layouts.master')
+ @section('content')
 
-@section('content')
-<div class="container-fluid" style="margin:120px auto">
-    <div class="row">
-      @include('institute/includes.sidebar')
-         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
+
+<div class="container" style="margin:100px auto">
+
           <h1>My Archived Events</h1>
           <table class="table">
               <thead>
@@ -26,10 +25,6 @@
            @endforeach
               </tbody>
           </table>
-
-         </div>
-
-    </div>
 </div>
 
 @endsection
