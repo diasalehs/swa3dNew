@@ -16,9 +16,26 @@
         <li class="nav-item">
         <a class="nav-link" href="#"><i class="fa fa-users" aria-hidden="true"></i> Make Groupe</a>
       </li>
+      
+      @if(auth::user()->Individuals->researcher==0)
+
+      <li class="nav-item">
+       <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text" aria-hidden="true"></i>
+ Be a Researcher</a>
+     </li>
+     @endif
+     @if(auth::user()->Individuals->researcher==1)
+     <li class="nav-item">
+      <a class="nav-link" href="{{route('addResearch')}}"><i class="fa fa-file-text" aria-hidden="true"></i>
+   Add Research</a>
+    </li>
+    @endif
+
        <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #f1ae3a;">Volunteer</a>
+        <a class="nav-link" href="#"  style="color: #f1ae3a;"><i class="fa fa-handshake-o" aria-hidden="true"></i>
+ Volunteer</a>
       </li>
+
 
     </ul>
     <div class="form-inline my-2 my-lg-0">

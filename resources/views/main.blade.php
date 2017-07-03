@@ -99,7 +99,7 @@
                     <div class="card-block">
                         <p class="card-text line-clamp-10">{{$research->abstract}} </p>
                         <p class="RN">{{$research->researcher_name}}</p>
-                        <a href="{{route('researchView',[$research->id])}}"> Learn More</a>
+                        <a href="{{route('researchView',[$research->id])}}" style="align-self: center;"> Learn More</a>
                     </div>
 
                 </div>
@@ -110,7 +110,7 @@
 
         </div>
             <div class="text-center ">
-                <button type="button" class="btn btn-primary show-more-btn more-researches">More Researchs</button>
+                 <a href="{{route('allResearches')}}"> <button type="button" class="btn btn-primary show-more-btn more-researches">More Researches</button></a>
             </div>
     </div>
   <div class="tab-pane fade" id="messages" role="tabpanel">.</div>

@@ -26,6 +26,7 @@ Route::get('/researchView/{researchID}',['uses'=>'mainController@researchView','
 Route::get('/researchView/download/{researchID}',['uses'=>'mainController@download','as'=>'download']);
 Route::get('/view/{newsId}',  ['uses' =>'newsController@view', 'as'=>'view']);
 Route::get('/allNews',  ['uses' =>'newsController@allNews', 'as'=>'allNews']);
+Route::get('/allResearches',  ['uses' =>'mainController@allResearches', 'as'=>'allResearches']);
 Route::get('/results/',  ['uses' =>'searchController@basic', 'as'=>'search']);
 Route::get('/profile/{userId}',  ['uses' =>'profilesController@index', 'as'=>'profile']);
 Route::get('/profilerank/{id}',  ['uses' =>'profilesController@rank', 'as'=>'rank']);
@@ -78,13 +79,15 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
 
     //-------------------------------- individual && researcher --------------------------------\\
     Route::group(['prefix'=>'/' , 'routeMiddleware'=>'individual'], function() {
+        Route::get('/myResearches', ['uses'=>'homeController@myResearches'])->name('myResearches');
         Route::get('/researcher',['uses'=>'homeController@researcher'])->name('researcher');
         Route::get('/addresearch',['uses'=>'homeController@addResearch'])->name('addResearch');
         Route::post('/addresearch',['uses'=>'homeController@submitResearch'])->name('addResearch');
         Route::get('/allusers',['uses'=>'IndividualsController@allusers'])->name('allusers');
         Route::get('/followers', ['uses'=>'IndividualsController@followers'])->name('followers');
         Route::get('/following', ['uses'=>'IndividualsController@following'])->name('following');
-        
+        Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
+        Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
         Route::get('/volunteer/{eventId}', ['uses'=>'eventController@volunteer'])->name('volunteer');
         Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
         Route::get('/myUpComingEvents', ['uses'=>'IndividualsController@myUpComingEvents'])->name('myUpComingEvents');

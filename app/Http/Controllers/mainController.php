@@ -220,6 +220,11 @@ class mainController extends Controller
         return view('researchView',compact('research'));
       
     }
+    public function allResearches() {
+        $researches= researches::orderBy('created_at')->paginate(8);
+        return view('allResearches',compact('researches'));
+      
+    }
     public function download($researchID) {
         $research = researches::where('id',$researchID)->first();
             $entry = researches::where('filename', '=', $research->filename)->firstOrFail();

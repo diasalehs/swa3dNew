@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\auth;
 use App\friend;
@@ -17,7 +17,7 @@ class instituteController extends Controller
     	$this->middleware('auth');
         $this->date = date('Y-m-d');
     }
-
+    
     public function eventView($eventId){
         $user = Auth::user();
         $followers = friend::where('requested_id', $user->id);
@@ -38,7 +38,7 @@ class instituteController extends Controller
                 if($event->startDate > $date){
                     $event->delete();
                 }
-            }   
+            }
         }
         return redirect()->route('myEvents');
     }
@@ -56,7 +56,7 @@ class instituteController extends Controller
                 if($event->startDate > $date){
                     return view('institute/eventEdit',compact('event','user','Aevents','Uevents','followers','following'));
                 }
-            }   
+            }
         }
         return redirect()->route('home');
     }
@@ -84,7 +84,7 @@ class instituteController extends Controller
                     $event->save();
                     return redirect()->route('event',compact('event'));
                 }
-            }   
+            }
         }
         return redirect()->back();
     }
