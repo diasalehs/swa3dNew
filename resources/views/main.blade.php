@@ -99,7 +99,7 @@
                     <div class="card-block">
                         <p class="card-text line-clamp-10">{{$research->abstract}} </p>
                         <p class="RN">{{$research->researcher_name}}</p>
-                        <a href="{{route('researchView',[$research->id])}}"> Learn More</a>
+                        <a href="{{route('researchView',[$research->id])}}" style="align-self: center;"> Learn More</a>
                     </div>
 
                 </div>

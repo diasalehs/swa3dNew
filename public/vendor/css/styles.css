@@ -408,6 +408,7 @@ form input:focus{
 .RN{
 	font-size: 11px;
 	color: #777;
+  flex: 0;
 }
 .user a{
   color: #f1ae3b;
@@ -572,6 +573,8 @@ border-bottom: 3px solid #51c2c0 !important;
 }
 .research-card .card-block{
 	 	padding-top: 0px;
+    display: flex;
+    flex-direction: column;
 }
 .research-card .card-block a{
     color: #f06493;
@@ -580,6 +583,11 @@ border-bottom: 3px solid #51c2c0 !important;
 		font-size: 14px;
     color: #f06493;
     overflow: hidden;
+    flex: 1;
+}
+.research-card p  {
+
+    margin-bottom: 0px;
 }
 .more-researches{
 		background-color: #f06493 !important;
