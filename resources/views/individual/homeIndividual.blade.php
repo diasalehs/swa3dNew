@@ -11,17 +11,14 @@
               <p class="lead">This is a V simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
               <hr class="my-4">
               <p class="lead">
-                <a class="btn btn-primary btn-lg bv" href="{{route('upComingEvents')}}" role="button">Volunteer Now</a>
-                <a class="btn btn-primary btn-lg mg" href="#" role="button">Make Group</a>
-                @if(auth::user()->Individuals->researcher==1)
-                <a class="btn btn-primary btn-lg mg" href="{{route('addResearch')}}" role="button">add researches</a>
-                @endif
+                <a class="btn btn-primary btn-lg bv" href="{{route('upComingEvents')}}" role="button"><i class="fa fa-handshake-o" aria-hidden="true"></i>
+ Volunteer Now</a>
+                <a class="btn btn-primary btn-lg mg" href="#" role="button"><i class="fa fa-users" aria-hidden="true"></i> Make Group</a>
+                
                 @if(auth::user()->Individuals->researcher==0)
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                      join Researchers
-                    </button>
+
 
                     <!-- Modal -->
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -36,16 +33,16 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                         
+
                               <a class="btn btn-primary" href="{{route('researcher')}}" role="button">agree</a>
 
-                          
+
 
                           </div>
                         </div>
                       </div>
-                    </div>              
-                @endif            
+                    </div>
+                @endif
               </p>
             </div>
             <div class="row yrp">

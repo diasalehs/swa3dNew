@@ -4,6 +4,7 @@
 
 
 <div class="container min" style="margin:30px auto; padding:5px;">
+  
   @if(Auth::guest())
 
     <div class="row">
@@ -12,7 +13,6 @@
             <h1 class="pinkcolor col-md-8 col-sm-12">UpComing Events</h1>
             <form>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
   </form>
           @foreach($events as $event)
           <div class="col-md-8 col-sm-12">

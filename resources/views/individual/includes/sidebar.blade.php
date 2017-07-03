@@ -13,6 +13,7 @@
         <a href="{{route('allusers')}}" class="list-group-item  justify-content-between">All users<span class="badge badge-default badge-pill">{{$user->count()}}</span></a>
         <a href="{{route('followers')}}" class="list-group-item  justify-content-between">Followers<span class="badge badge-default badge-pill">{{$followers->count()}}</span></a>
         <a href="{{route('following')}}" class="list-group-item  justify-content-between">Following<span class="badge badge-default badge-pill">{{$following->count()}}</span></a>
+        <a href="{{route('following')}}" class="list-group-item  justify-content-between">My Researchs<span class="badge badge-default badge-pill">{{$following->count()}}</span></a>
         <a href="{{route('myUpComingEvents')}}" class="list-group-item  justify-content-between">My UpComing Events<span class="badge badge-default badge-pill">{{$myUpComingEvents->count()}}</span></a>
         <a href="{{route('myArchiveEvents')}}" class="list-group-item  justify-content-between">My Archive Events<span class="badge badge-default badge-pill">{{$myArchiveEvents->count()}}</span></a>
         <a href="{{route('messenger')}}" class="list-group-item  justify-content-between">Messenger</a>

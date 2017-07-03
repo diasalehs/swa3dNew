@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\auth;
 use App\friend;
@@ -19,13 +19,13 @@ class instituteController extends Controller
         $this->date = date('Y-m-d');
     }
     public function makeEvent(){
-    	$user = Auth::user();
+    		$user = Auth::user();
         $followers = friend::where('requested_id', $user->id);
         $following = friend::where('requester_id', $user->id);
         $date = $this->date;
-    	$Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+    		$Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
         $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
-    	return view('institute/makeEvent',compact('user','Aevents','Uevents','followers','following'));
+    		return view('institute/makeEvent',compact('user','Aevents','Uevents','followers','following'));
     }
 
     public function eventInstitute(Request $request){
@@ -106,7 +106,7 @@ class instituteController extends Controller
                 if($event->startDate > $date){
                     $event->delete();
                 }
-            }   
+            }
         }
         return redirect()->route('myEvents');
     }
@@ -124,7 +124,7 @@ class instituteController extends Controller
                 if($event->startDate > $date){
                     return view('institute/eventEdit',compact('event','user','Aevents','Uevents','followers','following'));
                 }
-            }   
+            }
         }
         return redirect()->route('home');
     }
@@ -152,7 +152,7 @@ class instituteController extends Controller
                     $event->save();
                     return redirect()->route('event',compact('event'));
                 }
-            }   
+            }
         }
         return redirect()->back();
     }
