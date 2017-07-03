@@ -60,6 +60,8 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::get('/allusers/unfollow/{userId}', ['uses'=>'homeController@unfollow'])->name('unfollow');
         Route::get('/followers', ['uses'=>'homeController@followers'])->name('followers');
         Route::get('/following', ['uses'=>'homeController@following'])->name('following');
+        Route::get('/myResearches', ['uses'=>'homeController@myResearches'])->name('myResearches');
+
         Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
         Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
         Route::get('/volunteer/{eventId}', ['uses'=>'eventController@volunteer'])->name('volunteer');

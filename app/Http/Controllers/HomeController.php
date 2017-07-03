@@ -49,7 +49,9 @@ class HomeController extends Controller
                 if($user->userType == 0){
                     $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
                     $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
-                    return view('Individual/homeIndividual',compact('user','myUpComingEvents','myArchiveEvents','userIndividual','following','followers'));
+                    $researches=researches::where('ind_id',auth::user()->individuals->id)->get();
+
+                    return view('Individual/homeIndividual',compact('researches','user','myUpComingEvents','myArchiveEvents','userIndividual','following','followers'));
                 }
                 elseif($user->userType == 1){
                     $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
@@ -364,6 +366,20 @@ class HomeController extends Controller
         return view('messenger',compact('sentMessages','receivedMessages'));
     }
 
+
+    public function myResearches(){
+            $user = Auth::user();
+            $date = $this->date;
+            $followers = friend::where('requested_id', $user->id)->get();
+            $following = friend::where('requester_id', $user->id)->get();
+            $researches=researches::where('ind_id',auth::user()->individuals->id)->get();
+            $date = $this->date;
+            $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
+            $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
+            $users_record= DB::table('users')->get();
+            return view('individual/myResearches',compact('researches','user','myUpComingEvents','myArchiveEvents','users_record','following','followers'));
+       
+    }
 
 
 }
