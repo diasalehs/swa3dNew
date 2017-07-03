@@ -12,7 +12,7 @@ use App\volunteer;
 use App\message;
 use App\researches;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\File; 
 use Illuminate\Http\Response;
 class HomeController extends Controller
 {
@@ -160,6 +160,8 @@ class HomeController extends Controller
       $date = $this->date;
       $followers = friend::where('requested_id', $user->id)->get();
       $following = friend::where('requester_id', $user->id)->get();
+       $researches=researches::where('ind_id',auth::user()->individuals->id)->get();
+
       $date = $this->date;
       $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
       $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
@@ -167,7 +169,8 @@ class HomeController extends Controller
       auth::user()->Individuals->researcher=1;
       auth::user()->Individuals->save();
         $success=0;
-        return  view('individual/researches',compact('success','user','myUpComingEvents','myArchiveEvents','followers','following'));
+
+        return  view('individual/researches',compact('researches','success','user','myUpComingEvents','myArchiveEvents','followers','following'));
     }
     public function submitResearch(Request $request)
     {
@@ -187,6 +190,8 @@ class HomeController extends Controller
         $followers = friend::where('requested_id', $user->id)->get();
         $following = friend::where('requester_id', $user->id)->get();
         $date = $this->date;
+        $researches=researches::where('ind_id',auth::user()->individuals->id)->get();
+
         $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
         $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
         $users_record= DB::table('users')->get();
@@ -199,7 +204,7 @@ class HomeController extends Controller
 
         $research->save();
         $success=1;
-        return  view('individual/researches',compact('success','user','myUpComingEvents','myArchiveEvents','followers','following'));
+        return  view('individual/researches',compact('researches','success','user','myUpComingEvents','myArchiveEvents','followers','following'));
     }
 
     public function profileEdit(Request $request)

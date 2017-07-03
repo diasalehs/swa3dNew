@@ -110,7 +110,7 @@
 
         </div>
             <div class="text-center ">
-                <button type="button" class="btn btn-primary show-more-btn more-researches">More Researchs</button>
+                 <a href="{{route('allResearches')}}"> <button type="button" class="btn btn-primary show-more-btn more-researches">More Researches</button></a>
             </div>
     </div>
   <div class="tab-pane fade" id="messages" role="tabpanel">.</div>

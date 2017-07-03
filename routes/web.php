@@ -18,6 +18,7 @@ Route::get('/researchView/{researchID}',['uses'=>'mainController@researchView','
 Route::get('/researchView/download/{researchID}',['uses'=>'mainController@download','as'=>'download']);
 Route::get('/view/{newsId}',  ['uses' =>'newsController@view', 'as'=>'view']);
 Route::get('/allNews',  ['uses' =>'newsController@allNews', 'as'=>'allNews']);
+Route::get('/allResearches',  ['uses' =>'mainController@allResearches', 'as'=>'allResearches']);
 Route::get('/results/',  ['uses' =>'searchController@basic', 'as'=>'search']);
 Route::get('/profile/{userId}',  ['uses' =>'profilesController@index', 'as'=>'profile']);
 Route::get('/profilerank/{id}',  ['uses' =>'profilesController@rank', 'as'=>'rank']);
