@@ -27,7 +27,7 @@
           <li class="nav-item ">
 
           <form action="{{route('search')}}" method="get" >
-            <input type="text" name="search" id="search"class="search form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
+            <input type="text" name="search" id="HeaderSearch"class="HeaderSearch form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
             <button type="submit" style="display: none;"></button>
           </form>
 

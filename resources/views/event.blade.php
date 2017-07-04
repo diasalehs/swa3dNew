@@ -3,29 +3,80 @@
 @section('content')
 
 @if($event->endDate > $date)
-
+<div class="viewProfile">
+  <div id="search">
+      <button type="button" class="close">×</button>
+      <form>
+          <input type="search" class="st" value="" placeholder="type keyword(s) here" />
+          
+          <button type="submit" class="btn btn-green">Search this event</button>
+      </form>
+  </div>
 @if(Auth::guest())
-<div class="container-fluid" style="margin:30px auto; padding:5px;">
+
+  <div class="jumbotron jumbotron-fluid text-center"style="background-image: linear-gradient(rgba(19, 58, 83, 0.8),rgba(19, 58, 83, 0.8)),url({{URL::to('/')}}/events/{{$event->cover}});
+  background-size:contain;background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+  ">
+    <div class="container">
+      <h1 class="display-7 " style="color:#fff">{{$event->title}}</h1>
+      <p class=""style="color:#fff">{{$event->description}}</p>
+      <p class=""style="color:#fff; margin-bottom:20px">{{$event->startDate}} To {{$event->endDate}} - in Nablus</p>
+      <a href="{{route('login')}}" class="btn btn-pink ">Volunteer</a>
+      <a href="{{route('login')}}" class="btn btn-yellow ">Follow</a>
+      <a href="#search" class="btn btn-green " >Search</a>
+    </div>
+  </div>
+  <div class="container">
     <div class="row">
-         <div class="col-12" style="color: #333">
-          <div class="row justify-content-center">
-          <div class="col-md-8 col-sm-12">
-              <div class="card card-inverse event">
-                <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
-                <div class="card-img-overlay">
-                  <h3 class="card-title">{{$event->title}}</h3>
-                  <p class="card-text line-clamp-4">{{$event->description}}</p>
-                  <p class="">{{$event->startDate}} To {{$event->endDate}} - in Nablus</p>
-                  <a href="{{route('login')}}" class="card-link pink-link">Volunteer</a>
-                  <a href="{{route('login')}}" class="card-link yellow-link ">Follow</a>
-                </div>
+
+        <div class="col-lg-8">
+          <h3 class="yellowcolor ">Event Posts</h3>
+          <hr />
+          @if($event->open)
+            <div class="card" style="margin-bottom:20px;">
+              <div class="card-block">
+                <h4 class="card-title yellowcolor" >Post Title</h4>
+                <p class="card-text">
+                  It is a long established
+                  fact that a reader will be distracted
+                   by the readable
+                   content of a page when looking at its layout.
               </div>
             </div>
+            <div class="card"style="margin-bottom:20px;">
+              <div class="card-block">
+                <h4 class="card-title yellowcolor">Post Title</h4>
+                <p class="card-text" style="color: var(--navy);">
+                  It is a long established
+                  fact that a reader will be distracted
+                   by the readable
+                   content of a page when looking at its layout.
               </div>
+            </div>
+          @endif
 
-         </div>
 
-    </div>
+          </div>
+          <div class=" col-lg-4">
+
+            <h3 class="pinkcolor ">Volunteers in this event</h3>
+            <hr />
+
+            <div class="list-group" style="color: var(--navy);">
+              <button type="button" class="list-group-item list-group-item-action">
+                Cras justo odio
+              </button>
+              <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+              <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+              <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+              <button type="button" class="list-group-item list-group-item-action" >Vestibulum at eros</button>
+              <button type="button" class="list-group-item list-group-item-action btn-pink seeall" >See All</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
 @endif
 
@@ -50,7 +101,7 @@
                       <a href='event/{{$event->id}}' class="card-link yellow-link ">Follow</a>
                   @elseif($mine && $archived == 0)
                     <a class="card-link pink-link" href="{{route('eventDelete',[$event->id])}}">Delete</a>
-                    <a class="card-link yellow-link" href="{{route('eventVeiwEdit',[$event->id])}}">Edit</a>
+                    <a class="card-link yellow-link" href="">Edit</a>
                   @endif
                 </div>
               </div>
