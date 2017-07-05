@@ -50,20 +50,41 @@
 
 
 	    <!-- Bootstrap core JavaScript -->
-      <script src="{{URL::asset('vendor/js/jquery.js')}} "></script>
-	    <script src="{{URL::asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	    <script src="{{URL::asset('vendor/js/scripts.js')}}"></script>
       <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
 
     <script type="text/javascript">
+
     $(document).ready(function()
         {
+          $('a[href="#search"]').on('click', function(event) {
+            event.preventDefault();
+            $('#search').addClass('open');
+            $('#search > form > input[type="search"]').focus();
+        });
+
+        $('#search, #search button.close').on('click keyup', function(event) {
+            if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+                $(this).removeClass('open');
+            }
+        });
+
+
+        //Do not include! This prevents the form from submitting for DEMO purposes only!
+        $('form').submit(function(event) {
+            event.preventDefault();
+            return false;
+        })
+            $('[data-toggle="popover"]').popover();
           $('option').mousedown(function(e) {
               e.preventDefault();
               $(this).prop('selected', $(this).prop('selected') ? false : true);
               return false;
-          }); 
+          });
+
 
               $('.carousel').carousel({
                   interval: 5000 //changes the speed

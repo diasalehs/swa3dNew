@@ -119,10 +119,10 @@ button{
   -webkit-line-clamp: 9;
   -webkit-box-orient: vertical;
 }
-#search::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+#HeaderSearch::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    var(--green-hover);
 }
-#search::-webkit-input-placeholder:hover { /* WebKit, Blink, Edge */
+#HeaderSearch::-webkit-input-placeholder:hover { /* WebKit, Blink, Edge */
     color: var(--green);
 }
 .mainNavbar .nav-item .nav-link {
@@ -285,6 +285,14 @@ button{
   width: 100%;
   object-fit: cover;
 }
+.viewProfile .list-group-item{
+  color: var(--navy);
+}
+.viewProfile .seeall{
+  color: #fff;
+  text-align: center;
+  background-color: var(--pink);
+}
 .main{
   margin-top: 76px;
 }
@@ -372,7 +380,7 @@ form input:focus{
 	background-color: #1ab08b;
 	border-color: #1ab08b;
 }
-.search {
+.HeaderSearch {
     width: 41px !important;
     border-radius: 0;
     -webkit-transition: width 0.4s ease-in-out;
@@ -385,7 +393,7 @@ form input:focus{
 		border: 0;
 }
 
-.search:focus {
+.HeaderSearch:focus {
     width: 300px !important;
     border-color: #51c2c0;
     border: 2px solid;
