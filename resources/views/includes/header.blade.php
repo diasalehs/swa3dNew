@@ -66,9 +66,7 @@
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                           @if(auth::user()->flag == 0)
-                                                     {{auth::user()->delete()}}
-                                           @endif
+                                         
 
                                             {{ csrf_field() }}
                                         </form>
