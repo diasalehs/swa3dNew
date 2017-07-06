@@ -8,7 +8,7 @@
       <button type="button" class="close">×</button>
       <form>
           <input type="search" class="st" value="" placeholder="type keyword(s) here" />
-          
+
           <button type="submit" class="btn btn-green">Search this event</button>
       </form>
   </div>
@@ -25,7 +25,7 @@
       <p class=""style="color:#fff; margin-bottom:20px">{{$event->startDate}} To {{$event->endDate}} - in Nablus</p>
       <a href="{{route('login')}}" class="btn btn-pink ">Volunteer</a>
       <a href="{{route('login')}}" class="btn btn-yellow ">Follow</a>
-      <a href="#search" class="btn btn-green " >Search</a>
+      <a href="#search" class="btn btn-green " >Search this event</a>
     </div>
   </div>
   <div class="container">
