@@ -2,15 +2,16 @@
 
 namespace App;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Notifications\Notifiable;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 //ind res inst one to one
 class User extends Authenticatable
-{
+{       use Notifiable;
      public function Institute(){
         return $this->hasone('App\Institute','user_id');
      }
-   
+
     public function Individuals(){
         return $this->hasOne('App\Individuals','user_id');
     }
@@ -26,7 +27,7 @@ class User extends Authenticatable
 
     /**
      * A user can have many friends.
-     *  
+     *
      * @return Collection
      *
      */
@@ -34,7 +35,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Self::class, 'friends', 'requested_id', 'requester_id')->withTimestamps();
     }
-    
+
     /**
      * The attributes that are mass assignable.
      *

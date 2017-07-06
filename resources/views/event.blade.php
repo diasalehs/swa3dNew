@@ -3,7 +3,7 @@
 @section('content')
 
 @if($event->endDate > $date)
-<div class="viewProfile">
+<div class="viewProfile" style="margin-bottom:30px;">
   <div id="search">
       <button type="button" class="close">×</button>
       <form>
@@ -32,12 +32,12 @@
     <div class="row">
 
         <div class="col-lg-8">
-          <h3 class="yellowcolor ">Event Posts</h3>
+          <h3 class="greencolor ">Event Posts</h3>
           <hr />
           @if($event->open)
             <div class="card" style="margin-bottom:20px;">
               <div class="card-block">
-                <h4 class="card-title yellowcolor" >Post Title</h4>
+                <h4 class="card-title greencolor" >Post Title</h4>
                 <p class="card-text">
                   It is a long established
                   fact that a reader will be distracted
@@ -47,7 +47,7 @@
             </div>
             <div class="card"style="margin-bottom:20px;">
               <div class="card-block">
-                <h4 class="card-title yellowcolor">Post Title</h4>
+                <h4 class="card-title greencolor">Post Title</h4>
                 <p class="card-text" style="color: var(--navy);">
                   It is a long established
                   fact that a reader will be distracted
@@ -61,19 +61,77 @@
           </div>
           <div class=" col-lg-4">
 
-            <h3 class="pinkcolor ">Volunteers in this event</h3>
+            <h3 class="greencolor ">Volunteers in this event</h3>
             <hr />
 
             <div class="list-group" style="color: var(--navy);">
               <button type="button" class="list-group-item list-group-item-action">
                 Cras justo odio
               </button>
-              <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+              <button type="button" class="list-group-item list-group-item-action" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Dapibus ac facilisis in</button>
               <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
               <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
               <button type="button" class="list-group-item list-group-item-action" >Vestibulum at eros</button>
-              <button type="button" class="list-group-item list-group-item-action btn-pink seeall" >See All</button>
+              <button type="button" class="list-group-item list-group-item-action btn-green seeall" >See All</button>
             </div>
+
+            <div data-spy="scroll" data-target=".navbar" data-offset="50">
+              <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#section1">Section 1</a></li>
+          <li><a href="#section2">Section 2</a></li>
+          <li><a href="#section3">Section 3</a></li>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#section41">Section 4-1</a></li>
+              <li><a href="#section42">Section 4-2</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div id="section1" class="container-fluid">
+  <h1>Section 1</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section2" class="container-fluid">
+  <h1>Section 2</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section3" class="container-fluid">
+  <h1>Section 3</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section41" class="container-fluid">
+  <h1>Section 4 Submenu 1</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section42" class="container-fluid">
+  <h1>Section 4 Submenu 2</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+            </div>
+
+
           </div>
         </div>
       </div>

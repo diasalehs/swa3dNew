@@ -60,32 +60,9 @@
 
     $(document).ready(function()
         {
-          $('a[href="#search"]').on('click', function(event) {
-            event.preventDefault();
-            $('#search').addClass('open');
-            $('#search > form > input[type="search"]').focus();
-        });
-
-        $('#search, #search button.close').on('click keyup', function(event) {
-            if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
-                $(this).removeClass('open');
-            }
-        });
-
-
-        //Do not include! This prevents the form from submitting for DEMO purposes only!
-        $('form').submit(function(event) {
-            event.preventDefault();
-            return false;
-        })
-            $('[data-toggle="popover"]').popover();
-          $('option').mousedown(function(e) {
-              e.preventDefault();
-              $(this).prop('selected', $(this).prop('selected') ? false : true);
-              return false;
-          });
-
-
+          $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
               $('.carousel').carousel({
                   interval: 5000 //changes the speed
               });
