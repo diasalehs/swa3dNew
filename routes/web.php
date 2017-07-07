@@ -77,12 +77,20 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::get('/slider', ['uses' =>'sliderController@index', 'as'=>'slider']);
     });
 
-    //-------------------------------- individual && researcher --------------------------------\\
+    //-------------------------------- individual --------------------------------\\
     Route::group(['prefix'=>'/' , 'routeMiddleware'=>'individual'], function() {
-        Route::get('/myResearches', ['uses'=>'homeController@myResearches'])->name('myResearches');
-        Route::get('/researcher',['uses'=>'homeController@researcher'])->name('researcher');
-        Route::get('/addresearch',['uses'=>'homeController@addResearch'])->name('addResearch');
-        Route::post('/addresearch',['uses'=>'homeController@submitResearch'])->name('addResearch');
+        //-------------------------------- researcher --------------------------------\\
+        Route::get('/myResearches', ['uses'=>'IndividualsController@myResearches'])->name('myResearches');
+        Route::get('/researcher',['uses'=>'IndividualsController@researcher'])->name('researcher');
+        Route::get('/addresearch',['uses'=>'IndividualsController@addResearch'])->name('addResearch');
+        Route::post('/addresearch',['uses'=>'IndividualsController@submitResearch'])->name('addResearch');
+        Route::get('/makeInitiative', ['uses'=>'IndividualsController@makeInitiative'])->name('makeInitiative');
+        Route::post('/makeInitiative', ['uses'=>'IndividualsController@makeInitiativePost'])->name('makeInitiativePost');
+        Route::get('/myInitiatives', ['uses'=>'IndividualsController@myInitiatives'])->name('myInitiatives');
+
+        Route::get('/editInitiative/{initiativeId}', ['uses'=>'IndividualsController@editInitiative'])->name('editInitiative');
+        Route::post('/editInitiative/{initiativeId}', ['uses'=>'IndividualsController@editInitiativePost'])->name('editInitiativePost');
+        
         Route::get('/allusers',['uses'=>'IndividualsController@allusers'])->name('allusers');
         Route::get('/followers', ['uses'=>'IndividualsController@followers'])->name('followers');
         Route::get('/following', ['uses'=>'IndividualsController@following'])->name('following');
@@ -92,11 +100,6 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
         Route::get('/myUpComingEvents', ['uses'=>'IndividualsController@myUpComingEvents'])->name('myUpComingEvents');
         Route::get('/myArchiveEvents', ['uses'=>'IndividualsController@myArchiveEvents'])->name('myArchiveEvents');
-        Route::get('/makeInitiative', ['uses'=>'IndividualsController@makeInitiative'])->name('makeInitiative');
-        Route::post('/makeInitiative', ['uses'=>'IndividualsController@makeInitiativePost'])->name('makeInitiativePost');
-        Route::get('/myInitiatives', ['uses'=>'IndividualsController@myInitiatives'])->name('myInitiatives');
-        Route::get('/editInitiative/{initiativeId}', ['uses'=>'IndividualsController@editInitiative'])->name('editInitiative');
-        Route::get('/editInitiative', ['uses'=>'IndividualsController@editInitiativePost'])->name('editInitiativePost');
     });
 
     //-------------------------------- institute --------------------------------\\
