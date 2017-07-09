@@ -9,15 +9,11 @@ use App\slider;
 use App\event;
 use App\volunteer;
 use App\UserIntrest;
+use App\researches;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use App\Post;
-use App\researches;
-use App\tags;
-use App\researches_tags;
-
-
 
 class mainController extends Controller
 {
@@ -53,15 +49,15 @@ class mainController extends Controller
         // location filter
         if(request()->has('location')){
              // intrest in location
-             if(request()->has('intrest')){ 
+             if(request()->has('intrest')){
                  $events= DB::table("events")->join('event_intrests', function ($join) {
                  $join->on('events.id', '=', 'event_intrests.event_id')
                  ->whereIn('event_intrests.intrest_id', request('intrest'))
                  ->where([['events.startDate','>',$this->date],['events.country','=',request('location')]]);})
                  ->paginate(5,['*'],'events');
                  // location &intrest & target
-                 $str=['events.country'=>request('location')];      
-                 if(request()->has('target')){ 
+                 $str=['events.country'=>request('location')];
+                 if(request()->has('target')){
                      $events = DB::table('events')
                      ->join('event_intrests', 'events.id', '=', 'event_intrests.event_id')
                      ->join('event_targets', 'events.id', '=', 'event_targets.event_id')
@@ -84,7 +80,7 @@ class mainController extends Controller
                 // location only filter
              else{
                  $events = event::where([['startDate','>',$date],['country','=',$request['location']]])->paginate(5,['*'],'events');
-                 } 
+                 }
              }
          // intrest filter
         elseif(request()->has('intrest')){
@@ -99,7 +95,7 @@ class mainController extends Controller
                  ->where('events.startDate','>',$this->date)->paginate(5,['*'],'events');
              }
                 // intrest only
-             else { 
+             else {
 
                      $events= DB::table("events")
                      ->join('event_intrests', function ($join) {
@@ -122,14 +118,14 @@ class mainController extends Controller
             if($user->userType==0){
             $Iuser=$user->Individuals;
 
-            } 
+            }
             elseif ($user->userType==1) {
             $Iuser=$user->Institute;
             }
             elseif ($user->userType==3) {
             $Iuser=$user->Initiative;
-            }  
-           
+            }
+
            $userevent= DB::table('user_intrests')->join('event_intrests', function ($join) {
             $join->on('user_intrests.intrest_id', '=', 'event_intrests.intrest_id')
                  ->where('user_intrests.user_id', '=', auth::user()->id);})->get();
@@ -137,7 +133,7 @@ class mainController extends Controller
             $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->paginate(5,['*'],'areaEvents');
             $volEvents = volunteer::where('individual_id', $Iuser->id)->get();
             return view('upComingEvents',compact('events','localevents','volEvents','user','userevent'));
-        }   
+        }
         return view('upComingEvents',compact('events'));
 
     }
@@ -149,24 +145,24 @@ class mainController extends Controller
             if($user->userType==0){
             $Iuser=$user->Individuals;
 
-            } 
+            }
             elseif ($user->userType==1) {
             $Iuser=$user->Institute;
 
                 # code...
-              } 
-          
+              }
+
             $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->paginate(10,['*'],'areaEvents');
             $volEvents = volunteer::where('individual_id', $Iuser->id)->get();
             return view('allLocal',compact('localevents','volEvents','user'));
-        }   
+        }
 
     }
     public function allEvents() {
         $user = Auth::user();
         if($user->userType==0){
             $Iuser=$user->Individuals;
-        } 
+        }
         $date = $this->date;
         $volEvents = volunteer::where('individual_id', $Iuser->id)->get();
         $events = event::where('startDate','>',$date)->paginate(10,['*'],'events');
@@ -223,40 +219,20 @@ class mainController extends Controller
     public function researchView($researchID) {
         $research = researches::where('id',$researchID)->first();
         return view('researchView',compact('research'));
-      
+
     }
     public function allResearches() {
         $researches= researches::orderBy('created_at')->paginate(8);
         return view('allResearches',compact('researches'));
-      
+
     }
     public function download($researchID) {
         $research = researches::where('id',$researchID)->first();
             $entry = researches::where('filename', '=', $research->filename)->firstOrFail();
         $file = Storage::disk('local')->get($entry->filename);
- 
+
         return (new Response($file, 200))
               ->header('Content-Type', $entry->mime);
-    } 
-    public function Researches_search(Request $request) {
-
-
-       $results= researches::where('title','like','%'.$request['search'].'%')->paginate(2);
-
-       $resultstags= researches::whereHas('tags',function($query)use ($request){
-        return $query->where('name',$request['search']);
-       })->paginate(2);
-
-       $total= $results->total() + $resultstags->total();
-       $items= array_merge($results->items(),$resultstags->items());
-       $collection=collect($items)->unique();
-
-       $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
-       $researches=new \Illuminate\Pagination\LengthAwarePaginator($collection,$total,2,$currentpage);
-       $text=$request['search'];
-      return view('allResearches',compact('researches','text'));
-
-
     }
 
 }
