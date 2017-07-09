@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\auth;
 use App\friend;
 use App\user;
-use App\Initiative;
 use App\volunteer;
 use App\researches;
 use Illuminate\Http\Request;
@@ -180,6 +179,8 @@ class IndividualsController extends Controller
     }
     public function submitResearch(Request $request)
     {
+
+
         $user = Auth::user();
         if($user->Individuals->researcher == 1)
         {
@@ -194,7 +195,7 @@ class IndividualsController extends Controller
                 'tool1' => 'required',
                 'tool2' => 'required',
                 'credit' => 'required',
-                'filefield' => 'integer',
+                'filefield' => 'required',
             ]);
            
         $research=new researches();
@@ -235,8 +236,6 @@ class IndividualsController extends Controller
         $research_tags->research_id=$research->id;
         $research_tags->save();
         $success=1;
-
-
             return  view('individual/researches',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','success'));
         }
         else abort(403, 'Unauthorized action.');
