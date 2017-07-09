@@ -9,15 +9,11 @@ use App\slider;
 use App\event;
 use App\volunteer;
 use App\UserIntrest;
+use App\researches;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use App\Post;
-use App\researches;
-use App\tags;
-use App\researches_tags;
-
-
 
 class mainController extends Controller
 {
@@ -237,26 +233,6 @@ class mainController extends Controller
  
         return (new Response($file, 200))
               ->header('Content-Type', $entry->mime);
-    } 
-    public function Researches_search(Request $request) {
-
-
-       $results= researches::where('title','like','%'.$request['search'].'%')->paginate(2);
-
-       $resultstags= researches::whereHas('tags',function($query)use ($request){
-        return $query->where('name',$request['search']);
-       })->paginate(2);
-
-       $total= $results->total() + $resultstags->total();
-       $items= array_merge($results->items(),$resultstags->items());
-       $collection=collect($items)->unique();
-
-       $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
-       $researches=new \Illuminate\Pagination\LengthAwarePaginator($collection,$total,2,$currentpage);
-       $text=$request['search'];
-      return view('allResearches',compact('researches','text'));
-
-
     }
 
 }
