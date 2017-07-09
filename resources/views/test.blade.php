@@ -17,7 +17,6 @@
       <p class=""style="color:#fff">{{$event->description}}</p>
       <p class=""style="color:#fff; margin-bottom:20px">{{$event->startDate}} To {{$event->endDate}} - in Nablus</p>
       <a href="{{route('login')}}" class="btn btn-pink ">Volunteer</a>
-      <a href="{{route('login')}}" class="btn btn-yellow ">Follow</a>
     </div>
   </div>
   <div class="container">

@@ -15,21 +15,17 @@
                 <div class="card-img-overlay">
                   <h3 class="card-title">{{$event->title}}</h3>
                   <p class="card-text line-clamp-4">{{$event->description}}</p>
-                  <p class="">{{$event->startDate}} To {{$event->endDate}} - in Nablus</p>
+                  <p class="">{{$event->startDate}} To {{$event->endDate}} - in {{$event->location}}</p>
                   <a href="{{route('login')}}" class="card-link pink-link">Volunteer</a>
-                  <a href="{{route('login')}}" class="card-link yellow-link ">Follow</a>
                 </div>
               </div>
             </div>
               </div>
-
          </div>
-
     </div>
 </div>
-@endif
 
-@if(Auth::check())
+@elseif(Auth::check())
 <div class="container-fluid" style="margin:30px auto; padding:5px;">
     <div class="row">
          <div class="col-12" style="color: #333">
@@ -204,7 +200,6 @@
 
 
 @else
-
 
 <div class="container-fluid" style="margin:30px auto; padding:5px;">
     <div class="row">

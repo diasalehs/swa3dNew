@@ -41,6 +41,8 @@ Route::post('/registerer', function(\Illuminate\Http\Request $request) {
 
 //-------------------------------- just for users - auth --------------------------------\\
 Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
+    Route::group(['middleware' => ['isVerified']], function () {
+
     Route::get('/', 'homeController@index')->name('home');
 
     //-------------------------------- event --------------------------------\\
@@ -123,5 +125,6 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     Route::get('/unfollow/{userId}', ['uses'=>'homeController@unfollow'])->name('unfollow');
     Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
     Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
+});
 
 });
