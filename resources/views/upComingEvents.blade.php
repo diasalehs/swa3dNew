@@ -4,18 +4,19 @@
 
 
 <div class="container min" style="margin:30px auto; padding:5px;">
-  
+
   @if(Auth::guest())
 
     <div class="row">
+      <h1 class="pinkcolor col-md-12 col-sm-12">UpComing Events</h1>
+
          <div class="col-12" style="color: #333">
           <div class="row justify-content-center">
-            <h1 class="pinkcolor col-md-8 col-sm-12">UpComing Events</h1>
             <form>
 
   </form>
           @foreach($events as $event)
-          <div class="col-md-8 col-sm-12">
+          <div class="col-md-6 col-sm-12">
               <div class="card card-inverse event">
                 <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
                 <div class="card-img-overlay">
@@ -67,7 +68,6 @@
 
     <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne">
       <div class="card-block"class="">
-
         <form id="myform"class=""style="display: flex;
           justify-content:center;
           flex-wrap: wrap;
@@ -113,7 +113,7 @@
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
               @foreach($events as $event)
-              <div class="col-md-8 col-sm-12">
+              <div class="col-md-6 col-sm-12">
                   <div class="card card-inverse event">
                     <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
                     <div class="card-img-overlay">
@@ -158,7 +158,7 @@
               <div class="row justify-content-center">
 
               @foreach($localevents as $event)
-              <div class="col-md-8 col-sm-12">
+              <div class="col-md-6 col-sm-12">
                   <div class="card card-inverse event">
                     <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
                     <div class="card-img-overlay">
@@ -203,7 +203,7 @@
               @foreach($localevents as $event)
                 @foreach($userevent as $eve)
                   @if($event->id == $eve->event_id)
-                   <div class="col-md-8 col-sm-12">
+                   <div class="col-md-6 col-sm-12">
                   <div class="card card-inverse event">
                     <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
                     <div class="card-img-overlay">

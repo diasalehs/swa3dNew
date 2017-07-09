@@ -6,17 +6,18 @@
     <div class="row">
       @include('individual/includes.sidebar')
          <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
-           <div class="jumbotron">
-              <h1 class="display-4" style="">Hello, {{$user->name}}!</h1>
-              <p class="lead">This is a V simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-              <hr class="my-4">
+           <div class="jumbotron" style="background-image: linear-gradient(rgba(19, 58, 83, 0.6),rgba(19, 58, 83, 0.6)),url({{ URL::to('/vendor/img/newlogo.png')}});
+           background-size:contain;background-repeat: no-repeat;
+           background-position: right top;
+           background-attachment: fixed;
+           ">
+              <h1 class="display-4" style="color:#fff">Hello, {{$user->name}}!</h1>
+              <p class="lead"style="color:#fff">This is a V simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+              <hr class="my-4"style="background-color: #fff">
               <p class="lead">
                 <a class="btn btn-primary btn-lg bv" href="{{route('upComingEvents')}}" role="button">Volunteer Now</a>
                 <a class="btn btn-primary btn-lg mg" href="{{route('makeInitiative')}}" role="button">Make Initiative</a>
-                @if(auth::user()->Individuals->researcher==1)
-                <a class="btn btn-primary btn-lg mg" href="{{route('addResearch')}}" role="button">add researches</a>
-                @endif
-                
+
                 @if(auth::user()->Individuals->researcher==0)
 
                     <!-- Button trigger modal -->

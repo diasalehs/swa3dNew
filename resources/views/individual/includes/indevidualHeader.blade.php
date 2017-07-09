@@ -16,7 +16,7 @@
         <li class="nav-item">
         <a class="nav-link" href="#"><i class="fa fa-users" aria-hidden="true"></i> Make Groupe</a>
       </li>
-      
+
       @if(auth::user()->Individuals->researcher==0)
 
       <li class="nav-item">
@@ -40,7 +40,13 @@
     </ul>
     <div class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto">
+          <li class="nav-item ">
+          <form action="{{route('search')}}" method="get" >
+            <input type="text" name="search" id="HeaderSearch"class="HeaderSearch form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
+            <button type="submit" style="display: none;"></button>
+          </form>
 
+          </li>
       <li class="nav-item ">
        @if (Auth::guest())
 
@@ -74,13 +80,7 @@
                             </li>
                         @endif
       </li>
-      <li class="nav-item ">
-      <form action="{{route('search')}}" method="get" >
-        <input type="text" name="search" class="search form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
-        <button type="submit" style="display: none;"></button>
-      </form>
 
-      </li>
 
       </ul>
     </div>
