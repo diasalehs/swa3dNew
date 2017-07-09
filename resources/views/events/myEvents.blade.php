@@ -8,10 +8,10 @@
     <a class="nav-link active"  href="{{route('myEvents')}}" >Up Coming Events    <span class="badge badge-default badge-pill">{{$Uevents->count()}}</span></a>
   </li>
   <li class="nav-item col-4 col-lg-3  second-tab">
-    <a class="nav-link " href="{{route('makeEvent')}}" >Create Event</a>
+    <a class="nav-link " href="{{route('archiveMyEvents')}}" >My Archived Events    <span class="badge badge-default badge-pill">{{$Aevents->count()}}</span></a>
   </li>
   <li class="nav-item col-4 col-lg-3  third-tab ">
-    <a class="nav-link" href="{{route('archiveMyEvents')}}" >My Archived Events    <span class="badge badge-default badge-pill">{{$Aevents->count()}}</span></a>
+    <a class="nav-link " href="{{route('makeEvent')}}" >Create Event</a>
   </li>
 </ul>
 

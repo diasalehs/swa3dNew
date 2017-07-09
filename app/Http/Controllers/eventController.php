@@ -40,7 +40,7 @@ class eventController extends Controller
             'description' => 'required|string',
             'country' => 'required|string',
             'startDate' => 'required|date|after:today',
-            'endDate' => 'required|date|after:start_date',
+            'endDate' => 'required|date|after:startDate',
         ]);
 
         $event = new event();
