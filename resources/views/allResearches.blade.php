@@ -1,6 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
+<form method="get" action="{{route('Researches_search')}}"><input type="text" name="search">
+<button type="submit">search</button></form>
+
+
 
 <div class="row">
              @foreach($researches as $research)
@@ -16,6 +20,5 @@
             </div>
             @endforeach
 </div>
-{{$researches->links('vendor.pagination.custom')}}
-
+{{ $researches->setpath('results?search='.$text)->render() }}
 @endsection('content')

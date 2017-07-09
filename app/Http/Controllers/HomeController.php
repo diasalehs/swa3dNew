@@ -9,6 +9,8 @@ use App\friend;
 use App\event;
 use Illuminate\Http\Request;
 use App\volunteer;
+use App\tags;
+use App\researches_tags;
 use App\message;
 use App\researches;
 use Illuminate\Support\Facades\Storage;
@@ -109,10 +111,8 @@ class HomeController extends Controller
             $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
             return view('initiative/editInitiative',compact('user','Aevents','Uevents','followers','following','initiative'));
         }
-        return abort(403, 'Unauthorized action.');
-        
-    }
-    
+
+        } 
 
     public function profileEdit(Request $request)
     {
@@ -268,6 +268,7 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
+    
     public function message(){
         $user = Auth::user();
         $sentMessages = message::join('users', 'messages.receiver_id' ,'=','users.id')->where('sender_id',$user->id)->get();
