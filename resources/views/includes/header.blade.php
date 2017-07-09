@@ -27,7 +27,7 @@
           <li class="nav-item ">
 
           <form action="{{route('search')}}" method="get" >
-            <input type="text" name="search" id="HeaderSearch"class="HeaderSearch form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
+            <input type="text" name="search" id="HeaderSearch"class="HeaderSearch form-control" placeholder="&#xF002; Search Swa3ed.." style="font-family:Arial, FontAwesome">
             <button type="submit" style="display: none;"></button>
           </form>
 
@@ -66,7 +66,7 @@
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                         
+
 
                                             {{ csrf_field() }}
                                         </form>
