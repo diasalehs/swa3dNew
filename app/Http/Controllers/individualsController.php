@@ -156,6 +156,7 @@ class IndividualsController extends Controller
     }
     public function researcher()
     {
+        $user = $this->user;
         $user->Individuals->researcher=1;
         $user->Individuals->save();
         return redirect()->route('home');
