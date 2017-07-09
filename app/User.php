@@ -24,6 +24,10 @@ class User extends Authenticatable
         return $this->belongsToMany('Intrest','user_intrests');
     }
 
+    public function Event(){
+        return $this->hasMany('App\Event');
+    }
+
 
     /**
      * A user can have many friends.

@@ -19,6 +19,6 @@ class Initiative extends Model
         return $this->belongsTo('Qualification');
     }    
     public function User(){
-        return $this->belongsTo('App\User','user_id');
+        return $this->belongsTo('App\User');
     }
 }

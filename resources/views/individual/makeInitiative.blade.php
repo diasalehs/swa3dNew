@@ -99,17 +99,15 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('dateOfBirth') ? ' has-error' : '' }}">
-                            <label for="name" class="form-control-label">Your date of birth</label>
-                            <div class="">
-                                <input id="theDate" type="date" class="form-control" name="dateOfBirth"  min="" value="{{ old('dateOfBirth') }}"
-                                required="required" />
-                                @if ($errors->has('dateOfBirth'))
-                                    <div class="alert alert-danger" role="alert">
-                                        <strong>Warning!</strong> {{ $errors->first('dateOfBirth') }}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
+                              <label for="name" class="form-control-label">Your date of birth</label>
+                              <input id="name" type="date" class="form-control" name="dateOfBirth" min = "<?php echo date("Y-m-d"); ?>" value="<?php echo date("Y-m-d"); ?>"
+                                  required="required" />
+                                  @if ($errors->has('dateOfBirth'))
+                                      <div class="alert alert-danger" role="alert">
+                                          <strong>Warning!</strong> {{ $errors->first('dateOfBirth') }}
+                                      </div>
+                                  @endif
+                          </div>
 
 
                         <div class="form-group{{ $errors->has('currentWork') ? ' has-error' : '' }}">

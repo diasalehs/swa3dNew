@@ -23,10 +23,14 @@ class eventController extends Controller
 
     public function makeEvent(){
         $user = Auth::user();
-        $date = $this->date;
-        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
-        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
-        return view('shared/makeEvent',compact('user','Aevents','Uevents'));
+        if($user->userType == 1 || $user->userType == 3)
+        {
+            $date = $this->date;
+            $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+            $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+            return view('shared/makeEvent',compact('user','Aevents','Uevents'));
+        }
+        abort(403, 'Unauthorized action.');
     }
 
     public function makeEventPost(Request $request){

@@ -121,9 +121,10 @@ class mainController extends Controller
             } 
             elseif ($user->userType==1) {
             $Iuser=$user->Institute;
-
-                # code...
-              } 
+            }
+            elseif ($user->userType==3) {
+            $Iuser=$user->Initiative;
+            }  
            
            $userevent= DB::table('user_intrests')->join('event_intrests', function ($join) {
             $join->on('user_intrests.intrest_id', '=', 'event_intrests.intrest_id')
