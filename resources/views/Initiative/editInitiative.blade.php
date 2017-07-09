@@ -1,15 +1,15 @@
-@extends('individual/layouts.profileMaster')
+@extends('Initiative/layouts.profileMaster')
 
 @section('content')
 <div class="container-fluid" style="margin:120px auto">
     <div class="row">
-      @include('individual/includes.sidebar')
+      @include('Initiative/includes.sidebar')
 <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
               <div class="card">
                   <div class="card-header">Edit Your Initiative</div>
                   <div class="card-block">
 
-                    <form class="" role="form" method="POST" action="{{ route('editInitiative',$initiative->id) }}">{{ csrf_field() }}
+                    <form class="" role="form" method="POST" action="{{ route('profileEdit') }}">{{ csrf_field() }}
 
 
                             <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">

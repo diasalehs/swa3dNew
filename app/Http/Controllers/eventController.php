@@ -28,7 +28,7 @@ class eventController extends Controller
             $date = $this->date;
             $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
             $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
-            return view('shared/makeEvent',compact('user','Aevents','Uevents'));
+            return view('events/makeEvent',compact('user','Aevents','Uevents'));
         }
         abort(403, 'Unauthorized action.');
     }
@@ -76,7 +76,7 @@ class eventController extends Controller
         $date = $this->date;
         $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
         $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date)->get();
-        return view('institute/myEvents',compact('user','Aevents','Uevents'));
+        return view('events/myEvents',compact('user','Aevents','Uevents'));
     }
 
     public function archiveMyEvents() {
@@ -84,8 +84,80 @@ class eventController extends Controller
         $date = $this->date;
         $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
         $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
-        return view('institute/archiveMyEvents',compact('user','Aevents','Uevents'));
+        return view('events/archiveMyEvents',compact('user','Aevents','Uevents'));
     }
+
+    public function eventView($eventId){
+        $user = Auth::user();
+        $followers = friend::where('requested_id', $user->id);
+        $following = friend::where('requester_id', $user->id);
+        $date = $this->date;
+        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+        $event = event::find($eventId);
+        return view('events/eventView',compact('user','event','Aevents','Uevents','followers','following'));
+    }
+
+    public function eventDelete($eventId){
+        $user = Auth::user();
+        $date = date('Y-m-d');
+        $event = event::find($eventId);
+        if($event){
+            if($event->user_id == $user->id){
+                if($event->startDate > $date){
+                    $event->delete();
+                }
+            }
+        }
+        return redirect()->route('myEvents');
+    }
+
+    public function eventVeiwEdit($eventId){
+        $user = Auth::user();
+        $followers = friend::where('requested_id', $user->id);
+        $following = friend::where('requester_id', $user->id);
+        $date = $this->date;
+        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+        $event = event::find($eventId);
+        if($event){
+            if($event->user_id == $user->id){
+                if($event->startDate > $date){
+                    return view('events/eventEdit',compact('event','user','Aevents','Uevents','followers','following'));
+                }
+            }
+        }
+        return redirect()->route('home');
+    }
+
+    public function eventEdit(Request $request){
+        $user = Auth::user();
+        $this->validate($request, [
+            'eventId' => 'required',
+            'title' => 'required|string|max:100',
+            'description' => 'required|string',
+            'startDate' => 'required|date|after:tomorrow',
+            'endDate' => 'required|date|after:start_date',
+        ]);
+
+        $eventId = $request['eventId'];
+        $event = event::find($eventId);
+        if($event){
+            if($event->user_id == $user->id){
+                if($event->startDate > $date){
+                    $event->title = $request['title'];
+                    $event->user_id = $user->id;
+                    $event->description = $request['description'];
+                    $event->startDate = $request['startDate'];
+                    $event->endDate = $request['endDate'];
+                    $event->save();
+                    return redirect()->route('event',compact('event'));
+                }
+            }
+        }
+        return redirect()->back();
+    }
+
 
     /**
      * volunteer button on the event clicked by individual
@@ -179,48 +251,5 @@ class eventController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

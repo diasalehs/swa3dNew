@@ -8,7 +8,6 @@ use App\volunteer;
 use App\researches;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class IndividualsController extends Controller
 {
     protected $user;
@@ -37,7 +36,6 @@ class IndividualsController extends Controller
             return $next($request);
         });
     }
-
     public function slidbare()
     {
         $date = $this->date;
@@ -51,7 +49,6 @@ class IndividualsController extends Controller
         $myArchiveEvents = $this->myArchiveEvents;
         return [$user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives ,$date];
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -59,11 +56,9 @@ class IndividualsController extends Controller
      */
     public function makeInitiative()
     {
-
         list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
         return view('individual/makeInitiative',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -83,9 +78,7 @@ class IndividualsController extends Controller
             'voluntaryYears' => 'integer',
             'dateOfBirth' => 'required',
         ]);
-
         $adminId = Auth::user()->id;
-
         $user = new User();
         $user->name = $request->name;
         $user->userType = 3;
@@ -93,7 +86,6 @@ class IndividualsController extends Controller
         $user->password = bcrypt($request->password);
         $user->flag = 1;
         $user->save();
-
         $Initiative = new Initiative();
         $Initiative->adminId = $adminId;
         $Initiative->nameInEnglish = $user->name;
@@ -111,14 +103,12 @@ class IndividualsController extends Controller
         $Initiative->dateOfBirth =  $request['dateOfBirth'];
         $Initiative->save();
     }
-
     public function allusers()
     {
         list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
         $users_record= DB::table('users')->get();
         return view('individual/allusers',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','users_record'));
     }
-
     public function followers()
     {
         list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
@@ -126,14 +116,12 @@ class IndividualsController extends Controller
         $following = friend::join('users','friends.requested_id','=','users.id')->where('requester_id', $user->id)->get();
         return view('individual/followers',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives'));
     }
-
     public function following()
     {
         list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
         $following = friend::join('users','friends.requested_id','=','users.id')->where('requester_id', $user->id)->get();
         return view('individual/following',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives'));
     }
-
     public function myUpComingEvents()
     {
         $user = Auth::user();
@@ -145,7 +133,6 @@ class IndividualsController extends Controller
         }
         return abort(403, 'Unauthorized action.');
     }
-
     public function myArchiveEvents()
     {
         $user = Auth::user();
@@ -156,7 +143,6 @@ class IndividualsController extends Controller
         }
         return abort(403, 'Unauthorized action.');
     } 
-
     /**
      * show specified resource.
      *
@@ -168,14 +154,13 @@ class IndividualsController extends Controller
         $myInitiatives = initiative::where('adminId',$user->id)->get();
         return view('individual/myInitiatives',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives'));
     }
-
     public function researcher()
     {
+        $user = $this->user;
         $user->Individuals->researcher=1;
         $user->Individuals->save();
         return redirect()->route('home');
     }
-
     public function addResearch()
     {
         $user = Auth::user();
@@ -187,7 +172,6 @@ class IndividualsController extends Controller
         }
         else abort(403, 'Unauthorized action.');
     }
-
     public function submitResearch(Request $request)
     {
         $user = Auth::user();
@@ -206,7 +190,6 @@ class IndividualsController extends Controller
                 'credit' => 'required',
                 'filefield' => 'integer',
             ]);
-
             $research=new researches();
             $research->title=$request['title'];
             $research->ind_id=$userIndividual->id;
@@ -227,21 +210,18 @@ class IndividualsController extends Controller
                 $research->original_filename = $file->getClientOriginalName();
                 $research->filename = $file->getFilename().'.'.$extension;
             }else abort(403, 'Unauthorized action.');
-
             $research->save();
             $success=1;
             return  view('individual/researches',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','success'));
         }
         else abort(403, 'Unauthorized action.');
     }
-
     public function myResearches(){
         list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
         return view('individual/myResearches',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives'));
     }
-
-
-        /**
+    
+    /**
      *show for update the specified resource .
      *
      * @return \Illuminate\Http\Response
@@ -255,7 +235,6 @@ class IndividualsController extends Controller
             return view('individual/editInitiative',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','initiative'));
         }
     }
-
         /**
      * update the specified resource .
      *
@@ -289,7 +268,6 @@ class IndividualsController extends Controller
                         $user->password = bcrypt($request->password);
                     }
                     $user->save();
-
                     $initiative->nameInEnglish = $user->name;
                     $initiative->nameInArabic = $user->name;
                     $initiative->email = $user->email;
@@ -313,5 +291,4 @@ class IndividualsController extends Controller
             }
             abort(403, 'Unauthorized action.');
     }
-
 }
