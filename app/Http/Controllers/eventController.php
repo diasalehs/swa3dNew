@@ -112,32 +112,30 @@ class eventController extends Controller
         return redirect()->route('myEvents');
     }
 
-    public function eventVeiwEdit($eventId){
+    public function eventEdit($eventId){
         $user = Auth::user();
-        $followers = friend::where('requested_id', $user->id);
-        $following = friend::where('requester_id', $user->id);
         $date = $this->date;
-        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
-        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
         $event = event::find($eventId);
         if($event){
             if($event->user_id == $user->id){
                 if($event->startDate > $date){
-                    return view('events/eventEdit',compact('event','user','Aevents','Uevents','followers','following'));
+                    $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+                    $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+                    return view('events/eventEdit',compact('event','user','Uevents','Aevents'));
                 }
             }
         }
         return redirect()->route('home');
     }
 
-    public function eventEdit(Request $request){
+    public function eventEditPost(Request $request){
         $user = Auth::user();
         $this->validate($request, [
             'eventId' => 'required',
             'title' => 'required|string|max:100',
             'description' => 'required|string',
-            'startDate' => 'required|date|after:tomorrow',
-            'endDate' => 'required|date|after:start_date',
+            'startDate' => 'required|date|after:today',
+            'endDate' => 'required|date|after:startDate',
         ]);
 
         $eventId = $request['eventId'];

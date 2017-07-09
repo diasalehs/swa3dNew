@@ -1,15 +1,26 @@
-@extends('institute/layouts.profileMaster')
+@extends('layouts.master')
+ @section('content')
 
-@section('content')
-<div class="container-fluid" style="margin:120px auto">
-    <div class="row">
-      @include('institute/includes.sidebar')
-<div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
+
+<div class="container" style="margin:20px auto">
+
+<ul class="nav nav-tabs sw-nav-tabs " role="tablist">
+  <li class="nav-item col-4 col-lg-3  first-tab">
+    <a class="nav-link "  href="{{route('myEvents')}}" >Up Coming Events    <span class="badge badge-default badge-pill">{{$Uevents->count()}}</span></a>
+  </li>
+  <li class="nav-item col-4 col-lg-3  second-tab">
+    <a class="nav-link " href="{{route('makeEvent')}}" >Create Event</a>
+  </li>
+  <li class="nav-item col-4 col-lg-3  third-tab ">
+    <a class="nav-link" href="{{route('archiveMyEvents')}}" >My Archived Events    <span class="badge badge-default badge-pill">{{$Aevents->count()}}</span></a>
+  </li>
+</ul>
+
               <div class="card">
                   <div class="card-header">Edit Event</div>
                   <div class="card-block">
 
-                      <form class="" role="form" method="POST" action="{{route('eventEdit') }}">{{ csrf_field() }}
+                      <form class="" role="form" method="POST" action="{{route('eventEditPost') }}">{{ csrf_field() }}
 
                           <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                               <label for="name" class="form-control-label">Title</label>
@@ -40,17 +51,15 @@
                           </div>
 
                           <div class="form-group">
-                            <label  class="col-lg-4 form-control-label" for="exampleSelect1">Privacy</label>
-                        <div class="col-lg-6">
+                            <label  class="control-label" for="exampleSelect1">Privacy</label>
                             <select name="open" value="{{ $event->open }}" class="form-control" id="exampleSelect1">
                             <option value="1">open</option>
                             <option value="0">close</option>
                             </select>
                         </div>
-                        </div>
 
                           <div class="form-group{{ $errors->has('cover') ? ' has-error' : '' }}">
-                              <label for="name" class="col-lg-4 form-control-label">uplode cover</label>
+                              <label for="name" class="control-label">uplode cover</label>
                                   <input id="name" type="file" accept="image/*" class="form-control" name="cover" value="{{ $event->cover }}"/>
                                   @if ($errors->has('cover'))
                                       <div class="alert alert-danger" role="alert">
