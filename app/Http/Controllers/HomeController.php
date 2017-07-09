@@ -40,7 +40,6 @@ class HomeController extends Controller
             $user = Auth::user();
             $userIndividual = Auth::user()->Individuals;
             $userInstitute = Auth::user()->Institute;
-            $userInitiative = Auth::user()->Initiative;
             $followers = friend::where('requested_id', $user->id);
             $following = friend::where('requester_id', $user->id);
             $users_record= User::paginate();
@@ -62,7 +61,11 @@ class HomeController extends Controller
                     return view('Institute/homeInstitute',compact('user','userInstitute','Aevents','Uevents','following','followers'));
                 }
                 elseif($user->userType == 3){
-                    return view('Initiative/homeInitiative',compact('user','userInitiative'));
+                    $userInitiative = Auth::user()->Initiative;
+                    $userInstitute = Auth::user()->Institute;
+                    $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+                    $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+                    return view('Initiative/homeInitiative',compact('user','Aevents','Uevents','followers','following','userInitiative'));
                 }
                 elseif($user->userType == 10){
                     return view('admin.adminDashboard',compact("users_record"));
@@ -98,8 +101,13 @@ class HomeController extends Controller
             $userInstitute = Auth::user()->Institute;
             $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
             $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
-            return view('institute/profileViewEdit',compact('userInstitute',
-            'user','Aevents','Uevents','followers','following'));
+            return view('institute/profileViewEdit',compact('userInstitute','user','Aevents','Uevents','followers','following'));
+        }
+        elseif ($user->userType == 3) {
+            $initiative = Auth::user()->initiative;
+            $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
+            $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
+            return view('initiative/editInitiative',compact('user','Aevents','Uevents','followers','following','initiative'));
         }
         return abort(403, 'Unauthorized action.');
         
@@ -112,67 +120,115 @@ class HomeController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255',
         ]);
-            if($user->userType == 0){
-                $user->name = $request['name'];
-                if($user->email != $request['email']){
-                    $this->validate($request, [
-                        'email' => 'required|string|email|max:255|unique:users',
-                    ]);
-                    $user->email = $request['email'];
-                }
-                if(isset($request->password)){
-                    $this->validate($request, [
-                        'password' => 'required|string|min:6|confirmed',
-                    ]);
-                    $user->password = bcrypt($request->password);
-                }
-                $user->save();
-                $Individuals = Auth::user()->Individuals;
-                $Individuals->nameInEnglish = $user->name;
-                $Individuals->nameInArabic = $user->name;
-                $Individuals->email = $user->email;
-                $Individuals->livingPlace = $request['livingPlace'];
-                $Individuals->gender = $request['gender'];
-                $Individuals->cityName = $request['cityName'];
-                $Individuals->country = $request['country'];
-                $Individuals->currentWork = $request['currentWork'];
-                $Individuals->educationalLevel = $request['educationalLevel'];
-                $Individuals->preVoluntary = $request['preVoluntary'];
-                if($request['preVoluntary'] == 1){
-                        $Individuals->voluntaryYears = $request['voluntaryYears'];
-                }else{$Individuals->voluntaryYears = 0;}
-                $Individuals->dateOfBirth =  $request['dateOfBirth'];
-                $Individuals->save();
+        if($user->userType == 0)
+        {
+            $user->name = $request['name'];
+            if($user->email != $request['email'])
+            {
+                $this->validate($request, [
+                    'email' => 'required|string|email|max:255|unique:users',
+                ]);
+                $user->email = $request['email'];
             }
-                elseif ($user->userType == 1) {
-                $user->name = $request['name'];
-                if($user->email != $request['email']){
-                    $this->validate($request, [
-                        'email' => 'required|string|email|max:255|unique:users',
-                    ]);
-                    $user->email = $request['email'];
-                }
-                if(isset($request->password)){
-                    $this->validate($request, [
-                        'password' => 'required|string|min:6|confirmed',
-                    ]);
-                    $user->password = bcrypt($request->password);
-                }
-                $user->save();
-                $Institute = Auth::user()->Institute;
-                $Institute->nameInEnglish = $user->name;
-                $Institute->nameInArabic = $user->name;
-                $Institute->email = $user->email;
-                $Institute->license = $request['license'];
-                $Institute->cityName = $request['cityName'];
-                $Institute->country = $request['country'];
-                $Institute->livingPlace = $request['livingPlace'];
-                $Institute->workSummary = $request['workSummary'];
-                $Institute->activities = $request['activities'];
-                $Institute->mobileNumber = $request['mobileNumber'];
-                $Institute->address = $request['address'];
-                $Institute->save();
+            if(isset($request->password))
+            {
+                $this->validate($request, [
+                    'password' => 'required|string|min:6|confirmed',
+                ]);
+                $user->password = bcrypt($request->password);
             }
+            $user->save();
+            $Individuals = Auth::user()->Individuals;
+            $Individuals->nameInEnglish = $user->name;
+            $Individuals->nameInArabic = $user->name;
+            $Individuals->email = $user->email;
+            $Individuals->livingPlace = $request['livingPlace'];
+            $Individuals->gender = $request['gender'];
+            $Individuals->cityName = $request['cityName'];
+            $Individuals->country = $request['country'];
+            $Individuals->currentWork = $request['currentWork'];
+            $Individuals->educationalLevel = $request['educationalLevel'];
+            $Individuals->preVoluntary = $request['preVoluntary'];
+            if($request['preVoluntary'] == 1){
+                    $Individuals->voluntaryYears = $request['voluntaryYears'];
+            }else{$Individuals->voluntaryYears = 0;}
+            $Individuals->dateOfBirth =  $request['dateOfBirth'];
+            $Individuals->save();
+        }
+        elseif ($user->userType == 1)
+        {
+            $user->name = $request['name'];
+            if($user->email != $request['email'])
+            {
+                $this->validate($request, [
+                    'email' => 'required|string|email|max:255|unique:users',
+                ]);
+                $user->email = $request['email'];
+            }
+            if(isset($request->password))
+            {
+                $this->validate($request, [
+                    'password' => 'required|string|min:6|confirmed',
+                ]);
+                $user->password = bcrypt($request->password);
+            }
+            $user->save();
+            $Institute = Auth::user()->Institute;
+            $Institute->nameInEnglish = $user->name;
+            $Institute->nameInArabic = $user->name;
+            $Institute->email = $user->email;
+            $Institute->license = $request['license'];
+            $Institute->cityName = $request['cityName'];
+            $Institute->country = $request['country'];
+            $Institute->livingPlace = $request['livingPlace'];
+            $Institute->workSummary = $request['workSummary'];
+            $Institute->activities = $request['activities'];
+            $Institute->mobileNumber = $request['mobileNumber'];
+            $Institute->address = $request['address'];
+            $Institute->save();
+        }
+        elseif($user->userType == 3)
+        {
+            $this->validate($request, [
+                'name' => 'required|string|max:255',
+            ]);
+            $user->name = $request['name'];
+            if($user->email != $request['email'])
+            {
+                $this->validate($request, [
+                    'email' => 'required|string|email|max:255|unique:users',
+                ]);
+                $user->email = $request['email'];
+            }
+            if(isset($request->password))
+            {
+                $this->validate($request, [
+                    'password' => 'required|string|min:6|confirmed',
+                ]);
+                $user->password = bcrypt($request->password);
+            }
+            $user->save();
+            $initiative = $user->initiative;
+            $initiative->nameInEnglish = $user->name;
+            $initiative->nameInArabic = $user->name;
+            $initiative->email = $user->email;
+            $initiative->livingPlace = $request['livingPlace'];
+            $initiative->cityName = $request['cityName'];
+            $initiative->country = $request['country'];
+            $initiative->currentWork = $request['currentWork'];
+            $initiative->preVoluntary = $request['preVoluntary'];
+            if($request['preVoluntary'] == 1)
+            {
+                $initiative->voluntaryYears = $request['voluntaryYears'];
+            }
+            else
+            {
+                $initiative->voluntaryYears = 0;
+            }
+            $initiative->dateOfBirth =  $request['dateOfBirth'];
+            $initiative->save();
+        }
+        else return abort(403, 'Unauthorized action.');
         return redirect()->route('home');
     }
 

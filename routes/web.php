@@ -84,18 +84,17 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::get('/researcher',['uses'=>'IndividualsController@researcher'])->name('researcher');
         Route::get('/addresearch',['uses'=>'IndividualsController@addResearch'])->name('addResearch');
         Route::post('/addresearch',['uses'=>'IndividualsController@submitResearch'])->name('addResearch');
+
         Route::get('/makeInitiative', ['uses'=>'IndividualsController@makeInitiative'])->name('makeInitiative');
         Route::post('/makeInitiative', ['uses'=>'IndividualsController@makeInitiativePost'])->name('makeInitiativePost');
         Route::get('/myInitiatives', ['uses'=>'IndividualsController@myInitiatives'])->name('myInitiatives');
-
         Route::get('/editInitiative/{initiativeId}', ['uses'=>'IndividualsController@editInitiative'])->name('editInitiative');
         Route::post('/editInitiative/{initiativeId}', ['uses'=>'IndividualsController@editInitiativePost'])->name('editInitiativePost');
         
         Route::get('/allusers',['uses'=>'IndividualsController@allusers'])->name('allusers');
         Route::get('/followers', ['uses'=>'IndividualsController@followers'])->name('followers');
         Route::get('/following', ['uses'=>'IndividualsController@following'])->name('following');
-        Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
-        Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
+
         Route::get('/volunteer/{eventId}', ['uses'=>'eventController@volunteer'])->name('volunteer');
         Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
         Route::get('/myUpComingEvents', ['uses'=>'IndividualsController@myUpComingEvents'])->name('myUpComingEvents');
@@ -114,6 +113,8 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
 
     //-------------------------------- Initiative --------------------------------\\
     Route::group(['prefix'=>'initiative','routeMiddleware'=>'initiative'], function() {
+        Route::get('/editInitiative/{initiativeId}', ['uses'=>'IndividualsController@editInitiative'])->name('editInitiative');
+        Route::post('/editInitiative/{initiativeId}', ['uses'=>'IndividualsController@editInitiativePost'])->name('editInitiativePost');
 
     });
 
