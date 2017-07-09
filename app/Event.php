@@ -5,14 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
-{
-
+{   
      public function Intrest(){
-        return $this->belongsToMany('Intrest','event_intrests');
+        return $this->belongsToMany('\App\Intrest','event_intrests','event_id','intrset_id');
     }
 
      public function targetedGroups(){
-        return $this->belongsToMany('targetedGroups','event_targets');
+        return $this->belongsToMany('\App\targetedGroups','event_targets','event_id','target_id');
     }
 
     public function User(){
@@ -20,6 +19,6 @@ class Event extends Model
     }
 
     public function Post(){
-        return $this->hasMany('App\Post');
+        return $this->hasMany('\App\Post');
     }
 }

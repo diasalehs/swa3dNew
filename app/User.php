@@ -2,8 +2,8 @@
 
 namespace App;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Notifications\Notifiable;
-
 use Illuminate\Foundation\Auth\User as Authenticatable;
 //ind res inst one to one
 class User extends Authenticatable

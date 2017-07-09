@@ -19,11 +19,11 @@
          <form method="post"   enctype="multipart/form-data" action="{{route('addResearch')}}">{{ csrf_field() }}
            <div class="form-group">
              <label for="title">Title</label>
-             <input type="text" class="form-control" id="title" placeholder="Enter title">
+             <input type="text" class="form-control"  id="title" name="title" placeholder="Enter title">
            </div>
            <div class="form-group">
              <label for="exampleTextarea">Abstract</label>
-             <textarea class="form-control" id="exampleTextarea" name="abstract" rows="3"></textarea>
+             <textarea class="form-control" id="abstract" name="abstract" rows="3"></textarea>
            </div>
            <div class="form-group">
              <label for="recommendations">Recommendation</label>
@@ -31,7 +31,7 @@
            </div>
            <div class="form-group">
              <label for="date-input">Date</label>
-             <input class="form-control" type="creation_date" value="<?php echo date("Y-m-d"); ?>" id="date-input">
+             <input class="form-control" name="creation_date" type="creation_date" value="<?php echo date("Y-m-d"); ?>" id="date-input">
            </div>
            <div class="form-group">
              <label for="findings">Research findings</label>
@@ -55,19 +55,11 @@
            <div class="form-group">
              <label for="">Tags</label>
            </div>
-           <div class="form-check">
-           <label class="form-check-label">
-           <input type="checkbox"  name="tag1" class="form-check-input">
-           tag1
-           </label>
-         </div>
-         <div class="form-check">
-
-           <label class="form-check-label">
-           <input type="checkbox"  name="tag2"class="form-check-input">
-           tag2
-           </label>
-           </div>
+          <div class="form-group row">
+  <div class="col-10">
+    <input class="form-control" type="text" name="tags" id="example-text-input">
+  </div>
+</div>
            <div class="form-group">
               <label for="filefield">File input</label>
               <input type="file" class="form-control-file"id="filefield" accept=".xls,.xlsx,.pdf,.docx" name="filefield">

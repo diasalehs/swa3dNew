@@ -8,6 +8,12 @@ use App\volunteer;
 use App\researches;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\tags;
+use App\researches_tags;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File; 
+use Illuminate\Http\Response;
+use App\Initiative;
 class IndividualsController extends Controller
 {
     protected $user;
@@ -190,19 +196,29 @@ class IndividualsController extends Controller
                 'credit' => 'required',
                 'filefield' => 'integer',
             ]);
-            $research=new researches();
-            $research->title=$request['title'];
-            $research->ind_id=$userIndividual->id;
-            $research->researcher_name=$userIndividual->nameInEnglish;
-            $research->abstract=$request['abstract'];
-            $research->recommendations=$request['recommendations'];
-            $research->creation_date=$request['creation_date'];
-            $research->findings=$request['findings'];
-            $research->tool1=$request->input('tool1');
-            $research->tool2=$request->input('tool2');
-            $research->credit=$request->input('credit');
-            $file = $request->file('filefield');
-            if($file)
+           
+        $research=new researches();
+        $research->title=$request['title'];
+        $research->ind_id=auth::user()->individuals->id;
+        $research->researcher_name=auth::user()->individuals->nameInEnglish;
+        $research->abstract=$request['abstract'];
+        $research->recommendations=$request['recommendations'];
+        $research->creation_date=$request['creation_date'];
+        $research->findings=$request['findings'];
+        $research->tool1=$request->input('tool1');
+        $research->tool2=$request->input('tool2');
+        $research->credit=$request->input('credit');
+        $user = Auth::user();
+        $date = $this->date;
+        $followers = friend::where('requested_id', $user->id)->get();
+        $following = friend::where('requester_id', $user->id)->get();
+        $date = $this->date;
+        $researches=researches::where('ind_id',auth::user()->individuals->id)->get();
+        $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
+        $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
+        $users_record= DB::table('users')->get();
+        $file = $request->file('filefield');
+           if($file)
             {
                 $extension = $file->getClientOriginalExtension();
                 Storage::disk('local')->put($file->getFilename().'.'.$extension,  File::get($file));
@@ -210,12 +226,22 @@ class IndividualsController extends Controller
                 $research->original_filename = $file->getClientOriginalName();
                 $research->filename = $file->getFilename().'.'.$extension;
             }else abort(403, 'Unauthorized action.');
-            $research->save();
-            $success=1;
+        $research->save();
+        $tags= new tags();
+        $tags->name=$request['tags'];
+        $tags->save();
+        $research_tags= new researches_tags();
+        $research_tags->tag_id=$tags->id;
+        $research_tags->research_id=$research->id;
+        $research_tags->save();
+        $success=1;
+
+
             return  view('individual/researches',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','success'));
         }
         else abort(403, 'Unauthorized action.');
     }
+
     public function myResearches(){
         list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
         return view('individual/myResearches',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives'));

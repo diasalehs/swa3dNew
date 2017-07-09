@@ -19,6 +19,6 @@
         <a href="{{route('myUpComingEvents')}}" class="list-group-item  justify-content-between">My UpComing Events<span class="badge badge-default badge-pill">{{$myUpComingEvents->count()}}</span></a>
         <a href="{{route('myArchiveEvents')}}" class="list-group-item  justify-content-between">My Archive Events<span class="badge badge-default badge-pill">{{$myArchiveEvents->count()}}</span></a>
         <a href="{{route('messenger')}}" class="list-group-item  justify-content-between">Messenger</a>
-        <a href="{{route('myInitiatives')}}" class="list-group-item  justify-content-between">My Initiatives<span class="badge badge-default badge-pill">{{$myInitiatives->count()}}</span></a>
+{{--         <a href="{{route('myInitiatives')}}" class="list-group-item  justify-content-between">My Initiatives<span class="badge badge-default badge-pill">{{$myInitiatives->count()}}</span></a> --}}
     </ul>
  </div>
