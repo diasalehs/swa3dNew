@@ -41,6 +41,8 @@ Route::post('/registerer', function(\Illuminate\Http\Request $request) {
 
 //-------------------------------- just for users - auth --------------------------------\\
 Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
+    Route::group(['middleware' => ['isVerified']], function () {
+
     Route::get('/', 'homeController@index')->name('home');
 
     //-------------------------------- event --------------------------------\\
@@ -74,6 +76,8 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
             Route::post('/edit/{newsId}', ['uses' =>'newsController@editor', 'as'=>'edit']);
             Route::get('/adminNewsView',  ['uses' =>'adminController@adminNewsView', 'as'=>'adminNewsView']);
         });
+        
+        Route::get('/adminVerify/{userID}', ['uses' =>'adminController@adminVerify', 'as'=>'adminVerify']);
         Route::post('/slider',['uses' =>'sliderController@add_element', 'as'=>'slider']);
         Route::get('/slider', ['uses' =>'sliderController@index', 'as'=>'slider']);
     });
@@ -125,5 +129,6 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
     Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
     Route::get('/errorPage', function() {return view('errorPage');})->name('errorPage');
+});
 
 });

@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInstitutesTable extends Migration
+class CreateTempInstitutesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +13,7 @@ class CreateInstitutesTable extends Migration
      */
     public function up()
     {
-        Schema::create('institutes', function (Blueprint $table) {
+         Schema::create('temp_institutes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('license')->unique();
             $table->integer('user_id')->unsigned();
@@ -59,6 +60,6 @@ class CreateInstitutesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('institutes');
+        Schema::dropIfExists('temp_institutes');
     }
 }

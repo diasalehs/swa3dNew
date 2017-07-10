@@ -245,6 +245,7 @@ class IndividualsController extends Controller
 
     public function myResearches(){
         list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
+        $researches=researches::where('ind_id',$userIndividual->id)->get();
         return view('individual/myResearches',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives'));
     }
     

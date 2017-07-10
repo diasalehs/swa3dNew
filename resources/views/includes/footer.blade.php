@@ -50,21 +50,48 @@
 
 
 	    <!-- Bootstrap core JavaScript -->
-      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-	    <script src="{{URL::asset('vendor/js/scripts.js')}}"></script>
       <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
-
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	    <script src="{{URL::asset('vendor/js/scripts.js')}}"></script>
+      <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
+      <script src="{{URL::asset('vendor/js/jquery.js')}} "></script>
+      <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
     <script type="text/javascript">
 
     $(document).ready(function()
         {
-          $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+          $(".bs-searchbox :input").attr("placeholder", "Search...");
+          $('body').on('click', function (e) {
+              $('[data-toggle=popover]').each(function () {
+                  // hide any open popovers when the anywhere else in the body is clicked
+                  if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                      $(this).popover('hide');
+                  }
+              });
+          });
+
+          $("[data-toggle=popover]").mousedown(function(){
+            // toggle popover when link is clicked
+            $(this).popover('toggle');
+          });
+
+          $("[data-toggle=popover]").draggable({
+            stop:function(){
+              // show popover when drag stops
+              $(this).popover('show');
+            }
+          });
+          $('.selectpicker').selectpicker();
+
               $('.carousel').carousel({
                   interval: 5000 //changes the speed
+              });
+              $('option').mousedown(function(e) {
+                  e.preventDefault();
+                  $(this).prop('selected', $(this).prop('selected') ? false : true);
+                  return false;
               });
 
             $('#ntab').on('click',function(){
@@ -86,39 +113,35 @@
 
     </script>
 
-    <script>
-        $('.c').starbox({
-        average: 0.5,
-        autoUpdateAverage: true,
-        ghosting: true,
-        changeable:true,
-        buttons:10
-      });
-      $('.showrate').starbox({
-      average: 0.5,
-      autoUpdateAverage: false,
-      ghosting: false,
-      changeable:false,
-      buttons:10
-    });
-      function rate(r) {
-        //  alert($('#r'+r).starbox('getValue'));
-          $('.cat'+r).val($('#r'+r).starbox('getValue'));
-
-       }
-
-         //  alert($('#r'+r).starbox('getValue'));
-         var i = 0;
-         while (true) {
-           i++;
-           $('#sh'+i).starbox('setValue',$('#shr'+i).text());
-           if (i > 7) {
-             break;
+        <script>
+            $('.c').starbox({
+            average: 0.5,
+            autoUpdateAverage: true,
+            ghosting: true,
+            changeable:true,
+            buttons:10
+          });
+          $('.showrate').starbox({
+          average: 0.5,
+          autoUpdateAverage: false,
+          ghosting: false,
+          changeable:false,
+          buttons:10
+        });
+          function rate(r) {
+            //  alert($('#r'+r).starbox('getValue'));
+              $('.cat'+r).val($('#r'+r).starbox('getValue'));
            }
-         }
-
-
-    </script>
+             //  alert($('#r'+r).starbox('getValue'));
+             var i = 0;
+             while (true) {
+               i++;
+               $('#sh'+i).starbox('setValue',$('#shr'+i).text());
+               if (i > 7) {
+                 break;
+               }
+             }
+        </script>
 </body>
 
 </html>

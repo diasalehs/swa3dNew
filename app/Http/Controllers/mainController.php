@@ -122,6 +122,7 @@ class mainController extends Controller
             elseif ($user->userType==1) {
             $Iuser=$user->Institute;
             }
+            
             elseif ($user->userType==3) {
             $Iuser=$user->Initiative;
             }

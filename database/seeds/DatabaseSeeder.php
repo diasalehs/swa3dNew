@@ -3,7 +3,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\user;
 use App\Individuals;
-use App\Institute;
+use App\tempInstitute;
 use App\Researcher;
 use App\news;
 use App\slider;
@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
 	            $users->password = bcrypt('secret');
 	            $users->save();
 
-	            $Institute = new Institute();
+	            $Institute = new tempInstitute();
 		        $Institute->nameInEnglish = $users->name;
 		        $Institute->nameInArabic = $users->name;
 		        $Institute->user_id = $users->id;
