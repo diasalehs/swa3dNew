@@ -22,6 +22,13 @@
           </div>
 
     <div class="container">
+      <h1 class="display-7 " style="color:#fff">{{$event->title}}</h1>
+      <p class=""style="color:#fff">{{$event->description}}</p>
+      <p class=""style="color:#fff; margin-bottom:20px">{{$event->startDate}} To {{$event->endDate}} - in Nablus</p>
+      <a href="{{route('login')}}" class="btn btn-pink ">Volunteer</a>
+    </div>
+  </div>
+  <div class="container">
     <div class="row">
 
         <div class="col-lg-8">
