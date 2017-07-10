@@ -7,11 +7,20 @@
 
 @if(Auth::guest())
 
-  <div class="jumbotron jumbotron-fluid text-center"style="background-image: linear-gradient(rgba(19, 58, 83, 0.8),rgba(19, 58, 83, 0.8)),url({{URL::to('/')}}/events/{{$event->cover}});
-  background-size:contain;background-repeat: no-repeat;
-  background-position: right top;
-  background-attachment: fixed;
-  ">
+<div class=" col-lg-4">
+            <h3 class="greencolor ">Volunteers in this event</h3>
+            <hr />
+            <div class="list-group" style="color: var(--navy);">
+              <button type="button" class="list-group-item list-group-item-action">
+                Cras justo odio
+              </button>
+              <button type="button" class="list-group-item list-group-item-action" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Dapibus ac facilisis in</button>
+              <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+            </div>
+            <div>
+            </div>
+          </div>
+
     <div class="container">
       <h1 class="display-7 " style="color:#fff">{{$event->title}}</h1>
       <p class=""style="color:#fff">{{$event->description}}</p>
@@ -36,42 +45,10 @@
                    content of a page when looking at its layout.
               </div>
             </div>
-            <div class="card"style="margin-bottom:20px;">
-              <div class="card-block">
-                <h4 class="card-title greencolor">Post Title</h4>
-                <p class="card-text" style="color: var(--navy);">
-                  It is a long established
-                  fact that a reader will be distracted
-                   by the readable
-                   content of a page when looking at its layout.
-              </div>
-            </div>
+
+
           @endif
 
-
-          </div>
-          <div class=" col-lg-4">
-
-            <h3 class="greencolor ">Volunteers in this event</h3>
-            <hr />
-
-            <div class="list-group" style="color: var(--navy);">
-              <button type="button" class="list-group-item list-group-item-action">
-                Cras justo odio
-              </button>
-              <button type="button" class="list-group-item list-group-item-action" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Dapibus ac facilisis in</button>
-              <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
-              <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-              <button type="button" class="list-group-item list-group-item-action" >Vestibulum at eros</button>
-              <button type="button" class="list-group-item list-group-item-action btn-green seeall" >See All</button>
-            </div>
-
-            <div>
-
-            </div>
-
-
-          </div>
         </div>
       </div>
 </div>
