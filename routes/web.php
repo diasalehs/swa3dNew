@@ -96,6 +96,7 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::get('/followers', ['uses'=>'IndividualsController@followers'])->name('followers');
         Route::get('/following', ['uses'=>'IndividualsController@following'])->name('following');
 
+        Route::post('/invite', ['uses'=>'eventController@invite'])->name('invite');
         Route::get('/volunteer/{eventId}', ['uses'=>'eventController@volunteer'])->name('volunteer');
         Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
         Route::get('/myUpComingEvents', ['uses'=>'IndividualsController@myUpComingEvents'])->name('myUpComingEvents');
@@ -123,5 +124,6 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     Route::get('/unfollow/{userId}', ['uses'=>'homeController@unfollow'])->name('unfollow');
     Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
     Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
+    Route::get('/errorPage', function() {return view('errorPage');})->name('errorPage');
 
 });

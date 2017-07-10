@@ -27,8 +27,8 @@ class IndividualsController extends Controller
             $followers = friend::where('requested_id', $user->id);
             $following = friend::where('requester_id', $user->id);
             $researches=researches::where('ind_id',$userIndividual->id);
-            $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$userIndividual->id)->where('events.endDate','>=',$date);
-            $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$userIndividual->id)->where('events.endDate','<',$date);
+            $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','>=',$date);
+            $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','<',$date);
             $this->date = $date;
             $this->user = $user;
             $this->userIndividual = $userIndividual;
@@ -132,8 +132,9 @@ class IndividualsController extends Controller
         $user = Auth::user();
         if($user->userType == 0){
             list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
-            $acceptedEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date)->where('accepted',1)->get();
-            $requestedEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date)->where('accepted',0)->get();
+            $acceptedEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','>=',$date)->where('accepted',1)->get();
+            $requestedEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','>=',$date)->where('accepted',0)->get();
+            $requestedEvents = invite::join('events','invites.event_id','=','events.id')->where('invites.user_id',$user->id)->where('events.endDate','>=',$date)->where('accepted',0)->get();
             return view('individual.myUpComingEvents',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','requestedEvents','acceptedEvents'));
         }
         return abort(403, 'Unauthorized action.');
@@ -143,7 +144,7 @@ class IndividualsController extends Controller
         $user = Auth::user();
         if($user->userType == 0){
             list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
-            $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date)->where('accepted',1)->get();
+            $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->Individuals->id)->where('events.endDate','<',$date)->where('accepted',1)->get();
             return view('individual.myArchiveEvents',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','acceptedEvents'));
         }
         return abort(403, 'Unauthorized action.');
@@ -215,8 +216,8 @@ class IndividualsController extends Controller
         $following = friend::where('requester_id', $user->id)->get();
         $date = $this->date;
         $researches=researches::where('ind_id',auth::user()->individuals->id)->get();
-        $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
-        $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
+        $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->Individuals->id)->where('events.endDate','>=',$date);
+        $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->Individuals->id)->where('events.endDate','<',$date);
         $users_record= DB::table('users')->get();
         $file = $request->file('filefield');
            if($file)

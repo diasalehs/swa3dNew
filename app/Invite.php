@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Volunteer extends Model
+class Invite extends Model
 {
     public function User()
 	{
