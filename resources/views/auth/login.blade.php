@@ -41,13 +41,24 @@
                                         :=":" /> Remember Me</label>
                                 </div>
                         </div>
-                        <div class="form-group">
-                                <button type="submit" class="btn btn-success choose-btn">Login</button>
-                                <a class="btn btn-link link-green" href="{{ route('password.request') }}">
+                        <div class="form-group row">
+                          <div class=" col-6">
+                            <button type="submit" class="btn btn-green btn-block">Login</button>
 
-                                    Forgot Your Password?
+                          </div>
+                          <div class="col-6">
+                            <a class="btn btn-link link-green" href="{{ route('password.request') }}">
+                                Forgot Your Password?
+                            </a>
+                          </div>
+                        </div>
+                          <div class="row">
+                            <div class="col-12">
+                              <a class="btn btn-pink btn-block"  style="color:#fff;"data-toggle="modal" data-target="#myModal">Not a member? Join Us Now</a>
 
-                                </a>
+                            </div>
+                          </div>
+
                         </div>
                     </form>
                 </div>
