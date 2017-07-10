@@ -107,6 +107,7 @@ button{
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+
 .line-clamp-3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -265,27 +266,38 @@ button{
 }
 
 .event .card-img-overlay{
-  background-color: rgba(19, 60, 85, 0.7);
+  background-color: rgba(19, 60, 85, 0.6);
   overflow: hidden;
   color:  rgba(255,255,255,1);
   transition: all .5s;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 
 }
 .event .card-img-overlay:hover{
-  background-color: rgba(19, 60, 85, 0.8);
+  background-color: rgba(19, 60, 85, 0.7);
   overflow: hidden;
   color:  rgba(255,255,255,1);
+
+}
+.event .card-title{
+   overflow: hidden;
+   height: 53px;
 
 }
 .event .card-text {
     height: 104px;
     font-size: 18px;
     color:  rgba(255,255,255,1);
-
+    align-self: flex-start;
+    margin-bottom: -70px;
+}
+.card-bottom{
+    align-self: flex-start;
 }
 .event .card-img {
   max-height: 260px;
-  width: 100%;
   object-fit: cover;
 }
 .viewProfile .list-group-item{
@@ -329,7 +341,10 @@ form input:focus{
 
 }
 .btn-green:hover,
-.btn-green:hover{
+.btn-green:focus,
+.btn-green:visited,
+.btn-green:active
+{
   background-color: var(--green-hover);
   color: #fff;
 }
