@@ -256,9 +256,11 @@ class eventController extends Controller
         $user = Auth::user();
         $event = event::find($eventId);
         $volunteer = user::where('id',$volunteerId)->first();
+        $invite = invite::where('event_id',$eventId)->where('user_id',$volunteerId)->first();
         if($event->user_id == $user->id && $volunteer){
-            $volunteer = volunteer::where('user_id',$user->id)->where('event_id',$eventId)->first();
+            $volunteer = volunteer::where('user_id',$volunteerId)->where('event_id',$eventId)->first();
             $volunteer->accepted = 1;
+            $invite->delete();
             $volunteer->save();
         }
         return redirect()->back();
@@ -276,7 +278,7 @@ class eventController extends Controller
         $event = event::find($eventId);
         $volunteer = user::where('id',$volunteerId)->first();
         if($event->user_id == $user->id && $volunteer){
-            $volunteer = volunteer::where('user_id',$user->id)->where('event_id',$eventId)->first();
+            $volunteer = volunteer::where('user_id',$volunteerId)->where('event_id',$eventId)->first();
             $volunteer->accepted = 0;
             $volunteer->save();
         }

@@ -8,6 +8,7 @@ use App\researches;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\tags;
+use App\invite;
 use App\researches_tags;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File; 
@@ -134,8 +135,8 @@ class IndividualsController extends Controller
             list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
             $acceptedEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','>=',$date)->where('accepted',1)->get();
             $requestedEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','>=',$date)->where('accepted',0)->get();
-            $requestedEvents = invite::join('events','invites.event_id','=','events.id')->where('invites.user_id',$user->id)->where('events.endDate','>=',$date)->where('accepted',0)->get();
-            return view('individual.myUpComingEvents',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','requestedEvents','acceptedEvents'));
+            $invitedEvents = invite::join('events','invites.event_id','=','events.id')->where('invites.user_id',$user->id)->where('events.endDate','>=',$date)->where('accepted',0)->get();
+            return view('individual.myUpComingEvents',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','requestedEvents','acceptedEvents','invitedEvents'));
         }
         return abort(403, 'Unauthorized action.');
     }
