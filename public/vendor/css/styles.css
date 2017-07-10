@@ -321,8 +321,11 @@ form input:focus{
   display: inline-block !important;
   color: white;
   cursor: pointer;
+  border-radius: 200px !important;
+
 
 }
+.btn-green:hover,
 .btn-green:hover{
   background-color: var(--green-hover);
   color: #fff;
@@ -333,6 +336,8 @@ form input:focus{
   display: inline-block !important;
   color: white;
   cursor: pointer;
+  border-radius: 200px !important;
+
 
 }
 .btn-pink:hover{
@@ -345,6 +350,8 @@ form input:focus{
   display: inline-block !important;
   color: white;
   cursor: pointer;
+  border-radius: 200px !important;
+
 
 }
 .btn-yellow:hover{
@@ -374,7 +381,6 @@ form input:focus{
 		color: #51c2c0 !important;
 }
 .btn{
-		border-radius: 200px !important;
 }
 .sign-in-btn{
 	background-color: #1ab08b;

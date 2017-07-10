@@ -44,10 +44,9 @@
                         <div class="form-group">
                                 <button type="submit" class="btn btn-success choose-btn">Login</button>
                                 <a class="btn btn-link link-green" href="{{ route('password.request') }}">
-
                                     Forgot Your Password?
-
                                 </a>
+                              
                         </div>
                     </form>
                 </div>
