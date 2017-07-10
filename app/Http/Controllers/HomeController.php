@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File; 
 use Illuminate\Http\Response;
 use App\Initiative;
+use App\tempInstitute;
+
 
 class HomeController extends Controller
 {
@@ -44,7 +46,8 @@ class HomeController extends Controller
             $userInstitute = Auth::user()->Institute;
             $followers = friend::where('requested_id', $user->id);
             $following = friend::where('requester_id', $user->id);
-            $users_record= User::paginate();
+            $users_record= tempInstitute::paginate();
+
             $date = $this->date;
             if ($user->userType=== 10 ) {
                 return view('admin/adminDashboard',["users_record"=>$users_record]);
@@ -57,10 +60,14 @@ class HomeController extends Controller
                     $researches=researches::where('ind_id',auth::user()->individuals->id);
                     return view('Individual/homeIndividual',compact('user','researches','myUpComingEvents','myArchiveEvents','userIndividual','followers','following','myInitiatives'));
                 }
+                
                 elseif($user->userType == 1){
-                    $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
+                    if($user->adminApproval==1){ $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
                     $Uevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
-                    return view('Institute/homeInstitute',compact('user','userInstitute','Aevents','Uevents','following','followers'));
+                    return view('Institute/homeInstitute',compact('user','userInstitute','Aevents','Uevents','following','followers'));}
+                    else{
+                         return view('waitTillverification');
+                    }
                 }
                 elseif($user->userType == 3){
                     $userInitiative = Auth::user()->Initiative;

@@ -26,7 +26,7 @@
 
 
                                 <div class="">
-                                    <input id="name" type="text" style="display: none;" class="form-control" name="userType" value="{{ $user_type }}"
+                                    <input id="type" type="text" style="display: none;" class="form-control" name="userType" value="{{ $user_type }}"
                                     />
 
                                 </div>

@@ -76,6 +76,8 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
             Route::post('/edit/{newsId}', ['uses' =>'newsController@editor', 'as'=>'edit']);
             Route::get('/adminNewsView',  ['uses' =>'adminController@adminNewsView', 'as'=>'adminNewsView']);
         });
+        
+        Route::get('/adminVerify/{userID}', ['uses' =>'adminController@adminVerify', 'as'=>'adminVerify']);
         Route::post('/slider',['uses' =>'sliderController@add_element', 'as'=>'slider']);
         Route::get('/slider', ['uses' =>'sliderController@index', 'as'=>'slider']);
     });
