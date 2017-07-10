@@ -41,8 +41,8 @@
 .starbox .stars { background: #cccccc; }
 .starbox .rated .stars { background: #dcdcdc; }
 .starbox .rated.hover .stars { background: #cccccc; }
-.starbox .colorbar { background: var(--green); }
+.starbox .colorbar { background: #ffcc1c; }
 .starbox .hover .colorbar { background: #ffcc1c; }
 .starbox .rated .colorbar { background: #ffcc1c; }
-.starbox .rated.hover .colorbar { background: var(--green); }
+.starbox .rated.hover .colorbar { background: #ffcc1c; }
 .starbox .ghost { background: #a1a1a1; }

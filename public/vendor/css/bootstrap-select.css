@@ -13,6 +13,9 @@ select.selectpicker {
   width: 220px \0;
   /*IE9 and below*/
 }
+.btn-secondary{
+  border-radius: .25rem !important;
+}
 .dropdown-item.active{
       background-color: var(--green);
       color: #fff !important;
