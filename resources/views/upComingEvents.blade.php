@@ -68,29 +68,28 @@
 
     <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne">
       <div class="card-block"class="">
-        <form id="myform"class=""style="display: flex;
-          justify-content:center;
-          flex-wrap: wrap;
-       align-items: flex-start;
+        <form id="myform"class="row"style="
       ">
 
-          <div class="form-group">
+          <div class="form-group col-sm12 col-md-4">
             <label for="location" >Location</label>
             <input type="text" id="location" class="form-control" name="location" placeholder="e.g. Nablus">
           </div>
-          <div class="form-group"style="margin-left:15px;">
+          <div class="form-group col-sm12 col-md-4">
 
           <label for="Select1" style="align-self: flex-start;">target</label>
-           <select name="target[]"class="form-control" id="Select1" multiple>
+
+
+           <select name="target[]"class="form-control selectpicker" id="Select1"data-actions-box="true" data-size="5" multiple>
              <option value="1">1</option>
              <option value="2">2</option>
              <option value="3">3</option>
            </select>
          </div>
 
-         <div class="form-group" style="margin-left:15px;">
-           <label for="Select2" style="align-self: flex-start;">intrest</label>
-           <select name="intrest[]" class="form-control" id="Select2"  multiple>
+         <div class="form-group  col-sm12 col-md-4">
+           <label for="Select2">intrest</label>
+           <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true" data-size="5" multiple>
              <option value="1">1</option>
              <option value="2">2</option>
              <option value="3">3</option>

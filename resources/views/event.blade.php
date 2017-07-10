@@ -155,7 +155,7 @@
             <h3 class="greencolor ">Volunteers in this event</h3>
             <hr />
             <form>
-              <select class="selectpicker" multiple data-actions-box="true" data-live-search="true" >
+              <select class="selectpicker" multiple data-actions-box="true" data-size="7"data-live-search="true" >
                 @foreach($eventVols as $eventVol)
 
                 <option>{{$eventVol->nameInEnglish}}</option>
@@ -175,7 +175,7 @@
             <h3 class="greencolor ">Accepted Volunteers</h3>
             <hr />
             <form>
-              <select class="selectpicker" multiple data-actions-box="true" data-live-search="true" >
+              <select class="selectpicker" multiple data-actions-box="true"data-size="7" data-live-search="true" >
                 @foreach($eventAcceptedVols as $eventAcceptedVol)
 
                 <option>{{$eventAcceptedVol->nameInEnglish}}</option>

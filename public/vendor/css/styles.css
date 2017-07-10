@@ -683,9 +683,8 @@ border-bottom: 3px solid #51c2c0 !important;
   color: white !important;
   border-color: #51c2c0 !important;
 }
-#Select1, #Select2{
-  width: 150px;
-  height: 120px;
+.bootstrap-select{
+
 }
 @media only screen and (min-width: 50px) {
   .top-5{
