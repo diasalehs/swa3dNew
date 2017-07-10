@@ -50,13 +50,14 @@
 
 
 	    <!-- Bootstrap core JavaScript -->
+      <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
       <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	    <script src="{{URL::asset('vendor/js/scripts.js')}}"></script>
-      <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
       <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
-
+      <script src="{{URL::asset('vendor/js/jquery.js')}} "></script>
+      <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
     <script type="text/javascript">
 
     $(document).ready(function()
@@ -65,9 +66,6 @@
 
           $('.selectpicker').selectpicker();
 
-          $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
               $('.carousel').carousel({
                   interval: 5000 //changes the speed
               });
@@ -96,39 +94,35 @@
 
     </script>
 
-    <script>
-        $('.c').starbox({
-        average: 0.5,
-        autoUpdateAverage: true,
-        ghosting: true,
-        changeable:true,
-        buttons:10
-      });
-      $('.showrate').starbox({
-      average: 0.5,
-      autoUpdateAverage: false,
-      ghosting: false,
-      changeable:false,
-      buttons:10
-    });
-      function rate(r) {
-        //  alert($('#r'+r).starbox('getValue'));
-          $('.cat'+r).val($('#r'+r).starbox('getValue'));
-
-       }
-
-         //  alert($('#r'+r).starbox('getValue'));
-         var i = 0;
-         while (true) {
-           i++;
-           $('#sh'+i).starbox('setValue',$('#shr'+i).text());
-           if (i > 7) {
-             break;
+        <script>
+            $('.c').starbox({
+            average: 0.5,
+            autoUpdateAverage: true,
+            ghosting: true,
+            changeable:true,
+            buttons:10
+          });
+          $('.showrate').starbox({
+          average: 0.5,
+          autoUpdateAverage: false,
+          ghosting: false,
+          changeable:false,
+          buttons:10
+        });
+          function rate(r) {
+            //  alert($('#r'+r).starbox('getValue'));
+              $('.cat'+r).val($('#r'+r).starbox('getValue'));
            }
-         }
-
-
-    </script>
+             //  alert($('#r'+r).starbox('getValue'));
+             var i = 0;
+             while (true) {
+               i++;
+               $('#sh'+i).starbox('setValue',$('#shr'+i).text());
+               if (i > 7) {
+                 break;
+               }
+             }
+        </script>
 </body>
 
 </html>
