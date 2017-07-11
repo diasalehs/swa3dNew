@@ -32,14 +32,8 @@
                 Details
               </div>
               <div class="card-block">
-
-
                 <p class=" card-text"style="text-align:justify;">{{$event->description}}</p>
                 <p class=""style="text-align:center; margin-bottom:20px; margin-top:40px">{{$event->startDate}} To {{$event->endDate}} - in {{$event->country}} | Created by: <a href="{{route('profile',$event->user_id)}}" class="pink-link">{{$event->user->name}}</a></p>
-
-                <div style="text-align:center">
-                  <a href="#" class="btn btn-green">Volunteer </a>
-                </div>
               </div>
 
             </div>
@@ -64,13 +58,14 @@
 
 @elseif(Auth::check() )
                 @if($event->endDate > $date)
-                  @if($user->userType == 0)
+                  @if($user->userType == 0 || ($user->userType == 3 && !$mine))
                       @if($request)
                         <a href="{{route('disVolunteer',[$event->id])}}" class="btn btn-pink">Cancel Volunteer Request</a>
                       @elseif(!$request)
                         <a href="{{route('volunteer',[$event->id])}}" class="btn btn-pink">Volunteer Request</a>
                       @endif
-                  @elseif($mine && $archived == 0)
+                    @endif
+                  @if($mine && $archived == 0)
                     <a class="btn btn-pink" href="{{route('eventDelete',[$event->id])}}">Delete</a>
                     <a class=" btn btn-yellow" href="{{route('eventEdit',[$event->id])}}">Edit</a>
                     <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#postModal">Create a Post</a>
@@ -148,61 +143,43 @@
             </div>
           </div>
         </div>
-
+        @endif
           @endif
 
+          @if($mine && $event->endDate > $date)
           <div class=" col-lg-4">
-            <h3 class="greencolor ">Volunteers in this event</h3>
+            <h3 class="greencolor ">Volunteers request</h3>
             <hr />
-            <form>
-              <select class="selectpicker" multiple data-actions-box="true" data-size="7"data-live-search="true" >
+            <form role="form" method="POST" action="{{ route('acceptVolunteer',$event->id)}}">{{ csrf_field() }}
+              <select class="selectpicker" name="accepted[]" multiple data-actions-box="true" data-size="7" data-live-search="true" >
                 @foreach($eventVols as $eventVol)
-
-                <option>{{$eventVol->nameInEnglish}}</option>
-
+                <option value="{{$eventVol->id}}"><a href="{{route('profile',[$eventVol->id])}}">{{$eventVol->name}}</a></option>
                 @endforeach
-
               </select>
               <button type="submit" class="btn btn-green">Accept</button>
             </form>
+            @endif
 
-
-            <div class="list-group" style="color: var(--navy);">
-            @foreach($eventVols as $eventVol)
-              <button type="button" class="list-group-item list-group-item-action"><a href="{{route('profile',[$eventVol->id])}}">{{$eventVol->name}}</a><pre>            </pre><a class="btn btn-primary btn-sm" href="{{route('acceptVolunteer',['volunteerId'=>$eventVol->id , 'eventId' => $event->id])}}">Accept</a></button>
-            @endforeach
-            </div>
-            <h3 class="greencolor ">Accepted Volunteers</h3>
+            <h3 class="greencolor ">Volunteers</h3>
             <hr />
-            <form>
-              <select class="selectpicker" multiple data-actions-box="true"data-size="7" data-live-search="true" >
+            <form role="form" method="POST" action="{{ route('unAcceptVolunteer',$event->id)}}">{{ csrf_field() }}
+              <select name="unaccepted[]" class="selectpicker" multiple
+              @if($mine && $event->endDate > $date)
+               data-actions-box="true" 
+               @endif
+               data-size="7" data-live-search="true" >
                 @foreach($eventAcceptedVols as $eventAcceptedVol)
-
-                <option>{{$eventAcceptedVol->nameInEnglish}}</option>
-
+                <option value="{{$eventAcceptedVol->id}}"><a href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a></option>
                 @endforeach
-
               </select>
               @if($mine && $event->endDate > $date)
-
-              <button type="submit" class="btn btn-pink">Remove</button>
+              <button type="submit" class="btn btn-pink">unAccept</button>
               @endif
-
             </form>
-            <div class="list-group" style="color: var(--navy);">
-            @foreach($eventAcceptedVols as $eventAcceptedVol)
-              <button type="button" class="list-group-item list-group-item-action"><a href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a><pre>            </pre>
-              @if($mine && $event->endDate > $date)
-                <a class="btn btn-primary btn-sm" href="{{route('unAcceptVolunteer',['volunteerId'=>$eventAcceptedVol->id , 'eventId' => $event->id])}}">unAccept</a>
-                @endif
-              </button>
-            @endforeach
-            </div>
+
+
           </div>
-        @endif
       </div>
-
-
         @endif
 @endif
 @endsection('content')

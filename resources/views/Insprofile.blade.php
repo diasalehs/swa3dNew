@@ -6,11 +6,11 @@
   <div class="jumbotron jumbotron-fluid text-center">
     <div class="container">
       <div class=" circular--landscape">
-          <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$Institute[0]->picture}}">
+          <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$user->picture}}">
       </div>
 
-      <h1 class="display-7">{{$Institute[0]->nameInEnglish}}</h1>
-      <p class=""><span>Institute</span> <span>{{$Institute[0]->country}}</span> <span>{{$Institute[0]->cityName}}</span> </p>
+      <h1 class="display-7">{{$user->nameInEnglish}}</h1>
+      <p class=""><span>user</span> <span>{{$user->country}}</span> <span>{{$user->cityName}}</span> </p>
 
       @if(Auth::guest())
              <a class='btn btn-green'  href="{{route('login')}}">follow</a>
@@ -35,13 +35,13 @@
                     <h4 class="card-title">User Informations</h4>
                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                     <p class="card-text">
-                    address: {{$Institute[0]->address}}<br>
-                    Establishment year: {{$Institute[0]->establishmentYear}}<br>
-                    Employment rate: {{$Institute[0]->employmentRate}}<br>
-                    Number of employees: {{$Institute[0]->numOfEmployees}}<br>
-                    Number of stakeholders: {{$Institute[0]->numOfStakeholders}} <br>
-                    Work summary: {{$Institute[0]->workSummary}} <br>
-                    license: {{$Institute[0]->license}} <br>
+                    address: {{$user->address}}<br>
+                    Establishment year: {{$user->establishmentYear}}<br>
+                    Employment rate: {{$user->employmentRate}}<br>
+                    Number of employees: {{$user->numOfEmployees}}<br>
+                    Number of stakeholders: {{$user->numOfStakeholders}} <br>
+                    Work summary: {{$user->workSummary}} <br>
+                    license: {{$user->license}} <br>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                   </div>
@@ -52,16 +52,16 @@
                     <h4 class="card-title">Contact Informations</h4>
                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                     <p class="card-text">
-                    Email: {{$Institute[0]->email}}<br>
-                    Adress: {{$Institute[0]->address}}<br>
-                    Mobile number: {{$Institute[0]->mobileNumber}}<br>
-                    PObox: {{$Institute[0]->PObox}}<br>
-                    Fax: {{$Institute[0]->fax}}<br>
-                    Website: <a href="{{$Institute[0]->website}}">{{$Institute[0]->website}}</a><br>
-                    Facebook Page: <a href="{{$Institute[0]->facebookPage}}">{{$Institute[0]->facebookPage}}</a><br>
+                    Email: {{$user->email}}<br>
+                    Adress: {{$user->address}}<br>
+                    Mobile number: {{$user->mobileNumber}}<br>
+                    PObox: {{$user->PObox}}<br>
+                    Fax: {{$user->fax}}<br>
+                    Website: <a href="{{$user->website}}">{{$user->website}}</a><br>
+                    Facebook Page: <a href="{{$user->facebookPage}}">{{$user->facebookPage}}</a><br>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
-                    <a href="{{route('messenger',$Institute[0]->email)}}" class="card-link green-link">Send Message</a>
+                    <a href="{{route('messenger',$user->email)}}" class="card-link green-link">Send Message</a>
                   </div>
                 </div>
                 <br>
@@ -79,27 +79,27 @@
                   <tbody>
                     <tr>
                       <td>Voluntary years</td>
-                      {{-- <td>{{$Institute[0]->voluntaryYears}}</td> --}}
+                      {{-- <td>{{$user->voluntaryYears}}</td> --}}
                     </tr>
                     <tr>
                       <td>cat1</td>
-                      <td>{{$Institute[0]->cat1}}</td>
+                      <td>{{$user->cat1}}</td>
                     </tr>
                     <tr>
                       <td>cat2</td>
-                      <td>{{$Institute[0]->cat2}}</td>
+                      <td>{{$user->cat2}}</td>
                     </tr>
                      <tr>
                       <td>cat3</td>
-                      <td>{{$Institute[0]->cat3}}</td>
+                      <td>{{$user->cat3}}</td>
                     </tr>
                      <tr>
                       <td>cat4</td>
-                      <td>{{$Institute[0]->cat4}}</td>
+                      <td>{{$user->cat4}}</td>
                     </tr>
                      <tr>
                       <td>acc </td>
-                      <td>{{$Institute[0]->acc_avg}}</td>
+                      <td>{{$user->acc_avg}}</td>
                     </tr>
                     <tr>
                       <td> </td>
@@ -134,7 +134,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{route('rank',$Institute[0]->id)}}" method="get">
+      <form action="{{route('rank',$user->id)}}" method="get">
       <div class="modal-body">
         <label>cat1</label>
         <input type="text" name="cat1"><br>

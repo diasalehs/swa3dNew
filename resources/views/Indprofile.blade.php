@@ -10,11 +10,11 @@
   ">
     <div class="container">
       <div class=" circular--landscape">
-          <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$Individual->picture}}">
+          <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$user->picture}}">
       </div>
 
-      <h1 class="display-7" style="color:#fff">{{$Individual->nameInEnglish}}</h1>
-      <p class=""style="color:#fff"><span>Volunteer</span> <span>{{$Individual->country}}</span> <span>{{$Individual->cityName}}</span> </p>
+      <h1 class="display-7" style="color:#fff">{{$user->nameInEnglish}}</h1>
+      <p class=""style="color:#fff"><span>Volunteer</span> <span>{{$user->country}}</span> <span>{{$user->cityName}}</span> </p>
 
       @if(Auth::guest())
              <a class='btn btn-green'  href="{{route('login')}}">follow</a>
@@ -44,11 +44,11 @@
                   <div class="card-block">
                     <h4 class="card-title">User Informations</h4>
                     <p class="card-text">
-                    Gender: {{$Individual->gender}}<br>
-                    Birth Date: {{$Individual->dateOfBirth}}<br>
-                    Education: {{$Individual->educationalLevel}}<br>
-                    Current Work: {{$Individual->currentWork}}<br>
-                    Availabel from: {{$Individual->availableFrom}} to: {{$Individual->availableTo}}<br>
+                    Gender: {{$user->gender}}<br>
+                    Birth Date: {{$user->dateOfBirth}}<br>
+                    Education: {{$user->educationalLevel}}<br>
+                    Current Work: {{$user->currentWork}}<br>
+                    Availabel from: {{$user->availableFrom}} to: {{$user->availableTo}}<br>
                   </div>
                 </div>
                 <br>
@@ -56,10 +56,10 @@
                   <div class="card-block">
                     <h4 class="card-title">Contact Informations</h4>
                     <p class="card-text">
-                    Email: {{$Individual->email}}<br>
-                    Adress: {{$Individual->address}}<br>
-                    Mobile number: {{$Individual->mobileNumber}}<br>
-                    <a href="{{route('messenger',$Individual->email)}}" class="card-link green-link">Send Message</a>
+                    Email: {{$user->email}}<br>
+                    Adress: {{$user->address}}<br>
+                    Mobile number: {{$user->mobileNumber}}<br>
+                    <a href="{{route('messenger',$user->email)}}" class="card-link green-link">Send Message</a>
                   </div>
                 </div>
                 <br>
@@ -90,27 +90,27 @@
                   <tbody>
                     <tr>
                       <td>Voluntary years</td>
-                      <td><div class="showrate" id="sh1"></div><span id="shr1">{{$Individual->voluntaryYears}}</span></td>
+                      <td><div class="showrate" id="sh1"></div><span id="shr1">{{$user->voluntaryYears}}</span></td>
                     </tr>
                     <tr>
                       <td>cat1</td>
-                      <td><div class="showrate" id="sh2"></div><span id="shr2">{{$Individual->cat1}}</span></td>
+                      <td><div class="showrate" id="sh2"></div><span id="shr2">{{$user->cat1}}</span></td>
                     </tr>
                     <tr>
                       <td>cat2</td>
-                      <td><div class="showrate" id="sh3"></div><span id="shr3">{{$Individual->cat2}}</span></td>
+                      <td><div class="showrate" id="sh3"></div><span id="shr3">{{$user->cat2}}</span></td>
                     </tr>
                      <tr>
                       <td>cat3</td>
-                      <td><div class="showrate" id="sh4"></div><span id="shr4">{{$Individual->cat3}}</span></td>
+                      <td><div class="showrate" id="sh4"></div><span id="shr4">{{$user->cat3}}</span></td>
                     </tr>
                      <tr>
                       <td>cat4</td>
-                      <td><div class="showrate" id="sh5"></div><span id="shr5">{{$Individual->cat4}}</span></td>
+                      <td><div class="showrate" id="sh5"></div><span id="shr5">{{$user->cat4}}</span></td>
                     </tr>
                      <tr>
                       <td>acc </td>
-                      <td><div class="showrate" id="sh6"></div><span id="shr6">{{$Individual->acc_avg}}</span></td>
+                      <td><div class="showrate" id="sh6"></div><span id="shr6">{{$user->acc_avg}}</span></td>
                     </tr>
                     <tr>
                       <td> </td>
@@ -148,7 +148,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{route('rank',$Individual->id)}}" method="get">
+      <form action="{{route('rank',$user->id)}}" method="get">
       <div class="modal-body rate-modal">
         <label>cat1</label>
         <input type="text" name="cat1" class="cat1">

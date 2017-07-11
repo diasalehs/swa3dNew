@@ -229,7 +229,7 @@ class eventController extends Controller
     {
         if(Auth::check()){
             $user = Auth::user();
-            if($user->userType == 0){
+            if($user->userType == 0 || $user->userType == 3){
                 $eventVols = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->delete();
                 return redirect()->route('upComingEvents');
             }else{

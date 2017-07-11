@@ -29,7 +29,6 @@ function boot()
         $userIndividual = $user->Individuals;
         $data = array(
             'user' => Auth::user(),
-            'userIndividual' => $user->Individuals,
             'myInitiatives' => initiative::where('adminId',$user->id),
             'followers' => friend::where('requested_id', $user->id),
             'following' => friend::where('requester_id', $user->id),

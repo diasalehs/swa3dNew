@@ -13,15 +13,13 @@
 
                   <form id="invite" role="form" action="{{route('invite')}}" method="POST" style="display: flex; justify-content:center; flex-wrap: wrap; align-items: flex-start;"> {{ csrf_field() }}
 
-                    <div class="form-group"style="margin-left:15px;">
-                     <select name="invited[]"class="form-control" id="Select1" multiple>
-                      @foreach($userUevents as $userUevent)
-                        <option value="{{$userUevent->id}}">{{$userUevent->title}}</option>
-                      @endforeach
-                     </select>
-                   </div>
+              <select class="selectpicker" name="invited[]" multiple data-actions-box="true" data-size="7" data-live-search="true" >
+                @foreach($userUevents as $userUevent)
+                <option value="{{$userUevent->id}}">{{$userUevent->title}}</option>
+                @endforeach
+              </select>
 
-                    <input id="userId" type="text" style="display: none;" class="form-control" name="userId" value="{{ $Individual->user->id }}"/>
+                    <input id="userId" type="text" style="display: none;" class="form-control" name="userId" value="{{ $user->id }}"/>
 
                         <div class="form-group">
                           <button type="submit" class="btn btn-block btn-green">Invite</button>

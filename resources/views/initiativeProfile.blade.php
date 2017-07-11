@@ -26,8 +26,9 @@
         @endif
       @endif
 
+      @if($userUevents->count() > 0)
         <a class='btn btn-green'  data-toggle="modal" data-target="#invite">invite</a>
-
+      @endif
 
 
     </div>
@@ -39,6 +40,18 @@
             <h3 class="greencolor ">Initiative Posts</h3>
             <hr />
 
+            <br>
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title">Achievements</h4>
+                    <p class="card-text">
+                    @foreach($myevents as $event)
+                      Event Title: {{$event->title}}<br>
+                      End Date: {{$event->endDate}}<br>
+                    @endforeach
+                  </div>
+                </div>
+                <br>
 
 
             <div class="card"style="margin-bottom:20px;">
@@ -48,11 +61,11 @@
 </a></p>
                 <p class="card-text mb-2 text-muted">
                   <small>2 days ago</small>
-
                 </p>
               </div>
 
             </div>
+
 
 
 
@@ -177,7 +190,6 @@
     </div>
   </div>
 </div>
-
 
 @include('includes.modal')
 

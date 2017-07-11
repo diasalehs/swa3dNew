@@ -19,16 +19,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
     	$faker = Faker::create();
-				$users = new user();
-	            $users->name = "admin";
-	            $users->email = "admin@a.a";
-	            $users->userType = 10;
-	            $users->flag = 1;
-	            $users->password = bcrypt('admin@a.a');
-	            $users->verified = 1;
-	            $users->save();
 
-	            $i = 0;
+	            $i = 1;
     	foreach (range(1,5) as $index) {
 	       		$users = new user();
 	            $users->name = $faker->name;
@@ -96,7 +88,7 @@ class DatabaseSeeder extends Seeder
 		        $initiative->nameInEnglish = $users->name;
 		        $initiative->nameInArabic = $users->name;
 		        $initiative->user_id = $users->id;
-		        $initiative->adminId = ($i-1);
+		        $initiative->adminId = ($i-2);
 		        $initiative->livingPlace = "camp";
 		        $initiative->cityName = "nablus";
 		        $initiative->country = "pal";
@@ -121,5 +113,14 @@ class DatabaseSeeder extends Seeder
 	            $sliders->save();
 
         }
+
+        $users = new user();
+	            $users->name = "admin";
+	            $users->email = "admin@a.a";
+	            $users->userType = 10;
+	            $users->flag = 1;
+	            $users->password = bcrypt('admin@a.a');
+	            $users->verified = 1;
+	            $users->save();
     }
 }
