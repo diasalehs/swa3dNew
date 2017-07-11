@@ -15,6 +15,11 @@ class Initiative
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $user = Auth::user();
+        if($user->userType == 3)
+        {
+            return $next($request);
+        }else
+            return abort(403,'Unauthrized action.');
     }
 }

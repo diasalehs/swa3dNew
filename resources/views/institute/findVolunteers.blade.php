@@ -1,6 +1,3 @@
-<?php
-use App\user;
-?>
 @extends('institute/layouts.profileMaster')
 
 @section('content')
@@ -9,46 +6,34 @@ use App\user;
       @include('institute/includes.sidebar')
          <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
            <h1>All Volunteers</h1>
-           <div class="table-responsive">
-
-            <table class="table  ">
+            <table class="table">
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th class='hidden-xs-down'>Email</th>
+                  <th>Email</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-              <?php
-              foreach ($users_record as $user) {
-                  $flag = 0;
-                  foreach ($following as $followi) {
-                    $userei=User::findOrFail($followi->requested_id);
-                    if($user->id == $userei->id){
-                      echo "<tr>
+              @foreach ($users_record as $user)
+                      <tr>
+                      <td>{{$user->name}}</td>
+                      <td>{{$user->email}}</td>
                       <td>
-                      <a class='green-link'  href='".route('profile',[$user->id])."'>{$user->name}</a>
-                      <td class='hidden-xs-down'>".$user->email."</td>
-                      <td>
-                      <a class='btn btn-pink btn-block'  href='allusers/unfollow/".$user->id."'>Unfollow</a>
+                <?php $flag = 0; ?>
+                @foreach($following as $followi)
+                  @if($followi->requested_id == $user->id)
+                               <a class='btn btn-danger'  href="{{route('unfollow',$user->id)}}">Unfollow</a>
+                    <?php $flag = 1; ?>
+                    @endif
+                @endforeach
+                @if($flag == 0)
+                               <a class='btn btn-danger'  href="{{route('follow',$user->id)}}">follow</a>
+                    <?php $flag = 1; ?>
+                @endif
                       </td>
-                      </tr>";
-                      $flag = 1;
-                    }
-                  }
-                  if($flag == 0){
-                      echo "<tr>
-                      <td><a class='green-link'  href='".route('profile',[$user->id])."'>".$user->name."</a></td>
-                      <td class='hidden-xs-down'>".$user->email."</td>
-                      <td>
-                      <a class='btn btn-green btn-block'  href='allusers/follow/".$user->id."'>Follow</a>
-                      </td>
-                      </tr>";
-                    }
-                  }
-
-                ?>
+                      </tr>
+                @endforeach
               </tbody>
           </table>
 
