@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\user;
+use App\User;
 use App\Initiative;
-use Illuminate\Support\Facades\auth;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 

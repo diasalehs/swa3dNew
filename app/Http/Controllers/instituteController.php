@@ -1,8 +1,15 @@
 <?php
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\auth;
-use App\friend;
-use App\user;
+use Illuminate\Support\Facades\Auth;
+use App\Friend;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Validator;
+use App\Event;
+use App\EventIntrest;
+use App\EventTarget;
+use Image;
 
 class instituteController extends Controller
 {

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\User;
-use App\friend;
-use App\event;
+use App\Friend;
+use App\Event;
 use Illuminate\Http\Request;
-use App\volunteer;
+use App\Volunteer;
 use App\tags;
 use App\researches_tags;
 use App\message;

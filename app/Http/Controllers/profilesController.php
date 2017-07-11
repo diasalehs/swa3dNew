@@ -9,10 +9,10 @@ use Illuminate\Database\Query\Builder;
 use App\Individuals;
 use App\Institute;
 use App\User;
-use Illuminate\Support\Facades\auth;
-use App\friend;
-use App\event;
-use App\volunteer;
+use Illuminate\Support\Facades\Auth;
+use App\Friend;
+use App\Event;
+use App\Volunteer;
 
 class profilesController extends Controller
 {

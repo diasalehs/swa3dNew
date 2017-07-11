@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\auth;
+use Illuminate\Support\Facades\Auth;
 use App\User;
-use App\volunteer;
-use App\event;
+use App\Volunteer;
+use App\Event;
 use App\EventIntrest;
 use App\EventTarget;
+use App\Friend;
 use App\Invite;
-use App\friend;
 
 
 class eventController extends Controller

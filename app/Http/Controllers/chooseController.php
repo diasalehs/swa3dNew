@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\auth;
+use Illuminate\Support\Facades\Auth;
 
 
 class chooseController extends Controller
