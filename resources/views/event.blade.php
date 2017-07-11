@@ -169,7 +169,7 @@
 
             <div class="list-group" style="color: var(--navy);">
             @foreach($eventVols as $eventVol)
-              <button type="button" class="list-group-item list-group-item-action"><a href="{{route('profile',[$eventVol->user_id])}}">{{$eventVol->nameInEnglish}}</a><pre>            </pre><a class="btn btn-primary btn-sm" href="{{route('acceptVolunteer',['volunteerId'=>$eventVol->id , 'eventId' => $event->id])}}">Accept</a></button>
+              <button type="button" class="list-group-item list-group-item-action"><a href="{{route('profile',[$eventVol->id])}}">{{$eventVol->name}}</a><pre>            </pre><a class="btn btn-primary btn-sm" href="{{route('acceptVolunteer',['volunteerId'=>$eventVol->id , 'eventId' => $event->id])}}">Accept</a></button>
             @endforeach
             </div>
             <h3 class="greencolor ">Accepted Volunteers</h3>
@@ -191,7 +191,7 @@
             </form>
             <div class="list-group" style="color: var(--navy);">
             @foreach($eventAcceptedVols as $eventAcceptedVol)
-              <button type="button" class="list-group-item list-group-item-action"><a href="{{route('profile',[$eventAcceptedVol->user_id])}}">{{$eventAcceptedVol->nameInEnglish}}</a><pre>            </pre>
+              <button type="button" class="list-group-item list-group-item-action"><a href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a><pre>            </pre>
               @if($mine && $event->endDate > $date)
                 <a class="btn btn-primary btn-sm" href="{{route('unAcceptVolunteer',['volunteerId'=>$eventAcceptedVol->id , 'eventId' => $event->id])}}">unAccept</a>
                 @endif

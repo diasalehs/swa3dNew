@@ -10,24 +10,27 @@ use App\Event;
 use App\EventIntrest;
 use App\EventTarget;
 use Image;
+
 class instituteController extends Controller
 {
 	public function __construct()
     {
-    	$this->middleware('auth');
-        $this->date = date('Y-m-d');
+    	$this->middleware(['auth','institute']);
+        $this->middleware(function ($request, $next) {
+            $date = date('Y-m-d');
+            $user = Auth::user();
+            $this->date = $date;
+            $this->user = $user;
+            return $next($request);
+        });
     }
 
      public function findVolunteers()
     {
-            $user = Auth::user();
-            $followers = friend::where('requested_id', $user->id)->get();
+            $user = $this->user;
             $following = friend::where('requester_id', $user->id)->get();
-            $date = $this->date;
-            $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
-            $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
-            $users_record= DB::table('users')->where('userType',0)->get();
-            return view('institute/findVolunteers',compact('user','users_record','following','followers','Aevents','Uevents'));
+            $users_record= user::where('userType',0)->get();
+            return view('institute/findVolunteers',compact('users_record','following','followers'));
     }
 
     /**
@@ -37,12 +40,9 @@ class instituteController extends Controller
      */
     public function followers()
     {
-        $user = Auth::user();
+        $user = $this->user;
         $followers = friend::join('users','friends.requester_id','=','users.id')->where('requested_id', $user->id)->get();
         $following = friend::where('requester_id', $user->id)->get();
-        $date = $this->date;
-        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
-        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
         return view('institute/followers',compact('user','followers','following','Aevents','Uevents'));
     }
 
@@ -54,19 +54,8 @@ class instituteController extends Controller
      */
     public function following()
     {
-        $user = Auth::user();
-        $followers = friend::where('requested_id', $user->id);
+        $user = $this->user;
         $following = friend::join('users','friends.requested_id','=','users.id')->where('requester_id', $user->id)->get();
-        $date = $this->date;
-        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
-        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
         return view('institute/following',compact('user','followers','following','Aevents','Uevents'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
 }

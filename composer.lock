@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d605c91c30dfe7c6af720812973773c",
+    "content-hash": "6193c9f8462f9a3112dc6898c427fa22",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -434,16 +434,16 @@
         },
         {
             "name": "jrean/laravel-user-verification",
-            "version": "v4.1.10",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jrean/laravel-user-verification.git",
-                "reference": "1f2715fe3fba13811c89a7353b50175f33709008"
+                "reference": "f87ded6dccf7166175e12196e23be6faf3649e9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jrean/laravel-user-verification/zipball/1f2715fe3fba13811c89a7353b50175f33709008",
-                "reference": "1f2715fe3fba13811c89a7353b50175f33709008",
+                "url": "https://api.github.com/repos/jrean/laravel-user-verification/zipball/f87ded6dccf7166175e12196e23be6faf3649e9a",
+                "reference": "f87ded6dccf7166175e12196e23be6faf3649e9a",
                 "shasum": ""
             },
             "require": {
@@ -483,7 +483,7 @@
                 "user activation",
                 "user verification"
             ],
-            "time": "2017-06-29T13:07:05+00:00"
+            "time": "2017-03-25T08:55:34+00:00"
         },
         {
             "name": "laravel/framework",

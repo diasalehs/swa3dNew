@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
 	            $users->userType = 10;
 	            $users->flag = 1;
 	            $users->password = bcrypt('admin@a.a');
+	            $users->verified = 1;
 	            $users->save();
 
 	            $i = 0;
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
 	            $users->email = "user".$i."@swa3d.com";
 	            $users->userType = 0;
 	            $users->flag = 1;
+	            $users->verified = 1;
 	            $users->password = bcrypt('secret');
 	            $users->save();
 
@@ -59,6 +61,7 @@ class DatabaseSeeder extends Seeder
 	            $users->email = "user".$i."@swa3d.com";
 	            $users->userType = 1;
 	            $users->flag = 1;
+	            $users->verified = 1;
 	            $users->password = bcrypt('secret');
 	            $users->save();
 

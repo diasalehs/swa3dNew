@@ -55,8 +55,8 @@ class HomeController extends Controller
             if($user->flag == 1){
                 if($user->userType == 0){
                     $myInitiatives = initiative::where('adminId',$user->id);
-                    $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','>=',$date);
-                    $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$user->Individuals->id)->where('events.endDate','<',$date);
+                    $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','>=',$date);
+                    $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','<',$date);
                     $researches=researches::where('ind_id',auth::user()->individuals->id);
                     return view('Individual/homeIndividual',compact('user','researches','myUpComingEvents','myArchiveEvents','userIndividual','followers','following','myInitiatives'));
                 }
@@ -103,8 +103,8 @@ class HomeController extends Controller
             $userIndividual = $user->Individuals;
             $myInitiatives = initiative::where('adminId',$user->id);
             $researches=researches::where('ind_id',$userIndividual->id);
-            $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$userIndividual->id)->where('events.endDate','>=',$date);
-            $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$userIndividual->id)->where('events.endDate','<',$date);
+            $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','>=',$date);
+            $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','<',$date);
             return view('Individual/profileViewEdit',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','userIndividual'));
         }elseif ($user->userType == 1) {
             $userInstitute = Auth::user()->Institute;

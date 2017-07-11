@@ -11,6 +11,7 @@ use App\Institute;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Friend;
+use App\Event;
 use App\Volunteer;
 
 class profilesController extends Controller
@@ -23,40 +24,59 @@ class profilesController extends Controller
 	{	
 
 	$flag = 0;
-	if(Auth::attempt() || Auth::user()){
-		$u = Auth::user();
-		$following = friend::where('requester_id',$u->id)->where('requested_id',$userId)->first();
-	    if($following == null){
+	if(Auth::check()){
+		$user = Auth::user();
+		$following = friend::where('requester_id',$user->id)->where('requested_id',$userId)->first();
+	    if($following == null)
+	    {
 	        $friend = false;
-	        $flag = 1;
 	    }
+	    else 
+	    	$friend = true;
 	}
-	    if($flag == 0){
-	      	$friend = true;
-	    }
 
-
-		$user=User::find($userId);
-		$userType=$user->userType;
-		if ($userType==0) {
-			$Individual=DB::table('Individuals')->where('user_id','=',$userId)->first();
-			$date = $this->date;
-			$events = volunteer::join('events','volunteers.event_id','=','events.id')->where('individual_id',$Individual->id)->where('events.endDate','<',$date)->where('accepted',1)->get();
-			return view('Indprofile',['user'=>$user,'Individual'=>$Individual,'friend'=>$friend,'events'=>$events]);
-
-		} 
-		elseif ($userType==1) {
-			$Institute=DB::table('Institutes')->where('user_id','=',$userId)->get();
-		    return view('Insprofile',['user'=>$user,'Institute'=>$Institute,'friend'=>$friend]);
-
-		
-		}
+	$date = $this->date;
 	
-		return view('profile',['user'=>$user,'flag'=>$flag]);
 
-		
-		# code...
+	$userUevents = event::where('events.user_id',$user->id)->where('startDate','>',$date)->get();
+
+    try {
+	  $user=User::find($userId);
+	  $userType = $user->userType;
 	}
+	catch (\Exception $e) {
+	    return redirect()->route('errorPage')->withErrors('profile not found.');
+	}
+	if ($userType==0)
+	{
+		$Individual= Individuals::where('user_id','=',$userId)->first();
+		$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
+		return view('Indprofile',compact('user','Individual','friend','userUevents','userUeventsVolunteers','myevents'));
+	} 
+
+	elseif($userType == 1)
+	{
+		$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->get();
+
+		$Institute= Institutes::where('user_id','=',$userId)->get();
+
+    	return view('Insprofile',compact('user','Institute','friend','Aevents','userUevents','userUeventsVolunteers'));
+	}	
+    elseif($userType == 3)
+    {
+    	$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->get();
+
+    	$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
+
+    	$Initiative= Initiative::where('user_id','=',$userId)->get();
+
+    	return view('Iniprofile',compact('user','Initiative','friend','Aevents','userUevents','userUeventsVolunteers','myevents'));
+    }
+	else
+		abort(403,'Unauthrized action.');
+	}
+
+
 	public function rank(Request $request,$id)
 	{	$usere=user::find($id);
 		if($usere->userType==0){
@@ -82,7 +102,5 @@ class profilesController extends Controller
 
 	
         return redirect()->back();
-		# code...
 	}
-    //
 }

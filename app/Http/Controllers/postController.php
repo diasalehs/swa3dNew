@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Event;
 
 class postController extends Controller
 {
@@ -31,8 +32,9 @@ class postController extends Controller
     public function create(Request $request)
     {
         $user = Auth::user();
-        if($user->userType == 1){
-            $event_id = $request->event_id;
+        $event_id = $request->event_id;
+        $event = event::find($event_id);
+        if(($user->userType == 1 || $user->userType == 3) && $event->user_id == $user->id){
             $post = new post();
             $post->body = $request->body;
             $post->institute_id = $user->id;

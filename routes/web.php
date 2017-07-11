@@ -39,6 +39,9 @@ Route::post('/registerer', function(\Illuminate\Http\Request $request) {
     return view('auth/register',['user_type'=>$request['submit']]);
 })->name('registerer');
 
+Route::get('/errorPage', function() {return view('errorPage');})->name('errorPage');
+Route::get('/initiativeProfile', function() {return view('initiativeProfile');})->name('initiativeProfile');
+
 //-------------------------------- just for users - auth --------------------------------\\
 Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     Route::group(['middleware' => ['isVerified']], function () {
@@ -100,6 +103,7 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
         Route::get('/followers', ['uses'=>'IndividualsController@followers'])->name('followers');
         Route::get('/following', ['uses'=>'IndividualsController@following'])->name('following');
 
+        Route::post('/invite', ['uses'=>'eventController@invite'])->name('invite');
         Route::get('/volunteer/{eventId}', ['uses'=>'eventController@volunteer'])->name('volunteer');
         Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
         Route::get('/myUpComingEvents', ['uses'=>'IndividualsController@myUpComingEvents'])->name('myUpComingEvents');
@@ -109,8 +113,6 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     //-------------------------------- institute --------------------------------\\
     Route::group(['prefix'=>'institute','routeMiddleware'=>'institute'], function() {
         Route::get('/findVolunteers',['uses'=>'instituteController@findVolunteers'])->name('findVolunteers');
-        Route::get('/follow/{userId}', ['uses'=>'instituteController@follow']);
-        Route::get('/unfollow/{userId}', ['uses'=>'instituteController@unfollow']);
         Route::get('/followers', ['uses'=>'instituteController@followers'])->name('followersInstitute');
         Route::get('/following', ['uses'=>'instituteController@following'])->name('followingInstitute');
     });
@@ -128,5 +130,6 @@ Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
     Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
 });
+
 
 });
