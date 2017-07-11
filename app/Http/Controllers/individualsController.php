@@ -1,4 +1,5 @@
 <?php 
+
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\auth;
 use App\friend;
@@ -23,22 +24,8 @@ class IndividualsController extends Controller
         $this->middleware(function ($request, $next) {
             $date = date('Y-m-d');
             $user = Auth::user();
-            $userIndividual = $user->Individuals;
-            $myInitiatives = initiative::where('adminId',$user->id);
-            $followers = friend::where('requested_id', $user->id);
-            $following = friend::where('requester_id', $user->id);
-            $researches=researches::where('ind_id',$userIndividual->id);
-            $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','>=',$date);
-            $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','<',$date);
             $this->date = $date;
             $this->user = $user;
-            $this->userIndividual = $userIndividual;
-            $this->myInitiatives = $myInitiatives;
-            $this->followers = $followers;
-            $this->following = $following;
-            $this->researches= $researches;
-            $this->myUpComingEvents = $myUpComingEvents;
-            $this->myArchiveEvents = $myArchiveEvents;
             return $next($request);
         });
     }
@@ -46,14 +33,7 @@ class IndividualsController extends Controller
     {
         $date = $this->date;
         $user = $this->user;
-        $userIndividual = $this->userIndividual;
-        $myInitiatives = $this->myInitiatives;
-        $followers = $this->followers;
-        $following = $this->following;
-        $researches= $this->researches;
-        $myUpComingEvents = $this->myUpComingEvents;
-        $myArchiveEvents = $this->myArchiveEvents;
-        return [$user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives ,$date];
+        return [$user ,$date];
     }
     /**
      * Display a listing of the resource.
@@ -62,8 +42,8 @@ class IndividualsController extends Controller
      */
     public function makeInitiative()
     {
-        list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
-        return view('individual/makeInitiative',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives'));
+        list($user ,$date)=$this->slidbare();
+        return view('individual/makeInitiative');
     }
     /**
      * Show the form for creating a new resource.
@@ -84,7 +64,7 @@ class IndividualsController extends Controller
             'voluntaryYears' => 'integer',
             'dateOfBirth' => 'required',
         ]);
-        $adminId = Auth::user()->id;
+        $adminId = $this->user->id;
         $user = new User();
         $user->name = $request->name;
         $user->userType = 3;
@@ -111,42 +91,43 @@ class IndividualsController extends Controller
     }
     public function allusers()
     {
-        list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
-        $users_record= DB::table('users')->get();
-        return view('individual/allusers',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','users_record'));
+        list($user ,$date)=$this->slidbare();
+        $users_record= user::get();
+        $following = friend::where('requester_id', $user->id)->get();
+        return view('individual/allusers',compact('users_record','following'));
     }
     public function followers()
     {
-        list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
+        list($user ,$date)=$this->slidbare();
         $followers = friend::join('users','friends.requester_id','=','users.id')->where('requested_id', $user->id)->get();
         $following = friend::join('users','friends.requested_id','=','users.id')->where('requester_id', $user->id)->get();
-        return view('individual/followers',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives'));
+        return view('individual/followers',compact('followers','following'));
     }
     public function following()
     {
-        list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
+        list($user ,$date)=$this->slidbare();
         $following = friend::join('users','friends.requested_id','=','users.id')->where('requester_id', $user->id)->get();
-        return view('individual/following',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives'));
+        return view('individual/following',compact('following'));
     }
     public function myUpComingEvents()
     {
-        $user = Auth::user();
+        $user = $this->user;
         if($user->userType == 0){
-            list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
+            list($user ,$date)=$this->slidbare();
             $acceptedEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','>=',$date)->where('accepted',1)->get();
             $requestedEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','>=',$date)->where('accepted',0)->get();
             $invitedEvents = invite::join('events','invites.event_id','=','events.id')->where('invites.user_id',$user->id)->where('events.endDate','>=',$date)->where('accepted',0)->get();
-            return view('individual.myUpComingEvents',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','requestedEvents','acceptedEvents','invitedEvents'));
+            return view('individual.myUpComingEvents',compact('requestedEvents','acceptedEvents','invitedEvents'));
         }
         return abort(403, 'Unauthorized action.');
     }
     public function myArchiveEvents()
     {
-        $user = Auth::user();
+        $user = $this->user;
         if($user->userType == 0){
-            list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
+            list($user ,$date)=$this->slidbare();
             $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->Individuals->id)->where('events.endDate','<',$date)->where('accepted',1)->get();
-            return view('individual.myArchiveEvents',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','acceptedEvents'));
+            return view('individual.myArchiveEvents',compact('myArchiveEvents'));
         }
         return abort(403, 'Unauthorized action.');
     } 
@@ -157,9 +138,9 @@ class IndividualsController extends Controller
      */
     public function myInitiatives()
     {
-        list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
+        list($user ,$date)=$this->slidbare();
         $myInitiatives = initiative::where('adminId',$user->id)->get();
-        return view('individual/myInitiatives',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives'));
+        return view('individual/myInitiatives',compact('myInitiatives'));
     }
     public function researcher()
     {
@@ -170,23 +151,22 @@ class IndividualsController extends Controller
     }
     public function addResearch()
     {
-        $user = Auth::user();
+        $user = $this->user;
         if($user->Individuals->researcher == 1)
         {
-            list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
+            list($user ,$date)=$this->slidbare();
             $success=0;
-            return  view('individual/researches',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','success'));
+            return  view('individual/researches',compact('success'));
         }
         else abort(403, 'Unauthorized action.');
     }
     public function submitResearch(Request $request)
     {
-
-
-        $user = Auth::user();
+        $user = $this->user;
+        $date = $this->date;
         if($user->Individuals->researcher == 1)
         {
-            list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
+            list($user ,$date)=$this->slidbare();
                 
             $this->validate($request, [
                 'title' => 'required',
@@ -211,15 +191,6 @@ class IndividualsController extends Controller
         $research->tool1=$request->input('tool1');
         $research->tool2=$request->input('tool2');
         $research->credit=$request->input('credit');
-        $user = Auth::user();
-        $date = $this->date;
-        $followers = friend::where('requested_id', $user->id)->get();
-        $following = friend::where('requester_id', $user->id)->get();
-        $date = $this->date;
-        $researches=researches::where('ind_id',auth::user()->individuals->id)->get();
-        $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->Individuals->id)->where('events.endDate','>=',$date);
-        $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->Individuals->id)->where('events.endDate','<',$date);
-        $users_record= DB::table('users')->get();
         $file = $request->file('filefield');
            if($file)
             {
@@ -238,15 +209,15 @@ class IndividualsController extends Controller
         $research_tags->research_id=$research->id;
         $research_tags->save();
         $success=1;
-            return  view('individual/researches',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','success'));
+            return  view('individual/researches',compact('success'));
         }
         else abort(403, 'Unauthorized action.');
     }
 
     public function myResearches(){
-        list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
-        $researches=researches::where('ind_id',$userIndividual->id)->get();
-        return view('individual/myResearches',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives'));
+        list($user ,$date)=$this->slidbare();
+        $researches=researches::where('ind_id',$user->individuals->id)->get();
+        return view('individual/myResearches',compact('researches'));
     }
     
     /**
@@ -257,10 +228,10 @@ class IndividualsController extends Controller
     public function editInitiative($initiativeId)
     {
         $initiative = initiative::where('initiatives.id',$initiativeId)->first();
-        $user = Auth::user();
+        $user = $this->user;
         if($initiative->adminId == $user->id){
-            list($user ,$userIndividual ,$researches ,$myUpComingEvents, $myArchiveEvents, $followers, $following, $myInitiatives,$date)=$this->slidbare();
-            return view('individual/editInitiative',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','initiative'));
+            list($user ,$date)=$this->slidbare();
+            return view('individual/editInitiative',compact('initiative'));
         }
     }
         /**
