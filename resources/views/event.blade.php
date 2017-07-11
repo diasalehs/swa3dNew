@@ -23,6 +23,7 @@
 
 </div>
 </div>
+ <a id="popoverData" class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="bottom" data-original-title="Title" data-trigger="hover">Popover with data-trigger</a>
 
       <div class="container "style="margin-bottom:50px;margin-top:30px;">
         <div class="row justify-content-center">
