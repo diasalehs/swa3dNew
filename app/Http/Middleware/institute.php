@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
-use Illuminate\Support\Facades\auth;
+use Illuminate\Support\Facades\Auth;
 use Closure;
 
 class institute
