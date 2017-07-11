@@ -22,7 +22,7 @@
                       <td>
                 <?php $flag = 0; ?>
                 @foreach($following as $followi)
-                  @if($followi->email == $user->email && $flag == 0)
+                  @if($followi->requested_id == $user->id)
                                <a class='btn btn-danger'  href="{{route('unfollow',$user->id)}}">Unfollow</a>
                     <?php $flag = 1; ?>
                     @endif

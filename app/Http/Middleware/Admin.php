@@ -16,9 +16,10 @@ class Admin
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        if($user->userType != 10 ){
-            return redirect()->route('home');
-        }
-        return $next($request);
+        if($user->userType == 10)
+        {
+            return $next($request);
+        }else
+            return abort(403,'Unauthrized action.');
     }
 }

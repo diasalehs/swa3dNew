@@ -16,10 +16,11 @@ class institute
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        if($user->userType != 1){
+        if($user->userType == 1)
+        {
             return $next($request);
-        }
-        return redirect()->route('home');
+        }else
+            return abort(403,'Unauthrized action.');
         
     }
 }
