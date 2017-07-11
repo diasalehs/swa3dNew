@@ -334,16 +334,13 @@ form input:focus{
   background-color: var(--green);
   border: 0px solid var(--green);
   display: inline-block !important;
-  color: white;
+  color: white !important;
   cursor: pointer;
   border-radius: 200px !important;
 
 
 }
-.btn-green:hover,
-.btn-green:focus,
-.btn-green:visited,
-.btn-green:active
+.btn-green:hover
 {
   background-color: var(--green-hover);
   color: #fff;
@@ -352,7 +349,7 @@ form input:focus{
   background-color: var(--pink);
   border: 0px solid var(--pink);
   display: inline-block !important;
-  color: white;
+  color: white !important;
   cursor: pointer;
   border-radius: 200px !important;
 
@@ -366,7 +363,7 @@ form input:focus{
   background-color: var(--yellow);
   border: 0px solid var(--yellow);
   display: inline-block !important;
-  color: white;
+  color: white !important;
   cursor: pointer;
   border-radius: 200px !important;
 

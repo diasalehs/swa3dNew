@@ -21,15 +21,15 @@
        <div class="card card-inverse event">
                 <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
                 <div class="card-img-overlay">
-                  <a tabindex="0"  role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">
-
                   <h4 class="card-title line-clamp-2">{{$event->title}}</h4>
-                </a>
-
                   <div class="card-bottom">
                     <p class="card-text "><small>{{$event->startDate}} To {{$event->endDate}} - in Nablus</small></p>
                     <a href='event/{{$event->id}} ' class="btn btn-green" >View</a>
                     <a href="{{route('login')}}" class="btn btn-pink">Volunteer</a>
+                    <a id="popoverData" class="btn btn-yellow" href="#" data-content="{{$event->description}}"
+                    rel="popover" data-placement="top" data-toggle="popover" data-trigger="hover" data-original-title="Details" >
+                    Details
+                  </a>
                   </div>
 
                 </div>
