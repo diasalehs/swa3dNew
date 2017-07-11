@@ -119,22 +119,14 @@ class homeController extends Controller
             $date = $this->date;
             $user = Auth::user();
             $userIndividual = $user->Individuals;
-            $myInitiatives = initiative::where('adminId',$user->id);
-            $researches=researches::where('ind_id',$userIndividual->id);
-            $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','>=',$date);
-            $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','<',$date);
-            return view('individual/profileViewEdit',compact('user','researches','myUpComingEvents','myArchiveEvents','followers','following','myInitiatives','userIndividual'));
+            return view('individual/profileViewEdit',compact('user','userIndividual'));
         }elseif ($user->userType == 1) {
             $userInstitute = Auth::user()->Institute;
-            $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
-            $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
-            return view('institute/profileViewEdit',compact('userInstitute','user','Aevents','Uevents','followers','following'));
+            return view('institute/profileViewEdit',compact('userInstitute','user'));
         }
         elseif ($user->userType == 3) {
             $initiative = Auth::user()->initiative;
-            $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
-            $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
-            return view('Initiative/editInitiative',compact('user','Aevents','Uevents','followers','following','initiative'));
+            return view('Initiative/editInitiative',compact('user','initiative'));
         }
 
         } 

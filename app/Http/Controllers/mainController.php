@@ -205,8 +205,8 @@ class mainController extends Controller
         }else{
             return redirect()->route('upComingEvents');
         }
-
 	}
+    
     public function researchView($researchID) {
         $research = researches::where('id',$researchID)->first();
         return view('researchView',compact('research'));

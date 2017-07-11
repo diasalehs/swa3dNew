@@ -20,17 +20,17 @@
 	    <div class="box" id="bluebox"><!-- flex item -->
 
 				<div class="inner cover ">
-			            <h1 class="cover-heading">Error title</h1>
+			            <h1 class="cover-heading">Error</h1>
 									<p class="lead">
-										Error Text
+										{{$errors->first()}}
 									</p>
 									<div class="row">
 										<div class="col-sm-12 col-md-6 error-btn-div">
-											<a href="#" class="btn btn-lg error-btn btn-secondary">
+											<a href="" class="btn btn-lg error-btn btn-secondary">
 											<i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;   Go Back</a>
 										</div>
 										<div class="col-sm-12 col-md-6">
-											<a href="#" class="btn btn-lg error-btn btn-secondary">
+											<a href="{{route('main')}}" class="btn btn-lg error-btn btn-secondary">
 											<i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;   Go Home</a>
 										</div>
 									</div>

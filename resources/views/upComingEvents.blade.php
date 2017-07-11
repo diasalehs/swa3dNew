@@ -136,7 +136,7 @@
                       @if($user->userType != 1)
                       <?php $flag = 0; ?>
                         @foreach($volEvents as $volEvent)
-                          @if($volEvent->individual_id == $user->individuals->id && $event->id == $volEvent->event_id && $flag == 0)
+                          @if($volEvent->user_id == $user->id && $event->id == $volEvent->event_id && $flag == 0)
                               <a href="{{route('disVolunteer',[$event->id])}}" class="btn btn-pink">Cancel Volunteer Request</a>
                               <?php $flag = 1; ?>
                           @endif

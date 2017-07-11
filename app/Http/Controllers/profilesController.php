@@ -26,6 +26,7 @@ class profilesController extends Controller
 	{	
 
 	$flag = 0;
+	$date = $this->date;
 	if(Auth::check()){
 		$user = Auth::user();
 		$friend = false;
@@ -36,12 +37,8 @@ class profilesController extends Controller
 	    }
 	    else 
 	    	$friend = true;
+	    $userUevents = event::where('events.user_id',$user->id)->where('startDate','>',$date)->get();
 	}
-
-	$date = $this->date;
-	
-
-	$userUevents = event::where('events.user_id',$user->id)->where('startDate','>',$date)->get();
 
     try {
 	  $user=User::find($userId);

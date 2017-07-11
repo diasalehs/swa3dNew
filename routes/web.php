@@ -57,9 +57,9 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
             //-------------------------------- event --------------------------------\\
             Route::get('/makeEvent', ['uses'=>'eventController@makeEvent'])->name('makeEvent');
             Route::post('/makeEvent', ['uses'=>'eventController@makeEventPost'])->name('makeEventPost');
-            Route::get('/acceptVolunteer/{eventId}', ['uses'=>'eventController@acceptVolunteer'])
+            Route::post('/acceptVolunteer/{eventId}', ['uses'=>'eventController@acceptVolunteer'])
                 ->name('acceptVolunteer');
-            Route::get('/unAcceptVolunteer/{eventId}', ['uses'=>'eventController@unAcceptVolunteer'])
+            Route::post('/unAcceptVolunteer/{eventId}', ['uses'=>'eventController@unAcceptVolunteer'])
             ->name('unAcceptVolunteer');
             Route::get('/eventDelete/{eventId}', ['uses'=>'eventController@eventDelete'])->name('eventDelete');
             Route::get('/eventEdit/{eventId}', ['uses'=>'eventController@eventEdit'])->name('eventEdit');

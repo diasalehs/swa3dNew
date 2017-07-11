@@ -24,11 +24,11 @@
         @elseif(!$friend)
              <a class='btn btn-green'  href="{{route('follow',$user->id)}}">follow</a>
         @endif
+        @if($userUevents->count() > 0)
+        <a class='btn btn-green'  data-toggle="modal" data-target="#invite">invite</a>
+        @endif
       @endif
 
-      @if($userUevents->count() > 0)
-        <a class='btn btn-green'  data-toggle="modal" data-target="#invite">invite</a>
-      @endif
 
 
 
