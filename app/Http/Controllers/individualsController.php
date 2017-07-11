@@ -1,9 +1,9 @@
 <?php 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\auth;
-use App\friend;
-use App\user;
-use App\volunteer;
+use Illuminate\Support\Facades\Auth;
+use App\Friend;
+use App\User;
+use App\Volunteer;
 use App\researches;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
