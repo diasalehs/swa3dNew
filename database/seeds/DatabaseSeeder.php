@@ -1,10 +1,9 @@
 <?php
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\user;
+use App\User;
 use App\Individuals;
 use App\tempInstitute;
-use App\Researcher;
 use App\news;
 use App\slider;
 use Faker\Factory as Faker;
