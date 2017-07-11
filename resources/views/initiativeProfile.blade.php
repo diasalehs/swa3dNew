@@ -178,7 +178,7 @@
   </div>
 </div>
 
-@include('includes.modal')
 
+@include('includes.modal')
 
 @endsection('content')

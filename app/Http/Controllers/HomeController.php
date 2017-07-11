@@ -20,8 +20,9 @@ use App\Initiative;
 use App\tempInstitute;
 
 
-class HomeController extends Controller
+class homeController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -29,8 +30,37 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->date = date('Y-m-d');
+        $this->middleware(['auth']);
+        $this->middleware(function ($request, $next) {
+            $date = date('Y-m-d');
+            $user = Auth::user();
+            $this->date = $date;
+            $this->user = $user;
+            return $next($request);
+        });
+    }
+
+    public function slidbare()
+    {
+        $date = $this->date;
+        $user = $this->user;
+        return [$user ,$date];
+    }
+
+    public function allusers()
+    {
+        list($user ,$date)=$this->slidbare();
+        $users_record= user::get();
+        $following = friend::where('requester_id', $user->id)->get();
+        return view('shared/allusers',compact('users_record','following'));
+    }
+
+    public function findVolunteers()
+    {
+        $user = $this->user;
+        $following = friend::where('requester_id', $user->id)->get();
+        $users_record= user::where('userType',0)->get();
+        return view('shared/findVolunteers',compact('users_record','following'));
     }
 
     /**
@@ -40,49 +70,39 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::attempt() || Auth::user()){
-            $user = Auth::user();
-            $userIndividual = Auth::user()->Individuals;
-            $userInstitute = Auth::user()->Institute;
-            $followers = friend::where('requested_id', $user->id);
-            $following = friend::where('requester_id', $user->id);
-            $users_record= tempInstitute::paginate();
-
-            $date = $this->date;
-            if ($user->userType=== 10 ) {
-                return view('admin/adminDashboard',["users_record"=>$users_record]);
+        if(Auth::check())
+        {
+            list($user ,$date)=$this->slidbare();
+            if ($user->userType=== 10 )
+            {
+                $users_record= tempInstitute::paginate();
+                return view('admin/adminDashboard',compact("users_record"));
             }
-            if($user->flag == 1){
+            if($user->flag == 1)
+            {
                 if($user->userType == 0){
-                    $myInitiatives = initiative::where('adminId',$user->id);
-                    $myUpComingEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','>=',$date);
-                    $myArchiveEvents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$user->id)->where('events.endDate','<',$date);
-                    $researches=researches::where('ind_id',auth::user()->individuals->id);
-                    return view('individual/homeIndividual',compact('user','researches','myUpComingEvents','myArchiveEvents','userIndividual','followers','following','myInitiatives'));
+                    $user = $user->Individuals;
+                    return view('Individual/homeIndividual',compact('user'));
                 }
-                
-                elseif($user->userType == 1){
-                    if($user->adminApproval==1){ $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
-                    $Uevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
-                    return view('institute/homeInstitute',compact('user','userInstitute','Aevents','Uevents','following','followers'));}
-                    else{
-                         return view('waitTillverification');
+                elseif($user->userType == 1)
+                {
+                    if($user->adminApproval==1)
+                    {
+                        $user = $user->Institute;
+                        return view('Institute/homeInstitute',compact('user'));
                     }
+                    else
+                         return redirect()->route('errorPage')->withErrors('Wait Till Verification.');
                 }
                 elseif($user->userType == 3){
-                    $userInitiative = Auth::user()->Initiative;
-                    $userInstitute = Auth::user()->Institute;
-                    $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
-                    $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
-                    return view('Initiative/homeInitiative',compact('user','Aevents','Uevents','followers','following','userInitiative'));
+                    $user = $user->Initiative;
+                    return view('Initiative/homeInitiative',compact('user'));
                 }
-                elseif($user->userType == 10){
-                    return view('admin.adminDashboard',compact("users_record"));
-                }
+                else
+                    return abort(403,'Unauthorized action.');
             }
-
             elseif($user->flag == 0){
-            return redirect()->route('step');
+                return redirect()->route('step');
             }
         }
         else
@@ -94,8 +114,6 @@ class HomeController extends Controller
     public function profileViewEdit()
     {
         $user = Auth::user();
-        $followers = friend::where('requested_id', $user->id);
-        $following = friend::where('requester_id', $user->id);
         $date = $this->date;
         if($user->userType == 0){
             $date = $this->date;
@@ -237,42 +255,6 @@ class HomeController extends Controller
         }
         else return abort(403, 'Unauthorized action.');
         return redirect()->route('home');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function follow( $userId)
-    {
-        $user = Auth::user();
-        $friend = DB::table('friends')->where('requester_id', '=', $user->id)
-                      ->where('requested_id', '=', $userId)->first();
-        if(!$friend)
-        {
-            $friend = new friend();
-            $friend->requester_id = Auth::user()->id;
-            $friend->requested_id = $userId;
-            $friend->save();
-        }
-        return redirect()->back();
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function unfollow($userId)
-    {
-        $user = Auth::user();
-        $friend = DB::table('friends')->where('requester_id', '=', $user->id)
-                      ->where('requested_id', '=', $userId)->delete();
-        // $user->friend()->attach($userId, ['requested_id' => $user->id, 'requester_id' => $userId]);
-        return redirect()->back();
     }
 
     

@@ -44,13 +44,22 @@ function boot()
     view()->composer('institute/includes.sidebar',function($view){
         $date = date('Y-m-d');
         $user = Auth::user();
-        $userIndividual = $user->Individuals;
         $data = array(
             'user' => Auth::user(),
             'followers' => friend::where('requested_id', $user->id),
             'following' => friend::where('requester_id', $user->id),
         );
+        $view->with($data);
+    });
 
+    view()->composer('Initiative/includes.sidebar',function($view){
+        $date = date('Y-m-d');
+        $user = Auth::user();
+        $data = array(
+            'user' => Auth::user(),
+            'followers' => friend::where('requested_id', $user->id),
+            'following' => friend::where('requester_id', $user->id),
+        );
         $view->with($data);
     });
     

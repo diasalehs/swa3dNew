@@ -11,7 +11,7 @@
            background-position: right top;
            background-attachment: fixed;
            ">
-              <h1 class="display-4" style="color:#fff">Hello, {{$user->name}}!</h1>
+              <h1 class="display-4" style="color:#fff">Hello, {{$user->nameInEnglish}}!</h1>
               <p class="lead"style="color:#fff">This is a V simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
               <hr class="my-4"style="background-color: #fff">
               <p class="lead">
@@ -62,13 +62,13 @@
 
             </div>
             <ul class="list-group">
-              <li class="list-group-item">Living Place:   {{ ucfirst($userIndividual->livingPlace)}} </li>
-              <li class="list-group-item">City Name:   {{ ucfirst($userIndividual->cityName) }} </li>
-              <li class="list-group-item">Country Name:    {{ ucfirst($userIndividual->country) }}</li>
-              <li class="list-group-item">Current Work:   {{ ucfirst($userIndividual->currentWork) }} </li>
-              <li class="list-group-item">Educational Level:   {{ ucfirst($userIndividual->educationalLevel) }} </li>
-              <li class="list-group-item">Voluntary Experiance:   {{$userIndividual->voluntaryYears}}</li>
-              <li class="list-group-item">Date Of Birth:    {{$userIndividual->dateOfBirth}}</li>
+              <li class="list-group-item">Living Place:   {{ ucfirst($user->livingPlace)}} </li>
+              <li class="list-group-item">City Name:   {{ ucfirst($user->cityName) }} </li>
+              <li class="list-group-item">Country Name:    {{ ucfirst($user->country) }}</li>
+              <li class="list-group-item">Current Work:   {{ ucfirst($user->currentWork) }} </li>
+              <li class="list-group-item">Educational Level:   {{ ucfirst($user->educationalLevel) }} </li>
+              <li class="list-group-item">Voluntary Experiance:   {{$user->voluntaryYears}}</li>
+              <li class="list-group-item">Date Of Birth:    {{$user->dateOfBirth}}</li>
             </ul>
 
 

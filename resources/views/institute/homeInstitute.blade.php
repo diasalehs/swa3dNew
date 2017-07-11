@@ -10,7 +10,7 @@
           background-position: right top;
           background-attachment: fixed;
           ">
-             <h1 class="display-4 " style="color:#fff">Hello, {{$user->name}}!</h1>
+             <h1 class="display-4 " style="color:#fff">Hello, {{$user->nameInEnglish}}!</h1>
              <p class="lead" style="color:#fff">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
              <hr class="my-4 " style="background-color: #fff">
              <p class="lead">
@@ -31,13 +31,13 @@
               </div>
            </div>
            <ul class="list-group">
-             <li class="list-group-item">Living Place:   {{ ucfirst($userInstitute->livingPlace)}} </li>
-             <li class="list-group-item">City Name:   {{ ucfirst($userInstitute->cityName) }} </li>
-             <li class="list-group-item">Country Name:    {{ ucfirst($userInstitute->country) }}</li>
-             <li class="list-group-item">Work Summary:   {{ ucfirst($userInstitute->workSummary) }} </li>
-             <li class="list-group-item">Activities:   {{ ucfirst($userInstitute->activities) }} </li>
-             <li class="list-group-item">Mobile Number:   {{$userInstitute->mobileNumber}}</li>
-             <li class="list-group-item">Address:    {{$userInstitute->address}}</li>
+             <li class="list-group-item">Living Place:   {{ ucfirst($user->livingPlace)}} </li>
+             <li class="list-group-item">City Name:   {{ ucfirst($user->cityName) }} </li>
+             <li class="list-group-item">Country Name:    {{ ucfirst($user->country) }}</li>
+             <li class="list-group-item">Work Summary:   {{ ucfirst($user->workSummary) }} </li>
+             <li class="list-group-item">Activities:   {{ ucfirst($user->activities) }} </li>
+             <li class="list-group-item">Mobile Number:   {{$user->mobileNumber}}</li>
+             <li class="list-group-item">Address:    {{$user->address}}</li>
            </ul>
 
 
