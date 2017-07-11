@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid" style="margin:120px auto">
     <div class="row">
-        @include('../individual/includes.sidebar')
+        @include('individual/includes.sidebar')
         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
           <div class="row">
 
