@@ -82,6 +82,7 @@ button{
 .pink-link:hover{
   color: var(--pink-hover) !important;
   border-bottom: 1px solid var(--pink-hover);
+  text-decoration: none;
 
 }
 .yellow-link{
@@ -91,6 +92,7 @@ button{
 .yellow-link:hover{
   color: var(--yellow-hover) !important;
   border-bottom: 1px solid var(--yellow-hover);
+  text-decoration: none;
 
 }
 .green-link{
@@ -702,6 +704,9 @@ border-bottom: 3px solid #51c2c0 !important;
 
 }
 @media only screen and (min-width: 50px) {
+  .login-btn{
+        margin-bottom: 16px;
+  }
   .top-5{
       padding-top: 10px;
       padding-bottom: 40px;
@@ -831,4 +836,8 @@ border-bottom: 3px solid #51c2c0 !important;
   .show-more-btn{
 
   }
+  .login-btn{
+          margin-bottom: 0px;
+    }
+
 }

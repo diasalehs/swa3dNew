@@ -16,11 +16,11 @@
          @endif
          <h3 class="greencolor ">Add new research</h3>
          <hr />
-         <form method="post"   enctype="multipart/form-data" action="{{route('addResearch')}}">{{ csrf_field() }}
+         <form method="post" class=""  enctype="multipart/form-data" action="{{route('addResearch')}}">{{ csrf_field() }}
 
           <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
               <label for="title" class="col-lg-4 form-control-label">Title</label>
-              <div class="col-lg-6">
+              <div class="col-12">
                   <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}"
                   required="required" />
                   @if ($errors->has('title'))
@@ -33,7 +33,7 @@
 
           <div class="form-group{{ $errors->has('recommendations') ? ' has-error' : '' }}">
               <label for="recommendations" class="col-lg-4 form-control-label">Recommendations</label>
-              <div class="col-lg-6">
+              <div class="col-12">
                   <input id="recommendations" type="text" class="form-control" name="recommendations" value="{{ old('recommendations') }}"
                   required="required" />
                   @if ($errors->has('recommendations'))
@@ -46,7 +46,7 @@
 
           <div class="form-group{{ $errors->has('findings') ? ' has-error' : '' }}">
               <label for="findings" class="col-lg-4 form-control-label">Research Findings</label>
-              <div class="col-lg-6">
+              <div class="col-12">
                   <input id="findings" type="text" class="form-control" name="findings" value="{{ old('findings') }}"
                   required="required" />
                   @if ($errors->has('findings'))
@@ -59,7 +59,7 @@
 
           <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
               <label for="tags" class="col-lg-4 form-control-label">Tags</label>
-              <div class="col-lg-6">
+              <div class="col-12">
                   <input id="tags" type="text" class="form-control" name="tags" value="{{ old('tags') }}"
                   required="required" />
                   @if ($errors->has('tags'))
@@ -72,7 +72,7 @@
 
           <div class="form-group{{ $errors->has('creation_date') ? ' has-error' : '' }}">
               <label for="name" class="col-lg-4 form-control-label">Creation Date</label>
-              <div class="col-lg-6">
+              <div class="col-12">
                   <input id="theDate" type="date" class="form-control" name="creation_date"  min="" value="{{ old('creation_date') }}"
                   required="required" />
                   @if ($errors->has('creation_date'))
@@ -85,8 +85,8 @@
 
           <div class="form-group{{ $errors->has('abstract') ? ' has-error' : '' }}">
               <label for="title" class="col-lg-4 form-control-label">Abstract</label>
-              <div class="col-lg-6">
-                  <textarea class="form-control" id="abstract" name="abstract" rows="3">{{ old('abstract') }}</textarea>
+              <div class="col-12">
+                  <textarea rows="7" class="form-control" id="abstract" name="abstract" rows="3">{{ old('abstract') }}</textarea>
                   @if ($errors->has('abstract'))
                       <div class="alert alert-danger" role="alert">
                           <strong>Warning!</strong> {{ $errors->first('abstract') }}
@@ -97,7 +97,7 @@
 
           <div class="form-group{{ $errors->has('filefield') ? ' has-error' : '' }}">
               <label for="filefield" class="col-lg-4 form-control-label">File Inpute</label>
-              <div class="col-lg-6">
+              <div class="col-12">
                   <input type="file" class="form-control-file" id="filefield" accept=".xls,.xlsx,.pdf,.docx" name="filefield">
                   @if ($errors->has('filefield'))
                       <div class="alert alert-danger" role="alert">
@@ -108,7 +108,7 @@
           </div>
 
           <div class="form-group{{ $errors->has('tool1') ? ' has-error' : '' }}">
-              <div class="col-lg-6">
+              <div class="col-12">
               <label for="tool" class="control-label">Tools</label>
                   <div class="form-check">
                   <label class="form-check-label"><input type="checkbox"  name ="tool1" value="tool1" class="form-check-input">tool1</label>
@@ -122,7 +122,7 @@
           </div>
 
           <div class="form-group{{ $errors->has('tool2') ? ' has-error' : '' }}">
-              <div class="col-lg-6">
+              <div class="col-12">
                   <div class="form-check">
                   <label class="form-check-label"><input type="checkbox"  name ="tool2" value="tool2" class="form-check-input">tool2</label>
                   </div>
@@ -135,7 +135,7 @@
           </div>
 
            <div class="form-group{{ $errors->has('credit') ? ' has-error' : '' }}">
-              <div class="col-lg-6">
+              <div class="col-12">
                   <div class="form-check">
                   <label class="form-check-label"><input type="checkbox"  name ="credit" value="1" class="form-check-input">credit</label>
                   </div>

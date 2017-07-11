@@ -42,14 +42,14 @@
                                 </div>
                         </div>
                         <div class="form-group row">
-                          <div class=" col-6">
+                          <div class="col-sm-12 col-md-6 login-btn">
                             <button type="submit" class="btn btn-green btn-block">Login</button>
 
                           </div>
-                          <div class="col-6">
-                            <a class="btn btn-link link-green" href="{{ route('password.request') }}">
+                          <div class="col-sm-12 col-md-6">
+                            <button class="btn btn-secondary btn-block forget-btn" href="{{ route('password.request') }}">
                                 Forgot Your Password?
-                            </a>
+                            </button>
                           </div>
                         </div>
                           <div class="row">
