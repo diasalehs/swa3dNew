@@ -134,16 +134,7 @@ class eventController extends Controller
         return view('events/archiveMyEvents',compact('user','Aevents','Uevents'));
     }
 
-    public function eventView($eventId){
-        $user = Auth::user();
-        $followers = friend::where('requested_id', $user->id);
-        $following = friend::where('requester_id', $user->id);
-        $date = $this->date;
-        $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
-        $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
-        $event = event::find($eventId);
-        return view('events/eventView',compact('user','event','Aevents','Uevents','followers','following'));
-    }
+    
 
     public function eventDelete($eventId){
         $user = Auth::user();
