@@ -27,7 +27,7 @@ use App\user;
                      <p class="card-text line-clamp"><a href="{{route('messenger',$follower->email)}}">{{$follower->email}}</a></p>
               <?php $flag = 0; ?>
                 @foreach($following as $followi)
-                  @if($followi->email == $follower->email && $flag == 0)
+                  @if($followi->id == $follower->id && $flag == 0)
                                <a class='btn btn-danger'  href="{{route('unfollow',$follower->id)}}">Unfollow</a>
                     <?php $flag = 1; ?>
                     @endif

@@ -239,42 +239,6 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function follow( $userId)
-    {
-        $user = Auth::user();
-        $friend = DB::table('friends')->where('requester_id', '=', $user->id)
-                      ->where('requested_id', '=', $userId)->first();
-        if(!$friend)
-        {
-            $friend = new friend();
-            $friend->requester_id = Auth::user()->id;
-            $friend->requested_id = $userId;
-            $friend->save();
-        }
-        return redirect()->back();
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function unfollow($userId)
-    {
-        $user = Auth::user();
-        $friend = DB::table('friends')->where('requester_id', '=', $user->id)
-                      ->where('requested_id', '=', $userId)->delete();
-        // $user->friend()->attach($userId, ['requested_id' => $user->id, 'requester_id' => $userId]);
-        return redirect()->back();
-    }
-
     
     public function message(){
         $user = Auth::user();

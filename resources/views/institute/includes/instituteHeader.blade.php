@@ -42,8 +42,8 @@
 
                                 <ul class="dropdown-menu dropdown-menu-right dropdown-menu-nav" role="menu">
                                   <li><a class="dropdown-item" href="{{ route('home') }}">Your Profile</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('followersInstitute') }}">Followers</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('followingInstitute') }}">Following</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('followers') }}">Followers</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('following') }}">Following</a></li>
                                   <li><a class="dropdown-item" href="{{ route('makeEvent') }}">Make Event</a></li>
                                   <li><a class="dropdown-item" href="{{ route('findVolunteers') }}">Find Volunteers</a></li>
                                     <div class="dropdown-divider"></div>
