@@ -74,6 +74,7 @@ namespace App\Http\Controllers\Auth;
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
+                'userType'=>$data['userType'],
             ]);
         }
 

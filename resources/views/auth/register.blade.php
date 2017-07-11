@@ -25,12 +25,7 @@
                             </div>
 
 
-                                <div class="">
-                                    <input id="name" type="text" style="display: none;" class="form-control" name="userType" value="{{ $user_type }}"
-                                    />
-
-                                </div>
-
+                                    <input id="name" type="text" style="display: none;" class="form-control" name="userType" value="{{ $user_type }}"/>
 
                             <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email" class="form-control-label">E-Mail Address</label>

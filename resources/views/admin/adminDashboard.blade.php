@@ -12,7 +12,7 @@ use App\news;
           <h1>Dashboard</h1>
             <div class="row mb-3">
                 <div class="col-xl-3 col-lg-6">
-                  <a href="{{route('news')}}" style="text-decoration:none">
+                  <a href="" style="text-decoration:none">
                     <div class="card card-inverse card-success">
                         <div class="card-block bg-success">
                             <div class="rotate">
@@ -63,7 +63,7 @@ use App\news;
                 </div>
             </div>
             <!--/row-->
-          <h2>Section title</h2>
+          <h2>Institutes to verify</h2>
           <div class="table-responsive" style="min-height: 300px;">
             <table class="table table-striped">
               <thead>
@@ -72,32 +72,32 @@ use App\news;
                   <th>Name</th>
                   <th>Email</th>
                   <th>Register Date</th>
+                  <th>license</th>
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
-              <?php
-              foreach ($users_record as $user) {
-                 echo "<tr>
-                  <td>".$user->id."</td>
-                  <td>".$user->name."</td>
-                  <td>".$user->email."</td>
-                  <td>".$user->created_at."</td>
+              <tbody>             
+              @foreach ($users_record as $user)
+             
+                 <tr>
+                  <td>{{$user->id}}</td>
+                  <td>{{$user->nameInEnglish}}</td>
+                  <td>{{$user->email}}</td>
+                  <td>{{$user->created_at}}</td> 
+                  <td>{{$user->license}}</td>
+
                   <td><div class='dropdown'>
                   <button class='btn btn-info dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                     Action
                   </button>
                   <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                    <a class='dropdown-item' href='#'>Show</a>
-                    <a class='dropdown-item' href='#'>Edit</a>
-                    <a class='dropdown-item'  href='admin/userdelete/".$user->id."'>Delete</a>
+                    <a class='dropdown-item' href='{{route('adminVerify',[$user->id])}}'>Verify</a>
+                    <a class='dropdown-item'  href='{{route('delete_user',[$user->id])}}'>Delete</a>
                   </div>
                 </div>
                 </td>
-
-                </tr>";
-                # code...
-              }?>
+                </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

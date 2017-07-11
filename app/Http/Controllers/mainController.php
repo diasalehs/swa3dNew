@@ -122,6 +122,7 @@ class mainController extends Controller
             elseif ($user->userType==1) {
             $Iuser=$user->Institute;
             }
+            
             elseif ($user->userType==3) {
             $Iuser=$user->Initiative;
             }
@@ -131,7 +132,7 @@ class mainController extends Controller
                  ->where('user_intrests.user_id', '=', auth::user()->id);})->get();
 
             $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->paginate(5,['*'],'areaEvents');
-            $volEvents = volunteer::where('individual_id', $Iuser->id)->get();
+            $volEvents = volunteer::where('user_id', $Iuser->id)->get();
             return view('upComingEvents',compact('events','localevents','volEvents','user','userevent'));
         }
         return view('upComingEvents',compact('events'));
@@ -153,18 +154,19 @@ class mainController extends Controller
               }
 
             $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->paginate(10,['*'],'areaEvents');
-            $volEvents = volunteer::where('individual_id', $Iuser->id)->get();
+            $volEvents = volunteer::where('user_id', $Iuser->id)->get();
             return view('allLocal',compact('localevents','volEvents','user'));
         }
 
     }
     public function allEvents() {
         $user = Auth::user();
+        $volEvents = 0;
         if($user->userType==0){
             $Iuser=$user->Individuals;
+            $volEvents = volunteer::where('user_id', $Iuser->id)->get();
         }
         $date = $this->date;
-        $volEvents = volunteer::where('individual_id', $Iuser->id)->get();
         $events = event::where('startDate','>',$date)->paginate(10,['*'],'events');
         return view('allEvents',compact('events','volEvents','user'));
     }
@@ -188,22 +190,21 @@ class mainController extends Controller
                 $request = false;
                 $eventCloseAllowed = false;
                 $posts = post::where('event_id',$eventId)->get();
-                $eventAcceptedVols = volunteer::join('individuals','volunteers.individual_id','=','individuals.id')->where('event_id',$eventId)->where('accepted',1)->get();
-        		if($user->userType == 1 && $event->user_id == $user->id){
+                $eventAcceptedVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',1)->get();
+        		if(($user->userType == 1 || $user->userType == 3) && $event->user_id == $user->id){
         			$mine = true;
                     if($event->startDate < $date){
                         $archived = 1;
                         if($event->endDate > $date){$archived = 2;}
                     }
-                    $eventVols = volunteer::join('individuals','volunteers.individual_id','=','individuals.id')->where('event_id',$eventId)->where('accepted',0)->get();
-                    return view('event',compact('date','event','request','archived','mine','user','eventVols','posts','eventAcceptedVols','Individuals','eventCloseAllowed'));
+                    $eventVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',0)->get();
+                    return view('event',compact('date','event','request','archived','mine','user','eventVols','posts','eventAcceptedVols','users','eventCloseAllowed'));
         		}elseif ($user->userType == 0) {
-                    $individual = $user->Individuals;
-                    $flag = volunteer::where('event_id',$eventId)->where('individual_id',$individual->id)->where('accepted',1)->first();
+                    $flag = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->where('accepted',1)->first();
                     if($flag){
                         $eventCloseAllowed = true;
                     }
-                    $volunteer = volunteer::where('event_id',$eventId)->where('individual_id',$individual->id)->first();
+                    $volunteer = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
                     if($volunteer){
                         $request = true;
                     }

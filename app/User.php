@@ -11,6 +11,9 @@ class User extends Authenticatable
      public function Institute(){
         return $this->hasone('App\Institute','user_id');
      }
+     public function tempInstitute(){
+        return $this->hasone('App\Institute','user_id');
+     }
 
     public function Individuals(){
         return $this->hasOne('App\Individuals','user_id');

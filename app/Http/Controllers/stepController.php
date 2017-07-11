@@ -8,6 +8,7 @@ class stepController extends Controller
 	public function step() {
 		if(Auth::attempt() || Auth::user()){
 			if(Auth::user()->flag == 0){
+				
 				return view('step');
 			}elseif(Auth::user()->flag == 1){
 				return redirect()->route('home');

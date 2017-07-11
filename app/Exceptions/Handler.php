@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Jrean\UserVerification\Traits\VerifiesUsers;
+use Jrean\UserVerification\Facades\UserVerification;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -32,7 +34,11 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
-        parent::report($exception);
+
+    if ($exception instanceof UserNotVerifiedException) {
+         return response()->view('errors.userNotVerified', [], 500);
+    }
+       return parent::report($exception);
     }
 
     /**
@@ -43,8 +49,15 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
-    {
-        return parent::render($request, $exception);
+    {   
+         if ($exception instanceof UserNotVerifiedException) {
+         return response()->view('errors.userNotVerified', [], 500);
+         }
+        else{       
+         return parent::render($request, $exception);
+
+            }
+
     }
 
     /**

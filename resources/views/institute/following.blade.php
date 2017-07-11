@@ -23,7 +23,7 @@
                          <div class="col-6">
                            <h5 class="card-title greencolor"><a href="{{route('profile',$followi->requested_id)}}">{{$followi->name}}</a></h5>
                            <p class="card-text line-clamp"><a href="{{route('messenger',$followi->email)}}">{{$followi->email}}</a></p>
-                           <a class='btn btn-danger'  href='allusers/unfollow/{{$followi->id}}'>Unfollow</a>
+                           <a class='btn btn-danger'  href="{{route('unfollow',$followi->id)}}">Unfollow</a>
                        </div>
                    </div>
                </div>

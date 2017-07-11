@@ -230,17 +230,14 @@
                         @foreach($volEvents as $volEvent)
                           @if($volEvent->event_id == $event->id)
                             <a href="{{route('disVolunteer',[$event->id])}}" class="card-link pink-link">Cancel Volunteer Request</a>
-                            <a href='event/{{$event->id}}' class="card-link yellow-link ">Follow</a>
                             <?php $flag = 1; ?>
                           @elseif($flag == 0)
                             <a href="{{route('volunteer',[$event->id])}}" class="card-link pink-link">Volunteer Request</a>
-                            <a href='event/{{$event->id}}' class="card-link yellow-link ">Follow</a>
                             <?php $flag = 1; ?>
                           @endif
                         @endforeach
                         @if($flag == 0)
                           <a href="{{route('volunteer',[$event->id])}}" class="card-link pink-link">Volunteer Request</a>
-                          <a href='event/{{$event->id}}' class="card-link yellow-link ">Follow</a>
                         @endif
                       @endif
                     </div>

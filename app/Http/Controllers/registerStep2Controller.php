@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use \Illuminate\Http\Request;
 use App\Individuals;
-use App\Institute;
+use App\tempInstitute;
 use App\User;
 use Illuminate\Support\Facades\auth;
 
@@ -47,6 +47,8 @@ class registerStep2Controller extends Controller
                                 $Individuals->save();
                                 $user->flag = 1;
                                 $user->save();
+                              return redirect()->route('home');
+
                         }
                         elseif($user->userType == 1){
                                 $this->validate($request, [
@@ -60,7 +62,7 @@ class registerStep2Controller extends Controller
                                     'address' => 'required',
                                 ]);
 
-                                $Institute = new Institute();
+                                $Institute = new tempInstitute();
                                 $Institute->nameInEnglish = $user->name;
                                 $Institute->user_id = $user->id;
                                 $Institute->nameInArabic = $user->name;
@@ -76,9 +78,10 @@ class registerStep2Controller extends Controller
                                 $Institute->save();
                                 $user->flag = 1;
                                 $user->save();
+                             return view('waitTillverification');
+
                         }
                         
-                        return redirect()->route('home');
 
                 }
                 else{return redirect()->route('home');}

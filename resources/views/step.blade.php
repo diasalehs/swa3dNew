@@ -1,10 +1,23 @@
 @extends('layouts.app')
  @section('content')
-
 @if(auth::user()->userType==0)
+
+
 <div class="container" style="margin:100px auto">
     <div class="row " >
+
         <div class="col-lg-8 offset-md-2">
+        @if(auth::user()->verified==0)
+        <div class="alert alert-warning" role="alert">
+        <strong>We sent you an Email !</strong> Please check your inbox to verify your account.
+        </div>
+        @endif
+        @if(auth::user()->verified==1)
+        <div class="alert alert-success" role="alert">
+         <strong>Verified!</strong> You are good to go.
+        </div>
+            @endif
+
             <div class="card">
                 <div class="card-header">Individual Register</div>
                 <div class="card-block">
@@ -136,6 +149,16 @@
  <div class="container" style=" margin:100px auto">
     <div class="row">
         <div class="col-lg-8 offset-md-2">
+        @if(auth::user()->verified==0)
+<div class="alert alert-warning" role="alert">
+<strong>We sent you an Email !</strong> Please check your inbox to verify your account.
+</div>
+@endif
+ @if(auth::user()->verified==1)
+<div class="alert alert-success" role="alert">
+  <strong>Verified!</strong> You are good to go.
+</div>
+@endif
             <div class="card">
                 <div class="card-header">Institute Register</div>
                 <div class="card-block">
