@@ -17,7 +17,6 @@ class CreateFriendsTable extends Migration
             $table->increments('id');
             $table->integer('requested_id')->index();
             $table->integer('requester_id')->index();
-            $table->integer('member')->defualt(0);
             $table->timestamps();
         });
     }

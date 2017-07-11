@@ -9,10 +9,10 @@ use Illuminate\Database\Query\Builder;
 use App\Individuals;
 use App\Institute;
 use App\User;
-use Illuminate\Support\Facades\auth;
-use App\friend;
-use App\event;
-use App\volunteer;
+use Illuminate\Support\Facades\Auth;
+use App\Friend;
+use App\Event;
+use App\Volunteer;
 
 class profilesController extends Controller
 {
@@ -20,12 +20,14 @@ class profilesController extends Controller
     {
         $this->date = date('Y-m-d');
     }
+
 	public function index($userId)
 	{	
 
 	$flag = 0;
 	if(Auth::check()){
 		$user = Auth::user();
+		$friend = false;
 		$following = friend::where('requester_id',$user->id)->where('requested_id',$userId)->first();
 	    if($following == null)
 	    {
@@ -70,7 +72,7 @@ class profilesController extends Controller
 
     	$Initiative= Initiative::where('user_id','=',$userId)->get();
 
-    	return view('Iniprofile',compact('user','Initiative','friend','Aevents','userUevents','userUeventsVolunteers','myevents'));
+    	return view('initiativeProfile',compact('user','Initiative','friend','Aevents','userUevents','userUeventsVolunteers','myevents'));
     }
 	else
 		abort(403,'Unauthrized action.');

@@ -131,6 +131,8 @@
 $j(document).ready(function() {
   $(function () {
     $('#popoverData').popover();
+    $('[data-toggle="popover"]').popover()
+
    })});
 
 </script>

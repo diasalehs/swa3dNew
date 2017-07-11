@@ -12,11 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
     <link rel="stylesheet" href=" {{ URL::asset('vendor/font-awesome/css/font-awesome.min.css') }}">
-
-    <!-- Custom styles for this template -->
+    <link href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/styles.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/footer.css')}}" rel="stylesheet">
 

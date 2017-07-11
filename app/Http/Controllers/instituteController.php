@@ -1,8 +1,15 @@
 <?php
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\auth;
-use App\friend;
-use App\user;
+use Illuminate\Support\Facades\Auth;
+use App\Friend;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Validator;
+use App\Event;
+use App\EventIntrest;
+use App\EventTarget;
+use Image;
 
 class instituteController extends Controller
 {
@@ -18,13 +25,7 @@ class instituteController extends Controller
         });
     }
 
-     public function findVolunteers()
-    {
-            $user = $this->user;
-            $following = friend::where('requester_id', $user->id)->get();
-            $users_record= user::where('userType',0)->get();
-            return view('institute/findVolunteers',compact('users_record','following','followers'));
-    }
+
 
 
 }

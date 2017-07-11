@@ -8,7 +8,7 @@ use App\User;
 use App\Individuals;
 use App\Institute;
 use App\tempInstitute;
-use Illuminate\Support\Facades\auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Query\Builder;
 use App\Http\Requests;
 use App\news;

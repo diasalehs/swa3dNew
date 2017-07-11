@@ -21,15 +21,12 @@
        <div class="card card-inverse event">
                 <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
                 <div class="card-img-overlay">
-                  <a tabindex="0"  role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">
-
                   <h4 class="card-title line-clamp-2">{{$event->title}}</h4>
-                </a>
-
                   <div class="card-bottom">
                     <p class="card-text "><small>{{$event->startDate}} To {{$event->endDate}} - in Nablus</small></p>
                     <a href='event/{{$event->id}} ' class="btn btn-green" >View</a>
                     <a href="{{route('login')}}" class="btn btn-pink">Volunteer</a>
+
                   </div>
 
                 </div>
@@ -37,12 +34,18 @@
             </div>
 
             @endforeach
+
               </div>
-              {{$events->links()}}
 
          </div>
 
     </div>
+    <div class="row justify-content-center" style="margin-top:40px;">
+
+    {{$events->links('vendor.pagination.custom')}}
+
+  </div>
+
     @endif
 
 @if(Auth::check())
@@ -126,25 +129,23 @@
                       <h4 class="card-title line-clamp-2">{{$event->title}}</h4>
 
                       <div class="card-bottom">
-                        <p class="card-text" style="">{{$event->startDate}} To {{$event->endDate}} - in Nablus</p>
+                        <p class="card-text" style=""><small>{{$event->startDate}} To {{$event->endDate}} - in Nablus</small></p>
 
                       <a href='event/{{$event->id}}' class="btn btn-green event-btn" >View</a>
-                    </div>
 
                       @if($user->userType != 1)
                       <?php $flag = 0; ?>
                         @foreach($volEvents as $volEvent)
                           @if($volEvent->individual_id == $user->individuals->id && $event->id == $volEvent->event_id && $flag == 0)
-                              <a href="{{route('disVolunteer',[$event->id])}}" class="card-link pink-link">Cancel Volunteer Request</a>
-                              <a href='event/{{$event->id}}' class="btn btn-yellow ">Follow</a>
+                              <a href="{{route('disVolunteer',[$event->id])}}" class="btn btn-pink">Cancel Volunteer Request</a>
                               <?php $flag = 1; ?>
                           @endif
                         @endforeach
                         @if($flag == 0)
-                          <a href="{{route('volunteer',[$event->id])}}" class="card-link pink-link">Volunteer Request</a>
-                          <a href='event/{{$event->id}}' class="btn btn-yellow ">Follow</a>
+                          <a href="{{route('volunteer',[$event->id])}}" class="btn btn-pink">Volunteer Request</a>
                         @endif
                       @endif
+                    </div>
 
                     </div>
                   </div>
@@ -174,26 +175,25 @@
                     <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
                     <div class="card-img-overlay">
                       <h3 class="card-title">{{$event->title}}</h3>
-                      <p class="card-text line-clamp-4">{{$event->description}}</p>
-                      <p class="">{{$event->startDate}} To {{$event->endDate}} - in {{$event->city}}</p>
+                      <div class="card-bottom">
+                      <p class=""><small>{{$event->startDate}} To {{$event->endDate}} - in {{$event->city}}</small></p>
 
-                      <a href='event/{{$event->id}}' class="card-link green-link" >View</a>
-                    </div>
+                      <a href='event/{{$event->id}}' class="btn btn-green" >View</a>
 
                       @if($user->userType != 1)
                       <?php $flag = 0; ?>
                         @foreach($volEvents as $volEvent)
                           @if($volEvent->individual_id == $user->individuals->id && $event->id == $volEvent->event_id && $flag == 0)
-                              <a href="{{route('disVolunteer',[$event->id])}}" class="card-link pink-link">Cancel Volunteer Request</a>
-                              <a href='event/{{$event->id}}' class="card-link yellow-link ">Follow</a>
+                              <a href="{{route('disVolunteer',[$event->id])}}" class="btn btn-pink">Cancel Volunteer Request</a>
                               <?php $flag = 1; ?>
                           @endif
                         @endforeach
                         @if($flag == 0)
-                          <a href="{{route('volunteer',[$event->id])}}" class="card-link pink-link">Volunteer Request</a>
-                          <a href='event/{{$event->id}}' class="card-link yellow-link ">Follow</a>
+                          <a href="{{route('volunteer',[$event->id])}}" class="btn btn-pink">Volunteer Request</a>
                         @endif
                       @endif
+                    </div>
+
                     </div>
                   </div>
                 </div>

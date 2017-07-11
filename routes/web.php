@@ -45,6 +45,8 @@ Route::get('/initiativeProfile', function() {return view('initiativeProfile');})
 //-------------------------------- just for users - auth --------------------------------\\
 Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function() 
 {
+    Route::get('/followers', ['uses'=>'followController@followers'])->name('followers');
+    Route::get('/following', ['uses'=>'followController@following'])->name('following');
     Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() 
     {
         Route::group(['middleware' => ['isVerified']], function () 
@@ -106,7 +108,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 
             //-------------------------------- institute --------------------------------\\
             Route::group(['prefix'=>'institute','routeMiddleware'=>'institute'], function() {
-                Route::get('/findVolunteers',['uses'=>'instituteController@findVolunteers'])->name('findVolunteers');
+                
             });
 
 
@@ -130,7 +132,6 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
     Route::get('/unfollow/{userId}', ['uses'=>'followController@unfollow'])->name('unfollow');
     Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
     Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
-    Route::get('/followers', ['uses'=>'followController@followers'])->name('followers');
-    Route::get('/following', ['uses'=>'followController@following'])->name('following');
-    Route::get('/allusers',['uses'=>'IndividualsController@allusers'])->name('allusers');
+    Route::get('/allusers',['uses'=>'homeController@allusers'])->name('allusers');
+    Route::get('/findVolunteers',['uses'=>'homeController@findVolunteers'])->name('findVolunteers');
 });

@@ -22,15 +22,10 @@ class followController extends Controller
     public function followers()
     {
         $user = $this->user;
-        $followers = Friend::join('users','friends.requester_id','=','users.id')->where('requested_id', $user->id)->get();
-        $following = Friend::where('requester_id', $user->id)->get();
+        $followers = friend::join('users','friends.requester_id','=','users.id')->where('requested_id', $user->id)->get();
+        $following = friend::where('requester_id', $user->id)->get();
         if($user->userType == 0)
-        	return view('individual/followers',compact('user','followers','following'));
-        if($user->userType == 1)
-        	return view('institute/followers',compact('user','followers','following'));
-        if($user->userType == 3)
-        	return view('initiative/followers',compact('user','followers','following'));
-
+        	return view('shared/followers',compact('followers','following'));
     }
 
     public function following()
@@ -38,11 +33,7 @@ class followController extends Controller
         $user = $this->user;
         $following = Friend::join('users','friends.requested_id','=','users.id')->where('requester_id', $user->id)->get();
         if($user->userType == 0)
-        	return view('individual/following',compact('following'));
-        if($user->userType == 1)
-        	return view('institute/following',compact('following'));
-        if($user->userType == 3)
-        	return view('initiative/following',compact('following'));
+        	return view('shared/following',compact('following'));
     }
     
     public function follow($userId)

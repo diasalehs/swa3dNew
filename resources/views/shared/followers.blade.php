@@ -1,9 +1,26 @@
-@extends('individual/layouts.profileMaster')
+<?php $userType = Auth::user()->userType; ?>
 
-@section('content')
-<div class="container-fluid" style="margin:120px auto">
-    <div class="row">
-      @include('individual/includes.sidebar')
+@if($userType == 0)
+  @extends('individual/layouts.profileMaster')
+  @section('content')
+  <div class="container-fluid" style="margin:120px auto">
+      <div class="row">
+            @include('individual/includes.sidebar')
+
+@elseif($userType == 1)
+  @extends('institute/layouts.profileMaster')
+  @section('content')
+  <div class="container-fluid" style="margin:120px auto">
+      <div class="row">
+            @include('institute/includes.sidebar')
+
+@elseif($userType == 3)
+  @extends('initiative/layouts.profileMaster')
+  @section('content')
+  <div class="container-fluid" style="margin:120px auto">
+      <div class="row">
+            @include('initiative/includes.sidebar')
+@endif
 
         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
           <h1>Followers</h1>
@@ -24,7 +41,7 @@
                      <p class="card-text line-clamp"><a href="{{route('messenger',$follower->email)}}">{{$follower->email}}</a></p>
               <?php $flag = 0; ?>
                 @foreach($following as $followi)
-                  @if($followi->email == $follower->email && $flag == 0)
+                  @if($followi->requester_id == $follower->requested_id && $flag == 0)
                                <a class='btn btn-danger'  href="{{route('unfollow',$follower->id)}}">Unfollow</a>
                     <?php $flag = 1; ?>
                     @endif
@@ -43,4 +60,4 @@
 </div>
 </div>
 
-@endsection
+@endsection('content')

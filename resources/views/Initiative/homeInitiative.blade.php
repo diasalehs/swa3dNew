@@ -10,7 +10,7 @@
           background-position: right top;
           background-attachment: fixed;
           ">
-             <h1 class="display-4 " style="color:#fff">Hello, {{$user->name}}!</h1>
+             <h1 class="display-4 " style="color:#fff">Hello, {{$user->nameInEnglish}}!</h1>
              <p class="lead" style="color:#fff">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
              <hr class="my-4 " style="background-color: #fff">
              <p class="lead">
@@ -31,12 +31,12 @@
            </div>
 
            <ul class="list-group">
-              <li class="list-group-item">Living Place:   {{ ucfirst($userInitiative->livingPlace)}} </li>
-              <li class="list-group-item">City Name:   {{ ucfirst($userInitiative->cityName) }} </li>
-              <li class="list-group-item">Country Name:    {{ ucfirst($userInitiative->country) }}</li>
-              <li class="list-group-item">Current Work:   {{ ucfirst($userInitiative->currentWork) }} </li>
-              <li class="list-group-item">Voluntary Experiance:   {{$userInitiative->voluntaryYears}}</li>
-              <li class="list-group-item">Date Of Birth:    {{$userInitiative->dateOfBirth}}</li>
+              <li class="list-group-item">Living Place:   {{ ucfirst($user->livingPlace)}} </li>
+              <li class="list-group-item">City Name:   {{ ucfirst($user->cityName) }} </li>
+              <li class="list-group-item">Country Name:    {{ ucfirst($user->country) }}</li>
+              <li class="list-group-item">Current Work:   {{ ucfirst($user->currentWork) }} </li>
+              <li class="list-group-item">Voluntary Experiance:   {{$user->voluntaryYears}}</li>
+              <li class="list-group-item">Date Of Birth:    {{$user->dateOfBirth}}</li>
             </ul>
             
         </div>

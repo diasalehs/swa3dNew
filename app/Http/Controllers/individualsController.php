@@ -1,10 +1,10 @@
 <?php 
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\auth;
-use App\friend;
-use App\user;
-use App\volunteer;
+use Illuminate\Support\Facades\Auth;
+use App\Friend;
+use App\User;
+use App\Volunteer;
 use App\researches;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -88,13 +88,6 @@ class IndividualsController extends Controller
         }else{$Initiative->voluntaryYears = 0;}
         $Initiative->dateOfBirth =  $request['dateOfBirth'];
         $Initiative->save();
-    }
-    public function allusers()
-    {
-        list($user ,$date)=$this->slidbare();
-        $users_record= user::get();
-        $following = friend::where('requester_id', $user->id)->get();
-        return view('individual/allusers',compact('users_record','following'));
     }
     
     public function myUpComingEvents()
