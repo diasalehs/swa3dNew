@@ -168,7 +168,7 @@
             <div class="row">
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
-
+              
               @foreach($localevents as $event)
               <div class="col-md-6 col-sm-12">
                   <div class="card card-inverse event">
