@@ -70,8 +70,8 @@
     });
       function rate(r) {
         //  alert($('#r'+r).starbox('getValue'));
-        var t = $('#r'+r).starbox('getValue')
           $('.cat'+r).val($('#r'+r).starbox('getValue'));
+          $('.cat'+r).val($('.cat'+r).val()*5)
        }
          //  alert($('#r'+r).starbox('getValue'));
          var i = 0;

@@ -19,11 +19,11 @@
         <a class="nav-link" href="#">About us</a>
       </li>
       <li class="nav-item">
-       <a class="nav-link" href="#" style="color: #f06493">DONATE NOW</a>
+       <a class="nav-link" href="#" style="color: #f06493">Donate Now</a>
      </li>
     </ul>
     <div class="form-inline my-2 my-lg-0" >
-        <ul class="navbar-nav mr-auto"style="color:var(--pink);">
+        <ul class="navbar-nav mr-auto nav-right">
           <li class="nav-item ">
 
           <form action="{{route('search')}}" method="get" >
