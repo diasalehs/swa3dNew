@@ -68,21 +68,26 @@
       changeable:false,
       buttons:10
     });
+
+        var i = 0;
+        while (true) {
+          i++;
+          $('#sh'+i).starbox('setValue',$('#shr'+i).text()/5);
+          if (i > 7) {
+            break;
+          }
+        }
+
+
       function rate(r) {
         //  alert($('#r'+r).starbox('getValue'));
           $('.cat'+r).val($('#r'+r).starbox('getValue'));
           $('.cat'+r).val($('.cat'+r).val()*5)
        }
          //  alert($('#r'+r).starbox('getValue'));
-         var i = 0;
-         while (true) {
-           i++;
-           $('#sh'+i).starbox('setValue',$('#shr'+i).text());
-           if (i > 7) {
-             break;
-           }
-         }
+
     </script>
+
     <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

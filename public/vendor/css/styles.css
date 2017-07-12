@@ -768,6 +768,9 @@ border-bottom: 3px solid #51c2c0 !important;
     max-height: 300px;
     overflow: scroll;
   }
+  .navbar-collapse{
+    margin-left: 20px;
+  }
 }
 @media only screen and (min-width: 300px) {
 
@@ -866,5 +869,12 @@ border-bottom: 3px solid #51c2c0 !important;
   .login-btn{
           margin-bottom: 0px;
     }
+
+}
+@media only screen and (min-width: 960px) {
+  .navbar-collapse{
+    margin-left: 0px;
+  }
+
 
 }
