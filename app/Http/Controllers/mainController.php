@@ -107,7 +107,6 @@ class mainController extends Controller
         if (Auth::check()) {
             if($user->userType==0){
             $Iuser=$user->Individuals;
-
             }
             elseif ($user->userType==1) {
             $Iuser=$user->Institute;
