@@ -71,7 +71,6 @@
       function rate(r) {
         //  alert($('#r'+r).starbox('getValue'));
         var t = $('#r'+r).starbox('getValue')
-        alert('hi');
           $('.cat'+r).val($('#r'+r).starbox('getValue'));
        }
          //  alert($('#r'+r).starbox('getValue'));
