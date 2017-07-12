@@ -45,7 +45,6 @@ Route::get('/initiativeProfile', function() {return view('initiativeProfile');})
 //-------------------------------- just for users - auth --------------------------------\\
 Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() {
     Route::group(['middleware' => ['isVerified']], function () {
-
     Route::get('/', 'homeController@index')->name('home');
 
     //-------------------------------- event --------------------------------\\
