@@ -53,8 +53,8 @@ button{
   color: var(--navy);
 }
 .dropdown-menu a:active{
-    background-color: #51c2c0;
-    color: #fff;
+    background-color: var(--pink);
+    color: #fff !important;
 }
 .dropdown-menu li.logout-dropdown-item a:active{
     color: white !important;
