@@ -18,7 +18,7 @@
                <a class="btn btn-primary btn-lg mg" href="{{route('findVolunteers')}}" role="button">Find Volunteers</a>
              </p>
            </div>
-           <div class="row yrp">
+           <div class="row yrp" >
              <div class="col-sm-6 col-xs-6 col-md-6 ">
                <h3>Your Info</h3>
              </div>

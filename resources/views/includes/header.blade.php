@@ -22,8 +22,8 @@
        <a class="nav-link" href="#" style="color: #f06493">DONATE NOW</a>
      </li>
     </ul>
-    <div class="form-inline my-2 my-lg-0">
-        <ul class="navbar-nav mr-auto">
+    <div class="form-inline my-2 my-lg-0" >
+        <ul class="navbar-nav mr-auto"style="color:var(--pink);">
           <li class="nav-item ">
 
           <form action="{{route('search')}}" method="get" >
