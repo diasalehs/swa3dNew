@@ -1,9 +1,9 @@
-@extends('Initiative/layouts.profileMaster')
+@extends('initiative/layouts.profileMaster')
 
 @section('content')
 <div class="container-fluid" style="margin:120px auto">
     <div class="row">
-      @include('Initiative/includes.sidebar')
+      @include('initiative/includes.sidebar')
         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
           <div class="jumbotron" style="background-image: linear-gradient(rgba(19, 58, 83, 0.6),rgba(19, 58, 83, 0.6)),url({{ URL::to('/vendor/img/newlogo.png')}});
           background-size:contain;background-repeat: no-repeat;

@@ -17,7 +17,7 @@ class CreateMembersTable extends Migration
             $table->increments('id');
             $table->integer('individual_id')->index();
             $table->integer('initiative_id')->index();
-            $table->integer('member')->defualt(0);
+            $table->boolean('accepted')->defualt(0);
             $table->timestamps();
         });
     }

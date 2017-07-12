@@ -82,21 +82,21 @@ class homeController extends Controller
             {
                 if($user->userType == 0){
                     $user = $user->Individuals;
-                    return view('Individual/homeIndividual',compact('user'));
+                    return view('individual/homeIndividual',compact('user'));
                 }
                 elseif($user->userType == 1)
                 {
                     if($user->adminApproval==1)
                     {
                         $user = $user->Institute;
-                        return view('Institute/homeInstitute',compact('user'));
+                        return view('institute/homeInstitute',compact('user'));
                     }
                     else
                          return redirect()->route('errorPage')->withErrors('Wait Till Verification.');
                 }
                 elseif($user->userType == 3){
                     $user = $user->Initiative;
-                    return view('Initiative/homeInitiative',compact('user'));
+                    return view('initiative/homeInitiative',compact('user'));
                 }
                 else
                     return abort(403,'Unauthorized action.');
@@ -126,7 +126,7 @@ class homeController extends Controller
         }
         elseif ($user->userType == 3) {
             $initiative = Auth::user()->initiative;
-            return view('Initiative/editInitiative',compact('user','initiative'));
+            return view('initiative/editInitiative',compact('user','initiative'));
         }
 
         } 

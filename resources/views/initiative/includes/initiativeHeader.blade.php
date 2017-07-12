@@ -25,21 +25,16 @@
         <ul class="navbar-nav mr-auto">
 
       <li class="nav-item ">
-       @if (Auth::guest())
-
-        <a class="nav-link" href="{{ route('login') }}">Login <span class="sr-only"></span></a>
- @else
                             <li class="dropdown nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ $user->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu dropdown-menu-right dropdown-menu-nav" role="menu">
                                   <li><a class="dropdown-item" href="{{ route('home') }}">Your Profile</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('followersInstitute') }}">Followers</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('followingInstitute') }}">Following</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('followers') }}">Followers</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('following') }}">Following</a></li>
                                   <li><a class="dropdown-item" href="{{ route('makeEvent') }}">Make Event</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('findVolunteers') }}">Find Volunteers</a></li>
                                     <div class="dropdown-divider"></div>
 
                                     <li class="logout-dropdown-item">

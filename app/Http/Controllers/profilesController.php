@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Friend;
 use App\Event;
 use App\Volunteer;
-use Carbon\Carbon;
+use App\Member;
 use Illuminate\Support\Facades\Cache;
 
 
@@ -22,7 +22,14 @@ class profilesController extends Controller
 {
 	public function __construct()
     {
-        $this->date = date('Y-m-d');
+        $this->middleware(['auth']);
+        $this->middleware(function ($request, $next) {
+            $date = date('Y-m-d');
+            $user = Auth::user();
+            $this->date = $date;
+            $this->user = $user;
+            return $next($request);
+        });
     }
 
 	public function index($userId)
@@ -30,17 +37,20 @@ class profilesController extends Controller
 
 	$flag = 0;
 	$date = $this->date;
-	if(Auth::check()){
-		$user = Auth::user();
-		$friend = false;
-		$following = Friend::where('requester_id',$user->id)->where('requested_id',$userId)->first();
-	    if($following == null)
+	$friend = false;
+	if(Auth::check())
+	{
+		$authUser = $this->user;
+		$friend = Friend::where('requester_id', '=', $authUser->id)->where('requested_id', '=', $userId)->first();
+	    if($friend)
 	    {
-	        $friend = false;
+	        $friend = true;
 	    }
-	    else 
-	    	$friend = true;
-	    $userUevents = event::where('events.user_id',$user->id)->where('startDate','>',$date)->get();
+	    else
+	    {
+	    	$friend = false;
+	    }
+	    $userUevents = event::where('events.user_id',$authUser->id)->where('startDate','>',$date)->get();
 	}
 
     try {
@@ -54,7 +64,7 @@ class profilesController extends Controller
 	{
 		$user= $user->Individuals;
 		$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
-		return view('Indprofile',compact('user','Individual','friend','userUevents','userUeventsVolunteers','myevents'));
+		return view('Indprofile',compact('user','friend','userUevents','userUeventsVolunteers','myevents'));
 	} 
 
 	elseif($userType == 1)
@@ -63,21 +73,43 @@ class profilesController extends Controller
 
 		$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->get();
 
-		$Institute= Institute::where('user_id','=',$userId)->get();
-
-    	return view('Insprofile',compact('user','Institute','friend','Aevents','userUevents','userUeventsVolunteers'));
+    	return view('Insprofile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers'));
 	}	
     elseif($userType == 3)
     {
-    	$user= $user->Initiative;
+    	$mine = false;
+    	$joinRequest = false;
+    	$joined = false;
+    	$user = $user->Initiative;
+
+    	if($authUser->userType == 3 && $authUser->id == $user->user_id)
+    	{
+    		$mine = true;
+    		$initiativeVols = Member::join('users','members.individual_id','=','users.id')->where('initiative_id',$user->user_id)->where('accepted',0)->get();
+    	}
+
+    	$initiativeAcceptedVols = Member::where('initiative_id',$user->user_id)->where('individual_id',$authUser->id)->first();
+
+    	if($authUser->userType == 0 && $initiativeAcceptedVols)
+    	{
+    		$joinRequest = true;
+    	}
+
+    	$initiativeAcceptedVols = Member::where('initiative_id',$user->user_id)->where('individual_id',$authUser->id)->where('accepted',1)->first();
+
+    	if($authUser->userType == 0 && $initiativeAcceptedVols)
+    	{
+    		$joinRequest = true;
+    		$joined = true;
+    	}
+
+    	$initiativeAcceptedVols = Member::join('users','members.individual_id','=','users.id')->where('initiative_id',$user->user_id)->where('accepted',1)->get();
 
     	$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->get();
 
     	$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
 
-    	$Initiative= Initiative::where('user_id','=',$userId)->get();
-
-    	return view('initiativeProfile',compact('user','Initiative','friend','Aevents','userUevents','userUeventsVolunteers','myevents'));
+    	return view('initiativeProfile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers','myevents','initiativeVols','initiativeAcceptedVols','joined','mine','joinRequest'));
     }
 	else
 		abort(403,'Unauthrized action.');
