@@ -1,9 +1,10 @@
 <div id="navtop"></div>
-<nav class="navbar mainNavbar navbar-toggleable-md navbar-light bg-faded  fixed-top">
+<nav class="navbar mainNavbar navbar-light bg-faded  fixed-top" style="background-image:url('{{ URL::to('/') }}/pp/newlogo-min.png');    background-repeat: no-repeat;
+    background-size: 80px;">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="{{ route('main') }}">SWA3ED</a>
+  <a class="navbar-brand" href="{{ route('main') }}" style="    margin-left: 70px;">SWA3ED</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
