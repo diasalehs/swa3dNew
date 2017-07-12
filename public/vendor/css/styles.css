@@ -725,6 +725,9 @@ border-bottom: 3px solid #51c2c0 !important;
   .login-btn{
         margin-bottom: 16px;
   }
+  .mr-auto{
+    margin-top: 20px;
+  }
   .top-5{
       padding-top: 10px;
       padding-bottom: 40px;
@@ -842,7 +845,13 @@ border-bottom: 3px solid #51c2c0 !important;
   }
 }
 @media only screen and (min-width: 768px) {
+  .collapse {
+       display: none !important;
+   }
 
+  .mr-auto{
+    margin-top: 0px;
+  }
   .nav-tabs-main  .nav-item a{
       background-color: #eee;
       font-size: 20px;
