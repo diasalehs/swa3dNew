@@ -14,7 +14,7 @@ class registerStep2Controller extends Controller
 
 	public function allRegister(Request $request){
         	$user = Auth::user();
-                if($user->flag == 0){
+                if($user->flag == 0 && $user->isVerified==1){
                         if($user->userType == 0){
                             $this->validate($request, [
                                 'livingPlace' => 'required',
@@ -84,7 +84,12 @@ class registerStep2Controller extends Controller
                         
 
                 }
-                else{return redirect()->route('home');}
+                elseif($user->isVerified==0){
+                return view('error\userNotVerified');
+
+                }
+                else
+                    return redirect()->route('home');}
 	}
 
 }
