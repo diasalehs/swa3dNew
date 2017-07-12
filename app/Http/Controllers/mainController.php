@@ -242,7 +242,7 @@ class mainController extends Controller
         $researches=new \Illuminate\Pagination\LengthAwarePaginator($collection,$total,2,$currentpage);
         $text=$request['search'];
 
-       return view('ResearchesSsearch',compact('researches','text'));
+       return view('ResearchesSearch',compact('researches','text'));
  
  
       }
