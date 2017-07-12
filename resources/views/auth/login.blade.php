@@ -47,9 +47,9 @@
 
                           </div>
                           <div class="col-sm-12 col-md-6">
-                            <button class="btn btn-secondary btn-block forget-btn" href="{{ route('password.request') }}">
+                            <a  class="btn btn-secondary btn-block forget-btn" href="{{ route('password.request') }}">
                                 Forgot Your Password?
-                            </button>
+                            </a >
                           </div>
                         </div>
                           <div class="row">

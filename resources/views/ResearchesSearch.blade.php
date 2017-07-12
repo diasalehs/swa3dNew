@@ -21,5 +21,5 @@
             @endforeach
 </div>
 
-{{ $researches->links()}}
+{{ $researches->setpath('results?search='.$text)->render() }}
 @endsection('content')

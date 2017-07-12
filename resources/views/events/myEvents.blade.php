@@ -1,9 +1,9 @@
 @extends('layouts.master')
  @section('content')
 
-<div class="container" style="margin:20px auto">
+<div class="container" style="margin:20px auto; min-height:500px">
 
-<ul class="nav nav-tabs sw-nav-tabs " role="tablist">
+<ul class="nav nav-tabs sw-nav-tabs " role="tablist" style="margin-bottom:30px;margin-top:40px;">
   <li class="nav-item col-4 col-lg-3  first-tab">
     <a class="nav-link active"  href="{{route('myEvents')}}" >Up Coming Events    <span class="badge badge-default badge-pill">{{$Uevents->count()}}</span></a>
   </li>
@@ -17,39 +17,30 @@
 
 
 
-          <h1>My Up Coming Events</h1>
-          <table class="table">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-              @foreach ($Uevents as $event)
-                    <tr>
-                    <td>
-                    <a class='btn'  href="{{route('event',$event->id)}}">{{$event->title}}</a>
-                    </td>
-                    <td>{{$event->startDate}}</td>
-                    <td>{{$event->endDate}}</td>
-                    <td>
-                        <div class='btn-group' style='width:100%'>
-                          <button type='button' class='btn btn-green btn-block dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                            Action
-                          </button>
-                          <div class='dropdown-menu '>
-                            <a class='dropdown-item' href="{{route('eventDelete',[$event->id])}}">Delete</a>
-                            <a class='dropdown-item' href="{{route('eventEdit',[$event->id])}}">Edit</a>
-                          </div>
-                        </div>
-                    </td>
-                    </tr>
+          <h1 class="greencolor">My Up Coming Events</h1>
+          <div class="row">
+            @foreach ($Uevents as $event)
+
+            <div class="col-md-6 col-sm-12">
+         <div class="card card-inverse event">
+                  <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
+                  <div class="card-img-overlay">
+                    <h4 class="card-title line-clamp-2">{{$event->title}}</h4>
+                    <div class="card-bottom">
+                      <p class="card-text "><small>{{$event->startDate}} To {{$event->endDate}} - in Nablus</small></p>
+                      <a href='event/{{$event->id}} ' class="btn btn-green" >View</a>
+                      <a class="btn btn-pink" href="{{route('eventDelete',[$event->id])}}">Delete</a>
+                      <a class=" btn btn-yellow" href="{{route('eventEdit',[$event->id])}}">Edit</a>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
               @endforeach
-              </tbody>
-          </table>
+
+          </div>
+
 </div>
 
 @endsection

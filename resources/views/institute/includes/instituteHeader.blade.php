@@ -21,7 +21,7 @@
       </li>
 
     </ul>
-    <div class="form-inline my-2 my-lg-0">
+    <div class="form-inline my-2 my-lg-0 nav-right">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item ">
           <form action="{{route('search')}}" method="get" >

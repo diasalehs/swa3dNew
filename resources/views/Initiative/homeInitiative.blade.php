@@ -4,7 +4,8 @@
 <div class="container-fluid" style="margin:120px auto">
     <div class="row">
       @include('initiative/includes.sidebar')
-        <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
+
+        <div class="col-sm-12  col-md-8 push-sm-12 col-lg-9" style="color: #333">
           <div class="jumbotron" style="background-image: linear-gradient(rgba(19, 58, 83, 0.6),rgba(19, 58, 83, 0.6)),url({{ URL::to('/vendor/img/newlogo.png')}});
           background-size:contain;background-repeat: no-repeat;
           background-position: right top;
@@ -38,7 +39,7 @@
               <li class="list-group-item">Voluntary Experiance:   {{$user->voluntaryYears}}</li>
               <li class="list-group-item">Date Of Birth:    {{$user->dateOfBirth}}</li>
             </ul>
-            
+
         </div>
 
     </div>

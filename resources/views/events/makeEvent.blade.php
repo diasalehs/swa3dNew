@@ -2,9 +2,9 @@
  @section('content')
 
 
-<div class="container" style="margin:20px auto">
+<div class="container" style="margin:20px auto;min-height:500px">
 
-<ul class="nav nav-tabs sw-nav-tabs " role="tablist">
+<ul class="nav nav-tabs sw-nav-tabs " role="tablist" style="margin-bottom:30px;margin-top:40px;">
   <li class="nav-item col-4 col-lg-3  first-tab">
     <a class="nav-link "  href="{{route('myEvents')}}" >Up Coming Events    <span class="badge badge-default badge-pill">{{$Uevents->count()}}</span></a>
   </li>
@@ -37,7 +37,7 @@
                           <div class="form-group {{ $errors->has('country') ? ' has-error' : '' }}">
                                   <div class="form-group"> <!-- Description field -->
                                     <label class="control-label " for="country">Counrty</label>
-                                    <textarea class="form-control" value="{{ old('country') }}" required="required" name="country" id="counrty">{{ old('country') }}</textarea>
+                                    <input class="form-control" value="{{ old('country') }}" required="required" name="country" id="counrty" value="{{ old('country') }}" />
                                   </div>
                                   @if ($errors->has('country'))
                                       <div class="alert alert-danger" role="alert">
@@ -50,7 +50,7 @@
                           <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                                   <div class="form-group"> <!-- Description field -->
                                     <label class="control-label " for="description">Description</label>
-                                    <textarea class="form-control" value="{{ old('description') }}" required="required" name="description" id="description">{{ old('description') }}</textarea>
+                                    <textarea class="form-control" value="{{ old('description') }}" required="required" name="description" id="description" rows="6">{{ old('description') }}</textarea>
                                   </div>
                                   @if ($errors->has('description'))
                                       <div class="alert alert-danger" role="alert">
@@ -122,7 +122,7 @@
                           </div>
 
                           <div class="form-group">
-                                  <button id="register" type="submit" class="btn btn-success btn-green btn-block">Create Event</button>
+                                  <button id="register" type="submit" class="btn  btn-green btn-block">Create Event</button>
                           </div>
 
                       </form>

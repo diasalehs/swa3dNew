@@ -128,7 +128,7 @@
 
              @foreach($volunteers as $volunteer)
               <div class="col-lg-2 col-sm-2 col-xs-2 user">
-                  <a href="#"><img class="img-fluid" src="{{ URL::to('/') }}/pp/{{$volunteer->picture}}" alt=""></a>
+                  <a href="{{route('profile',$volunteer->user_id)}}"><img class="img-fluid" src="{{ URL::to('/') }}/pp/{{$volunteer->picture}}" alt=""></a>
                   <div class="text-center">
                    <a href="{{route('profile',$volunteer->user_id)}}"><h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->nameInEnglish}}</h5></a>
                     <small><a href="{{route('messenger',$volunteer->email)}}">{{$volunteer->email}}</a></small>

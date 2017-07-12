@@ -107,7 +107,6 @@ class mainController extends Controller
         if (Auth::check()) {
             if($user->userType==0){
             $Iuser=$user->Individuals;
-
             }
             elseif ($user->userType==1) {
             $Iuser=$user->Institute;
@@ -213,6 +212,7 @@ class mainController extends Controller
 
     }
     public function allResearches() {
+
         $researches= researches::orderBy('created_at')->paginate(8);
         return view('allResearches',compact('researches'));
 
@@ -225,5 +225,25 @@ class mainController extends Controller
         return (new Response($file, 200))
               ->header('Content-Type', $entry->mime);
     }
+    public function Researches_search(Request $request) {
+  
+        $results= researches::where('title','like','%'.$request['search'].'%')->paginate(2);
+ 
+        $resultstags= researches::whereHas('tags',function($query)use ($request){
+         return $query->where('name',$request['search']);
+        })->paginate(2);
+ 
+        $total= $results->total() + $resultstags->total();
+        $items= array_merge($results->items(),$resultstags->items());
+        $collection=collect($items)->unique();
+ 
+        $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
+        $researches=new \Illuminate\Pagination\LengthAwarePaginator($collection,$total,2,$currentpage);
+        $text=$request['search'];
+
+       return view('ResearchesSearch',compact('researches','text'));
+ 
+ 
+      }
 
 }

@@ -124,10 +124,6 @@
                       {{-- @endif --}}
                     </td>
                     </tr>
-
-
-
-
                   </tbody>
                 </table>
               </div>
@@ -148,7 +144,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{route('rank',$user->id)}}" method="get">
+      <form action="{{route('rank',$user->user_id)}}" method="get">
       <div class="modal-body rate-modal">
         <label>cat1</label>
         <input type="text" name="cat1" class="cat1">

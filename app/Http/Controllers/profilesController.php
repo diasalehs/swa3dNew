@@ -117,29 +117,63 @@ class profilesController extends Controller
 
 
 	public function rank(Request $request,$id)
-	{	$usere=user::find($id);
+	{	
+		$usere=user::find($id);
 		if($usere->userType==0){
-		$user =Individuals::find($id);
-		$user->cat1=($user->cat1+$request['cat1'])/2.00;
-		$user->cat2=($user->cat2+$request['cat2'])/2.00;
-		$user->cat3=($user->cat3+$request['cat3'])/2.00;
-		$user->cat4=($user->cat4+$request['cat4'])/2.00;
-		$avg=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
-		$user->acc_avg=($user->acc_avg + $avg)/2.00;
-		$user->save();
+
+			$user =$usere->Individuals;
+
+			if($user->rated==0){
+
+				$user->cat1=$request['cat1'];
+				$user->cat2=$request['cat2'];
+				$user->cat3=$request['cat3'];
+				$user->cat4=$request['cat4'];
+				$avg=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
+				$user->acc_avg=$avg;
+				$user->rated=1;
+				$user->save();
+				
+			}
+
+			else{
+				$user->cat1=($user->cat1+$request['cat1'])/2.00;
+				$user->cat2=($user->cat2+$request['cat2'])/2.00;
+				$user->cat3=($user->cat3+$request['cat3'])/2.00;
+				$user->cat4=($user->cat4+$request['cat4'])/2.00;
+				$avg=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
+				$user->acc_avg=($user->acc_avg + $avg)/2.00;
+				$user->save();
+			}
+			
 	}
 		elseif($usere->userType==1){
-		$user =Institute::find($id);
-		$user->cat1=($user->cat1+$request['cat1'])/2.00;
-		$user->cat2=($user->cat2+$request['cat2'])/2.00;
-		$user->cat3=($user->cat3+$request['cat3'])/2.00;
-		$user->cat4=($user->cat4+$request['cat4'])/2.00;
-		$avg=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
-		$user->acc_avg=($user->acc_avg + $avg)/2.00;
-		$user->save();
+			if($user->rated==0){
+				$user->cat1=$request['cat1'];
+				$user->cat2=$request['cat2'];
+				$user->cat3=$request['cat3'];
+				$user->cat4=$request['cat4'];
+				$avg=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
+				$user->acc_avg=$avg;
+				$user->rated=1;
+				$user->save();
+			}
+ 
+
+			else{
+				$user =$user->Institute;
+				$user->cat1=($user->cat1+$request['cat1'])/2.00;
+				$user->cat2=($user->cat2+$request['cat2'])/2.00;
+				$user->cat3=($user->cat3+$request['cat3'])/2.00;
+				$user->cat4=($user->cat4+$request['cat4'])/2.00;
+				$avg=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
+				$user->acc_avg=($user->acc_avg + $avg)/2.00;
+				$user->save();
+			}
+			
 	}
 
-	
-        return redirect()->back();
+	 return redirect()->back();
+       
 	}
 }

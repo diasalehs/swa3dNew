@@ -20,6 +20,7 @@ class CreateInstitutesTable extends Migration
             $table->string('nameInEnglish');
             $table->string('nameInArabic');
             $table->float('acc_avg')->unsigned()->default(0);
+            $table->float('rated')->unsigned()->default(0);
             $table->float('cat1')->unsigned()->default(0);
             $table->float('cat2')->unsigned()->default(0);
             $table->float('cat3')->unsigned()->default(0);
