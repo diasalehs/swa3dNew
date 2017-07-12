@@ -20,9 +20,9 @@
              <a class='btn btn-green'  href="{{route('login')}}">follow</a>
       @else
         @if($friend)
-             <a class='btn btn-green'  href="{{route('unfollow',$user->id)}}">unfollow</a>
+             <a class='btn btn-green'  href="{{route('unfollow',$user->user_id)}}">unfollow</a>
         @elseif(!$friend)
-             <a class='btn btn-green'  href="{{route('follow',$user->id)}}">follow</a>
+             <a class='btn btn-green'  href="{{route('follow',$user->user_id)}}">follow</a>
         @endif
         @if($userUevents->count() > 0)
         <a class='btn btn-green'  data-toggle="modal" data-target="#invite">invite</a>
@@ -67,10 +67,10 @@
                 <br>
                 <div class="card">
                   <div class="card-block">
-                    <h4 class="card-title">Achievements</h4>
+                    <h4 class="card-title">Events Joined In</h4>
                     <p class="card-text">
                     @foreach($myevents as $event)
-                      Event Title: {{$event->title}}<br>
+                      Event Title: <a href="{{route('event',$event->id)}}" >{{$event->title}}</a><br>
                       End Date: {{$event->endDate}}<br>
                     @endforeach
                   </div>

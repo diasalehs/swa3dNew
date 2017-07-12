@@ -24,7 +24,7 @@
                   <h4 class="card-title line-clamp-2">{{$event->title}}</h4>
                   <div class="card-bottom">
                     <p class="card-text "><small>{{$event->startDate}} To {{$event->endDate}} - in Nablus</small></p>
-                    <a href='event/{{$event->id}} ' class="btn btn-green" >View</a>
+                    <a href="{{route('event',$event->id}}" class="btn btn-green" >View</a>
                     <a href="{{route('login')}}" class="btn btn-pink">Volunteer</a>
 
                   </div>
@@ -168,7 +168,7 @@
             <div class="row">
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
-
+              
               @foreach($localevents as $event)
               <div class="col-md-6 col-sm-12">
                   <div class="card card-inverse event">

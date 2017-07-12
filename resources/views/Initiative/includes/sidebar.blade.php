@@ -1,5 +1,5 @@
-
-<div class="col-sm-12 pull-sm-12 col-md-4  col-lg-3 sidebar">
+@if(auth::user()->userType == 3)
+<div class="col-sm-12 z col-md-4  col-lg-3 sidebar">
     <div class="text-center">
 
     <div class=" circular--landscape">
@@ -16,3 +16,4 @@
         <a href="{{route('myEvents')}}" class="list-group-item  justify-content-between">Events Manager</a>
         <a href="{{route('messenger')}}" class="list-group-item  justify-content-between">Messenger</a>
  </div>
+@endif

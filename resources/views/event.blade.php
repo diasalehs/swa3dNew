@@ -173,7 +173,7 @@
                 @endforeach
               </select>
               @if($mine && $event->endDate > $date)
-              <button type="submit" class="btn btn-pink">unAccept</button>
+              <button type="submit" class="btn btn-pink">Remove</button>
               @endif
             </form>
 

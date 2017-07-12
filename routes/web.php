@@ -100,6 +100,9 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
                 Route::get('/addresearch',['uses'=>'IndividualsController@addResearch'])->name('addResearch');
                 Route::post('/addresearch',['uses'=>'IndividualsController@submitResearch'])->name('addResearch');
 
+                Route::get('/join/{userId}', ['uses'=>'initiativeController@join'])->name('join');
+                Route::get('/disjoin/{userId}', ['uses'=>'initiativeController@disjoin'])->name('disjoin');
+
                 Route::get('/makeInitiative', ['uses'=>'IndividualsController@makeInitiative'])->name('makeInitiative');
                 Route::post('/makeInitiative', ['uses'=>'IndividualsController@makeInitiativePost'])->name('makeInitiativePost');
                 Route::get('/myInitiatives', ['uses'=>'IndividualsController@myInitiatives'])->name('myInitiatives');
@@ -117,6 +120,10 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
             Route::group(['prefix'=>'initiative','routeMiddleware'=>'initiative'], function() {
                 Route::get('/editInitiative/{initiativeId}', ['uses'=>'IndividualsController@editInitiative'])->name('editInitiative');
                 Route::post('/editInitiative/{initiativeId}', ['uses'=>'IndividualsController@editInitiativePost'])->name('editInitiativePost');
+                Route::post('/acceptJoin/{userId}', ['uses'=>'initiativeController@acceptJoin'])
+                ->name('acceptJoin');
+                Route::post('/unAcceptJoin/{userId}', ['uses'=>'initiativeController@unAcceptJoin'])
+                ->name('unAcceptJoin');
 
             });
 

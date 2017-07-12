@@ -1,3 +1,4 @@
+@if(auth::user()->userType == 0)
 <div id="navtop"></div>
 <nav class="navbar mainNavbar navbar-toggleable-md navbar-light bg-faded  fixed-top">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,3 +87,4 @@
     </div>
   </div>
 </nav>
+@endif

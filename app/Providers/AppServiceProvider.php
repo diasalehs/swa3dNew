@@ -51,7 +51,7 @@ function boot()
         $view->with($data);
     });
 
-    view()->composer('Initiative/includes.sidebar',function($view){
+    view()->composer('initiative/includes.sidebar',function($view){
         $date = date('Y-m-d');
         $user = Auth::user();
         $data = array(
@@ -61,7 +61,6 @@ function boot()
         );
         $view->with($data);
     });
-    
 }
 
     /**

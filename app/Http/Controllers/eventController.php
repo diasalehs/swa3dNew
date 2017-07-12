@@ -24,48 +24,52 @@ class eventController extends Controller
 
     public function invite(Request $request)
     {
-        $i = 0;
-        $userId = $request['userId'];
-        if(!is_array($request->invited))
+        if($request->has('invited'))
         {
-            $request->invited = array($request->invited);
-        }
-        $forFlag = false;
-        for($i ;$i < sizeof($request->invited) ;$i++)
-        {   
-            $eventId = $request->invited[$i];
-            $user = Auth::user();
-            $mine = event::where('id',$eventId)->where('user_id',$user->id)->first();
-            if($mine)
+            $i = 0;
+            $userId = $request['userId'];
+            if(!is_array($request->invited))
             {
-                $user = user::where('id',$userId)->first();
-                if($user)
+                $request->invited = array($request->invited);
+            }
+            $forFlag = false;
+            for($i ;$i < sizeof($request->invited) ;$i++)
+            {   
+                $eventId = $request->invited[$i];
+                $user = Auth::user();
+                $mine = event::where('id',$eventId)->where('user_id',$user->id)->first();
+                if($mine)
                 {
-                    if($user->userType == 0 || $user->userType == 3){
-                        $forFlag = true;
-                        $flag = 0;
-                        $preInv = invite::where('event_id',$eventId)->where('user_id',$user->id)->first();
-                        $preVol = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
-                        if($preVol || $preInv)
-                        {
+                    $user = user::where('id',$userId)->first();
+                    if($user)
+                    {
+                        if($user->userType == 0 || $user->userType == 3){
+                            $forFlag = true;
+                            $flag = 0;
+                            $preInv = invite::where('event_id',$eventId)->where('user_id',$user->id)->first();
+                            $preVol = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
+                            if($preVol || $preInv)
+                            {
+                                continue;
+                            }
+                            $invite = new invite();
+                            $invite->event_id = $eventId;
+                            $invite->user_id = $user->id;
+                            $invite->save();
                             continue;
-                        }
-                        $invite = new invite();
-                        $invite->event_id = $eventId;
-                        $invite->user_id = $user->id;
-                        $invite->save();
-                        continue;
+                        }else
+                            return redirect()->route('errorPage')->withErrors("You can't send an invitation.");
                     }else
-                        return redirect()->route('errorPage')->withErrors("You can't send an invitation.");
+                        return redirect()->route('errorPage')->withErrors("profile not found.");
                 }else
-                    return redirect()->route('errorPage')->withErrors("profile not found.");
-            }else
-                return redirect()->route('errorPage')->withErrors("this event not yours.");
+                    return redirect()->route('errorPage')->withErrors("this event not yours.");
+            }
+            if($forFlag)
+            {
+                return redirect()->route('upComingEvents');
+            }
         }
-        if($forFlag)
-        {
-            return redirect()->route('upComingEvents');
-        }
+        return redirect()->back();
     }
 
     public function makeEvent(){
@@ -244,33 +248,42 @@ class eventController extends Controller
      */
     public function acceptVolunteer(Request $request,$eventId)
     {
-        $i = 0;
-        $user = Auth::user();
-        if(!is_array($request->accepted))
+        if($request->has('accepted'))
         {
-            $request->accepted = array($request->accepted);
-        }
-        for($i ;$i < sizeof($request->accepted) ;$i++)
-        {   
-            $volunteerId = $request->accepted[$i];
-            $volunteeruser = user::where('id',$volunteerId)->first();
-            $volunteer = volunteer::where('user_id',$volunteerId)->where('event_id',$eventId)->first();
-            $event = Event::find($eventId);
-            $invite = invite::where('event_id',$eventId)->where('user_id',$volunteerId)->first();
-            if($volunteeruser)
+            $i = 0;
+            $user = Auth::user();
+            if(!is_array($request->accepted))
             {
-                if($user->userType == 1 || $user->userType == 3)
+                $request->accepted = array($request->accepted);
+            }
+            $event = Event::find($eventId);
+            if($user->userType == 1 || $user->userType == 3)
+            {
+                if($event->user_id == $user->id)
                 {
-                    if($event->user_id == $user->id && $volunteer){
-                        $volunteer->accepted = 1;
-                        if($invite)$invite->delete();
-                        $volunteer->save();
-                    }else
-                        return redirect()->route('errorPage')->withErrors("this event not yours.");
+                    for($i ;$i < sizeof($request->accepted) ;$i++)
+                    {   
+                        $volunteerId = $request->accepted[$i];
+                        $volunteeruser = user::where('id',$volunteerId)->first();
+                        $volunteer = volunteer::where('user_id',$volunteerId)->where('event_id',$eventId)->first();
+                        $invite = invite::where('event_id',$eventId)->where('user_id',$volunteerId)->first();
+                        if($volunteeruser)
+                        {   
+                            if($volunteer)
+                            {
+                                $volunteer->accepted = 1;
+                                if($invite)$invite->delete();
+                                $volunteer->save();
+                                continue;
+                            }else
+                                return redirect()->route('errorPage')->withErrors("request not found.");
+                        }else
+                            return redirect()->route('errorPage')->withErrors("profile not found.");
+                    }
                 }else
-                    return redirect()->route('errorPage')->withErrors("You can't send.");
+                    return redirect()->route('errorPage')->withErrors("this event not yours.");
             }else
-                return redirect()->route('errorPage')->withErrors("profile not found.");
+                return redirect()->route('errorPage')->withErrors("You can't.");
         }
         return redirect()->back();
     }
@@ -283,32 +296,36 @@ class eventController extends Controller
      */
     public function unAcceptVolunteer(Request $request,$eventId)
     {
-        $i = 0;
-        $user = Auth::user();
-        if(!is_array($request->unaccepted))
+        if($request->has('unaccepted'))
         {
-            $request->unaccepted = array($request->unaccepted);
-        }
-        for($i ;$i < sizeof($request->unaccepted) ;$i++)
-        {   
-            $volunteerId = $request->unaccepted[$i];
-            $volunteeruser = user::where('id',$volunteerId)->first();
-            $volunteer = volunteer::where('user_id',$volunteerId)->where('event_id',$eventId)->first();
-            $event = Event::find($eventId);
-            if($volunteeruser)
+            $i = 0;
+            $user = Auth::user();
+            if(!is_array($request->unaccepted))
             {
-                if($user->userType == 1 || $user->userType == 3)
+                $request->unaccepted = array($request->unaccepted);
+            }
+            $event = Event::find($eventId);
+            if($user->userType == 1 || $user->userType == 3)
+            {
+                if($event->user_id == $user->id && $volunteer)
                 {
-                    if($event->user_id == $user->id && $volunteer){
+                    for($i ;$i < sizeof($request->unaccepted) ;$i++)
+                    {   
+                        $volunteerId = $request->unaccepted[$i];
+                        $volunteeruser = user::where('id',$volunteerId)->first();
                         $volunteer = volunteer::where('user_id',$volunteerId)->where('event_id',$eventId)->first();
-                        $volunteer->accepted = 0;
-                        $volunteer->save();
-                    }else
-                        return redirect()->route('errorPage')->withErrors("this event not yours.");
+                        if($volunteeruser)
+                        {
+                            $volunteer = volunteer::where('user_id',$volunteerId)->where('event_id',$eventId)->first();
+                            $volunteer->accepted = 0;
+                            $volunteer->save();
+                        }else
+                            return redirect()->route('errorPage')->withErrors("profile not found.");
+                    }
                 }else
-                    return redirect()->route('errorPage')->withErrors("You can't.");
+                    return redirect()->route('errorPage')->withErrors("this event not yours.");
             }else
-                return redirect()->route('errorPage')->withErrors("profile not found.");
+                return redirect()->route('errorPage')->withErrors("You can't.");
         }
         return redirect()->back();
     }

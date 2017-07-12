@@ -81,15 +81,16 @@ class registerStep2Controller extends Controller
                              return view('waitTillverification');
 
                         }
+                    }
                         
 
-                }
+                
                 elseif($user->isVerified==0){
-                return view('error\userNotVerified');
+                return view('errors/userNotVerified');
 
                 }
                 else
-                    return redirect()->route('home');}
+                    return redirect()->route('home');
 	}
 
 }

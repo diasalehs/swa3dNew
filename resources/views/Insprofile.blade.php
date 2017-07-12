@@ -3,22 +3,27 @@
 @section('content')
 
 <div class="viewProfile">
-  <div class="jumbotron jumbotron-fluid text-center">
+  <div class="jumbotron jumbotron-fluid text-center"style="background-image: linear-gradient(rgba(19, 58, 83, 0.6),rgba(19, 58, 83, 0.6)),url({{ URL::to('/vendor/img/newlogo.png')}});
+  background-size:contain;background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+  ">
     <div class="container">
       <div class=" circular--landscape">
           <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$user->picture}}">
       </div>
 
-      <h1 class="display-7">{{$user->nameInEnglish}}</h1>
-      <p class=""><span>user</span> <span>{{$user->country}}</span> <span>{{$user->cityName}}</span> </p>
+      <h1 class="display-7" style="color:#fff">{{$user->nameInEnglish}}</h1>
+      <p class="" style="color:#fff"><span>Volunteer</span> <span>{{$user->country}}</span> <span>{{$user->cityName}}</span> </p>
+
 
       @if(Auth::guest())
              <a class='btn btn-green'  href="{{route('login')}}">follow</a>
       @else
         @if($friend)
-             <a class='btn btn-green'  href="{{route('unfollow',$user->id)}}">unfollow</a>
+             <a class='btn btn-green'  href="{{route('unfollow',$user->user_id)}}">unfollow</a>
         @elseif(!$friend)
-             <a class='btn btn-green'  href="{{route('follow',$user->id)}}">follow</a>
+             <a class='btn btn-green'  href="{{route('follow',$user->user_id)}}">follow</a>
         @endif
       @endif
 
@@ -28,7 +33,6 @@
     <div class="row">
 
         <div class="col-8">
-
 
                 <div class="card">
                   <div class="card-block">
@@ -62,6 +66,18 @@
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                     <a href="{{route('messenger',$user->email)}}" class="card-link green-link">Send Message</a>
+                  </div>
+                </div>
+
+                <br>
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title">Achievement Events </h4>
+                    <p class="card-text">
+                    @foreach($Aevents as $Aevent)
+                      Event Title: <a href="{{route('event',$Aevent->id)}}" >{{$Aevent->title}}</a><br>
+                      End Date: {{$Aevent->endDate}}<br>
+                    @endforeach
                   </div>
                 </div>
                 <br>

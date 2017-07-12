@@ -115,6 +115,10 @@ class mainController extends Controller
             elseif ($user->userType==3) {
             $Iuser=$user->Initiative;
             }
+            if ($Iuser==null){
+            return view('comingEvents',compact('events'));
+
+            }
 
            $userevent= DB::table('user_intrests')->join('event_intrests', function ($join) {
             $join->on('user_intrests.intrest_id', '=', 'event_intrests.intrest_id')
