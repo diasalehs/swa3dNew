@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 class messageController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->date = date('Y-m-d');
+    }
+
 
     public function messenger($email = null){
         $user = Auth::user();
