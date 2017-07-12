@@ -1,3 +1,4 @@
+@if(auth::user()->userType == 0)
 <div class="col-sm-12  col-md-4  col-lg-3 sidebar">
     <div class="text-center">
 
@@ -22,3 +23,4 @@
          <a href="{{route('myInitiatives')}}" class="list-group-item  justify-content-between">My Initiatives<span class="badge badge-default badge-pill">{{$myInitiatives->count()}}</span></a> 
     </ul>
  </div>
+ @endif
