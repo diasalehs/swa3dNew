@@ -2,9 +2,9 @@
  @section('content')
 
 
-<div class="container" style="margin:20px auto">
+<div class="container" style="margin:20px auto;min-height:500px">
 
-<ul class="nav nav-tabs sw-nav-tabs " role="tablist">
+<ul class="nav nav-tabs sw-nav-tabs " role="tablist" style="margin-bottom:30px;margin-top:40px;">
   <li class="nav-item col-4 col-lg-3  first-tab">
     <a class="nav-link "  href="{{route('myEvents')}}" >Up Coming Events    <span class="badge badge-default badge-pill">{{$Uevents->count()}}</span></a>
   </li>
@@ -19,27 +19,27 @@
 
 <div class="tab-content">
 
-          <h1>My Archived Events</h1>
-          <table class="table">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-                </tr>
-              </thead>
-              <tbody>
+          <div class="row">
+
             @foreach ($Aevents as $event)
-                    <tr>
-                    <td>
-                    <a class='btn'  href="{{route('event',$event->id)}}">{{$event->title}}</a>
-                    </td>
-                    <td>{{$event->startDate}}</td>
-                    <td>{{$event->endDate}}</td>
-                    </tr>
+            <div class="col-md-6 col-sm-12">
+         <div class="card card-inverse event">
+                  <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
+                  <div class="card-img-overlay">
+                    <h4 class="card-title line-clamp-2">{{$event->title}}</h4>
+                    <div class="card-bottom">
+                      <p class="card-text "><small>{{$event->startDate}} To {{$event->endDate}} - in Nablus</small></p>
+                      <a href='event/{{$event->id}} ' class="btn btn-green" >View</a>
+                      <a class="btn btn-pink" href="{{route('eventDelete',[$event->id])}}">Delete</a>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
            @endforeach
-              </tbody>
-          </table>
+         </div>
+
 </div>
 
 @endsection

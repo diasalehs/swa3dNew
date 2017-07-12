@@ -167,6 +167,9 @@ button{
     border-right: 1px solid #ccc;
     color: #51c2c0;
   }
+  .jumbotron h1{
+    font-size: 70px;
+    }
 }
 @media only screen and (min-width: 1029px) {
   .sidebar{

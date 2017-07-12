@@ -39,7 +39,7 @@
 
     </ul>
     <div class="form-inline my-2 my-lg-0">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto nav-right">
           <li class="nav-item ">
           <form action="{{route('search')}}" method="get" >
             <input type="text" name="search" id="HeaderSearch"class="HeaderSearch form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
