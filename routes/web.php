@@ -40,6 +40,7 @@ Route::post('/registerer', function(\Illuminate\Http\Request $request) {
 })->name('registerer');
 
 Route::get('/errorPage', function() {return view('errorPage');})->name('errorPage');
+Route::get('/goBack', function() {return redirect()->back()->back();})->name('goBack');
 Route::get('/initiativeProfile', function() {return view('initiativeProfile');})->name('initiativeProfile');
 
 //-------------------------------- just for users - auth --------------------------------\\
