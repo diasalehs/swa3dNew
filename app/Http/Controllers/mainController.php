@@ -1,13 +1,13 @@
 <?php
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\news;
 use App\Individuals;
 use App\slider;
-use App\event;
-use App\volunteer;
+use App\Event;
+use App\Volunteer;
 use App\UserIntrest;
 use App\researches;
 use Illuminate\Support\Facades\Storage;

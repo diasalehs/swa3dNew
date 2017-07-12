@@ -125,7 +125,6 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
             Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
             Route::get('/myUpComingEvents', ['uses'=>'IndividualsController@myUpComingEvents'])->name('myUpComingEvents');
             Route::get('/myArchiveEvents', ['uses'=>'IndividualsController@myArchiveEvents'])->name('myArchiveEvents');
-
         });
     });
 
