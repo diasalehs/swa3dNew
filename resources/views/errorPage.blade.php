@@ -26,7 +26,7 @@
 									</p>
 									<div class="row">
 										<div class="col-sm-12 col-md-6 error-btn-div">
-											<a href="" class="btn btn-lg error-btn btn-secondary">
+											<a href="{{route('goBack')}}" class="btn btn-lg error-btn btn-secondary">
 											<i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;   Go Back</a>
 										</div>
 										<div class="col-sm-12 col-md-6">

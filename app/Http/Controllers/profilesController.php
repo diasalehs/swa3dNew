@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Friend;
 use App\Event;
 use App\Volunteer;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
+
 
 class profilesController extends Controller
 {

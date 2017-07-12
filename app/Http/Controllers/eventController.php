@@ -312,6 +312,4 @@ class eventController extends Controller
         }
         return redirect()->back();
     }
-
-
 }
