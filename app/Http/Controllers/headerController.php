@@ -7,7 +7,7 @@ class headerController extends Controller
 {
 	public function getLogin()
 	{
-		if(Auth::attempt() || Auth::user()){
+		if(Auth::check()){
 			if(Auth::user()->flag == 1){
 				return view('main.blade');
 	        }elseif(Auth::user()->flag == 0){

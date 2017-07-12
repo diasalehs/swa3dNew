@@ -43,6 +43,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Self::class, 'friends', 'requested_id', 'requester_id')->withTimestamps();
     }
 
+    public function Member()
+    {
+        return $this->belongsToMany(Self::class, 'Members', 'individual_id', 'initiative_id')->withTimestamps();
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *

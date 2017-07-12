@@ -24,10 +24,10 @@
         @elseif(!$friend)
              <a class='btn btn-green'  href="{{route('follow',$user->id)}}">follow</a>
         @endif
-      @endif
-
+        @if($userUevents->count() > 0)
         <a class='btn btn-green'  data-toggle="modal" data-target="#invite">invite</a>
-
+        @endif
+      @endif
 
 
     </div>
@@ -39,6 +39,18 @@
             <h3 class="greencolor ">Initiative Posts</h3>
             <hr />
 
+            <br>
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title">Achievements</h4>
+                    <p class="card-text">
+                    @foreach($myevents as $event)
+                      Event Title: {{$event->title}}<br>
+                      End Date: {{$event->endDate}}<br>
+                    @endforeach
+                  </div>
+                </div>
+                <br>
 
 
             <div class="card"style="margin-bottom:20px;">
@@ -48,11 +60,11 @@
 </a></p>
                 <p class="card-text mb-2 text-muted">
                   <small>2 days ago</small>
-
                 </p>
               </div>
 
             </div>
+
 
 
 
@@ -178,44 +190,6 @@
   </div>
 </div>
 
-<!-- Modal -->
-        <div class="modal fade" id="invite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Your Upcoming Events</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row justify-content-center">
-
-                  <form id="invite" role="form" action="{{route('invite')}}" method="POST" style="display: flex; justify-content:center; flex-wrap: wrap; align-items: flex-start;"> {{ csrf_field() }}
-
-                    <div class="form-group"style="margin-left:15px;">
-                     <select name="invited[]"class="form-control" id="Select1" multiple>
-                        <option value="">da</option>
-                     </select>
-                   </div>
-
-                    <input id="userId" type="text" style="display: none;" class="form-control" name="userId" value=""/>
-
-                        <div class="form-group">
-                          <button type="submit" class="btn btn-block btn-green">Invite</button>
-                        </div>
-
-                    </form>
-
-
-
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
+@include('includes.modal')
 
 @endsection('content')

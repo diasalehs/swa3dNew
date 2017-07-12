@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Query\Builder;
 use App\Individuals;
 use App\Institute;
+use App\Initiative;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Friend;
@@ -20,25 +21,24 @@ class profilesController extends Controller
     {
         $this->date = date('Y-m-d');
     }
+
 	public function index($userId)
 	{	
 
 	$flag = 0;
+	$date = $this->date;
 	if(Auth::check()){
 		$user = Auth::user();
-		$following = friend::where('requester_id',$user->id)->where('requested_id',$userId)->first();
+		$friend = false;
+		$following = Friend::where('requester_id',$user->id)->where('requested_id',$userId)->first();
 	    if($following == null)
 	    {
 	        $friend = false;
 	    }
 	    else 
 	    	$friend = true;
+	    $userUevents = event::where('events.user_id',$user->id)->where('startDate','>',$date)->get();
 	}
-
-	$date = $this->date;
-	
-
-	$userUevents = event::where('events.user_id',$user->id)->where('startDate','>',$date)->get();
 
     try {
 	  $user=User::find($userId);
@@ -49,28 +49,32 @@ class profilesController extends Controller
 	}
 	if ($userType==0)
 	{
-		$Individual= Individuals::where('user_id','=',$userId)->first();
+		$user= $user->Individuals;
 		$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
 		return view('Indprofile',compact('user','Individual','friend','userUevents','userUeventsVolunteers','myevents'));
 	} 
 
 	elseif($userType == 1)
 	{
+		$user = $user->Institute;
+
 		$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->get();
 
-		$Institute= Institutes::where('user_id','=',$userId)->get();
+		$Institute= Institute::where('user_id','=',$userId)->get();
 
     	return view('Insprofile',compact('user','Institute','friend','Aevents','userUevents','userUeventsVolunteers'));
 	}	
     elseif($userType == 3)
     {
+    	$user= $user->Initiative;
+
     	$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->get();
 
     	$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
 
     	$Initiative= Initiative::where('user_id','=',$userId)->get();
 
-    	return view('Iniprofile',compact('user','Initiative','friend','Aevents','userUevents','userUeventsVolunteers','myevents'));
+    	return view('initiativeProfile',compact('user','Initiative','friend','Aevents','userUevents','userUeventsVolunteers','myevents'));
     }
 	else
 		abort(403,'Unauthrized action.');

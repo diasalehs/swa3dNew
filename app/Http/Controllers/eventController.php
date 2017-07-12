@@ -229,7 +229,7 @@ class eventController extends Controller
     {
         if(Auth::check()){
             $user = Auth::user();
-            if($user->userType == 0){
+            if($user->userType == 0 || $user->userType == 3){
                 $eventVols = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->delete();
                 return redirect()->route('upComingEvents');
             }else{
@@ -242,17 +242,35 @@ class eventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function acceptVolunteer($volunteerId,$eventId)
+    public function acceptVolunteer(Request $request,$eventId)
     {
+        $i = 0;
         $user = Auth::user();
-        $event = event::find($eventId);
-        $volunteer = user::where('id',$volunteerId)->first();
-        $invite = invite::where('event_id',$eventId)->where('user_id',$volunteerId)->first();
-        if($event->user_id == $user->id && $volunteer){
+        if(!is_array($request->accepted))
+        {
+            $request->accepted = array($request->accepted);
+        }
+        for($i ;$i < sizeof($request->accepted) ;$i++)
+        {   
+            $volunteerId = $request->accepted[$i];
+            $volunteeruser = user::where('id',$volunteerId)->first();
             $volunteer = volunteer::where('user_id',$volunteerId)->where('event_id',$eventId)->first();
-            $volunteer->accepted = 1;
-            $invite->delete();
-            $volunteer->save();
+            $event = Event::find($eventId);
+            $invite = invite::where('event_id',$eventId)->where('user_id',$volunteerId)->first();
+            if($volunteeruser)
+            {
+                if($user->userType == 1 || $user->userType == 3)
+                {
+                    if($event->user_id == $user->id && $volunteer){
+                        $volunteer->accepted = 1;
+                        if($invite)$invite->delete();
+                        $volunteer->save();
+                    }else
+                        return redirect()->route('errorPage')->withErrors("this event not yours.");
+                }else
+                    return redirect()->route('errorPage')->withErrors("You can't send.");
+            }else
+                return redirect()->route('errorPage')->withErrors("profile not found.");
         }
         return redirect()->back();
     }
@@ -263,15 +281,34 @@ class eventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function unAcceptVolunteer($volunteerId,$eventId)
+    public function unAcceptVolunteer(Request $request,$eventId)
     {
+        $i = 0;
         $user = Auth::user();
-        $event = event::find($eventId);
-        $volunteer = user::where('id',$volunteerId)->first();
-        if($event->user_id == $user->id && $volunteer){
+        if(!is_array($request->unaccepted))
+        {
+            $request->unaccepted = array($request->unaccepted);
+        }
+        for($i ;$i < sizeof($request->unaccepted) ;$i++)
+        {   
+            $volunteerId = $request->unaccepted[$i];
+            $volunteeruser = user::where('id',$volunteerId)->first();
             $volunteer = volunteer::where('user_id',$volunteerId)->where('event_id',$eventId)->first();
-            $volunteer->accepted = 0;
-            $volunteer->save();
+            $event = Event::find($eventId);
+            if($volunteeruser)
+            {
+                if($user->userType == 1 || $user->userType == 3)
+                {
+                    if($event->user_id == $user->id && $volunteer){
+                        $volunteer = volunteer::where('user_id',$volunteerId)->where('event_id',$eventId)->first();
+                        $volunteer->accepted = 0;
+                        $volunteer->save();
+                    }else
+                        return redirect()->route('errorPage')->withErrors("this event not yours.");
+                }else
+                    return redirect()->route('errorPage')->withErrors("You can't.");
+            }else
+                return redirect()->route('errorPage')->withErrors("profile not found.");
         }
         return redirect()->back();
     }

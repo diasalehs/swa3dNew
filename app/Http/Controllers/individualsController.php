@@ -89,26 +89,7 @@ class IndividualsController extends Controller
         $Initiative->dateOfBirth =  $request['dateOfBirth'];
         $Initiative->save();
     }
-    public function allusers()
-    {
-        list($user ,$date)=$this->slidbare();
-        $users_record= user::get();
-        $following = friend::where('requester_id', $user->id)->get();
-        return view('individual/allusers',compact('users_record','following'));
-    }
-    public function followers()
-    {
-        list($user ,$date)=$this->slidbare();
-        $followers = friend::join('users','friends.requester_id','=','users.id')->where('requested_id', $user->id)->get();
-        $following = friend::join('users','friends.requested_id','=','users.id')->where('requester_id', $user->id)->get();
-        return view('individual/followers',compact('followers','following'));
-    }
-    public function following()
-    {
-        list($user ,$date)=$this->slidbare();
-        $following = friend::join('users','friends.requested_id','=','users.id')->where('requester_id', $user->id)->get();
-        return view('individual/following',compact('following'));
-    }
+    
     public function myUpComingEvents()
     {
         $user = $this->user;
