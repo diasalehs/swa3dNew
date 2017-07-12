@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="app">
-      @include('institute/includes.instituteHeader')
+      @include('initiative/includes.initiativeHeader')
       @yield('content')
     </div>
 

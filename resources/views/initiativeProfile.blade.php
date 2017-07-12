@@ -10,24 +10,34 @@
   ">
     <div class="container">
       <div class=" circular--landscape">
-          <img class="profile-pic text-center" src="http://barkpost-assets.s3.amazonaws.com/wp-content/uploads/2013/11/dogesmall.jpg">
+          <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$user->picture}}">
       </div>
 
-      <h1 class="display-7" style="color:#fff">name</h1>
-      <p class=""style="color:#fff"><span>Volunteer</span> <span>country</span> <span>cityName</span> </p>
+      <h1 class="display-7" style="color:#fff">{{$user->nameInEnglish}}</h1>
+      <p class="" style="color:#fff"><span>Volunteer</span> <span>{{$user->country}}</span> <span>{{$user->cityName}}</span> </p>
 
       @if(Auth::guest())
              <a class='btn btn-green'  href="{{route('login')}}">follow</a>
+             <a class='btn btn-yellow'  href="{{route('login')}}">Join</a>
       @else
         @if($friend)
-             <a class='btn btn-green'  href="{{route('unfollow',$user->id)}}">unfollow</a>
+             <a class='btn btn-green'  href="{{route('unfollow',$user->user_id)}}">unfollow</a>
         @elseif(!$friend)
-             <a class='btn btn-green'  href="{{route('follow',$user->id)}}">follow</a>
+             <a class='btn btn-green'  href="{{route('follow',$user->user_id)}}">follow</a>
         @endif
         @if($userUevents->count() > 0)
-        <a class='btn btn-green'  data-toggle="modal" data-target="#invite">invite</a>
+          <a class='btn btn-green'  data-toggle="modal" data-target="#invite">invite</a>
+        @endif
+        @if(Auth::user()->userType == 0)
+          @if($joinRequest)
+            <a class='btn btn-yellow'  href="{{route('disjoin',$user->user_id)}}">Disjoin</a>
+          @elseif(!$joinRequest)
+            <a class='btn btn-yellow'  href="{{route('join',$user->user_id)}}">Join</a>
+          @endif
         @endif
       @endif
+
+
 
 
     </div>
@@ -52,7 +62,7 @@
                 </div>
                 <br>
 
-
+                @if($mine || $joined)
             <div class="card"style="margin-bottom:20px;">
               <div class="card-block">
                 <h4 class="card-title greencolor">post owner</h4>
@@ -62,42 +72,46 @@
                   <small>2 days ago</small>
                 </p>
               </div>
-
             </div>
-
-
-
+            @endif
 
         </div>
 
-
           <div class=" col-lg-4">
-            <h3 class="greencolor ">Volunteers in this event</h3>
+                  @if($mine)
+            <h3 class="greencolor ">Join Requestes</h3>
             <hr />
-            <form>
-              <select class="selectpicker" multiple data-actions-box="true" data-size="7"data-live-search="true" >
-
-                <option>nameInEnglish</option>
-
-
+            <form role="form" method="POST" action="{{ route('acceptJoin',$user->user_id)}}">{{ csrf_field() }}
+              <select class="selectpicker" name="join[]" multiple data-actions-box="true" data-size="7" data-live-search="true" >
+                @foreach($initiativeVols as $initiativeVol)
+                <option value="{{$initiativeVol->id}}"><a href="{{route('profile',[$initiativeVol->id])}}">{{$initiativeVol->name}}</a></option>
+                @endforeach
               </select>
               <button type="submit" class="btn btn-green">Accept</button>
             </form>
-            <h3 class="greencolor " style="margin-top:20px;">Accepted Volunteers</h3>
+        @endif
+
+
+            <h3 class="greencolor " style="margin-top:20px;">Volunteers</h3>
             <hr />
-            <form>
-              <select class="selectpicker" multiple data-actions-box="true"data-size="7" data-live-search="true" >
-
-                <option>nameInEnglish</option>
-
+            <form ole="form" method="POST" action="{{ route('unAcceptJoin',$user->user_id)}}">{{ csrf_field() }}
+              <select class="selectpicker" name="joined[]" multiple 
+              @if($mine)
+              data-actions-box="true"
+              @endif
+              data-size="7" data-live-search="true" >
+                @foreach($initiativeAcceptedVols as $initiativeAcceptedVol)
+                <option value="{{$initiativeAcceptedVol->id}}"><a href="{{route('profile',[$initiativeAcceptedVol->id])}}">{{$initiativeAcceptedVol->name}}</a></option>
+                @endforeach
               </select>
-
+              @if($mine)
               <button type="submit" class="btn btn-pink">Remove</button>
-
+              @endif
             </form>
+
             <div class="card" style="margin-top:20px;">
               <div class="card-header">
-                Dashboard
+                                Dashboard
               </div>
               <div class="card-block dcb">
                 <table class="table rate-table">
@@ -105,27 +119,27 @@
                   <tbody>
                     <tr>
                       <td>Voluntary years</td>
-                      <td><div class="showrate" id="sh1"></div><span id="shr1"></span></td>
+                      <td><div class="showrate" id="sh1"></div><span id="shr1">{{$user->voluntaryYears}}</span></td>
                     </tr>
                     <tr>
                       <td>cat1</td>
-                      <td><div class="showrate" id="sh2"></div><span id="shr2"></span></td>
+                      <td><div class="showrate" id="sh2"></div><span id="shr2">{{$user->cat1}}</span></td>
                     </tr>
                     <tr>
                       <td>cat2</td>
-                      <td><div class="showrate" id="sh3"></div><span id="shr3"></span></td>
+                      <td><div class="showrate" id="sh3"></div><span id="shr3">{{$user->cat2}}</span></td>
                     </tr>
                      <tr>
                       <td>cat3</td>
-                      <td><div class="showrate" id="sh4"></div><span id="shr4"></span></td>
+                      <td><div class="showrate" id="sh4"></div><span id="shr4">{{$user->cat3}}</span></td>
                     </tr>
                      <tr>
                       <td>cat4</td>
-                      <td><div class="showrate" id="sh5"></div><span id="shr5"></span></td>
+                      <td><div class="showrate" id="sh5"></div><span id="shr5">{{$user->cat4}}</span></td>
                     </tr>
                      <tr>
                       <td>acc </td>
-                      <td><div class="showrate" id="sh6"></div><span id="shr6"></span></td>
+                      <td><div class="showrate" id="sh6"></div><span id="shr6">{{$user->acc_avg}}</span></td>
                     </tr>
                     <tr>
                       <td> </td>

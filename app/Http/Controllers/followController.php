@@ -24,7 +24,6 @@ class followController extends Controller
         $user = $this->user;
         $followers = friend::join('users','friends.requester_id','=','users.id')->where('requested_id', $user->id)->get();
         $following = friend::where('requester_id', $user->id)->get();
-        if($user->userType == 0)
         	return view('shared/followers',compact('followers','following'));
     }
 
@@ -32,7 +31,6 @@ class followController extends Controller
     {
         $user = $this->user;
         $following = Friend::join('users','friends.requested_id','=','users.id')->where('requester_id', $user->id)->get();
-        if($user->userType == 0)
         	return view('shared/following',compact('following'));
     }
     
