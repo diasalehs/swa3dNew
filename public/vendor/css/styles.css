@@ -848,13 +848,8 @@ border-bottom: 3px solid #51c2c0 !important;
   }
 }
 @media only screen and (min-width: 768px) {
-  .collapse {
-       display: none !important;
-   }
 
-  .mr-auto{
-    margin-top: 0px;
-  }
+
   .nav-tabs-main  .nav-item a{
       background-color: #eee;
       font-size: 20px;
@@ -869,12 +864,13 @@ border-bottom: 3px solid #51c2c0 !important;
   .login-btn{
           margin-bottom: 0px;
     }
-
 }
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 1201px) {
+
+  .mr-auto{
+    margin-top: 0px;
+  }
   .navbar-collapse{
     margin-left: 0px;
   }
-
-
 }

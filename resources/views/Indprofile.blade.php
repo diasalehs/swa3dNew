@@ -67,10 +67,10 @@
                 <br>
                 <div class="card">
                   <div class="card-block">
-                    <h4 class="card-title">Achievements</h4>
+                    <h4 class="card-title">Events Joined In</h4>
                     <p class="card-text">
                     @foreach($myevents as $event)
-                      Event Title: {{$event->title}}<br>
+                      Event Title: <a href="{{route('event',$event->id)}}" >{{$event->title}}</a><br>
                       End Date: {{$event->endDate}}<br>
                     @endforeach
                   </div>

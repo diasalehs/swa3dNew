@@ -259,19 +259,24 @@ class eventController extends Controller
             $event = Event::find($eventId);
             if($user->userType == 1 || $user->userType == 3)
             {
-                if($event->user_id == $user->id && $volunteer)
+                if($event->user_id == $user->id)
                 {
-                    for($i ;$i < sizeof($request->unaccepted) ;$i++)
+                    for($i ;$i < sizeof($request->accepted) ;$i++)
                     {   
                         $volunteerId = $request->accepted[$i];
                         $volunteeruser = user::where('id',$volunteerId)->first();
                         $volunteer = volunteer::where('user_id',$volunteerId)->where('event_id',$eventId)->first();
                         $invite = invite::where('event_id',$eventId)->where('user_id',$volunteerId)->first();
                         if($volunteeruser)
-                        {
-                                    $volunteer->accepted = 1;
-                                    if($invite)$invite->delete();
-                                    $volunteer->save();
+                        {   
+                            if($volunteer)
+                            {
+                                $volunteer->accepted = 1;
+                                if($invite)$invite->delete();
+                                $volunteer->save();
+                                continue;
+                            }else
+                                return redirect()->route('errorPage')->withErrors("request not found.");
                         }else
                             return redirect()->route('errorPage')->withErrors("profile not found.");
                     }

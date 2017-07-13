@@ -1,7 +1,9 @@
 <div id="navtop"></div>
 <nav class="navbar mainNavbar navbar-toggleable-lg navbar-light bg-faded  fixed-top"style="background-image:url('{{ URL::to('/') }}/pp/newlogo-min.png');    background-repeat: no-repeat;
     padding-left:0px;
-    background-size: 80px;">
+    background-size: 65px;
+background-position-x: 8px;
+background-position-y: 7px;">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

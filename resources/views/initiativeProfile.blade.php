@@ -46,23 +46,9 @@
     <div class="row">
 
         <div class="col-lg-8">
+            @if($mine || $joined)
             <h3 class="greencolor ">Initiative Posts</h3>
             <hr />
-
-            <br>
-                <div class="card">
-                  <div class="card-block">
-                    <h4 class="card-title">Achievements</h4>
-                    <p class="card-text">
-                    @foreach($myevents as $event)
-                      Event Title: {{$event->title}}<br>
-                      End Date: {{$event->endDate}}<br>
-                    @endforeach
-                  </div>
-                </div>
-                <br>
-
-                @if($mine || $joined)
             <div class="card"style="margin-bottom:20px;">
               <div class="card-block">
                 <h4 class="card-title greencolor">post owner</h4>
@@ -74,6 +60,33 @@
               </div>
             </div>
             @endif
+
+            <br>
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title">Events Joined In</h4>
+                    <p class="card-text">
+                    @foreach($myevents as $event)
+                      Event Title: <a href="{{route('event',$event->id)}}"  >{{$event->title}}</a><br>
+                      End Date: {{$event->endDate}}<br>
+                    @endforeach
+                  </div>
+                </div>
+
+                <br>
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title">Achievement Events </h4>
+                    <p class="card-text">
+                    @foreach($Aevents as $Aevent)
+                      Event Title: <a href="{{route('event',$event->id)}}"  >{{$Aevent->title}}</a><br>
+                      End Date: {{$Aevent->endDate}}<br>
+                    @endforeach
+                  </div>
+                </div>
+                <br>
+
+
 
         </div>
 
