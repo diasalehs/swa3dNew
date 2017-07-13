@@ -9,7 +9,7 @@ use App\researches;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\tags;
-use App\invite;
+use App\Invite;
 use App\researches_tags;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File; 
