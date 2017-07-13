@@ -10,6 +10,7 @@ use App\Event;
 use Illuminate\Http\Request;
 use App\Volunteer;
 use App\tags;
+use App\news;
 use App\researches_tags;
 use App\message;
 use App\researches;
@@ -75,8 +76,10 @@ class homeController extends Controller
             list($user ,$date)=$this->slidbare();
             if ($user->userType=== 10 )
             {
+                $news_count= news::where('approved','0')->count();
+
                 $users_record= tempInstitute::paginate();
-                return view('admin/adminDashboard',compact("users_record"));
+                return view('admin/adminDashboard',compact("users_record",'news_count'));
             }
             if($user->flag == 1)
             {

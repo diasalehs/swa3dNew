@@ -5,13 +5,9 @@
     <div class="row">
       @include('institute/includes.sidebar')
       
-
-          <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-          <a role="button" class="btn btn-warning " href="{{route('adminNewsView')}}">View/Edit All News</a>
-          <hr />
             <div class="row">
                 <div class="col-lg-12">
-                    <form enctype="multipart/form-data" method="POST" action="{{route('news')}}">{{ csrf_field() }}
+                    <form enctype="multipart/form-data" method="POST" action="{{route('createNews')}}">{{ csrf_field() }}
 
                         <div class="form-group"> <!-- title field -->
                             <label class="control-label " for="title">Title</label>
@@ -45,3 +41,15 @@
 
 
 @endsection
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=cj3pbv1qaurvgj16g8omheozohrxpv8yemit6uehwf7sxtlm  "></script>    <script>tinymce.init({
+  selector: 'textarea',
+  height: 500,
+  plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste imagetools"
+    ],
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | image",
+ });
+
+ </script>

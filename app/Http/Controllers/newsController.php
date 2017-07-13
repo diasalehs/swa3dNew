@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\news;
@@ -30,6 +31,50 @@ class newsController extends Controller
 
 # code...
     } 
+
+
+
+ public function editMynews(Request $request,$newsID)
+
+    {
+        $news = news::find($newsID);
+        $news->title = $request['title'];
+        $news->textarea = $request['textarea'];
+        if ($request->hasFile('mainImg')){
+            $mainImg=$request->file('mainImg');
+            $imagename=time().'.'.$mainImg->getClientOriginalExtension();
+            Image::make($mainImg)->resize(350,200)->save(public_path('uploads/'.$imagename));
+            $news->mainImgpath = $imagename;
+        }
+
+        $news->save();
+        return redirect()->route('editMynews',["news"=>$news]);
+
+
+    }  
+    public function myNews()
+    {
+        $news=news::where('institute_id',auth::user()->institute->id)->paginate(10);
+        return view('institute.myNews',compact('news'));
+        # code...
+    }
+    public function CreateNews(Request $request)
+    {
+             $news=new news;     
+        $news->title = $request['title'];
+        $news->institute_id=auth::user()->institute->id;
+        $news->textarea = $request['textarea'];
+        if ($request->hasFile('mainImg')){
+            $mainImg=$request->file('mainImg');
+            $imagename=time().'.'.$mainImg->getClientOriginalExtension();
+            Image::make($mainImg)->resize(350,200)->save(public_path('uploads/'.$imagename));
+            $news->mainImgpath = $imagename;
+        }
+
+        $news->save();
+        return view('institute.viewNews',compact('news'));
+        # code...
+    }
     public function editor(Request $request,$newsID)
 
     {
@@ -71,7 +116,10 @@ class newsController extends Controller
     public function allNews()
 
     {    
-        return view('allNews',["news"=>news::paginate(3)]);
+        $news_record=news::orderBy('created_at','desc')
+        ->where('approved','1')
+        ->paginate(5);
+        return view('allNews',["news"=>$news_record]);
 
 
 # code...
