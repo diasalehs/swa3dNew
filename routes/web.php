@@ -112,7 +112,8 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 
             //-------------------------------- institute --------------------------------\\
             Route::group(['prefix'=>'institute','routeMiddleware'=>'institute'], function() {
-                
+                Route::get('/createnews',  ['uses' =>'instituteController@index', 'as'=>'institueNews']);
+
             });
 
 

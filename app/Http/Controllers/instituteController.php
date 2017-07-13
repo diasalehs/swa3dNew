@@ -24,6 +24,11 @@ class instituteController extends Controller
             return $next($request);
         });
     }
+    public function index()
+    {
+        return view('institute.createNews');
+        # code...
+    }
 
 
 

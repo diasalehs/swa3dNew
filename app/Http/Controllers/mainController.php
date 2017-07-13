@@ -25,7 +25,7 @@ class mainController extends Controller
 
 	public function main() {
 		$_3slides=slider::orderBy('created_at','desc')->take(3)->get();
-		$volunteers=Individuals::orderBy('created_at','desc')->take(5)->get();
+		$volunteers=Individuals::orderBy('acc_avg','desc')->take(5)->get();
 		$news_record=news::orderBy('created_at','desc')->take(3)->get();
         $researches=researches::orderby('created_at','desc')->take(3)->get();
          return view('main',compact('volunteers','_3slides','news_record','researches'));
