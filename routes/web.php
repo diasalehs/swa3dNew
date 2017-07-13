@@ -138,8 +138,8 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 
     Route::get('/follow/{userId}', ['uses'=>'followController@follow'])->name('follow');
     Route::get('/unfollow/{userId}', ['uses'=>'followController@unfollow'])->name('unfollow');
-    Route::get('/profileViewEdit', ['uses'=>'HomeController@profileViewEdit'])->name('profileViewEdit');
-    Route::post('/profileEdit', ['uses'=>'HomeController@profileEdit'])->name('profileEdit');
-    Route::get('/allusers',['uses'=>'HomeController@allusers'])->name('allusers');
-    Route::get('/findVolunteers',['uses'=>'HomeController@findVolunteers'])->name('findVolunteers');
+    Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
+    Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
+    Route::get('/allusers',['uses'=>'homeController@allusers'])->name('allusers');
+    Route::get('/findVolunteers',['uses'=>'homeController@findVolunteers'])->name('findVolunteers');
 });
