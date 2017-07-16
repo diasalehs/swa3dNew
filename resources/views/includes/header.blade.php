@@ -102,14 +102,14 @@ background-position-y: 7px;">
                   <div class="form-group">
                   <div class=" ">
 
-                      <button type="submit" value="0" name="submit" class="btn btn-success choose-btn ">Individual</button>
+                      <button type="submit" value="0" name="submit" class="btn  choose-btn ">Individual</button>
                   </div>
               </div>
 
 
                   <div class="form-group">
                   <div class=" ">
-                      <button type="submit" value="1" name="submit" class="btn btn-success choose-btn ">Institute</button>
+                      <button type="submit" value="1" name="submit" class="btn  choose-btn ">Institute</button>
                   </div>
               </div>
           </form>

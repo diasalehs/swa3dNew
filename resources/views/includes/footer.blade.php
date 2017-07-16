@@ -113,7 +113,22 @@
     <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
 
     <script type="text/javascript">
-
+    function yesnoCheck(that) {
+            if (that.value == "PS") {
+                document.getElementById("palestineCity").style.display = "block";
+                document.getElementById("otherCity").style.display = "none";
+            } else {
+              document.getElementById("otherCity").style.display = "block";
+              document.getElementById("palestineCity").style.display = "none";
+            }
+        }
+        function vyyesno(that) {
+                if (that.value == "0") {
+                    document.getElementById("vyn").style.display = "none";
+                } else {
+                  document.getElementById("vyn").style.display = "block";
+                }
+            }
     $(document).ready(function()
         {
 
