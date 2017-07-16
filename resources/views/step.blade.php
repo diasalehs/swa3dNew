@@ -23,6 +23,7 @@
                 <div class="card-block">
                     <form class="" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
 
+                        {{--  --}}
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Where are you from</label>
                         <div class="col-lg-6">
@@ -33,6 +34,7 @@
                             </select>
                         </div>
                         </div>
+                        {{--  --}}
                         <div class="form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
                             <label for="email" class="col-lg-4 form-control-label">Your city name</label>
                             <div class="col-lg-6">
@@ -45,6 +47,99 @@
                                 @endif
                             </div>
                         </div>
+                        {{--  --}}
+                        <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
+                            <label for="email" class="col-lg-4 form-control-label">Your First Name</label>
+                            <div class="col-lg-6">
+                                <input id="name" type="text" class="form-control" name="firstName" value="{{ old('firstName') }}"
+                                required="required" />
+                                @if ($errors->has('firstName'))
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Warning!</strong> {{ $errors->first('firstName') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        {{--  --}}
+                        {{--  --}}
+                        <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
+                            <label for="email" class="col-lg-4 form-control-label">Your Last Name</label>
+                            <div class="col-lg-6">
+                                <input id="name" type="text" class="form-control" name="lastName" value="{{ old('lastName') }}"
+                                required="required" />
+                                @if ($errors->has('lastName'))
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Warning!</strong> {{ $errors->first('lastName') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        {{--  --}}{{--  --}}
+                        <div class="form-group{{ $errors->has('ARFirst') ? ' has-error' : '' }}">
+                            <label for="email" class="col-lg-4 form-control-label">Your Arabic First</label>
+                            <div class="col-lg-6">
+                                <input id="name" type="text" class="form-control" name="ARFirst" value="{{ old('ARFirst') }}"
+                                required="required" />
+                                @if ($errors->has('ARFirst'))
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Warning!</strong> {{ $errors->first('ARFirst') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        {{--  --}}{{--  --}}
+                        <div class="form-group{{ $errors->has('ARlast') ? ' has-error' : '' }}">
+                            <label for="email" class="col-lg-4 form-control-label">Your Arabic last</label>
+                            <div class="col-lg-6">
+                                <input id="name" type="text" class="form-control" name="ARlast" value="{{ old('ARlast') }}"
+                                required="required" />
+                                @if ($errors->has('ARlast'))
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Warning!</strong> {{ $errors->first('ARlast') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        {{--  --}}{{--  --}}
+                        <div class="form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
+                            <label for="email" class="col-lg-4 form-control-label">Your city name</label>
+                            <div class="col-lg-6">
+                                <input id="name" type="text" class="form-control" name="cityName" value="{{ old('cityName') }}"
+                                required="required" />
+                                @if ($errors->has('cityName'))
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Warning!</strong> {{ $errors->first('cityName') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        {{--  --}}{{--  --}}
+                        <div class="form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
+                            <label for="email" class="col-lg-4 form-control-label">Your city name</label>
+                            <div class="col-lg-6">
+                                <input id="name" type="text" class="form-control" name="cityName" value="{{ old('cityName') }}"
+                                required="required" />
+                                @if ($errors->has('cityName'))
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Warning!</strong> {{ $errors->first('cityName') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        {{--  --}}{{--  --}}
+                        <div class="form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
+                            <label for="email" class="col-lg-4 form-control-label">Your city name</label>
+                            <div class="col-lg-6">
+                                <input id="name" type="text" class="form-control" name="cityName" value="{{ old('cityName') }}"
+                                required="required" />
+                                @if ($errors->has('cityName'))
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Warning!</strong> {{ $errors->first('cityName') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        {{--  --}}
 
                         <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your country name</label>
@@ -59,17 +154,18 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label  class="col-lg-4 form-control-label" for="exampleSelect1">Gender</label>
-                        <div class="col-lg-6">
-                            <select name="gender" value="{{ old('gender') }}" class="form-control" id="exampleSelect1">
-                            <option value="male">male</option>
-                            <option value="female">female</option>
-                            </select>
+                        {{--  --}}
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male"> Male
+                          </label>
                         </div>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female"> Female
+                          </label>
                         </div>
-
+                        {{--  --}}
                         <div class="form-group{{ $errors->has('dateOfBirth') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your date of birth</label>
                             <div class="col-lg-6">
@@ -83,8 +179,8 @@
                             </div>
                         </div>
 
-
-                        <div class="form-group{{ $errors->has('currentWork') ? ' has-error' : '' }}">
+                        {{--  --}}
+                       {{--  <div class="form-group{{ $errors->has('currentWork') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Your current Work</label>
                             
                             <div class="col-lg-6">
@@ -97,18 +193,37 @@
 
                                 @endif
                             </div>
+                        </div> --}}
+                        {{--  --}}
+                      <div class="form-group">
+                            <label  class="col-lg-4 form-control-label" for="exampleSelect1">Your Current Work</label>
+                        <div class="col-lg-6">
+                            <select name="currentWork" value="{{ old('currentWork') }}" class="form-control" id="exampleSelect1">
+                            <option value="School Student">School Student</option>
+                            <option value="University Student">University Student</option>
+                            <option value="Governmental Employee">Governmental Employee</option>
+                            <option value="Private sector Employee">Private sector Employee</option>
+                            <option value="NGO Employee">NGO Employee</option>
+                            <option value="Self-employed">Self-employed</option>
+                            <option value="Business Owner">Business Owner</option>
+                            <option value="Unemployed">Unemployed</option>
+                            </select>
                         </div>
-
+                        </div>
+                        {{--  --}}
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Your educational level</label>
                         <div class="col-lg-6">
                             <select name="educationalLevel" value="{{ old('educationalLevel') }}" class="form-control" id="exampleSelect1">
-                            <option value="school">school</option>
-                            <option value="colleage">colleage</option>
+                            <option value="High School">High School</option>
+                            <option value="BSc">BSc</option>
+                            <option value="MSc">MSc</option>
+                            <option value="Diploma">Diploma</option>
+                            <option value="PhD">PhD</option>
                             </select>
                         </div>
                         </div>
-
+                        {{--  --}}
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Do you have any expriments on Voluntary</label>
                         <div class="col-lg-6">
@@ -118,7 +233,7 @@
                             </select>
                         </div>
                         </div>
-
+                        {{--  --}}
                         <div class="form-group{{ $errors->has('voluntaryYears') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">Voluntary Years</label>
                             <div class="col-lg-6">
@@ -131,6 +246,7 @@
                                 @endif
                             </div>
                         </div>
+                        {{--  --}}
                         <div class="form-group">
                             <div class="col-lg-4 offset-md-4">
                                 <button type="submit" class="btn btn-success btn-block">Register</button>
