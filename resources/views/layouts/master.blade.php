@@ -21,7 +21,8 @@
     <link href="{{ URL::asset('vendor/css/profileView.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/footer.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/jstarbox.css')}}" rel="stylesheet">
-    <link href="{{ URL::asset('vendor/css/ie7.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('vendor/jquery.tag-editor.css')}}" rel="stylesheet">
+
     @yield('styles')
     <!-- Temporary navbar container fix -->
   <style>

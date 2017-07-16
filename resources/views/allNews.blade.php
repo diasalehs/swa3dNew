@@ -12,6 +12,23 @@
         </li>
         <li class="breadcrumb-item active">All News</li>
     </ol>
+    <div class="row justify-content-center">
+
+      <form method="get" class="col-sm-12 col-md-6" action="{{route('Researches_search')}}" role="form" id="form-buscar">
+        <div class="form-group" >
+          <div class="input-group">
+            <input id="1" class="form-control" type="text" name="search" placeholder="Search..." style="    border-color: var(--green) !important;
+  " required/>
+            <span class="input-group-btn">
+              <button class="btn btn-green" style="  outline: 0 !important;
+   border-top-left-radius:0px!important;border-bottom-left-radius:0px!important;" type="submit">
+              <i class="glyphicon glyphicon-search" aria-hidden="true"></i> Search
+              </button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
 
     <!-- Blog Post -->
     @foreach($news as $anew)
@@ -20,7 +37,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <a href="#">
-                      <img class="img-fluid rounded all-news-img" src="{{$anew->mainImgpath}}" alt="">
+                      <img class="img-fluid rounded all-news-img" style="" src="{{$anew->mainImgpath}}" alt="">
                   </a>
 
               </div>

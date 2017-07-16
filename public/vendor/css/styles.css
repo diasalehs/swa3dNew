@@ -29,6 +29,7 @@ button{
     --yellow:#f1ae3b;
     --yellow-hover:#d89824;
 }
+
 .block {
   text-align: center;
   white-space: nowrap;
@@ -122,7 +123,7 @@ button{
 }
 .line-clamp-10 {
   display: -webkit-box;
-  -webkit-line-clamp: 9;
+  -webkit-line-clamp: 10;
   -webkit-box-orient: vertical;
 }
 #HeaderSearch::-webkit-input-placeholder { /* WebKit, Blink, Edge */

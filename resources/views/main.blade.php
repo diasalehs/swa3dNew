@@ -62,6 +62,7 @@
         <h1 class="my-4 news-section-title text-center"></h1>
 
         <div class="row">
+
         @foreach($news_record as $news)
             <div class="col-lg-4 col-sm-6 ">
                 <div class="card news-item">
@@ -229,7 +230,5 @@
           </div>
         </div>
       </div>
-
-
 
 @endsection('content')

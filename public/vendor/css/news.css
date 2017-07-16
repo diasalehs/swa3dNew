@@ -6,14 +6,7 @@ body {
 }
 button{
   font-family: 'Ubuntu', sans-serif !important;
-
 }
-@media (min-width: 992px) {
-    body {
-
-    }
-}
-* {
 
 #form-buscar >.form-group >.input-group > .form-control {
     height: 40px;
@@ -22,7 +15,6 @@ button{
         height: 40px;
         font-size: 16px;
         font-weight: 300;
-        border-radius: 0px !important;
 }
 #form-buscar >.form-group >.input-group > .input-group-btn > .btn .glyphicon{
  margin-right:12px;
@@ -40,9 +32,14 @@ button{
   background-color: var(--green-hover) !important;
   color: #fff;
 }
-
+#form-buscar >.form-group >.input-group > .form-control{
+  border-top-left-radius: 200px;
+  border-bottom-left-radius: 200px;
+}
 #form-buscar >.form-group >.input-group > .form-control:focus {
-  outline: 0;
+    outline: 0;
+    color: #f06493 !important;
+
 }
 .container-fluid{
 		padding: 0 50px;
