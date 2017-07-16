@@ -50,7 +50,7 @@
     <a class="nav-link" data-toggle="tab" id="rtab" href="#profile" role="tab">Researches</a>
   </li>
   <li class="nav-item col-4 col-lg-3 dashboard-tab-item">
-    <a class="nav-link" data-toggle="tab" id="dtab" href="#messages" role="tab">Dashboard</a>
+    <a class="nav-link" data-toggle="tab" id="dtab" href="#dashboard" role="tab">Dashboard</a>
   </li>
 
 </ul>
@@ -113,7 +113,67 @@
                  <a href="{{route('allResearches')}}"> <button type="button" class="btn btn-primary show-more-btn more-researches">More Researches</button></a>
             </div>
     </div>
-  <div class="tab-pane fade" id="messages" role="tabpanel">.</div>
+  <div class="tab-pane fade" id="dashboard" role="tabpanel">
+    <div class="row mb-3">
+
+      <div class="col-xl-3 col-lg-6 ">
+          <a href="#" style="text-decoration:none">
+       <div class="card card-inverse card-danger">
+              <div class="card-block bg-danger">
+                  <div class="rotate">
+                      <i class="fa fa-list fa-4x"></i>
+                  </div>
+                  <h6 class="text-uppercase">individuals</h6>
+                  <h1 class="display-1">{{$individuals}}</h1>
+              </div>
+          </div>
+      </a>
+      </div>
+
+      <div class="col-xl-3 col-lg-6 ">
+          <a href="#" style="text-decoration:none">
+       <div class="card card-inverse card-success">
+              <div class="card-block bg-success">
+                  <div class="rotate">
+                      <i class="fa fa-list fa-4x"></i>
+                  </div>
+                  <h6 class="text-uppercase">researchers</h6>
+                  <h1 class="display-1">{{$researchers}}</h1>
+              </div>
+          </div>
+      </a>
+      </div>
+
+      <div class="col-xl-3 col-lg-6 ">
+          <a href="#" style="text-decoration:none">
+       <div class="card card-inverse card-warning">
+              <div class="card-block bg-warning">
+                  <div class="rotate">
+                      <i class="fa fa-list fa-4x"></i>
+                  </div>
+                  <h6 class="text-uppercase">institutes</h6>
+                  <h1 class="display-1">{{$institutes}}</h1>
+              </div>
+          </div>
+      </a>
+      </div>
+
+      <div class="col-xl-3 col-lg-6 ">
+          <a href="#" style="text-decoration:none">
+       <div class="card card-inverse card-info">
+              <div class="card-block bg-info">
+                  <div class="rotate">
+                      <i class="fa fa-list fa-4x"></i>
+                  </div>
+                  <h6 class="text-uppercase">initiatives</h6>
+                  <h1 class="display-1">{{$initiatives}}</h1>
+              </div>
+          </div>
+      </a>
+      </div>
+
+      </div> <!--/row-->
+  </div>
 </div>
 </div>
 

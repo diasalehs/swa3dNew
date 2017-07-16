@@ -10,6 +10,8 @@ use App\Event;
 use App\Volunteer;
 use App\UserIntrest;
 use App\researches;
+use App\Institute;
+use App\Initiative;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
@@ -28,7 +30,12 @@ class mainController extends Controller
 		$volunteers=Individuals::orderBy('created_at','desc')->take(5)->get();
 		$news_record=news::orderBy('created_at','desc')->take(3)->get();
         $researches=researches::orderby('created_at','desc')->take(3)->get();
-         return view('main',compact('volunteers','_3slides','news_record','researches'));
+        $individuals = Individuals::where('researcher',0)->count();
+        $researchers = Individuals::where('researcher',1)->count();
+        $institutes = Institute::count();
+        $initiatives = Initiative::count();
+        return view('main',compact('volunteers','_3slides','news_record','researches',
+            'individuals','researchers','institutes','initiatives'));
 	}
 
 	public function upComingEvents(Request $request) {
