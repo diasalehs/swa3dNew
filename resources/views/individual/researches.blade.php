@@ -16,8 +16,7 @@
          @endif
          <h3 class="greencolor ">Add new research</h3>
          <hr />
-         <form method="post" class=""  enctype="multipart/form-data" action="{{route('addResearch')}}">{{ csrf_field() }}
-
+         <form method="post" class="" id="formID"  enctype="multipart/form-data" action="{{route('addResearch')}}">{{ csrf_field() }}
           <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
               <label for="title" class="col-lg-4 form-control-label">Title</label>
               <div class="col-12">
@@ -60,8 +59,8 @@
           <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
               <label for="tags" class="col-lg-4 form-control-label">Tags</label>
               <div class="col-12">
-                  <input id="tags" type="text" class="form-control" name="tags" value="{{ old('tags') }}"
-                  required="required" />
+                <input name="hashtags" type="tags" id="tags" >
+
                   @if ($errors->has('tags'))
                       <div class="alert alert-danger" role="alert">
                           <strong>Warning!</strong> {{ $errors->first('tags') }}
