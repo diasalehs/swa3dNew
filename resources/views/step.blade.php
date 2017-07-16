@@ -1,5 +1,9 @@
 @extends('layouts.app')
  @section('content')
+ <script type="text/javascript">
+     confirm("Press a button!");
+
+ </script>
 @if(auth::user()->userType==0)
 
 
@@ -224,6 +228,24 @@
                         </div>
                         </div>
                         {{--  --}}
+                           {{--  What is the major of education if the vistor is university student or above?, Choosing from Options (, , , , , , , , .etc)--}}
+                      <div class="form-group">
+                            <label  class="col-lg-4 form-control-label" for="exampleSelect1">Major Education Level</label>
+                        <div class="col-lg-6">
+                            <select name="Major" value="{{ old('Major') }}" class="form-control" id="exampleSelect1">
+                            <option value="IT">IT</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Medicin"> Medicin</option>
+                            <option value="Law">Law</option>
+                            <option value="Art">Art</option>
+                            <option value="Business">Business</option>
+                            <option value="Social Science">Social Science</option>
+                            <option value="Litreture">Litreture</option>
+                            <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        </div>
+                        {{-- Yes or No Options only (If Yes, the next field will appear) --}}
                         <div class="form-group">
                             <label  class="col-lg-4 form-control-label" for="exampleSelect1">Do you have any expriments on Voluntary</label>
                         <div class="col-lg-6">
