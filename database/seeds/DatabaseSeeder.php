@@ -85,26 +85,21 @@ class DatabaseSeeder extends Seeder
 	            $users->save();
 
 	            $initiative = new Initiative();
-		        $initiative->nameInEnglish = $users->name;
-		        $initiative->nameInArabic = $users->name;
-		        $initiative->user_id = $users->id;
-		        $initiative->adminId = ($i-2);
-		        $initiative->livingPlace = "camp";
-		        $initiative->cityName = "nablus";
-		        $initiative->country = "pal";
-		        $initiative->currentWork = "all";
-		        $initiative->dateOfBirth = "2011-1-1";
-		        $initiative->email = $users->email;
-		        $initiative->preVoluntary = 0;
-		        $initiative->voluntaryYears = 0;
-		        $initiative->save();
+  		        $initiative->nameInEnglish = $users->name;
+  		        $initiative->nameInArabic = $users->name;
+  		        $initiative->user_id = $users->id;
+  		        $initiative->adminId = ($i-2);
+  		        $initiative->livingPlace = "camp";
+  		        $initiative->cityName = "nablus";
+  		        $initiative->country = "pal";
+  		        $initiative->currentWork = "all";
+  		        $initiative->dateOfBirth = "2011-1-1";
+  		        $initiative->email = $users->email;
+  		        $initiative->preVoluntary = 0;
+  		        $initiative->voluntaryYears = 0;
+  		        $initiative->save();
 
 		        $i++;
-		        $news = new news();
-	            $news->mainImgpath = $faker->imageUrl($width = 640, $height = 480);
-	            $news->title = $faker->word;
-	            $news->textarea = $faker->text;
-	            $news->save();
 
 	            $sliders = new slider();
 	            $sliders->mainImgpath = $faker->imageUrl($width = 640, $height = 480);
