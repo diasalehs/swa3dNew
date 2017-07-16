@@ -33,7 +33,7 @@
     @endif
 
        <li class="nav-item">
-        <a class="nav-link" href="#"  style="color: #f1ae3a;"><i class="fa fa-handshake-o" aria-hidden="true"></i>
+        <a class="nav-link" href="{{route('upComingEvents')}}"  style="color: #f1ae3a;"><i class="fa fa-handshake-o" aria-hidden="true"></i>
  Volunteer</a>
       </li>
 
