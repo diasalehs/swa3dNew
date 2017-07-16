@@ -30,7 +30,17 @@ class mainController extends Controller
         ->where('approved','1')
         ->take(3)->get();
         $researches=researches::orderby('created_at','desc')->take(3)->get();
-         return view('main',compact('volunteers','_3slides','news_record','researches'));
+           $volRec = DB::table('individuals')->count();
+           $malesRec=individuals::where('gender','male')->count();
+           $femalesRec=individuals::where('gender','female')->count();
+           $insRec= DB::table('institutes')->count();
+           $resRec=DB::table('researches')->count();
+           $eveRec=DB::table('events')->count();
+
+
+
+         return view('main',compact('volunteers','_3slides','news_record','researches','volRec','insRec','resRec','eveRec','malesRec','femalesRec'
+            ));
 	}
 
 	public function upComingEvents(Request $request) {
@@ -226,8 +236,9 @@ class mainController extends Controller
     public function download($researchID) {
         $research = researches::where('id',$researchID)->first();
             $entry = researches::where('filename', '=', $research->filename)->firstOrFail();
-        $file = Storage::disk('local')->get($entry->filename);
 
+        $file = Storage::disk('local')->get($entry->filename);
+        
         return (new Response($file, 200))
               ->header('Content-Type', $entry->mime);
     }
