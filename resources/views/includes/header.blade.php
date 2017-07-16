@@ -28,7 +28,7 @@ background-position-y: 7px;">
     </ul>
     <div class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto nav-right">
-          <li class="nav-item ">
+          <li class="nav-item HeaderSearchli">
 
           <form action="{{route('search')}}" method="get" >
             <input type="text" name="search" id="HeaderSearch" class="HeaderSearch form-control" placeholder="&#xF002; Search Swa3ed.." style="font-family:Arial,FontAwesome">
@@ -102,14 +102,14 @@ background-position-y: 7px;">
                   <div class="form-group">
                   <div class=" ">
 
-                      <button type="submit" value="0" name="submit" class="btn btn-success choose-btn ">Individual</button>
+                      <button type="submit" value="0" name="submit" class="btn  choose-btn ">Individual</button>
                   </div>
               </div>
 
 
                   <div class="form-group">
                   <div class=" ">
-                      <button type="submit" value="1" name="submit" class="btn btn-success choose-btn ">Institute</button>
+                      <button type="submit" value="1" name="submit" class="btn  choose-btn ">Institute</button>
                   </div>
               </div>
           </form>

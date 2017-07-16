@@ -39,7 +39,6 @@
 
 
     <div class="container ">
-
         <!-- Nav tabs -->
 <ul class="nav nav-tabs nav-tabs-main row justify-content-center" id="nnnn"role="tablist">
 
@@ -117,8 +116,9 @@
             </div>
     </div>
   <div class="tab-pane fade" id="messages" role="tabpanel">
-
+=
 <div class="row tile_count">
+
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
               <div class="count">2500</div>
@@ -153,8 +153,11 @@
 <br><br>
             <div class="row mb-3">
                 <div class="col-xl-3 col-lg-6">
+                  <canvas height="300" width="300" id="myChart"></canvas>
+
                   <a href="" style="text-decoration:none">
-                    <div class="card card-inverse card-success">
+
+                    <div class="card dashboard-card card-inverse card-success">
                         <div class="card-block bg-success">
                             <div class="rotate">
                                 <i class="fa fa-user fa-5x"></i>
@@ -168,7 +171,7 @@
 
                  <div class="col-xl-3 col-lg-6 ">
                     <a href="#" style="text-decoration:none">
-                 <div class="card card-inverse card-danger">
+                 <div class="card dashboard-card card-inverse card-danger">
                         <div class="card-block bg-danger">
                             <div class="rotate">
                                 <i class="fa fa-list fa-4x"></i>
@@ -182,7 +185,7 @@
                 </div>
 
                 <div class="col-xl-3 col-lg-6">
-                    <div class="card card-inverse card-info">
+                    <div class="card dashboard-card card-inverse card-info">
                         <div class="card-block bg-info">
                             <div class="rotate">
                                 <i class="fa fa-twitter fa-5x"></i>
@@ -193,7 +196,7 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6">
-                    <div class="card card-inverse card-warning">
+                    <div class="card dashboard-card card-inverse card-warning">
                         <div class="card-block bg-warning">
                             <div class="rotate">
                                 <i class="fa fa-share fa-5x"></i>

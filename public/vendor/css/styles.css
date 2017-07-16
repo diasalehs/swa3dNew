@@ -29,6 +29,30 @@ button{
     --yellow:#f1ae3b;
     --yellow-hover:#d89824;
 }
+.dashboard-card {
+    overflow:hidden;
+}
+
+.dashboard-card .card-block .rotate {
+    z-index: 8;
+    float: right;
+    height: 100%;
+}
+
+.dashboard-card .card-block .rotate i {
+    color: rgba(20, 20, 20, 0.15);
+    position: absolute;
+    left: 0;
+    left: auto;
+    right: -10px;
+    bottom: 0;
+    display: block;
+    -webkit-transform: rotate(-44deg);
+    -moz-transform: rotate(-44deg);
+    -o-transform: rotate(-44deg);
+    -ms-transform: rotate(-44deg);
+    transform: rotate(-44deg);
+}
 
 .block {
   text-align: center;
@@ -772,6 +796,9 @@ border-bottom: 3px solid #51c2c0 !important;
   .navbar-collapse{
     margin-left: 20px;
   }
+  .HeaderSearchli{
+    height: 40px;
+  }
 }
 @media only screen and (min-width: 300px) {
 
@@ -873,5 +900,8 @@ border-bottom: 3px solid #51c2c0 !important;
   }
   .navbar-collapse{
     margin-left: 0px;
+  }
+  .HeaderSearchli{
+    height: auto;
   }
 }
