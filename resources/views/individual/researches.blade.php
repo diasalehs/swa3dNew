@@ -110,7 +110,7 @@
               <div class="col-12">
               <label for="tool" class="control-label">Tools</label>
                   <div class="form-check">
-                  <label class="form-check-label"><input type="checkbox"  name ="tool1" value="tool1" class="form-check-input">tool1</label>
+                  <label class="form-check-label"><input type="checkbox"  name ="tool1" value="Descriptive Research" class="form-check-input">Descriptive Research</label>
                   </div>
                   @if ($errors->has('tool1'))
                       <div class="alert alert-danger" role="alert">
@@ -123,7 +123,7 @@
           <div class="form-group{{ $errors->has('tool2') ? ' has-error' : '' }}">
               <div class="col-12">
                   <div class="form-check">
-                  <label class="form-check-label"><input type="checkbox"  name ="tool2" value="tool2" class="form-check-input">tool2</label>
+                  <label class="form-check-label"><input type="checkbox"  name ="tool2" value="Interviews" class="form-check-input">Interviews</label>
                   </div>
                   @if ($errors->has('tool2'))
                       <div class="alert alert-danger" role="alert">
