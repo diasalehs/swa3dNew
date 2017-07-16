@@ -4,11 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\auth;
+use Illuminate\Support\Facades\Auth;
 use App\Friend;
 use App\User;
 use App\Volunteer;
-use App\Researches;
+use App\researches;
 use App\Initiative;
 
 class AppServiceProvider extends ServiceProvider

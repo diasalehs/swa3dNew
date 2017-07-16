@@ -22,7 +22,6 @@ class profilesController extends Controller
 {
 	public function __construct()
     {
-        $this->middleware(['auth']);
         $this->middleware(function ($request, $next) {
             $date = date('Y-m-d');
             $user = Auth::user();

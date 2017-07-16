@@ -20,6 +20,8 @@
                         <div class="card-block">
                             <a href="{{route('edit',[$news->id])}}" class="card-link">Edit</a>
                             <a href="delete/{{$news->id}}" class="card-link text-danger">Delete</a>
+                            <a href="{{route('approve',$news->id)}}" class="card-link text-link">approve</a>
+
                         </div>
                         </div>
                 </div>

@@ -81,10 +81,13 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
                 Route::group(['prefix'=>'news'], function() {
                     Route::get('/',  ['uses' =>'adminController@indexx', 'as'=>'news']);
                     Route::post('/', ['uses' =>'newsController@Create', 'as'=>'news']);
+                    Route::get('/approve', ['uses' =>'adminController@approveNews', 'as'=>'approveNews']);
                     Route::get('/delete/{newsId}', ['uses' =>'newsController@delete', 'as'=>'delete_news']);
                     Route::get('/edit/{newsId}',  ['uses' =>'adminController@edit', 'as'=>'edit']);
                     Route::post('/edit/{newsId}', ['uses' =>'newsController@editor', 'as'=>'edit']);
                     Route::get('/adminNewsView',  ['uses' =>'adminController@adminNewsView', 'as'=>'adminNewsView']);
+                    Route::get('/approve/{id}', ['uses' =>'adminController@approve', 'as'=>'approve']);
+
                 });
                 
                 Route::get('/adminVerify/{userID}', ['uses' =>'adminController@adminVerify', 'as'=>'adminVerify']);
@@ -112,7 +115,12 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 
             //-------------------------------- institute --------------------------------\\
             Route::group(['prefix'=>'institute','routeMiddleware'=>'institute'], function() {
-                
+                Route::get('/createnews',  ['uses' =>'instituteController@index', 'as'=>'institueNews']);
+                Route::get('/myNews',  ['uses' =>'newsController@myNews', 'as'=>'myNews']);
+                Route::post('/', ['uses' =>'newsController@CreateNews', 'as'=>'createNews']);
+                Route::get('/{newsId}',  ['uses' =>'instituteController@edit', 'as'=>'editMyNews']);
+
+                Route::post('/{newsID}', ['uses' =>'newsController@editMynews', 'as'=>'editMynews']);
             });
 
 

@@ -9,7 +9,7 @@
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 
 
-            <h1>All News</h1>
+            <h1>News Needs Approval</h1>
             <div class="row">
              @foreach($news_record as $news)
                 <div class="col-lg-4">
@@ -20,6 +20,8 @@
                         <div class="card-block">
                             <a href="{{route('edit',[$news->id])}}" class="card-link">Edit</a>
                             <a href="delete/{{$news->id}}" class="card-link text-danger">Delete</a>
+                            <a href="{{route('approve',$news->id)}}" class="card-link text-link">approve</a>
+
                         </div>
                         </div>
                 </div>

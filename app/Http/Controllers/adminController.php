@@ -32,22 +32,42 @@ class adminController extends Controller
 
 
     public function indexx()
-    {   $news_record= DB::table('news')->get();
-         return view('admin/adminNews',["news_record"=>$news_record]);
+    {    $news_count= news::where('approved','0')->count();
+
+         return view('admin/adminNews',compact('news_count'));
 
 
         # code...
     }
     public function edit($newsID)
 
-    {
+    {   $news_count= news::where('approved','0')->count();
         $news = news::find($newsID);
-        return view('admin/editingpage',["news"=>$news]);
+        return view('admin.editingpage',["news"=>$news,"news_count"=>$news_count]);
     }
      public function adminNewsView()
     {    
+         $news_count= news::where('approved','0')->count();
         $news_record= DB::table('news')->get();
-         return view('admin/adminNewsView',["news_record"=>$news_record]);
+        return view('admin.adminNewsView',compact('news_record','news_count')); 
+
+
+        # code...
+    } 
+    public function approve($id)
+    {   $news= news::find($id);
+        $news->approved=1;
+        $news->save();
+         return redirect()->route('approveNews');
+
+        # code...
+    }
+
+    public function approveNews()
+    {   
+     $news_count= news::where('approved','0')->count();
+        $news_record= news::where('approved','0')->paginate(10);
+         return view('admin/unApprovedNews',["news_record"=>$news_record,"news_count"=>$news_count]);
 
 
         # code...
