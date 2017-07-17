@@ -98,12 +98,12 @@ class eventController extends Controller
             'startDate' => 'required|date|after:today',
             'endDate' => 'required|date|after:startDate',
         ]);
-
         $event = new event();
         $event->title = $request['title'];
         $event->user_id = $user->id;
         $event->description = $request['description'];
         $event->country = $request['country'];
+        $event->cityName = $request['cityName'];
         $event->startDate = $request['startDate'];
         $event->endDate = $request['endDate'];
         $event->open = $request['open'];
@@ -177,6 +177,8 @@ class eventController extends Controller
 
     public function eventEditPost(Request $request){
         $user = Auth::user();
+        $date = $this->date;
+
         $this->validate($request, [
             'eventId' => 'required',
             'title' => 'required|string|max:100',
@@ -191,6 +193,8 @@ class eventController extends Controller
             if($event->user_id == $user->id){
                 if($event->startDate > $date){
                     $event->title = $request['title'];
+                    $event->country = $request['country'];
+                    $event->city = $request['cityName'];
                     $event->user_id = $user->id;
                     $event->description = $request['description'];
                     $event->startDate = $request['startDate'];

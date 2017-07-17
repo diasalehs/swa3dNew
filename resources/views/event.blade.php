@@ -14,7 +14,7 @@
     text-align: center;" >
       <div class="">
         <h1 class="display-7 " style="color:#fff">{{$event->title}}</h1>
-        <p class=""style="color:#fff; margin-bottom:20px; margin-top:40px">{{$event->startDate}} To {{$event->endDate}} - in {{$event->country}} | Created by: <a href="{{route('profile',$event->user_id)}}" class="pink-link">{{$event->user->name}}</a></p>
+        <p class=""style="color:#fff; margin-bottom:20px; margin-top:40px">{{$event->startDate}} To {{$event->endDate}} - in {{$event->country}}: {{$event->city}}   |   Created by: <a href="{{route('profile',$event->user_id)}}" class="pink-link">{{$event->user->name}}</a></p>
 
 
 @if(Auth::guest() && $event->endDate > $date)
