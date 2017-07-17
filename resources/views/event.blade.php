@@ -75,10 +75,8 @@
                   @endif
                 @endif
 
-                @if($mine || $eventCloseAllowed)
-                  @if($archived == 1)
-                    <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#lessonsModal">Lessons Learned</a>
-                  @endif
+                @if(($mine || $eventCloseAllowed) && $archived == 1)
+                  <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#lessonsModal">Lessons Learned</a>
                 @endif
 
                 @if($mine)
@@ -199,4 +197,7 @@
       </div>
         @endif
 @endif
+
+@include('includes.reviewModal')
+
 @endsection('content')
