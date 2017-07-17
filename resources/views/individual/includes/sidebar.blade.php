@@ -7,6 +7,10 @@
     </div>
         <h5  class="profile-name-indi"><a href="{{route('profile',$user->id)}}">{{$user->name}}</a></h5>
         <small><a href="{{route('messenger',$user->email)}}">{{$user->email}}</a></small>
+        <br />
+        <button type="button" class="btn btn-green btn-sm" data-toggle="modal" data-target="#avModal">
+          Change Availablety
+        </button>
     </div>
     <hr>
     <ul class="list-group">
@@ -20,7 +24,46 @@
         <a href="{{route('myUpComingEvents')}}" class="list-group-item  justify-content-between">My UpComing Events<span class="badge badge-default badge-pill">{{$myUpComingEvents->count()}}</span></a>
         <a href="{{route('myArchiveEvents')}}" class="list-group-item  justify-content-between">My Archive Events<span class="badge badge-default badge-pill">{{$myArchiveEvents->count()}}</span></a>
         <a href="{{route('messenger')}}" class="list-group-item  justify-content-between">Messenger</a>
-         <a href="{{route('myInitiatives')}}" class="list-group-item  justify-content-between">My Initiatives<span class="badge badge-default badge-pill">{{$myInitiatives->count()}}</span></a> 
+         <a href="{{route('myInitiatives')}}" class="list-group-item  justify-content-between">My Initiatives<span class="badge badge-default badge-pill">{{$myInitiatives->count()}}</span></a>
     </ul>
  </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="avModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change Availablety</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+        <div class="form-group row">
+          <label for="example-datetime-local-input" class="col-4 col-form-label">Date and time</label>
+          <div class="col-8">
+            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-datetime-local-input" class="col-4 col-form-label">Date and time</label>
+          <div class="col-8">
+            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+          </div>
+          </div>
+
+
+            </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-green">Save changes</button>
+      </form>
+
+      </div>
+    </div>
+  </div>
+</div>
  @endif
