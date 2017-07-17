@@ -34,24 +34,24 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Change Availablety</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Change Availability</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form role="form" action="{{route('availability')}}" method="POST"> {{ csrf_field() }}
 
         <div class="form-group row">
           <label for="example-datetime-local-input" class="col-4 col-form-label">Date and time</label>
           <div class="col-8">
-            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+            <input class="form-control" type="datetime-local" name="availableFrom" value="<?php echo date("Y-m-d"); ?>T13:45:00" id="example-datetime-local-input">
           </div>
         </div>
         <div class="form-group row">
           <label for="example-datetime-local-input" class="col-4 col-form-label">Date and time</label>
           <div class="col-8">
-            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+            <input class="form-control" type="datetime-local" name="availableTo" value="<?php echo date("Y-m-d"); ?>T13:45:00" id="example-datetime-local-input">
           </div>
           </div>
 

@@ -14,6 +14,11 @@
       </div>
 
       <h1 class="display-7" style="color:#fff">{{$user->nameInEnglish}}</h1>
+      @if($available)
+        <span class="badge badge-success">Available</span>
+      @elseif(!$available)
+        <span class="badge badge-default">Not Available</span>
+      @endif
       <p class=""style="color:#fff"><span>Volunteer</span> <span>{{$user->country}}</span> <span>{{$user->cityName}}</span> </p>
 
       @if(Auth::guest())

@@ -5,7 +5,6 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" >Lessons You Learned From This Event</h5>
-                <h6 >and teps for next events</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -35,14 +34,13 @@
                           </div>
                       @endif
                     </div>
-                    <div class="form-group">
-                          <button type="submit" class="btn btn-block btn-green">Review</button>
-                        </div>
+                    
 
                       </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-green">Review</button>
 
               </div>
             </form>
