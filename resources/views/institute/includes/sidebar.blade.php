@@ -5,8 +5,8 @@
     <div class=" circular--landscape">
         <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$user->picture}}">
     </div>
-        <h5 class="profile-name-indi">{{$user->name}}</h5>
-        <small><a href="#">{{$user->email}}</a></small>
+        <h5  class="profile-name-indi"><a href="{{route('profile',$user->id)}}">{{$user->name}}</a></h5>
+        <small><a href="{{route('messenger',$user->email)}}">{{$user->email}}</a></small>
     </div>
     <hr>
     <ul class="list-group">

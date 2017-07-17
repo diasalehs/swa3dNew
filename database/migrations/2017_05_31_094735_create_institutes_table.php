@@ -46,7 +46,6 @@ class CreateInstitutesTable extends Migration
             $table->double('revenueStream')->nullable();
             $table->date('establishmentYear')->nullable();
             $table->integer('verified')->default(0);
-
             //main achievements and awards and date
             //Names of Board of directors and their job title
             $table->timestamps();

@@ -48,6 +48,10 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 {
     Route::get('/followers', ['uses'=>'followController@followers'])->name('followers');
     Route::get('/following', ['uses'=>'followController@following'])->name('following');
+    Route::get('/closeProfile', ['uses'=>'profilesController@closeProfile'])->name('closeProfile');
+    Route::get('/openProfile', ['uses'=>'profilesController@openProfile'])->name('openProfile');
+    Route::get('/closeEvent/{eventId}', ['uses'=>'eventController@closeEvent'])->name('closeEvent');
+    Route::get('/openEvent/{eventId}', ['uses'=>'eventController@openEvent'])->name('openEvent');
     Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() 
     {
         Route::group(['middleware' => ['isVerified']], function () 

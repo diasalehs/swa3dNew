@@ -17,6 +17,7 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->float('lessons')->unsigned()->default(0);
             $table->string('title');
             $table->text('description');
             $table->string('cover')->default('default.jpg');

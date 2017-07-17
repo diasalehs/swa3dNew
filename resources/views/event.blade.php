@@ -57,18 +57,33 @@
     </div>
 
 @elseif(Auth::check() )
-                @if($event->endDate > $date)
+                @if($archived == 0 || $archived == 2)
                   @if($user->userType == 0 || ($user->userType == 3 && !$mine))
                       @if($request)
                         <a href="{{route('disVolunteer',[$event->id])}}" class="btn btn-pink">Cancel Volunteer Request</a>
                       @elseif(!$request)
                         <a href="{{route('volunteer',[$event->id])}}" class="btn btn-pink">Volunteer Request</a>
                       @endif
+                  @endif
+                  @if($mine)
+                    @if($archived == 0)
+                        <a class="btn btn-pink" href="{{route('eventDelete',[$event->id])}}">Delete</a>
+                        <a class=" btn btn-yellow" href="{{route('eventEdit',[$event->id])}}">Edit</a>                     
+                    @else
+                        <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#postModal">Create a Post</a>
                     @endif
-                  @if($mine && $archived == 0)
-                    <a class="btn btn-pink" href="{{route('eventDelete',[$event->id])}}">Delete</a>
-                    <a class=" btn btn-yellow" href="{{route('eventEdit',[$event->id])}}">Edit</a>
-                    <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#postModal">Create a Post</a>
+                  @endif
+                @endif
+
+                @if(($mine || $eventCloseAllowed) && $archived == 1)
+                  <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#lessonsModal">Lessons Learned</a>
+                @endif
+
+                @if($mine)
+                  @if($event->open)
+                    <a class="btn btn-danger"  href="{{route('closeEvent',$event->id)}}">close</a>
+                  @elseif(!$event->open)
+                    <a class="btn btn-danger"  href="{{route('openEvent',$event->id)}}">open</a>
                   @endif
                 @endif
 </div>
@@ -182,4 +197,7 @@
       </div>
         @endif
 @endif
+
+@include('includes.reviewModal')
+
 @endsection('content')

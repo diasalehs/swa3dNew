@@ -199,19 +199,21 @@ class mainController extends Controller
                 $eventCloseAllowed = false;
                 $posts = post::where('event_id',$eventId)->get();
                 $eventAcceptedVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',1)->get();
+
+                if($event->startDate < $date)
+                {
+                    $archived = 1;
+                    if($event->endDate > $date){$archived = 2;}
+                }
+
+                $flag = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->where('accepted',1)->first();
+                if($flag) $eventCloseAllowed = true;
+
         		if(($user->userType == 1 || $user->userType == 3) && $event->user_id == $user->id){
         			$mine = true;
-                    if($event->startDate < $date){
-                        $archived = 1;
-                        if($event->endDate > $date){$archived = 2;}
-                    }
                     $eventVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',0)->get();
                     return view('event',compact('date','event','request','archived','mine','user','eventVols','posts','eventAcceptedVols','users','eventCloseAllowed'));
         		}elseif ($user->userType == 0 || $user->userType == 3) {
-                    $flag = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->where('accepted',1)->first();
-                    if($flag){
-                        $eventCloseAllowed = true;
-                    }
                     $volunteer = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
                     if($volunteer){
                         $request = true;

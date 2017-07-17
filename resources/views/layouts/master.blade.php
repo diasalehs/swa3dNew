@@ -22,7 +22,7 @@
     <link href="{{ URL::asset('vendor/css/footer.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/jstarbox.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/jquery.tag-editor.css')}}" rel="stylesheet">
-
+<link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
     @yield('styles')
     <!-- Temporary navbar container fix -->
   <style>
