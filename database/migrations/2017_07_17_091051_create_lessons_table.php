@@ -17,8 +17,8 @@ class CreateLessonsTable extends Migration
             $table->increments('id');
             $table->integer('event_id')->index();
             $table->integer('user_id')->index();
-            $tabel->text('positive')->default('');
-            $table->text('negative')->default('');
+            $table->text('positive');
+            $table->text('negative');
             $table->timestamps();
         });
     }
