@@ -267,7 +267,7 @@ class homeController extends Controller
     }
 
     public function sendMessage(Request $request){
-        $user = Auth::user();
+        $user = $this->user;
         $message = new message();
         $message->title = $request['title'];
         $message->body = $request['body'];
