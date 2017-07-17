@@ -10,6 +10,8 @@ use App\Event;
 use App\Volunteer;
 use App\UserIntrest;
 use App\researches;
+use App\Institute;
+use App\Initiative;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
@@ -30,6 +32,7 @@ class mainController extends Controller
         ->where('approved','1')
         ->take(3)->get();
         $researches=researches::orderby('created_at','desc')->take(3)->get();
+
            $volRec = DB::table('individuals')->count();
            $malesRec=individuals::where('gender','male')->count();
            $femalesRec=individuals::where('gender','female')->count();

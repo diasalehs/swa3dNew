@@ -49,7 +49,7 @@
     <a class="nav-link" data-toggle="tab" id="rtab" href="#profile" role="tab">Researches</a>
   </li>
   <li class="nav-item col-4 col-lg-3 dashboard-tab-item">
-    <a class="nav-link" data-toggle="tab" id="dtab" href="#messages" role="tab">Dashboard</a>
+    <a class="nav-link" data-toggle="tab" id="dtab" href="#dashboard" role="tab">Dashboard</a>
   </li>
 
 </ul>
@@ -115,8 +115,8 @@
                  <a href="{{route('allResearches')}}"> <button type="button" class="btn btn-primary show-more-btn more-researches">More Researches</button></a>
             </div>
     </div>
+
   <div class="tab-pane fade" id="messages" role="tabpanel">
-=
 <div class="row tile_count">
 
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">

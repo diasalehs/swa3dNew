@@ -113,13 +113,31 @@
     <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
 
     <script type="text/javascript">
+    function nextStep(){
+      $('#step2nav').addClass('active');
+      $('#step2content').addClass('active');
+      $('#step1content').removeClass('active');
+      $('#step1nav').removeClass('active');
+    }
+    function prevStep(){
+      $('#step2nav').removeClass('active');
+      $('#step2content').removeClass('active');
+      $('#step1content').addClass('active');
+      $('#step1nav').addClass('active');
+    }
     function yesnoCheck(that) {
             if (that.value == "PS") {
                 document.getElementById("palestineCity").style.display = "block";
                 document.getElementById("otherCity").style.display = "none";
+                $('#palC').attr('name', 'cityName');
+                $('#otherC').attr('name', 'x');
+
             } else {
               document.getElementById("otherCity").style.display = "block";
               document.getElementById("palestineCity").style.display = "none";
+              $('#otherC').attr('name', 'cityName');
+              $('#palC').attr('name', 'x');
+
             }
         }
         function vyyesno(that) {
