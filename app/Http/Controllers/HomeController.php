@@ -157,12 +157,12 @@ class homeController extends Controller
                 ]);
                 $user->password = bcrypt($request->password);
             }
+            
             $user->save();
             $Individuals = Auth::user()->Individuals;
             $Individuals->nameInEnglish = $user->name;
             $Individuals->nameInArabic = $user->name;
             $Individuals->email = $user->email;
-            $Individuals->livingPlace = $request['livingPlace'];
             $Individuals->gender = $request['gender'];
             $Individuals->cityName = $request['cityName'];
             $Individuals->country = $request['country'];

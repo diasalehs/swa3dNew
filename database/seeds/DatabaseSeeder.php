@@ -35,7 +35,6 @@ class DatabaseSeeder extends Seeder
 		        $Individuals->nameInEnglish = $users->name;
 		        $Individuals->nameInArabic = $users->name;
 		        $Individuals->user_id = $users->id;
-		        $Individuals->livingPlace = "camp";
 		        $Individuals->cityName = "nablus";
 		        $Individuals->country = "pal";
 		        $Individuals->gender = "male";

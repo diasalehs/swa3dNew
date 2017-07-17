@@ -26,6 +26,9 @@
                     Tools: {{$research->tool1}},{{$research->tool2}}<br>
                     </p>
                   </div>
+                  @foreach($research->tags as $t)
+                  {{$t->name}} 
+                  @endforeach
                 </div>
                 <br>
                 <form method="get" action="{{route('download',[$research->id])}}">  

@@ -8,7 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\auth;
 
 
-class registerStep2Controller extends Controller
+class registerStep2Controller extends Controller 
 {
 	// check the user type !!
 
@@ -29,16 +29,20 @@ class registerStep2Controller extends Controller
                             ]);
 
                         	$Individuals = new Individuals();
-                                $Individuals->nameInEnglish = $user->name;
+                                $Individuals->firstInEnglish = $request['firstName'];
+                                $Individuals->lastInEnglish = $request['lastName'];
+                                $Individuals->firstInArabic = $request['ARfirst'];
+                                $Individuals->lastInArabic = $request['ARlast'];
+                                $Individuals->nameInArabic =  "".$request['ARfirst'].$request['ARlast'];
+                                $Individuals->nameInEnglish = "".$request['firstName'].$request['lastName'];
                                 $Individuals->user_id = $user->id;
-                                $Individuals->nameInArabic = $user->name;
                                 $Individuals->email = $user->email;
-                                $Individuals->livingPlace = $request['livingPlace'];
                                 $Individuals->gender = $request['gender'];
                                 $Individuals->cityName = $request['cityName'];
                                 $Individuals->country = $request['country'];
                                 $Individuals->currentWork = $request['currentWork'];
                                 $Individuals->educationalLevel = $request['educationalLevel'];
+                                $Individuals->major= $request['Major'];
                                 $Individuals->preVoluntary = $request['preVoluntary'];
                                 if($request['preVoluntary'] == 1){
                                         $Individuals->voluntaryYears = $request['voluntaryYears'];
