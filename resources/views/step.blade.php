@@ -5,8 +5,6 @@
 
  </script>
 @if(auth::user()->userType==0)
-
-
 <div class="container" style="margin:100px auto">
     <div class="row " >
 
@@ -82,10 +80,10 @@
                             </div>
                         </div>
                         {{--  --}}{{--  --}}
-                        <div class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
+                        <div class="col-sm-12 col-md-6 form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                           <label for="name" class=" form-control-label">Your Country</label>
                             <div class="">
-                              <select class="form-control" onchange="yesnoCheck(this);">
+                              <select name="country" class="form-control" onchange="yesnoCheck(this);">
                                 	<option value="AF">Afghanistan</option>
                                 	<option value="AX">Åland Islands</option>
                                 	<option value="AL">Albania</option>
@@ -345,7 +343,7 @@
                             </div>
                         </div>
                         {{--  --}}{{--  --}}
-                        <div id="palestineCity"  class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
+                        <div id="palestineCity"  class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : ''    }}">
                             <label for="email" class=" form-control-label">Your city name</label>
                             <div class="">
                                 <select class="form-control">
@@ -364,7 +362,7 @@
                         <div id="otherCity" style="display:none" class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
                             <label for="email" class="form-control-label">Your city name</label>
                             <div class="">
-                                <input id="name" type="text" class="form-control" name="cityName" value="{{ old('cityName') }}"
+                                <input id="name" type="text" class="form-control" name="cityName1" value="{{ old('cityName') }}"
                                 required="required" />
                                 @if ($errors->has('cityName'))
                                     <div class="alert alert-danger" role="alert">
@@ -388,37 +386,22 @@
                             </div>
                         </div>
 
-                                                <div class="col-sm-12 col-md-6 form-check form-check-inline">
-                                                  <label for="exampleInputEmail1">Gender</label><br />
+                        <div class="col-sm-12 col-md-6 form-check form-check-inline">
+                          <label for="exampleInputEmail1">Gender</label><br />
 
-                                                  <label class="form-check-label">
-                                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male" checked> Male
-                                                  </label>
-                                                  <label class="form-check-label">
-                                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="female"> Female
-                                                  </label>
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male" checked> Male
+                          </label>
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="female"> Female
+                          </label>
 
-                                                </div>
+                        </div>
 
-                        {{--  --}}
-                       {{--  <div class="col-sm-12 col-md-6 form-group{{ $errors->has('currentWork') ? ' has-error' : '' }}">
-                            <label for="name" class=" form-control-label">Your current Work</label>
-
-                            <div class="">
-                                <input id="name" type="text" class="form-control" name="currentWork" value="{{ old('currentWork') }}"
-                                required="required" />
-                                @if ($errors->has('currentWork'))
-                                    <div class="alert alert-danger" role="alert">
-                                        <strong>Warning!</strong> {{ $errors->first('currentWork') }}
-                                    </div>
-
-                                @endif
-                            </div>
-                        </div> --}}
                         {{--  --}}
                       <div class="col-sm-12 col-md-6 form-group">
                             <label  class=" form-control-label" for="exampleSelect1">Your Current Work</label>
-                        <div class="">
+                         <div class="">
                             <select name="currentWork" value="{{ old('currentWork') }}" class="form-control" id="exampleSelect1">
                             <option value="School Student">School Student</option>
                             <option value="University Student">University Student</option>
@@ -429,12 +412,12 @@
                             <option value="Business Owner">Business Owner</option>
                             <option value="Unemployed">Unemployed</option>
                             </select>
-                        </div>
-                        </div>
+                         </div>
+                      </div>
                         {{--  --}}
-                        <div class="col-sm-12 col-md-6 form-group">
+                       <div class="col-sm-12 col-md-6 form-group">
                             <label  class=" form-control-label" for="exampleSelect1">Your educational level</label>
-                        <div class="">
+                         <div class="">
                             <select name="educationalLevel" value="{{ old('educationalLevel') }}" class="form-control" id="exampleSelect1">
                             <option value="High School">High School</option>
                             <option value="BSc">BSc</option>
@@ -442,8 +425,8 @@
                             <option value="Diploma">Diploma</option>
                             <option value="PhD">PhD</option>
                             </select>
-                        </div>
-                        </div>
+                         </div>
+                       </div>
                         {{--  --}}
                            {{--  What is the major of education if the vistor is university student or above?, Choosing from Options (, , , , , , , , .etc)--}}
                       <div class="form-group">
@@ -537,16 +520,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                                <label  class="col-lg-4 form-control-label" for="exampleSelect1">Where are you from</label>
-                            <div class="col-lg-6">
-                                <select name="livingPlace" class="form-control" id="exampleSelect1">
-                                <option value="city">city</option>
-                                <option value="camp">camp</option>
-                                <option value="village">village</option>
-                                </select>
-                            </div>
-                        </div>
+                    
 
                         <div class="form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
                             <label for="name" class="col-lg-4 form-control-label">City name</label>
