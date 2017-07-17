@@ -53,14 +53,14 @@
                                                   </div>
                                               </div>
                                               {{--  --}}{{--  --}}
-                                              <div class="col-sm-12 col-md-6 form-group{{ $errors->has('ARFirst') ? ' has-error' : '' }}">
+                                              <div class="col-sm-12 col-md-6 form-group{{ $errors->has('ARfirst') ? ' has-error' : '' }}">
                                                   <label for="email" class="form-control-label">Your Arabic First</label>
                                                   <div class="">
-                                                      <input id="name" type="text" class="form-control" name="ARFirst" value="{{ old('ARFirst') }}"
+                                                      <input id="name" type="text" class="form-control" name="ARfirst" value="{{ old('ARfirst') }}"
                                                       required="required" />
-                                                      @if ($errors->has('ARFirst'))
+                                                      @if ($errors->has('ARfirst'))
                                                           <div class="alert alert-danger" role="alert">
-                                                              <strong>Warning!</strong> {{ $errors->first('ARFirst') }}
+                                                              <strong>Warning!</strong> {{ $errors->first('ARfirst') }}
                                                           </div>
                                                       @endif
                                                   </div>
@@ -79,9 +79,9 @@
                                                   </div>
                                               </div>
                                               {{--  --}}{{--  --}}
-                                              <div class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
-                                                <label for="name" class=" form-control-label">Your Country</label>
-                                                  <div class="">
+                                             <div class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
+                                                 <label for="name" class=" form-control-label">Your Country</label>
+                                             <div class="">
                                                     <select name="country" class="form-control" onchange="yesnoCheck(this);">
                       	<option value="AF">Afghanistan</option>
                       	<option value="AX">Åland Islands</option>
@@ -191,7 +191,6 @@
                       	<option value="IQ">Iraq</option>
                       	<option value="IE">Ireland</option>
                       	<option value="IM">Isle of Man</option>
-                      	<option value="IL">Israel</option>
                       	<option value="IT">Italy</option>
                       	<option value="JM">Jamaica</option>
                       	<option value="JP">Japan</option>

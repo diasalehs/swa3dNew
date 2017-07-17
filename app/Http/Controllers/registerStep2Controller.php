@@ -14,19 +14,21 @@ class registerStep2Controller extends Controller
 
 	public function allRegister(Request $request){
         	$user = Auth::user();
-                if($user->flag == 0 && $user->isVerified==1){
+                if($user->flag == 0 && $user->verified==1){
                         if($user->userType == 0){
-                            $this->validate($request, [
-                                'livingPlace' => 'required',
-                                'gender' => 'required',
-                                'cityName' => 'required',
-                                'country' => 'required',
-                                'currentWork' => 'required',
-                                'educationalLevel' => 'required',
-                                'preVoluntary' => 'required',
-                                'voluntaryYears' => 'integer',
-                                'dateOfBirth' => 'required',
-                            ]);
+                        //     $this->validate($request, [
+                        //         'livingPlace' => 'required',
+                        //         'gender' => 'required',
+                        //         'cityName' => 'required',
+                        //         'country' => 'required',
+                        //         'currentWork' => 'required',
+                        //         'educationalLevel' => 'required',
+                        //         'preVoluntary' => 'required',
+                        //         'voluntaryYears' => 'integer',
+                        //         'dateOfBirth' => 'required',
+                        //     ]);
+                        //       dd($request);
+
 
                         	$Individuals = new Individuals();
                                 $Individuals->firstInEnglish = $request['firstName'];
@@ -89,9 +91,8 @@ class registerStep2Controller extends Controller
                         
 
                 
-                elseif($user->isVerified==0){
+                elseif($user->verified==0){
                 return view('errors/userNotVerified');
-
                 }
                 else
                     return redirect()->route('home');
