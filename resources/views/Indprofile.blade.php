@@ -29,9 +29,9 @@
         @endif
         @if($mine)
           @if($open)
-            <a class='btn btn-blue'  href="{{route('closeProfile')}}">close</a>
+            <a class='btn btn-danger'  href="{{route('closeProfile')}}">close</a>
           @elseif(!$open)
-            <a class='btn btn-blue'  href="{{route('openProfile')}}">open</a>
+            <a class='btn btn-danger'  href="{{route('openProfile')}}">open</a>
           @endif
         @endif
       @endif

@@ -83,10 +83,15 @@ button{
 .dropdown-item:hover{
   color: var(--navy);
 }
-.dropdown-menu a:active{
+.dropdown-menu-nav .dropdown-menu a:active{
     background-color: var(--pink);
     color: #fff !important;
 }
+.dropdown-menu a:active{
+    background-color: var(--green);
+    color: #fff !important;
+}
+
 .dropdown-menu li.logout-dropdown-item a:active{
     color: white !important;
 }

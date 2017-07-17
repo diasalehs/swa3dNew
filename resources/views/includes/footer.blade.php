@@ -2,7 +2,7 @@
     <footer id="myFooter" style="background-image: linear-gradient(rgba(19, 58, 83, 0.9),rgba(19, 58, 83, 0.9)),url({{ URL::to('/vendor/img/newlogo.png')}});">
         <div class="container">
             <div class="row">
-                <div data-aos="fade-down-right" class="col-sm-2 block col-md-3">
+                <div data-aos="fade-up" class="col-sm-2 block col-md-3">
 
                     <img class="centered img-fluid brand-img" src="{{ URL::to('/vendor/img/newlogo.png') }} " alt="" style="">
                   </div>

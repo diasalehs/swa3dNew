@@ -12,9 +12,7 @@
 
          <div class="col-12" style="color: #333">
           <div class="row justify-content-center">
-            <form>
 
-  </form>
 
           @foreach($events as $event)
           <div class="col-md-6 col-sm-12">
