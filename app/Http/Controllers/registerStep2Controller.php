@@ -6,7 +6,7 @@ use App\Individuals;
 use App\tempInstitute;
 use App\User;
 use Illuminate\Support\Facades\auth;
-
+use App\UserIntrest;
 
 class registerStep2Controller extends Controller 
 {
@@ -14,19 +14,21 @@ class registerStep2Controller extends Controller
 
 	public function allRegister(Request $request){
         	$user = Auth::user();
-                if($user->flag == 0 && $user->isVerified==1){
+                if($user->flag == 0 && $user->verified==1){
                         if($user->userType == 0){
-                            $this->validate($request, [
-                                'livingPlace' => 'required',
-                                'gender' => 'required',
-                                'cityName' => 'required',
-                                'country' => 'required',
-                                'currentWork' => 'required',
-                                'educationalLevel' => 'required',
-                                'preVoluntary' => 'required',
-                                'voluntaryYears' => 'integer',
-                                'dateOfBirth' => 'required',
-                            ]);
+                        //     $this->validate($request, [
+                        //         'livingPlace' => 'required',
+                        //         'gender' => 'required',
+                        //         'cityName' => 'required',
+                        //         'country' => 'required',
+                        //         'currentWork' => 'required',
+                        //         'educationalLevel' => 'required',
+                        //         'preVoluntary' => 'required',
+                        //         'voluntaryYears' => 'integer',
+                        //         'dateOfBirth' => 'required',
+                        //     ]);
+                        //       dd($request);
+
 
                         	$Individuals = new Individuals();
                                 $Individuals->firstInEnglish = $request['firstName'];
@@ -51,7 +53,15 @@ class registerStep2Controller extends Controller
                                 $Individuals->save();
                                 $user->flag = 1;
                                 $user->save();
+                                foreach ($request['intrests'] as $i) {
+                                $ui=new UserIntrest;
+                                $ui->intrest_id = $i;
+                                $ui->user_id=auth::user()->id;
+                                $ui->save();
+                                # code...
+                            }
                               return redirect()->route('home');
+
 
                         }
                         elseif($user->userType == 1){
@@ -89,9 +99,8 @@ class registerStep2Controller extends Controller
                         
 
                 
-                elseif($user->isVerified==0){
+                elseif($user->verified==0){
                 return view('errors/userNotVerified');
-
                 }
                 else
                     return redirect()->route('home');

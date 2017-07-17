@@ -52,6 +52,8 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
     Route::get('/openProfile', ['uses'=>'profilesController@openProfile'])->name('openProfile');
     Route::get('/closeEvent/{eventId}', ['uses'=>'eventController@closeEvent'])->name('closeEvent');
     Route::get('/openEvent/{eventId}', ['uses'=>'eventController@openEvent'])->name('openEvent');
+    Route::post('/review/{eventId}', ['uses'=>'lessonsController@review'])->name('review');
+
     Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() 
     {
         Route::group(['middleware' => ['isVerified']], function () 

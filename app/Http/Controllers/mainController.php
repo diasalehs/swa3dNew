@@ -12,6 +12,7 @@ use App\UserIntrest;
 use App\researches;
 use App\Institute;
 use App\Initiative;
+use App\Lesson;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
@@ -191,8 +192,10 @@ class mainController extends Controller
     	$event = event::find($eventId);
         $date = $this->date;
         if($event){
-        	if(Auth::check()){
-        		$user = Auth::user();
+            $user = Auth::user();
+            $lessons = Lesson::join('users','lessons.user_id','users.id')->where('event_id',$eventId)->get();
+        	if(Auth::check())
+            {
                 $mine = false;
                 $archived = 0;
                 $request = false;
@@ -212,16 +215,16 @@ class mainController extends Controller
         		if(($user->userType == 1 || $user->userType == 3) && $event->user_id == $user->id){
         			$mine = true;
                     $eventVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',0)->get();
-                    return view('event',compact('date','event','request','archived','mine','user','eventVols','posts','eventAcceptedVols','users','eventCloseAllowed'));
+                    return view('event',compact('date','event','request','archived','mine','user','eventVols','posts','eventAcceptedVols','users','eventCloseAllowed','lessons'));
         		}elseif ($user->userType == 0 || $user->userType == 3) {
                     $volunteer = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
                     if($volunteer){
                         $request = true;
                     }
                 }
-                return view('event',compact('date','event','eventCloseAllowed','posts','eventAcceptedVols','archived','mine','request','user'));
+                return view('event',compact('date','event','eventCloseAllowed','posts','eventAcceptedVols','archived','mine','request','user','lessons'));
         	}
-            return view('event',compact('date','event','posts','eventAcceptedVols','eventCloseAllowed'));
+            return view('event',compact('date','event','posts','eventAcceptedVols','eventCloseAllowed','lessons'));
         }else{
             return redirect()->route('upComingEvents');
         }
