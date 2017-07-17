@@ -39,9 +39,9 @@ class profilesController extends Controller
 		$flag = 0;
 		$date = $this->date;
 		$friend = false;
+		$authUser = $this->user;
 		if(Auth::check())
 		{
-			$authUser = $this->user;
 			$friend = Friend::where('requester_id', '=', $authUser->id)->where('requested_id', '=', $userId)->first();
 		    if($friend)
 		    {
@@ -57,6 +57,7 @@ class profilesController extends Controller
 		try {
 		  $user=User::find($userId);
 		  $userType = $user->userType;
+		  if(($authUser->userType == $userType) && ($authUser->id == $user->id)){$mine = true;}
 		  $open = $user->open;
 		}
 		catch (\Exception $e) {
@@ -64,21 +65,19 @@ class profilesController extends Controller
 		}
 		if ($userType==0)
 		{
-			if($authUser->userType == 0 && $authUser->id == $user->user_id) $mine = true;
 			$user= $user->Individuals;
 			$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
-			return view('Indprofile',compact('user','friend','userUevents','userUeventsVolunteers','myevents','open'));
+			return view('Indprofile',compact('user','friend','userUevents','userUeventsVolunteers','myevents','open','mine'));
 		} 
 
 		elseif($userType == 1)
 		{
-			if($authUser->userType == 1 && $authUser->id == $user->user_id) $mine = true;
 
 			$user = $user->Institute;
 
 			$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->get();
 
-			return view('Insprofile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers','open'));
+			return view('Insprofile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers','open','mine'));
 		}	
 		elseif($userType == 3)
 		{
@@ -86,9 +85,8 @@ class profilesController extends Controller
 			$joined = false;
 			$user = $user->Initiative;
 
-			if($authUser->userType == 3 && $authUser->id == $user->user_id)
+			if($authUser->id == $user->user_id)
 			{
-				$mine = true;
 				$initiativeVols = Member::join('users','members.individual_id','=','users.id')->where('initiative_id',$user->user_id)->where('accepted',0)->get();
 			}
 
@@ -113,7 +111,7 @@ class profilesController extends Controller
 
 			$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
 
-			return view('initiativeProfile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers','myevents','initiativeVols','initiativeAcceptedVols','joined','mine','joinRequest','open'));
+			return view('initiativeProfile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers','myevents','initiativeVols','initiativeAcceptedVols','joined','mine','joinRequest','open','mine'));
 		}
 		else
 			abort(403,'Unauthrized action.');
