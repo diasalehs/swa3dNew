@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
  <header>
    <div id="carousel-example-generic" class="carousel slide">
           <ol class="carousel-indicators carousel-indicators-numbers">

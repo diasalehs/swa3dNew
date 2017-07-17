@@ -38,7 +38,13 @@ button{
     float: right;
     height: 100%;
 }
+.custom-control-input:checked~.custom-control-indicator{
+  background-color: var(--green) !important;
+]}
+.custom-control-input:focus~.custom-control-indicator {
+    box-shadow: 0 0 0 1px var(--green), 0 0 0 3px var(--green) !important;
 
+}
 .dashboard-card .card-block .rotate i {
     color: rgba(20, 20, 20, 0.15);
     position: absolute;

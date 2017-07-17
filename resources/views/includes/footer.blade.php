@@ -6,7 +6,7 @@
 
                     <img class="centered img-fluid brand-img" src="{{ URL::to('/vendor/img/newlogo.png') }} " alt="" style="">
                   </div>
-                <div data-aos="fade-down" class="col-sm-2">
+                <div  class="col-sm-2">
                     <h5>Get started</h5>
                     <ul>
                         <li><a href="{{route('main')}}">Home</a></li>
@@ -14,7 +14,7 @@
                         <li><a href="{{route('upComingEvents')}}">Volunteer Now</a></li>
                     </ul>
                 </div>
-                <div data-aos="fade-down"class="col-sm-2">
+                <div class="col-sm-2">
                     <h5>About us</h5>
                     <ul>
                         <li><a href="#">Company Information</a></li>
@@ -22,14 +22,14 @@
                         <li><a href="#">Reviews</a></li>
                     </ul>
                 </div>
-                <div data-aos="fade-down"class="col-sm-2">
+                <div class="col-sm-2">
                     <h5>Support</h5>
                     <ul>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Help desk</a></li>
                     </ul>
                 </div>
-                <div data-aos="fade-down-left"class="col-sm-4 col-md-3">
+                <div class="col-sm-4 col-md-3">
                     <div class="social-networks" id="w">
                         <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                         <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
@@ -48,10 +48,6 @@
 
 
     <!-- Script to Activate the Carousel -->
-
-
-	    <!-- Bootstrap core JavaScript -->
-
       <script src="{{URL::asset('vendor/js/jquery.js')}} "></script>
       <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
 
@@ -112,10 +108,10 @@
     <script src="{{URL::asset('vendor/js/scripts.js')}}"></script>
     <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
     <script type="text/javascript">
-    AOS.init({
-  duration: 1200,
-  once: true,
-});
+        AOS.init({
+          duration: 1200,
+          once: true,
+        });
     function nextStep(){
       $('#step2nav').addClass('active');
       $('#step2content').addClass('active');
@@ -152,8 +148,6 @@
             }
     $(document).ready(function()
         {
-
-
 
           $(".bs-searchbox :input").attr("placeholder", "Search...");
           $("[data-toggle=popover]").popover();
