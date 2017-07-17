@@ -6,7 +6,7 @@ use App\Individuals;
 use App\tempInstitute;
 use App\User;
 use Illuminate\Support\Facades\auth;
-
+use App\UserIntrest;
 
 class registerStep2Controller extends Controller 
 {
@@ -53,7 +53,15 @@ class registerStep2Controller extends Controller
                                 $Individuals->save();
                                 $user->flag = 1;
                                 $user->save();
+                                foreach ($request['intrests'] as $i) {
+                                $ui=new UserIntrest;
+                                $ui->intrest_id = $i;
+                                $ui->user_id=auth::user()->id;
+                                $ui->save();
+                                # code...
+                            }
                               return redirect()->route('home');
+
 
                         }
                         elseif($user->userType == 1){

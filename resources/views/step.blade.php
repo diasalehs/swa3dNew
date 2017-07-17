@@ -453,7 +453,7 @@
                 </div>
                 {{--  --}}
                 <div class="col-12" style="margin-top:20px;">
-                  <h4 class="greencolor">Your interests</h4>
+                  <h4 class="greencolor">Your intrests</h4>
                   <hr />
                 </div>
               </div>
@@ -461,28 +461,15 @@
                         {{--  --}}
                         <div class="row">
 
-                          <div class="form-check col-4" >
-                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-                              <input type="checkbox" class="custom-control-input">
-                              <span class="custom-control-indicator"></span>
-                              <span class="custom-control-description"> interest</span>
-                            </label>
-                          </div>
-                          <div class="form-check  col-4">
-                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-                              <input type="checkbox" class="custom-control-input">
-                              <span class="custom-control-indicator"></span>
-                              <span class="custom-control-description">interest</span>
-                            </label>
-                          </div>
+                         @foreach($intrests as $i)
                           <div class="form-check col-4">
                             <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-                              <input type="checkbox" class="custom-control-input">
+                              <input name="intrests[]" value="{{$i->id}}" type="checkbox" class="custom-control-input">
                               <span class="custom-control-indicator"></span>
-                              <span class="custom-control-description">interest</span>
+                              <span class="custom-control-description">{{$i->name}}</span>
                             </label>
                           </div>
-
+                          @endforeach
                       </div>
 
                       <br />
