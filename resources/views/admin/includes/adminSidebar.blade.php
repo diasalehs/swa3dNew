@@ -8,7 +8,8 @@
               <a class="nav-link" href="{{ route('news') }}">News</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Analytics</a>
+              <a class="nav-link" href="{{ route('approveNews') }}">News waiting  approval <span class="badge badge-default badge-pill">
+              {{$news_count}}</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Export</a>

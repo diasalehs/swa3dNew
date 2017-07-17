@@ -9,3 +9,4 @@
 - researcher
 - resercher checkbox on individual signup// backend too.
 - stars initial value problem 0+ val\2 will result in half of the value
+mazen::  home/admin/news to admin i think its a middleware problem even if u are not

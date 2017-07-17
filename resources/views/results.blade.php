@@ -37,8 +37,8 @@
                       Volunteer
                       @elseif($result->userType==1)
                       Institute
-                      @elseif($result->userType==2)
-                      Resercher
+                      @elseif($result->userType==3)
+                      initiatives
                       @else
                       ADMIN
                       @endif

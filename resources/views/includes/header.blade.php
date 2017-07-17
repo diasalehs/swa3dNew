@@ -1,7 +1,9 @@
 <div id="navtop"></div>
 <nav class="navbar mainNavbar navbar-toggleable-lg navbar-light bg-faded  fixed-top"style="background-image:url('{{ URL::to('/') }}/pp/newlogo-min.png');    background-repeat: no-repeat;
     padding-left:0px;
-    background-size: 80px;">
+    background-size: 65px;
+background-position-x: 8px;
+background-position-y: 7px;">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -14,7 +16,7 @@
 
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Volunteers</a>
+        <a class="nav-link" href="">Volunteers</a>
       </li>
 
        <li class="nav-item">
@@ -26,10 +28,10 @@
     </ul>
     <div class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto nav-right">
-          <li class="nav-item ">
+          <li class="nav-item HeaderSearchli">
 
           <form action="{{route('search')}}" method="get" >
-            <input type="text" name="search" id="HeaderSearch"class="HeaderSearch form-control" placeholder="&#xF002; Search Swa3ed.." style="font-family:Arial, FontAwesome">
+            <input type="text" name="search" id="HeaderSearch" class="HeaderSearch form-control" placeholder="&#xF002; Search Swa3ed.." style="font-family:Arial,FontAwesome">
             <button type="submit" style="display: none;"></button>
           </form>
 
@@ -100,14 +102,14 @@
                   <div class="form-group">
                   <div class=" ">
 
-                      <button type="submit" value="0" name="submit" class="btn btn-success choose-btn ">Individual</button>
+                      <button type="submit" value="0" name="submit" class="btn  choose-btn ">Individual</button>
                   </div>
               </div>
 
 
                   <div class="form-group">
                   <div class=" ">
-                      <button type="submit" value="1" name="submit" class="btn btn-success choose-btn ">Institute</button>
+                      <button type="submit" value="1" name="submit" class="btn  choose-btn ">Institute</button>
                   </div>
               </div>
           </form>

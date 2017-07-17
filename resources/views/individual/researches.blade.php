@@ -16,8 +16,7 @@
          @endif
          <h3 class="greencolor ">Add new research</h3>
          <hr />
-         <form method="post" class=""  enctype="multipart/form-data" action="{{route('addResearch')}}">{{ csrf_field() }}
-
+         <form method="post" class="" id="formID"  enctype="multipart/form-data" action="{{route('addResearch')}}">{{ csrf_field() }}
           <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
               <label for="title" class="col-lg-4 form-control-label">Title</label>
               <div class="col-12">
@@ -60,8 +59,8 @@
           <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
               <label for="tags" class="col-lg-4 form-control-label">Tags</label>
               <div class="col-12">
-                  <input id="tags" type="text" class="form-control" name="tags" value="{{ old('tags') }}"
-                  required="required" />
+                <input name="hashtags" type="tags" id="tags" >
+
                   @if ($errors->has('tags'))
                       <div class="alert alert-danger" role="alert">
                           <strong>Warning!</strong> {{ $errors->first('tags') }}
@@ -111,7 +110,7 @@
               <div class="col-12">
               <label for="tool" class="control-label">Tools</label>
                   <div class="form-check">
-                  <label class="form-check-label"><input type="checkbox"  name ="tool1" value="tool1" class="form-check-input">tool1</label>
+                  <label class="form-check-label"><input type="checkbox"  name ="tool1" value="Descriptive Research" class="form-check-input">Descriptive Research</label>
                   </div>
                   @if ($errors->has('tool1'))
                       <div class="alert alert-danger" role="alert">
@@ -124,7 +123,7 @@
           <div class="form-group{{ $errors->has('tool2') ? ' has-error' : '' }}">
               <div class="col-12">
                   <div class="form-check">
-                  <label class="form-check-label"><input type="checkbox"  name ="tool2" value="tool2" class="form-check-input">tool2</label>
+                  <label class="form-check-label"><input type="checkbox"  name ="tool2" value="Interviews" class="form-check-input">Interviews</label>
                   </div>
                   @if ($errors->has('tool2'))
                       <div class="alert alert-danger" role="alert">

@@ -53,7 +53,11 @@
 
       <script src="{{URL::asset('vendor/js/jquery.js')}} "></script>
       <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
+
+
+
     <script>
+
         $('.c').starbox({
         average: 0.5,
         autoUpdateAverage: true,
@@ -87,17 +91,49 @@
          //  alert($('#r'+r).starbox('getValue'));
 
     </script>
+    <script src="{{URL::asset('vendor/jquery.caret.min.js')}} "></script>
+    <script src="{{URL::asset('vendor/jquery.tag-editor.min.js')}} "></script>
+
+    <script type="text/javascript">
+    $('#tags').tagEditor({
+        initialTags: [],
+        delimiter: ', ', /* space and comma */
+        placeholder: 'Enter tags ...'
+    });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" integrity="sha256-SiHXR50l06UwJvHhFY4e5vzwq75vEHH+8fFNpkXePr0=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js" integrity="sha256-VNbX9NjQNRW+Bk02G/RO6WiTKuhncWI4Ey7LkSbE+5s=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 
     <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="{{URL::asset('vendor/js/scripts.js')}}"></script>
     <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
-    <script type="text/javascript">
 
+    <script type="text/javascript">
+    function yesnoCheck(that) {
+            if (that.value == "PS") {
+                document.getElementById("palestineCity").style.display = "block";
+                document.getElementById("otherCity").style.display = "none";
+            } else {
+              document.getElementById("otherCity").style.display = "block";
+              document.getElementById("palestineCity").style.display = "none";
+            }
+        }
+        function vyyesno(that) {
+                if (that.value == "0") {
+                    document.getElementById("vyn").style.display = "none";
+                } else {
+                  document.getElementById("vyn").style.display = "block";
+                }
+            }
     $(document).ready(function()
         {
+
+
+
           $(".bs-searchbox :input").attr("placeholder", "Search...");
           $("[data-toggle=popover]").popover();
 
@@ -123,27 +159,26 @@
 
             });
             $('#dtab').on('click',function(){
-
+              var ctx = document.getElementById("myChart").getContext('2d');
+              var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                  labels: ["Males", "Female"],
+                  datasets: [{
+                    backgroundColor: [
+                      "#f06493",
+                      "#51c2c0"
+                    ],
+                    data: [50,40]
+                  }]
+                }
+              });
               $('#nnnn').attr('style', 'border-bottom: 3px solid var(--yellow) !important');
 
             });
           });
 
     </script>
-
-
-        <script>
-        var $j = jQuery.noConflict();
-// $j is now an alias to the jQuery function; creating the new alias is optional.
-
-$j(document).ready(function() {
-  $(function () {
-    $('#popoverData').popover();
-    $('[data-toggle="popover"]').popover();
-
-   })});
-
-</script>
 </body>
 
 </html>

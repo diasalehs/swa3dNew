@@ -8,6 +8,7 @@ use Image;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\slider;
+use App\news;
 
 
 class sliderController extends Controller
@@ -30,7 +31,8 @@ class sliderController extends Controller
     }
       public function index()
     {
-    	return view('admin/sliderconfig');
+        $news_count= news::where('approved','0')->count();
+    	return view('admin/sliderconfig',compact('news_count'));
         # code...
     }
     //

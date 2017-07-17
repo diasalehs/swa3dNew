@@ -9,7 +9,7 @@ use App\researches;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\tags;
-use App\invite;
+use App\Invite;
 use App\researches_tags;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File; 
@@ -160,7 +160,7 @@ class IndividualsController extends Controller
                 'credit' => 'required',
                 'filefield' => 'required',
             ]);
-           
+
         $research=new researches();
         $research->title=$request['title'];
         $research->ind_id=auth::user()->individuals->id;
@@ -182,13 +182,19 @@ class IndividualsController extends Controller
                 $research->filename = $file->getFilename().'.'.$extension;
             }else abort(403, 'Unauthorized action.');
         $research->save();
-        $tags= new tags();
-        $tags->name=$request['tags'];
+        $alltags=explode(",", $request['hashtags']);
+        foreach ($alltags as $t ) {
+         $tags= new tags();
+        $tags->name=$t;
         $tags->save();
         $research_tags= new researches_tags();
         $research_tags->tag_id=$tags->id;
         $research_tags->research_id=$research->id;
         $research_tags->save();
+
+            # code...
+        }
+       
         $success=1;
             return  view('individual/researches',compact('success'));
         }

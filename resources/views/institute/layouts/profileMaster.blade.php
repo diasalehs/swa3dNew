@@ -19,6 +19,7 @@
     <link href="{{ URL::asset('vendor/css/styles.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/footer.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/profile.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('vendor/jquery.tag-editor.css')}}" rel="stylesheet">
 
 </head>
 <body>
