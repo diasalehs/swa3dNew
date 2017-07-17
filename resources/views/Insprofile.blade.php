@@ -25,10 +25,19 @@
         @elseif(!$friend)
              <a class='btn btn-green'  href="{{route('follow',$user->user_id)}}">follow</a>
         @endif
+        @if($mine)
+          @if($open)
+            <a class='btn btn-blue'  href="{{route('closeProfile')}}">close</a>
+          @elseif(!$open)
+            <a class='btn btn-blue'  href="{{route('openProfile')}}">open</a>
+          @endif
+        @endif
       @endif
 
     </div>
   </div>
+
+  @if($open || $mine)
   <div class="container">
     <div class="row">
 
@@ -139,6 +148,8 @@
         </div>
       </div>
 </div>
+
+@endif
 
 <!-- Modal -->
 <div class="modal fade" id="rate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

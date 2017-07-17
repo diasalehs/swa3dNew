@@ -18,8 +18,13 @@ class eventController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->date = date('Y-m-d');
+        $this->middleware(function ($request, $next) {
+            $date = date('Y-m-d');
+            $user = Auth::user();
+            $this->date = $date;
+            $this->user = $user;
+            return $next($request);
+        });
     }
 
     public function invite(Request $request)
@@ -328,5 +333,31 @@ class eventController extends Controller
                 return redirect()->route('errorPage')->withErrors("You can't.");
         }
         return redirect()->back();
+    }
+
+    public function closeEvent($eventId)
+    {
+        $event = Event::findOrFail($eventId);
+        $user = $this->user;
+        if($event->user_id == $user->id)
+        {
+            $event->open = 0;
+            $event->save();
+            return redirect()->back();
+        }
+        return redirect()->route('errorPage')->withErrors('not yours.');
+    }
+
+    public function openEvent($eventId)
+    {
+        $event = Event::findOrFail($eventId);
+        $user = $this->user;
+        if($event->user_id == $user->id)
+        {
+            $event->open = 1;
+            $event->save();
+            return redirect()->back();
+        }
+        return redirect()->route('errorPage')->withErrors('not yours.');
     }
 }

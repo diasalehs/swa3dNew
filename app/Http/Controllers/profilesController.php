@@ -34,84 +34,89 @@ class profilesController extends Controller
 	public function index($userId)
 	{	
 
-	$flag = 0;
-	$date = $this->date;
-	$friend = false;
-	if(Auth::check())
-	{
-		$authUser = $this->user;
-		$friend = Friend::where('requester_id', '=', $authUser->id)->where('requested_id', '=', $userId)->first();
-	    if($friend)
-	    {
-	        $friend = true;
-	    }
-	    else
-	    {
-	    	$friend = false;
-	    }
-	    $userUevents = event::where('events.user_id',$authUser->id)->where('startDate','>',$date)->get();
-	}
+		$open = false;
+		$mine = false;
+		$flag = 0;
+		$date = $this->date;
+		$friend = false;
+		if(Auth::check())
+		{
+			$authUser = $this->user;
+			$friend = Friend::where('requester_id', '=', $authUser->id)->where('requested_id', '=', $userId)->first();
+		    if($friend)
+		    {
+		        $friend = true;
+		    }
+		    else
+		    {
+		    	$friend = false;
+		    }
+		    $userUevents = Event::where('events.user_id',$authUser->id)->where('startDate','>',$date)->get();
+		}
 
-    try {
-	  $user=User::find($userId);
-	  $userType = $user->userType;
-	}
-	catch (\Exception $e) {
-	    return redirect()->route('errorPage')->withErrors('profile not found.');
-	}
-	if ($userType==0)
-	{
-		$user= $user->Individuals;
-		$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
-		return view('Indprofile',compact('user','friend','userUevents','userUeventsVolunteers','myevents'));
-	} 
+		try {
+		  $user=User::find($userId);
+		  $userType = $user->userType;
+		  $open = $user->open;
+		}
+		catch (\Exception $e) {
+		    return redirect()->route('errorPage')->withErrors('profile not found.');
+		}
+		if ($userType==0)
+		{
+			if($authUser->userType == 0 && $authUser->id == $user->user_id) $mine = true;
+			$user= $user->Individuals;
+			$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
+			return view('Indprofile',compact('user','friend','userUevents','userUeventsVolunteers','myevents','open'));
+		} 
 
-	elseif($userType == 1)
-	{
-		$user = $user->Institute;
+		elseif($userType == 1)
+		{
+			if($authUser->userType == 1 && $authUser->id == $user->user_id) $mine = true;
 
-		$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->get();
+			$user = $user->Institute;
 
-    	return view('Insprofile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers'));
-	}	
-    elseif($userType == 3)
-    {
-    	$mine = false;
-    	$joinRequest = false;
-    	$joined = false;
-    	$user = $user->Initiative;
+			$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->get();
 
-    	if($authUser->userType == 3 && $authUser->id == $user->user_id)
-    	{
-    		$mine = true;
-    		$initiativeVols = Member::join('users','members.individual_id','=','users.id')->where('initiative_id',$user->user_id)->where('accepted',0)->get();
-    	}
+			return view('Insprofile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers','open'));
+		}	
+		elseif($userType == 3)
+		{
+			$joinRequest = false;
+			$joined = false;
+			$user = $user->Initiative;
 
-    	$initiativeAcceptedVols = Member::where('initiative_id',$user->user_id)->where('individual_id',$authUser->id)->first();
+			if($authUser->userType == 3 && $authUser->id == $user->user_id)
+			{
+				$mine = true;
+				$initiativeVols = Member::join('users','members.individual_id','=','users.id')->where('initiative_id',$user->user_id)->where('accepted',0)->get();
+			}
 
-    	if($authUser->userType == 0 && $initiativeAcceptedVols)
-    	{
-    		$joinRequest = true;
-    	}
+			$initiativeAcceptedVols = Member::where('initiative_id',$user->user_id)->where('individual_id',$authUser->id)->first();
 
-    	$initiativeAcceptedVols = Member::where('initiative_id',$user->user_id)->where('individual_id',$authUser->id)->where('accepted',1)->first();
+			if($authUser->userType == 0 && $initiativeAcceptedVols)
+			{
+				$joinRequest = true;
+			}
 
-    	if($authUser->userType == 0 && $initiativeAcceptedVols)
-    	{
-    		$joinRequest = true;
-    		$joined = true;
-    	}
+			$initiativeAcceptedVols = Member::where('initiative_id',$user->user_id)->where('individual_id',$authUser->id)->where('accepted',1)->first();
 
-    	$initiativeAcceptedVols = Member::join('users','members.individual_id','=','users.id')->where('initiative_id',$user->user_id)->where('accepted',1)->get();
+			if($authUser->userType == 0 && $initiativeAcceptedVols)
+			{
+				$joinRequest = true;
+				$joined = true;
+			}
 
-    	$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->get();
+			$initiativeAcceptedVols = Member::join('users','members.individual_id','=','users.id')->where('initiative_id',$user->user_id)->where('accepted',1)->get();
 
-    	$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
+			$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->get();
 
-    	return view('initiativeProfile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers','myevents','initiativeVols','initiativeAcceptedVols','joined','mine','joinRequest'));
-    }
-	else
-		abort(403,'Unauthrized action.');
+			$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
+
+			return view('initiativeProfile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers','myevents','initiativeVols','initiativeAcceptedVols','joined','mine','joinRequest','open'));
+		}
+		else
+			abort(403,'Unauthrized action.');
 	}
 
 
@@ -175,4 +180,28 @@ class profilesController extends Controller
 	 return redirect()->back();
        
 	}
+
+	public function closeProfile()
+    {
+        if(auth::check())
+    	{
+	        $user = $this->user;
+	        $user->open = false;
+	        $user->save();
+	        return redirect()->back();
+	    }
+	    return redirect()->route('errorPage')->withErrors('not yours.');
+    }
+
+    public function openProfile()
+    {
+    	if(auth::check())
+    	{
+	        $user = $this->user;
+	        $user->open = true;
+	        $user->save();
+	        return redirect()->back();
+	    }
+	    return redirect()->route('errorPage')->withErrors('not yours.');
+    }
 }
