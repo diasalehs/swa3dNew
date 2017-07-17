@@ -12,9 +12,12 @@
     align-items: center;
     justify-content: center;
     text-align: center;" >
+
       <div class="">
         <h1 class="display-7 " style="color:#fff">{{$event->title}}</h1>
         <p class=""style="color:#fff; margin-bottom:20px; margin-top:40px">{{$event->startDate}} To {{$event->endDate}} - in {{$event->country}} | Created by: <a href="{{route('profile',$event->user_id)}}" class="pink-link">{{$event->user->name}}</a></p>
+
+
 
 
 @if(Auth::guest() && $event->endDate > $date)
@@ -68,7 +71,7 @@
                   @if($mine)
                     @if($archived == 0)
                         <a class="btn btn-pink" href="{{route('eventDelete',[$event->id])}}">Delete</a>
-                        <a class=" btn btn-yellow" href="{{route('eventEdit',[$event->id])}}">Edit</a>                     
+                        <a class=" btn btn-yellow" href="{{route('eventEdit',[$event->id])}}">Edit</a>
                     @else
                         <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#postModal">Create a Post</a>
                     @endif
@@ -160,36 +163,45 @@
         </div>
         @endif
           @endif
+          <div class=" col-lg-4">
 
           @if($mine && $event->endDate > $date)
-          <div class=" col-lg-4">
             <h3 class="greencolor ">Volunteers request</h3>
             <hr />
-            <form role="form" method="POST" action="{{ route('acceptVolunteer',$event->id)}}">{{ csrf_field() }}
-              <select class="selectpicker" name="accepted[]" multiple data-actions-box="true" data-size="7" data-live-search="true" >
+            <form style="text-align:center" role="form" method="POST" action="{{ route('acceptVolunteer',$event->id)}}">{{ csrf_field() }}
+              <div class="row" style=" margin-bottom:20px;">
+
+              <select class="selectpicker col-9" name="accepted[]"data-selected-text-format="count" multiple data-actions-box="true" data-size="7" data-live-search="true" >
                 @foreach($eventVols as $eventVol)
-                <option value="{{$eventVol->id}}"><a href="{{route('profile',[$eventVol->id])}}">{{$eventVol->name}}</a></option>
+                <option value="{{$eventVol->id}}"  data-subtext="email"><a href="{{route('profile',[$eventVol->id])}}">{{$eventVol->name}}</a></option>
                 @endforeach
               </select>
-              <button type="submit" class="btn btn-green">Accept</button>
+              <button  type="submit" class="btn col-3 btn-green">Accept</button>
+            </div>
+
             </form>
             @endif
 
-            <h3 class="greencolor ">Volunteers</h3>
+            <h3 class="greencolor " >Volunteers</h3>
+
             <hr />
             <form role="form" method="POST" action="{{ route('unAcceptVolunteer',$event->id)}}">{{ csrf_field() }}
-              <select name="unaccepted[]" class="selectpicker" multiple
+              <div class="row" style=" margin-bottom:20px;">
+
+              <select name="unaccepted[]" class="selectpicker col-9" style="width:100%;" multiple
               @if($mine && $event->endDate > $date)
-               data-actions-box="true" 
+               data-actions-box="true"
                @endif
                data-size="7" data-live-search="true" >
                 @foreach($eventAcceptedVols as $eventAcceptedVol)
-                <option value="{{$eventAcceptedVol->id}}"><a href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a></option>
+                <option disabled value="{{$eventAcceptedVol->id}}"><a href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a></option>
                 @endforeach
               </select>
               @if($mine && $event->endDate > $date)
-              <button type="submit" class="btn btn-pink">Remove</button>
+              <button type="submit" class="btn col-3 btn-pink">Remove</button>
               @endif
+            </div>
+
             </form>
 
 
