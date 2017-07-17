@@ -62,7 +62,6 @@
 
             </div>
             <ul class="list-group">
-              <li class="list-group-item">Living Place:   {{ ucfirst($user->livingPlace)}} </li>
               <li class="list-group-item">City Name:   {{ ucfirst($user->cityName) }} </li>
               <li class="list-group-item">Country Name:    {{ ucfirst($user->country) }}</li>
               <li class="list-group-item">Current Work:   {{ ucfirst($user->currentWork) }} </li>
