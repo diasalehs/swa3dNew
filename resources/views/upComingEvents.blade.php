@@ -209,9 +209,9 @@
     </div>
   <div class="tab-pane" id="profile" role="tabpanel">
     <div class="row">
+
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
-              @foreach($localevents as $event)
                 @foreach($userevent as $eve)
                   @if($event->id == $eve->event_id)
                    <div class="col-md-6 col-sm-12">
@@ -241,8 +241,6 @@
                   </div>
                </div>
                   @endif
-
-                @endforeach
                 @endforeach
 
 

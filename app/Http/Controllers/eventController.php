@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Volunteer;
 use App\Event;
+use App\targetedGroups;
 use App\EventIntrest;
 use App\EventTarget;
 use App\Friend;
 use App\Invite;
+use App\Intrest;
 
 
 class eventController extends Controller
@@ -82,9 +84,11 @@ class eventController extends Controller
         if($user->userType == 1 || $user->userType == 3)
         {
             $date = $this->date;
+            $intrests=intrest::get();
+            $targets=targetedGroups::get();
             $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
             $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
-            return view('events/makeEvent',compact('user','Aevents','Uevents'));
+            return view('events/makeEvent',compact('user','Aevents','Uevents','intrests','targets'));
         }
         return abort(403, 'Unauthorized action.');
     }
@@ -103,7 +107,7 @@ class eventController extends Controller
         $event->user_id = $user->id;
         $event->description = $request['description'];
         $event->country = $request['country'];
-        $event->cityName = $request['cityName'];
+        $event->city = $request['cityName'];
         $event->startDate = $request['startDate'];
         $event->endDate = $request['endDate'];
         $event->open = $request['open'];
@@ -114,15 +118,21 @@ class eventController extends Controller
             $event->cover = $imagename;
         }
         $event->save();
-        $eveint= new  eventIntrest();
-        $eveint->event_id=$event->id;
-        $eveint->intrest_id=$request['intrests'];
-        $eveint->save();
-
-        $evetarget= new EventTarget();
+        foreach ($request['intrests'] as $i) {
+                $eveint= new  eventIntrest();
+                $eveint->event_id=$event->id;
+                $eveint->intrest_id=$i;
+                $eveint->save();       
+         }
+          foreach ($request['targets'] as $t) {
+                $evetarget= new EventTarget();
         $evetarget->event_id=$event->id;
-        $evetarget->target_id=$request['target'];
-        $evetarget->save();
+        $evetarget->target_id=$t;
+        $evetarget->save();     
+         }
+ 
+
+       
 
         return redirect()->route('event',compact('event'));
     }

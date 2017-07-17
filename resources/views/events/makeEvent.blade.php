@@ -352,28 +352,36 @@
                                       </div>
                                   @endif
                           </div>
-                          <div class="form-group {{ $errors->has('intrests') ? ' has-error' : '' }}">
-                                  <div class="form-group"> <!-- intrests field -->
-                                    <label class="control-label " for="intrests">intrests</label>
-                                    <textarea class="form-control" value="{{ old('intrests') }}" required="required" name="intrests" id="intrests">{{ old('intrests') }}</textarea>
-                                  </div>
-                                  @if ($errors->has('intrests'))
-                                      <div class="alert alert-danger" role="alert">
-                                          <strong>Warning!</strong> {{ $errors->first('intrests') }}
-                                      </div>
-                                  @endif
+                 
+                  <label class="control-label " for="intrests">intrests</label>
+<br>
+                        <div class="row">
+                         @foreach($intrests as $i)
+                          <div class="form-check col-4">
+                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                              <input name="intrests[]" value="{{$i->id}}" type="checkbox" class="custom-control-input">
+                              <span class="custom-control-indicator"></span>
+                              <span class="custom-control-description">{{$i->name}}</span>
+                            </label>
                           </div>
-                           <div class="form-group {{ $errors->has('target') ? ' has-error' : '' }}">
-                                  <div class="form-group"> <!-- target field -->
-                                    <label class="control-label " for="target">target</label>
-                                    <textarea class="form-control" value="{{ old('target') }}" required="required" name="target" id="target">{{ old('target') }}</textarea>
-                                  </div>
-                                  @if ($errors->has('target'))
-                                      <div class="alert alert-danger" role="alert">
-                                          <strong>Warning!</strong> {{ $errors->first('target') }}
-                                      </div>
-                                  @endif
+                          @endforeach
+                      </div>
+
+                      <br><br>
+                     <label class="control-label " for="intrests">targets</label>
+<br>
+                     <div class="row">
+                         @foreach($targets as $t)
+                          <div class="form-check col-4">
+                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                              <input name="targets[]" value="{{$t->id}}" type="checkbox" class="custom-control-input">
+                              <span class="custom-control-indicator"></span>
+                              <span class="custom-control-description">{{$t->name}}</span>
+                            </label>
                           </div>
+                          @endforeach
+                      </div>
+
 
                           <div class="form-group">
                             <label  class="control-label" for="exampleSelect1">Privacy</label>
