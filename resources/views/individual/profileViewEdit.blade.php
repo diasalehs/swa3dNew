@@ -89,14 +89,14 @@
                             </div>
                         </div>
                         {{--  --}}{{--  --}}
-                        <div class="col-sm-12 col-md-6 form-group{{ $errors->has('ARFirst') ? ' has-error' : '' }}">
+                        <div class="col-sm-12 col-md-6 form-group{{ $errors->has('ARfirst') ? ' has-error' : '' }}">
                             <label for="email" class="form-control-label">Your Arabic First</label>
                             <div class="">
-                                <input id="name" type="text" class="form-control" name="ARFirst" value="{{  $userIndividual->ARFirst }}"
+                                <input id="name" type="text" class="form-control" name="ARfirst" value="{{  $userIndividual->ARfirst }}"
                                 required="required" />
-                                @if ($errors->has('ARFirst'))
+                                @if ($errors->has('ARfirst'))
                                     <div class="alert alert-danger" role="alert">
-                                        <strong>Warning!</strong> {{ $errors->first('ARFirst') }}
+                                        <strong>Warning!</strong> {{ $errors->first('ARfirst') }}
                                     </div>
                                 @endif
                             </div>
@@ -397,7 +397,7 @@
                         <div id="otherCity" style="display:none" class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
                             <label for="email" class="form-control-label">Your city name</label>
                             <div class="">
-                                <input id="name" type="text" class="form-control" name="cityName1" value="{{  $userIndividual->cityName }}"
+                                <input id="name" type="text" class="form-control" name="cityName" value="{{  $userIndividual->cityName }}"
                                 required="required" />
                                 @if ($errors->has('cityName'))
                                     <div class="alert alert-danger" role="alert">
