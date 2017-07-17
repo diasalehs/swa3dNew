@@ -42,7 +42,7 @@
 </div>
 
     @endsection('content')
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=cj3pbv1qaurvgj16g8omheozohrxpv8yemit6uehwf7sxtlm	"></script>    <script>tinymce.init({
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=geyq9mxvow5g65ekcrsmz3d2bonek78nqnu0ynr9asiwk3kb		"></script>    <script>tinymce.init({
   selector: '#body',
   height: 200,
   plugins: [

@@ -350,18 +350,10 @@ button{
 		top: 0;
     overflow: hidden;
     background: #51c2c0;
-    /* Webkit (Safari/Chrome 10) */
-    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #51c2c0), color-stop(100, #f06493));
-    /* IE10+ */
-    background-image: -ms-linear-gradient(left, #51c2c0 0%, #f06493 100%);
-    /* Mozilla Firefox */
-    background-image: -moz-linear-gradient(left, #51c2c0 0%, #f06493 100%);
-    /* Opera */
-    background-image: -o-linear-gradient(left, #51c2c0 0%, #f06493 100%);
-    /* Webkit (Chrome 11+) */
-    background-image: -webkit-linear-gradient(left, #51c2c0 0%, #f06493 100%);
-    /* W3C Markup */
-    background-image: linear-gradient(to right, #51c2c0 0%, #f06493 100%);
+  background: -moz-linear-gradient(left, #51c2c0 0%, #f1ae3b 50%, #f06493 100%);
+  background: -webkit-linear-gradient(left, #51c2c0 0%,#f1ae3b 50%,#f06493 100%);
+  background: linear-gradient(to right, #51c2c0 0%,#f1ae3b 50%,#f06493 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#51c2c0', endColorstr='#f06493',GradientType=1 );
   }
 .card-header{
   color: #555;
