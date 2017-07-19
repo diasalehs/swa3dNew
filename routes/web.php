@@ -9,6 +9,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix'=>'','routeMiddleware'=>'talk'], function() 
+{
 
 //-------------------------------- on the main page - for all - guest inclouded --------------------------------\\
 Route::get('/profile', function () {return view('profile');})->name('profile');
@@ -156,4 +158,6 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
     Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
     Route::get('/allusers',['uses'=>'homeController@allusers'])->name('allusers');
     Route::get('/findVolunteers',['uses'=>'homeController@findVolunteers'])->name('findVolunteers');
+});
+
 });
