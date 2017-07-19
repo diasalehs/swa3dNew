@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Qualification extends Model
 {
     public function Individuals(){
-    	return $this->hasMany('Individuals');
+    	return $this->belongsTo('Individuals');
     }
   
 }

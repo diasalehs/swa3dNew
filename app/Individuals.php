@@ -17,7 +17,7 @@ class Individuals extends Model
     	return $this->belongsTo('NGOWorkFeild');
     }
     public function Qualification(){
-        return $this->belongsTo('Qualification');
+        return $this->hasMany('Qualification');
     }    
     public function User(){
         return $this->belongsTo('App\User');
