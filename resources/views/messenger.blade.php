@@ -1,139 +1,272 @@
 @extends('layouts.master')
  @section('content')
+ <style>
 
+ </style>
+ <div class="container bootstrap snippet" style="margin-top:20px;">
+     <div class="row">
+         <div class="col-lg-3 bg-white ">
+             <div class=" row border-bottom padding-sm" style="height: 40px;">Member</div>
+             <!--===============================================================-
+             ->
 
-<div class="container" style="margin:100px auto">
+             <!-- member list -->
+             <ul class="friend-list">
+                 <li class="active bounceInDown">	<a href="#" class="clearfix">
 
-<ul class="nav nav-tabs sw-nav-tabs " role="tablist">
-  <li class="nav-item col-4 col-lg-3  first-tab">
-    <a class="nav-link active" data-toggle="tab" href="#Messenger" role="tab">Messanger</a>
-  </li>
-<li class="nav-item col-4 col-lg-3  second-tab">
-    <a class="nav-link " data-toggle="tab" href="#sentMessages" role="tab">Sent Messages    <span class="badge badge-default badge-pill">{{$sentMessages->count()}}</span></a>
-  </li>
-  <li class="nav-item col-4 col-lg-3  third-tab ">
-    <a class="nav-link" data-toggle="tab" href="#receivedMessages" role="tab">Received Messages    <span class="badge badge-default badge-pill">{{$receivedMessages->count()}}</span></a>
-  </li>
+                 		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="rounded-circle" />
 
-</ul>
+                 		<div class="friend-name">
 
-<div class="tab-content">
-  <div class="tab-pane active" id="Messenger" role="tabpanel">
+                 			<strong>John Doe</strong>
 
-        <div class="col-lg-8 offset-md-2">
-            <div class="card">
-                <div class="card-header">Messenger</div>
-                <div class="card-block">
-                    <form class="" role="form" method="POST" action="{{ route('sendMessage') }}">{{ csrf_field() }}
+                 		</div>
 
+                 		<div class="last-message text-muted">Hello, Are you there?</div>
 
-                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="title" class="col-lg-4 form-control-label">Title</label>
-                            <div class="col-lg-6">
-                                <input id="name" type="text" class="form-control" name="title" value="Without Title"
-                                required="required" />
-                                @if ($errors->has('title'))
-                                    <div class="alert alert-danger" role="alert">
-                                        <strong>Warning!</strong> {{ $errors->first('title') }}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
+                 		<small class="time text-muted">Just now</small>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-lg-4 form-control-label">Email</label>
-                            <div class="col-lg-6">
-                                <input id="name" type="email" class="form-control" name="email" value="{{ $email }}"
-                                required="required" />
-                                @if ($errors->has('email'))
-                                    <div class="alert alert-danger" role="alert">
-                                        <strong>Warning!</strong> {{ $errors->first('email') }}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
+                 		<small class="chat-alert badge badge-danger">1</small>
 
-                        <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
-                            <label for="title" class="col-lg-4 form-control-label">Body</label>
-                            <div class="col-lg-6">
-                                <textarea class="form-control" required="required" name="body" id="body">{{ old('body') }}</textarea>
-                                @if ($errors->has('body'))
-                                    <div class="alert alert-danger" role="alert">
-                                        <strong>Warning!</strong> {{ $errors->first('body') }}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
+                 	</a>
+                 </li>
+                 <li>	<a href="#" class="clearfix">
 
+                 		<img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="rounded-circle" />
 
+                 		<div class="friend-name">
 
-                        <div class="form-group">
-                            <div class="col-lg-4 offset-md-4">
-                                <button type="submit" class="btn btn-success btn-block">Send</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        </div>
+                 			<strong>Jane Doe</strong>
 
-        <div class="tab-pane" id="sentMessages" role="tabpanel">
-        <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
-          <h1>Sent Messages</h1>
-          <table class="table">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>receiver</th>
-                  <th>send Date</th>
-                </tr>
-              </thead>
-              <tbody>
-              @foreach ($sentMessages as $sentMessage)
-                    <tr>
-                    <td>
-                    <a class="green-link"  href="{{route('message',$sentMessage->id)}}">{{$sentMessage->title}}</a>
-                    </td>
-                    <td>
-                    <a href="{{route('profile',$sentMessage->receiver_id)}}">{{$sentMessage->name}}</a>
-                    </td>
-                    <td>{{$sentMessage->created_at}}</td>
-                    </tr>
-              @endforeach
-              </tbody>
-          </table>
+                 		</div>
+
+                 		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+
+                 		<small class="time text-muted">5 mins ago</small>
+
+                 	<small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+
+                 	</a>
+                 </li>
+                 <li>	<a href="#" class="clearfix">
+
+                 		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="rounded-circle" />
+
+                 		<div class="friend-name">
+
+                 			<strong>Kate</strong>
+
+                 		</div>
+
+                 		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+
+                 		<small class="time text-muted">Yesterday</small>
+
+                 		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+
+                 	</a>
+                 </li>
+                 <li>	<a href="#" class="clearfix">
+
+                 		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="rounded-circle" />
+
+                 		<div class="friend-name">
+
+                 			<strong>Kate</strong>
+
+                 		</div>
+
+                 		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+
+                 		<small class="time text-muted">Yesterday</small>
+
+                 		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+
+                 	</a>
+                 </li>
+                 <li>	<a href="#" class="clearfix">
+
+                 		<img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="rounded-circle" />
+
+                 		<div class="friend-name">
+
+                 			<strong>Kate</strong>
+
+                 		</div>
+
+                 		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+
+                 		<small class="time text-muted">Yesterday</small>
+
+                 		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+
+                 	</a>
+                 </li>
+                 <li>	<a href="#" class="clearfix">
+
+                 		<img src="https://bootdey.com/img/Content/user_6.jpg" alt="" class="rounded-circle" />
+
+                 		<div class="friend-name">
+
+                 			<strong>Kate</strong>
+
+                 		</div>
+
+                 		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+
+                 		<small class="time text-muted">Yesterday</small>
+
+                 		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+
+                 	</a>
+                 </li>
+                 <li>	<a href="#" class="clearfix">
+
+                 		<img src="https://bootdey.com/img/Content/user_5.jpg" alt="" class="rounded-circle" />
+
+                 		<div class="friend-name">
+
+                 			<strong>Kate</strong>
+
+                 		</div>
+
+                 		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+
+                 		<small class="time text-muted">Yesterday</small>
+
+                 		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+
+                 	</a>
+                 </li>
+                 <li> <a href="#" class="clearfix">
+
+                 		<img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="rounded-circle" />
+
+                 		<div class="friend-name">
+
+                 			<strong>Jane Doe</strong>
+
+                 		</div>
+
+                 		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+
+                 		<small class="time text-muted">5 mins ago</small>
+
+                 	<small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+
+                 	</a>
+                 </li>
+             </ul>
          </div>
-        </div>
+         <!--=========================================================-->
+         <!-- selected chat -->
+         <div class="col-lg-9 bg-white ">
+             <div class="chat-message">
+                 <ul class="chat">
+                     <li class="left clearfix">	<span class="chat-img float-left">
 
-        <div class="tab-pane" id="receivedMessages" role="tabpanel">
-        <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
-          <h1>Received Messages</h1>
-          <table class="table">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>sender</th>
-                  <th>receive Date</th>
-                </tr>
-              </thead>
-              <tbody>
-        @foreach($receivedMessages as $receivedMessage)
-                    <tr>
-                    <td>
-                    <a class="green-link"  href="{{route('message',$receivedMessage->id)}}">{{$receivedMessage->title}}</a>
-                    </td>
-                    <td>
-                    <a href="{{route('profile',$receivedMessage->sender_id)}}">{{$receivedMessage->name}}</a>
-                    </td>
-                    <td>{{$receivedMessage->created_at}}</td>
-                    </tr>
-        @endforeach
-        </tbody>
-          </table>
+                     		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="User Avatar" />
 
+                     	</span>
+                         <div class="chat-body clearfix">
+                             <div class="header">	<strong class="primary-font">John Doe</strong>
+ 	<small class="float-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
+                             </div>
+                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                         </div>
+                     </li>
+                     <li class="right clearfix">	<span class="chat-img float-right">
+
+                     		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar" />
+
+                     	</span>
+                         <div class="chat-body clearfix">
+                             <div class="header">	<strong class="primary-font">Sarah</strong>
+ 	<small class="float-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
+                             </div>
+                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum
+                                 ornare dolor, quis ullamcorper ligula sodales at.</p>
+                         </div>
+                     </li>
+                     <li class="left clearfix"> <span class="chat-img float-left">
+
+                     		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="User Avatar" />
+
+                     	</span>
+                         <div class="chat-body clearfix">
+                             <div class="header">	<strong class="primary-font">John Doe</strong>
+ 	<small class="float-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
+                             </div>
+                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                         </div>
+                     </li>
+                     <li class="right clearfix"> <span class="chat-img float-right">
+
+                     		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar" />
+
+                     	</span>
+                         <div class="chat-body clearfix">
+                             <div class="header">	<strong class="primary-font">Sarah</strong>
+ 	<small class="float-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
+                             </div>
+                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum
+                                 ornare dolor, quis ullamcorper ligula sodales at.</p>
+                         </div>
+                     </li>
+                     <li class="left clearfix"> <span class="chat-img float-left">
+
+                     		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="User Avatar" />
+
+                     	</span>
+                         <div class="chat-body clearfix">
+                             <div class="header">	<strong class="primary-font">John Doe</strong>
+ 	<small class="float-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
+                             </div>
+                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                         </div>
+                     </li>
+                     <li class="right clearfix"> <span class="chat-img float-right">
+
+                     		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar" />
+
+                     	</span>
+                         <div class="chat-body clearfix">
+                             <div class="header">	<strong class="primary-font">Sarah</strong>
+ 	<small class="float-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
+                             </div>
+                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum
+                                 ornare dolor, quis ullamcorper ligula sodales at.</p>
+                         </div>
+                     </li>
+                     <li class="right clearfix"> <span class="chat-img float-right">
+
+                     		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar" />
+
+                     	</span>
+                         <div class="chat-body clearfix">
+                             <div class="header">	<strong class="primary-font">Sarah</strong>
+ 	<small class="float-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
+                             </div>
+                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum
+                                 ornare dolor, quis ullamcorper ligula sodales at.</p>
+                         </div>
+                     </li>
+                 </ul>
+             </div>
+             <div class="chat-box bg-white">
+                 <div class="input-group">
+                     <input class="form-control border no-shadow no-rounded" placeholder="Type your message here"
+                     />	<span class="input-group-btn">
+
+             			<button class="btn btn-success no-rounded" type="button">Send</button>
+
+             		</span>
+                 </div>
+                 <!-- /input-group -->
+             </div>
          </div>
-        </div>
+     </div>
+ </div>
 
-    </div>
-</div>
+
+@endsection('content')

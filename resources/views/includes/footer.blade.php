@@ -107,6 +107,28 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="{{URL::asset('vendor/js/scripts.js')}}"></script>
     <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
+
+    <script>
+    $(document).ready(function() {
+        var max_fields      = 10; //maximum input boxes allowed
+        var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+        var add_button      = $(".add_field_button"); //Add button ID
+
+        var x = 1; //initlal text box count
+        $(add_button).click(function(e){ //on add input button click
+            e.preventDefault();
+            if(x < max_fields){ //max input box allowed
+                x++; //text box increment
+                $(wrapper).append(' <div class="row"> <div class="form-group col-sm-6 col-md-2 {{ $errors->has('name') ? ' has-error' : '' }}"> <label for="name" class="form-control-label">Role</label> <input id="role" type="tel" class="form-control" name="role[]" value="{{ $user->mobile }}" required="required" autofocus="autofocus" /> </div> <div class="form-group col-sm-6 col-md-3 {{ $errors->has('name') ? ' has-error' : '' }}"> <label for="name" class="form-control-label">Achievements</label> <input id="achievements" type="tel" class="form-control" name="achievements[]" value="{{ $user->mobile }}" required="required" autofocus="autofocus" /> </div> <div class="form-group col-sm-6 col-md-2 {{ $errors->has('name') ? ' has-error' : '' }}"> <label for="name" class="form-control-label">targeted segments</label> <input id="targeted_segments" type="text" class="form-control" name="targeted_segments[]" value="{{ $user->mobile }}" required="required" autofocus="autofocus" /> </div> <div class="form-group col-sm-6 col-md-2 {{ $errors->has('name') ? ' has-error' : '' }}"> <label for="name" class="form-control-label">Start Date</label> <input id="name" type="date" class="form-control" name="SD[]" value="{{ $user->mobile }}" required="required" autofocus="autofocus" /> </div> <div class="form-group col-sm-6 col-md-2 {{ $errors->has('name') ? ' has-error' : '' }}"> <label for="name" class="form-control-label">End Date</label> <input id="name" type="date" class="form-control" name="ED[]" value="{{ $user->mobile }}" required="required" autofocus="autofocus" /> </div> <a href="#" class="remove_field col-sm-1 col-md-1"><i class="fa fa-times" aria-hidden="true"></i></a> </div>'); //add input box
+            }
+        });
+
+        $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+            e.preventDefault(); $(this).parent('div').remove(); x--;
+        })
+    });
+
+    </script>
     <script type="text/javascript">
         AOS.init({
           duration: 1200,

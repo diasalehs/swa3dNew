@@ -552,6 +552,13 @@
                     @endif
                 </div>
             </div>
+            <div class=" col-sm-12 col-md-6">
+              <label for="name" class="form-control-label">Qualifications</label>
+
+              <button type="button" class="btn btn-green btn-block" data-toggle="modal" data-target="#Qualifications">
+                Add Qualifications
+              </button>
+            </div>
           </div>
 
           </div>
@@ -568,13 +575,66 @@
   </div>
 </div>
 
-                    </form>
+        </form>
 
       </div>
     </div>
 
+    <div class="modal modal-wide fade" id="Qualifications"style="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add More Qualifications</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="input_fields_wrap">
+              <button class="add_field_button btn btn-green">Add More Qualifications</button>
+
+              <div class="row">
+
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('name') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">Role</label>
+                        <input id="role" type="tel" class="form-control" name="role[]" value="{{ $user->mobile }}"
+                        required="required" autofocus="autofocus" />
+                </div>
+                <div class="form-group col-sm-6 col-md-3 {{ $errors->has('name') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">Achievements</label>
+                        <input id="achievements" type="tel" class="form-control" name="achievements[]" value="{{ $user->mobile }}"
+                        required="required" autofocus="autofocus" />
+                </div>
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('name') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">targeted segments</label>
+                        <input id="targeted_segments" type="text" class="form-control" name="targeted_segments[]" value="{{ $user->mobile }}"
+                        required="required" autofocus="autofocus" />
+                </div>
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('name') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">Start Date</label>
+                        <input id="name" type="date" class="form-control" name="SD[]" value="{{ $user->mobile }}"
+                        required="required" autofocus="autofocus" />
+                </div>
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('name') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">End Date</label>
+                        <input id="name" type="date" class="form-control" name="ED[]" value="{{ $user->mobile }}"
+                        required="required" autofocus="autofocus" />
+                </div>
+                  <a href="#" class="remove_field col-sm-1 col-md-1"><i class="fa fa-times" aria-hidden="true"></i></a>
 
 
+              </div>
+
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-green">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
 {{--  --}}
 {{--  --}}
 

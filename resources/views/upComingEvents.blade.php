@@ -81,7 +81,7 @@
           <div class="form-group col-sm12 col-md-4">
 
           <label for="Select1" style="align-self: flex-start;">target</label>
-           <select name="target[]"class="form-control selectpicker" id="Select1"data-actions-box="true" data-size="5" multiple>
+           <select name="target[]"class="form-control selectpicker" id="Select1"data-actions-box="true" data-size="5"  data-live-search="true"multiple>
              <option value="1">1</option>
              <option value="2">2</option>
              <option value="3">3</option>
@@ -90,7 +90,7 @@
 
          <div class="form-group  col-sm12 col-md-4">
            <label for="Select2">intrest</label>
-           <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true" data-size="5" multiple>
+           <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true"  data-live-search="true" multiple>
 
              <option value="1">Social and Economic Rights</option>
              <option value="2">Legal Aid</option>
@@ -251,7 +251,7 @@
                     </div>
                   </div>
                </div>
-                  
+
                 @endforeach
 
 
