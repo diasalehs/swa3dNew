@@ -35,8 +35,8 @@ class registerStep2Controller extends Controller
                                 $Individuals->lastInEnglish = $request['lastName'];
                                 $Individuals->firstInArabic = $request['ARfirst'];
                                 $Individuals->lastInArabic = $request['ARlast'];
-                                $Individuals->nameInArabic =  "".$request['ARfirst'].$request['ARlast'];
-                                $Individuals->nameInEnglish = "".$request['firstName'].$request['lastName'];
+                                $Individuals->nameInArabic =  "".$request['ARfirst']." ".$request['ARlast'];
+                                $Individuals->nameInEnglish = "".$request['firstName']." ".$request['lastName'];
                                 $Individuals->user_id = $user->id;
                                 $Individuals->email = $user->email;
                                 $Individuals->gender = $request['gender'];
