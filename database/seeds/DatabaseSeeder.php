@@ -119,6 +119,16 @@ class DatabaseSeeder extends Seeder
 	            $users->password = bcrypt('admin@a.a');
 	            $users->verified = 1;
 	            $users->save();
+
+	            $users = new user();
+	            $users->name = $faker->name;
+	            $users->email = "user22@swa3d.com";
+	            $users->userType = 1;
+	            $users->flag = 0;
+	            $users->verified = 1;
+	            $users->password = bcrypt('secret');
+	            $users->save();
+
 	    $Intrest= new Intrest();
 	    $Intrest->name="Social and Economic Rights"; 
 	    $Intrest->save();       
