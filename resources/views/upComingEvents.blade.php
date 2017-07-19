@@ -74,16 +74,13 @@
       <div class="card-block"class="">
         <form id="myform"class="row"style="
       ">
-
           <div class="form-group col-sm12 col-md-4">
-            <label for="location" >Location</label>
-            <input type="text" id="location" class="form-control" name="location" placeholder="e.g. Nablus">
+            <label for="location" >Country</label>
+@include('includes.countriesModal')
           </div>
           <div class="form-group col-sm12 col-md-4">
 
           <label for="Select1" style="align-self: flex-start;">target</label>
-
-
            <select name="target[]"class="form-control selectpicker" id="Select1"data-actions-box="true" data-size="5" multiple>
              <option value="1">1</option>
              <option value="2">2</option>
@@ -94,9 +91,26 @@
          <div class="form-group  col-sm12 col-md-4">
            <label for="Select2">intrest</label>
            <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true" data-size="5" multiple>
-             <option value="1">1</option>
-             <option value="2">2</option>
-             <option value="3">3</option>
+
+             <option value="1">Social and Economic Rights</option>
+             <option value="2">Legal Aid</option>
+             <option value="3">Capacity Building</option>
+             <option value="4">Stop the Wall Campaign</option>
+             <option value="5">Legal Aid</option>
+             <option value="6">BSD Campaign</option>
+             <option value="7">Regional Campaigns</option>
+             <option value="8">Research</option>
+             <option value="9">Administration</option>
+             <option value="10">Culture and the Arts</option>
+             <option value="11">Environment and Agriculture</option>
+             <option value="12">Education</option>
+             <option value="13">Youth and Children</option>
+             <option value="14">Goverance, Democracy and Human Rights</option>
+             <option value="15">Development</option>
+             <option value="16">Law</option>
+             <option value="17">Women</option>
+             <option value="18">People with Disablities</option>
+             <option value="18">Health</option>
            </select>
          </div>
 
@@ -211,34 +225,33 @@
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
                 @foreach($userevent as $eve)
-                  @if($event->id == $eve->event_id)
                    <div class="col-md-6 col-sm-12">
                   <div class="card card-inverse event">
-                    <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
+                    <img class="card-img" src="{{URL::to('/')}}/events/{{$eve->cover}}" alt="Card image">
                     <div class="card-img-overlay">
-                      <h3 class="card-title">{{$event->title}}</h3>
-                      <p class="card-text line-clamp-4">{{$event->description}}</p>
-                      <p class="">{{$event->startDate}} To {{$event->endDate}} - in {{$event->city}}</p>
-                      <a href='event/{{$event->id}}' class="card-link green-link" >View</a>
+                      <h3 class="card-title">{{$eve->title}}</h3>
+                      <p class="card-text line-clamp-4">{{$eve->description}}</p>
+                      <p class="">{{$eve->startDate}} To {{$eve->endDate}} - in {{$eve->city}}</p>
+                      <a href='event/{{$eve->id}}' class="card-link green-link" >View</a>
                       @if($user->userType != 1)
                       <?php $flag = 0; ?>
                         @foreach($volEvents as $volEvent)
-                          @if($volEvent->event_id == $event->id)
-                            <a href="{{route('disVolunteer',[$event->id])}}" class="card-link pink-link">Cancel Volunteer Request</a>
+                          @if($volEvent->event_id == $eve->id)
+                            <a href="{{route('disVolunteer',[$eve->id])}}" class="card-link pink-link">Cancel Volunteer Request</a>
                             <?php $flag = 1; ?>
                           @elseif($flag == 0)
-                            <a href="{{route('volunteer',[$event->id])}}" class="card-link pink-link">Volunteer Request</a>
+                            <a href="{{route('volunteer',[$eve->id])}}" class="card-link pink-link">Volunteer Request</a>
                             <?php $flag = 1; ?>
                           @endif
                         @endforeach
                         @if($flag == 0)
-                          <a href="{{route('volunteer',[$event->id])}}" class="card-link pink-link">Volunteer Request</a>
+                          <a href="{{route('volunteer',[$eve->id])}}" class="card-link pink-link">Volunteer Request</a>
                         @endif
                       @endif
                     </div>
                   </div>
                </div>
-                  @endif
+                  
                 @endforeach
 
 

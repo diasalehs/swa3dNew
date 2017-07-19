@@ -136,10 +136,33 @@ class mainController extends Controller
 
             }
 
-           $userevent= DB::table('user_intrests')->join('event_intrests', function ($join) {
+                 // $userevent = DB::table('events')
+                 // ->join('event_intrests', 'events.id', '=', 'event_intrests.event_id')
+                 // ->join('user_intrests', 'event_intrests.intrest_id', '=', 'user_intrests.intrest_id')
+                 // ->where('events.user_id',auth::user()->id)
+                 // ->where('events.startDate','>',$this->date)->paginate(5,['*'],'events');
+           $userevente= DB::table('event_intrests')
+           ->join('events','events.id','=','event_intrests.event_id')
+           ->join('user_intrests', function ($join) {
             $join->on('user_intrests.intrest_id', '=', 'event_intrests.intrest_id')
-                 ->where('user_intrests.user_id', '=', auth::user()->id);})->get();
+                 ->where('user_intrests.user_id', '=', auth::user()->id)
+                 ->where('events.startDate','>',$this->date);})
+                 ->get();
+            $userevent= array();
+            $var=0;
+            foreach ($userevente as $e) {
+                if ($e->event_id!=$var) {
+                    $var=$e->event_id;
+                    array_push($userevent, $e);
+                    # code...
+                }
+                 else {
 
+                    # code...
+                }
+                
+                # code...
+            }
             $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->paginate(5,['*'],'areaEvents');
             $volEvents = volunteer::where('user_id', $Iuser->id)->get();
             return view('upComingEvents',compact('events','localevents','volEvents','user','userevent'));
