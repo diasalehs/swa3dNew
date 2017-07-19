@@ -11,12 +11,20 @@ button{
 @media (min-width: 992px) {
 
 }
+div.dropdown-menu.open{
+  max-height: 400px !important;
+}
+ul.inner{
+  max-height: 250px !important;
+
+}
 .min{
   min-height: 500px;
 }
 .btn{
   border-radius: 200px ;
 }
+
 :root{
     --navy:#133c55;
     --dark-navy: #002c44;
@@ -59,7 +67,9 @@ button{
     -ms-transform: rotate(-44deg);
     transform: rotate(-44deg);
 }
-
+.modal-lg {
+    max-width: 90% !important;
+}
 .block {
   text-align: center;
   white-space: nowrap;
