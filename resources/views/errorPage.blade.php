@@ -20,10 +20,11 @@
 	    <div class="box" id="bluebox"><!-- flex item -->
 
 				<div class="inner cover ">
-			            <h1 class="cover-heading">Error</h1>
-									<p class="lead">
+			            <h1 class="cover-heading" style="">Error <i class="fa fa-exclamation" aria-hidden="true"></i>
+</h1>
+									<h1 style="    margin-bottom: 36px;">
 										{{$errors->first()}}
-									</p>
+									</h1>
 									<div class="row">
 										<div class="col-sm-12 col-md-6 error-btn-div">
 											<a href="{{route('goBack')}}" class="btn btn-lg error-btn btn-secondary">

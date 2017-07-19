@@ -33,7 +33,8 @@ class profilesController extends Controller
 
 	public function index($userId)
 	{	
-
+		$date = $this->date;
+		$available = true;
 		$open = false;
 		$mine = false;
 		$flag = 0;
@@ -66,8 +67,9 @@ class profilesController extends Controller
 		if ($userType==0)
 		{
 			$user= $user->Individuals;
+			if($date > $user->availableFrom && $date < $user->availableTo) $available = false;
 			$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
-			return view('Indprofile',compact('user','friend','userUevents','userUeventsVolunteers','myevents','open','mine'));
+			return view('Indprofile',compact('user','friend','userUevents','userUeventsVolunteers','myevents','open','mine','available'));
 		} 
 
 		elseif($userType == 1)
@@ -84,7 +86,7 @@ class profilesController extends Controller
 			$joinRequest = false;
 			$joined = false;
 			$user = $user->Initiative;
-
+			if($date > $user->availableFrom && $date < $user->availableTo) $available = false;
 			if($authUser->id == $user->user_id)
 			{
 				$initiativeVols = Member::join('users','members.individual_id','=','users.id')->where('initiative_id',$user->user_id)->where('accepted',0)->get();
@@ -111,7 +113,7 @@ class profilesController extends Controller
 
 			$myevents = volunteer::join('events','volunteers.event_id','=','events.id')->where('volunteers.user_id',$userId)->where('events.endDate','<',$date)->where('accepted',1)->get();
 
-			return view('initiativeProfile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers','myevents','initiativeVols','initiativeAcceptedVols','joined','mine','joinRequest','open','mine'));
+			return view('initiativeProfile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers','myevents','initiativeVols','initiativeAcceptedVols','joined','mine','joinRequest','open','mine','available'));
 		}
 		else
 			abort(403,'Unauthrized action.');
@@ -197,6 +199,19 @@ class profilesController extends Controller
     	{
 	        $user = $this->user;
 	        $user->open = true;
+	        $user->save();
+	        return redirect()->back();
+	    }
+	    return redirect()->route('errorPage')->withErrors('not yours.');
+    }
+
+    public function availability(Request $request)
+    {
+    	if(auth::check())
+    	{
+	        $user = $this->user->Individuals;
+	        if($request->has('availableFrom')) $user->availableFrom = $request->availableFrom;
+	        if($request->has('availableTo')) $user->availableTo = $request->availableTo;
 	        $user->save();
 	        return redirect()->back();
 	    }

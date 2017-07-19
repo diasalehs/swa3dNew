@@ -48,8 +48,8 @@ class CreateIndividualsTable extends Migration
             //$table->index('skills');
             //$table->index('intrests');
             //$table->index('qualifications'); Optional
-            $table->date('availableFrom')->nullable();
-            $table->date('availableTo')->nullable();
+            $table->datetime('availableFrom')->nullable();
+            $table->datetime('availableTo')->nullable();
             $table->timestamps();
         });
     }
