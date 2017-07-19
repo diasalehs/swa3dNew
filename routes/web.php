@@ -152,6 +152,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
         });
     });
 
+    Route::post('/qualifications', ['uses'=>'homeController@qualifications'])->name('qualifications');
     Route::get('/follow/{userId}', ['uses'=>'followController@follow'])->name('follow');
     Route::get('/unfollow/{userId}', ['uses'=>'followController@unfollow'])->name('unfollow');
     Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');

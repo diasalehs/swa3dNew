@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use App\Initiative;
 use App\tempInstitute;
-
+use App\Qualification;
 
 class homeController extends Controller
 {
@@ -114,15 +114,27 @@ class homeController extends Controller
         }
     }
 
+    public function qualifications(Request $request)
+    {
+        list($user ,$date)=$this->slidbare();
+        $qualifications = new Qualification();
+        $qualifications->user_id = $user->id;
+        $qualifications->voluntaryWork = $request->voluntaryWork;
+        $qualifications->role = $request->role;
+        $qualifications->targetedSegment = $request->targetedSegment;
+        $qualifications->achievements = $request->achievements;
+        $qualifications->achievementFrom = $request->achievementFrom;
+        $qualifications->achievementTo = $request->achievementTo;
+        $qualifications->save();
+    }
+
     public function profileViewEdit()
     {
-        $user = Auth::user();
-        $date = $this->date;
+        list($user ,$date)=$this->slidbare();
         if($user->userType == 0){
-            $date = $this->date;
-            $user = Auth::user();
             $userIndividual = $user->Individuals;
-            return view('individual/profileViewEdit',compact('user','userIndividual'));
+            $qualifications = Qualification::where('user_id',$user->id)->get();
+            return view('individual/profileViewEdit',compact('user','userIndividual','qualifications'));
         }elseif ($user->userType == 1) {
             $userInstitute = Auth::user()->Institute;
             return view('institute/profileViewEdit',compact('userInstitute','user'));
