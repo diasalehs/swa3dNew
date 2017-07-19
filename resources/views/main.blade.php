@@ -1,3 +1,13 @@
+<script>
+    var msgshow = function(data) {
+        // write what you want with this data
+        
+        console.log(data);
+    }
+</script>
+
+{!! talk_live(['user'=>["id"=>auth()->user()->id, 'callback'=>['msgshow']]]) !!}
+
 @extends('layouts.master')
 
 @section('content')

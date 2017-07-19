@@ -41,6 +41,14 @@ class profilesController extends Controller
 		$date = $this->date;
 		$friend = false;
 		$authUser = $this->user;
+		try {
+		  $user=User::find($userId);
+		  $userType = $user->userType;
+		  $open = $user->open;
+		}
+		catch (\Exception $e) {
+		    return redirect()->route('errorPage')->withErrors('profile not found.');
+		}
 		if(Auth::check())
 		{
 			$friend = Friend::where('requester_id', '=', $authUser->id)->where('requested_id', '=', $userId)->first();
@@ -53,17 +61,9 @@ class profilesController extends Controller
 		    	$friend = false;
 		    }
 		    $userUevents = Event::where('events.user_id',$authUser->id)->where('startDate','>',$date)->get();
+		    if(($authUser->userType == $userType) && ($authUser->id == $user->id)){$mine = true;}
 		}
 
-		try {
-		  $user=User::find($userId);
-		  $userType = $user->userType;
-		  if(($authUser->userType == $userType) && ($authUser->id == $user->id)){$mine = true;}
-		  $open = $user->open;
-		}
-		catch (\Exception $e) {
-		    return redirect()->route('errorPage')->withErrors('profile not found.');
-		}
 		if ($userType==0)
 		{
 			$user= $user->Individuals;
