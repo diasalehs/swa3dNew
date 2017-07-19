@@ -42,15 +42,3 @@
 </div>
 
     @endsection('content')
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=geyq9mxvow5g65ekcrsmz3d2bonek78nqnu0ynr9asiwk3kb		"></script>    <script>tinymce.init({
-  selector: '#body',
-  height: 200,
-  plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste autoresize imagetools textcolor colorpicker emoticons"
-    ],
-    toolbar: "forecolor backcolor | insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | image | emoticons",
- });
-
- </script>
