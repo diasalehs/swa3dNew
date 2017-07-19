@@ -13,8 +13,8 @@
 
 
                             <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-lg-4 form-control-label">Name</label>
-                                <div class="col-lg-6">
+                                <label for="name" class="form-control-label">Name</label>
+                                <div class="">
                                     <input id="name" type="text" class="form-control" name="name" value="{{ $initiative->user->name }}"
                                     required="required" autofocus="autofocus" />
                                     @if ($errors->has('name'))
@@ -26,8 +26,8 @@
                             </div>
 
                             <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-lg-4 form-control-label">E-Mail Address</label>
-                                <div class="col-lg-6">
+                                <label for="email" class="form-control-label">E-Mail Address</label>
+                                <div class="">
                                     <input id="email" type="email" class="form-control" name="email" value="{{ $initiative->user->email }}"
                                     required="required" />
                                     @if ($errors->has('email'))
@@ -38,9 +38,9 @@
                                 </div>
                             </div>
 
-                                                        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-lg-4 form-control-label">Password</label>
-                                <div class="col-lg-6">
+                            <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+                                <label for="password" class=" form-control-label">Password</label>
+                                <div class="">
                                     <input id="password" type="password" class="form-control" name="password" value="" />
                                     @if ($errors->has('password'))
                                         <div class="alert alert-danger" role="alert">
@@ -51,15 +51,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password-confirm" class="col-lg-4 form-control-label">Confirm Password</label>
-                                <div class="col-lg-6">
+                                <label for="password-confirm" class="form-control-label">Confirm Password</label>
+                                <div class="">
                                     <input id="password-confirm" type="password" class="form-control" value="" name="password_confirmation"/>
                                 </div>
                             </div>
 
                         <div class="form-group">
-                        <label  class="col-lg-4 form-control-label" for="exampleSelect1">Where are you from</label>
-                        <div class="col-lg-6">
+                        <label  class="form-control-label" for="exampleSelect1">Where are you from</label>
+                        <div class="">
                             <select name="livingPlace" value="{{ $initiative->livingPlace }}" class="form-control" id="exampleSelect1">
                             <option value="city">city</option>
                             <option value="camp" >camp</option>

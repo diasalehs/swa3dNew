@@ -27,11 +27,13 @@ button{
 .mg{
 		padding: 14px 40px;
 		background-color: #5fd0cd;
-		border: 5px solid #43b7b5;
+		border: 5px solid #43b7b5 !important;
 		width: 300px;
 		display: inline-block !important;
-		color: white;
+		color: white !important;
     margin: 5px 5px;
+    outline: 0 !important;
+    box-shadow: 0 0 0 2px #43b7b5 !important;
 }
 .mg:hover{
 		padding: 14px 40px;
@@ -46,15 +48,16 @@ button{
 		border: 5px solid #e4a32d;
 		width: 300px;
 		display: inline-block !important;
-		color: white;
+		color: white !important;
     margin: 5px 5px;
+    box-shadow: 0 0 0 2px #e4a32d !important;
 
 }
 .bv:hover{
 		padding: 14px 40px;
-		background-color: #e4a32d;
+		background-color: #e4a32d !important;
 		width: 300px;
-		border: 5px solid #e4a32d;
+		border: 5px solid #e4a32d !important;
 
 }
 .ar{
