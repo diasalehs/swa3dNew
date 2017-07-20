@@ -72,9 +72,8 @@
                     @if($archived == 0)
                         <a class="btn btn-pink" href="{{route('eventDelete',[$event->id])}}">Delete</a>
                         <a class=" btn btn-yellow" href="{{route('eventEdit',[$event->id])}}">Edit</a>
-                    @else
-                        <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#postModal">Create a Post</a>
                     @endif
+                    <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#postModal">Create a Post</a>
                   @endif
                 @endif
 
