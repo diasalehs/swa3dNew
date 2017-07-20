@@ -24,40 +24,6 @@ ul.inner{
 .btn{
   border-radius: 200px ;
 }
-.conversation-wrap
-{
-    box-shadow: -2px 0 3px #ddd;
-    padding:0;
-    max-height: 400px;
-    overflow: auto;
-}
-.conversation
-{
-    padding:5px;
-    border-bottom:1px solid #ddd;
-    margin:0;
-
-}
-
-.message-wrap
-{
-    box-shadow: 0 0 3px #ddd;
-    padding:0;
-
-}
-.msg
-{
-    padding:5px;
-    /*border-bottom:1px solid #ddd;*/
-    margin:0;
-}
-.msg-wrap
-{
-    padding:10px;
-    max-height: 400px;
-    overflow: auto;
-
-}
 :root{
     --navy:#133c55;
     --dark-navy: #002c44;
@@ -100,7 +66,9 @@ ul.inner{
     -ms-transform: rotate(-44deg);
     transform: rotate(-44deg);
 }
-
+.modal-lg {
+    max-width: 90% !important;
+}
 .block {
   text-align: center;
   white-space: nowrap;

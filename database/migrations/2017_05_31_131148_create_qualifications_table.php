@@ -13,13 +13,15 @@ class CreateQualificationsTable extends Migration
     public function up()
     {
         Schema::create('qualifications', function (Blueprint $table) {
-            //ind & res many to one
             $table->increments('id');
-            $table->integer('role')->nullable();
-            $table->integer('targetedSegment')->nullable();
-            $table->string('achievements')->nullable(); //50 word
-            $table->date('achievementFrom')->nullable();
-            $table->date('achievementTo')->nullable();
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->text('voluntaryWork')->nullable();
+            $table->integer('role');
+            $table->integer('targetedSegment');
+            $table->text('achievements'); //50 word
+            $table->date('achievementFrom');
+            $table->date('achievementTo');
             $table->timestamps();
         });
     }

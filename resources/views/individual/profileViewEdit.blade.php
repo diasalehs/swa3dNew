@@ -17,7 +17,7 @@
 
       <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne">
         <div class="card-block">
-          <form class="" role="form" method="POST" action="{{ route('profileEdit') }}">{{ csrf_field() }}
+          <form enctype="multipart/form-data" role="form" method="POST" action="{{ route('profileEdit') }}">{{ csrf_field() }}
             <div class="row">
 
                   <div class="form-group col-sm-12 col-md-6 {{ $errors->has('name') ? ' has-error' : '' }}">
@@ -70,7 +70,7 @@
                <div class="  col-sm-6 col-md-3 form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
                    <label for="email" class=" form-control-label">First Name</label>
                    <div class="">
-                      <input id="name" type="text" class="form-control" name="firstName" value="{{$userIndividual->firstName }}"
+                      <input id="name" type="text" class="form-control" name="firstName" value="{{$userIndividual->firstInEnglish }}"
                       required="required" />
                       @if ($errors->has('firstName'))
                           <div class="alert alert-danger" role="alert">
@@ -84,7 +84,7 @@
               <div class="col-sm-6 col-md-3  form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
                   <label for="email" class="form-control-label">Last Name</label>
                   <div class="">
-                      <input id="name" type="text" class="form-control" name="lastName" value="{{ $userIndividual->lastName }}"
+                      <input id="name" type="text" class="form-control" name="lastName" value="{{ $userIndividual->lastInEnglish }}"
                       required="required" />
                       @if ($errors->has('lastName'))
                           <div class="alert alert-danger" role="alert">
@@ -97,7 +97,7 @@
               <div class="col-sm-6 col-md-3  form-group{{ $errors->has('ARfirst') ? ' has-error' : '' }}">
                   <label for="email" class="form-control-label">Your Arabic First</label>
                   <div class="">
-                      <input id="name" type="text" class="form-control" name="ARfirst" value="{{  $userIndividual->ARfirst }}"
+                      <input id="name" type="text" class="form-control" name="ARfirst" value="{{  $userIndividual->firstInArabic }}"
                       required="required" />
                       @if ($errors->has('ARfirst'))
                           <div class="alert alert-danger" role="alert">
@@ -110,7 +110,7 @@
               <div class="col-sm-6 col-md-3  form-group{{ $errors->has('ARlast') ? ' has-error' : '' }}">
                   <label for="email" class=" form-control-label">Your Arabic last</label>
                   <div class="">
-                      <input id="name" type="text" class="form-control" name="ARlast" value="{{  $userIndividual->ARlast }}"
+                      <input id="name" type="text" class="form-control" name="ARlast" value="{{  $userIndividual->lastInArabic }}"
                       required="required" />
                       @if ($errors->has('ARlast'))
                           <div class="alert alert-danger" role="alert">
@@ -123,256 +123,7 @@
               <div class="col-sm-12 col-md-6 form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                 <label for="name" class=" form-control-label">Your Country</label>
                   <div class="">
-                    <select name="country" class="form-control" onchange="yesnoCheck(this);">
-                          <option value="AF">Afghanistan</option>
-                          <option value="AX">Åland Islands</option>
-                          <option value="AL">Albania</option>
-                          <option value="DZ">Algeria</option>
-                          <option value="AS">American Samoa</option>
-                          <option value="AD">Andorra</option>
-                          <option value="AO">Angola</option>
-                          <option value="AI">Anguilla</option>
-                          <option value="AQ">Antarctica</option>
-                          <option value="AG">Antigua and Barbuda</option>
-                          <option value="AR">Argentina</option>
-                          <option value="AM">Armenia</option>
-                          <option value="AW">Aruba</option>
-                          <option value="AU">Australia</option>
-                          <option value="AT">Austria</option>
-                          <option value="AZ">Azerbaijan</option>
-                          <option value="BS">Bahamas</option>
-                          <option value="BH">Bahrain</option>
-                          <option value="BD">Bangladesh</option>
-                          <option value="BB">Barbados</option>
-                          <option value="BY">Belarus</option>
-                          <option value="BE">Belgium</option>
-                          <option value="BZ">Belize</option>
-                          <option value="BJ">Benin</option>
-                          <option value="BM">Bermuda</option>
-                          <option value="BT">Bhutan</option>
-                          <option value="BO">Bolivia, Plurinational State of</option>
-                          <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
-                          <option value="BA">Bosnia and Herzegovina</option>
-                          <option value="BW">Botswana</option>
-                          <option value="BV">Bouvet Island</option>
-                          <option value="BR">Brazil</option>
-                          <option value="IO">British Indian Ocean Territory</option>
-                          <option value="BN">Brunei Darussalam</option>
-                          <option value="BG">Bulgaria</option>
-                          <option value="BF">Burkina Faso</option>
-                          <option value="BI">Burundi</option>
-                          <option value="KH">Cambodia</option>
-                          <option value="CM">Cameroon</option>
-                          <option value="CA">Canada</option>
-                          <option value="CV">Cape Verde</option>
-                          <option value="KY">Cayman Islands</option>
-                          <option value="CF">Central African Republic</option>
-                          <option value="TD">Chad</option>
-                          <option value="CL">Chile</option>
-                          <option value="CN">China</option>
-                          <option value="CX">Christmas Island</option>
-                          <option value="CC">Cocos (Keeling) Islands</option>
-                          <option value="CO">Colombia</option>
-                          <option value="KM">Comoros</option>
-                          <option value="CG">Congo</option>
-                          <option value="CD">Congo, the Democratic Republic of the</option>
-                          <option value="CK">Cook Islands</option>
-                          <option value="CR">Costa Rica</option>
-                          <option value="CI">Côte d'Ivoire</option>
-                          <option value="HR">Croatia</option>
-                          <option value="CU">Cuba</option>
-                          <option value="CW">Curaçao</option>
-                          <option value="CY">Cyprus</option>
-                          <option value="CZ">Czech Republic</option>
-                          <option value="DK">Denmark</option>
-                          <option value="DJ">Djibouti</option>
-                          <option value="DM">Dominica</option>
-                          <option value="DO">Dominican Republic</option>
-                          <option value="EC">Ecuador</option>
-                          <option value="EG">Egypt</option>
-                          <option value="SV">El Salvador</option>
-                          <option value="GQ">Equatorial Guinea</option>
-                          <option value="ER">Eritrea</option>
-                          <option value="EE">Estonia</option>
-                          <option value="ET">Ethiopia</option>
-                          <option value="FK">Falkland Islands (Malvinas)</option>
-                          <option value="FO">Faroe Islands</option>
-                          <option value="FJ">Fiji</option>
-                          <option value="FI">Finland</option>
-                          <option value="FR">France</option>
-                          <option value="GF">French Guiana</option>
-                          <option value="PF">French Polynesia</option>
-                          <option value="TF">French Southern Territories</option>
-                          <option value="GA">Gabon</option>
-                          <option value="GM">Gambia</option>
-                          <option value="GE">Georgia</option>
-                          <option value="DE">Germany</option>
-                          <option value="GH">Ghana</option>
-                          <option value="GI">Gibraltar</option>
-                          <option value="GR">Greece</option>
-                          <option value="GL">Greenland</option>
-                          <option value="GD">Grenada</option>
-                          <option value="GP">Guadeloupe</option>
-                          <option value="GU">Guam</option>
-                          <option value="GT">Guatemala</option>
-                          <option value="GG">Guernsey</option>
-                          <option value="GN">Guinea</option>
-                          <option value="GW">Guinea-Bissau</option>
-                          <option value="GY">Guyana</option>
-                          <option value="HT">Haiti</option>
-                          <option value="HM">Heard Island and McDonald Islands</option>
-                          <option value="VA">Holy See (Vatican City State)</option>
-                          <option value="HN">Honduras</option>
-                          <option value="HK">Hong Kong</option>
-                          <option value="HU">Hungary</option>
-                          <option value="IS">Iceland</option>
-                          <option value="IN">India</option>
-                          <option value="ID">Indonesia</option>
-                          <option value="IR">Iran, Islamic Republic of</option>
-                          <option value="IQ">Iraq</option>
-                          <option value="IE">Ireland</option>
-                          <option value="IM">Isle of Man</option>
-                          <option value="IT">Italy</option>
-                          <option value="JM">Jamaica</option>
-                          <option value="JP">Japan</option>
-                          <option value="JE">Jersey</option>
-                          <option value="JO">Jordan</option>
-                          <option value="KZ">Kazakhstan</option>
-                          <option value="KE">Kenya</option>
-                          <option value="KI">Kiribati</option>
-                          <option value="KP">Korea, Democratic People's Republic of</option>
-                          <option value="KR">Korea, Republic of</option>
-                          <option value="KW">Kuwait</option>
-                          <option value="KG">Kyrgyzstan</option>
-                          <option value="LA">Lao People's Democratic Republic</option>
-                          <option value="LV">Latvia</option>
-                          <option value="LB">Lebanon</option>
-                          <option value="LS">Lesotho</option>
-                          <option value="LR">Liberia</option>
-                          <option value="LY">Libya</option>
-                          <option value="LI">Liechtenstein</option>
-                          <option value="LT">Lithuania</option>
-                          <option value="LU">Luxembourg</option>
-                          <option value="MO">Macao</option>
-                          <option value="MK">Macedonia, the former Yugoslav Republic of</option>
-                          <option value="MG">Madagascar</option>
-                          <option value="MW">Malawi</option>
-                          <option value="MY">Malaysia</option>
-                          <option value="MV">Maldives</option>
-                          <option value="ML">Mali</option>
-                          <option value="MT">Malta</option>
-                          <option value="MH">Marshall Islands</option>
-                          <option value="MQ">Martinique</option>
-                          <option value="MR">Mauritania</option>
-                          <option value="MU">Mauritius</option>
-                          <option value="YT">Mayotte</option>
-                          <option value="MX">Mexico</option>
-                          <option value="FM">Micronesia, Federated States of</option>
-                          <option value="MD">Moldova, Republic of</option>
-                          <option value="MC">Monaco</option>
-                          <option value="MN">Mongolia</option>
-                          <option value="ME">Montenegro</option>
-                          <option value="MS">Montserrat</option>
-                          <option value="MA">Morocco</option>
-                          <option value="MZ">Mozambique</option>
-                          <option value="MM">Myanmar</option>
-                          <option value="NA">Namibia</option>
-                          <option value="NR">Nauru</option>
-                          <option value="NP">Nepal</option>
-                          <option value="NL">Netherlands</option>
-                          <option value="NC">New Caledonia</option>
-                          <option value="NZ">New Zealand</option>
-                          <option value="NI">Nicaragua</option>
-                          <option value="NE">Niger</option>
-                          <option value="NG">Nigeria</option>
-                          <option value="NU">Niue</option>
-                          <option value="NF">Norfolk Island</option>
-                          <option value="MP">Northern Mariana Islands</option>
-                          <option value="NO">Norway</option>
-                          <option value="OM">Oman</option>
-                          <option value="PK">Pakistan</option>
-                          <option value="PW">Palau</option>
-                          <option value="PS" selected>Palestinian Territory, Occupied</option>
-                          <option value="PA">Panama</option>
-                          <option value="PG">Papua New Guinea</option>
-                          <option value="PY">Paraguay</option>
-                          <option value="PE">Peru</option>
-                          <option value="PH">Philippines</option>
-                          <option value="PN">Pitcairn</option>
-                          <option value="PL">Poland</option>
-                          <option value="PT">Portugal</option>
-                          <option value="PR">Puerto Rico</option>
-                          <option value="QA">Qatar</option>
-                          <option value="RE">Réunion</option>
-                          <option value="RO">Romania</option>
-                          <option value="RU">Russian Federation</option>
-                          <option value="RW">Rwanda</option>
-                          <option value="BL">Saint Barthélemy</option>
-                          <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
-                          <option value="KN">Saint Kitts and Nevis</option>
-                          <option value="LC">Saint Lucia</option>
-                          <option value="MF">Saint Martin (French part)</option>
-                          <option value="PM">Saint Pierre and Miquelon</option>
-                          <option value="VC">Saint Vincent and the Grenadines</option>
-                          <option value="WS">Samoa</option>
-                          <option value="SM">San Marino</option>
-                          <option value="ST">Sao Tome and Principe</option>
-                          <option value="SA">Saudi Arabia</option>
-                          <option value="SN">Senegal</option>
-                          <option value="RS">Serbia</option>
-                          <option value="SC">Seychelles</option>
-                          <option value="SL">Sierra Leone</option>
-                          <option value="SG">Singapore</option>
-                          <option value="SX">Sint Maarten (Dutch part)</option>
-                          <option value="SK">Slovakia</option>
-                          <option value="SI">Slovenia</option>
-                          <option value="SB">Solomon Islands</option>
-                          <option value="SO">Somalia</option>
-                          <option value="ZA">South Africa</option>
-                          <option value="GS">South Georgia and the South Sandwich Islands</option>
-                          <option value="SS">South Sudan</option>
-                          <option value="ES">Spain</option>
-                          <option value="LK">Sri Lanka</option>
-                          <option value="SD">Sudan</option>
-                          <option value="SR">Suriname</option>
-                          <option value="SJ">Svalbard and Jan Mayen</option>
-                          <option value="SZ">Swaziland</option>
-                          <option value="SE">Sweden</option>
-                          <option value="CH">Switzerland</option>
-                          <option value="SY">Syrian Arab Republic</option>
-                          <option value="TW">Taiwan, Province of China</option>
-                          <option value="TJ">Tajikistan</option>
-                          <option value="TZ">Tanzania, United Republic of</option>
-                          <option value="TH">Thailand</option>
-                          <option value="TL">Timor-Leste</option>
-                          <option value="TG">Togo</option>
-                          <option value="TK">Tokelau</option>
-                          <option value="TO">Tonga</option>
-                          <option value="TT">Trinidad and Tobago</option>
-                          <option value="TN">Tunisia</option>
-                          <option value="TR">Turkey</option>
-                          <option value="TM">Turkmenistan</option>
-                          <option value="TC">Turks and Caicos Islands</option>
-                          <option value="TV">Tuvalu</option>
-                          <option value="UG">Uganda</option>
-                          <option value="UA">Ukraine</option>
-                          <option value="AE">United Arab Emirates</option>
-                          <option value="GB">United Kingdom</option>
-                          <option value="US">United States</option>
-                          <option value="UM">United States Minor Outlying Islands</option>
-                          <option value="UY">Uruguay</option>
-                          <option value="UZ">Uzbekistan</option>
-                          <option value="VU">Vanuatu</option>
-                          <option value="VE">Venezuela, Bolivarian Republic of</option>
-                          <option value="VN">Viet Nam</option>
-                          <option value="VG">Virgin Islands, British</option>
-                          <option value="VI">Virgin Islands, U.S.</option>
-                          <option value="WF">Wallis and Futuna</option>
-                          <option value="EH">Western Sahara</option>
-                          <option value="YE">Yemen</option>
-                          <option value="ZM">Zambia</option>
-                          <option value="ZW">Zimbabwe</option>
-                      </select>
+                    @include('includes.countriesModal')
 
                       @if ($errors->has('cityName'))
                           <div class="alert alert-danger" role="alert">
@@ -504,6 +255,7 @@
           </div>
       </div>
     </div>
+    <br>
     <div class="card">
       <div class="card-header" role="tab" id="headingTwo">
         <h5 class="mb-0">
@@ -516,58 +268,51 @@
         <div class="card-block">
           <div class="row">
 
-          <div class="form-group col-sm-12 col-md-6 {{ $errors->has('name') ? ' has-error' : '' }}">
-              <label for="name" class="form-control-label">Profile Picture</label>
+          <div class="form-group col-sm-12 col-md-6 {{ $errors->has('picture') ? ' has-error' : '' }}">
+              <label for="picture" class="form-control-label">Profile Picture</label>
               <div class="">
-                  <input id="name" type="file" class="form-control" name="mobile" value="{{ $user->mobile }}"
-                  required="required" autofocus="autofocus" />
-                  @if ($errors->has('name'))
+                  <input id="picture" type="file" class="form-control" name="picture" value="{{ $user->picture }}"
+                  autofocus="autofocus" />
+                  @if ($errors->has('picture'))
                           <div class="alert alert-danger" role="alert">
-                          <strong>Warning!</strong> {{ $errors->first('name') }}
+                          <strong>Warning!</strong> {{ $errors->first('picture') }}
                        </div>
                   @endif
               </div>
           </div>
-            <div class="form-group col-sm-12 col-md-6 {{ $errors->has('name') ? ' has-error' : '' }}">
-                <label for="name" class="form-control-label">Mobile Number</label>
+
+            <div class="form-group col-sm-12 col-md-6 {{ $errors->has('mobileNumber') ? ' has-error' : '' }}">
+                <label for="mobileNumber" class="form-control-label">Mobile Number</label>
                 <div class="">
-                    <input id="name" type="tel" class="form-control" name="mobile" value="{{ $user->mobile }}"
-                    required="required" autofocus="autofocus" />
-                    @if ($errors->has('name'))
+                    <input id="mobileNumber" type="phone" class="form-control" name="mobileNumber" value="{{ $userIndividual->mobileNumber }}"
+                    autofocus="autofocus" />
+                    @if ($errors->has('mobileNumber'))
                             <div class="alert alert-danger" role="alert">
-                            <strong>Warning!</strong> {{ $errors->first('name') }}
+                            <strong>Warning!</strong> {{ $errors->first('mobileNumber') }}
                          </div>
                     @endif
                 </div>
             </div>
-            <div class="form-group col-sm-12 col-md-6 {{ $errors->has('name') ? ' has-error' : '' }}">
-                <label for="name" class="form-control-label">Full Address</label>
+            <div class="form-group col-sm-12 col-md-6 {{ $errors->has('address') ? ' has-error' : '' }}">
+                <label for="address" class="form-control-label">Full Address</label>
                 <div class="">
-                    <input id="name" type="tel" class="form-control" name="mobile" value="{{ $user->mobile }}"
-                    required="required" autofocus="autofocus" />
-                    @if ($errors->has('name'))
+                    <input id="address" type="tel" class="form-control" name="address" value="{{ $userIndividual->address }}"
+                    autofocus="autofocus" />
+                    @if ($errors->has('address'))
                             <div class="alert alert-danger" role="alert">
-                            <strong>Warning!</strong> {{ $errors->first('name') }}
+                            <strong>Warning!</strong> {{ $errors->first('address') }}
                          </div>
                     @endif
                 </div>
             </div>
-            <div class="input_fields_wrap">
-                <button class="add_field_button">Add More Fields</button>
-                <div class="form-group col-sm-12 col-md-6 {{ $errors->has('name') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">Full Address</label>
-                    <div class="">
-                        <input id="name" type="tel" class="form-control" name="mobile" value="{{ $user->mobile }}"
-                        required="required" autofocus="autofocus" />
-                        @if ($errors->has('name'))
-                                <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('name') }}
-                             </div>
-                        @endif
-                    </div>
-                </div>
-                <div><input type="text" name="mytext[]"></div>
-            </div>
+
+            <div class=" col-sm-12 col-md-6">
+              <label for="name" class="form-control-label">Qualifications</label>
+
+              <button type="button" class="btn btn-green btn-block" data-toggle="modal" data-target="#Qualifications">
+                Add Qualifications
+              </button>
+]            </div>
           </div>
 
           </div>
@@ -584,13 +329,177 @@
   </div>
 </div>
 
-                    </form>
+        </form>
 
       </div>
     </div>
 
+    <div class="modal modal-wide fade" id="Qualifications"style="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add More Qualifications</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="input_fields_wrap">
+              <button class="add_field_button btn btn-green">Add More Qualifications</button>
+              <form class="" role="form" method="POST" action="{{ route('qualifications') }}">{{ csrf_field() }}
+
+              <div class="row">
+              @foreach($qualifications as $qualification)
+
+              <input id="name" type="text" style="display: none;" class="form-control" name="id[]" value="{{ $qualification->id }}"/>
+
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('voluntaryWork') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">Voluntary Work</label>
+                        <input id="voluntaryWork" type="tel" class="form-control" name="voluntaryWorkEdit[]" value="{{ $qualification->voluntaryWork }}"
+                        required="required" autofocus="autofocus" />
+                        @if ($errors->has('voluntaryWork'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('voluntaryWork') }}
+                            </div>
+                        @endif
+                </div>
+
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('role') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">Role</label>
+                        <input id="role" type="tel" class="form-control" name="roleEdit[]" value="{{ $qualification->role }}" required="required" autofocus="autofocus" />
+                        @if($errors->has('role'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('role') }}
+                            </div>
+                        @endif
+                </div>
+
+                <div class="form-group col-sm-6 col-md-3 {{ $errors->has('achievements') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">Achievements</label>
+                        <input id="achievements" type="tel" class="form-control" name="achievementsEdit[]" value="{{ $qualification->achievements }}"
+                        required="required" autofocus="autofocus" />
+                        @if ($errors->has('achievements'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('achievements') }}
+                            </div>
+                        @endif
+                </div>
+
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('targetedSegment') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">targeted segments</label>
+                        <input id="targetedSegment" type="text" class="form-control" name="targetedSegmentEdit[]" value="{{ $qualification->targetedSegment }}"
+                        required="required" autofocus="autofocus" />
+                        @if ($errors->has('targetedSegment'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('targetedSegment') }}
+                            </div>
+                        @endif
+                </div>
+
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('achievementFrom') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">Start Date</label>
+                        <input id="achievementFrom" type="date" class="form-control" name="achievementFromEdit[]" value="{{ $qualification->achievementFrom }}"
+                        required="required" autofocus="autofocus" />
+                        @if ($errors->has('achievementFrom'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('achievementFrom') }}
+                            </div>
+                        @endif
+                </div>
+
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('achievementTo') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">End Date</label>
+                        <input id="achievementTo" type="date" class="form-control" name="achievementToEdit[]" value="{{ $qualification->achievementTo }}"
+                        autofocus="autofocus" />
+                        @if ($errors->has('achievementTo'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('achievementTo') }}
+                            </div>
+                        @endif
+                </div>
+
+              @endforeach
+
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('voluntaryWork') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">Voluntary Work</label>
+                        <input id="voluntaryWork" type="tel" class="form-control" name="voluntaryWork[]" value="{{ old('voluntaryWork') }}"
+                        required="required" autofocus="autofocus" />
+                        @if ($errors->has('voluntaryWork'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('voluntaryWork') }}
+                            </div>
+                        @endif
+                </div>
+
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('role') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">Role</label>
+                        <input id="role" type="tel" class="form-control" name="role[]" value="{{ old('role') }}"
+                        required="required" autofocus="autofocus" />
+                        @if ($errors->has('role'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('role') }}
+                            </div>
+                        @endif
+                </div>
+
+                <div class="form-group col-sm-6 col-md-3 {{ $errors->has('achievements') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">Achievements</label>
+                        <input id="achievements" type="tel" class="form-control" name="achievements[]" value="{{ old('achievements') }}"
+                        required="required" autofocus="autofocus" />
+                        @if ($errors->has('achievements'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('achievements') }}
+                            </div>
+                        @endif
+                </div>
+
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('targetedSegment') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">targeted segments</label>
+                        <input id="targetedSegment" type="text" class="form-control" name="targetedSegment[]" value="{{ old('targetedSegment') }}"
+                        required="required" autofocus="autofocus" />
+                        @if ($errors->has('targetedSegment'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('targetedSegment') }}
+                            </div>
+                        @endif
+                </div>
+
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('achievementFrom') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">Start Date</label>
+                        <input id="achievementFrom" type="date" class="form-control" name="achievementFrom[]" value="{{ old('achievementFrom') }}"
+                        required="required" autofocus="autofocus" />
+                        @if ($errors->has('achievementFrom'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('achievementFrom') }}
+                            </div>
+                        @endif
+                </div>
+
+                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('achievementTo') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">End Date</label>
+                        <input id="achievementTo" type="date" class="form-control" name="achievementTo[]" value="{{ old('achievementTo') }}"
+                        autofocus="autofocus" />
+                        @if ($errors->has('achievementTo'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('achievementTo') }}
+                            </div>
+                        @endif
+                </div>
+                  <a href="#" class="remove_field col-sm-1 col-md-1"><i class="fa fa-times" aria-hidden="true"></i></a>
 
 
+              </div>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-green">Add</button>
+        </form>
+        </div>
+        </div>
+      </div>
+    </div>
 {{--  --}}
 {{--  --}}
 

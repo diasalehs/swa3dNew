@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use App\Initiative;
 use App\tempInstitute;
-
+use App\Qualification;
+use Image;
 
 class homeController extends Controller
 {
@@ -114,15 +115,49 @@ class homeController extends Controller
         }
     }
 
+    public function qualifications(Request $request)
+    {
+        list($user ,$date)=$this->slidbare();
+        if($request->has('voluntaryWorkEdit'))
+        {
+            for($i = 0 ;$i < sizeof($request->voluntaryWorkEdit) ;$i++)
+            {   
+                $qualifications = Qualification::findOrFail($request->id[$i]);
+                $qualifications->user_id = $user->id;
+                $qualifications->voluntaryWork = $request->voluntaryWorkEdit[$i];
+                $qualifications->role = $request->roleEdit[$i];
+                $qualifications->targetedSegment = $request->targetedSegmentEdit[$i];
+                $qualifications->achievements = $request->achievementsEdit[$i];
+                $qualifications->achievementFrom = $request->achievementFromEdit[$i];
+                $qualifications->achievementTo = $request->achievementToEdit[$i];
+                $qualifications->save();
+            }
+        }
+        if($request->has('voluntaryWork'))
+        {
+            for($i = 0 ;$i < sizeof($request->voluntaryWork) ;$i++)
+            {   
+                $qualifications = new Qualification();
+                $qualifications->user_id = $user->id;
+                $qualifications->voluntaryWork = $request->voluntaryWork[$i];
+                $qualifications->role = $request->role[$i];
+                $qualifications->targetedSegment = $request->targetedSegment[$i];
+                $qualifications->achievements = $request->achievements[$i];
+                $qualifications->achievementFrom = $request->achievementFrom[$i];
+                $qualifications->achievementTo = $request->achievementTo[$i];
+                $qualifications->save();
+            }
+        }
+        return redirect()->back();
+    }
+
     public function profileViewEdit()
     {
-        $user = Auth::user();
-        $date = $this->date;
+        list($user ,$date)=$this->slidbare();
         if($user->userType == 0){
-            $date = $this->date;
-            $user = Auth::user();
             $userIndividual = $user->Individuals;
-            return view('individual/profileViewEdit',compact('user','userIndividual'));
+            $qualifications = Qualification::where('user_id',$user->id)->get();
+            return view('individual/profileViewEdit',compact('user','userIndividual','qualifications'));
         }elseif ($user->userType == 1) {
             $userInstitute = Auth::user()->Institute;
             return view('institute/profileViewEdit',compact('userInstitute','user'));
@@ -139,6 +174,7 @@ class homeController extends Controller
         $user = Auth::user();
         $this->validate($request, [
             'name' => 'required|string|max:255',
+            'mobileNumber' => 'min:11|numeric',
         ]);
         if($user->userType == 0)
         {
@@ -165,6 +201,16 @@ class homeController extends Controller
             $Individuals->lastInArabic = $request['ARlast'];
             $Individuals->nameInArabic =  "".$request['ARfirst']." ".$request['ARlast'];
             $Individuals->nameInEnglish = "".$request['firstName']." ".$request['lastName'];
+            if ($request->hasFile('picture'))
+            {
+                $picture = $request->file('picture');
+                $imagename = time().'.'.$picture->getClientOriginalExtension();
+                Image::make($picture)->save(public_path('pp/'.$imagename));
+                $Individuals->picture = $picture;
+                $user->picture = $picture;
+            }
+            $Individuals->mobileNumber = $request->mobileNumber;
+            $Individuals->address = $request->address;
             $user->name= $Individuals->nameInEnglish;
             $user->save();
 

@@ -62,5 +62,6 @@ class Kernel extends HttpKernel
         'institute' => \App\Http\Middleware\Institute::class,
         'admin' => \App\Http\Middleware\Admin::class,
         'initiative' => \App\Http\Middleware\Initiative::class,
+        'talk'  =>  \Nahid\Talk\Middleware\TalkMiddleware::class,
     ];
 }

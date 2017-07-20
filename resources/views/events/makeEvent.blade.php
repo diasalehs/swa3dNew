@@ -34,7 +34,7 @@
                                   @endif
                           </div>
 {{--  --}}
-{{--  --}}{{-- 
+{{--  --}}{{--
                           <div class="form-group {{ $errors->has('country') ? ' has-error' : '' }}">
                                   <div class="form-group"> <!-- Description field -->
                                     <label class="control-label " for="country">Counrty</label>
@@ -48,7 +48,7 @@
                           </div> --}}
 
 
-                        <div class="col-sm-12 col-md-6 form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                         <label for="name" class=" form-control-label">Your Country</label>
                         <div class="">
                         <select name="country" class="form-control" onchange="yesnoCheck(this);">
@@ -310,7 +310,7 @@
                     </div>
                 </div>
                                               {{--  --}}{{--  --}}
-                  <div id="palestineCity"  class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
+                  <div id="palestineCity"  class="form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
                       <label for="email" class=" form-control-label">Your city name</label>
                       <div class="">
                           <select id="palC" name="cityName"  class="form-control">
@@ -352,7 +352,7 @@
                                       </div>
                                   @endif
                           </div>
-                 
+
                   <label class="control-label " for="intrests">intrests</label>
 <br>
                         <div class="row">

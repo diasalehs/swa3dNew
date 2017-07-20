@@ -164,6 +164,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -179,6 +180,7 @@ return [
         App\Providers\EventServiceProvider::class,
         Jrean\UserVerification\UserVerificationServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Nahid\Talk\TalkServiceProvider::class,
 
     ],
 
@@ -230,8 +232,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class
-
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Talk'      => Nahid\Talk\Facades\Talk::class,
 
 
     ],
