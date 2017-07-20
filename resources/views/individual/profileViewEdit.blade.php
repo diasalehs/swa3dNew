@@ -17,7 +17,7 @@
 
       <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne">
         <div class="card-block">
-          <form class="" role="form" method="POST" action="{{ route('profileEdit') }}">{{ csrf_field() }}
+          <form enctype="multipart/form-data" role="form" method="POST" action="{{ route('profileEdit') }}">{{ csrf_field() }}
             <div class="row">
 
                   <div class="form-group col-sm-12 col-md-6 {{ $errors->has('name') ? ' has-error' : '' }}">
@@ -70,7 +70,7 @@
                <div class="  col-sm-6 col-md-3 form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
                    <label for="email" class=" form-control-label">First Name</label>
                    <div class="">
-                      <input id="name" type="text" class="form-control" name="firstName" value="{{$userIndividual->firstName }}"
+                      <input id="name" type="text" class="form-control" name="firstName" value="{{$userIndividual->firstInEnglish }}"
                       required="required" />
                       @if ($errors->has('firstName'))
                           <div class="alert alert-danger" role="alert">
@@ -84,7 +84,7 @@
               <div class="col-sm-6 col-md-3  form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
                   <label for="email" class="form-control-label">Last Name</label>
                   <div class="">
-                      <input id="name" type="text" class="form-control" name="lastName" value="{{ $userIndividual->lastName }}"
+                      <input id="name" type="text" class="form-control" name="lastName" value="{{ $userIndividual->lastInEnglish }}"
                       required="required" />
                       @if ($errors->has('lastName'))
                           <div class="alert alert-danger" role="alert">
@@ -97,7 +97,7 @@
               <div class="col-sm-6 col-md-3  form-group{{ $errors->has('ARfirst') ? ' has-error' : '' }}">
                   <label for="email" class="form-control-label">Your Arabic First</label>
                   <div class="">
-                      <input id="name" type="text" class="form-control" name="ARfirst" value="{{  $userIndividual->ARfirst }}"
+                      <input id="name" type="text" class="form-control" name="ARfirst" value="{{  $userIndividual->firstInArabic }}"
                       required="required" />
                       @if ($errors->has('ARfirst'))
                           <div class="alert alert-danger" role="alert">
@@ -110,7 +110,7 @@
               <div class="col-sm-6 col-md-3  form-group{{ $errors->has('ARlast') ? ' has-error' : '' }}">
                   <label for="email" class=" form-control-label">Your Arabic last</label>
                   <div class="">
-                      <input id="name" type="text" class="form-control" name="ARlast" value="{{  $userIndividual->ARlast }}"
+                      <input id="name" type="text" class="form-control" name="ARlast" value="{{  $userIndividual->lastInArabic }}"
                       required="required" />
                       @if ($errors->has('ARlast'))
                           <div class="alert alert-danger" role="alert">
@@ -272,7 +272,7 @@
               <label for="picture" class="form-control-label">Profile Picture</label>
               <div class="">
                   <input id="picture" type="file" class="form-control" name="picture" value="{{ $user->picture }}"
-                  required="required" autofocus="autofocus" />
+                  autofocus="autofocus" />
                   @if ($errors->has('picture'))
                           <div class="alert alert-danger" role="alert">
                           <strong>Warning!</strong> {{ $errors->first('picture') }}
@@ -284,8 +284,8 @@
             <div class="form-group col-sm-12 col-md-6 {{ $errors->has('mobileNumber') ? ' has-error' : '' }}">
                 <label for="mobileNumber" class="form-control-label">Mobile Number</label>
                 <div class="">
-                    <input id="mobileNumber" type="tel" class="form-control" name="mobileNumber" value="{{ $userIndividual->mobileNumber }}"
-                    required="required" autofocus="autofocus" />
+                    <input id="mobileNumber" type="phone" class="form-control" name="mobileNumber" value="{{ $userIndividual->mobileNumber }}"
+                    autofocus="autofocus" />
                     @if ($errors->has('mobileNumber'))
                             <div class="alert alert-danger" role="alert">
                             <strong>Warning!</strong> {{ $errors->first('mobileNumber') }}
@@ -297,7 +297,7 @@
                 <label for="address" class="form-control-label">Full Address</label>
                 <div class="">
                     <input id="address" type="tel" class="form-control" name="address" value="{{ $userIndividual->address }}"
-                    required="required" autofocus="autofocus" />
+                    autofocus="autofocus" />
                     @if ($errors->has('address'))
                             <div class="alert alert-danger" role="alert">
                             <strong>Warning!</strong> {{ $errors->first('address') }}
@@ -350,9 +350,11 @@
               <div class="row">
               @foreach($qualifications as $qualification)
 
+              <input id="name" type="text" style="display: none;" class="form-control" name="id[]" value="{{ $qualification->id }}"/>
+
                 <div class="form-group col-sm-6 col-md-2 {{ $errors->has('voluntaryWork') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">Voluntary Work</label>
-                        <input id="voluntaryWork" type="tel" class="form-control" name="voluntaryWork" value="{{ $qualification->voluntaryWork }}"
+                        <input id="voluntaryWork" type="tel" class="form-control" name="voluntaryWorkEdit[]" value="{{ $qualification->voluntaryWork }}"
                         required="required" autofocus="autofocus" />
                         @if ($errors->has('voluntaryWork'))
                             <div class="alert alert-danger" role="alert">
@@ -363,7 +365,7 @@
 
                 <div class="form-group col-sm-6 col-md-2 {{ $errors->has('role') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">Role</label>
-                        <input id="role" type="tel" class="form-control" name="role" value="{{ $qualification->role }}" required="required" autofocus="autofocus" />
+                        <input id="role" type="tel" class="form-control" name="roleEdit[]" value="{{ $qualification->role }}" required="required" autofocus="autofocus" />
                         @if($errors->has('role'))
                             <div class="alert alert-danger" role="alert">
                                 <strong>Warning!</strong> {{ $errors->first('role') }}
@@ -373,7 +375,7 @@
 
                 <div class="form-group col-sm-6 col-md-3 {{ $errors->has('achievements') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">Achievements</label>
-                        <input id="achievements" type="tel" class="form-control" name="achievements" value="{{ $qualification->achievements }}"
+                        <input id="achievements" type="tel" class="form-control" name="achievementsEdit[]" value="{{ $qualification->achievements }}"
                         required="required" autofocus="autofocus" />
                         @if ($errors->has('achievements'))
                             <div class="alert alert-danger" role="alert">
@@ -384,7 +386,7 @@
 
                 <div class="form-group col-sm-6 col-md-2 {{ $errors->has('targetedSegment') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">targeted segments</label>
-                        <input id="targetedSegment" type="text" class="form-control" name="targetedSegment" value="{{ $qualification->targetedSegment }}"
+                        <input id="targetedSegment" type="text" class="form-control" name="targetedSegmentEdit[]" value="{{ $qualification->targetedSegment }}"
                         required="required" autofocus="autofocus" />
                         @if ($errors->has('targetedSegment'))
                             <div class="alert alert-danger" role="alert">
@@ -395,7 +397,7 @@
 
                 <div class="form-group col-sm-6 col-md-2 {{ $errors->has('achievementFrom') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">Start Date</label>
-                        <input id="achievementFrom" type="date" class="form-control" name="achievementFrom" value="{{ $qualification->achievementFrom }}"
+                        <input id="achievementFrom" type="date" class="form-control" name="achievementFromEdit[]" value="{{ $qualification->achievementFrom }}"
                         required="required" autofocus="autofocus" />
                         @if ($errors->has('achievementFrom'))
                             <div class="alert alert-danger" role="alert">
@@ -406,7 +408,7 @@
 
                 <div class="form-group col-sm-6 col-md-2 {{ $errors->has('achievementTo') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">End Date</label>
-                        <input id="achievementTo" type="date" class="form-control" name="achievementTo" value="{{ $qualification->achievementTo }}"
+                        <input id="achievementTo" type="date" class="form-control" name="achievementToEdit[]" value="{{ $qualification->achievementTo }}"
                         autofocus="autofocus" />
                         @if ($errors->has('achievementTo'))
                             <div class="alert alert-danger" role="alert">
@@ -419,7 +421,7 @@
 
                 <div class="form-group col-sm-6 col-md-2 {{ $errors->has('voluntaryWork') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">Voluntary Work</label>
-                        <input id="voluntaryWork" type="tel" class="form-control" name="voluntaryWork" value="{{ old('voluntaryWork') }}"
+                        <input id="voluntaryWork" type="tel" class="form-control" name="voluntaryWork[]" value="{{ old('voluntaryWork') }}"
                         required="required" autofocus="autofocus" />
                         @if ($errors->has('voluntaryWork'))
                             <div class="alert alert-danger" role="alert">
@@ -430,7 +432,7 @@
 
                 <div class="form-group col-sm-6 col-md-2 {{ $errors->has('role') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">Role</label>
-                        <input id="role" type="tel" class="form-control" name="role" value="{{ old('role') }}"
+                        <input id="role" type="tel" class="form-control" name="role[]" value="{{ old('role') }}"
                         required="required" autofocus="autofocus" />
                         @if ($errors->has('role'))
                             <div class="alert alert-danger" role="alert">
@@ -441,7 +443,7 @@
 
                 <div class="form-group col-sm-6 col-md-3 {{ $errors->has('achievements') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">Achievements</label>
-                        <input id="achievements" type="tel" class="form-control" name="achievements" value="{{ old('achievements') }}"
+                        <input id="achievements" type="tel" class="form-control" name="achievements[]" value="{{ old('achievements') }}"
                         required="required" autofocus="autofocus" />
                         @if ($errors->has('achievements'))
                             <div class="alert alert-danger" role="alert">
@@ -452,7 +454,7 @@
 
                 <div class="form-group col-sm-6 col-md-2 {{ $errors->has('targetedSegment') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">targeted segments</label>
-                        <input id="targetedSegment" type="text" class="form-control" name="targetedSegment" value="{{ old('targetedSegment') }}"
+                        <input id="targetedSegment" type="text" class="form-control" name="targetedSegment[]" value="{{ old('targetedSegment') }}"
                         required="required" autofocus="autofocus" />
                         @if ($errors->has('targetedSegment'))
                             <div class="alert alert-danger" role="alert">
@@ -463,7 +465,7 @@
 
                 <div class="form-group col-sm-6 col-md-2 {{ $errors->has('achievementFrom') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">Start Date</label>
-                        <input id="achievementFrom" type="date" class="form-control" name="achievementFrom" value="{{ old('achievementFrom') }}"
+                        <input id="achievementFrom" type="date" class="form-control" name="achievementFrom[]" value="{{ old('achievementFrom') }}"
                         required="required" autofocus="autofocus" />
                         @if ($errors->has('achievementFrom'))
                             <div class="alert alert-danger" role="alert">
@@ -474,7 +476,7 @@
 
                 <div class="form-group col-sm-6 col-md-2 {{ $errors->has('achievementTo') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">End Date</label>
-                        <input id="achievementTo" type="date" class="form-control" name="achievementTo" value="{{ old('achievementTo') }}"
+                        <input id="achievementTo" type="date" class="form-control" name="achievementTo[]" value="{{ old('achievementTo') }}"
                         autofocus="autofocus" />
                         @if ($errors->has('achievementTo'))
                             <div class="alert alert-danger" role="alert">
