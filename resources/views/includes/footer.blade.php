@@ -119,7 +119,7 @@
             e.preventDefault();
             if(x < max_fields){ //max input box allowed
                 x++; //text box increment
-                $(wrapper).append(); //add input box
+                $(wrapper).append(''); //add input box
             }
         });
 
