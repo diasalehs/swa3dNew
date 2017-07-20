@@ -21,7 +21,8 @@ class messageController extends Controller
         $user = Auth::user();
         $sentMessages = message::join('users', 'messages.receiver_id' ,'=','users.id')->where('sender_id',$user->id)->get();
         $receivedMessages = message::join('users', 'messages.sender_id' ,'=','users.id')->where('receiver_id',$user->id)->get();
-        return view('messenger',compact('sentMessages','receivedMessages','email'));
+        $nofooter = true;
+        return view('messenger',compact('sentMessages','receivedMessages','email','nofooter'));
     }
 
     public function sendMessage(Request $request){

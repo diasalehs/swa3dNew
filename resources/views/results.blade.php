@@ -23,7 +23,6 @@
         <div class="row">
 
         @foreach($users as $result)
-        @continue($result->userType==10)
         <div class="col-lg-3 col-sm-4" style="margin-bottom:25px;">
             <div class="card h-100">
                         <a href="{{route('profile',[$result->id])}}">
@@ -35,12 +34,8 @@
                     <p class="card-text">
                       @if($result->userType==0)
                       Volunteer
-                      @elseif($result->userType==1)
-                      Institute
                       @elseif($result->userType==3)
                       initiatives
-                      @else
-                      ADMIN
                       @endif
 
                     </p>
@@ -97,9 +92,19 @@
           {{$events->links('vendor.pagination.custom')}}
         </ul>
         </nav>
-
-
       </div>
+
+
+
+        <!-- Blog Post -->
+      
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+      {{$users->links('vendor.pagination.custom')}}
+    </ul>
+    </nav>
 
     </div>
 

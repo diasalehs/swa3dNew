@@ -552,6 +552,22 @@
                     @endif
                 </div>
             </div>
+            <div class="input_fields_wrap">
+                <button class="add_field_button">Add More Fields</button>
+                <div class="form-group col-sm-12 col-md-6 {{ $errors->has('name') ? ' has-error' : '' }}">
+                    <label for="name" class="form-control-label">Full Address</label>
+                    <div class="">
+                        <input id="name" type="tel" class="form-control" name="mobile" value="{{ $user->mobile }}"
+                        required="required" autofocus="autofocus" />
+                        @if ($errors->has('name'))
+                                <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('name') }}
+                             </div>
+                        @endif
+                    </div>
+                </div>
+                <div><input type="text" name="mytext[]"></div>
+            </div>
           </div>
 
           </div>

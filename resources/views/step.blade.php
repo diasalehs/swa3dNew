@@ -471,6 +471,27 @@
                           </div>
                           @endforeach
                       </div>
+                      <br><br><br>
+
+                               <div class="col-12" style="margin-top:20px;">
+                  <h4 class="greencolor">Your Favorate Targets</h4>
+                  <hr />
+                </div>
+              </div>
+                <br />
+                        {{--  --}}
+                        <div class="row">
+
+                         @foreach($targets as $t)
+                          <div class="form-check col-4">
+                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                              <input name="targets[]" value="{{$t->id}}" type="checkbox" class="custom-control-input">
+                              <span class="custom-control-indicator"></span>
+                              <span class="custom-control-description">{{$t->name}}</span>
+                            </label>
+                          </div>
+                          @endforeach
+                      </div>
 
                       <br />
                       <hr />

@@ -17,7 +17,6 @@ class CreateEventTargetsTable extends Migration
             $table->increments('id');
                $table->integer('event_id');
             $table->integer('target_id');
-
             $table->timestamps();
         });
     }
