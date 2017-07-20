@@ -11,7 +11,9 @@
       <li class="nav-item second-tab">
         <a class="nav-link" data-toggle="tab" id="rtab" href="#profile" role="tab">Events</a>
       </li>
-
+      <li class="nav-item second-tab">
+        <a class="nav-link" data-toggle="tab" id="rtab" href="#Institute" role="tab">Institute</a>
+      </li>
     </ul>
 
     <!-- Tab panes -->
@@ -60,46 +62,102 @@
       </div>
 
 
-      <div class="tab-pane" id="profile" role="tabpanel">
-        <div class="row">
-                 <div class="col-12" style="color: #333">
-                  <div class="row justify-content-center">
-                  @foreach($events as $event)
-                  <div class="col-md-8 col-sm-12">
-                      <div class="card card-inverse event">
-                        <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
-                        <div class="card-img-overlay">
-                          <h3 class="card-title">{{$event->title}}</h3>
-                          <p class="card-text line-clamp-4">{{$event->description}}</p>
-                          <p class="">{{$event->startDate}} To {{$event->endDate}} - in Nablus</p>
-                          <a href='event/{{$event->id}}' class="card-link green-link" >View</a>
-                          <a href='event/{{$event->id}}' class="card-link yellow-link ">Follow</a>
-                        </div>
-                      </div>
-                    </div>
+            <div class="tab-pane" id="profile" role="tabpanel">
+              <div class="row">
+                       <div class="col-12" style="color: #333">
+                        <div class="row justify-content-center">
+                        @foreach($events as $event)
+                        <div class="col-md-8 col-sm-12">
+                            <div class="card card-inverse event">
+                              <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
+                              <div class="card-img-overlay">
+                                <h3 class="card-title">{{$event->title}}</h3>
+                                <p class="card-text line-clamp-4">{{$event->description}}</p>
+                                <p class="">{{$event->startDate}} To {{$event->endDate}} - in Nablus</p>
+                                <a href='event/{{$event->id}}' class="card-link green-link" >View</a>
+                                <a href='event/{{$event->id}}' class="card-link yellow-link ">Follow</a>
+                              </div>
+                            </div>
+                          </div>
 
-                    @endforeach
+                          @endforeach
 
-                      </div>
-                      <br>
+                            </div>
+                            <br>
 
-                                <div class="row justify-content-center">
-                    <form action="{{route('allEvents')}}" method="GET"><button class="btn btn-pink">View more</button></form>
-    </div>
-                 </div>
+                                      <div class="row justify-content-center">
+                          <form action="{{route('allEvents')}}" method="GET"><button class="btn btn-pink">View more</button></form>
+          </div>
+                       </div>
+                  </div>
+
+
+
+              <!-- Pagination -->
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                {{$events->links('vendor.pagination.custom')}}
+              </ul>
+              </nav>
+
+
             </div>
 
 
-
-        <!-- Pagination -->
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center">
-          {{$events->links('vendor.pagination.custom')}}
-        </ul>
-        </nav>
+        <div class="tab-pane" id="Institute" role="tabpanel">
+          <div class="row">
+                   <div class="col-12" style="color: #333">
+                    <div class="row justify-content-center">
 
 
-      </div>
+
+
+
+                <div class="col-lg-3 col-sm-4" style="margin-bottom:25px;">
+                    <div class="card h-100">
+                                <a href="">
+                                    <!--{$result->mainImgpath}}-->
+                                  <img class="img-fluid rounded all-news-img" src="" alt="">
+                              </a>
+                                <div class="card-block">
+                                  <a href=""><h2 class="card-title"></h2></a>
+                            <p class="card-text">
+
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                          </div>
+                          <br>
+
+                                    <div class="row justify-content-center">
+                        <form action="{{route('allEvents')}}" method="GET"><button class="btn btn-pink">View more</button></form>
+        </div>
+                     </div>
+                </div>
+
+
+
+            <!-- Pagination -->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+
+
+            </ul>
+            </nav>
+
+
+          </div>
+
+
 
     </div>
 

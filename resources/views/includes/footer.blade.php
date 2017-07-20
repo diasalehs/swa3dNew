@@ -2,7 +2,7 @@
     <footer id="myFooter" style="background-image: linear-gradient(rgba(19, 58, 83, 0.9),rgba(19, 58, 83, 0.9)),url({{ URL::to('/vendor/img/newlogo.png')}});">
         <div class="container">
             <div class="row">
-                <div data-aos="fade-up" class="col-sm-2 block col-md-3">
+                <div data-aos="zoom-in" class="col-sm-2 block col-md-3">
 
                     <img class="centered img-fluid brand-img" src="{{ URL::to('/vendor/img/newlogo.png') }} " alt="" style="">
                   </div>
@@ -119,7 +119,7 @@
             e.preventDefault();
             if(x < max_fields){ //max input box allowed
                 x++; //text box increment
-                $(wrapper).append(' <div class="row"> <div class="form-group col-sm-6 col-md-2 {{ $errors->has('name') ? ' has-error' : '' }}"> <label for="name" class="form-control-label">Role</label> <input id="role" type="tel" class="form-control" name="role[]" value="{{ $user->mobile }}" required="required" autofocus="autofocus" /> </div> <div class="form-group col-sm-6 col-md-3 {{ $errors->has('name') ? ' has-error' : '' }}"> <label for="name" class="form-control-label">Achievements</label> <input id="achievements" type="tel" class="form-control" name="achievements[]" value="{{ $user->mobile }}" required="required" autofocus="autofocus" /> </div> <div class="form-group col-sm-6 col-md-2 {{ $errors->has('name') ? ' has-error' : '' }}"> <label for="name" class="form-control-label">targeted segments</label> <input id="targeted_segments" type="text" class="form-control" name="targeted_segments[]" value="{{ $user->mobile }}" required="required" autofocus="autofocus" /> </div> <div class="form-group col-sm-6 col-md-2 {{ $errors->has('name') ? ' has-error' : '' }}"> <label for="name" class="form-control-label">Start Date</label> <input id="name" type="date" class="form-control" name="SD[]" value="{{ $user->mobile }}" required="required" autofocus="autofocus" /> </div> <div class="form-group col-sm-6 col-md-2 {{ $errors->has('name') ? ' has-error' : '' }}"> <label for="name" class="form-control-label">End Date</label> <input id="name" type="date" class="form-control" name="ED[]" value="{{ $user->mobile }}" required="required" autofocus="autofocus" /> </div> <a href="#" class="remove_field col-sm-1 col-md-1"><i class="fa fa-times" aria-hidden="true"></i></a> </div>'); //add input box
+                $(wrapper).append(); //add input box
             }
         });
 
