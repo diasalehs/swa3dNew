@@ -67,9 +67,7 @@ ul.inner{
     -ms-transform: rotate(-44deg);
     transform: rotate(-44deg);
 }
-.modal-lg {
-    max-width: 90% !important;
-}
+
 .block {
   text-align: center;
   white-space: nowrap;

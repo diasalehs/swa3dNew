@@ -305,16 +305,39 @@
                     @endif
                 </div>
             </div>
-            <div class=" col-sm-12 col-md-6">
-              <label for="name" class="form-control-label">Qualifications</label>
 
-              <button type="button" class="btn btn-green btn-block" data-toggle="modal" data-target="#Qualifications">
-                Add Qualifications
-              </button>
+          </div>
+          
+          <div class="row">
+            <div class="col-12 ">
+              <label for="name" class="form-control-label">Qualifications</label>
+              <ul class="list-group" >
+                @foreach($qualifications as $qualification)
+
+                <li class="list-group-item" style="min-height:53px;justify-content: space-between;">
+                  <a data-toggle="modal" data-target="#{{ $qualification->id }}"class="green-link" style="cursor: pointer">
+
+                  {{ $qualification->voluntaryWork }},
+                  {{ $qualification->role }},
+                  {{ $qualification->achievements }}
+                </a>
+                  <a href="#" class="pink-link float-xs-right" ><i class="fa fa-trash" aria-hidden="true"></i>  Delete</a>
+                </li>
+
+                @endforeach
+
+              </ul>
+              <div class="row justify-content-center">
+                <button type="button"style="margin-top:10px;" class="btn btn-green btn-block col-6" data-toggle="modal" data-target="#Qualifications">
+                  Add new qualifications
+                </button>
+              </div>
+
             </div>
           </div>
 
-          </div>
+        </div>
+
       </div>
     </div>
 
@@ -332,173 +355,11 @@
 
       </div>
     </div>
+    @foreach($qualifications as $qualification)
+      @include('includes.QualificationsModal')
+    @endforeach
+    @include('includes.QualificationsModalAdd')
 
-    <div class="modal modal-wide fade" id="Qualifications"style="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add More Qualifications</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="input_fields_wrap">
-              <button class="add_field_button btn btn-green">Add More Qualifications</button>
-              <form class="" role="form" method="POST" action="{{ route('qualifications') }}">{{ csrf_field() }}
-
-              <div class="row">
-              @foreach($qualifications as $qualification)
-
-              <input id="name" type="text" style="display: none;" class="form-control" name="id[]" value="{{ $qualification->id }}"/>
-
-                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('voluntaryWork') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">Voluntary Work</label>
-                        <input id="voluntaryWork" type="tel" class="form-control" name="voluntaryWorkEdit[]" value="{{ $qualification->voluntaryWork }}"
-                        required="required" autofocus="autofocus" />
-                        @if ($errors->has('voluntaryWork'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('voluntaryWork') }}
-                            </div>
-                        @endif
-                </div>
-
-                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('role') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">Role</label>
-                        <input id="role" type="tel" class="form-control" name="roleEdit[]" value="{{ $qualification->role }}" required="required" autofocus="autofocus" />
-                        @if($errors->has('role'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('role') }}
-                            </div>
-                        @endif
-                </div>
-
-                <div class="form-group col-sm-6 col-md-3 {{ $errors->has('achievements') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">Achievements</label>
-                        <input id="achievements" type="tel" class="form-control" name="achievementsEdit[]" value="{{ $qualification->achievements }}"
-                        required="required" autofocus="autofocus" />
-                        @if ($errors->has('achievements'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('achievements') }}
-                            </div>
-                        @endif
-                </div>
-
-                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('targetedSegment') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">targeted segments</label>
-                        <input id="targetedSegment" type="text" class="form-control" name="targetedSegmentEdit[]" value="{{ $qualification->targetedSegment }}"
-                        required="required" autofocus="autofocus" />
-                        @if ($errors->has('targetedSegment'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('targetedSegment') }}
-                            </div>
-                        @endif
-                </div>
-
-                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('achievementFrom') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">Start Date</label>
-                        <input id="achievementFrom" type="date" class="form-control" name="achievementFromEdit[]" value="{{ $qualification->achievementFrom }}"
-                        required="required" autofocus="autofocus" />
-                        @if ($errors->has('achievementFrom'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('achievementFrom') }}
-                            </div>
-                        @endif
-                </div>
-
-                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('achievementTo') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">End Date</label>
-                        <input id="achievementTo" type="date" class="form-control" name="achievementToEdit[]" value="{{ $qualification->achievementTo }}"
-                        autofocus="autofocus" />
-                        @if ($errors->has('achievementTo'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('achievementTo') }}
-                            </div>
-                        @endif
-                </div>
-
-              @endforeach
-
-                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('voluntaryWork') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">Voluntary Work</label>
-                        <input id="voluntaryWork" type="tel" class="form-control" name="voluntaryWork[]" value="{{ old('voluntaryWork') }}"
-                        required="required" autofocus="autofocus" />
-                        @if ($errors->has('voluntaryWork'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('voluntaryWork') }}
-                            </div>
-                        @endif
-                </div>
-
-                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('role') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">Role</label>
-                        <input id="role" type="tel" class="form-control" name="role[]" value="{{ old('role') }}"
-                        required="required" autofocus="autofocus" />
-                        @if ($errors->has('role'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('role') }}
-                            </div>
-                        @endif
-                </div>
-
-                <div class="form-group col-sm-6 col-md-3 {{ $errors->has('achievements') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">Achievements</label>
-                        <input id="achievements" type="tel" class="form-control" name="achievements[]" value="{{ old('achievements') }}"
-                        required="required" autofocus="autofocus" />
-                        @if ($errors->has('achievements'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('achievements') }}
-                            </div>
-                        @endif
-                </div>
-
-                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('targetedSegment') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">targeted segments</label>
-                        <input id="targetedSegment" type="text" class="form-control" name="targetedSegment[]" value="{{ old('targetedSegment') }}"
-                        required="required" autofocus="autofocus" />
-                        @if ($errors->has('targetedSegment'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('targetedSegment') }}
-                            </div>
-                        @endif
-                </div>
-
-                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('achievementFrom') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">Start Date</label>
-                        <input id="achievementFrom" type="date" class="form-control" name="achievementFrom[]" value="{{ old('achievementFrom') }}"
-                        required="required" autofocus="autofocus" />
-                        @if ($errors->has('achievementFrom'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('achievementFrom') }}
-                            </div>
-                        @endif
-                </div>
-
-                <div class="form-group col-sm-6 col-md-2 {{ $errors->has('achievementTo') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">End Date</label>
-                        <input id="achievementTo" type="date" class="form-control" name="achievementTo[]" value="{{ old('achievementTo') }}"
-                        autofocus="autofocus" />
-                        @if ($errors->has('achievementTo'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('achievementTo') }}
-                            </div>
-                        @endif
-                </div>
-                  <a href="#" class="remove_field col-sm-1 col-md-1"><i class="fa fa-times" aria-hidden="true"></i></a>
-
-
-              </div>
-
-            </div>
-          </div>
-          <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-green">Add</button>
-        </form>
-        </div>
-        </div>
-      </div>
-    </div>
 {{--  --}}
 {{--  --}}
 
