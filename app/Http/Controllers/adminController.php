@@ -15,6 +15,12 @@ use App\news;
 use Image;
 class adminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+        $this->date = date('Y-m-d');
+    }
+
     public function delete($userId)
     {
         // $user = User::find($userId);

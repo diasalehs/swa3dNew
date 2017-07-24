@@ -81,10 +81,11 @@
             </div>
           @endforeach
             </div>
-              <div class="text-center ">
-                <a href="{{route('allNews')}}"><button type="button" class="btn btn-primary  show-more-btn">More News</button></a>
+
             </div>
-            </div>
+            <div class="text-center ">
+              <a href="{{route('allNews')}}"><button type="button" class="btn  show-more-btn btn-green">More News</button></a>
+          </div>
 
   </div><!-- news tab -->
   <div class="tab-pane fade" id="profile" role="tabpanel">
@@ -113,7 +114,7 @@
 
         </div>
             <div class="text-center ">
-                 <a href="{{route('allResearches')}}"> <button type="button" class="btn btn-primary show-more-btn more-researches">More Researches</button></a>
+                 <a href="{{route('allResearches')}}"> <button type="button" class="btn show-more-btn btn-pink more-researches">More Researches</button></a>
             </div>
     </div>
 

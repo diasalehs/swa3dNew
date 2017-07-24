@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Intrest;
 use App\targetedGroups;
+
 class stepController extends Controller
 {
 	public function step() {
@@ -10,7 +11,7 @@ class stepController extends Controller
 			if(Auth::user()->flag == 0){
 			$intrests = Intrest::get();
 			$targets = targetedGroups::get();
-				return view('step',compact('intrests','targets'));
+			return view('step',compact('intrests','targets'));
 			}elseif(Auth::user()->flag == 1){
 				return redirect()->route('home');
 			}

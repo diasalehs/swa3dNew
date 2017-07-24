@@ -83,6 +83,7 @@
                           <div class="" >
                           @include('includes.countriesModal')
                         @if ($errors->has('country'))
+
                             <div class="alert alert-danger" role="alert">
                                 <strong>Warning!</strong> {{ $errors->first('country') }}
                             </div>

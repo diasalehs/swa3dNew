@@ -2,7 +2,7 @@
     <footer id="myFooter" style="background-image: linear-gradient(rgba(19, 58, 83, 0.9),rgba(19, 58, 83, 0.9)),url({{ URL::to('/vendor/img/newlogo.png')}});">
         <div class="container">
             <div class="row">
-                <div data-aos="zoom-in" class="col-sm-2 block col-md-3">
+                <div class="col-sm-2 block col-md-3">
 
                     <img class="centered img-fluid brand-img" src="{{ URL::to('/vendor/img/newlogo.png') }} " alt="" style="">
                   </div>
@@ -50,12 +50,9 @@
     <!-- Script to Activate the Carousel -->
       <script src="{{URL::asset('vendor/js/jquery.js')}} "></script>
       <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
-
-
-
+      <!-- Datatables -->
     <script>
-
-        $('.c').starbox({
+    $('.c').starbox({
         average: 0.5,
         autoUpdateAverage: true,
         ghosting: true,
@@ -107,8 +104,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="{{URL::asset('vendor/js/scripts.js')}}"></script>
     <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
 
     <script type="text/javascript">
+    $(document).ready(function() {
+      $('#example').DataTable( {
+       } );} );
         AOS.init({
           duration: 1200,
           once: true,

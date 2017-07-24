@@ -24,7 +24,10 @@ class User extends Authenticatable
     }
 
      public function Intrest(){
-        return $this->belongsToMany('Intrest','user_intrests');
+        return $this->belongsToMany('App\Intrest','user_intrests');
+    }
+    public function targetedGroups(){
+        return $this->belongsToMany('App\targetedGroups','user_targets');
     }
 
     public function Event(){

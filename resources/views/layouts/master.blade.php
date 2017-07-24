@@ -19,6 +19,7 @@
     <link href="{{ URL::asset('vendor/css/messenger.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/bootstrap-select.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/news.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('vendor/css/research.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/profileView.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/footer.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/jstarbox.css')}}" rel="stylesheet">
@@ -52,4 +53,5 @@
     <div class="main">
         @yield('content')
     </div>
+
   @include('includes.footer')

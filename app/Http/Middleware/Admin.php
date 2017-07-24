@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
+use Illuminate\Support\Facades\Auth;
 
 use Closure;
 
@@ -20,6 +21,6 @@ class Admin
         {
             return $next($request);
         }else
-            return abort(403,'Unauthrized action.');
+            return redirect()->route('errorPage')->withErrors('Unauthrized action.');
     }
 }

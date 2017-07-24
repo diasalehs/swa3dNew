@@ -7,6 +7,7 @@ use App\tempInstitute;
 use App\User;
 use Illuminate\Support\Facades\auth;
 use App\UserIntrest;
+use App\UserTarget;
 
 class registerStep2Controller extends Controller 
 {
@@ -76,7 +77,14 @@ class registerStep2Controller extends Controller
                                 $ui->save();
                                 # code...
                             }
-                            return redirect()->route('home');
+                               foreach ($request['targets'] as $t) {
+                                $ui=new UserTarget;
+                                $ui->target_id = $t;
+                                $ui->user_id=auth::user()->id;
+                                $ui->save();
+                                # code...
+                            }
+                              return redirect()->route('home');
 
 
                         }

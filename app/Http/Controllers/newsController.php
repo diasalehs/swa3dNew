@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Image;
 class newsController extends Controller
 {
+
     public function create( Request $request)
 
     {

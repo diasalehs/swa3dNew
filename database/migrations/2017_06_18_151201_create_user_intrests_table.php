@@ -18,8 +18,6 @@ class CreateUserIntrestsTable extends Migration
             $table->timestamps();
             $table->integer('user_id');
             $table->integer('intrest_id');
-
-
         });
     }
 
