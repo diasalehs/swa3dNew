@@ -393,7 +393,7 @@
             <!-- Pagination -->
             <nav aria-label="Page navigation example">
               <ul class="pagination justify-content-center">
-                  {{$institutes->links('vendor.pagination.custom')}}
+                  {{$institutes->links('vendor.pagination.custom')}}  
             </ul>
             </nav>
 
