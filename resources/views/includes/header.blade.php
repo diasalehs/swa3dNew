@@ -40,7 +40,7 @@ background-position-y: 7px;">
           </li>
             <li class="nav-item">
             @if (Auth::guest())
-              <a class="nav-link" data-toggle="modal" data-target="#myModal">Join Us</a>
+              <a class="nav-link" data-toggle="modal" style="cursor:pointer"data-target="#myModal">Join Us</a>
 
             </li>
 

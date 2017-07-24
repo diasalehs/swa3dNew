@@ -20,7 +20,7 @@
     <form method="get" class="col-sm-12 col-md-6" action="{{route('Researches_search')}}" role="form" id="form-buscar">
       <div class="form-group" >
         <div class="input-group">
-          <input id="1" class="form-control" type="text" name="search" placeholder="Search..." style="    border-color: #f06493 !important;
+          <input id="1" class="form-control" type="text" name="search" placeholder="Search for research title or tags..." style="    border-color: #f06493 !important;
 " required/>
           <span class="input-group-btn">
             <button class="btn btn-pink" style="  outline: 0 !important;
