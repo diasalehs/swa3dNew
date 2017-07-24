@@ -107,6 +107,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="{{URL::asset('vendor/js/scripts.js')}}"></script>
     <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
+    <!-- Datatables -->
+    <script src="{{URL::asset('vendor/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{URL::asset('vendor/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{URL::asset('vendor/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{URL::asset('vendor/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
+    <script src="{{URL::asset('vendor/vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
+    <script src="{{URL::asset('vendor/vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
+    <script src="{{URL::asset('vendor/vendors/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
+    <script src="{{URL::asset('vendor/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>
+    <script src="{{URL::asset('vendor/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
+    <script src="{{URL::asset('vendor/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{URL::asset('vendor/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
+    <script src="{{URL::asset('vendor/vendors/datatables.net-scroller/js/dataTables.scroller.min.js')}}"></script>
+    <script src="{{URL::asset('vendor/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="{{URL::asset('vendor/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="{{URL::asset('vendor/vendors/pdfmake/build/vfs_fonts.js"></script>
 
     <script type="text/javascript">
 
