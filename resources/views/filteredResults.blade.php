@@ -338,7 +338,7 @@
     <!-- Pagination -->
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
-                  {{ $NGOs->setpath('filteredResults/')->appends(Request::except('page'))->links() }}
+                  {{ $users->setpath('filteredResults/')->appends(Request::except('page'))->links() }}
 
     </ul>
     </nav>
@@ -378,7 +378,6 @@
                           <br>
 
                 <div class="row justify-content-center">
-                  {{ $NGOs->setpath('filteredResults/')->appends(Request::except('page'))->links() }}
                   </div>
                </div>
                 </div>
@@ -388,6 +387,7 @@
             <!-- Pagination -->
             <nav aria-label="Page navigation example">
               <ul class="pagination justify-content-center">
+                  {{ $NGOs->setpath('filteredResults/')->appends(Request::except('page'))->links() }}
 
 
             </ul>

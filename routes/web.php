@@ -133,6 +133,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
                 Route::post('/', ['uses' =>'newsController@CreateNews', 'as'=>'createNews']);
                 Route::get('/{newsId}',  ['uses' =>'instituteController@edit', 'as'=>'editMyNews']);
                 Route::post('/{newsID}', ['uses' =>'newsController@editMynews', 'as'=>'editMynews']);
+
             });
 
 
@@ -161,7 +162,9 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
     Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
     Route::post('/profileEdit', ['uses'=>'homeController@profileEdit'])->name('profileEdit');
     Route::get('/allusers',['uses'=>'homeController@allusers'])->name('allusers');
+    Route::get('/volunteersSearch', ['uses' =>'searchcontroller@volunteersSearch', 'as'=>'volunteersSearch']);
     Route::get('/findVolunteers',['uses'=>'homeController@findVolunteers'])->name('findVolunteers');
+
 });
 
 });
