@@ -267,11 +267,11 @@
              <option value="5">Young Adults (18-30)</option>
              <option value="6">Adults (31-59)</option>
              <option value="7">Elderly (60 >)</option>
-             
+
            </select>
          </div>
          <input type="text" name="name" value="{{Request::input('name')}}">
-  
+
          <div class="form-group  col-sm12 col-md-4">
            <label for="Select2">intrest</label>
     <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box "true"  data-live-search="true" multiple>
@@ -305,6 +305,88 @@
       </div>
 
         </form>
+        <table id="example" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Age</th>
+                  <th>Start date</th>
+                  <th>Salary</th>
+              </tr>
+          </thead>
+          <tfoot>
+              <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Age</th>
+                  <th>Start date</th>
+                  <th>Salary</th>
+              </tr>
+          </tfoot>
+          <tbody>
+              <tr>
+                  <td>Tiger Nixon</td>
+                  <td>System Architect</td>
+                  <td>Edinburgh</td>
+                  <td>61</td>
+                  <td>2011/04/25</td>
+                  <td>$320,800</td>
+              </tr>
+              <tr>
+                  <td>Garrett Winters</td>
+                  <td>Accountant</td>
+                  <td>Tokyo</td>
+                  <td>63</td>
+                  <td>2011/07/25</td>
+                  <td>$170,750</td>
+              </tr>
+              <tr>
+                  <td>Ashton Cox</td>
+                  <td>Junior Technical Author</td>
+                  <td>San Francisco</td>
+                  <td>66</td>
+                  <td>2009/01/12</td>
+                  <td>$86,000</td>
+              </tr>
+              <tr>
+                  <td>Cedric Kelly</td>
+                  <td>Senior Javascript Developer</td>
+                  <td>Edinburgh</td>
+                  <td>22</td>
+                  <td>2012/03/29</td>
+                  <td>$433,060</td>
+              </tr>
+              <tr>
+                  <td>Airi Satou</td>
+                  <td>Accountant</td>
+                  <td>Tokyo</td>
+                  <td>33</td>
+                  <td>2008/11/28</td>
+                  <td>$162,700</td>
+              </tr>
+              <tr>
+                  <td>Brielle Williamson</td>
+                  <td>Integration Specialist</td>
+                  <td>New York</td>
+                  <td>61</td>
+                  <td>2012/12/02</td>
+                  <td>$372,000</td>
+              </tr>
+              <tr>
+                  <td>Herrod Chandler</td>
+                  <td>Sales Assistant</td>
+                  <td>San Francisco</td>
+                  <td>59</td>
+                  <td>2012/08/06</td>
+                  <td>$137,500</td>
+              </tr>
+          
+
+          </tbody>
+      </table>
          <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
            <h1 class="greencolor">All Volunteers</h1>
             <table class="table">

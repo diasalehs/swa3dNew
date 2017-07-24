@@ -20,6 +20,7 @@
     <link href="{{ URL::asset('vendor/css/footer.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/profile.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/jquery.tag-editor.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap4.min.css"/>
 
 </head>
 <body>
