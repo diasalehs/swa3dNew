@@ -20,7 +20,12 @@
     <link href="{{ URL::asset('vendor/css/footer.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/profile.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/jquery.tag-editor.css')}}" rel="stylesheet">
-
+    <!-- Datatables -->
+        <link href="{{URL::asset('vendor/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{URL::asset('vendor/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{URL::asset('vendor/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{URL::asset('vendor/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{URL::asset('vendor/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
