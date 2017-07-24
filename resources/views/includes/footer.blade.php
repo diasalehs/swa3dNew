@@ -110,7 +110,6 @@
     <script type="text/javascript">
     $(document).ready(function() {
       $('#example').DataTable( {
-           "scrollY": 400,
        } );} );
         AOS.init({
           duration: 1200,

@@ -22,6 +22,7 @@
     <link href="{{ URL::asset('vendor/jquery.tag-editor.css')}}" rel="stylesheet">
     <!-- Datatables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap4.min.css"/>
+    <link href="{{ URL::asset('vendor/css/bootstrap-select.css')}}" rel="stylesheet">
 
 
 </head>
