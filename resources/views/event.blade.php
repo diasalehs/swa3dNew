@@ -210,7 +210,7 @@
                @endif
                data-size="7" data-live-search="true" >
                 @foreach($eventAcceptedVols as $eventAcceptedVol)
-                <option disabled value="{{$eventAcceptedVol->id}}"><a href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a></option>
+                <option value="{{$eventAcceptedVol->id}}"><a href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a></option>
                 @endforeach
               </select>
               @if($mine && $event->endDate > $date)

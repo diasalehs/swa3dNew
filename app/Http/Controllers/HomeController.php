@@ -115,42 +115,6 @@ class homeController extends Controller
         }
     }
 
-    public function qualifications(Request $request)
-    {
-        list($user ,$date)=$this->slidbare();
-        if($request->has('voluntaryWorkEdit'))
-        {
-            for($i = 0 ;$i < sizeof($request->voluntaryWorkEdit) ;$i++)
-            {   
-                $qualifications = Qualification::findOrFail($request->id[$i]);
-                $qualifications->user_id = $user->id;
-                $qualifications->voluntaryWork = $request->voluntaryWorkEdit[$i];
-                $qualifications->role = $request->roleEdit[$i];
-                $qualifications->targetedSegment = $request->targetedSegmentEdit[$i];
-                $qualifications->achievements = $request->achievementsEdit[$i];
-                $qualifications->achievementFrom = $request->achievementFromEdit[$i];
-                $qualifications->achievementTo = $request->achievementToEdit[$i];
-                $qualifications->save();
-            }
-        }
-        if($request->has('voluntaryWork'))
-        {
-            for($i = 0 ;$i < sizeof($request->voluntaryWork) ;$i++)
-            {   
-                $qualifications = new Qualification();
-                $qualifications->user_id = $user->id;
-                $qualifications->voluntaryWork = $request->voluntaryWork[$i];
-                $qualifications->role = $request->role[$i];
-                $qualifications->targetedSegment = $request->targetedSegment[$i];
-                $qualifications->achievements = $request->achievements[$i];
-                $qualifications->achievementFrom = $request->achievementFrom[$i];
-                $qualifications->achievementTo = $request->achievementTo[$i];
-                $qualifications->save();
-            }
-        }
-        return redirect()->back();
-    }
-
     public function profileViewEdit()
     {
         list($user ,$date)=$this->slidbare();
