@@ -306,7 +306,7 @@
 
         </form>
          <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
-           <h1>All Volunteers</h1>
+           <h1 class="greencolor">All Volunteers</h1>
             <table class="table">
               <thead>
                 <tr>
@@ -327,11 +327,13 @@
                 @foreach($following as $followi)
                   @if($followi->requested_id == $user->id)
                                <a class='btn btn-danger'  href="{{route('unfollow',$user->user_id)}}">Unfollow</a>
+
                     <?php $flag = 1; ?>
                     @endif
                 @endforeach
                 @if($flag == 0)
                                <a class='btn btn-danger'  href="{{route('follow',$user->user_id)}}">follow</a>
+
                     <?php $flag = 1; ?>
                 @endif
                       </td>

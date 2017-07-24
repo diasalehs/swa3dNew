@@ -28,6 +28,11 @@
                     <h4 class="card-title line-clamp-2">{{$event->title}}</h4>
                     <div class="card-bottom">
                       <p class="card-text "><small>{{$event->startDate}} To {{$event->endDate}} - in Nablus</small></p>
+                      <p class="card-text">
+                        <small>
+                          Volunteer Requests: <span class="badge badge-pill badge-default tags">21</span>
+                        </small>
+                      </p>
                       <a href="{{route('event',$event->id)}}" class="btn btn-green" >View</a>
                       <a class="btn btn-pink" href="{{route('eventDelete',[$event->id])}}">Delete</a>
                       <a class=" btn btn-yellow" href="{{route('eventEdit',[$event->id])}}">Edit</a>

@@ -23,7 +23,7 @@
 @endif
 
         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
-          <h1>Followers</h1>
+          <h1 class="greencolor">Followers</h1>
           <hr>
 
         <div class="row justify-content-around">
@@ -42,12 +42,12 @@
               <?php $flag = 0; ?>
                 @foreach($following as $followi)
                   @if($followi->requester_id == $follower->requested_id && $flag == 0)
-                               <a class='btn btn-danger'  href="{{route('unfollow',$follower->id)}}">Unfollow</a>
+                               <a class='btn btn-pink'  href="{{route('unfollow',$follower->id)}}">Unfollow</a>
                     <?php $flag = 1; ?>
                     @endif
                 @endforeach
                 @if($flag == 0)
-                               <a class='btn btn-danger'  href="{{route('follow',$follower->id)}}">follow</a>
+                               <a class='btn btn-green'  href="{{route('follow',$follower->id)}}">follow</a>
                     <?php $flag = 1; ?>
                 @endif
                         </div>

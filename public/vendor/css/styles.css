@@ -392,7 +392,7 @@ form input:focus{
   color: white !important;
   cursor: pointer;
   border-radius: 200px !important;
-
+  box-shadow: 0 0 0 0px var(--green)!important;
 
 }
 .btn-green:hover
@@ -407,7 +407,10 @@ form input:focus{
   color: white !important;
   cursor: pointer;
   border-radius: 200px !important;
+  box-shadow: 0 0 0 0px var(--pink) !important;
 
+}
+.btn-pink:active{
 
 }
 .btn-pink:hover{
@@ -421,7 +424,7 @@ form input:focus{
   color: white !important;
   cursor: pointer;
   border-radius: 200px !important;
-
+  box-shadow: 0 0 0 0px var(--yellow)!important;
 
 }
 .btn-yellow:hover{
@@ -455,6 +458,8 @@ form input:focus{
 .sign-in-btn{
 	background-color: #1ab08b;
 	border-color: #1ab08b;
+  box-shadow: 0 0 0 0px var(--green)!important;
+
 }
 .HeaderSearch {
     width: 41px !important;
@@ -694,11 +699,14 @@ border-bottom: 3px solid #51c2c0 !important;
     width: 150px;
     margin-top: 20px;
     margin-bottom: 0px;
+    box-shadow: 0 0 0 0px var(--green)!important;
+
 }
 .show-more-btn:hover{
 		background-color: #008988;
 }
 .choose-btn{
+  box-shadow: 0 0 0 0px var(--green)!important;
 
 		background-color: #51c2c0;
 		border: 5px solid #51c2c0;

@@ -103,6 +103,8 @@
     margin-top: 00px;
     line-height: 25px;
     cursor: pointer;
+    box-shadow: 0 0 0 0px var(--green)!important;
+
 }
 #myFooter .btn:hover {
     color: #fff;

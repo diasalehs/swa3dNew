@@ -308,7 +308,7 @@
 
 
           </div>
-          
+
           <div class="row">
             <div class="col-12 ">
               <label for="name" class="form-control-label">Qualifications</label>
@@ -329,7 +329,7 @@
 
               </ul>
               <div class="row justify-content-center">
-                <button type="button"style="margin-top:10px;" class="btn btn-green btn-block col-6" data-toggle="modal" data-target="#Qualifications">
+                <button type="button"style="margin-top:20px;" class="btn btn-green btn-block col-sm-12 col-md-6" data-toggle="modal" data-target="#Qualifications">
                   Add new qualifications
                 </button>
               </div>
@@ -345,10 +345,13 @@
     </div>
   <br />
     <div class="row justify-content-center">
-     <div class="">
-       <button class="btn btn-pink ">cancel</button>
-       <button type="submit" class="btn btn-green ">Edit</button>
-     </div>
+      <div class="col-sm-6 col-md-2" style="margin-bottom:20px;">
+        <button class="btn btn-pink btn-block " >cancel</button>
+      </div>
+      <div class="col-sm-6 col-md-2">
+        <button type="submit" class="btn btn-green btn-block">Edit</button>
+
+      </div>
   </div>
 </div>
 
