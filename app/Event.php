@@ -15,7 +15,7 @@ class Event extends Model
     }
 
     public function User(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('\App\User');
     }
 
     public function Post(){

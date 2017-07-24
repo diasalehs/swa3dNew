@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateConversationsTable extends Migration
 {
@@ -9,12 +10,12 @@ class CreateConversationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('conversations', function ($tbl) {
-            $tbl->increments('id');
-            $tbl->integer('user_one');
-            $tbl->integer('user_two');
-            $tbl->boolean('status');
-            $tbl->timestamps();
+        Schema::create('conversations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_one');
+            $table->integer('user_two');
+            $table->boolean('status');
+            $table->timestamps();
         });
     }
 

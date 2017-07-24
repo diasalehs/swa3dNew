@@ -10,6 +10,7 @@ use App\Event;
 use App\news;
 use App\EventIntrest;
 use App\EventTarget;
+use App\institute;
 use Image;
 
 class instituteController extends Controller
@@ -27,7 +28,9 @@ class instituteController extends Controller
     }
     public function index()
     {
-        return view('institute.createNews');
+        $news= institute::has('news')->paginate(10);
+         return view('institute.viewAllNews',["news"=>$news]);
+
         # code...
     }
 

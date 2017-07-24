@@ -13,6 +13,7 @@ use App\researches;
 use App\Institute;
 use App\Initiative;
 use App\Lesson;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
@@ -25,6 +26,8 @@ class mainController extends Controller
     {
             $this->date = date('Y-m-d');
     }
+
+
 
 	public function main() {
 		$_3slides=slider::orderBy('created_at','desc')->take(3)->get();
@@ -50,19 +53,22 @@ class mainController extends Controller
 	public function upComingEvents(Request $request) {
         $user = Auth::user();
         $date = $this->date;
-        $events = new event;
         $events = event::where('startDate','>',$date)->paginate(5,['*'],'events');
         // location filter
         if(request()->has('location')){
              // intrest in location
+
              if(request()->has('intrest')){
+
                  $events= DB::table("events")->join('event_intrests', function ($join) {
                  $join->on('events.id', '=', 'event_intrests.event_id')
                  ->whereIn('event_intrests.intrest_id', request('intrest'))
                  ->where([['events.startDate','>',$this->date],['events.country','=',request('location')]]);})
                  ->paginate(5,['*'],'events');
                  // location &intrest & target
+
                  $str=['events.country'=>request('location')];
+
                  if(request()->has('target')){
                      $events = DB::table('events')
                      ->join('event_intrests', 'events.id', '=', 'event_intrests.event_id')
@@ -86,8 +92,10 @@ class mainController extends Controller
                 // location only filter
              else{
                  $events = event::where([['startDate','>',$date],['country','=',$request['location']]])->paginate(5,['*'],'events');
+
                  }
              }
+
          // intrest filter
         elseif(request()->has('intrest')){
              // intrest & target
@@ -135,12 +143,6 @@ class mainController extends Controller
             return view('comingEvents',compact('events'));
 
             }
-
-                 // $userevent = DB::table('events')
-                 // ->join('event_intrests', 'events.id', '=', 'event_intrests.event_id')
-                 // ->join('user_intrests', 'event_intrests.intrest_id', '=', 'user_intrests.intrest_id')
-                 // ->where('events.user_id',auth::user()->id)
-                 // ->where('events.startDate','>',$this->date)->paginate(5,['*'],'events');
            $userevente= DB::table('event_intrests')
            ->join('events','events.id','=','event_intrests.event_id')
            ->join('user_intrests', function ($join) {
@@ -156,16 +158,37 @@ class mainController extends Controller
                     array_push($userevent, $e);
                     # code...
                 }
-                 else {
-
-                    # code...
-                }
-                
-                # code...
             }
             $localevents = event::where('startDate','>',$date)->where('country','=',$Iuser->country)->paginate(5,['*'],'areaEvents');
+
             $volEvents = volunteer::where('user_id', $Iuser->id)->get();
-            return view('upComingEvents',compact('events','localevents','volEvents','user','userevent'));
+            $SEvents= array();
+            $v=0;
+            foreach ($events as $e) {
+                if($e->event_id){
+
+                    if ($e->event_id!=$v) {
+                    $v=$e->event_id;
+                    array_push($SEvents, $e);
+                    # code...
+                }
+            }
+                else{
+                    if ($e->id!=$v) {
+                    $v=$e->id;
+                    array_push($SEvents, $e);
+                    # code...
+                }
+            }
+
+            }
+            $events=$SEvents;
+            $total=count($events);
+            $events=collect($events);
+            $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
+            $events=new \Illuminate\Pagination\LengthAwarePaginator($events,$total,5,$currentpage);
+
+            return view('upComingEvents',compact('text','events','localevents','volEvents','user','userevent'));
         }
         return view('upComingEvents',compact('events'));
 
@@ -286,7 +309,7 @@ class mainController extends Controller
         $collection=collect($items)->unique();
  
         $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
-        $researches=new \Illuminate\Pagination\LengthAwarePaginator($collection,$total,2,$currentpage);
+        $researches=new \Illuminate\Pagination\LengthAwarePaginator($collection,$total,5,$currentpage);
         $text=$request['search'];
 
        return view('ResearchesSearch',compact('researches','text'));

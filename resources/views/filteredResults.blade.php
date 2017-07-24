@@ -8,7 +8,7 @@
       <li class="nav-item first-tab">
         <a class="nav-link  active" data-toggle="tab" id="ntab" href="#home" role="tab">Users</a>
       </li>
-      <li class="nav-item second-tab">
+          <li class="nav-item second-tab">
         <a class="nav-link" data-toggle="tab" id="rtab" href="#Institute" role="tab">Institute</a>
       </li> 
       <form id="myform" class="row" style="" method="GET" action="{{route('basicSearch')}}">
@@ -317,15 +317,14 @@
         <div class="row">
 
         @foreach($users as $result)
-        @continue($result->userType==10)
         <div class="col-lg-3 col-sm-4" style="margin-bottom:25px;">
             <div class="card h-100">
-                        <a href="{{route('profile',[$result->id])}}">
+                        <a href="{{route('profile',[$result->user_id])}}">
                             <!--{$result->mainImgpath}}-->
                           <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->picture}}" alt="">
                       </a>
                         <div class="card-block">
-                          <a href="{{route('profile',[$result->id])}}"><h2 class="card-title">{{$result->name}}</h2></a>
+                          <a href="{{route('profile',[$result->user_id])}}"><h2 class="card-title">{{$result->nameInEnglish}}</h2></a>
                     <p class="card-text">
                       Volunteer
                     </p>
@@ -339,12 +338,11 @@
     <!-- Pagination -->
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
-      {{$users->links('vendor.pagination.custom')}}
+                  {{ $NGOs->setpath('filteredResults/')->appends(Request::except('page'))->links() }}
 
     </ul>
     </nav>
       </div>
-
 
 
         <div class="tab-pane" id="Institute" role="tabpanel">
@@ -353,19 +351,15 @@
                     <div class="row justify-content-center">
          
 
-
-
-
-
-        @foreach($institutes as $result)
+        @foreach($NGOs as $result)
         <div class="col-lg-3 col-sm-4" style="margin-bottom:25px;">
             <div class="card h-100">
-                        <a href="{{route('profile',[$result->id])}}">
+                        <a href="{{route('profile',[$result->user_id])}}">
                             <!--{$result->mainImgpath}}-->
                           <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->picture}}" alt="">
                       </a>
                         <div class="card-block">
-                          <a href="{{route('profile',[$result->id])}}"><h2 class="card-title">{{$result->name}}</h2></a>
+                          <a href="{{route('profile',[$result->user_id])}}"><h2 class="card-title">{{$result->nameInEnglish}}</h2></a>
                     <p class="card-text">
                       Institute
                    </p>
@@ -384,6 +378,7 @@
                           <br>
 
                 <div class="row justify-content-center">
+                  {{ $NGOs->setpath('filteredResults/')->appends(Request::except('page'))->links() }}
                   </div>
                </div>
                 </div>
@@ -393,7 +388,8 @@
             <!-- Pagination -->
             <nav aria-label="Page navigation example">
               <ul class="pagination justify-content-center">
-                  {{$institutes->links('vendor.pagination.custom')}}
+
+
             </ul>
             </nav>
 

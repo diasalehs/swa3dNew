@@ -31,7 +31,7 @@ background-position-y: 7px;">
           <li class="nav-item HeaderSearchli">
 
           <form action="{{route('search')}}" method="get" >
-            <input type="text" name="search" id="HeaderSearch" class="HeaderSearch form-control" placeholder="&#xF002; Search Swa3ed.." style="font-family:Arial,FontAwesome">
+            <input type="text" name="name" id="HeaderSearch" class="HeaderSearch form-control" placeholder="&#xF002; Search Swa3ed.." style="font-family:Arial,FontAwesome">
             <button type="submit" style="display: none;"></button>
           </form>
 

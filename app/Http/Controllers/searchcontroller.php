@@ -6,24 +6,207 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use App\User;
+use App\Individuals;
+use App\Institute;
+use App\Event;
+
 class searchController extends Controller
 {
+
+    public function __construct()
+    {
+            $this->date = date('Y-m-d');
+    }
     public function basic(Request $request)
 
-    {
-    $users = DB::table('users')
-    ->where([['name', 'like','%'.$request['search'].'%'],['userType','0']])
-    ->orwhere([['name', 'like','%'.$request['search'].'%'],['userType','3']])
-    ->paginate(8, ['*'], 'users');
-    $Events=DB::table('events')->where('title', 'like','%'.$request['search'].'%')->paginate(8,['*'],'events');
-   
+        {
+        $users = DB::table('users')
+        ->where([['name', 'like','%'.$request['name'].'%'],['userType','0']])
+        ->paginate(8, ['*'], 'users');
+        $institutes = DB::table('users')
+        ->where([['name', 'like','%'.$request['name'].'%'],['userType','1']])
+        ->paginate(8,['*'],'institutes');
 
-    $institutes = DB::table('users')
-    ->where([['name', 'like','%'.$request['search'].'%'],['userType','1']])
-    ->paginate(8,['*'],'institutes');
-
-    return view('results',['users'=>$users,'events'=>$Events,'institutes'=>$institutes ]);
+        return view('results',['users'=>$users,'institutes'=>$institutes ]);
     	# code...
     }
-    //
+     public function basicSearch(Request $request)
+
+     {
+
+        if(request()->has('location')){
+             // intrest in location
+
+             if(request()->has('intrest')){
+
+                 $users= DB::table("Individuals")
+                 ->join('user_intrests', function ($join) {
+                 $join->on('Individuals.user_id', '=', 'user_intrests.user_id')
+                 ->whereIn('user_intrests.intrest_id', request('intrest'))
+                 ;})
+                 ->where([['Individuals.nameInEnglish','like','%'.request('name').'%'],['Individuals.country','=',request('location')]])
+                 ->get();
+                 
+                 $NGOs= DB::table("institutes")
+                 ->join('user_intrests', function ($join) {
+                 $join->on('institutes.user_id', '=', 'user_intrests.user_id')
+                 ->whereIn('user_intrests.intrest_id', request('intrest'))
+                 ->where('institutes.country','=',request('location'));})
+                 ->where('nameInEnglish','like','%'.$request['name'].'%')
+                 ->orwhere('nameInArabic','like','%'.$request['name'].'%')
+                 ->get();
+                 // location &intrest & target
+
+                 if(request()->has('target')){
+                     $users = DB::table('Individuals')
+                     ->join('user_intrests', 'Individuals.user_id', '=', 'user_intrests.user_id')
+                     ->join('user_targets', 'Individuals.user_id', '=', 'user_targets.user_id')
+                     ->whereIn('user_targets.target_id',$request['target'])
+                     ->whereIn('user_intrests.intrest_id', request('intrest'))
+                     ->where('Individuals.country','=',request('location'))
+                     ->where('nameInEnglish','like','%'.$request['name'].'%')
+                     ->orwhere('nameInArabic','like','%'.$request['name'].'%')
+                     ->get();
+                      $NGOs = DB::table('institutes')
+                     ->join('user_intrests', 'institutes.user_id', '=', 'user_intrests.user_id')
+                     ->join('user_targets', 'institutes.user_id', '=', 'user_targets.user_id')
+                     ->whereIn('user_targets.target_id',$request['target'])
+                     ->whereIn('user_intrests.intrest_id', request('intrest'))
+                     ->where('institutes.country','=',request('location'))
+                     ->where('nameInEnglish','like','%'.$request['name'].'%')
+                     ->orwhere('nameInArabic','like','%'.$request['name'].'%')
+                     ->get();
+                  }
+
+             }
+             // location & target** id is userID in  individual (prevously was user.id)  changed to match the location and name ...and target id is target_id 
+
+             elseif(request()->has('target')){
+                 $users= DB::table("Individuals")->join('user_targets', function ($join) {
+                 $join->on('Individuals.user_id', '=', 'user_targets.user_id')
+                 ->whereIn('user_targets.target_id',request('target'))
+                 ->where('Individuals.country','=',request('location'));})
+                 ->where('nameInEnglish','like','%'.$request['name'].'%')
+                 ->orwhere('nameInArabic','like','%'.$request['name'].'%')
+                 ->get();
+                   $NGOs= DB::table("institutes")->join('user_targets', function ($join) {
+                 $join->on('institutes.user_id', '=', 'user_targets.user_id')
+                 ->whereIn('user_targets.target_id',request('target'))
+                 ->where('institutes.country','=',request('location'));})
+                 ->where('nameInEnglish','like','%'.$request['name'].'%')
+                 ->orwhere('nameInArabic','like','%'.$request['name'].'%')
+                 ->get();
+             }
+
+                // location only filter
+             else{
+                 $users = Individuals::where('country','=',$request['location'])
+                 ->where('nameInEnglish','like','%'.$request['name'].'%')
+                 ->orwhere('nameInArabic','like','%'.$request['name'].'%')
+                 ->get();
+                 $NGOs=institute::where('country','=',$request['location'])
+                 ->where('nameInEnglish','like','%'.$request['name'].'%')
+                 ->orwhere('nameInArabic','like','%'.$request['name'].'%')
+                 ->get();
+                 }
+            }
+
+         // intrest filter
+        elseif(request()->has('intrest')){
+
+             // intrest & target
+             if(request()->has('target')){
+
+                 $users = DB::table('Individuals')
+                 ->join('user_intrests', 'Individuals.user_id', '=', 'user_intrests.user_id')
+                 ->join('user_targets', 'Individuals.user_id', '=', 'user_targets.user_id')
+                 ->whereIn('user_targets.target_id',$request['target'])
+                 ->whereIn('user_intrests.intrest_id', request('intrest'))
+                 ->where('nameInEnglish','like','%'.$request['name'].'%')
+                 ->orwhere('nameInArabic','like','%'.$request['name'].'%')
+                 ->get();
+
+                  $NGOs = DB::table('institutes')
+                 ->join('user_intrests', 'institutes.user_id', '=', 'user_intrests.user_id')
+                 ->join('user_targets', 'institutes.user_id', '=', 'user_targets.user_id')
+                 ->whereIn('user_targets.target_id',$request['target'])
+                 ->whereIn('user_intrests.intrest_id', request('intrest'))
+                 ->where('nameInEnglish','like','%'.$request['name'].'%')
+                 ->orwhere('nameInArabic','like','%'.$request['name'].'%')
+                 ->get();
+             }
+                // intrest only
+             else {
+
+                     $users= DB::table("Individuals")
+                     ->join('user_intrests', function ($join) {
+                     $join->on('Individuals.user_id', '=', 'user_intrests.user_id')
+                     ->whereIn('user_intrests.intrest_id', request('intrest'));})
+                       ->where('nameInEnglish','like','%'.$request['name'].'%')
+                       ->orwhere('nameInArabic','like','%'.$request['name'].'%')
+
+                     ->get();
+                      $NGOs= DB::table("institutes")
+                     ->join('user_intrests', function ($join) {
+                     $join->on('institutes.user_id', '=', 'user_intrests.user_id')
+                     ->whereIn('user_intrests.intrest_id', request('intrest'));})
+                     ->where('nameInEnglish','like','%'.$request['name'].'%')
+                     ->orwhere('nameInArabic','like','%'.$request['name'].'%')
+                     ->get();
+                }
+        }
+        
+         // target only filter
+        elseif(request()->has('target')){
+             $users= DB::table("Individuals")
+             ->join('user_targets', function ($join) {
+             $join->on('Individuals.user_id', '=', 'user_targets.user_id')
+             ->whereIn('user_targets.target_id',request('target'))
+             ;})
+             ->where('nameInEnglish','like','%'.$request['name'].'%')
+                 ->orwhere('nameInArabic','like','%'.$request['name'].'%')
+             ->get();
+             $NGOs= DB::table("institutes")
+             ->join('user_targets', function ($join) {
+             $join->on('institutes.user_id', '=', 'user_targets.user_id')
+             ->whereIn('user_targets.target_id',request('target'))
+             ;})
+                 ->where('nameInEnglish','like','%'.$request['name'].'%')
+                 ->orwhere('nameInArabic','like','%'.$request['name'].'%')
+
+             ->get();
+         }
+            $userss= array();
+            $var=0;
+            foreach ($users as $u) {
+                if ($u->user_id!=$var) {
+                    $var=$u->user_id;
+                    array_push($userss, $u);
+                    # code...
+                }
+            }
+            $users=$userss;
+            $total=count($users);
+            $users=collect($users);
+            $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
+            $users=new \Illuminate\Pagination\LengthAwarePaginator($users,$total,10,$currentpage);
+// -------------
+            $NGOss= array();
+            $var=0;
+            foreach ($NGOs as $u) {
+                if ($u->user_id!=$var) {
+                    $var=$u->user_id;
+                    array_push($NGOss, $u);
+                    # code...
+                }
+            }
+            $NGOs=$userss;
+            $total=count($NGOs);
+            $NGOs=collect($NGOs);
+            $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
+            $NGOs=new \Illuminate\Pagination\LengthAwarePaginator($NGOs,$total,10,$currentpage);
+            return view('filteredResults',compact('users','NGOs'));
+
+     }
+
 }

@@ -20,7 +20,7 @@
     @include('institute.includes.sidebar')
     <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
 
-      <a class="btn btn-green" href="{{route('institueNews')}}" role="button">View/Edit All News</a>
+      <a class="btn btn-green" href="{{route('instituteNews')}}" role="button">View/Edit All News</a>
       <hr />
             <div class="row">
                 <div class="col-lg-12">

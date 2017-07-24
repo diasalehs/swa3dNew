@@ -15,10 +15,10 @@ class CreateUserTargetsTable extends Migration
     {
         Schema::create('user_targets', function (Blueprint $table) {
              $table->increments('id');
-            $table->timestamps();
-            $table->integer('user_id');
-            $table->integer('target_id')
-        });
+             $table->integer('user_id');
+             $table->integer('target_id');
+             $table->timestamps();
+       });
     }
 
     /**
