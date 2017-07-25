@@ -22,11 +22,13 @@ class searchController extends Controller
     public function basic(Request $request)
 
         {
-        $users = DB::table('users')
-        ->where([['name', 'like','%'.$request['name'].'%'],['userType','0']])
+        $users = DB::table('Individuals')
+        ->where('nameInEnglish', 'like','%'.$request['name'].'%')
+        ->orwhere('nameInArabic', 'like','%'.$request['name'].'%')
         ->paginate(8, ['*'], 'users');
-        $institutes = DB::table('users')
-        ->where([['name', 'like','%'.$request['name'].'%'],['userType','1']])
+        $institutes = DB::table('institutes')
+        ->where('nameInEnglish', 'like','%'.$request['name'].'%')
+        ->orwhere('nameInArabic', 'like','%'.$request['name'].'%')
         ->paginate(8,['*'],'institutes');
 
         return view('results',['users'=>$users,'institutes'=>$institutes ]);
@@ -49,15 +51,16 @@ class searchController extends Controller
                  ;})
                  ->where([['Individuals.nameInEnglish','like','%'.request('name').'%'],['Individuals.country','=',request('location')]])
                  ->orwhere([['Individuals.nameInArabic','like','%'.request('name').'%'],['Individuals.country','=',request('location')]])
+
                  ->get();
                  
                  $NGOs= DB::table("institutes")
                  ->join('user_intrests', function ($join) {
                  $join->on('institutes.user_id', '=', 'user_intrests.user_id')
                  ->whereIn('user_intrests.intrest_id', request('intrest'))
-                 ->where('institutes.country','=',request('location'));})
-                 ->where('nameInEnglish','like','%'.request('name').'%')
-                 ->orwhere('nameInArabic','like','%'.request('name').'%')
+                ->where([['institutes.nameInEnglish','like','%'.request('name').'%'],['institutes.country','=',request('location')]])
+                 ->orwhere([['institutes.nameInArabic','like','%'.request('name').'%'],['institutes.country','=',request('location')]]);})
+
                  ->get();
                  // location &intrest & target
 
@@ -67,18 +70,16 @@ class searchController extends Controller
                      ->join('user_targets', 'Individuals.user_id', '=', 'user_targets.user_id')
                      ->whereIn('user_targets.target_id',request('target'))
                      ->whereIn('user_intrests.intrest_id', request('intrest'))
-                     ->where('Individuals.country','=',request('location'))
-                     ->where('nameInEnglish','like','%'.request('name').'%')
-                     ->orwhere('nameInArabic','like','%'.request('name').'%')
+                     ->where([['Individuals.nameInEnglish','like','%'.request('name').'%'],['Individuals.country','=',request('location')]])
+                     ->orwhere([['Individuals.nameInArabic','like','%'.request('name').'%'],['Individuals.country','=',request('location')]])
                      ->get();
                       $NGOs = DB::table('institutes')
                      ->join('user_intrests', 'institutes.user_id', '=', 'user_intrests.user_id')
                      ->join('user_targets', 'institutes.user_id', '=', 'user_targets.user_id')
                      ->whereIn('user_targets.target_id',request('target'))
                      ->whereIn('user_intrests.intrest_id', request('intrest'))
-                     ->where('institutes.country','=',request('location'))
-                     ->where('nameInEnglish','like','%'.request('name').'%')
-                     ->orwhere('nameInArabic','like','%'.request('name').'%')
+                       ->where([['institutes.nameInEnglish','like','%'.request('name').'%'],['institutes.country','=',request('location')]])
+                 ->orwhere([['institutes.nameInArabic','like','%'.request('name').'%'],['institutes.country','=',request('location')]])
                      ->get();
                   }
 
@@ -264,11 +265,10 @@ class searchController extends Controller
 
                 // location only filter
              else{
-                 $users = Individuals::where('country','=',$request['location'])
-                 ->where('nameInEnglish','like','%'.request('name').'%')
-                 ->orwhere('nameInArabic','like','%'.request('name').'%')
+                 $users = Individuals::where([['country','=',$request['location']],['nameInEnglish','like','%'.request('name').'%']])
+                 
+                 ->orwhere([['country','=',$request['location']],['nameInArabic','like','%'.request('name').'%']])
                  ->get();
-               
                  }
             }
 
@@ -327,7 +327,7 @@ class searchController extends Controller
             $total=count($users);
             $users=collect($users);
             $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
-            $users=new \Illuminate\Pagination\LengthAwarePaginator($users,$total,2,$currentpage);
+            $users=new \Illuminate\Pagination\LengthAwarePaginator($users,$total,10,$currentpage);
             $users_record=$users; 
           // lazy to change all the variables  names :3 :P 
             return view('shared.findVolunteers',compact('users_record','following'));
