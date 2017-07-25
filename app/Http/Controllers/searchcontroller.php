@@ -216,7 +216,7 @@ class searchController extends Controller
 
 
     public function volunteersSearch(Request $request)
-    
+
     {  
 
         $user =auth::user();
@@ -303,20 +303,15 @@ class searchController extends Controller
              ->get();
             
          }
-            $userss= array();
-            $var=0;
-            foreach ($users as $u) {
-                if ($u->user_id!=$var) {
-                    $var=$u->user_id;
-                    array_push($userss, $u);
-                    # code...
-                }
-            }
-            $users=$userss;
-            $total=count($users);
-            $users=collect($users);
-            $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
-            $users=new \Illuminate\Pagination\LengthAwarePaginator($users,$total,10,$currentpage);
+            // $userss= array();
+            // $var=0;
+            // foreach ($users as $u) {
+            //     if ($u->user_id!=$var) {
+            //         $var=$u->user_id;
+            //         array_push($userss, $u);
+            //         # code...
+            //     }
+            // }
             $users_record=$users; 
           // lazy to change all the variables  names :3 :P 
             return view('shared.findVolunteers',compact('users_record','following'));

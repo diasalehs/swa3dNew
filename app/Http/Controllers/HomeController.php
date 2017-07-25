@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File; 
 use Illuminate\Http\Response;
 use App\Initiative;
+use App\Individuals;
 use App\tempInstitute;
 use App\Qualification;
 use Image;
@@ -61,7 +62,7 @@ class homeController extends Controller
     {
         $user = $this->user;
         $following = friend::where('requester_id', $user->id)->get();
-        $users_record= user::where('userType',0)->paginate(15);
+        $users_record= Individuals::get();
         return view('shared/findVolunteers',compact('users_record','following'));
     }
 

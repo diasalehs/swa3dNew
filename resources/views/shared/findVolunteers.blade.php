@@ -311,56 +311,76 @@
         </form>
         <hr />
 
-        <table id="d" class="display table table-hover  table-bordered"  cellspacing="0"  width="100%">
-          <thead>
-              <tr>
 
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
-              </tr>
-          </thead>
+<form id="frm-example" action="" method="POST" >{{ csrf_field() }}
 
-          <tbody>
-              <tr>
+<table id="example" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
+  <thead>
 
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-              </tr>
-              <tr>
+      <tr>
+<th></th>
+          <th>English Name</th>
+          <th>Arabic Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>City</th>
+          <th>Volutery Experience</th>
+          <th>Education</th>
+          
+      </tr>
+  </thead>
 
-                  <td>Garrett Winters</td>
-                  <td>Accountant</td>
-                  <td>Tokyo</td>
-                  <td>63</td>
-                  <td>2011/07/25</td>
-                  <td>$170,750</td>
-              </tr>
-              <tr>
-
-                  <td>Ashton Cox</td>
-                  <td>Junior Technical Author</td>
-                  <td>San Francisco</td>
-                  <td>66</td>
-                  <td>2009/01/12</td>
-                  <td>$86,000</td>
-              </tr>
+  <tbody>
+@foreach($users_record as $u )
+<tr>
+          <td>{{$u->user_id}}</td>
+          <td>{{$u->nameInEnglish}}</td>
+          <td>{{$u->nameInArabic}}</td>
+          <td>
+           <?php
+               $time = date_create($u->dateOfBirth);
+               echo date("Y")-date_format($time, 'Y');
+           ?>
+          </td>
+          <td>{{$u->gender}}</td>
+          <td>{{$u->cityName}}</td>
+          <td>{{$u->voluntaryYears}}</td>
+          <td>{{$u->educationalLevel}}</td>
+      </tr>
+@endforeach
+      
+     
 
 
-          </tbody>
-      </table>
+  </tbody>
+</table>
+<br />
+{{-- <div class="row justify-content-center">
 
-    
+<div class="col-sm-12 col-md-4">
+
+<label for="Select2">Events</label>
+<select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true"
+    data-live-search="true" multiple>
+
+  <option value="1">Social and Economic Rights</option>
+  <option value="2">Legal Aid</option>
+  <option value="3">Capacity Building</option>
+
+</select>
+</div>
+<div class="col-sm-12 col-md-4">
+  <label for="" style="opacity:0">Events</label>
+
+  <button  type="submit" class="btn form-control btn-green">Invite</button>
+</div>
+</div>
+
+</form>
       </div>
     </div>
-</div></div>
+</div></div> --}}
+@include('includes.modal')
 
 
 @endsection
