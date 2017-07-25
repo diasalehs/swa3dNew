@@ -18,11 +18,11 @@ class CreateInstitutesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->string('nameInEnglish')->nullable();
+            $table->string('nameInEnglish');
             $table->string('firstInEnglish')->nullable();
             $table->string('lastInEnglish')->nullable();
 
-            $table->string('nameInArabic')->nullable();
+            $table->string('nameInArabic');
             $table->string('firstInArabic')->nullable();
             $table->string('lastInArabic')->nullable();
 
@@ -35,9 +35,6 @@ class CreateInstitutesTable extends Migration
             $table->string('livingPlace');
             $table->string('cityName');
             $table->string('country');
-            $table->unsignedInteger('workSummary'); //300 word
-            $table->string('fieldNGO'); // separate table
-            $table->string('activities',9999); // or string
             $table->string('email')->unique();
             $table->unsignedInteger('mobileNumber');
             $table->string('address');
@@ -53,7 +50,6 @@ class CreateInstitutesTable extends Migration
             $table->unsignedInteger('numOfStakeholders')->nullable();
             $table->double('employmentRate')->nullable();
             $table->double('revenueStream')->nullable();
-            //main achievements and awards and date
             //Names of Board of directors and their job title
             $table->timestamps();
         });
