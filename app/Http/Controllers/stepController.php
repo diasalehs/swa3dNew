@@ -9,9 +9,9 @@ class stepController extends Controller
 	public function step() {
 		if(Auth::attempt() || Auth::user()){
 			if(Auth::user()->flag == 0){
-			$intrests  =intrest::get();
-			$targets= targetedGroups::all();
-				return view('step',compact('intrests','targets'));
+			$intrests = Intrest::get();
+			$targets = targetedGroups::get();
+			return view('step',compact('intrests','targets'));
 			}elseif(Auth::user()->flag == 1){
 				return redirect()->route('home');
 			}

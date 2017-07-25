@@ -322,7 +322,7 @@
                   {{ $qualification->role }},
                   {{ $qualification->achievements }}
                 </a>
-                  <a href="#" class="pink-link float-xs-right" ><i class="fa fa-trash" aria-hidden="true"></i>  Delete</a>
+                  <a href="{{route('deleteQualification',$qualification->id)}}" class="pink-link float-xs-right" ><i class="fa fa-trash" aria-hidden="true"></i>  Delete</a>
                 </li>
 
                 @endforeach
@@ -366,5 +366,6 @@
 
 {{--  --}}
 {{--  --}}
+
 
 @endsection('content')

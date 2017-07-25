@@ -33,5 +33,29 @@
     </div>
 
     @include('includes.footer')
+
+    {{--
+    <!--     <script type="text/javascript">
+    
+          $('.qualificationDelete').on('click',function(){
+            var id = $(this).attr('data');
+
+            $.ajax({
+              type: 'GET',
+              url: '/qualificationDelete/'+id,
+              success: function(resp){
+                alert('string');
+              }
+            });
+
+          });
+
+
+          
+        </script> -->
+        --}}
+
+
+
 </body>
 </html>
