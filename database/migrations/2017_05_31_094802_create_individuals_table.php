@@ -31,6 +31,12 @@ class CreateIndividualsTable extends Migration
             $table->float('cat2')->unsigned()->default(0);
             $table->float('cat3')->unsigned()->default(0);
             $table->float('cat4')->unsigned()->default(0);
+            $table->float('cat1C')->unsigned()->default(0);
+            $table->float('cat2C')->unsigned()->default(0);
+            $table->float('cat3C')->unsigned()->default(0);
+            $table->float('cat4C')->unsigned()->default(0);
+            $table->float('acc_avgC')->unsigned()->default(0);
+
             
             $table->string('cityName');
             $table->string('country');

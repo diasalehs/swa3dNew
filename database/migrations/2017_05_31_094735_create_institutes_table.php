@@ -26,12 +26,19 @@ class CreateInstitutesTable extends Migration
             $table->string('firstInArabic')->nullable();
             $table->string('lastInArabic')->nullable();
 
+            $table->boolean('rated')->unsigned()->default(0);
             $table->float('acc_avg')->unsigned()->default(0);
-            $table->float('rated')->unsigned()->default(0);
             $table->float('cat1')->unsigned()->default(0);
             $table->float('cat2')->unsigned()->default(0);
             $table->float('cat3')->unsigned()->default(0);
             $table->float('cat4')->unsigned()->default(0);
+            $table->float('cat1C')->unsigned()->default(0);
+            $table->float('cat2C')->unsigned()->default(0);
+            $table->float('cat3C')->unsigned()->default(0);
+            $table->float('cat4C')->unsigned()->default(0);
+            $table->float('acc_avgC')->unsigned()->default(0);
+
+
             $table->string('livingPlace');
             $table->string('cityName');
             $table->string('country');
