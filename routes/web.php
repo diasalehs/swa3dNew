@@ -9,7 +9,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix'=>'','routeMiddleware'=>'talk'], function() 
+Route::group(['prefix'=>'','routeMiddleware'=>'talk'], function()
 {
 
 //-------------------------------- on the main page - for all - guest inclouded --------------------------------\\
@@ -22,7 +22,7 @@ Route::get('/event/{eventId}', ['uses'=>'mainController@event'])->name('event');
 
 Route::post('/post', ['uses'=>'postController@create'])->name('post');
 
- 
+
 Route::get('/', ['uses'=>'mainController@main','as'=>'main']);
 Route::get('/researchView/{researchID}',['uses'=>'mainController@researchView','as'=>'researchView']);
 Route::get('/researchView/download/{researchID}',['uses'=>'mainController@download','as'=>'download']);
@@ -48,7 +48,7 @@ Route::get('/goBack', function() {return redirect()->back()->back();})->name('go
 Route::get('/initiativeProfile', function() {return view('initiativeProfile');})->name('initiativeProfile');
 
 //-------------------------------- just for users - auth --------------------------------\\
-Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function() 
+Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 {
     Route::get('/followers', ['uses'=>'followController@followers'])->name('followers');
     Route::get('/following', ['uses'=>'followController@following'])->name('following');
@@ -59,14 +59,15 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
     Route::post('/review/{eventId}', ['uses'=>'lessonsController@review'])->name('review');
     Route::post('/availability', ['uses'=>'profilesController@availability'])->name('availability');
 
-    Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function() 
+    Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function()
     {
-        Route::group(['middleware' => ['isVerified']], function () 
+        Route::group(['middleware' => ['isVerified']], function ()
         {
 
             Route::get('/', 'homeController@index')->name('home');
 
             //-------------------------------- event --------------------------------\\
+            Route::get('/event/{eventId}/accept_volunteers', ['uses'=>'mainController@accept_volunteers'])->name('accept_volunteers');
             Route::get('/makeEvent', ['uses'=>'eventController@makeEvent'])->name('makeEvent');
             Route::post('/makeEvent', ['uses'=>'eventController@makeEventPost'])->name('makeEventPost');
             Route::post('/acceptVolunteer/{eventId}', ['uses'=>'eventController@acceptVolunteer'])
@@ -81,16 +82,16 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 
             //-------------------------------- messenger --------------------------------\\
             Route::get('/message/{receiverId?}', ['uses'=>'homeController@message'])->name('message');
-            Route::post('/sendMessage/{receiverId?}', ['uses'=>'homeController@sendMessage'])->name('sendMessage');    
+            Route::post('/sendMessage/{receiverId?}', ['uses'=>'homeController@sendMessage'])->name('sendMessage');
             Route::get('/messenger/{email?}', ['uses'=>'messageController@messenger'])->name('messenger');
             Route::post('/sendMessage', ['uses'=>'messageController@sendMessage'])->name('sendMessage');
             Route::get('/message/{messageId}', ['uses'=>'messageController@message'])->name('message');
 
             //-------------------------------- admin --------------------------------\\
-            Route::group(['prefix'=>'admin' , 'routeMiddleware'=>'admin'], function() 
+            Route::group(['prefix'=>'admin' , 'routeMiddleware'=>'admin'], function()
             {
                 Route::get('/userdelete/{userId}', ['uses' =>'adminController@delete', 'as'=>'delete_user']);
-                Route::group(['prefix'=>'news','routeMiddleware'=>'admin'], function() 
+                Route::group(['prefix'=>'news','routeMiddleware'=>'admin'], function()
                 {
                     Route::get('/',  ['uses' =>'adminController@indexx', 'as'=>'news']);
                     Route::post('/', ['uses' =>'newsController@Create', 'as'=>'news']);
@@ -102,7 +103,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
                     Route::get('/approve/{id}', ['uses' =>'adminController@approve', 'as'=>'approve']);
 
                 });
-                
+
                 Route::get('/adminVerify/{userID}', ['uses' =>'adminController@adminVerify', 'as'=>'adminVerify']);
                 Route::post('/slider',['uses' =>'sliderController@add_element', 'as'=>'slider']);
                 Route::get('/slider', ['uses' =>'sliderController@index', 'as'=>'slider']);
@@ -156,7 +157,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
         });
     });
 
-    
+
     Route::get('/follow/{userId}', ['uses'=>'followController@follow'])->name('follow');
     Route::get('/unfollow/{userId}', ['uses'=>'followController@unfollow'])->name('unfollow');
     Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');

@@ -107,6 +107,7 @@
       </div>
 
               @if($event->open || $eventCloseAllowed || $mine)
+                @include('includes.VRT')
                 <h3 class="greencolor " style="margin-top:30px;">Event Posts</h3>
                 <hr />
               @foreach($posts as $post)
@@ -210,7 +211,7 @@
                @endif
                data-size="7" data-live-search="true" >
                 @foreach($eventAcceptedVols as $eventAcceptedVol)
-                <option value="{{$eventAcceptedVol->id}}"><a href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a></option>
+                <option  value="{{$eventAcceptedVol->id}}"><a href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a></option>
                 @endforeach
               </select>
               @if($mine && $event->endDate > $date)
