@@ -17,8 +17,23 @@ class searchController extends Controller
 
     public function __construct()
     {
-            $this->date = date('Y-m-d');
+        $this->middleware(['auth']);
+        $this->middleware(function ($request, $next) {
+            $date = date('Y-m-d');
+            $user = Auth::user();
+            $this->date = $date;
+            $this->user = $user;
+            return $next($request);
+        });
     }
+
+    public function slidbare()
+    {
+        $date = $this->date;
+        $user = $this->user;
+        return [$user ,$date];
+    }
+
     public function basic(Request $request)
 
         {
@@ -219,7 +234,7 @@ class searchController extends Controller
 
     {  
 
-        $user =auth::user();
+        list($user ,$date)=$this->slidbare();
         $following = friend::where('requester_id', $user->id)->get();
 
          if(request()->has('location')){
@@ -314,7 +329,8 @@ class searchController extends Controller
             // }
             $users_record=$users; 
           // lazy to change all the variables  names :3 :P 
-            return view('shared.findVolunteers',compact('users_record','following'));
+            $userUevents = Event::where('events.user_id',$user->id)->where('startDate','>',$date)->get();
+            return view('shared.findVolunteers',compact('users_record','following','userUevents'));
 
      
 

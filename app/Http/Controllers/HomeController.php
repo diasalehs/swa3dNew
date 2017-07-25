@@ -64,10 +64,11 @@ class homeController extends Controller
 
     public function findVolunteers()
     {
-        $user = $this->user;
+        list($user ,$date)=$this->slidbare();
+        $userUevents = Event::where('events.user_id',$user->id)->where('startDate','>',$date)->get();
         $following = friend::where('requester_id', $user->id)->get();
         $users_record= Individuals::get();
-        return view('shared/findVolunteers',compact('users_record','following'));
+        return view('shared/findVolunteers',compact('users_record','following','userUevents'));
     }
 
     /**
