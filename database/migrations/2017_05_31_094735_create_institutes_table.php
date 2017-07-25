@@ -36,14 +36,14 @@ class CreateInstitutesTable extends Migration
             $table->string('cityName');
             $table->string('country');
             $table->string('email')->unique();
-            $table->unsignedInteger('mobileNumber');
+            $table->bigInteger('mobileNumber');
             $table->string('address');
             $table->date('establishmentYear');
             $table->integer('verified')->default(0);
             $table->string('picture')->default('default.png');
             $table->string('website')->nullable();
             $table->string('PObox')->nullable();
-            $table->unsignedInteger('fax')->nullable();
+            $table->bigInteger('fax')->nullable();
             $table->string('bankAccount')->nullable();
             $table->string('facebookPage')->nullable();
             $table->unsignedInteger('numOfEmployees')->nullable();
