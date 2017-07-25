@@ -312,9 +312,9 @@
         <hr />
 
 
-<form id="frm-example" method="post" action="{{route('invite')}}" >{{ csrf_field() }}
+<form id="frm-invite" method="post" action="{{route('invite')}}" >{{ csrf_field() }}
 
-<table id="example" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
+<table id="inviteT" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
   <thead>
 
       <tr>
@@ -326,7 +326,7 @@
           <th>City</th>
           <th>Volutery Experience</th>
           <th>Education</th>
-          
+
       </tr>
   </thead>
 
@@ -348,12 +348,14 @@
           <td>{{$u->educationalLevel}}</td>
       </tr>
 @endforeach
-      
-     
+
+
 
 
   </tbody>
 </table>
+
+
 <br />
 <div class="row justify-content-center">
 
@@ -379,6 +381,6 @@
 </form>
       </div>
     </div>
-</div></div> 
+</div></div>
 
 @endsection
