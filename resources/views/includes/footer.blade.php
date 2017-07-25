@@ -159,6 +159,11 @@
     <script type="text/javascript">
 
     $(document).ready(function() {
+      $(document).ready(function(){
+        $("#unacceptedT_length").parent().hide();
+        $("#unacceptedT_info").parent().hide();
+
+      });
        var table = $('#unacceptedT').DataTable({
           'columnDefs': [
              {

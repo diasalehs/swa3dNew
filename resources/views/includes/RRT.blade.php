@@ -30,13 +30,13 @@
 
   </tbody>
 </table>
-<div class="row">
+<div class="row" style="margin-top:20px;">
 <div class="col-6">
   <button  type="submit" class="btn  btn-block btn-green">Remove</button>
 
 </div>
 <div class="col-6">
-  <button  type="submit" class="btn btn-block btn-green">Rate</button>
+  <button  type="button" class="btn btn-green btn-block" data-toggle="modal" data-target="#rate-modal">Rate</button>
 
 </div>
 </div>
