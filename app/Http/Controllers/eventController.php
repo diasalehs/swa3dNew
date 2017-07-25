@@ -31,7 +31,7 @@ class eventController extends Controller
 
     public function invite(Request $request)
     {
-        dd($request['invited[]']);
+        dd($request['invited']);
         if($request->has('invited'))
         {
             $i = 0;
@@ -139,7 +139,7 @@ class eventController extends Controller
     }
 
     public function myEvents(){
-        $user = Auth::user();
+        $user = $this->user;
         $date = $this->date;
         $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
         $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date)->get();

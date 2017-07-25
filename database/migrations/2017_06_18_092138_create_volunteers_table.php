@@ -18,6 +18,10 @@ class CreateVolunteersTable extends Migration
             $table->integer('event_id')->index();
             $table->integer('user_id')->index();
             $table->boolean('accepted')->default(0);
+            $table->boolean('rates')->default(0);
+            $table->float('ratesValue')->default(0);
+            $table->boolean('rated')->default(0);
+            $table->float('ratedValue')->default(0);
             $table->timestamps();
         });
     }
