@@ -245,6 +245,8 @@ class mainController extends Controller
                 $mine = false;
                 $archived = 0;
                 $request = false;
+                $rate = false;
+
                 $eventCloseAllowed = false;
                 $posts = post::where('event_id',$eventId)->get();
                 $eventAcceptedVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',1)->get();
@@ -257,20 +259,22 @@ class mainController extends Controller
 
                 $flag = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->where('accepted',1)->first();
                 if($flag) $eventCloseAllowed = true;
+                $flag = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->where('rate',1)->first();
+                if($flag) $rate = true;
 
         		if(($user->userType == 1 || $user->userType == 3) && $event->user_id == $user->id){
         			$mine = true;
                     $eventVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',0)->get();
-                    return view('event',compact('date','event','request','archived','mine','user','eventVols','posts','eventAcceptedVols','users','eventCloseAllowed','lessons'));
+                    return view('event',compact('date','event','request','archived','mine','user','eventVols','posts','eventAcceptedVols','users','eventCloseAllowed','lessons','rate'));
         		}elseif ($user->userType == 0 || $user->userType == 3) {
                     $volunteer = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
                     if($volunteer){
                         $request = true;
                     }
                 }
-                return view('event',compact('date','event','eventCloseAllowed','posts','eventAcceptedVols','archived','mine','request','user','lessons'));
+                return view('event',compact('date','event','eventCloseAllowed','posts','eventAcceptedVols','archived','mine','request','user','lessons','rate'));
         	}
-            return view('event',compact('date','event','posts','eventAcceptedVols','eventCloseAllowed','lessons'));
+            return view('event',compact('date','event','posts','eventAcceptedVols','eventCloseAllowed','lessons','rate'));
         }else{
             return redirect()->route('upComingEvents');
         }

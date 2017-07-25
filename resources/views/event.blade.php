@@ -206,9 +206,10 @@
                 <option  value="{{$eventAcceptedVol->id}}"><a href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a></option>
                 @endforeach
               </select>
-              @if($mine && $event->endDate > $date)
+              @if($mine && $archived == 0)
               <button type="submit" class="btn col-3 btn-pink">Remove</button>
               @endif
+
             </div>
 
             </form>
