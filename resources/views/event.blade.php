@@ -187,22 +187,8 @@
           @endif
           <div class=" col-lg-4">
 
-          @if($mine && $event->endDate > $date)
-            <h3 class="greencolor ">Volunteers request</h3>
-            <hr />
-            <form style="text-align:center" role="form" method="POST" action="{{ route('acceptVolunteer',$event->id)}}">{{ csrf_field() }}
-              <div class="row" style=" margin-bottom:20px;">
 
-              <select class="selectpicker col-9" name="accepted[]"data-selected-text-format="count" multiple data-actions-box="true" data-size="7" data-live-search="true" >
-                @foreach($eventVols as $eventVol)
-                <option value="{{$eventVol->id}}"  data-subtext="email"><a href="{{route('profile',[$eventVol->id])}}">{{$eventVol->name}}</a></option>
-                @endforeach
-              </select>
-              <button  type="submit" class="btn col-3 btn-green">Accept</button>
-            </div>
-
-            </form>
-            @endif
+            @include('includes.RRT')
 
             <h3 class="greencolor " >Volunteers</h3>
 
@@ -265,12 +251,6 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit"  class="btn btn-green">Save</button>
 
-      </div>
-      </form>
-
-    </div>
-  </div>
-</div>
 @endif
 
 @endsection('content')

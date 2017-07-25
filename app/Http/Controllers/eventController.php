@@ -31,6 +31,7 @@ class eventController extends Controller
 
     public function invite(Request $request)
     {
+        dd($request['invited[]']);
         if($request->has('invited'))
         {
             $i = 0;

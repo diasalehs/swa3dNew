@@ -11,6 +11,22 @@ button{
 @media (min-width: 992px) {
 
 }
+#unacceptedT_length{
+  display: none;
+}
+#unacceptedT_info{
+
+  display: none;
+}
+#unacceptedT_wrapper div.row div.col-sm-12{
+
+}
+#dt-checkboxes-cell{
+  width: 20px;
+}
+#unacceptedT_wrapper{
+  padding: 0px;
+}
 div.dropdown-menu.open{
   max-height: 400px !important;
 }

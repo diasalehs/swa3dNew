@@ -312,7 +312,7 @@
         <hr />
 
 
-<form id="frm-example" action="" method="POST" >{{ csrf_field() }}
+<form id="frm-example" method="post" action="{{route('invite')}}" >{{ csrf_field() }}
 
 <table id="example" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
   <thead>
@@ -355,7 +355,7 @@
   </tbody>
 </table>
 <br />
-{{-- <div class="row justify-content-center">
+<div class="row justify-content-center">
 
 <div class="col-sm-12 col-md-4">
 
@@ -363,9 +363,9 @@
 <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true"
     data-live-search="true" multiple>
 
-  <option value="1">Social and Economic Rights</option>
-  <option value="2">Legal Aid</option>
-  <option value="3">Capacity Building</option>
+@foreach($userUevents as $userUevent)
+ <option value="{{$userUevent->id}}">{{$userUevent->title}}</option>
+@endforeach
 
 </select>
 </div>
@@ -379,8 +379,6 @@
 </form>
       </div>
     </div>
-</div></div> --}}
-@include('includes.modal')
-
+</div></div> 
 
 @endsection
