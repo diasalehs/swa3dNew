@@ -357,51 +357,7 @@
           </tbody>
       </table>
 
-         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
-           <h1 class="greencolor">All Volunteers</h1>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Rating</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-              @foreach ($users_record as $user)
-                      <tr>
-                      <td>{{$user->nameInEnglish}}</td>
-                      <td>{{$user->email}}</td>
-                      <td> <span class="glyphicons glyphicons-star"></span>{{$user->acc_avg}}</td>
-                      <td>
-                <?php $flag = 0; ?>
-                @foreach($following as $followi)
-                  @if($followi->requested_id == $user->id)
-                               <a class='btn btn-danger'  href="{{route('unfollow',$user->user_id)}}">Unfollow</a>
-
-                    <?php $flag = 1; ?>
-                    @endif
-                @endforeach
-                @if($flag == 0)
-                               <a class='btn btn-danger'  href="{{route('follow',$user->user_id)}}">follow</a>
-
-                    <?php $flag = 1; ?>
-                @endif
-                      </td>
-                      </tr>
-                @endforeach
-              </tbody>
-          </table>
-  <nav aria-label="Page navigation example">
-              <ul class="pagination justify-content-center">
-                  {{ $users_record->setpath('swa3ed/public/volunteersSearch/')->appends(Request::except('page'))->links() }}
-
-
-  
-
-            </ul>
-            </nav>       </div>
+    
       </div>
     </div>
 </div></div>

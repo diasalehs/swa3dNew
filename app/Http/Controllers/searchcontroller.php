@@ -216,6 +216,7 @@ class searchController extends Controller
 
 
     public function volunteersSearch(Request $request)
+    
     {  
 
         $user =auth::user();
@@ -231,7 +232,7 @@ class searchController extends Controller
                  $join->on('Individuals.user_id', '=', 'user_intrests.user_id')
                  ->whereIn('user_intrests.intrest_id', request('intrest'))
                  ;})
-                 ->where([['Individuals.nameInEnglish','like','%'.request('name').'%'],['Individuals.country','=',request('location')]])
+                 ->where('Individuals.country','=',request('location'))
                  ->get();
                  
                  // location &intrest & target
@@ -243,8 +244,6 @@ class searchController extends Controller
                      ->whereIn('user_targets.target_id',request('target'))
                      ->whereIn('user_intrests.intrest_id', request('intrest'))
                      ->where('Individuals.country','=',request('location'))
-                     ->where('nameInEnglish','like','%'.request('name').'%')
-                     ->orwhere('nameInArabic','like','%'.request('name').'%')
                      ->get();
                     
                   }
@@ -257,18 +256,14 @@ class searchController extends Controller
                  $join->on('Individuals.user_id', '=', 'user_targets.user_id')
                  ->whereIn('user_targets.target_id',request('target'))
                  ->where('Individuals.country','=',request('location'));})
-                 ->where('nameInEnglish','like','%'.request('name').'%')
-                 ->orwhere('nameInArabic','like','%'.request('name').'%')
                  ->get();
                  
              }
 
                 // location only filter
              else{
-                 $users = Individuals::where([['country','=',$request['location']],['nameInEnglish','like','%'.request('name').'%']])
-                 
-                 ->orwhere([['country','=',$request['location']],['nameInArabic','like','%'.request('name').'%']])
-                 ->get();
+                 $users = Individuals::where('country','=',$request['location'])
+             ->get();
                  }
             }
 
@@ -283,8 +278,6 @@ class searchController extends Controller
                  ->join('user_targets', 'Individuals.user_id', '=', 'user_targets.user_id')
                  ->whereIn('user_targets.target_id',request('target'))
                  ->whereIn('user_intrests.intrest_id', request('intrest'))
-                 ->where('nameInEnglish','like','%'.request('name').'%')
-                 ->orwhere('nameInArabic','like','%'.request('name').'%')
                  ->get();
 
              }
@@ -295,8 +288,6 @@ class searchController extends Controller
                      ->join('user_intrests', function ($join) {
                      $join->on('Individuals.user_id', '=', 'user_intrests.user_id')
                      ->whereIn('user_intrests.intrest_id', request('intrest'));})
-                       ->where('nameInEnglish','like','%'.request('name').'%')
-                       ->orwhere('nameInArabic','like','%'.request('name').'%')
                      ->get();
               
                 }
@@ -309,8 +300,6 @@ class searchController extends Controller
              $join->on('Individuals.user_id', '=', 'user_targets.user_id')
              ->whereIn('user_targets.target_id',request('target'))
              ;})
-             ->where('nameInEnglish','like','%'.request('name').'%')
-                 ->orwhere('nameInArabic','like','%'.request('name').'%')
              ->get();
             
          }
@@ -338,3 +327,5 @@ class searchController extends Controller
     } 
 
 }
+
+
