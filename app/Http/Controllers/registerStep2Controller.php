@@ -25,7 +25,7 @@ class registerStep2Controller extends Controller
                 'cityName' => 'required_without:x',
                 'x' => 'required_without:cityName',
                 'intrests' => 'required',
-                'intrests' => 'required',
+                'targets' => 'required',
             ]);
             if($request->has('x'))
             {
@@ -92,7 +92,7 @@ class registerStep2Controller extends Controller
                                 'license' => 'required|max:10|unique:institutes',
                                 'establishmentYear' => 'required|date|after:01/01/1900',
                                 'address' => 'required|max:30',
-                                'mobileNumber' => 'required|digits:8',
+                                'mobileNumber' => 'required|digits:11',
                             ]);
 
                             $Institute = new tempInstitute();

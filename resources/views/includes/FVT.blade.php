@@ -1,9 +1,9 @@
 
 
 
-<form id="frm-example" action="" method="POST" >{{ csrf_field() }}
+<form id="frm-invite" action="" method="POST" >{{ csrf_field() }}
 
-<table id="example" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
+<table id="inviteT" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
   <thead>
       <tr>
 
