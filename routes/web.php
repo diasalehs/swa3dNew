@@ -165,6 +165,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
     Route::get('/allusers',['uses'=>'homeController@allusers'])->name('allusers');
     Route::get('/volunteersSearch', ['uses' =>'searchcontroller@volunteersSearch', 'as'=>'volunteersSearch']);
     Route::get('/findVolunteers',['uses'=>'homeController@findVolunteers'])->name('findVolunteers');
+    Route::get('/institutes',['uses'=>'mainController@institutes'])->name('institutes');
 
 });
 

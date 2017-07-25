@@ -1,18 +1,11 @@
-@extends('institute/layouts.profileMaster')
+@extends('layouts.master')
 
 @section('content')
+<div class="container min">
+  <h1 class="mt-4 mb-3" style="color: var(--green);">Institutes<small></small></h1>
 
-
-
-<div class="container-fluid" style="margin:120px auto">
-    <div class="row">
-      @include('institute/includes.sidebar')
-
-      <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
-
-            <form id="myform" class="" style="" method="GET" action="{{route('volunteersSearch')}}">
-              <div class="row">
-
+    <ul class="nav sw-nav-tabs" role="tablist" id ="nnnn">
+      <form id="myform" class="row" style="" method="GET" action="{{route('institutes')}}">
           <div class="form-group col-sm12 col-md-4">
             <label for="location" >Country</label>
 
@@ -270,14 +263,14 @@
              <option value="5">Young Adults (18-30)</option>
              <option value="6">Adults (31-59)</option>
              <option value="7">Elderly (60 >)</option>
-
+             
            </select>
          </div>
-
+         <input type="text" name="name" value="{{Request::input('name')}}">
+  
          <div class="form-group  col-sm12 col-md-4">
            <label for="Select2">intrest</label>
-           <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true"
-               data-live-search="true" multiple>
+           <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true"  data-live-search="true" multiple>
 
              <option value="1">Social and Economic Rights</option>
              <option value="2">Legal Aid</option>
@@ -300,85 +293,54 @@
              <option value="18">Health</option>
            </select>
          </div>
-       </div>
-
-            <div class="row justify-content-center">
-              <div class="col-4">
-                <button type="submit" form="myform" class="btn btn-block btn-green" >Search</button>
-              </div>
-            </div>
 
         </form>
-        <hr />
-
-
-<form id="frm-example" method="post" action="{{route('invite')}}" >{{ csrf_field() }}
-
-<table id="example" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
-  <thead>
-
-      <tr>
-<th></th>
-          <th>English Name</th>
-          <th>Arabic Name</th>
-          <th>Age</th>
-          <th>Gender</th>
-          <th>City</th>
-          <th>Volutery Experience</th>
-          <th>Education</th>
-          
-      </tr>
-  </thead>
-
-  <tbody>
-@foreach($users_record as $u )
-<tr>
-          <td>{{$u->user_id}}</td>
-          <td>{{$u->nameInEnglish}}</td>
-          <td>{{$u->nameInArabic}}</td>
-          <td>
-           <?php
-               $time = date_create($u->dateOfBirth);
-               echo date("Y")-date_format($time, 'Y');
-           ?>
-          </td>
-          <td>{{$u->gender}}</td>
-          <td>{{$u->cityName}}</td>
-          <td>{{$u->voluntaryYears}}</td>
-          <td>{{$u->educationalLevel}}</td>
-      </tr>
-@endforeach
-      
-     
-
-
-  </tbody>
-</table>
-<br />
-<div class="row justify-content-center">
-
-<div class="col-sm-12 col-md-4">
-
-<label for="Select2">Events</label>
-<select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true"
-    data-live-search="true" multiple>
-
-@foreach($userUevents as $userUevent)
- <option value="{{$userUevent->id}}">{{$userUevent->title}}</option>
-@endforeach
-
-</select>
-</div>
-<div class="col-sm-12 col-md-4">
-  <label for="" style="opacity:0">Events</label>
-
-  <button  type="submit" class="btn form-control btn-green">Invite</button>
-</div>
-</div>
-
-</form>
+         <div class="row justify-content-center">
+          <div class="col-4">
+          <button type="submit" form="myform" class="btn btn-block btn-green" >Search</button>
+        </div>
       </div>
-    </div>
-</div></div> 
+    </ul>
 
-@endsection
+<br>
+    <!-- Tab panes -->
+
+
+
+          <div class="row">
+                    <div class="row justify-content-center">
+         
+
+        @foreach($NGOs as $result)
+        <div class="col-lg-3 col-sm-4" style="margin-bottom:25px;">
+            <div class="card h-100">
+                        <a href="{{route('profile',[$result->user_id])}}">
+                            <!--{$result->mainImgpath}}-->
+                          <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->picture}}" alt="">
+                      </a>
+                        <div class="card-block">
+                          <a href="{{route('profile',[$result->user_id])}}"><h2 class="card-title">{{$result->nameInEnglish}}</h2></a>
+                    <p class="card-text">
+                      Institute
+                   </p>
+                </div>
+            </div>
+        </div>
+
+    @endforeach
+                          </div>
+                          <br>
+
+            <!-- Pagination -->
+                  {{ $NGOs->setpath('institutes?')->appends(Request::except('page'))->render() }}
+
+
+    </div>
+
+
+
+</div>
+
+<!-- /.container -->
+
+@endsection('content')

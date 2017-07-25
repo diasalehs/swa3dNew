@@ -317,15 +317,14 @@
         <div class="row">
 
         @foreach($users as $result)
-        @continue($result->userType==10)
         <div class="col-lg-3 col-sm-4" style="margin-bottom:25px;">
             <div class="card h-100">
-                        <a href="{{route('profile',[$result->id])}}">
+                        <a href="{{route('profile',[$result->user_id])}}">
                             <!--{$result->mainImgpath}}-->
                           <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->picture}}" alt="">
                       </a>
                         <div class="card-block">
-                          <a href="{{route('profile',[$result->id])}}"><h2 class="card-title">{{$result->name}}</h2></a>
+                          <a href="{{route('profile',[$result->user_id])}}"><h2 class="card-title">{{$result->nameInEnglish}}</h2></a>
                     <p class="card-text">
                       Volunteer
                     </p>
@@ -360,12 +359,12 @@
         @foreach($institutes as $result)
         <div class="col-lg-3 col-sm-4" style="margin-bottom:25px;">
             <div class="card h-100">
-                        <a href="{{route('profile',[$result->id])}}">
+                        <a href="{{route('profile',[$result->user_id])}}">
                             <!--{$result->mainImgpath}}-->
                           <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->picture}}" alt="">
                       </a>
                         <div class="card-block">
-                          <a href="{{route('profile',[$result->id])}}"><h2 class="card-title">{{$result->name}}</h2></a>
+                          <a href="{{route('profile',[$result->user_id])}}"><h2 class="card-title">{{$result->nameInEnglish}}</h2></a>
                     <p class="card-text">
                       Institute
                    </p>

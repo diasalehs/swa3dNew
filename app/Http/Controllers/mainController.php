@@ -309,12 +309,132 @@ class mainController extends Controller
         $collection=collect($items)->unique();
  
         $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
-        $researches=new \Illuminate\Pagination\LengthAwarePaginator($collection,$total,5,$currentpage);
+        $researches=new \Illuminate\Pagination\LengthAwarePaginator($collection,$total,2,$currentpage);
         $text=$request['search'];
 
        return view('ResearchesSearch',compact('researches','text'));
  
  
+      }
+
+      public function institutes(Request $request)
+
+      {
+
+        $NGOs=institute::paginate(3);
+          if(request()->has('location')){
+             // intrest in location
+
+             if(request()->has('intrest')){
+                 $NGOs= DB::table("institutes")
+                 ->join('user_intrests', function ($join) {
+                 $join->on('institutes.user_id', '=', 'user_intrests.user_id')
+                 ->whereIn('user_intrests.intrest_id', request('intrest'))
+                ->where([['institutes.nameInEnglish','like','%'.request('name').'%'],['institutes.country','=',request('location')]])
+                 ->orwhere([['institutes.nameInArabic','like','%'.request('name').'%'],['institutes.country','=',request('location')]]);})
+
+                 ->paginate(3);
+                 // location &intrest & target
+
+                 if(request()->has('target')){
+                   
+                      $NGOs = DB::table('institutes')
+                     ->join('user_intrests', 'institutes.user_id', '=', 'user_intrests.user_id')
+                     ->join('user_targets', 'institutes.user_id', '=', 'user_targets.user_id')
+                     ->whereIn('user_targets.target_id',request('target'))
+                     ->whereIn('user_intrests.intrest_id', request('intrest'))
+                       ->where([['institutes.nameInEnglish','like','%'.request('name').'%'],['institutes.country','=',request('location')]])
+                 ->orwhere([['institutes.nameInArabic','like','%'.request('name').'%'],['institutes.country','=',request('location')]])
+                     ->paginate(3);
+                  }
+
+             }
+             // location & target** id is userID in  individual (prevously was user.id)  changed to match the location and name ...and target id is target_id 
+
+             elseif(request()->has('target')){
+             
+                   $NGOs= DB::table("institutes")->join('user_targets', function ($join) {
+                 $join->on('institutes.user_id', '=', 'user_targets.user_id')
+                 ->whereIn('user_targets.target_id',request('target'))
+                 ->where('institutes.country','=',request('location'));})
+                 ->where('nameInEnglish','like','%'.request('name').'%')
+                 ->orwhere('nameInArabic','like','%'.request('name').'%')
+                 ->paginate(3);
+             }
+
+                // location only filter
+             else{
+              
+                 $NGOs=institute::where('country','=',$request['location'])
+                 ->where('nameInEnglish','like','%'.request('name').'%')
+                 ->orwhere('nameInArabic','like','%'.request('name').'%')
+                 ->paginate(3);
+                 }
+            }
+
+         // intrest filter
+         elseif(request()->has('intrest')){
+
+             // intrest & target
+             if(request()->has('target')){
+
+              
+
+                  $NGOs = DB::table('institutes')
+                 ->join('user_intrests', 'institutes.user_id', '=', 'user_intrests.user_id')
+                 ->join('user_targets', 'institutes.user_id', '=', 'user_targets.user_id')
+                 ->whereIn('user_targets.target_id',request('target'))
+                 ->whereIn('user_intrests.intrest_id', request('intrest'))
+                 ->where('nameInEnglish','like','%'.request('name').'%')
+                 ->orwhere('nameInArabic','like','%'.request('name').'%')
+                 ->paginate(3);
+             }
+                // intrest only
+             else {
+
+                     
+                      $NGOs= DB::table("institutes")
+                     ->join('user_intrests', function ($join) {
+                     $join->on('institutes.user_id', '=', 'user_intrests.user_id')
+                     ->whereIn('user_intrests.intrest_id', request('intrest'));})
+                     ->where('nameInEnglish','like','%'.request('name').'%')
+                     ->orwhere('nameInArabic','like','%'.request('name').'%')
+                     ->paginate(3);
+                }
+          }
+        
+         // target only filter
+          elseif(request()->has('target')){
+         
+             $NGOs= DB::table("institutes")
+             ->join('user_targets', function ($join) {
+             $join->on('institutes.user_id', '=', 'user_targets.user_id')
+             ->whereIn('user_targets.target_id',request('target'))
+             ;})
+                 ->where('nameInEnglish','like','%'.request('name').'%')
+                 ->orwhere('nameInArabic','like','%'.request('name').'%')
+
+             ->paginate(3);
+         }
+            
+            // -------------
+            $NGOss= array();
+            $var=0;
+            foreach ($NGOs as $u) {
+                if ($u->user_id!=$var) {
+                    $var=$u->user_id;
+                    array_push($NGOss, $u);
+                    # code...
+                }
+            }
+            $NGOs=$NGOss;
+            $total=count($NGOs);
+            $NGOs=collect($NGOs);
+            $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
+            $NGOs=new \Illuminate\Pagination\LengthAwarePaginator($NGOs,$total,3,$currentpage);
+
+            return view('institutes',compact('NGOs'));
+          # code...
       }
 
 }

@@ -18,8 +18,13 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File; 
 use Illuminate\Http\Response;
 use App\Initiative;
+use App\Individuals;
 use App\tempInstitute;
 use App\Qualification;
+use App\Intrest;
+use App\targetedGroups;
+use App\UserIntrest;
+use App\UserTarget;
 use Image;
 
 class homeController extends Controller
@@ -59,10 +64,11 @@ class homeController extends Controller
 
     public function findVolunteers()
     {
-        $user = $this->user;
+        list($user ,$date)=$this->slidbare();
+        $userUevents = Event::where('events.user_id',$user->id)->where('startDate','>',$date)->get();
         $following = friend::where('requester_id', $user->id)->get();
-        $users_record= user::where('userType',0)->paginate(15);
-        return view('shared/findVolunteers',compact('users_record','following'));
+        $users_record= Individuals::get();
+        return view('shared/findVolunteers',compact('users_record','following','userUevents'));
     }
 
     /**
@@ -118,17 +124,19 @@ class homeController extends Controller
     public function profileViewEdit()
     {
         list($user ,$date)=$this->slidbare();
+        $intrests = Intrest::get();
+        $targets = targetedGroups::get();
         if($user->userType == 0){
             $userIndividual = $user->Individuals;
             $qualifications = Qualification::where('user_id',$user->id)->get();
-            return view('individual/profileViewEdit',compact('user','userIndividual','qualifications'));
+            return view('individual/profileViewEdit',compact('user','userIndividual','qualifications','intrests','targets'));
         }elseif ($user->userType == 1) {
             $userInstitute = Auth::user()->Institute;
-            return view('institute/profileViewEdit',compact('userInstitute','user'));
+            return view('institute/profileViewEdit',compact('userInstitute','user','intrests','targets'));
         }
         elseif ($user->userType == 3) {
             $initiative = Auth::user()->initiative;
-            return view('initiative/editInitiative',compact('user','initiative'));
+            return view('initiative/editInitiative',compact('user','initiative','intrests','targets'));
         }
 
         } 
@@ -137,19 +145,18 @@ class homeController extends Controller
     {
         $user = Auth::user();
         $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'mobileNumber' => 'min:11|numeric',
+            'firstName' => 'required|regex:/^[a-zA-Z]+$/',
+            'lastName' => 'required|regex:/^[a-zA-Z]+$/',
+            'ARfirst' => 'required|alpha',
+            'ARlast' => 'required|alpha',
+            'country' => 'required',
+            'cityName' => 'required_without:x',
+            'x' => 'required_without:cityName',
+            'intrests' => 'required',
+            'targets' => 'required',
         ]);
         if($user->userType == 0)
         {
-            $user->name = $request['name'];
-            if($user->email != $request['email'])
-            {
-                $this->validate($request, [
-                    'email' => 'required|string|email|max:255|unique:users',
-                ]);
-                $user->email = $request['email'];
-            }
             if(isset($request->password))
             {
                 $this->validate($request, [
@@ -193,14 +200,12 @@ class homeController extends Controller
         }                               
         elseif ($user->userType == 1)
         {
-            $user->name = $request['name'];
-            if($user->email != $request['email'])
-            {
-                $this->validate($request, [
-                    'email' => 'required|string|email|max:255|unique:users',
-                ]);
-                $user->email = $request['email'];
-            }
+            $this->validate($request, [
+                'livingPlace' => 'required',
+                'establishmentYear' => 'required|date|after:01/01/1900',
+                'address' => 'required|max:30',
+                'mobileNumber' => 'required|digits:11',
+            ]);
             if(isset($request->password))
             {
                 $this->validate($request, [
@@ -208,20 +213,43 @@ class homeController extends Controller
                 ]);
                 $user->password = bcrypt($request->password);
             }
-            $user->save();
+
             $Institute = Auth::user()->Institute;
-            $Institute->nameInEnglish = $user->name;
-            $Institute->nameInArabic = $user->name;
-            $Institute->email = $user->email;
-            $Institute->license = $request['license'];
+            $Institute->firstInEnglish = $request['firstName'];
+            $Institute->lastInEnglish = $request['lastName'];
+            $Institute->firstInArabic = $request['ARfirst'];
+            $Institute->lastInArabic = $request['ARlast'];
+            $Institute->nameInArabic =  "".$request['ARfirst']." ".$request['ARlast'];
+            $Institute->nameInEnglish = "".$request['firstName']." ".$request['lastName'];
+            $Institute->user_id = $user->id;
             $Institute->cityName = $request['cityName'];
             $Institute->country = $request['country'];
             $Institute->livingPlace = $request['livingPlace'];
-            $Institute->workSummary = $request['workSummary'];
-            $Institute->activities = $request['activities'];
-            $Institute->mobileNumber = $request['mobileNumber'];
             $Institute->address = $request['address'];
+            $Institute->mobileNumber = $request['mobileNumber'];
+            $Institute->establishmentYear = $request['establishmentYear'];
             $Institute->save();
+            $user->name = $Institute->nameInEnglish;
+            $user->save();
+
+            UserIntrest::where('user_id',$user->id)->delete();
+            foreach ($request['intrests'] as $i) 
+            {
+                $ui=new UserIntrest;
+                $ui->intrest_id = $i;
+                $ui->user_id=$user->id;
+                $ui->save();
+            }
+
+            UserTarget::where('user_id',$user->id)->delete();
+            foreach ($request['targets'] as $t) {
+                $ui=new UserTarget;
+                $ui->target_id = $t;
+                $ui->user_id=$user->id;
+                $ui->save();
+            }
+
+
         }
         elseif($user->userType == 3)
         {

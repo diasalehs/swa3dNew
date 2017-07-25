@@ -16,7 +16,7 @@ background-position-y: 7px;">
 
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Volunteers</a>
+        <a class="nav-link" href="{{route('institutes')}}">Institutes</a>
       </li>
 
        <li class="nav-item">
