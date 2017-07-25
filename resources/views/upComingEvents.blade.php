@@ -70,7 +70,9 @@
     </div>
     <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne">
       <div class="card-block" class="">
-        <form id="myform" class="row" style="">
+        <form id="myform" class="" style="">
+          <div class="row">
+
           <div class="form-group col-sm12 col-md-4">
             <label for="location" >Country</label>
   <select name="location" class="form-control" onchange="yesnoCheck(this);">
@@ -328,13 +330,13 @@
              <option value="5">Young Adults (18-30)</option>
              <option value="6">Adults (31-59)</option>
              <option value="7">Elderly (60 >)</option>
-             
+
            </select>
          </div>
-  
+
          <div class="form-group  col-sm12 col-md-4">
            <label for="Select2">intrest</label>
-           <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true" 
+           <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true"
                data-live-search="true" multiple>
 
              <option value="1">Social and Economic Rights</option>
@@ -358,13 +360,15 @@
              <option value="18">Health</option>
            </select>
          </div>
+       </div>
 
+         <div class="row justify-content-center">
+           <div class="col-4">
+           <button type="submit" form="myform" class="btn btn-block btn-green" >Search</button>
+         </div>
+         </div>
         </form>
-        <div class="row justify-content-center">
-          <div class="col-4">
-          <button type="submit" form="myform" class="btn btn-block btn-green" >Search</button>
-        </div>
-      </div>
+
 
       </div>
     </div>
@@ -413,7 +417,7 @@
 
                   {{ $events->setpath('upComingEvents/')->appends(Request::except('page'))->links() }}
 
-            
+
 
                  <div class="row justify-content-center">
                 <form action="{{route('allEvents')}}" method="GET">

@@ -10,7 +10,7 @@
           </div>
           <div class="modal-body">
 
-              <form class="" role="form" method="POST" action="{{ route('qualifications') }}">{{ csrf_field() }}
+              <form class="" role="form" method="POST" action="{{ route('addQualification') }}">{{ csrf_field() }}
 
               <div class="row justify-content-center">
 

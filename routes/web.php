@@ -156,7 +156,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
         });
     });
 
-    Route::post('/qualifications', ['uses'=>'homeController@qualifications'])->name('qualifications');
+    
     Route::get('/follow/{userId}', ['uses'=>'followController@follow'])->name('follow');
     Route::get('/unfollow/{userId}', ['uses'=>'followController@unfollow'])->name('unfollow');
     Route::get('/profileViewEdit', ['uses'=>'homeController@profileViewEdit'])->name('profileViewEdit');
@@ -167,5 +167,9 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
     Route::get('/institutes',['uses'=>'mainController@institutes'])->name('institutes');
 
 });
+
+Route::post('/qualification/add', ['uses'=>'qualificationController@create'])->name('addQualification');
+Route::get('/qualification/{qualificationId}/destroy', ['uses'=>'qualificationController@destroy'])->name('deleteQualification');
+
 
 });

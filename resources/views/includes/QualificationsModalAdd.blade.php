@@ -10,7 +10,7 @@
           </div>
           <div class="modal-body">
 
-              <form class="" role="form" method="POST" action="{{ route('qualifications') }}">{{ csrf_field() }}
+              <form class="" role="form" method="POST" action="{{ route('addQualification') }}">{{ csrf_field() }}
                 <div class="row justify-content-center">
 
                   <div class="form-group col-md-6 col-sm-12 {{ $errors->has('voluntaryWork') ? ' has-error' : '' }}">

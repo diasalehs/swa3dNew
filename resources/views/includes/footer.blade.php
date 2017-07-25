@@ -50,12 +50,9 @@
     <!-- Script to Activate the Carousel -->
       <script src="{{URL::asset('vendor/js/jquery.js')}} "></script>
       <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
-
-
-
+      <!-- Datatables -->
     <script>
-
-        $('.c').starbox({
+    $('.c').starbox({
         average: 0.5,
         autoUpdateAverage: true,
         ghosting: true,
@@ -107,24 +104,85 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="{{URL::asset('vendor/js/scripts.js')}}"></script>
     <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
-    <!-- Datatables -->
-    <script src="{{URL::asset('vendor/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{URL::asset('vendor/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-    <script src="{{URL::asset('vendor/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
-    <script src="{{URL::asset('vendor/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
-    <script src="{{URL::asset('vendor/vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
-    <script src="{{URL::asset('vendor/vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-    <script src="{{URL::asset('vendor/vendors/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
-    <script src="{{URL::asset('vendor/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>
-    <script src="{{URL::asset('vendor/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
-    <script src="{{URL::asset('vendor/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-    <script src="{{URL::asset('vendor/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
-    <script src="{{URL::asset('vendor/vendors/datatables.net-scroller/js/dataTables.scroller.min.js')}}"></script>
-    <script src="{{URL::asset('vendor/vendors/jszip/dist/jszip.min.js"></script>
-    <script src="{{URL::asset('vendor/vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="{{URL::asset('vendor/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-2.2.4/dt-1.10.15/fh-3.1.2/r-2.1.1/se-1.2.2/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
 
     <script type="text/javascript">
+    $(document).ready(function() {
+    $('#d').DataTable( {
+        initComplete: function () {
+            this.api().columns().every( function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        }
+    } );
+} );
+    $(document).ready(function() {
+       var table = $('#example').DataTable({
+          'columnDefs': [
+             {
+                'targets': 0,
+                'render': function(data, type, row, meta){
+                       if(type === 'display'){
+                          data = '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>';
+                       }
+
+                       return data;
+                    },
+                'checkboxes': {
+                   'selectRow': true,
+                   'selectAllRender': '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>'
+
+                }
+             }
+          ],
+          'select': {
+             'style': 'multi'
+          },
+          'order': [[1, 'asc']]
+       });
+
+       // Handle form submission event
+       $('#frm-example').on('submit', function(e){
+          var form = this;
+
+          var rows_selected = table.column(0).checkboxes.selected();
+
+          // Iterate over all selected checkboxes
+          $.each(rows_selected, function(index, rowId){
+             // Create a hidden element
+             $(form).append(
+                 $('<input>')
+                    .attr('type', 'hidden')
+                    .attr('name', 'accepted[]')
+                    .val(rowId)
+             );
+          });
+
+      
+       });
+    });
+
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
 
         AOS.init({
           duration: 1200,

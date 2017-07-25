@@ -326,7 +326,7 @@ class eventController extends Controller
             $event = Event::find($eventId);
             if($user->userType == 1 || $user->userType == 3)
             {
-                if($event->user_id == $user->id && $volunteer)
+                if($event->user_id == $user->id)
                 {
                     for($i ;$i < sizeof($request->unaccepted) ;$i++)
                     {   

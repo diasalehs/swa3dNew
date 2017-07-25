@@ -8,8 +8,11 @@
     <div class="row">
       @include('institute/includes.sidebar')
 
+      <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
 
-            <form id="myform" class="row" style="" method="GET" action="{{route('volunteersSearch')}}">
+            <form id="myform" class="" style="" method="GET" action="{{route('volunteersSearch')}}">
+              <div class="row">
+
           <div class="form-group col-sm12 col-md-4">
             <label for="location" >Country</label>
 
@@ -259,7 +262,7 @@
           <div class="form-group col-sm12 col-md-4">
 
           <label for="Select1" style="align-self: flex-start;">target</label>
-           <select name="target[]" class="form-control selectpicker" id="Select1" data-actions-box="true" data-size="5"  data-live-search="true"multiple>
+           <select name="target[]"class="form-control selectpicker" id="Select1"data-actions-box="true" data-size="5"  data-live-search="true"multiple>
              <option value="1">Pre-School Children (< 5)</option>
              <option value="2">Elementary School Children (5-11)</option>
              <option value="3">Middle School Children (11-14)</option>
@@ -267,14 +270,14 @@
              <option value="5">Young Adults (18-30)</option>
              <option value="6">Adults (31-59)</option>
              <option value="7">Elderly (60 >)</option>
-             
+
            </select>
          </div>
-         <input type="text" name="name" value="{{Request::input('name')}}">
-  
+
          <div class="form-group  col-sm12 col-md-4">
            <label for="Select2">intrest</label>
-    <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box "true"  data-live-search="true" multiple>
+           <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true"
+               data-live-search="true" multiple>
 
              <option value="1">Social and Economic Rights</option>
              <option value="2">Legal Aid</option>
@@ -297,14 +300,63 @@
              <option value="18">Health</option>
            </select>
          </div>
+       </div>
 
             <div class="row justify-content-center">
-          <div class="col-4">
-          <button type="submit" form="myform" class="btn btn-block btn-green" >Search</button>
-        </div>
-      </div>
+              <div class="col-4">
+                <button type="submit" form="myform" class="btn btn-block btn-green" >Search</button>
+              </div>
+            </div>
 
         </form>
+        <hr />
+
+        <table id="d" class="display table table-hover  table-bordered"  cellspacing="0"  width="100%">
+          <thead>
+              <tr>
+
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Age</th>
+                  <th>Start date</th>
+                  <th>Salary</th>
+              </tr>
+          </thead>
+
+          <tbody>
+              <tr>
+
+                  <td>Tiger Nixon</td>
+                  <td>System Architect</td>
+                  <td>Edinburgh</td>
+                  <td>61</td>
+                  <td>2011/04/25</td>
+                  <td>$320,800</td>
+              </tr>
+              <tr>
+
+                  <td>Garrett Winters</td>
+                  <td>Accountant</td>
+                  <td>Tokyo</td>
+                  <td>63</td>
+                  <td>2011/07/25</td>
+                  <td>$170,750</td>
+              </tr>
+              <tr>
+
+                  <td>Ashton Cox</td>
+                  <td>Junior Technical Author</td>
+                  <td>San Francisco</td>
+                  <td>66</td>
+                  <td>2009/01/12</td>
+                  <td>$86,000</td>
+              </tr>
+
+
+          </tbody>
+      </table>
+
          <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
            <h1 class="greencolor">All Volunteers</h1>
             <table class="table">
@@ -346,10 +398,13 @@
                   {{ $users_record->setpath('swa3ed/public/volunteersSearch/')->appends(Request::except('page'))->links() }}
 
 
+  
+
             </ul>
             </nav>       </div>
       </div>
     </div>
-</div>
+</div></div>
+
 
 @endsection
