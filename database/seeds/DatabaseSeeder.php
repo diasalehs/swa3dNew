@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
 		        $Individuals->country = "pal";
 		        $Individuals->gender = "male";
 		        $Individuals->currentWork = "all";
+		        $Individuals->major = "all";
 		        $Individuals->educationalLevel = "school";
 		        $Individuals->dateOfBirth = "2011-1-1";
 		        $Individuals->email = $users->email;
@@ -66,12 +67,11 @@ class DatabaseSeeder extends Seeder
 	            $Institute->livingPlace = "camp";
 	            $Institute->cityName = "nablus";
 	            $Institute->country = "pal";
-	            $Institute->license = $faker->postcode;
-	            $Institute->workSummary = 0;
-	            $Institute->activities = $faker->text;
+	            $Institute->license = $faker->buildingNumber;
 	            $Institute->mobileNumber = $faker->ean8;
 	            $Institute->email = $users->email;
 	            $Institute->address = $faker->address;
+	            $Institute->establishmentYear = $faker->date;
 	            $Institute->save();
 	            $users->adminApproval=1;
 	            $users->save();

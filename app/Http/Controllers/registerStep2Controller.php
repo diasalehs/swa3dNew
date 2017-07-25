@@ -17,13 +17,14 @@ class registerStep2Controller extends Controller
         	$user = Auth::user();
 
             $this->validate($request, [
-                'firstName' => 'required|regex:/^[a-zA-Z ]+$/',
-                'lastName' => 'required|regex:/^[a-zA-Z ]+$/',
-                'ARfirst' => 'required',
-                'ARlast' => 'required',
+                'firstName' => 'required|regex:/^[a-zA-Z]+$/',
+                'lastName' => 'required|regex:/^[a-zA-Z]+$/',
+                'ARfirst' => 'required|alpha',
+                'ARlast' => 'required|alpha',
                 'country' => 'required',
                 'cityName' => 'required_without:x',
                 'x' => 'required_without:cityName',
+                'intrests' => 'required',
                 'intrests' => 'required',
             ]);
             if($request->has('x'))
@@ -36,17 +37,16 @@ class registerStep2Controller extends Controller
                         if($user->userType == 0)
                         {
                             $this->validate($request, [
-                                'livingPlace' => 'required',
                                 'gender' => 'required',
                                 'currentWork' => 'required',
                                 'educationalLevel' => 'required',
                                 'preVoluntary' => 'required',
-                                'voluntaryYears' => 'integer',
-                                'dateOfBirth' => 'required',
+                                'voluntaryYears' => 'integer|required_with:preVoluntary',
+                                'dateOfBirth' => 'required|date|before:today',
                             ]);
 
                         	$Individuals = new Individuals();
-                            $Individuals->firstInEnglish = $request['firstName'];
+                            $Individuals->nameInEnglish = $request['firstName'];
                             $Individuals->lastInEnglish = $request['lastName'];
                             $Individuals->firstInArabic = $request['ARfirst'];
                             $Individuals->lastInArabic = $request['ARlast'];
@@ -75,14 +75,12 @@ class registerStep2Controller extends Controller
                                 $ui->intrest_id = $i;
                                 $ui->user_id=$user->id;
                                 $ui->save();
-                                # code...
                             }
-                               foreach ($request['targets'] as $t) {
+                            foreach ($request['targets'] as $t) {
                                 $ui=new UserTarget;
                                 $ui->target_id = $t;
-                                $ui->user_id=auth::user()->id;
+                                $ui->user_id=$user->id;
                                 $ui->save();
-                                # code...
                             }
                               return redirect()->route('home');
 
@@ -91,10 +89,10 @@ class registerStep2Controller extends Controller
                         elseif($user->userType == 1){
                             $this->validate($request, [
                                 'livingPlace' => 'required',
-                                'license' => 'max:10|unique:institutes',
-                                'activities' => 'required',
+                                'license' => 'required|max:10|unique:institutes',
                                 'establishmentYear' => 'required|date|after:01/01/1900',
                                 'address' => 'required|max:30',
+                                'mobileNumber' => 'required|digits:8',
                             ]);
 
                             $Institute = new tempInstitute();
@@ -111,6 +109,8 @@ class registerStep2Controller extends Controller
                             $Institute->country = $request['country'];
                             $Institute->livingPlace = $request['livingPlace'];
                             $Institute->address = $request['address'];
+                            $Institute->mobileNumber = $request['mobileNumber'];
+                            $Institute->establishmentYear = $request['establishmentYear'];
                             $Institute->save();
                             $user->name = $Institute->nameInEnglish;
                             $user->flag = 1;
@@ -122,12 +122,13 @@ class registerStep2Controller extends Controller
                                 $ui->user_id=$user->id;
                                 $ui->save();
                             }
-                            // foreach ($request['targets'] as $t) {
-                            //     $evetarget= new UserTarget();
-                            //     $evetarget->event_id=$event->id;
-                            //     $evetarget->target_id=$t;
-                            //     $evetarget->save();     
-                            // }
+
+                            foreach ($request['targets'] as $t) {
+                                $ui=new UserTarget;
+                                $ui->target_id = $t;
+                                $ui->user_id=$user->id;
+                                $ui->save();
+                            }
                             return redirect()->route('home');
                         }
                     }

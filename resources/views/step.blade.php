@@ -181,6 +181,23 @@
                 </div>
                 {{--  --}}
                 <div class="col-sm-12 col-md-6 form-group">
+                    <label  class=" form-control-label" for="exampleSelect1">Major Education Level</label>
+                <div class="">
+                    <select name="Major" value="{{ old('Major') }}" class="form-control" id="exampleSelect1">
+                    <option value="BSc">IT</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Medicin">Medicin</option>
+                    <option value="law">law</option>
+                    <option value="Art">Art</option>
+                    <option value="Business">Business</option>
+                    <option value="Social Science">Social Science</option>
+                    <option value="Litreture">Litreture</option>
+                    <option value="etc..">etc..</option>
+                    </select>
+                </div>
+                </div>
+                {{--  --}}
+                <div class="col-sm-12 col-md-6 form-group">
                     <label  class="form-control-label" for="exampleSelect1">Do you have any expriments on Voluntary</label>
                 <div class="">
                     <select name="preVoluntary" value="{{ old('preVoluntary') }}" class="form-control" id="vy" onchange="vyyesno(this)">
@@ -260,12 +277,26 @@
                             </div>
                         </div>
 
-                                      {{--  --}}
+                        <div class="form-group col-sm-12 col-md-6 {{ $errors->has('mobileNumber') ? ' has-error' : '' }}">
+                <label for="mobileNumber" class="form-control-label">Mobile Number</label>
+                <div class="">
+                    <input id="mobileNumber" type="phone" class="form-control" name="mobileNumber" value="{{ old('mobileNumber') }}" />
+                    @if ($errors->has('mobileNumber'))
+                            <div class="alert alert-danger" role="alert">
+                            <strong>Warning!</strong> {{ $errors->first('mobileNumber') }}
+                         </div>
+                    @endif
+                </div>
+            </div>
+
+@endif
+              </div>
+
+                {{--  --}}
                 <div class="col-12" style="margin-top:20px;">
                   <h4 class="greencolor">Your targets</h4>
                   <hr />
                 </div>
-              </div>
                 <br />
                         {{--  --}}
                         <div class="row">
@@ -279,19 +310,20 @@
                           </div>
                           @endforeach
                       </div>
-
-@endif
+                      @if ($errors->has('targets'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('targets') }}
+                            </div>
+                        @endif
 
                 {{--  --}}
                 <div class="col-12" style="margin-top:20px;">
-                  <h4 class="greencolor">Your intrests</h4>
+                  <h4 class="greencolor">Your intresets</h4>
                   <hr />
                 </div>
-              </div>
                 <br />
                         {{--  --}}
                         <div class="row">
-
                          @foreach($intrests as $i)
                           <div class="form-check col-4">
                             <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
@@ -302,6 +334,11 @@
                           </div>
                           @endforeach
                       </div>
+                      @if ($errors->has('intrests'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('intrests') }}
+                            </div>
+                        @endif
 
                       <br />
                       <hr />
