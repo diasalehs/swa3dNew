@@ -149,7 +149,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 
             });
 
-            Route::post('/invite', ['uses'=>'eventController@invite'])->name('invite');
+            Route::post('/invite/{userId?}', ['uses'=>'eventController@invite'])->name('invite');
             Route::get('/volunteer/{eventId}', ['uses'=>'eventController@volunteer'])->name('volunteer');
             Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
             Route::get('/myUpComingEvents', ['uses'=>'IndividualsController@myUpComingEvents'])->name('myUpComingEvents');

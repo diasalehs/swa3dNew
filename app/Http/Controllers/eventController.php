@@ -29,48 +29,52 @@ class eventController extends Controller
         });
     }
 
-    public function invite(Request $request)
+    public function invite(Request $request,$userId=false)
     {
-        dd($request['invited']);
-        if($request->has('invited'))
+        if($request->has('invitedEvent'))
         {
-            $i = 0;
-            $userId = $request['userId'];
-            if(!is_array($request->invited))
+            if(!is_array($request->invitedEvent))
             {
-                $request->invited = array($request->invited);
+                $request->invitedEvent = array($request->invitedEvent);
             }
             $forFlag = false;
-            for($i ;$i < sizeof($request->invited) ;$i++)
-            {   
-                $eventId = $request->invited[$i];
-                $user = Auth::user();
-                $mine = event::where('id',$eventId)->where('user_id',$user->id)->first();
-                if($mine)
-                {
-                    $user = user::where('id',$userId)->first();
-                    if($user)
+            if($userId != false)
+            {
+                $request->invited = $userId;
+            }
+            for($j=0 ;$j < sizeof($request->invited) ;$j++)
+            {
+                for($i=0 ;$i < sizeof($request->invitedEvent) ;$i++)
+                {   
+                    $eventId = $request->invitedEvent[$i];
+                    $user = $this->user;
+                    $mine = event::where('id',$eventId)->where('user_id',$user->id)->first();
+                    if($mine)
                     {
-                        if($user->userType == 0 || $user->userType == 3){
-                            $forFlag = true;
-                            $flag = 0;
-                            $preInv = invite::where('event_id',$eventId)->where('user_id',$user->id)->first();
-                            $preVol = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
-                            if($preVol || $preInv)
-                            {
+                        $user = user::where('id',$request->invited[$j])->first();
+                        if($user)
+                        {
+                            if($user->userType == 0 || $user->userType == 3){
+                                $forFlag = true;
+                                $flag = 0;
+                                $preInv = invite::where('event_id',$eventId)->where('user_id',$user->id)->first();
+                                $preVol = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
+                                if($preVol || $preInv)
+                                {
+                                    continue;
+                                }
+                                $invite = new invite();
+                                $invite->event_id = $eventId;
+                                $invite->user_id = $user->id;
+                                $invite->save();
                                 continue;
-                            }
-                            $invite = new invite();
-                            $invite->event_id = $eventId;
-                            $invite->user_id = $user->id;
-                            $invite->save();
-                            continue;
+                            }else
+                                return redirect()->route('errorPage')->withErrors("You can't send an invitation.");
                         }else
-                            return redirect()->route('errorPage')->withErrors("You can't send an invitation.");
+                            return redirect()->route('errorPage')->withErrors("profile not found.");
                     }else
-                        return redirect()->route('errorPage')->withErrors("profile not found.");
-                }else
-                    return redirect()->route('errorPage')->withErrors("this event not yours.");
+                        return redirect()->route('errorPage')->withErrors("this event not yours.");
+                }
             }
             if($forFlag)
             {
