@@ -34,7 +34,7 @@ Route::get('/results/',  ['uses' =>'searchController@basic', 'as'=>'search']);
 Route::get('/results/filter',  ['uses' =>'searchController@basicSearch', 'as'=>'basicSearch']);
 
 Route::get('/profile/{userId}',  ['uses' =>'profilesController@index', 'as'=>'profile']);
-Route::get('/profilerank/{id}',  ['uses' =>'profilesController@rank', 'as'=>'rank']);
+Route::get('/profileRate/',  ['uses' =>'profilesController@rate', 'as'=>'rate']);
 Auth::routes();
 Route::post('/allRegister', ['uses'=>'registerStep2Controller@allRegister','as'=>'allRegister']);
 Route::get('/step', ['uses'=>'stepController@step','as'=>'step']);

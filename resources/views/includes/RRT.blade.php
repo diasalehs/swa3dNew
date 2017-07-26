@@ -9,7 +9,7 @@
 <form id="frm-unaccepted" action="{{ route('unAcceptVolunteer',$event->id)}}" method="POST" >{{ csrf_field() }}
 @endif
 @if($archived == 1)
-      <form action="{{route('rank',$user->user_id)}}" method="get">
+      <form id="frm-unaccepted" action="{{route('rate')}}" method="get">
       <div class="modal-body rate-modal">
         <label>cat1</label>
         <input type="text" name="cat1" class="cat1">
