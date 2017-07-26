@@ -216,18 +216,35 @@ class profilesController extends Controller
 								$cat3 = -1 * abs($volunteer->cat3Rates);
 								$cat4 = -1 * abs($volunteer->cat4Rates);
 
-								$user->cat1C-=1;
-								$user->cat1=($cat1/$user->cat1C)+(($user->cat1*($user->cat1C-1))/$user->cat1C);
-								$user->cat2C-=1;
-								$user->cat2=($cat1/$user->cat2C)+(($user->cat2*($user->cat2C-1))/$user->cat2C);
-								$user->cat3C-=1;
-								$user->cat3=($cat1/$user->cat3C)+(($user->cat3*($user->cat3C-1))/$user->cat3C);
-								$user->cat4C-=1;
-								$user->cat4=($cat1/$user->cat4C)+(($user->cat4*($user->cat4C-1))/$user->cat4C);
+								if($user->cat1C == 1 || $user->cat2C == 1 || $user->cat3C == 1 || $user->cat4C == 1 || $user->acc_avgC == 1)
+								{
+									$user->cat1C-=1;
+									$user->cat1=$request['cat1'];
+									$user->cat2C-=1;
+									$user->cat2=$request['cat2'];
+									$user->cat3C-=1;
+									$user->cat3=$request['cat3'];
+									$user->cat4C-=1;
+									$user->cat4=$request['cat4'];
 
-								$user->acc_avgC-=1;
-								$acc_avg = -1 * abs($volunteer->acc_avgRates);
-								$user->acc_avg=($acc_avg/$user->acc_avgC)+(($user->acc_avg*($user->acc_avgC-1))/$user->acc_avgC);
+									$user->acc_avgC-=1;
+									$user->acc_avg=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
+								}
+								else
+								{
+									$user->cat1C-=1;
+									$user->cat1=($cat1/$user->cat1C)+(($user->cat1*($user->cat1C-1))/$user->cat1C);
+									$user->cat2C-=1;
+									$user->cat2=($cat1/$user->cat2C)+(($user->cat2*($user->cat2C-1))/$user->cat2C);
+									$user->cat3C-=1;
+									$user->cat3=($cat1/$user->cat3C)+(($user->cat3*($user->cat3C-1))/$user->cat3C);
+									$user->cat4C-=1;
+									$user->cat4=($cat1/$user->cat4C)+(($user->cat4*($user->cat4C-1))/$user->cat4C);
+
+									$user->acc_avgC-=1;
+									$acc_avg = -1 * abs($volunteer->acc_avgRates);
+									$user->acc_avg=($acc_avg/$user->acc_avgC)+(($user->acc_avg*($user->acc_avgC-1))/$user->acc_avgC);
+								}
 								$user->save();
 								$flag = 1;
 							}
