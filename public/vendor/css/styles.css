@@ -24,7 +24,11 @@ button{
 #dt-checkboxes-cell{
   width: 20px;
 }
-#unacceptedT_wrapper{
+#unacceptedT_wrapper,
+#example_wrapper{
+  padding: 0px;
+}
+#inviteT_wrapper{
   padding: 0px;
 }
 div.dropdown-menu.open{

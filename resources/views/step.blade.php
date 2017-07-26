@@ -358,6 +358,34 @@
 </div>
 
 
+@endsection
 
+@section('scripts')
+
+  <script type="text/javascript">
+
+  function yesnoCheck(that) {
+          if (that.value == "Palestine") {
+              document.getElementById("palestineCity").style.display = "block";
+              document.getElementById("otherCity").style.display = "none";
+              $('#palC').attr('name', 'cityName');
+              $('#otherC').attr('name', 'x');
+
+          } else {
+            document.getElementById("otherCity").style.display = "block";
+            document.getElementById("palestineCity").style.display = "none";
+            $('#otherC').attr('name', 'cityName');
+            $('#palC').attr('name', 'x');
+
+          }
+      }
+      function vyyesno(that) {
+              if (that.value == "0") {
+                  document.getElementById("vyn").style.display = "none";
+              } else {
+                document.getElementById("vyn").style.display = "block";
+              }
+          }
+          </script>
 
  @endsection
