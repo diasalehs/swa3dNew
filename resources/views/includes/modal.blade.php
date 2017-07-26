@@ -10,27 +10,11 @@
                 </button>
               </div>
               <div class="modal-body">
-                <div class="row justify-content-center">
-
-                  <form id="invite" role="form" action="{{route('invite')}}" method="POST" style="display: flex; justify-content:center; flex-wrap: wrap; align-items: flex-start;"> {{ csrf_field() }}
-
-              <select class="selectpicker" name="invited[]" multiple data-actions-box="true" data-size="7" data-live-search="true" >
-                @foreach($userUevents as $userUevent)
-                <option value="{{$userUevent->id}}">{{$userUevent->title}}</option>
-                @endforeach
-              </select>
-
-                    <input id="userId" type="text" style="display: none;" class="form-control" name="userId" value="{{ $user->id }}"/>
-
-                        <div class="form-group">
-                          <button type="submit" class="btn btn-block btn-green">Invite</button>
-                        </div>
-
+<form id="invite" role="form" action="{{route('invite',$user->id)}}" method="POST" style="display: flex; justify-content:center; flex-wrap: wrap; align-items: flex-start;"> {{ csrf_field() }}
+                @include('includes/inviteToEvent')
                     </form>
 
 
-
-                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

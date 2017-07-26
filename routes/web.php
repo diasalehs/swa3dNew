@@ -34,7 +34,7 @@ Route::get('/results/',  ['uses' =>'searchController@basic', 'as'=>'search']);
 Route::get('/results/filter',  ['uses' =>'searchController@basicSearch', 'as'=>'basicSearch']);
 
 Route::get('/profile/{userId}',  ['uses' =>'profilesController@index', 'as'=>'profile']);
-Route::get('/profilerank/{id}',  ['uses' =>'profilesController@rank', 'as'=>'rank']);
+Route::get('/profileRate/',  ['uses' =>'profilesController@rate', 'as'=>'rate']);
 Auth::routes();
 Route::post('/allRegister', ['uses'=>'registerStep2Controller@allRegister','as'=>'allRegister']);
 Route::get('/step', ['uses'=>'stepController@step','as'=>'step']);
@@ -149,7 +149,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 
             });
 
-            Route::post('/invite', ['uses'=>'eventController@invite'])->name('invite');
+            Route::post('/invite/{userId?}', ['uses'=>'eventController@invite'])->name('invite');
             Route::get('/volunteer/{eventId}', ['uses'=>'eventController@volunteer'])->name('volunteer');
             Route::get('/disVolunteer/{eventId}', ['uses'=>'eventController@disVolunteer'])->name('disVolunteer');
             Route::get('/myUpComingEvents', ['uses'=>'IndividualsController@myUpComingEvents'])->name('myUpComingEvents');
@@ -171,7 +171,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 
 Route::post('/qualification/add', ['uses'=>'qualificationController@create'])->name('addQualification');
 Route::get('/qualification/{qualificationId}/destroy', ['uses'=>'qualificationController@destroy'])->name('deleteQualification');
-Route::get('/eventRank/{id}', ['uses'=>'profilesController@rateInstitute'])->name('rateInstitute');
+Route::get('/eventRank/{eventId}', ['uses'=>'profilesController@rateInstitute'])->name('rateInstitute');
 
 
 
