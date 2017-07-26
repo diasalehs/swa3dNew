@@ -209,7 +209,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{route('rateInstitute',$event->user_id)}}" method="get">
+      <form action="{{route('rateInstitute',$event->id)}}" method="get">
       <div class="modal-body rate-modal">
         <label>cat1</label>
         <input type="text" name="cat1" class="">
