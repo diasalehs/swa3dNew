@@ -190,29 +190,6 @@
 
             @include('includes.RRT')
 
-            <h3 class="greencolor " >Volunteers</h3>
-
-            <hr />
-            <form role="form" method="POST" action="{{ route('unAcceptVolunteer',$event->id)}}">{{ csrf_field() }}
-              <div class="row" style=" margin-bottom:20px;">
-
-              <select name="unaccepted[]" class="selectpicker col-9" style="width:100%;" multiple
-              @if($mine && $event->endDate > $date)
-               data-actions-box="true"
-               @endif
-               data-size="7" data-live-search="true" >
-                @foreach($eventAcceptedVols as $eventAcceptedVol)
-                <option  value="{{$eventAcceptedVol->id}}"><a href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a></option>
-                @endforeach
-              </select>
-              @if($mine && $archived == 0)
-              <button type="submit" class="btn col-3 btn-pink">Remove</button>
-              @endif
-
-            </div>
-
-            </form>
-
 
           </div>
       </div>

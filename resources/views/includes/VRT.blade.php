@@ -1,6 +1,6 @@
 
 
-  @if($mine && $event->endDate > $date)
+  @if($mine && ($archived == 0 || $archived == 2))
   <h3 class="greencolor ">Volunteers request</h3>
   <hr />
 

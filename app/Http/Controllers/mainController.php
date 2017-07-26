@@ -259,7 +259,7 @@ class mainController extends Controller
 
                 $flag = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->where('accepted',1)->first();
                 if($flag) $eventCloseAllowed = true;
-                $flag = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->where('rate',1)->first();
+                $flag = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->where('rates',1)->first();
                 if($flag) $rate = true;
 
         		if(($user->userType == 1 || $user->userType == 3) && $event->user_id == $user->id){
