@@ -212,16 +212,16 @@
       <form action="{{route('rateInstitute',$event->id)}}" method="get">
       <div class="modal-body rate-modal">
         <label>cat1</label>
-        <input type="text" name="cat1" class="">
+        <input type="text" name="cat1" class="cat1">
         <div id="r1" class="c"onclick="rate(1)"></div>
         <label>cat2</label>
-        <input type="text" name="cat2" class="">
+        <input type="text" name="cat2" class="cat2">
         <div id="r2" class="c" onclick="rate(2)"></div>
         <label>cat3</label>
-        <input type="text" name="cat3" class="">
+        <input type="text" name="cat3" class="cat3">
         <div id="r3" class="c" onclick="rate(3)"></div>
         <label>cat4</label>
-        <input type="text" name="cat4" class="">
+        <input type="text" name="cat4" class="cat4">
         <div id="r4" class="c" onclick="rate(4)"></div>
 
       </div>
@@ -239,13 +239,10 @@
 
 @endsection('content')
 @section('scripts')
-<script
-  src="https://code.jquery.com/jquery-1.12.4.min.js"
-  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-  crossorigin="anonymous"></script>
-<script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
 
-<script src="{{URL::asset('vendor/js/RateJS.js')}} "></script>
+    <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
+
+    <script src="{{URL::asset('vendor/js/RateJS.js')}} "></script>
 
     <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
