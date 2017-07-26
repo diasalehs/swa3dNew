@@ -357,9 +357,8 @@
 
 
 <br />
-<div class="row justify-content-center">
 
-<div class="col-sm-12 col-md-4">
+
 @include('includes/inviteToEvent')
 
 </form>

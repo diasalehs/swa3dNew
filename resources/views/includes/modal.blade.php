@@ -10,13 +10,11 @@
                 </button>
               </div>
               <div class="modal-body">
-                <div class="row justify-content-center">
 <form id="invite" role="form" action="{{route('invite',$user->id)}}" method="POST" style="display: flex; justify-content:center; flex-wrap: wrap; align-items: flex-start;"> {{ csrf_field() }}
                 @include('includes/inviteToEvent')
                     </form>
 
 
-                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
