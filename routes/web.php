@@ -171,7 +171,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 Route::post('/qualification/add', ['uses'=>'qualificationController@create'])->name('addQualification');
 Route::get('/qualification/{qualificationId}/destroy', ['uses'=>'qualificationController@destroy'])->name('deleteQualification');
 Route::get('/eventRank/{eventId}', ['uses'=>'profilesController@rateInstitute'])->name('rateInstitute');
-Route::get('/eventRate/{eventId}',  ['uses' =>'profilesController@rate'])->name('rate');
+Route::POST('/eventRate/{eventId}',  ['uses' =>'profilesController@rate'])->name('rate');
 
 
 
