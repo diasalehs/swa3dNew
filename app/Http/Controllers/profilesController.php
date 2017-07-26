@@ -181,54 +181,101 @@ class profilesController extends Controller
        
 	}
 
-	public function rateInstitute(Request $request,$id){
-
-		$user=Institute::find($id);
-
-			if($user->rated==0){
-				$user->cat1=$request['cat1'];
-				$user->cat1C+=1;
-
-				$user->cat2=$request['cat2'];
-				$user->cat2C+=1;
-
-				$user->cat3=$request['cat3'];
-				$user->cat3C+=1;
-
-
-				$user->cat4=$request['cat4'];
-				$user->cat4C=1;
-
-				$avg=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
-				$user->acc_avg=$avg;
-				$user->acc_avgC+=1;
-				$user->rated=1;
-				$user->save();
-			}
- 
-
-			elseif($user->rated==0){
+	public function rateInstitute(Request $request,$eventId)
+	{
+		$authUser=$this->user;
+		$date=$this->date;
+		$event=Event::where('id',$eventId)->first();
+		if($event)
+		{
+			if($event->endDate < $date)
+			{
+				$user=User::findOrFail($event->user_id);
 				$user =$user->Institute;
-				$user->cat1C+=1;
-				$user->cat1=($request['cat1']/$user->cat1C)+(($user->cat1*($user->cat1C-1))/$user->cat1C);
-				$user->cat2C+=1;
-				$user->cat2=($request['cat2']/$user->cat2C)+(($user->cat2*($user->cat2C-1))/$user->cat2C);
-				$user->cat3C+=1;
-				$user->cat3=($request['cat3']/$user->cat3C)+(($user->cat3*($user->cat3C-1))/$user->cat3C);
-				$user->cat4C+=1;
-				$user->cat4=($request['cat4']/$user->cat4C)+(($user->cat4*($user->cat4C-1))/$user->cat4C);
-				$avg=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
+				$volunteer=Volunteer::where('user_id',$authUser->id)->first();
+				if($volunteer)
+				{
+					if($volunteer->accepted == 1)
+					{
+						if($user->rated==0)
+						{
+							$user->cat1=$request['cat1'];
+							$user->cat1C+=1;
 
-				$user->acc_avgC+=1;
-				$user->acc_avg=($avg/$user->acc_avgC)+(($user->acc_avg*($user->acc_avgC-1))/$user->acc_avgC);
-				$user->save();
+							$user->cat2=$request['cat2'];
+							$user->cat2C+=1;
+
+							$user->cat3=$request['cat3'];
+							$user->cat3C+=1;
+
+
+							$user->cat4=$request['cat4'];
+							$user->cat4C=1;
+
+							$avg=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
+							$user->acc_avg=$avg;
+							$user->acc_avgC+=1;
+							$user->rated=1;
+							$user->save();
+						}
+						elseif($user->rated==1)
+						{
+							$flag = 0;
+							if($volunteer->rates == 1 && $flag == 0)
+							{
+								$cat1 = -1 * abs($volunteer->cat1Rates);
+								$cat2 = -1 * abs($volunteer->cat2Rates);
+								$cat3 = -1 * abs($volunteer->cat3Rates);
+								$cat4 = -1 * abs($volunteer->cat4Rates);
+
+								$user->cat1C-=1;
+								$user->cat1=($cat1/$user->cat1C)+(($user->cat1*($user->cat1C-1))/$user->cat1C);
+								$user->cat2C-=1;
+								$user->cat2=($cat1/$user->cat2C)+(($user->cat2*($user->cat2C-1))/$user->cat2C);
+								$user->cat3C-=1;
+								$user->cat3=($cat1/$user->cat3C)+(($user->cat3*($user->cat3C-1))/$user->cat3C);
+								$user->cat4C-=1;
+								$user->cat4=($cat1/$user->cat4C)+(($user->cat4*($user->cat4C-1))/$user->cat4C);
+
+								$user->acc_avgC-=1;
+								$acc_avg = -1 * abs($volunteer->acc_avgRates);
+								$user->acc_avg=($acc_avg/$user->acc_avgC)+(($user->acc_avg*($user->acc_avgC-1))/$user->acc_avgC);
+								$user->save();
+								$flag = 1;
+							}
+							if($volunteer->rates == 0 || $flag = 1)
+							{
+								$user->cat1C+=1;
+								$user->cat1=($request['cat1']/$user->cat1C)+(($user->cat1*($user->cat1C-1))/$user->cat1C);
+								$user->cat2C+=1;
+								$user->cat2=($request['cat2']/$user->cat2C)+(($user->cat2*($user->cat2C-1))/$user->cat2C);
+								$user->cat3C+=1;
+								$user->cat3=($request['cat3']/$user->cat3C)+(($user->cat3*($user->cat3C-1))/$user->cat3C);
+								$user->cat4C+=1;
+								$user->cat4=($request['cat4']/$user->cat4C)+(($user->cat4*($user->cat4C-1))/$user->cat4C);
+								$avg=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
+
+								$user->acc_avgC+=1;
+								$user->acc_avg=($avg/$user->acc_avgC)+(($user->acc_avg*($user->acc_avgC-1))/$user->acc_avgC);
+								$user->save();
+							}
+						}
+						$volunteer->rates = 1;
+						$volunteer->cat1Rates=$request['cat1'];
+						$volunteer->cat2Rates=$request['cat2'];
+						$volunteer->cat3Rates=$request['cat3'];
+						$volunteer->cat4Rates=$request['cat4'];
+						$volunteer->acc_avgRates=($request['cat1']+$request['cat2']+$request['cat3']+$request['cat4'])/4.00;
+						$volunteer->save();
+						return redirect()->back();
+					}
+					return redirect()->route('errorPage')->withErrors("Your request not accepted to be volunteer.");
+				}
+				return redirect()->route('errorPage')->withErrors("You are not volunteer in this event.");
 			}
-			
-	 
-
-	 return redirect()->back();
-       
-
+			return redirect()->route('errorPage')->withErrors("This event not finished yet.");
+		}
+		return redirect()->route('errorPage')->withErrors("This event not found.");       
 	}
 
 	public function closeProfile()
