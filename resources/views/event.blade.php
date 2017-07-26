@@ -15,7 +15,7 @@
 
       <div class="">
         <h1 class="display-7 " style="color:#fff">{{$event->title}}</h1>
-        <p class=""style="color:#fff; margin-bottom:20px; margin-top:40px">{{$event->startDate}} To {{$event->endDate}} - in {{$event->country}}: {{$event->city}}   <br />   Created by: <a href="{{route('profile',$event->user_id)}}" class="yellow-link">{{$event->user->name}}</a></p>
+        <p class=""style="color:#fff; margin-bottom:20px; margin-top:40px">{{$event->startDate}} To {{$event->endDate}} - in {{ucfirst($event->city)}}, {{$event->country}}  <br />   Created by: <a href="{{route('profile',$event->user_id)}}" class="yellow-link">{{$event->user->name}}</a></p>
 
 
 
@@ -232,3 +232,116 @@
 @endif
 
 @endsection('content')
+@section('scripts')
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
+
+<script src="{{URL::asset('vendor/js/RateJS.js')}} "></script>
+
+    <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
+
+
+    <script>
+    $(document).ready(function()
+        {
+
+                 var table = $('#unacceptedT').DataTable({
+                    'columnDefs': [
+                       {
+                          'targets': 0,
+                          'render': function(data, type, row, meta){
+                                 if(type === 'display'){
+                                    data = '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>';
+                                 }
+
+                                 return data;
+                              },
+                          'checkboxes': {
+                             'selectRow': true,
+                             'selectAllRender': '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>'
+
+                          }
+                       }
+                    ],
+                    'select': {
+                       'style': 'multi'
+                    },
+                    'order': [[1, 'asc']]
+                 });
+
+                 // Handle form submission event
+                 $('#frm-unaccepted').on('submit', function(e){
+                    var form = this;
+
+                    var rows_selected = table.column(0).checkboxes.selected();
+
+                    // Iterate over all selected checkboxes
+                    $.each(rows_selected, function(index, rowId){
+                       // Create a hidden element
+                       $(form).append(
+                           $('<input>')
+                              .attr('type', 'hidden')
+                              .attr('name', 'unaccepted[]')
+                              .val(rowId)
+                       );
+                    });
+
+
+                 });
+
+                   $("#unacceptedT_length").parent().hide();
+                   $("#unacceptedT_info").parent().hide();
+
+                 var table = $('#example').DataTable({
+                    'columnDefs': [
+                       {
+                          'targets': 0,
+                          'render': function(data, type, row, meta){
+                                 if(type === 'display'){
+                                    data = '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>';
+                                 }
+
+                                 return data;
+                              },
+                          'checkboxes': {
+                             'selectRow': true,
+                             'selectAllRender': '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>'
+
+                          }
+                       }
+                    ],
+                    'select': {
+                       'style': 'multi'
+                    },
+                    'order': [[1, 'asc']]
+                 });
+
+                 // Handle form submission event
+                 $('#frm-example').on('submit', function(e){
+                    var form = this;
+
+                    var rows_selected = table.column(0).checkboxes.selected();
+
+                    // Iterate over all selected checkboxes
+                    $.each(rows_selected, function(index, rowId){
+                       // Create a hidden element
+                       $(form).append(
+                           $('<input>')
+                              .attr('type', 'hidden')
+                              .attr('name', 'accepted[]')
+                              .val(rowId)
+                       );
+                    });
+
+
+                 });
+
+      });
+    </script>
+@endsection

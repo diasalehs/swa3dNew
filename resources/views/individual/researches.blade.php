@@ -160,3 +160,17 @@
 </div>
 
 @endsection
+@section('scripts')
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
+    <script src="{{URL::asset('vendor/jquery.caret.min.js')}} "></script>
+    <script src="{{URL::asset('vendor/jquery.tag-editor.min.js')}} "></script>
+
+    <script>
+        $('#tags').tagEditor({
+            initialTags: [],
+            delimiter: ', ', /* space and comma */
+            placeholder: 'Enter tags ...'
+        });
+    </script>
+@endsection
