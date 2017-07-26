@@ -228,6 +228,12 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit"  class="btn btn-green">Save</button>
+        </div>
+        </form>
+        </div>
+        </div>
+        </div>
+
 
 @endif
 
