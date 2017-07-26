@@ -34,7 +34,6 @@ Route::get('/results/',  ['uses' =>'searchController@basic', 'as'=>'search']);
 Route::get('/results/filter',  ['uses' =>'searchController@basicSearch', 'as'=>'basicSearch']);
 
 Route::get('/profile/{userId}',  ['uses' =>'profilesController@index', 'as'=>'profile']);
-Route::get('/profileRate/',  ['uses' =>'profilesController@rate', 'as'=>'rate']);
 Auth::routes();
 Route::post('/allRegister', ['uses'=>'registerStep2Controller@allRegister','as'=>'allRegister']);
 Route::get('/step', ['uses'=>'stepController@step','as'=>'step']);
@@ -172,6 +171,8 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 Route::post('/qualification/add', ['uses'=>'qualificationController@create'])->name('addQualification');
 Route::get('/qualification/{qualificationId}/destroy', ['uses'=>'qualificationController@destroy'])->name('deleteQualification');
 Route::get('/eventRank/{eventId}', ['uses'=>'profilesController@rateInstitute'])->name('rateInstitute');
+Route::get('/eventRate/{eventId}',  ['uses' =>'profilesController@rate'])->name('rate');
+
 
 
 
