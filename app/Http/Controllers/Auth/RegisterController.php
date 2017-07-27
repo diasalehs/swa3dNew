@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-    use App\User;
-    use App\Http\Controllers\Controller;
-    use Illuminate\Support\Facades\Validator;
-    use Illuminate\Foundation\Auth\RegistersUsers;
-    use Illuminate\Http\Request;
-    use Illuminate\Auth\Events\Registered;
-    use Jrean\UserVerification\Traits\VerifiesUsers;
-    use Jrean\UserVerification\Facades\UserVerification;
+use App\User;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use Jrean\UserVerification\Traits\VerifiesUsers;
+use Jrean\UserVerification\Facades\UserVerification;
 
     class RegisterController extends Controller
     {

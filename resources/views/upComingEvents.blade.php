@@ -320,7 +320,7 @@
 
             </select>          </div>
           <div class="form-group col-sm12 col-md-4">
-
+          
           <label for="Select1" style="align-self: flex-start;">target</label>
            <select name="target[]"class="form-control selectpicker" id="Select1"data-actions-box="true" data-size="5"  data-live-search="true"multiple>
              <option value="1">Pre-School Children (< 5)</option>
@@ -378,7 +378,13 @@
     <div class="row">
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
+              <?php
+              $i=0;
+              ?>
               @foreach($events as $event)
+              <?php 
+                if($i==8){break;}
+               ?>
               <div class="col-md-6 col-sm-12">
 
                   <div class="card card-inverse event">
@@ -408,19 +414,15 @@
                     </div>
                   </div>
                 </div>
-
-
+                <?php
+                $i++;
+                ?>
                 @endforeach
 
                   </div>
                   <br>
-
-                  {{ $events->setpath('upComingEvents/')->appends(Request::except('page'))->links() }}
-
-
-
                  <div class="row justify-content-center">
-                <form action="{{route('allEvents')}}" method="GET">
+                <form action="{{route('allEvents',['events'=>1])}}" method="GET">
                   <button class="btn btn-green">View more</button></form>
                   </div>
              </div>
@@ -431,8 +433,13 @@
             <div class="row">
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
-
+               <?php
+              $i=0;
+              ?>
               @foreach($localevents as $event)
+                  <?php 
+                if($i==8){break;}
+               ?>
               <div class="col-md-6 col-sm-12">
                   <div class="card card-inverse event">
                     <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
@@ -460,13 +467,16 @@
                     </div>
                   </div>
                 </div>
+                  <?php
+                $i++;
+                ?>
 
                 @endforeach
                 <br>
 
                 </div>
                   <div class="row justify-content-center">
-                    <form class="" action="{{route('allLocal')}}" method="GET">
+                    <form class="" action="{{route('allEvents',['events'=>2])}}" method="GET">
                         <button class="btn btn-pink" >View more</button>
                     </form>
                   </div>
@@ -478,7 +488,13 @@
 
              <div class="col-12" style="color: #333">
               <div class="row justify-content-center">
+               <?php
+              $i=0;
+              ?>
                 @foreach($userevent as $eve)
+                     <?php 
+                if($i==8){break;}
+                     ?>
                    <div class="col-md-6 col-sm-12">
                   <div class="card card-inverse event">
                     <img class="card-img" src="{{URL::to('/')}}/events/{{$eve->cover}}" alt="Card image">
@@ -507,13 +523,15 @@
                </div>
 
                 @endforeach
-
+                <?php
+                $i++;
+                ?>
 
                   </div>
                   <br>
                   {{-- needs to be routed to  an allmatched page  --}}
                   <div class="row justify-content-center" >
-                  <form action="{{route('allLocal')}}" method="GET"><button class="btn btn-yellow">View more</button></form>
+                  <form action="{{route('allEvents',['events'=>3])}}" method="GET"><button class="btn btn-yellow">View more</button></form>
                     </div>
              </div>
 

@@ -318,11 +318,10 @@
 <th></th>
           <th>English Name</th>
           <th>Arabic Name</th>
-          <th>Rate</th>
-          <th></th>
+          <th>Rateing</th>
           <th>City</th>
-          <th></th>
-          <th></th>
+          <th>Address</th>
+          <th>Email</th>
 
       </tr>
   </thead>
@@ -331,18 +330,12 @@
 @foreach($NGOs as $u)
 <tr>
           <td>{{$u->user_id}}</td>
-          <td>{{$u->nameInEnglish}}</td>
+          <td><a href="{{route('profile',[$u->user_id])}}">{{$u->nameInEnglish}}</a></td>
           <td>{{$u->nameInArabic}}</td>
-          <td>
-           <?php
-               $time = date_create($u->dateOfBirth);
-               echo date("Y")-date_format($time, 'Y');
-           ?>
-          </td>
-          <td>{{$u->gender}}</td>
+          <td>{{$u->acc_avg}}  </td>
           <td>{{$u->cityName}}</td>
-          <td>{{$u->voluntaryYears}}</td>
-          <td>{{$u->educationalLevel}}</td>
+          <td>{{$u->address}}</td>
+          <td>{{$u->email}}</td>
       </tr>
 @endforeach
 
