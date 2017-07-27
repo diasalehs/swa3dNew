@@ -155,3 +155,10 @@
 @include('includes.modal')
 
 @endsection('content')
+@section('scripts')
+
+<script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
+
+<script src="{{URL::asset('vendor/js/RateJS.js')}} "></script>
+
+@endsection

@@ -237,3 +237,13 @@
       </div>
 
 @endsection('content')
+@section('scripts')
+
+    <script>
+    $(document).ready(function()
+        {
+
+
+      });
+    </script>
+@endsection

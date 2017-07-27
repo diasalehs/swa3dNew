@@ -547,3 +547,8 @@
 </div>
 
 @endsection('content')
+@section('scripts')
+
+
+<script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
+@endsection

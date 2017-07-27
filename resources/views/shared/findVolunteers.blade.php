@@ -367,3 +367,61 @@
 </div></div>
 
 @endsection
+@section('scripts')
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-2.2.4/dt-1.10.15/fh-3.1.2/r-2.1.1/se-1.2.2/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
+<script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+   var table = $('#inviteT').DataTable({
+      'columnDefs': [
+         {
+            'targets': 0,
+            'render': function(data, type, row, meta){
+                   if(type === 'display'){
+                      data = '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>';
+                   }
+
+                   return data;
+                },
+            'checkboxes': {
+               'selectRow': true,
+               'selectAllRender': '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>'
+
+            }
+         }
+      ],
+      'select': {
+         'style': 'multi'
+      },
+      'order': [[1, 'asc']]
+   });
+
+   // Handle form submission event
+   $('#frm-invite').on('submit', function(e){
+      var form = this;
+
+      var rows_selected = table.column(0).checkboxes.selected();
+
+      // Iterate over all selected checkboxes
+      $.each(rows_selected, function(index, rowId){
+         // Create a hidden element
+         $(form).append(
+             $('<input>')
+                .attr('type', 'hidden')
+                .attr('name', 'invited[]')
+                .val(rowId)
+         );
+      });
+
+
+   });
+});
+
+
+</script>
+
+@endsection
