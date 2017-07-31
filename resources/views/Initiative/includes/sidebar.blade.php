@@ -1,5 +1,5 @@
 @if(auth::user()->userType == 3)
-<div class="col-sm-12 z col-md-4  col-lg-3 sidebar">
+<div class="col-sm-12  col-md-4  col-lg-3 sidebar">
     <div class="text-center">
 
     <div class=" circular--landscape">
@@ -15,5 +15,6 @@
         <a href="{{route('following')}}" class="list-group-item  justify-content-between">Following<span class="badge badge-default badge-pill">{{$following->count()}}</span></a>
         <a href="{{route('myEvents')}}" class="list-group-item  justify-content-between">Events Manager</a>
         <a href="{{route('messenger')}}" class="list-group-item  justify-content-between">Messenger</a>
+      </ul>
  </div>
 @endif

@@ -20,7 +20,6 @@
                   " method="POST"> {{ csrf_field() }}
                     <div class="row justify-content-center">
 
-                    {{ dd($lesson) }}
 
 
           <div class="col-sm-12 col-md-6 form-check form-check-inline">

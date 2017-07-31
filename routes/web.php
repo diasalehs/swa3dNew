@@ -15,10 +15,15 @@ Route::group(['prefix'=>'','routeMiddleware'=>'talk'], function()
 //-------------------------------- on the main page - for all - guest inclouded --------------------------------\\
 Route::get('/profile', function () {return view('profile');})->name('profile');
 Route::get('/upComingEvents', ['uses'=>'mainController@upComingEvents'] )->name('upComingEvents');
-Route::get('/allLocal', ['uses'=>'mainController@allLocal'])->name('allLocal');
-Route::get('/allEvents', ['uses'=>'mainController@allEvents'])->name('allEvents');
+Route::get('/allEvents', ['uses'=>'mainController@allEvents'] )->name('Events');
+Route::get('/allEvents/{event}', ['uses'=>'mainController@allEvents'])->name('allEvents');
 Route::get('/archiveEvents', ['uses'=>'mainController@archiveEvents'])->name('archiveEvents');
 Route::get('/event/{eventId}', ['uses'=>'mainController@event'])->name('event');
+Route::get('/eventDetails/{eventId}', ['uses'=>'eventController@eventDetails'])->name('eventDetails');
+Route::get('/eventPosts/{eventId}', ['uses'=>'eventController@eventPosts'])->name('eventPosts');
+Route::get('/acceptedVolunteers/{eventId}', ['uses'=>'eventController@acceptedVolunteers'])->name('acceptedVolunteers');
+Route::get('/unacceptedVolunteers/{eventId}', ['uses'=>'eventController@unacceptedVolunteers'])->name('unacceptedVolunteers');
+Route::get('/rateVolunteers/{eventId}', ['uses'=>'eventController@rateVolunteers'])->name('rateVolunteers');
 
 Route::post('/post', ['uses'=>'postController@create'])->name('post');
 

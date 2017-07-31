@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="viewProfile">
-  <div class="jumbotron jumbotron-fluid text-center"style="background-image: linear-gradient(rgba(19, 58, 83, 0.6),rgba(19, 58, 83, 0.6)),url({{ URL::to('/vendor/img/newlogo.png')}});
-  background-size:contain;background-repeat: no-repeat;
+  <div class="jumbotron jumbotron-fluid text-center" style="background-image: linear-gradient(rgba(19, 58, 83, 0.6),rgba(19, 58, 83, 0.6)),url({{ URL::to('/vendor/img/newlogo.png')}});
+  background-size:contain; background-repeat: no-repeat;
   background-position: right top;
   background-attachment: fixed;
   ">
@@ -14,12 +14,13 @@
       </div>
 
       <h1 class="display-7" style="color:#fff">{{$user->nameInEnglish}}</h1>
+      <span>{{$user->acc_avg}}</span>
       @if($available)
         <span class="badge badge-success">Available</span>
       @elseif(!$available)
         <span class="badge badge-default">Not Available</span>
       @endif
-      <p class=""style="color:#fff"><span>Volunteer</span> <span>{{$user->country}}</span> <span>{{$user->cityName}}</span> </p>
+      <p class="" style=" color:#fff"><span>Volunteer</span> <span>{{$user->country}}</span> <span>{{$user->cityName}}</span> </p>
 
       @if(Auth::guest())
              <a class='btn btn-green'  href="{{route('login')}}">follow</a>
@@ -93,55 +94,7 @@
 
 
           </div>
-          <div class=" col-lg-4">
-            <div class="card">
-              <div class="card-header">
-                Dashboard
-              </div>
-              <div class="card-block dcb">
-                <table class="table rate-table">
 
-                  <tbody>
-                    <tr>
-                      <td>Voluntary years</td>
-                      <td><div class="showrate" id="sh1"></div><span id="shr1">{{$user->voluntaryYears}}</span></td>
-                    </tr>
-                    <tr>
-                      <td>cat1</td>
-                      <td><div class="showrate" id="sh2"></div><span id="shr2">{{$user->cat1}}</span></td>
-                    </tr>
-                    <tr>
-                      <td>cat2</td>
-                      <td><div class="showrate" id="sh3"></div><span id="shr3">{{$user->cat2}}</span></td>
-                    </tr>
-                     <tr>
-                      <td>cat3</td>
-                      <td><div class="showrate" id="sh4"></div><span id="shr4">{{$user->cat3}}</span></td>
-                    </tr>
-                     <tr>
-                      <td>cat4</td>
-                      <td><div class="showrate" id="sh5"></div><span id="shr5">{{$user->cat4}}</span></td>
-                    </tr>
-                     <tr>
-                      <td>acc </td>
-                      <td><div class="showrate" id="sh6"></div><span id="shr6">{{$user->acc_avg}}</span></td>
-                    </tr>
-                    <tr>
-                      <td> </td>
-                      <td>
-                      {{-- @if(auth::check()) --}}
-
-                      <button type="button" class="btn btn-green btn-block" data-toggle="modal" data-target="#rate-modal">
-                       Rate!
-                      </button>
-
-                      {{-- @endif --}}
-                    </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              </div>
           </div>
         </div>
       </div>

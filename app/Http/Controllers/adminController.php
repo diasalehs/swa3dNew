@@ -38,7 +38,7 @@ class adminController extends Controller
 
 
     public function indexx()
-    {    $news_count= news::where('approved','0')->count();
+    {    $news_count= news::where([['approved','0'],['publish','1']])->count();
 
          return view('admin/adminNews',compact('news_count'));
 
@@ -47,17 +47,15 @@ class adminController extends Controller
     }
     public function edit($newsID)
 
-    {   $news_count= news::where('approved','0')->count();
+    {   $news_count= news::where([['approved','0'],['publish','1']])->count();
         $news = news::find($newsID);
         return view('admin.editingpage',["news"=>$news,"news_count"=>$news_count]);
     }
      public function adminNewsView()
     {    
-         $news_count= news::where('approved','0')->count();
+        $news_count= news::where([['approved','0'],['publish','1']])->count();
         $news_record= DB::table('news')->get();
-        return view('admin.adminNewsView',compact('news_record','news_count')); 
-
-
+        return view('admin.adminNewsView',compact('news_record','news_count'));
         # code...
     } 
     public function approve($id)
@@ -71,8 +69,8 @@ class adminController extends Controller
 
     public function approveNews()
     {   
-     $news_count= news::where('approved','0')->count();
-        $news_record= news::where('approved','0')->paginate(10);
+     $news_count= news::where([['approved','0'],['publish','1']])->count();
+        $news_record= news::where([['approved','0'],['publish','1']])->paginate(10);
          return view('admin/unApprovedNews',["news_record"=>$news_record,"news_count"=>$news_count]);
 
 

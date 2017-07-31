@@ -266,7 +266,6 @@
              
            </select>
          </div>
-         <input type="text" name="name" value="{{Request::input('name')}}">
   
          <div class="form-group  col-sm12 col-md-4">
            <label for="Select2">intrest</label>
@@ -311,29 +310,47 @@
                     <div class="row justify-content-center">
          
 
-        @foreach($NGOs as $result)
-        <div class="col-lg-3 col-sm-4" style="margin-bottom:25px;">
-            <div class="card h-100">
-                        <a href="{{route('profile',[$result->user_id])}}">
-                            <!--{$result->mainImgpath}}-->
-                          <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->picture}}" alt="">
-                      </a>
-                        <div class="card-block">
-                          <a href="{{route('profile',[$result->user_id])}}"><h2 class="card-title">{{$result->nameInEnglish}}</h2></a>
-                    <p class="card-text">
-                      Institute
-                   </p>
-                </div>
-            </div>
-        </div>
 
-    @endforeach
+<table id="example" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
+  <thead>
+
+      <tr>
+<th></th>
+          <th>English Name</th>
+          <th>Arabic Name</th>
+          <th>Rating</th>
+          <th>City</th>
+          <th>Address</th>
+          <th>Email</th>
+
+      </tr>
+  </thead>
+
+  <tbody>
+@foreach($NGOs as $u)
+<tr>
+          <td>{{$u->user_id}}</td>
+          <td><a href="{{route('profile',[$u->user_id])}}">{{$u->nameInEnglish}}</a></td>
+          <td>{{$u->nameInArabic}}</td>
+          <td>{{$u->acc_avg}}  </td>
+          <td>{{$u->cityName}}</td>
+          <td>{{$u->address}}</td>
+          <td>{{$u->email}}</td>
+      </tr>
+@endforeach
+
+
+
+
+  </tbody>
+</table>
+
+
+<br />
+
+
                           </div>
                           <br>
-
-            <!-- Pagination -->
-                  {{ $NGOs->setpath('institutes?')->appends(Request::except('page'))->render() }}
-
 
     </div>
 

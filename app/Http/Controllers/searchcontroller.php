@@ -131,7 +131,6 @@ class searchController extends Controller
                  }
             }
 
-         // intrest filter
          elseif(request()->has('intrest')){
 
              // intrest & target
@@ -224,7 +223,7 @@ class searchController extends Controller
             $total=count($NGOs);
             $NGOs=collect($NGOs);
             $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
-            $NGOs=new \Illuminate\Pagination\LengthAwarePaginator($NGOs,$total,10,$currentpage);
+            $NGOs=new \Illuminate\Pagination\LengthAwarePaginator($NGOs,$total,2,$currentpage);
             return view('filteredResults',compact('users','NGOs'));
 
      }

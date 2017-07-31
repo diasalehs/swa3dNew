@@ -25,15 +25,10 @@ class newsController extends Controller
             Image::make($mainImg)->resize(350,200)->save(public_path('uploads/'.$imagename));
             $anew->mainImgpath = $imagename;
         }
-
         $anew->save();
         return redirect()->route('news');
-
-
 # code...
-    } 
-
-
+    }
 
  public function editMynews(Request $request,$newsID)
 
@@ -61,7 +56,7 @@ class newsController extends Controller
     }
     public function CreateNews(Request $request)
     {
-             $news=new news;     
+        $news=new news;     
         $news->title = $request['title'];
         $news->institute_id=auth::user()->institute->id;
         $news->textarea = $request['textarea'];
@@ -71,11 +66,21 @@ class newsController extends Controller
             Image::make($mainImg)->resize(350,200)->save(public_path('uploads/'.$imagename));
             $news->mainImgpath = $imagename;
         }
-
+        if($request['type']==1){
+            $news->achievement=1;
+        }
+        elseif($request['type']==2){
+            $news->activity=1;
+        }
+        if($request->has('publish')){
+            $news->publish=1;
+        }
+     
         $news->save();
         return view('institute.viewNews',compact('news'));
         # code...
     }
+
     public function editor(Request $request,$newsID)
 
     {
@@ -91,7 +96,6 @@ class newsController extends Controller
 
         $anew->save();
         return redirect()->route('edit',["news"=>$anew]);
-
 
     }  
 

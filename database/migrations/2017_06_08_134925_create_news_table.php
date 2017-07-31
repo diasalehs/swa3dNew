@@ -19,6 +19,9 @@ class CreateNewsTable extends Migration
             $table->integer('institute_id')->unsigned()->default(0);
             $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade');
             $table->boolean('approved')->unsigned()->default(0);
+            $table->boolean('achievement')->unsigned()->default(0);
+            $table->boolean('activity')->unsigned()->default(0);
+            $table->boolean('publish')->unsigned()->default(0);
             $table->string('mainImgpath')->default('default.jpg');
             $table->string ('textarea',9999);
             $table->timestamps();

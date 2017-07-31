@@ -4,6 +4,8 @@
 
 <div class="news">
   <div class="card card-inverse">
+
+  
     <img class="card-img" src="{{$news->mainImgpath}}" alt="Card image">
 
     <div class="card-img-overlay">

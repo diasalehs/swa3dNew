@@ -30,6 +30,13 @@ class eventController extends Controller
         });
     }
 
+    public function slidbare()
+    {
+        $date = $this->date;
+        $user = $this->user;
+        return [$user ,$date];
+    }
+
     public function invite(Request $request,$userId=false)
     {
         if($request->has('invitedEvent'))
@@ -83,6 +90,41 @@ class eventController extends Controller
             }
         }
         return redirect()->back();
+    }
+
+    public function eventDetails($eventId)
+    {
+        list($user ,$date)=$this->slidbare();
+        $event = Event::where('',$eventId)->first;
+        return view('eventDetails',compact('event'));
+    }
+
+    public function eventPosts($eventId)
+    {
+        list($user ,$date)=$this->slidbare();
+        $event = Event::findOrFail($eventId);
+        dd($event);
+    }
+
+    public function acceptedVolunteers($eventId)
+    {
+        list($user ,$date)=$this->slidbare();
+        $event = Event::findOrFail($eventId);
+        dd($event);
+    }
+
+    public function unacceptedVolunteers($eventId)
+    {
+        list($user ,$date)=$this->slidbare();
+        $event = Event::findOrFail($eventId);
+        dd($event);
+    }
+
+    public function rateVolunteers($eventId)
+    {
+        list($user ,$date)=$this->slidbare();
+        $event = Event::findOrFail($eventId);
+        dd($event);
     }
 
     public function makeEvent(){

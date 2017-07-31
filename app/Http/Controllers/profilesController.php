@@ -13,6 +13,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Friend;
 use App\Event;
+use App\news;
 use App\Volunteer;
 use App\Member;
 use Illuminate\Support\Facades\Cache;
@@ -77,9 +78,14 @@ class profilesController extends Controller
 
 			$user = $user->Institute;
 
-			$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->get();
+			$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->paginate(5, ['*'], 'Archived');
+			$achievements=news::where('achievement','1')->paginate(5, ['*'], 'achievements');
+;
+			$activities=news::where('activity','1')->paginate(5, ['*'], 'activities');
+;
 
-			return view('Insprofile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers','open','mine'));
+
+			return view('Insprofile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers','open','mine','achievements','activities'));
 		}	
 		elseif($userType == 3)
 		{
@@ -122,17 +128,21 @@ class profilesController extends Controller
 
 	public function rate(Request $request,$eventId)
 	{	
+		dd($request['unaccepted']);
 		if($request->has('unaccepted'))
-		{
+		{					                  
+
 			$date=$this->date;
 			$event=Event::where('id',$eventId)->first();
 			if($event)
 			{
+
 				if($event->endDate < $date)
 				{
 					$users = DB::table('users')
 	                    ->whereIn('id',request('unaccepted'))
 	                    ->get();
+
 					foreach ($users as $user) 
 					{
 						$volunteer=Volunteer::where('user_id',$user->id)->where('event_id',$eventId)->first();
