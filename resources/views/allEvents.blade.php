@@ -328,7 +328,7 @@
 @foreach($events as $u)
 
 <tr>    <td></td>
-          <td>{{$u->title}}</td>
+          <td><a href="{{URL::to('/')}}/event/{{$u->id}}">{{$u->title}}</a></td>
           <td>{{$u->city}}</td>
           <td>{{$u->description}}</td>
           <td>{{$u->startDate}}</td>
