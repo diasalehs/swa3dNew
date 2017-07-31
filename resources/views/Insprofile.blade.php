@@ -93,96 +93,12 @@
 
 
           </div>
-           <div class="col-4">
-            <div class="card">
-              <div class="card-header">
-                Dashboard
-              </div>
-              <div class="card-block dcb">
-                <table class="table">
 
-                  <tbody>
-                    <tr>
-                      <td>Voluntary years</td>
-                      {{-- <td>{{$user->voluntaryYears}}</td> --}}
-                    </tr>
-                    <tr>
-                      <td>cat1</td>
-                      <td>{{$user->cat1}}</td>
-                    </tr>
-                    <tr>
-                      <td>cat2</td>
-                      <td>{{$user->cat2}}</td>
-                    </tr>
-                     <tr>
-                      <td>cat3</td>
-                      <td>{{$user->cat3}}</td>
-                    </tr>
-                     <tr>
-                      <td>cat4</td>
-                      <td>{{$user->cat4}}</td>
-                    </tr>
-                     <tr>
-                      <td>acc </td>
-                      <td>{{$user->acc_avg}}</td>
-                    </tr>
-                    <tr>
-                      <td> </td>
-                      <td>
-                      {{-- @if(auth::check()) --}}
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate-modal">
-                       Rate!
-                      </button>
-                      {{-- @endif --}}
-                    </td>
-                    </tr>
-
-
-
-
-                  </tbody>
-                </table>
-              </div>
-              </div>
-          </div>
+   
         </div>
       </div>
 </div>
 
 @endif
-
-<!-- Modal -->
-<div class="modal fade" id="rate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Rate</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="{{route('rank',$user->id)}}" method="get">
-      <div class="modal-body">
-        <label>cat1</label>
-        <input type="text" name="cat1"><br>
-        <label>cat2</label>
-        <input type="text" name="cat2"><br>
-        <label>cat3</label>
-        <input type="text" name="cat3"><br>
-        <label>cat4</label>
-        <input type="text" name="cat4"><br>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit"  class="btn btn-primary">Save</button>
-
-      </div>
-      </form>
-
-    </div>
-  </div>
-</div>
-
 
 @endsection('content')

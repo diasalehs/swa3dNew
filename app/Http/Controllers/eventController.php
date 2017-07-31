@@ -13,6 +13,7 @@ use App\EventTarget;
 use App\Friend;
 use App\Invite;
 use App\Intrest;
+use App\Lesson;
 
 
 class eventController extends Controller
@@ -99,7 +100,7 @@ class eventController extends Controller
     }
 
     public function makeEventPost(Request $request){
-        $user = Auth::user();
+        $user = $this->user;
         $this->validate($request, [
             'title' => 'required|string|max:100',
             'description' => 'required|string',
@@ -123,18 +124,29 @@ class eventController extends Controller
             $event->cover = $imagename;
         }
         $event->save();
+
+        $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();
+        if($event->user_id == $user->id)
+        {
+            if($lesson == null) $lesson = new Lesson();
+            $lesson->event_id = $event->id;
+            $lesson->user_id = $user->id;
+            $lesson->goals = $request['goals'];
+            $lesson->save();
+        }
+
         foreach ($request['intrests'] as $i) {
-                $eveint= new  eventIntrest();
-                $eveint->event_id=$event->id;
-                $eveint->intrest_id=$i;
-                $eveint->save();       
-         }
-          foreach ($request['targets'] as $t) {
-                $evetarget= new EventTarget();
-        $evetarget->event_id=$event->id;
-        $evetarget->target_id=$t;
-        $evetarget->save();     
-         }
+            $eveint= new  EventIntrest();
+            $eveint->event_id=$event->id;
+            $eveint->intrest_id=$i;
+            $eveint->save();       
+        }
+        foreach ($request['targets'] as $t) {
+            $evetarget= new EventTarget();
+            $evetarget->event_id=$event->id;
+            $evetarget->target_id=$t;
+            $evetarget->save();     
+        }
  
 
        
@@ -181,9 +193,11 @@ class eventController extends Controller
         if($event){
             if($event->user_id == $user->id){
                 if($event->startDate > $date){
+                    $intrests=intrest::get();
+                    $targets=targetedGroups::get();
                     $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
                     $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
-                    return view('events/eventEdit',compact('event','user','Uevents','Aevents'));
+                    return view('events/eventEdit',compact('event','user','Uevents','Aevents','targets','intrests'));
                 }
             }
         }
@@ -191,7 +205,7 @@ class eventController extends Controller
     }
 
     public function eventEditPost(Request $request){
-        $user = Auth::user();
+        $user = $this->user;
         $date = $this->date;
 
         $this->validate($request, [
@@ -215,6 +229,35 @@ class eventController extends Controller
                     $event->startDate = $request['startDate'];
                     $event->endDate = $request['endDate'];
                     $event->save();
+
+                    $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();
+                    if($event->user_id == $user->id)
+                    {
+                        if($lesson)
+                        {
+                            $lesson->event_id = $event->id;
+                            $lesson->user_id = $user->id;
+                            $lesson->goals = $request['goals'];
+                            $lesson->save();
+                        }
+                    }
+
+                    EventIntrest::where('user_id',$user->id)->delete();
+                    foreach ($request['intrests'] as $i) {
+                        $eveint= new  EventIntrest();
+                        $eveint->event_id=$event->id;
+                        $eveint->intrest_id=$i;
+                        $eveint->save();       
+                    }
+
+                    EventTarget::where('user_id',$user->id)->delete();
+                    foreach ($request['targets'] as $t) {
+                        $evetarget= new EventTarget();
+                        $evetarget->event_id=$event->id;
+                        $evetarget->target_id=$t;
+                        $evetarget->save();     
+                    }
+
                     return redirect()->route('event',compact('event'));
                 }
             }

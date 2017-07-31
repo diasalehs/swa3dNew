@@ -8,6 +8,7 @@ use App\User;
 use App\Volunteer;
 use App\Event;
 use App\Lesson;
+use App\Review;
 
 class lessonsController extends Controller
 {
@@ -29,17 +30,31 @@ class lessonsController extends Controller
         $user = $this->user;
         $accepted = Volunteer::where('user_id',$user->id)->where('event_id',$eventId)->where('accepted',1)->first();
         $event = Event::findOrFail($eventId);
-        $lessons = Lesson::where('event_id',$eventId)->where('user_id',$user->id)->first();
+        $review = Review::where('event_id',$eventId)->where('user_id',$user->id)->first();
         if($accepted || ($event->user_id == $user->id))
         {
-	        if($lessons == null) $lessons = new Lesson();
-	        $lessons->event_id = $eventId;
-	        $lessons->user_id = $user->id;
-	        $lessons->positive = $request['positive'];
-	        $lessons->negative = $request['negative'];
-	        $lessons->save();
+	        if($review == null) $review = new Review();
+	        $review->event_id = $eventId;
+	        $review->user_id = $user->id;
+	        $review->positive = $request['positive'];
+	        $review->negative = $request['negative'];
+	        $review->save();
 	        return redirect()->back();
 	    }
 	    return redirect()->route('errorPage')->withErrors("You are not a Volunteer in this event.");
+    }
+
+    public function lesson(Request $request, $eventId)
+    {
+        $user = $this->user;
+        $event = Event::findOrFail($eventId);
+        $lesson = Lesson::where('event_id',$eventId)->where('user_id',$user->id)->first();
+        if($event->user_id == $user->id)
+        {
+            $lesson->lessons = $request['lessons'];
+            $lesson->save();
+            return redirect()->back();
+        }
+        return redirect()->route('errorPage')->withErrors("You are not a Volunteer in this event.");
     }
 }

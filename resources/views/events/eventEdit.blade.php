@@ -327,6 +327,47 @@
                                   @endif
                           </div>
 
+                          <div class="form-group {{ $errors->has('goals') ? ' has-error' : '' }}">
+                                  <div class="form-group"> <!-- Description field -->
+                                    <label class="control-label " for="goals">Goals</label>
+                                    <textarea class="form-control" value="{{ $lesson->goals }}" required="required" name="goals" id="goals" rows="6">{{ old('goals') }}</textarea>
+                                  </div>
+                                  @if ($errors->has('goals'))
+                                      <div class="alert alert-danger" role="alert">
+                                          <strong>Warning!</strong> {{ $errors->first('goals') }}
+                                      </div>
+                                  @endif
+                          </div>
+
+                                            <label class="control-label " for="intrests">intrests</label>
+<br>
+                        <div class="row">
+                         @foreach($intrests as $i)
+                          <div class="form-check col-4">
+                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                              <input name="intrests[]" value="{{$i->id}}" type="checkbox" class="custom-control-input">
+                              <span class="custom-control-indicator"></span>
+                              <span class="custom-control-description">{{$i->name}}</span>
+                            </label>
+                          </div>
+                          @endforeach
+                      </div>
+
+                      <br><br>
+                     <label class="control-label " for="intrests">targets</label>
+<br>
+                     <div class="row">
+                         @foreach($targets as $t)
+                          <div class="form-check col-4">
+                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                              <input name="targets[]" value="{{$t->id}}" type="checkbox" class="custom-control-input">
+                              <span class="custom-control-indicator"></span>
+                              <span class="custom-control-description">{{$t->name}}</span>
+                            </label>
+                          </div>
+                          @endforeach
+                      </div>
+
                           <div class="form-group">
                             <label  class="control-label" for="exampleSelect1">Privacy</label>
                             <select name="open" value="{{ $event->open }}" class="form-control" id="exampleSelect1">

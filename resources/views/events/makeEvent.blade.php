@@ -103,6 +103,18 @@
                                   @endif
                           </div>
 
+                          <div class="form-group {{ $errors->has('goals') ? ' has-error' : '' }}">
+                                  <div class="form-group"> <!-- Description field -->
+                                    <label class="control-label " for="goals">Goals</label>
+                                    <textarea class="form-control" value="{{ old('goals') }}" required="required" name="goals" id="goals" rows="6">{{ old('goals') }}</textarea>
+                                  </div>
+                                  @if ($errors->has('goals'))
+                                      <div class="alert alert-danger" role="alert">
+                                          <strong>Warning!</strong> {{ $errors->first('goals') }}
+                                      </div>
+                                  @endif
+                          </div>
+
                   <label class="control-label " for="intrests">intrests</label>
 <br>
                         <div class="row">
