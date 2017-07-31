@@ -5,9 +5,6 @@
   <hr />
 
 
-@if($archived == 0)
-<form id="frm-unaccepted" action="{{ route('unAcceptVolunteer',$event->id)}}" method="POST" >{{ csrf_field() }}
-@endif
 @if($archived == 1)
       <form id="frm-unaccepted" action="{{route('rate',$event->id)}}" method="POST">{{ csrf_field() }}
       <div class="modal-body rate-modal">
@@ -27,6 +24,9 @@
 
 @endif
 
+@if($archived == 0)
+<form id="frm-unaccepted" action="{{ route('unAcceptVolunteer',$event->id)}}" method="POST" >{{ csrf_field() }}
+@endif
 <table id="unacceptedT" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
   <thead>
       <tr>
@@ -66,6 +66,7 @@
 </div>
 @endif
 
-</div>
 </form>
+</div>
+
 @endif
