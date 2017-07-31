@@ -40,6 +40,36 @@
 
 
     <div class="container ">
+        <div class="row justify-content-center" style="margin-top:20px;">
+          <div class="col-6">
+
+          <div class="card">
+            <div class="card-block">
+              <h4 class="card-title">QUESTION</h4>
+              <form>
+                <fieldset class="form-group">
+
+
+           <div class="form-check">
+             <label class="form-check-label">
+               <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+               Option one is this and that&mdash;be sure to include why it's great
+             </label>
+           </div>
+           <div class="form-check">
+             <label class="form-check-label">
+               <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+               Option one is this and that&mdash;be sure to include why it's great
+             </label>
+           </div>
+           <button type="submit" class="btn btn-green">Submit</button>
+
+         </form>
+       </div>
+      </div>
+
+    </div>
+  </div>
         <!-- Nav tabs -->
 <ul class="nav nav-tabs nav-tabs-main row justify-content-center" id="nnnn"role="tablist">
 

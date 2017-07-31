@@ -28,10 +28,7 @@
 </div>
 </div>
 
-<div class="row">
 
-
-</div>
 
 
 
@@ -106,7 +103,15 @@
 </div>
 </div>
 <div class="container "style="margin-bottom:50px;margin-top:30px;">
+
+    <div class="row">
+      @include('eventSidebars.instituteSidebar')
+
+    </div>
+</div>
+<div class="container "style="margin-bottom:50px;margin-top:30px;">
   <div class="row ">
+
     <div class="col-sm-12 col-md-8" >
       <div class="card">
         <div class="card-header">
