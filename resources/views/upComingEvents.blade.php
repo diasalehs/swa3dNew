@@ -320,7 +320,7 @@
 
             </select>          </div>
           <div class="form-group col-sm12 col-md-4">
-          
+
           <label for="Select1" style="align-self: flex-start;">target</label>
            <select name="target[]"class="form-control selectpicker" id="Select1"data-actions-box="true" data-size="5"  data-live-search="true"multiple>
              <option value="1">Pre-School Children (< 5)</option>
@@ -382,7 +382,7 @@
               $i=0;
               ?>
               @foreach($events as $event)
-              <?php 
+              <?php
                 if($i==8){break;}
                ?>
               <div class="col-md-6 col-sm-12">
@@ -437,7 +437,7 @@
               $i=0;
               ?>
               @foreach($localevents as $event)
-                  <?php 
+                  <?php
                 if($i==8){break;}
                ?>
               <div class="col-md-6 col-sm-12">
@@ -492,7 +492,7 @@
               $i=0;
               ?>
                 @foreach($userevent as $eve)
-                     <?php 
+                     <?php
                 if($i==8){break;}
                      ?>
                    <div class="col-md-6 col-sm-12">
@@ -547,8 +547,13 @@
 </div>
 
 @endsection('content')
+
 @section('scripts')
 
 
-<script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
+    <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
+
 @endsection
