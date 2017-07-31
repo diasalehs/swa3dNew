@@ -1,5 +1,5 @@
 @if(auth::user()->userType == 3)
-<div class="col-sm-12 z col-md-4  col-lg-3 sidebar">
+<div class="col-sm-12  col-md-4  col-lg-3 sidebar">
     <div class="text-center">
 
     <div class=" circular--landscape">

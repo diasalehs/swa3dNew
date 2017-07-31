@@ -102,7 +102,7 @@
 </div>
 </div>
 </div>
-<div class="container "style="margin-bottom:50px;margin-top:30px;">
+<div class="container "style="margin-bottom:50px;">
 
     <div class="row">
       @include('eventSidebars.instituteSidebar')
