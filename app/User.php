@@ -9,10 +9,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {       use Notifiable;
      public function Institute(){
-        return $this->hasone('App\Institute','user_id');
+        return $this->hasOne('App\Institute','user_id');
      }
      public function tempInstitute(){
-        return $this->hasone('App\Institute','user_id');
+        return $this->hasOne('App\Institute','user_id');
      }
 
     public function Individuals(){

@@ -66,7 +66,7 @@
         @foreach($news_record as $news)
             <div class="col-lg-4 col-sm-6 ">
                 <div class="card news-item">
-                    <a href="{{route('view',[$news->id])}}"><img  class="card-img-top img-fluid" src="{{$news->mainImgpath}}" alt=""></a>
+                    <a href="{{route('view',[$news->id])}}"><img  class="card-img-top img-fluid" src="{{URL::to('/events')}}/{{$news->mainImgpath}}" alt=""></a>
                     <div class="card-block">
                         <a href="{{route('view',[$news->id])}}" class="card-text">{{$news->title}}</a>
                         <p style="margin-bottom:5px; overflow:hidden;" class="line-clamp-3">

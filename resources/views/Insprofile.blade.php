@@ -81,11 +81,35 @@
                 <br>
                 <div class="card">
                   <div class="card-block">
-                    <h4 class="card-title">Achievement Events </h4>
+                    <h4 class="card-title">Events held </h4>
                     <p class="card-text">
                     @foreach($Aevents as $Aevent)
                       Event Title: <a href="{{route('event',$Aevent->id)}}" >{{$Aevent->title}}</a><br>
                       End Date: {{$Aevent->endDate}}<br>
+                    @endforeach
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title">Achievements</h4>
+                    <p class="card-text">
+                    @foreach($achievements as $A)
+                     <a href="{{URL::to('/')}}/view/{{$A->id}}" >{{$A->title}}</a><br>
+
+                    @endforeach
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title">Activies</h4>
+                    <p class="card-text">
+                    @foreach($activities as $A)
+                    <a href="{{URL::to('/')}}/view/{{$A->id}}" >{{$A->title}}</a><br>
+
                     @endforeach
                   </div>
                 </div>

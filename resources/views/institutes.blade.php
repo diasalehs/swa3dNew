@@ -318,7 +318,7 @@
 <th></th>
           <th>English Name</th>
           <th>Arabic Name</th>
-          <th>Rateing</th>
+          <th>Rating</th>
           <th>City</th>
           <th>Address</th>
           <th>Email</th>
