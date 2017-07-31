@@ -40,7 +40,7 @@ class homeController extends Controller
         $this->middleware(['auth']);
         $this->middleware(function ($request, $next) {
             $date = date('Y-m-d');
-            $user = Auth::user();
+            $user = Auth::User();
             $this->date = $date;
             $this->user = $user;
             return $next($request);
@@ -81,14 +81,15 @@ class homeController extends Controller
         if(Auth::check())
         {
             list($user ,$date)=$this->slidbare();
-            if ($user->userType=== 10 )
+            $user = Auth::User();
+            if ($user->userType== 10 )
             {
                 $news_count= news::where('approved','0')->count();
 
                 $users_record= tempInstitute::paginate();
                 return view('admin/adminDashboard',compact("users_record",'news_count'));
             }
-            if($user->flag == 1)
+            elseif($user->flag == 1)
             {
                 if($user->userType == 0){
                     $user = $user->Individuals;
