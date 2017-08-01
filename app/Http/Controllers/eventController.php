@@ -13,13 +13,15 @@ use App\EventTarget;
 use App\Friend;
 use App\Invite;
 use App\Intrest;
-
+use App\Lesson;
+use App\Review;
 
 class eventController extends Controller
 {
 
     public function __construct()
     {
+        $this->middleware('auth');
         $this->middleware(function ($request, $next) {
             $date = date('Y-m-d');
             $user = Auth::user();
@@ -27,6 +29,13 @@ class eventController extends Controller
             $this->user = $user;
             return $next($request);
         });
+    }
+
+    public function slidbare()
+    {
+        $date = $this->date;
+        $user = $this->user;
+        return [$user ,$date];
     }
 
     public function invite(Request $request,$userId=false)
@@ -84,11 +93,66 @@ class eventController extends Controller
         return redirect()->back();
     }
 
+    public function eventPosts($eventId)
+    {
+        list($user ,$date)=$this->slidbare();
+        $event = event::find($eventId);
+        $mine = false;
+        $eventCloseAllowed = flase;
+        $lesson = null;
+        $archived = 0;
+        $request = false;
+
+        if($event)
+        {
+            if($event->user_id == $user->id) $mine = true;
+            $flag = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->where('accepted',1)->first();
+            if($flag) $eventCloseAllowed = true;
+            if($event->open || $eventCloseAllowed || $mine)
+            {
+                $posts = post::where('event_id',$eventId)->get();
+                return view('evens/eventPosts',compact('event','mine','eventCloseAllowed',''));
+            }
+            return redirect()->route('errorPage')->withErrors("this event is private.");
+        }
+        return redirect()->route('errorPage')->withErrors("this event not found.");
+    }
+
+    public function eventReviews($eventId)
+    {
+        list($user ,$date)=$this->slidbare();
+        $event = event::find($eventId);
+        if($event)
+        {
+            $posts = post::where('event_id',$eventId)->get();
+        }
+    }
+
+    public function acceptedVolunteers($eventId)
+    {
+        list($user ,$date)=$this->slidbare();
+        $event = Event::findOrFail($eventId);
+        dd($event);
+    }
+
+    public function unacceptedVolunteers($eventId)
+    {
+        list($user ,$date)=$this->slidbare();
+        $event = Event::findOrFail($eventId);
+        dd($event);
+    }
+
+    public function rateVolunteers($eventId)
+    {
+        list($user ,$date)=$this->slidbare();
+        $event = Event::findOrFail($eventId);
+        dd($event);
+    }
+
     public function makeEvent(){
-        $user = Auth::user();
+        list($user ,$date)=$this->slidbare();
         if($user->userType == 1 || $user->userType == 3)
         {
-            $date = $this->date;
             $intrests=intrest::get();
             $targets=targetedGroups::get();
             $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
@@ -99,7 +163,7 @@ class eventController extends Controller
     }
 
     public function makeEventPost(Request $request){
-        $user = Auth::user();
+        list($user ,$date)=$this->slidbare();
         $this->validate($request, [
             'title' => 'required|string|max:100',
             'description' => 'required|string',
@@ -123,36 +187,41 @@ class eventController extends Controller
             $event->cover = $imagename;
         }
         $event->save();
+
+        $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();
+        if($event->user_id == $user->id)
+        {
+            if($lesson == null) $lesson = new Lesson();
+            $lesson->event_id = $event->id;
+            $lesson->user_id = $user->id;
+            $lesson->goals = $request['goals'];
+            $lesson->save();
+        }
+
         foreach ($request['intrests'] as $i) {
-                $eveint= new  eventIntrest();
-                $eveint->event_id=$event->id;
-                $eveint->intrest_id=$i;
-                $eveint->save();       
-         }
-          foreach ($request['targets'] as $t) {
-                $evetarget= new EventTarget();
-        $evetarget->event_id=$event->id;
-        $evetarget->target_id=$t;
-        $evetarget->save();     
-         }
- 
-
-       
-
+            $eveint= new  EventIntrest();
+            $eveint->event_id=$event->id;
+            $eveint->intrest_id=$i;
+            $eveint->save();       
+        }
+        foreach ($request['targets'] as $t) {
+            $evetarget= new EventTarget();
+            $evetarget->event_id=$event->id;
+            $evetarget->target_id=$t;
+            $evetarget->save();     
+        }
         return redirect()->route('event',compact('event'));
     }
 
     public function myEvents(){
-        $user = $this->user;
-        $date = $this->date;
+        list($user ,$date)=$this->slidbare();
         $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
         $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date)->get();
         return view('events/myEvents',compact('user','Aevents','Uevents'));
     }
 
     public function archiveMyEvents() {
-        $user = Auth::user();
-        $date = $this->date;
+        list($user ,$date)=$this->slidbare();
         $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date)->get();
         $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
         return view('events/archiveMyEvents',compact('user','Aevents','Uevents'));
@@ -161,12 +230,16 @@ class eventController extends Controller
     
 
     public function eventDelete($eventId){
-        $user = Auth::user();
-        $date = date('Y-m-d');
+        list($user ,$date)=$this->slidbare();
         $event = event::find($eventId);
         if($event){
             if($event->user_id == $user->id){
                 if($event->startDate > $date){
+                    EventTarget::where('event_id',$event->id)->delete();
+                    EventIntrest::where('event_id',$event->id)->delete();
+                    Lesson::where('event_id',$event->id)->delete();
+                    Review::where('event_id',$event->id)->delete();
+                    Volunteer::where('event_id',$event->id)->delete();
                     $event->delete();
                 }
             }
@@ -175,15 +248,17 @@ class eventController extends Controller
     }
 
     public function eventEdit($eventId){
-        $user = Auth::user();
-        $date = $this->date;
-        $event = event::find($eventId);
+        list($user ,$date)=$this->slidbare();
+        $event = Event::find($eventId);
         if($event){
             if($event->user_id == $user->id){
                 if($event->startDate > $date){
-                    $Aevents = event::where('user_id', $user->id)->where('startDate','<',$date);
-                    $Uevents = event::where('user_id', $user->id)->where('startDate','>',$date);
-                    return view('events/eventEdit',compact('event','user','Uevents','Aevents'));
+                    $intrests=intrest::get();
+                    $targets=targetedGroups::get();
+                    $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();
+                    $Aevents = Event::where('user_id', $user->id)->where('startDate','<',$date);
+                    $Uevents = Event::where('user_id', $user->id)->where('startDate','>',$date);
+                    return view('events/eventEdit',compact('event','user','Uevents','Aevents','targets','intrests','lesson'));
                 }
             }
         }
@@ -191,9 +266,7 @@ class eventController extends Controller
     }
 
     public function eventEditPost(Request $request){
-        $user = Auth::user();
-        $date = $this->date;
-
+        list($user ,$date)=$this->slidbare();
         $this->validate($request, [
             'eventId' => 'required',
             'title' => 'required|string|max:100',
@@ -204,7 +277,8 @@ class eventController extends Controller
 
         $eventId = $request['eventId'];
         $event = event::find($eventId);
-        if($event){
+        if($event)
+        {
             if($event->user_id == $user->id){
                 if($event->startDate > $date){
                     $event->title = $request['title'];
@@ -215,6 +289,35 @@ class eventController extends Controller
                     $event->startDate = $request['startDate'];
                     $event->endDate = $request['endDate'];
                     $event->save();
+
+                    $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();
+                    if($event->user_id == $user->id)
+                    {
+                        if($lesson)
+                        {
+                            $lesson->event_id = $event->id;
+                            $lesson->user_id = $user->id;
+                            $lesson->goals = $request['goals'];
+                            $lesson->save();
+                        }
+                    }
+
+                    EventIntrest::where('event_id',$event->id)->delete();
+                    foreach ($request['intrests'] as $i) {
+                        $eveint= new  EventIntrest();
+                        $eveint->event_id=$event->id;
+                        $eveint->intrest_id=$i;
+                        $eveint->save();       
+                    }
+
+                    EventTarget::where('event_id',$event->id)->delete();
+                    foreach ($request['targets'] as $t) {
+                        $evetarget= new EventTarget();
+                        $evetarget->event_id=$event->id;
+                        $evetarget->target_id=$t;
+                        $evetarget->save();     
+                    }
+
                     return redirect()->route('event',compact('event'));
                 }
             }
@@ -232,7 +335,7 @@ class eventController extends Controller
 
     public function volunteer($eventId)
     {
-        $user = Auth::user();
+        list($user ,$date)=$this->slidbare();
         if($user->userType == 0 || $user->userType == 3){
             $preVol = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
             if($preVol){

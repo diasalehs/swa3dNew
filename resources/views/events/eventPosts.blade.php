@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 
 @section('content')
@@ -50,34 +49,16 @@
 <div class="container "style="margin-bottom:50px;margin-top:30px;">
   <div class="row ">
 @include('eventSidebars.instituteSidebar')
-
-    <div class="col-sm-12 col-md-8" >
-      <div class="card">
-        <div class="card-header">
-          Details
-        </div>
-        <div class="card-block">
-          <p class=" card-text"style="text-align:justify;">{{$event->description}}</p>
-          <p class=""style="text-align:center; margin-bottom:20px; margin-top:40px">{{$event->startDate}} To {{$event->endDate}} - in {{$event->country}} | Created by: <a href="{{route('profile',$event->user_id)}}" class="green-link">{{$event->user->name}}</a></p>
-
-        </div>
-
-      </div>
-
-
-@if(Auth::guest())
-          <div class="card card-outline-warning mb-3 text-center" style="border-color: var(--green); margin-top:30px;">
-            <div class="card-block">
-              <blockquote class="card-blockquote">
-                <p>                    You should login to see more.</p>
-              </blockquote>
-              <a href="{{route('login')}}" class="btn btn-green ">Login to see more</a>
-
-            </div>
-          </div>
-@endif
-
-
+                <h3 class="greencolor " style="margin-top:30px;">Event Posts</h3>
+                <hr />
+              @foreach($posts as $post)
+                  <div class="card" style="margin-bottom:20px;">
+                    <div class="card-block">
+                      <h4 class="card-title greencolor" >{{$post->body}}</h4>
+                        {{$post->created_at}}
+                    </div>
+                  </div>
+              @endforeach
     </div>
         @if($mine)
         @if($archived == 0 || $archived == 2)

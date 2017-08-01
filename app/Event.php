@@ -21,4 +21,13 @@ class Event extends Model
     public function Post(){
         return $this->hasMany('\App\Post');
     }
+
+    public function Lesson(){
+        return $this->hasOne('\App\Lesson');
+    }
+
+    public function Review(){
+        return $this->hasMany('\App\Review');
+    }
+
 }

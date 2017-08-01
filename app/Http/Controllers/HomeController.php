@@ -186,6 +186,23 @@ class homeController extends Controller
             $user->name= $Individuals->nameInEnglish;
             $user->save();
 
+            UserIntrest::where('user_id',$user->id)->delete();
+            foreach ($request['intrests'] as $i) 
+            {
+                $ui=new UserIntrest;
+                $ui->intrest_id = $i;
+                $ui->user_id=$user->id;
+                $ui->save();
+            }
+
+            UserTarget::where('user_id',$user->id)->delete();
+            foreach ($request['targets'] as $t) {
+                $ui=new UserTarget;
+                $ui->target_id = $t;
+                $ui->user_id=$user->id;
+                $ui->save();
+            }
+
             $Individuals->email = $user->email;
             $Individuals->cityName = $request['cityName'];
             $Individuals->country = $request['country'];

@@ -33,12 +33,11 @@
                                   @endif
                           </div>
 
-                          <div class="">
-                              <input id="name" type="text" style="display: none;" class="form-control" name="eventId" value="{{ $event->id }}"
-                              />
+                          <div class="form-group">
+                              <input id="name" type="text" style="display: none;" class="form-control" name="eventId" value="{{ $event->id }}"/>
                           </div>
 
-    <div class="col-sm-12 col-md-6 form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+    <div class=" form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                         <label for="name" class=" form-control-label">Your Country</label>
                         <div class="">
                         <select name="country" class="form-control" onchange="yesnoCheck(this);">
@@ -300,7 +299,7 @@
                     </div>
                 </div>
                                               {{--  --}}{{--  --}}
-                  <div id="palestineCity"  class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
+                  <div id="palestineCity"  class="form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
                       <label for="email" class=" form-control-label">Your city name</label>
                       <div class="">
                           <select id="palC" name="cityName"  class="form-control">
@@ -326,6 +325,47 @@
                                       </div>
                                   @endif
                           </div>
+
+                          <div class="form-group {{ $errors->has('goals') ? ' has-error' : '' }}">
+                                  <div class="form-group"> <!-- Description field -->
+                                    <label class="control-label " for="goals">Goals</label>
+                                    <textarea class="form-control" value="{{ $lesson->goals }}" required="required" name="goals" id="goals" rows="6">{{ $lesson->goals }}</textarea>
+                                  </div>
+                                  @if ($errors->has('goals'))
+                                      <div class="alert alert-danger" role="alert">
+                                          <strong>Warning!</strong> {{ $errors->first('goals') }}
+                                      </div>
+                                  @endif
+                          </div>
+
+                                            <label class="control-label " for="intrests">intrests</label>
+<br>
+                        <div class="row">
+                         @foreach($intrests as $i)
+                          <div class="form-check col-4">
+                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                              <input name="intrests[]" value="{{$i->id}}" type="checkbox" class="custom-control-input">
+                              <span class="custom-control-indicator"></span>
+                              <span class="custom-control-description">{{$i->name}}</span>
+                            </label>
+                          </div>
+                          @endforeach
+                      </div>
+
+                      <br><br>
+                     <label class="control-label " for="intrests">targets</label>
+<br>
+                     <div class="row">
+                         @foreach($targets as $t)
+                          <div class="form-check col-4">
+                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                              <input name="targets[]" value="{{$t->id}}" type="checkbox" class="custom-control-input">
+                              <span class="custom-control-indicator"></span>
+                              <span class="custom-control-description">{{$t->name}}</span>
+                            </label>
+                          </div>
+                          @endforeach
+                      </div>
 
                           <div class="form-group">
                             <label  class="control-label" for="exampleSelect1">Privacy</label>

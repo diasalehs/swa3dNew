@@ -11,9 +11,42 @@
               </div>
               <div class="modal-body">
 
-                  <form id="review" role="form" action="{{route('review',$event->id)}}" method="POST"> {{ csrf_field() }}
+                  <form id="review" role="form" action="
+                  @if($mine)
+                  {{route('lesson',$event->id)}}
+                  @else
+                  {{route('review',$event->id)}}
+                  @endif
+                  " method="POST"> {{ csrf_field() }}
                     <div class="row justify-content-center">
 
+                    @if($lesson)
+                     {{$lesson->goals}}
+                    @endif
+
+          <div class="col-sm-12 col-md-6 form-check form-check-inline">
+            <label for="exampleInputEmail1">Did this event achevied his goals ?</label><br />
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="goals" id="inlineRadio1" value="1" checked> yes
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="goals" id="inlineRadio1" value="0"> no
+            </label>
+          </div>
+
+                    @if($mine)
+
+                    <div class="has-success col-12 form-group{{ $errors->has('lessons') ? ' has-error' : '' }}">
+                      <label for="exampleTextarea">Lessons Leared From This Event</label>
+                      <textarea required="true" class="form-control" name="lessons" rows="3" >{{ old('lessons') }}</textarea>
+                      @if ($errors->has('lessons'))
+                          <div class="alert alert-danger" role="alert">
+                              <strong>Warning!</strong> {{ $errors->first('lessons') }}
+                          </div>
+                      @endif
+                    </div>
+
+                    @else
                     <div class="has-success col-12 form-group{{ $errors->has('positive') ? ' has-error' : '' }}">
                       <label for="exampleTextarea">Positive Feedback</label>
                       <textarea required="true" class="form-control" name="positive" rows="3" >{{ old('positive') }}</textarea>
@@ -35,12 +68,12 @@
                       @endif
                     </div>
                     
-
+                    @endif
                       </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-green">Review</button>
+                          <button type="submit" class="btn btn-green">Save</button>
 
               </div>
             </form>

@@ -34,6 +34,14 @@ class User extends Authenticatable
         return $this->hasMany('App\Event');
     }
 
+    public function Lesson(){
+        return $this->hasMany('\App\Lesson');
+    }
+
+    public function Review(){
+        return $this->hasMany('\App\Review');
+    }
+
 
     /**
      * A user can have many friends.

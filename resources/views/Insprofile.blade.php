@@ -117,16 +117,11 @@
 
 
           </div>
-          
-          </div>
+
         </div>
       </div>
 </div>
 
 @endif
-
-<!-- Modal -->
-
-
 
 @endsection('content')

@@ -19,6 +19,11 @@ Route::get('/allEvents', ['uses'=>'mainController@allEvents'] )->name('Events');
 Route::get('/allEvents/{event}', ['uses'=>'mainController@allEvents'])->name('allEvents');
 Route::get('/archiveEvents', ['uses'=>'mainController@archiveEvents'])->name('archiveEvents');
 Route::get('/event/{eventId}', ['uses'=>'mainController@event'])->name('event');
+Route::get('/eventPosts/{eventId}', ['uses'=>'eventController@eventPosts'])->name('eventPosts');
+Route::get('/eventReviews/{eventId}', ['uses'=>'eventController@eventReviews'])->name('eventReviews');
+Route::get('/acceptedVolunteers/{eventId}', ['uses'=>'eventController@acceptedVolunteers'])->name('acceptedVolunteers');
+Route::get('/unacceptedVolunteers/{eventId}', ['uses'=>'eventController@unacceptedVolunteers'])->name('unacceptedVolunteers');
+Route::get('/rateVolunteers/{eventId}', ['uses'=>'eventController@rateVolunteers'])->name('rateVolunteers');
 
 Route::post('/post', ['uses'=>'postController@create'])->name('post');
 
@@ -56,6 +61,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
     Route::get('/closeEvent/{eventId}', ['uses'=>'eventController@closeEvent'])->name('closeEvent');
     Route::get('/openEvent/{eventId}', ['uses'=>'eventController@openEvent'])->name('openEvent');
     Route::post('/review/{eventId}', ['uses'=>'lessonsController@review'])->name('review');
+    Route::post('/lesson/{eventId}', ['uses'=>'lessonsController@lesson'])->name('lesson');
     Route::post('/availability', ['uses'=>'profilesController@availability'])->name('availability');
 
     Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function()

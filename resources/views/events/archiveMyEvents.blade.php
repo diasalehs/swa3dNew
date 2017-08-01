@@ -19,26 +19,9 @@
 
 <div class="tab-content">
 
-          <div class="row">
 
-            @foreach ($Aevents as $event)
-            <div class="col-md-6 col-sm-12">
-         <div class="card card-inverse event">
-                  <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
-                  <div class="card-img-overlay">
-                    <h4 class="card-title line-clamp-2">{{$event->title}}</h4>
-                    <div class="card-bottom">
-                      <p class="card-text "><small>{{$event->startDate}} To {{$event->endDate}} - in Nablus</small></p>
-                      <a href="{{route('event',$event->id)}}" class="btn btn-green" >View</a>
-                      <a class="btn btn-pink" href="{{route('eventDelete',[$event->id])}}">Delete</a>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-           @endforeach
-         </div>
+<?php $events = $Aevents; ?>
+@include('includes.events')
 
 </div>
 
