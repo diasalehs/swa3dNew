@@ -59,7 +59,7 @@ class profilesController extends Controller
 		    }
 		    else
 		    {
-		    	$friend = false;
+		    	$friend = false; userUevents
 		    }
 		    $userUevents = Event::where('events.user_id',$authUser->id)->where('startDate','>',$date)->get();
 		    if(($authUser->userType == $userType) && ($authUser->id == $user->id)){$mine = true;}
@@ -80,9 +80,7 @@ class profilesController extends Controller
 
 			$Aevents = event::where('user_id', $userId)->where('endDate','<',$date)->paginate(5, ['*'], 'Archived');
 			$achievements=news::where('achievement','1')->paginate(5, ['*'], 'achievements');
-;
 			$activities=news::where('activity','1')->paginate(5, ['*'], 'activities');
-;
 
 
 			return view('Insprofile',compact('user','friend','Aevents','userUevents','userUeventsVolunteers','open','mine','achievements','activities'));

@@ -1,6 +1,6 @@
 @extends('layouts.app')
  @section('content')
-
+<script type="text/javascript"> p</script>
 <div class="container" style="margin:100px auto">
     <div class="row " >
 

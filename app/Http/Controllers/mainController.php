@@ -27,8 +27,20 @@ class mainController extends Controller
    
 	public function __construct()
     {
-            $this->date = date('Y-m-d');
+        $this->middleware(function ($request, $next) {
+            $date = date('Y-m-d');
+            $user = Auth::user();
+            $this->date = $date;
+            $this->user = $user;
+            return $next($request);
+        });
+    }
 
+    public function slidbare()
+    {
+        $date = $this->date;
+        $user = $this->user;
+        return [$user ,$date];
     }
 
 
@@ -55,8 +67,7 @@ class mainController extends Controller
 	}
 
 	public function upComingEvents(Request $request) {
-        $user = Auth::user();
-        $date = $this->date;
+        list($user ,$date)=$this->slidbare();
         $events = event::where('startDate','>',$date)->orderBy('startDate','asc')
         ->paginate(5,['*'],'events');
         // location filter
@@ -68,7 +79,7 @@ class mainController extends Controller
                  $events= DB::table("events")->join('event_intrests', function ($join) {
                  $join->on('events.id', '=', 'event_intrests.event_id')
                  ->whereIn('event_intrests.intrest_id', request('intrest'))
-                 ->where([['events.startDate','>',$this->date],['events.country','=',request('location')]]);})
+                 ->where([['events.startDate','>',$date],['events.country','=',request('location')]]);})
                  ->get();
                  // location &intrest & target
 
@@ -111,7 +122,7 @@ class mainController extends Controller
                  ->join('event_targets', 'events.id', '=', 'event_targets.event_id')
                  ->whereIn('event_targets.target_id',$request['target'])
                  ->whereIn('event_intrests.intrest_id', request('intrest'))
-                 ->where('events.startDate','>',$this->date)->get();
+                 ->where('events.startDate','>',$date)->get();
              }
                 // intrest only
              else {
@@ -120,7 +131,7 @@ class mainController extends Controller
                      ->join('event_intrests', function ($join) {
                      $join->on('events.id', '=', 'event_intrests.event_id')
                      ->whereIn('event_intrests.intrest_id', request('intrest'))
-                     ->where('events.startDate','>',$this->date);})->get();
+                     ->where('events.startDate','>',$date);})->get();
                 }
          }
          // target only filter
@@ -129,7 +140,7 @@ class mainController extends Controller
              ->join('event_targets', function ($join) {
              $join->on('events.id', '=', 'event_targets.event_id')
              ->whereIn('event_targets.target_id',request('target'))
-             ->where('events.startDate','>',$this->date);})->get();
+             ->where('events.startDate','>',$date);})->get();
          }
 
 
@@ -146,8 +157,8 @@ class mainController extends Controller
             }
             if ($Iuser==null){
             return view('comingEvents',compact('events'));
-
             }
+
            $userevente= DB::table('event_intrests')
            ->join('events','events.id','=','event_intrests.event_id')
            ->join('user_intrests', function ($join) {
@@ -156,6 +167,7 @@ class mainController extends Controller
                  ->where('events.startDate','>',$this->date);})
                 ->orderBy('startDate','asc')
                  ->get();
+
             $userevent= array();
             $var=0;
             foreach ($userevente as $e) {
@@ -189,7 +201,6 @@ class mainController extends Controller
 
             }
             $events=$SEvents;
-            
 
             return view('upComingEvents',compact('events','localevents','volEvents','user','userevent'));
         }
@@ -331,8 +342,7 @@ class mainController extends Controller
     }
 
 	public function archiveEvents() {
-        $user = Auth::user();
-        $date = $this->date;
+        list($user ,$date)=$this->slidbare();
         $events = event::where('startDate','<',$date)->get();
         return view('archiveEvents',compact('events'));
     }
@@ -341,20 +351,18 @@ class mainController extends Controller
 
 	public function event($eventId){
     	$event = event::find($eventId);
-        $date = $this->date;
         if($event){
-            $user = Auth::user();
+            list($user ,$date)=$this->slidbare();
             $reviews = Review::join('users','reviews.user_id','users.id')->where('event_id',$eventId)->get();
-            $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();
+            $lesson = null;
+            $eventCloseAllowed = false;
+            $mine = false;
+            $archived = 0;
+            $request = false;
+
         	if(Auth::check()) 
             {
-                $mine = false;
-                $archived = 0;
-                $request = false;
-                $rate = false;
-
-                $eventCloseAllowed = false;
-                $posts = post::where('event_id',$eventId)->get();
+                $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();
                 $eventAcceptedVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',1)->get();
 
                 if($event->startDate < $date)
@@ -371,16 +379,16 @@ class mainController extends Controller
         		if(($user->userType == 1 || $user->userType == 3) && $event->user_id == $user->id){
         			$mine = true;
                     $eventVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',0)->get();
-                    return view('event',compact('date','event','request','archived','mine','user','eventVols','posts','eventAcceptedVols','users','eventCloseAllowed','reviews','rate','lesson'));
+                    return view('event',compact('date','event','request','archived','mine','user','eventVols','eventAcceptedVols','users','eventCloseAllowed','reviews','lesson'));
         		}elseif ($user->userType == 0 || $user->userType == 3) {
                     $volunteer = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
                     if($volunteer){
                         $request = true;
                     }
                 }
-                return view('event',compact('date','event','eventCloseAllowed','posts','eventAcceptedVols','archived','mine','request','user','reviews','rate','lesson'));
         	}
-            return view('event',compact('date','event','posts','eventAcceptedVols','eventCloseAllowed','reviews','rate','lesson'));
+            return view('event',compact('date','event','eventCloseAllowed','eventAcceptedVols','archived','mine','request','user','reviews','lesson'));
+
         }else{
             return redirect()->route('upComingEvents');
         }

@@ -16,36 +16,9 @@
 </ul>
 
 
+<?php $events = $Uevents; ?>
+@include('includes.events')
 
-          <h1 class="greencolor">My Up Coming Events</h1>
-          <div class="row">
-            @foreach ($Uevents as $event)
 
-            <div class="col-md-6 col-sm-12">
-         <div class="card card-inverse event">
-                  <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
-                  <div class="card-img-overlay">
-                    <h4 class="card-title line-clamp-2">{{$event->title}}</h4>
-                    <div class="card-bottom">
-                      <p class="card-text "><small>{{$event->startDate}} To {{$event->endDate}} - in Nablus</small></p>
-                      <p class="card-text">
-                        <small>
-                          Volunteer Requests: <span class="badge badge-pill badge-default tags">21</span>
-                        </small>
-                      </p>
-                      <a href="{{route('event',$event->id)}}" class="btn btn-green" >View</a>
-                      <a class="btn btn-pink" href="{{route('eventDelete',[$event->id])}}">Delete</a>
-                      <a class=" btn btn-yellow" href="{{route('eventEdit',[$event->id])}}">Edit</a>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-              @endforeach
-
-          </div>
-
-</div>
 
 @endsection

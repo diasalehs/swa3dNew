@@ -40,7 +40,7 @@ class homeController extends Controller
         $this->middleware(['auth']);
         $this->middleware(function ($request, $next) {
             $date = date('Y-m-d');
-            $user = Auth::user();
+            $user = Auth::User();
             $this->date = $date;
             $this->user = $user;
             return $next($request);
@@ -81,14 +81,15 @@ class homeController extends Controller
         if(Auth::check())
         {
             list($user ,$date)=$this->slidbare();
-            if ($user->userType=== 10 )
+            $user = Auth::User();
+            if ($user->userType== 10 )
             {
                 $news_count= news::where('approved','0')->count();
 
                 $users_record= tempInstitute::paginate();
                 return view('admin/adminDashboard',compact("users_record",'news_count'));
             }
-            if($user->flag == 1)
+            elseif($user->flag == 1)
             {
                 if($user->userType == 0){
                     $user = $user->Individuals;
@@ -184,6 +185,23 @@ class homeController extends Controller
             $Individuals->address = $request->address;
             $user->name= $Individuals->nameInEnglish;
             $user->save();
+
+            UserIntrest::where('user_id',$user->id)->delete();
+            foreach ($request['intrests'] as $i) 
+            {
+                $ui=new UserIntrest;
+                $ui->intrest_id = $i;
+                $ui->user_id=$user->id;
+                $ui->save();
+            }
+
+            UserTarget::where('user_id',$user->id)->delete();
+            foreach ($request['targets'] as $t) {
+                $ui=new UserTarget;
+                $ui->target_id = $t;
+                $ui->user_id=$user->id;
+                $ui->save();
+            }
 
             $Individuals->email = $user->email;
             $Individuals->cityName = $request['cityName'];

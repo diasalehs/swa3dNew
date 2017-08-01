@@ -18,99 +18,38 @@
         <h1 class="display-7 " style="color:#fff">{{$event->title}}</h1>
         <p class=""style="color:#fff; margin-bottom:20px; margin-top:40px">{{$event->startDate}} To {{$event->endDate}} - in {{ucfirst($event->city)}}, {{$event->country}}  <br />   Created by: <a href="{{route('profile',$event->user_id)}}" class="yellow-link">{{$event->user->name}}</a></p>
 
-
-
-
-@if(Auth::guest() && $event->endDate > $date)
-<a href="{{route('login')}}" class="btn btn-pink ">Volunteer</a>
-</div>
-
-</div>
-</div>
-
-
-
-
-
-
-      <div class="container "style="margin-bottom:50px;margin-top:30px;">
-        <div class="row justify-content-center">
-          <div class="col-sm-12 col-md-8" >
-            <div class="card">
-              <div class="card-header">
-                Details
-              </div>
-              <div class="card-block">
-                <p class=" card-text"style="text-align:justify;">{{$event->description}}</p>
-                <p class=""style="text-align:center; margin-bottom:20px; margin-top:40px">{{$event->startDate}} To {{$event->endDate}} - in {{$event->country}} | Created by: <a href="{{route('profile',$event->user_id)}}" class="pink-link">{{$event->user->name}}</a></p>
-              </div>
-
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-8">
-
-          <div class="card card-outline-warning mb-3 text-center" style="border-color: var(--green); margin-top:30px;">
-            <div class="card-block">
-              <blockquote class="card-blockquote">
-                <p>                    You should login to see more.</p>
-              </blockquote>
-              <a href="{{route('login')}}" class="btn btn-green ">Login to see more</a>
-
-            </div>
-          </div>
-        </div>
-
-
-          </div>
-        </div>
-    </div>
-
-@elseif(Auth::check() )
-                @if($archived == 0 || $archived == 2)
-                  @if($user->userType == 0 || ($user->userType == 3 && !$mine))
-                      @if($request)
-                        <a href="{{route('disVolunteer',[$event->id])}}" class="btn btn-pink">Cancel Volunteer Request</a>
-                      @elseif(!$request)
-                        <a href="{{route('volunteer',[$event->id])}}" class="btn btn-pink">Volunteer Request</a>
-                      @endif
-                  @endif
+                @if($archived == 0)
                   @if($mine)
-                    @if($archived == 0)
-                        <a class="btn btn-pink" href="{{route('eventDelete',[$event->id])}}">Delete</a>
-                        <a class=" btn btn-yellow" href="{{route('eventEdit',[$event->id])}}">Edit</a>
+                    <a class="btn btn-pink" href="{{route('eventDelete',$event->id)}}">Delete</a>
+                    <a class=" btn btn-yellow" href="{{route('eventEdit',$event->id)}}">Edit</a>
+                    @if($event->open)
+                      <a class="btn btn-danger"  href="{{route('closeEvent',$event->id)}}">close</a>
+                    @elseif(!$event->open)
+                      <a class="btn btn-danger"  href="{{route('openEvent',$event->id)}}">open</a>
                     @endif
-                    <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#postModal">Create a Post</a>
+                  @else
+                    @if($request)
+                      <a href="{{route('disVolunteer',$event->id)}}" class="btn btn-pink">Cancel Volunteer Request</a>
+                    @elseif(!$request)
+                      <a href="{{route('volunteer',$event->id)}}" class="btn btn-pink">Volunteer Request</a>
+                    @endif
                   @endif
-                @endif
-
-                @if(($mine || $eventCloseAllowed) && $archived == 1)
+                  <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#postModal">Create a Post</a>
+                @elseif($archived == 1)
                   <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#lessonsModal">Lessons Learned</a>
-                @endif
-
-              @if((!$mine || $eventCloseAllowed) && $archived == 1)
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate-modal">
-                       Rate!
-                      </button>
-                @endif
-                @if($mine)
-                  @if($event->open)
-                    <a class="btn btn-danger"  href="{{route('closeEvent',$event->id)}}">close</a>
-                  @elseif(!$event->open)
-                    <a class="btn btn-danger"  href="{{route('openEvent',$event->id)}}">open</a>
+                  @if(!$mine)
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate-modal">Rate!</button>
                   @endif
                 @endif
+                
 </div>
 </div>
 </div>
-<div class="container "style="margin-bottom:50px;">
 
-    <div class="row">
-      @include('eventSidebars.instituteSidebar')
 
-    </div>
-</div>
 <div class="container "style="margin-bottom:50px;margin-top:30px;">
   <div class="row ">
+@include('eventSidebars.instituteSidebar')
 
     <div class="col-sm-12 col-md-8" >
       <div class="card">
@@ -125,33 +64,18 @@
 
       </div>
 
-              @if($event->open || $eventCloseAllowed || $mine)
-                @include('includes.VRT')
-                <h3 class="greencolor " style="margin-top:30px;">Event Posts</h3>
-                <hr />
-              @foreach($posts as $post)
-                  <div class="card" style="margin-bottom:20px;">
-                    <div class="card-block">
-                      <h4 class="card-title greencolor" >{{$post->body}}</h4>
-                        {{$post->created_at}}
-                    </div>
-                  </div>
-              @endforeach
 
-              @if($archived == 1)
-                  <h3 class="greencolor " style="margin-top:30px;">Event Reviews</h3>
-                <hr />
-                @foreach($reviews as $review)
-                    <div class="card" style="margin-bottom:20px;">
-                      <div class="card-block">
-                        <h4 class="card-title greencolor" ><a href="{{route('profile',$review->user_id)}}">{{$review->name}}</a></h4>
-                        <h5 class="card-title greencolor" >{{$review->positive}}</h4>
-                        <h5 class="card-title greencolor" >{{$review->negative}}</h4>
-                          {{$review->created_at}}
-                      </div>
-                    </div>
-                @endforeach
-              @endif
+@if(Auth::guest())
+          <div class="card card-outline-warning mb-3 text-center" style="border-color: var(--green); margin-top:30px;">
+            <div class="card-block">
+              <blockquote class="card-blockquote">
+                <p>                    You should login to see more.</p>
+              </blockquote>
+              <a href="{{route('login')}}" class="btn btn-green ">Login to see more</a>
+
+            </div>
+          </div>
+@endif
 
 
     </div>
@@ -199,16 +123,9 @@
         </div>
         @endif
           @endif
-          <div class=" col-lg-4">
 
-
-            @include('includes.RRT')
-
-
-          </div>
+          
       </div>
-        @endif
-@endif
 
 @include('includes.reviewModal')
 

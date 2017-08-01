@@ -33,12 +33,11 @@
                                   @endif
                           </div>
 
-                          <div class="">
-                              <input id="name" type="text" style="display: none;" class="form-control" name="eventId" value="{{ $event->id }}"
-                              />
+                          <div class="form-group">
+                              <input id="name" type="text" style="display: none;" class="form-control" name="eventId" value="{{ $event->id }}"/>
                           </div>
 
-    <div class="col-sm-12 col-md-6 form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+    <div class=" form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                         <label for="name" class=" form-control-label">Your Country</label>
                         <div class="">
                         <select name="country" class="form-control" onchange="yesnoCheck(this);">
@@ -300,7 +299,7 @@
                     </div>
                 </div>
                                               {{--  --}}{{--  --}}
-                  <div id="palestineCity"  class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
+                  <div id="palestineCity"  class="form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
                       <label for="email" class=" form-control-label">Your city name</label>
                       <div class="">
                           <select id="palC" name="cityName"  class="form-control">
@@ -330,7 +329,7 @@
                           <div class="form-group {{ $errors->has('goals') ? ' has-error' : '' }}">
                                   <div class="form-group"> <!-- Description field -->
                                     <label class="control-label " for="goals">Goals</label>
-                                    <textarea class="form-control" value="{{ $lesson->goals }}" required="required" name="goals" id="goals" rows="6">{{ old('goals') }}</textarea>
+                                    <textarea class="form-control" value="{{ $lesson->goals }}" required="required" name="goals" id="goals" rows="6">{{ $lesson->goals }}</textarea>
                                   </div>
                                   @if ($errors->has('goals'))
                                       <div class="alert alert-danger" role="alert">

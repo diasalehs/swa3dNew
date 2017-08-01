@@ -7,38 +7,9 @@
 
   @if(Auth::guest())
 
-    <div class="row">
-      <h1 class="pinkcolor col-md-12 col-sm-12">UpComing Events</h1>
+<h1 class="pinkcolor col-md-12 col-sm-12">UpComing Events</h1>
+@include('includes.events')
 
-         <div class="col-12" style="color: #333">
-          <div class="row justify-content-center">
-
-          @foreach($events as $event)
-          <div class="col-md-6 col-sm-12">
-       <div class="card card-inverse event">
-                <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
-                <div class="card-img-overlay">
-                  <h4 class="card-title line-clamp-2">{{$event->title}}</h4>
-                  <div class="card-bottom">
-                    <p class="card-text "><small>{{$event->startDate}} To {{$event->endDate}} - in Nablus</small></p>
-                    <a href="{{route('event',$event->id)}}" class="btn btn-green" >View</a>
-                    <a href="{{route('login')}}" class="btn btn-pink">Volunteer</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            @endforeach
-
-              </div>
-
-         </div>
-
-    </div>
-    <div class="row justify-content-center" style="margin-top:40px;">
-
-    {{$events->links('vendor.pagination.custom')}}
-
-  </div>
 
     @endif
 
@@ -375,168 +346,39 @@
 </div>
 </div>
 
-    <div class="row">
-             <div class="col-12" style="color: #333">
-              <div class="row justify-content-center">
-              <?php
-              $i=0;
-              ?>
-              @foreach($events as $event)
-              <?php
-                if($i==8){break;}
-               ?>
-              <div class="col-md-6 col-sm-12">
 
-                  <div class="card card-inverse event">
-                    <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
-                    <div class="card-img-overlay">
-                      <h4 class="card-title line-clamp-2">{{$event->title}}</h4>
+                @include('includes.events')
 
-                      <div class="card-bottom">
-                        <p class="card-text" style=""><small>{{$event->startDate}} To {{$event->endDate}} - in Nablus</small></p>
-
-                      <a href='event/{{$event->id}}' class="btn btn-green event-btn" >View</a>
-
-                      @if($user->userType != 1)
-                      <?php $flag = 0; ?>
-                        @foreach($volEvents as $volEvent)
-                          @if($volEvent->user_id == $user->id && $event->id == $volEvent->event_id && $flag == 0)
-                              <a href="{{route('disVolunteer',[$event->id])}}" class="btn btn-pink">Cancel Volunteer Request</a>
-                              <?php $flag = 1; ?>
-                          @endif
-                        @endforeach
-                        @if($flag == 0)
-                          <a href="{{route('volunteer',[$event->id])}}" class="btn btn-pink">Volunteer Request</a>
-                        @endif
-                      @endif
-                    </div>
-
-                    </div>
-                  </div>
-                </div>
-                <?php
-                $i++;
-                ?>
-                @endforeach
-
-                  </div>
                   <br>
                  <div class="row justify-content-center">
                 <form action="{{route('allEvents',['events'=>1])}}" method="GET">
                   <button class="btn btn-green">View more</button></form>
                   </div>
-             </div>
-        </div>
+
     </div>
 
   <div class="tab-pane" id="home" role="tabpanel">
-            <div class="row">
-             <div class="col-12" style="color: #333">
-              <div class="row justify-content-center">
-               <?php
-              $i=0;
-              ?>
-              @foreach($localevents as $event)
-                  <?php
-                if($i==8){break;}
-               ?>
-              <div class="col-md-6 col-sm-12">
-                  <div class="card card-inverse event">
-                    <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
-                    <div class="card-img-overlay">
-                      <h3 class="card-title">{{$event->title}}</h3>
-                      <div class="card-bottom">
-                      <p class=""><small>{{$event->startDate}} To {{$event->endDate}} - in {{$event->city}}</small></p>
 
-                      <a href='event/{{$event->id}}' class="btn btn-green" >View</a>
+<?php $events = $localevents; ?>
+@include('includes.events')
 
-                      @if($user->userType != 1)
-                      <?php $flag = 0; ?>
-                        @foreach($volEvents as $volEvent)
-                          @if($volEvent->individual_id == $user->individuals->id && $event->id == $volEvent->event_id && $flag == 0)
-                              <a href="{{route('disVolunteer',[$event->id])}}" class="btn btn-pink">Cancel Volunteer Request</a>
-                              <?php $flag = 1; ?>
-                          @endif
-                        @endforeach
-                        @if($flag == 0)
-                          <a href="{{route('volunteer',[$event->id])}}" class="btn btn-pink">Volunteer Request</a>
-                        @endif
-                      @endif
-                    </div>
-
-                    </div>
-                  </div>
-                </div>
-                  <?php
-                $i++;
-                ?>
-
-                @endforeach
-                <br>
-
-                </div>
+                  <br>
                   <div class="row justify-content-center">
                     <form class="" action="{{route('allEvents',['events'=>2])}}" method="GET">
                         <button class="btn btn-pink" >View more</button>
                     </form>
                   </div>
-             </div>
-        </div>
     </div>
+
+
   <div class="tab-pane" id="profile" role="tabpanel">
-    <div class="row">
-
-             <div class="col-12" style="color: #333">
-              <div class="row justify-content-center">
-               <?php
-              $i=0;
-              ?>
-                @foreach($userevent as $eve)
-                     <?php
-                if($i==8){break;}
-                     ?>
-                   <div class="col-md-6 col-sm-12">
-                  <div class="card card-inverse event">
-                    <img class="card-img" src="{{URL::to('/')}}/events/{{$eve->cover}}" alt="Card image">
-                    <div class="card-img-overlay">
-                      <h3 class="card-title">{{$eve->title}}</h3>
-                      <p class="card-text line-clamp-4">{{$eve->description}}</p>
-                      <p class="">{{$eve->startDate}} To {{$eve->endDate}} - in {{$eve->city}}</p>
-                      <a href='event/{{$eve->id}}' class="card-link green-link" >View</a>
-                      @if($user->userType != 1)
-                      <?php $flag = 0; ?>
-                        @foreach($volEvents as $volEvent)
-                          @if($volEvent->event_id == $eve->id)
-                            <a href="{{route('disVolunteer',[$eve->id])}}" class="card-link pink-link">Cancel Volunteer Request</a>
-                            <?php $flag = 1; ?>
-                          @elseif($flag == 0)
-                            <a href="{{route('volunteer',[$eve->id])}}" class="card-link pink-link">Volunteer Request</a>
-                            <?php $flag = 1; ?>
-                          @endif
-                        @endforeach
-                        @if($flag == 0)
-                          <a href="{{route('volunteer',[$eve->id])}}" class="card-link pink-link">Volunteer Request</a>
-                        @endif
-                      @endif
-                    </div>
-                  </div>
-               </div>
-
-                @endforeach
-                <?php
-                $i++;
-                ?>
-
-                  </div>
+                <?php $events = $userevent; ?>
+                @include('includes.events')
                   <br>
                   {{-- needs to be routed to  an allmatched page  --}}
                   <div class="row justify-content-center" >
                   <form action="{{route('allEvents',['events'=>3])}}" method="GET"><button class="btn btn-yellow">View more</button></form>
                     </div>
-             </div>
-
-        </div>
-
   </div>
 
 

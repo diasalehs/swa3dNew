@@ -9,14 +9,18 @@
 
             <ul id="menu-content" class="menu-content  collapse out">
                  <li>
-                  <a href="{{route('eventDetails',$event->id)}}">
+                  <a href="{{route('event',$event->id)}}">
                   <i class="fa fa-user fa-lg"></i> Details
                   </a>
                   </li>
-
                    <li>
                     <a href="{{route('eventPosts',$event->id)}}">
                     <i class="fa fa-users fa-lg"></i> Posts
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{route('eventReviews',$event->id)}}">
+                    <i class="fa fa-users fa-lg"></i> Reviews
                     </a>
                   </li>
                  <li>

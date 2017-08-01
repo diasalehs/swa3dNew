@@ -20,15 +20,17 @@
                   " method="POST"> {{ csrf_field() }}
                     <div class="row justify-content-center">
 
-
+                    @if($lesson)
+                     {{$lesson->goals}}
+                    @endif
 
           <div class="col-sm-12 col-md-6 form-check form-check-inline">
             <label for="exampleInputEmail1">Did this event achevied his goals ?</label><br />
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="1" checked> yes
+              <input class="form-check-input" type="radio" name="goals" id="inlineRadio1" value="1" checked> yes
             </label>
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="0"> no
+              <input class="form-check-input" type="radio" name="goals" id="inlineRadio1" value="0"> no
             </label>
           </div>
 

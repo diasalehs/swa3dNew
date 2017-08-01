@@ -2,35 +2,12 @@
 
 @section('content')
 
-<div class="container-fluid" style="margin:120px auto">
-    <div class="row">
-         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
-          <h1>Archived Events</h1>
-          <table class="table">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-                </tr>
-              </thead>
-              <tbody>
-              <?php
-              foreach ($events as $event) {
-                    echo "<tr>
-                    <td>
-                    <a class='btn'  href='event/".$event->id."'>{$event->title}</a>
-                    </td>
-                    <td>".$event->startDate."</td>
-                    <td>".$event->endDate."</td>
-                    </tr>";
-              }?>
-              </tbody>
-          </table>
+<div class="container min" style="margin:30px auto; padding:5px;">
+            <h1 class="pinkcolor col-md-12 col-sm-12">Archived Events</h1>
+            <hr>
+@include('includes.events')
+              <br>
 
-         </div>
-
-    </div>
-</div>
-
+              </div>
+              </div>
 @endsection('content')

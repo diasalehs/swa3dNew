@@ -250,7 +250,58 @@
               </div>
               {{--  --}}
             </div>
-              <br />
+              
+                              {{--  --}}
+                <div class="col-12" style="margin-top:20px;">
+                  <h4 class="greencolor">Your targets</h4>
+                  <hr />
+                </div>
+                <br />
+                        {{--  --}}
+                        <div class="row">
+                         @foreach($targets as $t)
+                          <div class="form-check col-4">
+                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                              <input name="targets[]" value="{{$t->id}}" type="checkbox" class="custom-control-input">
+                              <span class="custom-control-indicator"></span>
+                              <span class="custom-control-description">{{$t->name}}</span>
+                            </label>
+                          </div>
+                          @endforeach
+                      </div>
+                      @if ($errors->has('targets'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('targets') }}
+                            </div>
+                        @endif
+
+                {{--  --}}
+                <div class="col-12" style="margin-top:20px;">
+                  <h4 class="greencolor">Your intresets</h4>
+                  <hr />
+                </div>
+                <br />
+                        {{--  --}}
+                        <div class="row">
+                         @foreach($intrests as $i)
+                          <div class="form-check col-4">
+                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                              <input name="intrests[]" value="{{$i->id}}" type="checkbox" class="custom-control-input">
+                              <span class="custom-control-indicator"></span>
+                              <span class="custom-control-description">{{$i->name}}</span>
+                            </label>
+                          </div>
+                          @endforeach
+                      </div>
+                      @if ($errors->has('intrests'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Warning!</strong> {{ $errors->first('intrests') }}
+                            </div>
+                        @endif
+
+                      <br />
+                      <hr />
+                      <br />
 
           </div>
       </div>
