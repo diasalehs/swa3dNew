@@ -45,24 +45,17 @@
 
           <div class="card">
             <div class="card-block">
-              <h4 class="card-title">QUESTION</h4>
-              <form>
+              <h4 class="card-title">{{$pollQuestion->question}}</h4>
+              <form  method="POST" action="{{route('vote',$pollQuestion->id)}}">{{ csrf_field() }}
                 <fieldset class="form-group">
-
-
+@foreach($pollQuestion->PollQuestionAnswer as $answer)
            <div class="form-check">
              <label class="form-check-label">
-               <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-               Option one is this and that&mdash;be sure to include why it's great
+               <input type="radio" class="form-check-input" name="answer" id="optionsRadios1" value="{{$answer->id}}" checked>
+               {{$answer->answer}}
              </label>
            </div>
-           <div class="form-check">
-             <label class="form-check-label">
-               <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-               Option one is this and that&mdash;be sure to include why it's great
-             </label>
-           </div>
-           
+@endforeach
            <button type="submit" class="btn btn-green">Submit</button>
 
          </form>
