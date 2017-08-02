@@ -62,17 +62,6 @@ function boot()
         $view->with($data);
     });
 
-    view()->composer('includes/events',function($view){
-        $date = date('Y-m-d');
-        $user = Auth::user();
-        $eventsVolunteeredAt = null;
-        if(Auth::check()) $eventsVolunteeredAt = Volunteer::where('user_id',$user->id)->get();
-        $data = array(
-            'eventsVolunteeredAt' => $eventsVolunteeredAt,
-        );
-        $view->with($data);
-    });
-
 }
 
     /**
@@ -84,6 +73,10 @@ function boot()
     {
 
 
+<<<<<<< HEAD
+   }
+=======
    
     }
+>>>>>>> a001afa40d7ac4e8b4dd08bab26284a556637b66
 }
