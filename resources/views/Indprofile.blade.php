@@ -103,7 +103,6 @@
 @endif
 <!-- Modal -->
 
-@include('includes.RateModal')
 
 @include('includes.modal')
 

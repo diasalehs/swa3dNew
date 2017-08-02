@@ -36,6 +36,7 @@
         </div>
 @include('events.includes.postModal')
 @include('events.includes.reviewModal')
+@include('events.includes.rateModal')
 
 @endsection('content')
 @section('scripts')

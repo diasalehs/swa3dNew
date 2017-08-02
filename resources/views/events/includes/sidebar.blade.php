@@ -35,7 +35,7 @@
                   @if($archived == 0)
                    <a href="{{route('unacceptedVolunteers',$event->id)}}">
                  <li>
-                  <i class="fa fa-users fa-lg"></i> Remove Volunteers
+                  <i class="fa fa-users fa-lg"></i> Volunteer Requests
                 </li>
               </a>
                   @elseif($archived == 1)
