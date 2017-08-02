@@ -1,12 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container min">
+<div class="container" style="margin-bottom:20px;">
   <h1 class="mt-4 mb-3" style="color: var(--green);">Institutes<small></small></h1>
 
-    <ul class="nav sw-nav-tabs" role="tablist" id ="nnnn">
       <form id="myform" class="row" style="" method="GET" action="{{route('institutes')}}">
-          <div class="form-group col-sm12 col-md-4">
+          <div class="form-group  col-sm12 col-md-3">
             <label for="location" >Country</label>
 
               <select name="location" class="form-control" onchange="yesnoCheck(this);">
@@ -252,7 +251,7 @@
             </select>
 
           </div>
-          <div class="form-group col-sm12 col-md-4">
+          <div class="form-group  col-sm12 col-md-3">
 
           <label for="Select1" style="align-self: flex-start;">target</label>
            <select name="target[]"class="form-control selectpicker" id="Select1"data-actions-box="true" data-size="5"  data-live-search="true"multiple>
@@ -263,11 +262,11 @@
              <option value="5">Young Adults (18-30)</option>
              <option value="6">Adults (31-59)</option>
              <option value="7">Elderly (60 >)</option>
-             
+
            </select>
          </div>
-  
-         <div class="form-group  col-sm12 col-md-4">
+
+         <div class="form-group  col-sm12 col-md-3">
            <label for="Select2">intrest</label>
            <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true"  data-live-search="true" multiple>
 
@@ -292,24 +291,18 @@
              <option value="18">Health</option>
            </select>
          </div>
+         <div class="form-group  col-sm12 col-md-3">
+           <label for="Select2" style="opacity:0">submit</label>
 
-        </form>
-         <div class="row justify-content-center">
-          <div class="col-4">
-          <button type="submit" form="myform" class="btn btn-block btn-green" >Search</button>
+         <button type="submit" form="myform" class="btn btn-block btn-green" >Search</button>
         </div>
-      </div>
-    </ul>
+        </form>
 
-<br>
+
     <!-- Tab panes -->
+<hr />
 
-
-
-          <div class="row">
                     <div class="row justify-content-center">
-         
-
 
 <table id="example" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
   <thead>
@@ -349,8 +342,6 @@
 <br />
 
 
-                          </div>
-                          <br>
 
     </div>
 
@@ -361,3 +352,19 @@
 <!-- /.container -->
 
 @endsection('content')
+
+@section('scripts')
+
+    <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
+
+    <script src="{{URL::asset('vendor/js/RateJS.js')}} "></script>
+
+    <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
+
+    <script src="{{URL::asset('vendor/js/event.js')}} "></script>
+
+
+@endsection

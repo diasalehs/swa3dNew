@@ -2,54 +2,13 @@
 
 @section('content')
 <div class="viewProfile" style="">
-
-  <div class="jumbotron jumbotron-fluid " style="background-image: linear-gradient(rgba(19, 58, 83, 0.6),rgba(19, 58, 83, 0.6)) , url({{URL::to('/')}}/events/{{$event->cover}});
-  background-size:cover;background-repeat: no-repeat;
-  background-position: right top;
-  background-attachment: fixed;
-  ">
-    <div class="container" style="  min-height:300px;     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;" >
-
-      <div class="">
-        <h1 class="display-7 " style="color:#fff">{{$event->title}}</h1>
-        <p class=""style="color:#fff; margin-bottom:20px; margin-top:40px">{{$event->startDate}} To {{$event->endDate}} - in {{ucfirst($event->city)}}, {{$event->country}}  <br />   Created by: <a href="{{route('profile',$event->user_id)}}" class="yellow-link">{{$event->user->name}}</a></p>
-
-                @if($archived == 0)
-                  @if($mine)
-                    <a class="btn btn-pink" href="{{route('eventDelete',$event->id)}}">Delete</a>
-                    <a class=" btn btn-yellow" href="{{route('eventEdit',$event->id)}}">Edit</a>
-                    @if($event->open)
-                      <a class="btn btn-danger"  href="{{route('closeEvent',$event->id)}}">close</a>
-                    @elseif(!$event->open)
-                      <a class="btn btn-danger"  href="{{route('openEvent',$event->id)}}">open</a>
-                    @endif
-                  @else
-                    @if($request)
-                      <a href="{{route('disVolunteer',$event->id)}}" class="btn btn-pink">Cancel Volunteer Request</a>
-                    @elseif(!$request)
-                      <a href="{{route('volunteer',$event->id)}}" class="btn btn-pink">Volunteer Request</a>
-                    @endif
-                  @endif
-                  @if($mine || $eventCloseAllowed)
-                  <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#postModal">Create a Post</a>
-                  @endif
-                @elseif($archived == 1)
-                  <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#lessonsModal">Lessons Learned</a>
-                  @if(!$mine && $eventCloseAllowed)
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate-modal">Rate!</button>
-                  @endif
-                @endif
-                
-</div>
-</div>
-</div>
+@include('events.includes.header')
 <div class="container "style="margin-bottom:50px;margin-top:30px;">
   <div class="row ">
-@include('eventSidebars.instituteSidebar')
+@include('events.includes.sidebar')
 {{-- --}}
+
+    <div class="col-sm-12 col-md-8" >
 
 
   <h3 class="greencolor ">Volunteers</h3>
@@ -103,7 +62,9 @@
               </div>
 
 
-    </div>
+            </div>
+          </div>
+        </div>
         @if($mine || $eventCloseAllowed)
         @if($archived == 0 || $archived == 2)
 
@@ -149,8 +110,7 @@
         @endif
           @endif
 
-          
-      </div>
+
 @include('includes.reviewModal')
 
 
@@ -205,102 +165,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
 
-
-    <script>
-    $(document).ready(function()
-        {
-
-                 var table = $('#unacceptedT').DataTable({
-                    'columnDefs': [
-                       {
-                          'targets': 0,
-                          'render': function(data, type, row, meta){
-                                 if(type === 'display'){
-                                    data = '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>';
-                                 }
-
-                                 return data;
-                              },
-                          'checkboxes': {
-                             'selectRow': true,
-                             'selectAllRender': '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>'
-
-                          }
-                       }
-                    ],
-                    'select': {
-                       'style': 'multi'
-                    },
-                    'order': [[1, 'asc']]
-                 });
-
-                 // Handle form submission event
-                 $('#frm-unaccepted').on('submit', function(e){
-                    var form = this;
-
-                    var rows_selected = table.column(0).checkboxes.selected();
-
-                    // Iterate over all selected checkboxes
-                    $.each(rows_selected, function(index, rowId){
-                       // Create a hidden element
-                       $(form).append(
-                           $('<input>')
-                              .attr('type', 'hidden')
-                              .attr('name', 'unaccepted[]')
-                              .val(rowId)
-                       );
-                    });
+    <script src="{{URL::asset('vendor/js/event.js')}} "></script>
 
 
-                 });
-
-                   $("#unacceptedT_length").parent().hide();
-                   $("#unacceptedT_info").parent().hide();
-
-                 var table = $('#example').DataTable({
-                    'columnDefs': [
-                       {
-                          'targets': 0,
-                          'render': function(data, type, row, meta){
-                                 if(type === 'display'){
-                                    data = '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>';
-                                 }
-
-                                 return data;
-                              },
-                          'checkboxes': {
-                             'selectRow': true,
-                             'selectAllRender': '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>'
-
-                          }
-                       }
-                    ],
-                    'select': {
-                       'style': 'multi'
-                    },
-                    'order': [[1, 'asc']]
-                 });
-
-                 // Handle form submission event
-                 $('#frm-example').on('submit', function(e){
-                    var form = this;
-
-                    var rows_selected = table.column(0).checkboxes.selected();
-
-                    // Iterate over all selected checkboxes
-                    $.each(rows_selected, function(index, rowId){
-                       // Create a hidden element
-                       $(form).append(
-                           $('<input>')
-                              .attr('type', 'hidden')
-                              .attr('name', 'accepted[]')
-                              .val(rowId)
-                       );
-                    });
-
-
-                 });
-
-      });
-    </script>
 @endsection
