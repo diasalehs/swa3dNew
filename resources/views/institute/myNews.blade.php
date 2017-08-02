@@ -44,10 +44,13 @@
                             <label class="control-label " for="title">Title</label>
                             <input class="form-control" id="title" name="title" type="text"/>
                         </div>
+
+                        
                          <div class="form-group">
                             <label for="exampleInputFile">Cover Photo</label>
                             <input type="file" class="form-control-file" name="mainImg" aria-describedby="fileHelp">
                         </div>
+
 
                         <div class="form-group"> <!-- Message field -->
                             <label class="control-label " for="body">Body</label>

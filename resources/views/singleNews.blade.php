@@ -4,7 +4,7 @@
 
 <div class="news">
   <div class="card card-inverse">
-    <img class="card-img" src="{{URL::to('/events')}}/{{$news->mainImgpath}}" alt="Card image">
+    <img class="card-img" src="{{URL::to('/uploads')}}/{{$news->mainImgpath}}" alt="Card image">
 
     <div class="card-img-overlay">
       <h1 class="card-title">{{$news->title}}</h1>
@@ -23,7 +23,7 @@
             <hr>
 
             <!-- Post Content -->
-            <p class="news-text"> <?php  echo"".$news->textarea ;?> </p>
+            <p class="news-text"> {{$news->textarea}}</p>
 
             <hr>
 

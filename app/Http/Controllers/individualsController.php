@@ -153,7 +153,7 @@ class IndividualsController extends Controller
                 'title' => 'required',
                 'abstract' => 'required',
                 'recommendations' => 'required',
-                'creation_date' => 'required',
+                'creation_date' => 'required|date|before:tommorow',
                 'findings' => 'required',
                 'tool1' => 'required',
                 'tool2' => 'required',

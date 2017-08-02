@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use App\Post;
 use App\Review;
+use App\pollQuestion;
+use App\pollQuestionAnswer;
 
 
 class mainController extends Controller
@@ -43,7 +45,17 @@ class mainController extends Controller
         return [$user ,$date];
     }
 
+    public function vote(Request $request,$questionId)
+    {
+        $pollQuestion = pollQuestion::findOrFail($questionId);
+        $pollQuestion->counter++;
+        $pollQuestion->save();
 
+        $pollQuestionAnswer = pollQuestionAnswer::findOrFail($request->answer);
+        $pollQuestionAnswer->counter++;
+        $pollQuestionAnswer->save();
+        return redirect()->back();
+    }
 
 	public function main() {
 		$_3slides=slider::orderBy('created_at','desc')->take(3)->get();
@@ -51,6 +63,7 @@ class mainController extends Controller
 		$news_record=news::orderBy('created_at','desc')
         ->where('approved','1')
         ->take(3)->get();
+        $pollQuestion= pollQuestion::orderBy('created_at','desc')->first();
         $researches=researches::orderby('created_at','desc')->take(3)->get();
 
            $volRec = DB::table('individuals')->count();
@@ -62,7 +75,7 @@ class mainController extends Controller
 
 
 
-         return view('main',compact('volunteers','_3slides','news_record','researches','volRec','insRec','resRec','eveRec','malesRec','femalesRec'
+         return view('main',compact('volunteers','_3slides','news_record','researches','volRec','insRec','resRec','eveRec','malesRec','femalesRec','pollQuestion'
             ));
 	}
 
@@ -398,7 +411,8 @@ class mainController extends Controller
     
     public function researchView($researchID) {
         $research = researches::where('id',$researchID)->first();
-        return view('researchView',compact('research'));
+        $user=Individuals::where('id',$research->ind_id)->first();
+        return view('researchView',compact('research','user'));
 
     }
     public function allResearches() {
