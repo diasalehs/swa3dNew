@@ -173,17 +173,22 @@ class homeController extends Controller
             $Individuals->lastInArabic = $request['ARlast'];
             $Individuals->nameInArabic =  "".$request['ARfirst']." ".$request['ARlast'];
             $Individuals->nameInEnglish = "".$request['firstName']." ".$request['lastName'];
-            if ($request->hasFile('picture'))
+         
+            if ($request->hasFile('image'))
             {
-                $picture = $request->file('picture');
+                $picture = $request->file('image');
                 $imagename = time().'.'.$picture->getClientOriginalExtension();
                 Image::make($picture)->save(public_path('pp/'.$imagename));
                 $Individuals->picture = $picture;
                 $user->picture = $picture;
             }
+
+
+        
             $Individuals->mobileNumber = $request->mobileNumber;
             $Individuals->address = $request->address;
             $user->name= $Individuals->nameInEnglish;
+
             $user->save();
 
             UserIntrest::where('user_id',$user->id)->delete();

@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-header">Create Event</div>
                 <div class="card-block">
-                    <form class="" role="form" method="POST" action="{{ route('makeEventPost') }}">{{ csrf_field() }}
+                    <form class=""  enctype="multipart/form-data"  role="form" method="POST" action="{{ route('makeEventPost') }}">{{ csrf_field() }}
 
                           <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                               <label for="name" class="form-control-label">Title</label>
@@ -51,7 +51,7 @@
                         <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                         <label for="name" class=" form-control-label">Your Country</label>
                         <div class="">
-@include('includes.countriesModal   ')
+                     @include('includes.countriesModal   ')
                         @if ($errors->has('country'))
                             <div class="alert alert-danger" role="alert">
                                 <strong>Warning!</strong> {{ $errors->first('country') }}
