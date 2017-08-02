@@ -8,6 +8,18 @@
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
             <div class="row">
                 <div class="col-lg-12">
+
+                @foreach($pollQuestions as $pollQuestion)
+                       question {{$pollQuestion->question}}
+                       <br>
+                       answers:
+                       <br>
+                    @foreach($pollQuestion->PollQuestionAnswer as $answer)
+                        {{$answer->answer}}
+                    @endforeach
+                    <br>
+                    <br>
+                @endforeach
                     <form  method="POST" action="{{route('pollQuestionPost')}}">{{ csrf_field() }}
 
                         <div class="form-group {{ $errors->has('question') ? ' has-error' : '' }}">
