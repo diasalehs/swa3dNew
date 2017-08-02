@@ -9,7 +9,7 @@ use App\Volunteer;
 use App\Event;
 use App\targetedGroups;
 use App\EventIntrest;
-use App\EventTarget;
+use App\eventTarget;
 use App\Friend;
 use App\Invite;
 use App\Intrest;
