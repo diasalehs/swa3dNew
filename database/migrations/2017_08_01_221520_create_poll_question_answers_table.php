@@ -17,6 +17,7 @@ class CreatePollQuestionAnswersTable extends Migration
             $table->increments('id');
             $table->integer('poll_question_id')->unsigned();
             $table->foreign('poll_question_id')->references('id')->on('poll_questions')->onDelete('cascade');
+            $table->integer('counter')->default(0);
             $table->text('answer');
             $table->timestamps();
         });

@@ -14,6 +14,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'talk'], function()
 
 //-------------------------------- on the main page - for all - guest inclouded --------------------------------\\
 Route::get('/profile', function () {return view('profile');})->name('profile');
+Route::post('/vote/{questionId}', ['uses'=>'mainController@vote'])->name('vote');
 Route::get('/upComingEvents', ['uses'=>'mainController@upComingEvents'] )->name('upComingEvents');
 Route::get('/allEvents', ['uses'=>'mainController@allEvents'] )->name('Events');
 Route::get('/allEvents/{event}', ['uses'=>'mainController@allEvents'])->name('allEvents');
