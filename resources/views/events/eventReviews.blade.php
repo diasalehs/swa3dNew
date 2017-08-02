@@ -9,36 +9,38 @@
 {{-- --}}
 
     <div class="col-sm-12 col-md-8" >
-<div class="card" style="margin-top:10px;">
-        <div class="card-header">
-          Goals
-        </div>
-        <div class="card-block">
-          <p class=" card-text"style="text-align:justify;">{{$lesson->goals}}</p> 
-          <p class=" card-text"style="text-align:justify;">{{$lesson->noGoalsCounter}}</p> 
-          <p class=" card-text"style="text-align:justify;">{{$lesson->yesGoalsCounter}}</p> 
-        </div>
 
-      </div>
-
-      <div class="card" style="margin-top:10px;">
-        <div class="card-header">
-          Lessons
-        </div>
-        <div class="card-block">
-        @if($lesson->lessons == null)
-          <p class=" card-text"style="text-align:justify;"><a href="{{route('profile',$event->user_id)}}" class="green-link">{{$event->user->name}}</a> didn't add lessons</p> 
-        @else
-          <p class=" card-text"style="text-align:justify;">{{$lesson->lessons}}</p> 
-        @endif
-        </div>
-
-      </div>
 
 @if($archived != 1)
 <h3 class="greencolor " >This event not finished yet</h3>
                 <hr />
                 @else
+                <div class="card" style="margin-top:10px;">
+
+                <div class="card-header">
+                  Goals
+                </div>
+                <div class="card-block">
+                  <p class=" card-text"style="text-align:justify;">{{$lesson->goals}}</p>
+                  <p class=" card-text"style="text-align:justify;">{{$lesson->noGoalsCounter}}</p>
+                  <p class=" card-text"style="text-align:justify;">{{$lesson->yesGoalsCounter}}</p>
+                </div>
+
+              </div>
+
+              <div class="card" style="margin-top:10px;">
+                <div class="card-header">
+                  Lessons
+                </div>
+                <div class="card-block">
+                @if($lesson->lessons == null)
+                  <p class=" card-text"style="text-align:justify;"><a href="{{route('profile',$event->user_id)}}" class="green-link">{{$event->user->name}}</a> didn't add lessons</p>
+                @else
+                  <p class=" card-text"style="text-align:justify;">{{$lesson->lessons}}</p>
+                @endif
+                </div>
+
+              </div>
                   <h3 class="greencolor " style="margin-top:30px;">Event Reviews</h3>
                 <hr />
                 @foreach($reviews as $review)
@@ -76,6 +78,5 @@
 
 <script src="{{URL::asset('vendor/js/event.js')}} "></script>
 
-    <script src="{{URL::asset('vendor/js/event.js')}} "></script>
 
 @endsection
