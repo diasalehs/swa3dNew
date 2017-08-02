@@ -14,11 +14,13 @@ class CreateLessonsTable extends Migration
     public function up()
     {
         Schema::create('lessons', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('event_id')->index();
             $table->integer('user_id')->index();
-            $table->primary(['event_id','user_id']);
             $table->text('goals');
             $table->text('lessons')->nullable();
+            $table->integer('noGoalsCounter')->default(0);
+            $table->integer('yesGoalsCounter')->default(0);
             $table->timestamps();
         });
     }

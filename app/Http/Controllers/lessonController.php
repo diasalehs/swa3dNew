@@ -31,13 +31,15 @@ class lessonController extends Controller
         $accepted = Volunteer::where('user_id',$user->id)->where('event_id',$eventId)->where('accepted',1)->first();
         $event = Event::findOrFail($eventId);
         $review = Review::where('event_id',$eventId)->where('user_id',$user->id)->first();
+        $lesson = Lesson::where('event_id',$eventId)->where('user_id',$event->user_id)->first();
         if($accepted || ($event->user_id == $user->id))
         {
 	        if($review == null)
             {
                 $review = new Review();
-                if($request->goals == 0) $review->noGoalsCounter++;
-                elseif($request->goals == 1) $review->yesGoalsCounter++;
+                if($request->goals == 0) $lesson->noGoalsCounter++;
+                elseif($request->goals == 1) $lesson->yesGoalsCounter++;
+                $lesson->save();
             }
 	        $review->event_id = $eventId;
 	        $review->user_id = $user->id;

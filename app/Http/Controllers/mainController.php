@@ -365,7 +365,7 @@ class mainController extends Controller
         	if(Auth::check()) 
             {
                 $reviews = Review::join('users','reviews.user_id','users.id')->where('event_id',$eventId)->get();
-                $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();
+                $lesson = Lesson::where('event_id',$event->id)->where('user_id',$event->user_id)->first();
                 $eventAcceptedVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',1)->get();
 
                 if($event->startDate < $date)
@@ -450,10 +450,9 @@ class mainController extends Controller
                  ->join('user_intrests', function ($join) {
                  $join->on('institutes.user_id', '=', 'user_intrests.user_id')
                  ->whereIn('user_intrests.intrest_id', request('intrest'))
-                ->where([['institutes.nameInEnglish','like','%'.request('name').'%'],['institutes.country','=',request('location')]])
-                 ->orwhere([['institutes.nameInArabic','like','%'.request('name').'%'],['institutes.country','=',request('location')]]);})
+                ;})
 
-                 ->paginate(3);
+                 ->get();
                  // location &intrest & target
 
                  if(request()->has('target')){
@@ -463,9 +462,7 @@ class mainController extends Controller
                      ->join('user_targets', 'institutes.user_id', '=', 'user_targets.user_id')
                      ->whereIn('user_targets.target_id',request('target'))
                      ->whereIn('user_intrests.intrest_id', request('intrest'))
-                       ->where([['institutes.nameInEnglish','like','%'.request('name').'%'],['institutes.country','=',request('location')]])
-                 ->orwhere([['institutes.nameInArabic','like','%'.request('name').'%'],['institutes.country','=',request('location')]])
-                     ->paginate(3);
+                     ->get();
                   }
 
              }
@@ -477,18 +474,14 @@ class mainController extends Controller
                  $join->on('institutes.user_id', '=', 'user_targets.user_id')
                  ->whereIn('user_targets.target_id',request('target'))
                  ->where('institutes.country','=',request('location'));})
-                 ->where('nameInEnglish','like','%'.request('name').'%')
-                 ->orwhere('nameInArabic','like','%'.request('name').'%')
-                 ->paginate(3);
+                 ->get();
              }
 
                 // location only filter
              else{
               
                  $NGOs=institute::where('country','=',$request['location'])
-                 ->where('nameInEnglish','like','%'.request('name').'%')
-                 ->orwhere('nameInArabic','like','%'.request('name').'%')
-                 ->paginate(3);
+                 ->get();
                  }
             }
 
@@ -505,9 +498,7 @@ class mainController extends Controller
                  ->join('user_targets', 'institutes.user_id', '=', 'user_targets.user_id')
                  ->whereIn('user_targets.target_id',request('target'))
                  ->whereIn('user_intrests.intrest_id', request('intrest'))
-                 ->where('nameInEnglish','like','%'.request('name').'%')
-                 ->orwhere('nameInArabic','like','%'.request('name').'%')
-                 ->paginate(3);
+                 ->get();
              }
                 // intrest only
              else {
@@ -517,9 +508,7 @@ class mainController extends Controller
                      ->join('user_intrests', function ($join) {
                      $join->on('institutes.user_id', '=', 'user_intrests.user_id')
                      ->whereIn('user_intrests.intrest_id', request('intrest'));})
-                     ->where('nameInEnglish','like','%'.request('name').'%')
-                     ->orwhere('nameInArabic','like','%'.request('name').'%')
-                     ->paginate(3);
+                     ->get();
                 }
           }
         
@@ -531,10 +520,7 @@ class mainController extends Controller
              $join->on('institutes.user_id', '=', 'user_targets.user_id')
              ->whereIn('user_targets.target_id',request('target'))
              ;})
-                 ->where('nameInEnglish','like','%'.request('name').'%')
-                 ->orwhere('nameInArabic','like','%'.request('name').'%')
-
-             ->paginate(3);
+             ->get();
          }
             
             // -------------
@@ -548,11 +534,6 @@ class mainController extends Controller
                 }
             }
             $NGOs=$NGOss;
-            $total=count($NGOs);
-            $NGOs=collect($NGOs);
-            $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
-            $NGOs=new \Illuminate\Pagination\LengthAwarePaginator($NGOs,$total,3,$currentpage);
-
             return view('institutes',compact('NGOs'));
           # code...
       }

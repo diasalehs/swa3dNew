@@ -11,13 +11,13 @@
               </div>
               <div class="modal-body">
 
-                  <form id="review" role="form" action="
+                  <form id="review" role="form" 
                   @if($mine)
-                  {{route('lesson',$event->id)}}
+                  action="{{route('lesson',$event->id)}}"
                   @elseif($eventCloseAllowed)
-                  {{route('review',$event->id)}}
+                  action="{{route('review',$event->id)}}"
                   @endif
-                  " method="POST"> {{ csrf_field() }}
+                   method="POST"> {{ csrf_field() }}
                     <div class="row justify-content-center">
 
                     @if($mine)
