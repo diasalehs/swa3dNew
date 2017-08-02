@@ -16,7 +16,7 @@ use App\Intrest;
 use App\Lesson;
 use App\Review;
 use App\Post;
-
+use Image;
 class eventController extends Controller
 {
     public function __construct()
@@ -214,14 +214,15 @@ class eventController extends Controller
         $event->startDate = $request['startDate'];
         $event->endDate = $request['endDate'];
         $event->open = $request['open'];
+
         if ($request->hasFile('cover')){
             $mainImg=$request->file('cover');
             $imagename=time().'.'.$mainImg->getClientOriginalExtension();
-            Image::make($mainImg)->resize(350,200)->save(public_path('events/'.$imagename));
+            Image::make($mainImg)->save(public_path('events/'.$imagename));
             $event->cover = $imagename;
         }
-        $event->save();
 
+        $event->save();
         $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();
         if($event->user_id == $user->id)
         {

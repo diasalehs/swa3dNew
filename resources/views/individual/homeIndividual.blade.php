@@ -26,7 +26,7 @@
                 <h3>Your Info</h3>
               </div>
               <div class="col-sm-6 col-xs-6 col-md-6 text-xs-right text-md-right text-sm-right">
-                <form class="" role="form" method="GET" action="{{route('profileViewEdit')}}">{{ csrf_field() }}
+                <form class="" role="form" method="GET" action="{{route('profileViewEdit')}}">
                         <div class="form-group">
                                 <button type="submit" class="btn edit-btn">Edit</button>
                         </div>
