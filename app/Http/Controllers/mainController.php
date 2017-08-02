@@ -360,6 +360,7 @@ class mainController extends Controller
             $archived = 0;
             $request = false;
             $eventVols = null;
+            $eventAcceptedVols=null;
 
         	if(Auth::check()) 
             {

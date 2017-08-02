@@ -49,6 +49,7 @@ class eventController extends Controller
         $request = false;
         $reviews = null;
         $eventVols = null;
+        $eventAcceptedVols = null;
 
         if($event)
         {
@@ -57,6 +58,7 @@ class eventController extends Controller
                 $archived = 1;
                 if($event->endDate > $date){$archived = 2;}
             }
+            $eventAcceptedVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',1)->get();
             $flag = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->where('accepted',1)->first();
             if($flag) $eventCloseAllowed = true;
             $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();
@@ -74,7 +76,7 @@ class eventController extends Controller
                 $volunteer = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
                 if($volunteer) $request = true;
             }
-            return [$event,$mine,$eventCloseAllowed,$lesson,$archived,$request,$reviews,$eventVols];
+            return [$event,$mine,$eventCloseAllowed,$lesson,$archived,$request,$reviews,$eventVols,$eventAcceptedVols];
         }
         return redirect()->route('errorPage')->withErrors("this event not found.");
     }
@@ -136,47 +138,49 @@ class eventController extends Controller
 
     public function eventPosts($eventId)
     {
-        list($event,$mine,$eventCloseAllowed,$lesson,$archived,$request,$reviews,$eventVols)=$this->eventProvider($eventId);
+        list($event,$mine,$eventCloseAllowed,$lesson,$archived,$request,$reviews,$eventVols,$eventAcceptedVols)=$this->eventProvider($eventId);
         if($event->open || $eventCloseAllowed || $mine)
         {
             $posts = post::where('event_id',$eventId)->get();
-            return view('events/eventPosts',compact('event','mine','eventCloseAllowed','lesson','archived','request','reviews','eventVols','posts'));
+            return view('events/eventPosts',compact('event','mine','eventCloseAllowed','lesson','archived','request','reviews','eventVols','posts','eventAcceptedVols'));
         }
         return redirect()->route('errorPage')->withErrors("this event is private.");
     }
 
     public function eventReviews($eventId)
     {
-        list($event,$mine,$eventCloseAllowed,$lesson,$archived,$request,$reviews,$eventVols)=$this->eventProvider($eventId);
+        list($event,$mine,$eventCloseAllowed,$lesson,$archived,$request,$reviews,$eventVols,$eventAcceptedVols)=$this->eventProvider($eventId);
         if(!$event->reviewsHidden)
         {
-            return view('events/eventReviews',compact('event','mine','eventCloseAllowed','lesson','archived','request','reviews','eventVols'));
+            return view('events/eventReviews',compact('event','mine','eventCloseAllowed','lesson','archived','request','reviews','eventVols','eventAcceptedVols'));
         }
         return redirect()->route('errorPage')->withErrors("reviews for this event hidden.");
     }
 
     public function acceptedVolunteers($eventId)
     {
-        list($event,$mine,$eventCloseAllowed,$lesson,$archived,$request,$reviews,$eventVols)=$this->eventProvider($eventId);
-        if(!$event->reviewsHidden)
-        {
-            return view('events/eventReviews',compact('event','mine','eventCloseAllowed','lesson','archived','request','reviews','eventVols'));
-        }
-        return redirect()->route('errorPage')->withErrors("reviews for this event hidden.");
+        list($event,$mine,$eventCloseAllowed,$lesson,$archived,$request,$reviews,$eventVols,$eventAcceptedVols)=$this->eventProvider($eventId);
+        return view('events/acceptedVolunteers',compact('event','mine','eventCloseAllowed','lesson','archived','request','reviews','eventVols','eventAcceptedVols'));
     }
 
     public function unacceptedVolunteers($eventId)
     {
-        list($user ,$date)=$this->slidbare();
-        $event = Event::findOrFail($eventId);
-        dd($event);
+        list($event,$mine,$eventCloseAllowed,$lesson,$archived,$request,$reviews,$eventVols,$eventAcceptedVols)=$this->eventProvider($eventId);
+        if($mine && $archived == 0)
+        {
+            return view('events/unacceptedVolunteers',compact('event','mine','eventCloseAllowed','lesson','archived','request','reviews','eventVols','eventAcceptedVols'));
+        }
+        return redirect()->route('errorPage')->withErrors("this event is end.");
     }
 
     public function rateVolunteers($eventId)
     {
-        list($user ,$date)=$this->slidbare();
-        $event = Event::findOrFail($eventId);
-        dd($event);
+        list($event,$mine,$eventCloseAllowed,$lesson,$archived,$request,$reviews,$eventVols,$eventAcceptedVols)=$this->eventProvider($eventId);
+        if($mine && $archived == 1)
+        {
+            return view('events/rateVolunteers',compact('event','mine','eventCloseAllowed','lesson','archived','request','reviews','eventVols','eventAcceptedVols'));
+        }
+        return redirect()->route('errorPage')->withErrors("this event not ended yet.");
     }
 
     public function makeEvent(){
