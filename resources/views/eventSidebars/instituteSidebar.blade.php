@@ -1,4 +1,4 @@
-<div class="col-sm-12 col-md-4  col-lg-3 ">
+<div class="col-sm-12 col-md-4  col-lg-3 ">
 
 <div class=" nav-side-menu" style="    border-top-right-radius: .25rem;
     border-top-left-radius: .25rem;   ">

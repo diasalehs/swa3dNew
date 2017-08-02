@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 
 @section('content')
@@ -34,10 +33,12 @@
                       <a href="{{route('volunteer',$event->id)}}" class="btn btn-pink">Volunteer Request</a>
                     @endif
                   @endif
+                  @if($mine || $eventCloseAllowed)
                   <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#postModal">Create a Post</a>
+                  @endif
                 @elseif($archived == 1)
                   <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#lessonsModal">Lessons Learned</a>
-                  @if(!$mine)
+                  @if(!$mine && $eventCloseAllowed)
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate-modal">Rate!</button>
                   @endif
                 @endif
@@ -45,11 +46,10 @@
 </div>
 </div>
 </div>
-
-
 <div class="container "style="margin-bottom:50px;margin-top:30px;">
   <div class="row ">
 @include('eventSidebars.instituteSidebar')
+{{-- --}}
 
     <div class="col-sm-12 col-md-8" >
       <div class="card">
@@ -77,9 +77,13 @@
           </div>
 @endif
 
+{{-- --}}
+
+              </div>
+
 
     </div>
-        @if($mine)
+        @if($mine || $eventCloseAllowed)
         @if($archived == 0 || $archived == 2)
 
         <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -126,8 +130,8 @@
 
           
       </div>
-
 @include('includes.reviewModal')
+
 
 @if((!$mine || $eventCloseAllowed) && $archived == 1)
 <!-- Modal -->

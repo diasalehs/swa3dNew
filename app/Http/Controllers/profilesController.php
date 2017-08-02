@@ -59,7 +59,7 @@ class profilesController extends Controller
 		    }
 		    else
 		    {
-		    	$friend = false; userUevents
+		    	$friend = false; userUevents;
 		    }
 		    $userUevents = Event::where('events.user_id',$authUser->id)->where('startDate','>',$date)->get();
 		    if(($authUser->userType == $userType) && ($authUser->id == $user->id)){$mine = true;}

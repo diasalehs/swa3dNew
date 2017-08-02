@@ -84,7 +84,6 @@ function boot()
     {
 
 
-   View()->creator('event',function($view){
-        dd($this);
-    });    }
+   
+    }
 }
