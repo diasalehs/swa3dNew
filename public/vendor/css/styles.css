@@ -12,7 +12,31 @@ button{
 
 }
 
-
+.nb-card {
+    position: relative;
+    display: block;
+    background-color: #fff;
+    border-radius: 0.15rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    transition:all 0.3s ease-in-out;
+    margin-top: 30px;
+}
+.nb-card .card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #FFF;
+}
+.nb-card .task-item {
+    margin: 18px 20px;
+}
+.nb-card .progress {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    vertical-align: baseline;
+    height: 0.4rem;
+    margin-top: 4px;
+}
 .nav-side-menu {
   overflow: auto;
   font-family: verdana;

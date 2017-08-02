@@ -7,6 +7,7 @@
   <div class="row ">
 @include('events.includes.sidebar')
 {{-- --}}
+<div class="col-sm-12 col-md-8" >
 
 
   @if($mine && $archived == 1)
@@ -31,7 +32,7 @@
       </div>
 
 
-
+<hr />
 <table id="unacceptedT" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
   <thead>
       <tr>
@@ -57,7 +58,7 @@
 
   </tbody>
 </table>
-<div class="row" style="margin-top:20px;">
+<div class="row justify-content-center" style="margin-top:20px;">
 
 
 <div class="col-6">
