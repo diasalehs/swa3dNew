@@ -28,7 +28,7 @@ button{
   text-align: center;
   font-size: 14px;
   height: 0px;
-  border-bottom: 1px solid var(--green);
+  border-bottom: 1px solid rgba(0,0,0,.125);
   opacity: 0;
 }
 .nav-side-menu .toggle-btn {
@@ -75,7 +75,7 @@ button{
   background-color: #181c20;
   border: none;
   line-height: 28px;
-  border-bottom: 1px solid var(--green);
+  border-bottom: 1px solid rgba(0,0,0,.125);
   margin-left: 0px;
 }
 
@@ -89,10 +89,11 @@ button{
 }
 .nav-side-menu li {
   padding-left: 0px;
-  border-left: 1px solid var(--green);
-  border-right: 1px solid var(--green);
-  border-bottom: 1px solid var(--green);
+  border-left: 1px solid rgba(0,0,0,.125);
+  border-right: 1px solid rgba(0,0,0,.125);
+  border-bottom: 1px solid rgba(0,0,0,.125);
 }
+
 .nav-side-menu a li i{
   padding-left: 10px;
 

@@ -1,4 +1,4 @@
-\<?php
+<?php
 
 namespace App\Http\Controllers;
 
@@ -15,7 +15,7 @@ use App\researches_tags;
 use App\message;
 use App\researches;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use App\Initiative;
 use App\Individuals;
@@ -140,7 +140,7 @@ class homeController extends Controller
             return view('initiative/editInitiative',compact('user','initiative','intrests','targets'));
         }
 
-        } 
+        }
 
     public function profileEdit(Request $request)
     {
@@ -187,7 +187,7 @@ class homeController extends Controller
             $user->save();
 
             UserIntrest::where('user_id',$user->id)->delete();
-            foreach ($request['intrests'] as $i) 
+            foreach ($request['intrests'] as $i)
             {
                 $ui=new UserIntrest;
                 $ui->intrest_id = $i;
@@ -215,7 +215,7 @@ class homeController extends Controller
             }else{$Individuals->voluntaryYears = 0;}
             $Individuals->dateOfBirth =  $request['dateOfBirth'];
             $Individuals->save();
-        }                               
+        }
         elseif ($user->userType == 1)
         {
             $this->validate($request, [
@@ -251,7 +251,7 @@ class homeController extends Controller
             $user->save();
 
             UserIntrest::where('user_id',$user->id)->delete();
-            foreach ($request['intrests'] as $i) 
+            foreach ($request['intrests'] as $i)
             {
                 $ui=new UserIntrest;
                 $ui->intrest_id = $i;
@@ -314,7 +314,7 @@ class homeController extends Controller
         return redirect()->route('home');
     }
 
-    
+
     public function message(){
         $user = Auth::user();
         $sentMessages = message::join('users', 'messages.receiver_id' ,'=','users.id')->where('sender_id',$user->id)->get();

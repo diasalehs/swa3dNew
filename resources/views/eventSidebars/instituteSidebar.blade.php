@@ -8,7 +8,8 @@
 
             <ul id="menu-content" class="menu-content  collapse out">
                   <a href="{{route('event',$event->id)}}">
-                      <li style="  border-top: 1px solid var(--green);">
+                      <li style="  border-top: 1px solid  rgba(0,0,0,.125);    border-top-right-radius: .25rem;
+    border-top-left-radius: .25rem;">
                         <i class="fa fa-user fa-lg"></i> Details
                       </li>
                   </a>
@@ -24,7 +25,7 @@
                   </li>
                  </a>
                  <a href="{{route('acceptedVolunteers',$event->id)}}">
-                 <li>
+                 <li >
                   <i class="fa fa-users fa-lg"></i> Volunteers
                 </li>
               </a>
