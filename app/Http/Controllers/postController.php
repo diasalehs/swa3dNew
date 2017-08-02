@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Event;
+use App\Volunteer;
 
 class postController extends Controller
 {
@@ -33,8 +34,9 @@ class postController extends Controller
     {
         $user = Auth::user();
         $event_id = $request->event_id;
+        $accepted = Volunteer::where('user_id',$user->id)->where('event_id',$event_id)->where('accepted',1)->first();
         $event = event::find($event_id);
-        if(($user->userType == 1 || $user->userType == 3) && $event->user_id == $user->id){
+        if((($user->userType == 1 || $user->userType == 3) && $event->user_id == $user->id) || $accepted){
             $post = new post();
             $post->body = $request->body;
             $post->institute_id = $user->id;
