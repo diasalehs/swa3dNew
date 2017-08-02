@@ -15,15 +15,30 @@
 <h3 class="greencolor " >This event not finished yet</h3>
                 <hr />
                 @else
-                <div class="card" style="margin-top:10px;">
+                <div class="nb-card" style="margin-top:10px;">
 
                 <div class="card-header">
                   Goals
                 </div>
                 <div class="card-block">
                   <p class=" card-text"style="text-align:justify;">{{$lesson->goals}}</p>
-                  <p class=" card-text"style="text-align:justify;">{{$lesson->noGoalsCounter}}</p>
-                  <p class=" card-text"style="text-align:justify;">{{$lesson->yesGoalsCounter}}</p>
+
+                  <div class="task-item">
+
+                Yes
+                <span class="float-xs-right text-muted progress-info">{{$lesson->noGoalsCounter}}%</span>
+                <div id="progress-bar">
+                    <progress class="progress progress-danger" value="{{$lesson->noGoalsCounter}}" max="100"></progress>
+                </div>
+            </div>
+            
+            <div class="task-item">
+                No
+                <span class="float-xs-right text-muted progress-primary">{{$lesson->yesGoalsCounter}}%</span>
+                <div id="progress-bar1">
+                    <progress class="progress progress-warning" value="{{$lesson->yesGoalsCounter}}" max="100"></progress>
+                </div>
+            </div>
                 </div>
 
               </div>
