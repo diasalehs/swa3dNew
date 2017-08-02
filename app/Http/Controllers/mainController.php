@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use App\Post;
 use App\Review;
-use App\pollQuestion;
-use App\pollQuestionAnswer;
+use App\PollQuestion;
+use App\PollQuestionAnswer;
 
 
 class mainController extends Controller
