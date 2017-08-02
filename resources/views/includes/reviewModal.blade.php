@@ -14,7 +14,7 @@
                   <form id="review" role="form" action="
                   @if($mine)
                   {{route('lesson',$event->id)}}
-                  @else
+                  @elseif($eventCloseAllowed)
                   {{route('review',$event->id)}}
                   @endif
                   " method="POST"> {{ csrf_field() }}

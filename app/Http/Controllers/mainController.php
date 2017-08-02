@@ -353,15 +353,17 @@ class mainController extends Controller
     	$event = event::find($eventId);
         if($event){
             list($user ,$date)=$this->slidbare();
-            $reviews = Review::join('users','reviews.user_id','users.id')->where('event_id',$eventId)->get();
             $lesson = null;
+            $reviews = null;
             $eventCloseAllowed = false;
             $mine = false;
             $archived = 0;
             $request = false;
+            $eventVols = null;
 
         	if(Auth::check()) 
             {
+                $reviews = Review::join('users','reviews.user_id','users.id')->where('event_id',$eventId)->get();
                 $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();
                 $eventAcceptedVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',1)->get();
 
@@ -373,25 +375,24 @@ class mainController extends Controller
 
                 $flag = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->where('accepted',1)->first();
                 if($flag) $eventCloseAllowed = true;
-                $flag = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->where('rates',1)->first();
-                if($flag) $rate = true;
 
-        		if(($user->userType == 1 || $user->userType == 3) && $event->user_id == $user->id){
+        		if($event->user_id == $user->id)
+                {
         			$mine = true;
-                    $eventVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',0)->get();
-                    return view('event',compact('date','event','request','archived','mine','user','eventVols','eventAcceptedVols','users','eventCloseAllowed','reviews','lesson'));
-        		}elseif ($user->userType == 0 || $user->userType == 3) {
-                    $volunteer = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
-                    if($volunteer){
-                        $request = true;
+                    if($user->userType == 1 || $user->userType == 3)
+                    {
+                        $eventVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',0)->get();
                     }
                 }
+    		    if ($user->userType == 0 || $user->userType == 3) 
+                {
+                    $volunteer = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
+                    if($volunteer) $request = true;
+                }
         	}
-            return view('event',compact('date','event','eventCloseAllowed','eventAcceptedVols','archived','mine','request','user','reviews','lesson'));
-
-        }else{
-            return redirect()->route('upComingEvents');
+            return view('event',compact('date','event','eventCloseAllowed','eventAcceptedVols','archived','mine','request','user','reviews','lesson','eventVols'));
         }
+        return redirect()->route('errorPage')->withErrors("this event not found.");
 	}
     
     public function researchView($researchID) {

@@ -48,27 +48,57 @@
 </div>
 <div class="container "style="margin-bottom:50px;margin-top:30px;">
   <div class="row ">
-@include('eventSidebars.instituteSidebar')
-{{-- --}}
 
-@if(count($posts) == 0)
-                <h3 class="greencolor " style="margin-top:30px;">No posts to show</h3>
-                <hr />
-                @else
-                <h3 class="greencolor " style="margin-top:30px;">Event Posts</h3>
-                <hr />
-              @foreach($posts as $post)
-                  <div class="card" style="margin-bottom:20px;">
-                    <div class="card-block">
-                      <h4 class="card-title greencolor" >{{$post->body}}</h4>
-                        {{$post->created_at}}
-                    </div>
-                  </div>
-              @endforeach
-@endif
-{{-- --}}
 
-              </div>
+<div class="col-sm-12 col-md-4  col-lg-3 ">
+
+<div class=" nav-side-menu" style="    border-top-right-radius: .25rem;
+    border-top-left-radius: .25rem;   ">
+    <div class="brand">Brand Log</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+        <div class="menu-list">
+
+            <ul id="menu-content" class="menu-content  collapse out">
+                 <li>
+                  <a href="{{route('event',$event->id)}}">
+                  <i class="fa fa-user fa-lg"></i> Details
+                  </a>
+                  </li>
+                   <li>
+                    <a href="{{route('eventPosts',$event->id)}}">
+                    <i class="fa fa-users fa-lg"></i> Posts
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{route('eventReviews',$event->id)}}">
+                    <i class="fa fa-users fa-lg"></i> Reviews
+                    </a>
+                  </li>
+                 <li>
+                  <a href="{{route('acceptedVolunteers',$event->id)}}">
+                  <i class="fa fa-users fa-lg"></i> Volunteers
+                  </a>
+                </li>
+                @if($mine)
+                 <li>
+                  <a href="{{route('unacceptedVolunteers',$event->id)}}">
+                  <i class="fa fa-users fa-lg"></i> Remove Volunteers
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('rateVolunteers',$event->id)}}">
+                  <i class="fa fa-users fa-lg"></i> Rate Volunteers
+                  </a>
+                </li>
+                @endif
+            </ul>
+     </div>
+</div>
+</div>
+
+
+@yield('content')
 
 
     </div>
@@ -119,8 +149,92 @@
 
           
       </div>
-@include('includes.reviewModal')
 
+@if($archived == 1)
+<!-- Modal -->
+        <div class="modal fade" id="lessonsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" >Lessons You Learned From This Event</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                  <form id="review" role="form" action="
+                  @if($mine)
+                  {{route('lesson',$event->id)}}
+                  @elseif($eventCloseAllowed)
+                  {{route('review',$event->id)}}
+                  @endif
+                  " method="POST"> {{ csrf_field() }}
+                    <div class="row justify-content-center">
+
+                    @if($lesson != null)
+                     {{$lesson->goals}}
+                    @endif
+
+          <div class="col-sm-12 col-md-6 form-check form-check-inline">
+            <label for="exampleInputEmail1">Did this event achevied his goals ?</label><br />
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="goals" id="inlineRadio1" value="1" checked> yes
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="goals" id="inlineRadio1" value="0"> no
+            </label>
+          </div>
+
+                    @if($mine)
+
+                    <div class="has-success col-12 form-group{{ $errors->has('lessons') ? ' has-error' : '' }}">
+                      <label for="exampleTextarea">Lessons Leared From This Event</label>
+                      <textarea required="true" class="form-control" name="lessons" rows="3" >{{ old('lessons') }}</textarea>
+                      @if ($errors->has('lessons'))
+                          <div class="alert alert-danger" role="alert">
+                              <strong>Warning!</strong> {{ $errors->first('lessons') }}
+                          </div>
+                      @endif
+                    </div>
+
+                    @else
+                    <div class="has-success col-12 form-group{{ $errors->has('positive') ? ' has-error' : '' }}">
+                      <label for="exampleTextarea">Positive Feedback</label>
+                      <textarea required="true" class="form-control" name="positive" rows="3" >{{ old('positive') }}</textarea>
+                      @if ($errors->has('positive'))
+                          <div class="alert alert-danger" role="alert">
+                              <strong>Warning!</strong> {{ $errors->first('positive') }}
+                          </div>
+                      @endif
+                    </div>
+
+
+                    <div class="has-danger col-12 form-group{{ $errors->has('negative') ? ' has-error' : '' }}">
+                      <label for="exampleTextarea">Negative Feedback</label>
+                      <textarea required="true" class="form-control" name="negative" rows="3" >{{ old('negative') }}</textarea>
+                      @if ($errors->has('negative'))
+                          <div class="alert alert-danger" role="alert">
+                              <strong>Warning!</strong> {{ $errors->first('negative') }}
+                          </div>
+                      @endif
+                    </div>
+                    
+                    @endif
+                      </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-green">Save</button>
+
+              </div>
+            </form>
+
+            </div>
+          </div>
+        </div>
+
+@endif
 
 @if((!$mine || $eventCloseAllowed) && $archived == 1)
 <!-- Modal -->

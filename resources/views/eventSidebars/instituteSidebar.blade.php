@@ -1,4 +1,4 @@
-<div class="col-sm-12 col-md-4  col-lg-3 ">
+<div class="col-sm-12 col-md-4  col-lg-3 ">
 
 <div class=" nav-side-menu" style="  ">
     <div class="brand">Menu</div>

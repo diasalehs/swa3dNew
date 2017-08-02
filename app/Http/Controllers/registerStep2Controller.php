@@ -1,6 +1,6 @@
 <?php
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers;
 use \Illuminate\Http\Request;
 use App\Individuals;
 use App\tempInstitute;
@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\auth;
 use App\UserIntrest;
 use App\UserTarget;
+
 
 class registerStep2Controller extends Controller 
 {
@@ -41,7 +42,6 @@ class registerStep2Controller extends Controller
                                 'currentWork' => 'required',
                                 'educationalLevel' => 'required',
                                 'preVoluntary' => 'required',
-                                'voluntaryYears' => 'integer|required_with:preVoluntary',
                                 'dateOfBirth' => 'required|date|before:today',
                             ]);
 
@@ -62,6 +62,9 @@ class registerStep2Controller extends Controller
                             $Individuals->major= $request['Major'];
                             $Individuals->preVoluntary = $request['preVoluntary'];
                             if($request['preVoluntary'] == 1){
+                                $this->validate($request, [
+                                    'voluntaryYears' => 'integer|required_with:preVoluntary',
+                                ]);
                                     $Individuals->voluntaryYears = $request['voluntaryYears'];
                             }else{$Individuals->voluntaryYears = 0;}
                             $Individuals->dateOfBirth =  $request['dateOfBirth'];

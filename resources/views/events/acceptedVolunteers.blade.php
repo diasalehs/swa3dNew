@@ -1,35 +1,22 @@
+@extends('layouts.eventHead')
+
+@section('content')
 
 
-  @if($mine && ($archived == 0 || $archived == 2))
-  <h3 class="greencolor ">Volunteers request</h3>
-  <hr />
-
-<form id="frm-example" action="{{ route('acceptVolunteer',$event->id)}}" method="POST" >{{ csrf_field() }}
-
-<table id="example" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
-  <thead>
-      <tr>
-          <th>
-
-          </th>
-          <th>Name</th>
-
-      </tr>
-  </thead>
-  <tbody>
-    @foreach($eventVols as $eventVol)
-
-      <tr>
-        <td>{{$eventVol->id}}</td>
-        <td>{{$eventVol->name}}</td>
-
-      </tr>
-      @endforeach
-
-
-
-  </tbody>
-</table>
-<button  type="submit" class="btn col-3 btn-green">Accept</button>
-</form>
+@if(count($posts) == 0)
+                <h3 class="greencolor " style="margin-top:30px;">No posts to show</h3>
+                <hr />
+                @else
+                <h3 class="greencolor " style="margin-top:30px;">Event Posts</h3>
+                <hr />
+              @foreach($posts as $post)
+                  <div class="card" style="margin-bottom:20px;">
+                    <div class="card-block">
+                      <h4 class="card-title greencolor" >{{$post->body}}</h4>
+                        {{$post->created_at}}
+                    </div>
+                  </div>
+              @endforeach
 @endif
+
+@endsection
