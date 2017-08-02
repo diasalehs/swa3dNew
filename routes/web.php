@@ -60,8 +60,8 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
     Route::get('/openProfile', ['uses'=>'profilesController@openProfile'])->name('openProfile');
     Route::get('/closeEvent/{eventId}', ['uses'=>'eventController@closeEvent'])->name('closeEvent');
     Route::get('/openEvent/{eventId}', ['uses'=>'eventController@openEvent'])->name('openEvent');
-    Route::post('/review/{eventId}', ['uses'=>'lessonsController@review'])->name('review');
-    Route::post('/lesson/{eventId}', ['uses'=>'lessonsController@lesson'])->name('lesson');
+    Route::post('/review/{eventId}', ['uses'=>'lessonController@review'])->name('review');
+    Route::post('/lesson/{eventId}', ['uses'=>'lessonController@lesson'])->name('lesson');
     Route::post('/availability', ['uses'=>'profilesController@availability'])->name('availability');
 
     Route::group(['prefix'=>'home','routeMiddleware'=>'auth'], function()
@@ -96,6 +96,8 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
             Route::group(['prefix'=>'admin' , 'routeMiddleware'=>'admin'], function()
             {
                 Route::get('/userdelete/{userId}', ['uses' =>'adminController@delete', 'as'=>'delete_user']);
+                Route::get('/pollQuestion', ['uses' =>'adminController@pollQuestion', 'as'=>'pollQuestion']);
+                Route::post('/pollQuestion', ['uses' =>'adminController@pollQuestionPost', 'as'=>'pollQuestionPost']);
                 Route::group(['prefix'=>'news','routeMiddleware'=>'admin'], function()
                 {
                     Route::get('/',  ['uses' =>'adminController@indexx', 'as'=>'news']);

@@ -15,6 +15,7 @@ class CreatePollQuestionAnswersTable extends Migration
     {
         Schema::create('poll_question_answers', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('poll_questions_id')->unsigned();
             $table->foreign('poll_questions_id')->references('id')->on('poll_questions')->onDelete('cascade');
             $table->text('answer');
             $table->timestamps();

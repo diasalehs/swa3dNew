@@ -4,7 +4,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" >Lessons You Learned From This Event</h5>
+                <h5 class="modal-title" >Your Review</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -20,20 +20,6 @@
                   " method="POST"> {{ csrf_field() }}
                     <div class="row justify-content-center">
 
-                    @if($lesson)
-                     {{$lesson->goals}}
-                    @endif
-
-          <div class="col-sm-12 col-md-6 form-check form-check-inline">
-            <label for="exampleInputEmail1">Did this event achevied his goals ?</label><br />
-            <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="goals" id="inlineRadio1" value="1" checked> yes
-            </label>
-            <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="goals" id="inlineRadio1" value="0"> no
-            </label>
-          </div>
-
                     @if($mine)
 
                     <div class="has-success col-12 form-group{{ $errors->has('lessons') ? ' has-error' : '' }}">
@@ -47,6 +33,19 @@
                     </div>
 
                     @else
+
+            <div class="col-sm-12 col-md-6 form-check form-check">
+                    @if($lesson != null)
+                     Event Goals: {{$lesson->goals}}
+                    @endif
+            <label >Did this event achevied his goals ?</label><br />
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="goals" id="inlineRadio1" value="1" checked> yes
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="goals" id="inlineRadio1" value="0"> no
+            </label>
+          </div>
                     <div class="has-success col-12 form-group{{ $errors->has('positive') ? ' has-error' : '' }}">
                       <label for="exampleTextarea">Positive Feedback</label>
                       <textarea required="true" class="form-control" name="positive" rows="3" >{{ old('positive') }}</textarea>

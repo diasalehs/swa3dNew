@@ -19,6 +19,8 @@ class CreateReviewsTable extends Migration
             $table->primary(['event_id','user_id']);
             $table->text('positive');
             $table->text('negative');
+            $table->integer('noGoalsCounter');
+            $table->integer('yesGoalsCounter');
             $table->timestamps();
         });
     }
