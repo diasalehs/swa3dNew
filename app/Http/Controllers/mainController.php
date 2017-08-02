@@ -365,7 +365,7 @@ class mainController extends Controller
         	if(Auth::check()) 
             {
                 $reviews = Review::join('users','reviews.user_id','users.id')->where('event_id',$eventId)->get();
-                $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();
+                $lesson = Lesson::where('event_id',$event->id)->where('user_id',$event->user_id)->first();
                 $eventAcceptedVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',1)->get();
 
                 if($event->startDate < $date)

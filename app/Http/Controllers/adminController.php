@@ -13,6 +13,9 @@ use Illuminate\Database\Query\Builder;
 use App\Http\Requests;
 use App\news;
 use Image;
+use App\PollQuestion;
+use App\PollQuestionAnswer;
+
 class adminController extends Controller
 {
     public function __construct()
@@ -33,12 +36,23 @@ class adminController extends Controller
     public function pollQuestion()
     {
         list($news_count)=$this->slidbare();
-        return view('admin/pollQuestion',compact('news_count'));
+        $pollQuestions = pollQuestion::get();
+        return view('admin/pollQuestion',compact('news_count','pollQuestions'));
     }
 
     public function pollQuestionPost(Request $request)
     {
-        
+        $pollQuestion = new pollQuestion();
+        $pollQuestion->question = $request->question;
+        $pollQuestion->save();
+        foreach ($request->answers as $answer) 
+        {
+            $PollQuestionAnswer = new PollQuestionAnswer();
+            $PollQuestionAnswer->poll_question_id = $pollQuestion->id;
+            $PollQuestionAnswer->answer = $answer;
+            $PollQuestionAnswer->save();
+        }
+        return redirect()->back();
     }
 
     public function delete($userId)
