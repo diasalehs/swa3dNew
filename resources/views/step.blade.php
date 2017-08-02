@@ -127,7 +127,7 @@
                     <label for="name" class=" form-control-label">Your date of birth</label>
                     <div class="">
                         <input id="theDate" type="date" class="form-control" name="dateOfBirth"  min="" value="{{ old('dateOfBirth') }}"
-                        required="required" />
+                        />
                         @if ($errors->has('dateOfBirth'))
                             <div class="alert alert-danger" role="alert">
                                 <strong>Warning!</strong> {{ $errors->first('dateOfBirth') }}
@@ -211,7 +211,7 @@
                     <label for="name" class="form-control-label">Voluntary Years</label>
                     <div class="">
                         <input id="name" type="text" class="form-control" name="voluntaryYears" value="{{ old('voluntaryYears') }}"
-                        required="required" />
+                       />
                         @if ($errors->has('voluntaryYears'))
                             <div class="alert alert-danger" role="alert">
                                 <strong>Warning!</strong> {{ $errors->first('voluntaryYears') }}
