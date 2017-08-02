@@ -31,10 +31,8 @@
     @foreach($eventAcceptedVols as $eventAcceptedVol)
 
       <tr>
-      @if($eventAcceptedVol->rated == 0)
         <td>{{$eventAcceptedVol->id}}</td>
         <td><a href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a></td>
-      @endif
       </tr>
       @endforeach
 
@@ -67,6 +65,7 @@
         </div>
 @include('events.includes.postModal')
 @include('events.includes.reviewModal')
+@include('events.includes.rateModal')
 
 @endsection('content')
 @section('scripts')

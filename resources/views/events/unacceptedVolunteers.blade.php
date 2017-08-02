@@ -57,7 +57,6 @@
           </div>
         </div>
 @include('events.includes.postModal')
-@include('events.includes.reviewModal')
 
 @endsection('content')
 @section('scripts')
