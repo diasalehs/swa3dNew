@@ -38,7 +38,7 @@
 
     <!-- Page Content -->
 
-
+@if($pollQuestion)
     <div class="container ">
         <div class="row justify-content-center" style="margin-top:20px;">
           <div class="col-6">
@@ -64,6 +64,7 @@
 
     </div>
   </div>
+  @endif
         <!-- Nav tabs -->
 <ul class="nav nav-tabs nav-tabs-main row justify-content-center" id="nnnn"role="tablist">
 
