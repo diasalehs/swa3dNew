@@ -30,7 +30,7 @@
 
                     <h5>Researcher Name</h5>
 
-                    <p class="card-title" >&emsp;<a href="#" class="pink-link">{{$research->researcher_name}}</a></p>
+                    <p class="card-title" >&emsp;<a href="{{route('profile',[$user->user_id])}}" class="pink-link">{{$research->researcher_name}}</a></p>
 
                     <h5>Abstract</h5>
                      <p>

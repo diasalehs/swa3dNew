@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use App\Post;
 use App\Review;
-use App\pollQuestion;
-use App\pollQuestionAnswer;
+use App\PollQuestion;
+use App\PollQuestionAnswer;
 
 
 class mainController extends Controller
@@ -411,7 +411,8 @@ class mainController extends Controller
     
     public function researchView($researchID) {
         $research = researches::where('id',$researchID)->first();
-        return view('researchView',compact('research'));
+        $user=Individuals::where('id',$research->ind_id)->first();
+        return view('researchView',compact('research','user'));
 
     }
     public function allResearches() {
