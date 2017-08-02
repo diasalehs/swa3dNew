@@ -61,7 +61,7 @@ class eventController extends Controller
             $eventAcceptedVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',1)->get();
             $flag = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->where('accepted',1)->first();
             if($flag) $eventCloseAllowed = true;
-            $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();
+            $lesson = Lesson::where('event_id',$event->id)->where('user_id',$event->user_id)->first();
             $reviews = Review::join('users','reviews.user_id','users.id')->where('event_id',$eventId)->get();
             if($event->user_id == $user->id) 
             {
