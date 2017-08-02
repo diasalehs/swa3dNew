@@ -21,7 +21,7 @@
               <a class="nav-link" href="{{route('slider')}}">Slider config</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Nav item again</a>
+              <a class="nav-link" href="{{route('pollQuestion')}}">Poll Question</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">One more nav</a>

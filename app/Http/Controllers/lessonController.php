@@ -10,7 +10,7 @@ use App\Event;
 use App\Lesson;
 use App\Review;
 
-class lessonsController extends Controller
+class lessonController extends Controller
 {
 
 	public function __construct()
@@ -33,7 +33,12 @@ class lessonsController extends Controller
         $review = Review::where('event_id',$eventId)->where('user_id',$user->id)->first();
         if($accepted || ($event->user_id == $user->id))
         {
-	        if($review == null) $review = new Review();
+	        if($review == null)
+            {
+                $review = new Review();
+                if($request->goals == 0) $review->noGoalsCounter++;
+                elseif($request->goals == 1) $review->yesGoalsCounter++;
+            }
 	        $review->event_id = $eventId;
 	        $review->user_id = $user->id;
 	        $review->positive = $request['positive'];
