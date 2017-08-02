@@ -73,10 +73,5 @@ function boot()
     {
 
 
-<<<<<<< HEAD
-   }
-=======
-   
     }
->>>>>>> a001afa40d7ac4e8b4dd08bab26284a556637b66
 }
