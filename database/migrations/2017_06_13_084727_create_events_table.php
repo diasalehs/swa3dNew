@@ -26,6 +26,7 @@ class CreateEventsTable extends Migration
             $table->date('startDate');
             $table->date('endDate');
             $table->boolean('open')->default(1);
+            $table->boolean('reviewsHidden')->default(0);
             $table->timestamps();
         });
     }

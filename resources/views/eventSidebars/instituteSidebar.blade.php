@@ -29,16 +29,19 @@
                   </a>
                 </li>
                 @if($mine)
-                 <li>
-                  <a href="{{route('unacceptedVolunteers',$event->id)}}">
-                  <i class="fa fa-users fa-lg"></i> Remove Volunteers
-                  </a>
-                </li>
-                <li>
-                  <a href="{{route('rateVolunteers',$event->id)}}">
-                  <i class="fa fa-users fa-lg"></i> Rate Volunteers
-                  </a>
-                </li>
+                  @if($archived == 0)
+                   <li>
+                    <a href="{{route('unacceptedVolunteers',$event->id)}}">
+                    <i class="fa fa-users fa-lg"></i> Remove Volunteers
+                    </a>
+                  </li>
+                  @elseif($archived == 1)
+                    <li>
+                      <a href="{{route('rateVolunteers',$event->id)}}">
+                      <i class="fa fa-users fa-lg"></i> Rate Volunteers
+                      </a>
+                    </li>
+                  @endif
                 @endif
             </ul>
      </div>
