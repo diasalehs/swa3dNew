@@ -14,13 +14,11 @@ class CreateReviewsTable extends Migration
     public function up()
     {
         Schema::create('reviews', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('event_id')->index();
             $table->integer('user_id')->index();
-            $table->primary(['event_id','user_id']);
             $table->text('positive');
             $table->text('negative');
-            $table->integer('noGoalsCounter');
-            $table->integer('yesGoalsCounter');
             $table->timestamps();
         });
     }
