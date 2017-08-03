@@ -37,11 +37,11 @@
                               <input id="name" type="text" style="display: none;" class="form-control" name="eventId" value="{{ $event->id }}"/>
                           </div>
 
-    <div class=" form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+
+                        <div class=" form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                         <label for="name" class=" form-control-label">Your Country</label>
                         <div class="">
                                @include('includes.countriesModal')
-
 
                         @if ($errors->has('country'))
                             <div class="alert alert-danger" role="alert">
