@@ -179,8 +179,10 @@ class homeController extends Controller
                 $picture = $request->file('image');
                 $imagename = time().'.'.$picture->getClientOriginalExtension();
                 Image::make($picture)->save(public_path('pp/'.$imagename));
-                $Individuals->picture = $picture;
-                $user->picture = $picture;
+
+                $Individuals->picture = $imagename;
+                $user->picture = $imagename;
+                
             }
 
 

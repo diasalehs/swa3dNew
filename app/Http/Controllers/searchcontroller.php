@@ -37,7 +37,7 @@ class searchController extends Controller
     public function basic(Request $request)
 
         {
-        $users = DB::table('Individuals')
+        $users = DB::table('individuals')
         ->where('nameInEnglish', 'like','%'.$request['name'].'%')
         ->orwhere('nameInArabic', 'like','%'.$request['name'].'%')
         ->paginate(8, ['*'], 'users');
@@ -59,13 +59,13 @@ class searchController extends Controller
 
              if(request()->has('intrest')){
 
-                 $users= DB::table("Individuals")
+                 $users= DB::table("individuals")
                  ->join('user_intrests', function ($join) {
-                 $join->on('Individuals.user_id', '=', 'user_intrests.user_id')
+                 $join->on('individuals.user_id', '=', 'user_intrests.user_id')
                  ->whereIn('user_intrests.intrest_id', request('intrest'))
                  ;})
-                 ->where([['Individuals.nameInEnglish','like','%'.request('name').'%'],['Individuals.country','=',request('location')]])
-                 ->orwhere([['Individuals.nameInArabic','like','%'.request('name').'%'],['Individuals.country','=',request('location')]])
+                 ->where([['individuals.nameInEnglish','like','%'.request('name').'%'],['individuals.country','=',request('location')]])
+                 ->orwhere([['individuals.nameInArabic','like','%'.request('name').'%'],['individuals.country','=',request('location')]])
 
                  ->get();
                  
@@ -80,13 +80,13 @@ class searchController extends Controller
                  // location &intrest & target
 
                  if(request()->has('target')){
-                     $users = DB::table('Individuals')
-                     ->join('user_intrests', 'Individuals.user_id', '=', 'user_intrests.user_id')
-                     ->join('user_targets', 'Individuals.user_id', '=', 'user_targets.user_id')
+                     $users = DB::table('individuals')
+                     ->join('user_intrests', 'individuals.user_id', '=', 'user_intrests.user_id')
+                     ->join('user_targets', 'individuals.user_id', '=', 'user_targets.user_id')
                      ->whereIn('user_targets.target_id',request('target'))
                      ->whereIn('user_intrests.intrest_id', request('intrest'))
-                     ->where([['Individuals.nameInEnglish','like','%'.request('name').'%'],['Individuals.country','=',request('location')]])
-                     ->orwhere([['Individuals.nameInArabic','like','%'.request('name').'%'],['Individuals.country','=',request('location')]])
+                     ->where([['individuals.nameInEnglish','like','%'.request('name').'%'],['individuals.country','=',request('location')]])
+                     ->orwhere([['individuals.nameInArabic','like','%'.request('name').'%'],['individuals.country','=',request('location')]])
                      ->get();
                       $NGOs = DB::table('institutes')
                      ->join('user_intrests', 'institutes.user_id', '=', 'user_intrests.user_id')
@@ -102,10 +102,10 @@ class searchController extends Controller
              // location & target** id is userID in  individual (prevously was user.id)  changed to match the location and name ...and target id is target_id 
 
              elseif(request()->has('target')){
-                 $users= DB::table("Individuals")->join('user_targets', function ($join) {
-                 $join->on('Individuals.user_id', '=', 'user_targets.user_id')
+                 $users= DB::table("individuals")->join('user_targets', function ($join) {
+                 $join->on('individuals.user_id', '=', 'user_targets.user_id')
                  ->whereIn('user_targets.target_id',request('target'))
-                 ->where('Individuals.country','=',request('location'));})
+                 ->where('individuals.country','=',request('location'));})
                  ->where('nameInEnglish','like','%'.request('name').'%')
                  ->orwhere('nameInArabic','like','%'.request('name').'%')
                  ->get();
@@ -136,9 +136,9 @@ class searchController extends Controller
              // intrest & target
              if(request()->has('target')){
 
-                 $users = DB::table('Individuals')
-                 ->join('user_intrests', 'Individuals.user_id', '=', 'user_intrests.user_id')
-                 ->join('user_targets', 'Individuals.user_id', '=', 'user_targets.user_id')
+                 $users = DB::table('individuals')
+                 ->join('user_intrests', 'individuals.user_id', '=', 'user_intrests.user_id')
+                 ->join('user_targets', 'individuals.user_id', '=', 'user_targets.user_id')
                  ->whereIn('user_targets.target_id',request('target'))
                  ->whereIn('user_intrests.intrest_id', request('intrest'))
                  ->where('nameInEnglish','like','%'.request('name').'%')
@@ -157,9 +157,9 @@ class searchController extends Controller
                 // intrest only
              else {
 
-                     $users= DB::table("Individuals")
+                     $users= DB::table("individuals")
                      ->join('user_intrests', function ($join) {
-                     $join->on('Individuals.user_id', '=', 'user_intrests.user_id')
+                     $join->on('individuals.user_id', '=', 'user_intrests.user_id')
                      ->whereIn('user_intrests.intrest_id', request('intrest'));})
                        ->where('nameInEnglish','like','%'.request('name').'%')
                        ->orwhere('nameInArabic','like','%'.request('name').'%')
@@ -177,9 +177,9 @@ class searchController extends Controller
         
          // target only filter
           elseif(request()->has('target')){
-             $users= DB::table("Individuals")
+             $users= DB::table("individuals")
              ->join('user_targets', function ($join) {
-             $join->on('Individuals.user_id', '=', 'user_targets.user_id')
+             $join->on('individuals.user_id', '=', 'user_targets.user_id')
              ->whereIn('user_targets.target_id',request('target'))
              ;})
              ->where('nameInEnglish','like','%'.request('name').'%')
@@ -241,23 +241,23 @@ class searchController extends Controller
 
              if(request()->has('intrest')){
 
-                 $users= DB::table("Individuals")
+                 $users= DB::table("individuals")
                  ->join('user_intrests', function ($join) {
-                 $join->on('Individuals.user_id', '=', 'user_intrests.user_id')
+                 $join->on('individuals.user_id', '=', 'user_intrests.user_id')
                  ->whereIn('user_intrests.intrest_id', request('intrest'))
                  ;})
-                 ->where('Individuals.country','=',request('location'))
+                 ->where('individuals.country','=',request('location'))
                  ->get();
                  
                  // location &intrest & target
 
                  if(request()->has('target')){
-                     $users = DB::table('Individuals')
-                     ->join('user_intrests', 'Individuals.user_id', '=', 'user_intrests.user_id')
-                     ->join('user_targets', 'Individuals.user_id', '=', 'user_targets.user_id')
+                     $users = DB::table('individuals')
+                     ->join('user_intrests', 'individuals.user_id', '=', 'user_intrests.user_id')
+                     ->join('user_targets', 'individuals.user_id', '=', 'user_targets.user_id')
                      ->whereIn('user_targets.target_id',request('target'))
                      ->whereIn('user_intrests.intrest_id', request('intrest'))
-                     ->where('Individuals.country','=',request('location'))
+                     ->where('individuals.country','=',request('location'))
                      ->get();
                     
                   }
@@ -266,10 +266,10 @@ class searchController extends Controller
              // location & target** id is userID in  individual (prevously was user.id)  changed to match the location and name ...and target id is target_id 
 
              elseif(request()->has('target')){
-                 $users= DB::table("Individuals")->join('user_targets', function ($join) {
-                 $join->on('Individuals.user_id', '=', 'user_targets.user_id')
+                 $users= DB::table("individuals")->join('user_targets', function ($join) {
+                 $join->on('individuals.user_id', '=', 'user_targets.user_id')
                  ->whereIn('user_targets.target_id',request('target'))
-                 ->where('Individuals.country','=',request('location'));})
+                 ->where('individuals.country','=',request('location'));})
                  ->get();
                  
              }
@@ -287,9 +287,9 @@ class searchController extends Controller
              // intrest & target
              if(request()->has('target')){
 
-                 $users = DB::table('Individuals')
-                 ->join('user_intrests', 'Individuals.user_id', '=', 'user_intrests.user_id')
-                 ->join('user_targets', 'Individuals.user_id', '=', 'user_targets.user_id')
+                 $users = DB::table('individuals')
+                 ->join('user_intrests', 'individuals.user_id', '=', 'user_intrests.user_id')
+                 ->join('user_targets', 'individuals.user_id', '=', 'user_targets.user_id')
                  ->whereIn('user_targets.target_id',request('target'))
                  ->whereIn('user_intrests.intrest_id', request('intrest'))
                  ->get();
@@ -298,9 +298,9 @@ class searchController extends Controller
                 // intrest only
              else {
 
-                     $users= DB::table("Individuals")
+                     $users= DB::table("individuals")
                      ->join('user_intrests', function ($join) {
-                     $join->on('Individuals.user_id', '=', 'user_intrests.user_id')
+                     $join->on('individuals.user_id', '=', 'user_intrests.user_id')
                      ->whereIn('user_intrests.intrest_id', request('intrest'));})
                      ->get();
               
@@ -309,9 +309,9 @@ class searchController extends Controller
         
          // target only filter
           elseif(request()->has('target')){
-             $users= DB::table("Individuals")
+             $users= DB::table("individuals")
              ->join('user_targets', function ($join) {
-             $join->on('Individuals.user_id', '=', 'user_targets.user_id')
+             $join->on('individuals.user_id', '=', 'user_targets.user_id')
              ->whereIn('user_targets.target_id',request('target'))
              ;})
              ->get();

@@ -32,7 +32,7 @@
 
       <tr>
         <td>{{$eventVol->id}}</td>
-        <td>{{$eventVol->name}}</td>
+        <td><a href="{{route('profile',[$eventVol->id])}}"></a>{{$eventVol->name}}</td>
 
       </tr>
       @endforeach

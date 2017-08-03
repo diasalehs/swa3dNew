@@ -51,8 +51,7 @@
                         <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                         <label for="name" class=" form-control-label">Your Country</label>
                         <div class="">
-                     @include('includes.countriesModal   ')
-                        @if ($errors->has('country'))
+e                        @if ($errors->has('country'))
                             <div class="alert alert-danger" role="alert">
                                 <strong>Warning!</strong> {{ $errors->first('country') }}
                             </div>

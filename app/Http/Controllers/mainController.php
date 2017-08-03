@@ -158,6 +158,7 @@ class mainController extends Controller
 
 
         if (Auth::check()) {
+            $Iuser=null;
             if($user->userType==0){
             $Iuser=$user->Individuals;
             }
@@ -168,6 +169,7 @@ class mainController extends Controller
             elseif ($user->userType==3) {
             $Iuser=$user->Initiative;
             }
+
             if ($Iuser==null){
             return view('comingEvents',compact('events'));
             }

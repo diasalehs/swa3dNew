@@ -308,6 +308,7 @@ class eventController extends Controller
             'description' => 'required|string',
             'startDate' => 'required|date|after:today',
             'endDate' => 'required|date|after:startDate',
+
         ]);
 
         $eventId = $request['eventId'];
@@ -323,6 +324,12 @@ class eventController extends Controller
                     $event->description = $request['description'];
                     $event->startDate = $request['startDate'];
                     $event->endDate = $request['endDate'];
+                       if ($request->hasFile('cover')){
+                      $mainImg=$request->file('cover');
+                       $imagename=time().'.'.$mainImg->getClientOriginalExtension();
+                        Image::make($mainImg)->save(public_path('events/'.$imagename));
+                         $event->cover = $imagename;
+                               }
                     $event->save();
 
                     $lesson = Lesson::where('event_id',$event->id)->where('user_id',$user->id)->first();

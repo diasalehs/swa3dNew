@@ -14,6 +14,7 @@
       </div>
 
       <h1 class="display-7" style="color:#fff">{{$user->nameInEnglish}}</h1>
+      <span>{{$user->acc_avg}}</span>
       <p class="" style="color:#fff"><span>Volunteer</span> <span>{{$user->country}}</span> <span>{{$user->cityName}}</span> </p>
 
 
