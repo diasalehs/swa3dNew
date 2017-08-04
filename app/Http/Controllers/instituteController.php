@@ -9,8 +9,8 @@ use Validator;
 use App\Event;
 use App\news;
 use App\EventIntrest;
-use App\EventTarget;
-use App\institute;
+use App\eventTarget;
+use App\Institute;
 use Image;
 
 class instituteController extends Controller
