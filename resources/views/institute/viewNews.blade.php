@@ -1,4 +1,4 @@
-@extends('institute/layouts.profilemaster')
+@extends('institute/layouts.profileMaster')
 
 @section('content')
 
