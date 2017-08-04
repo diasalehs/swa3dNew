@@ -17,7 +17,7 @@
                             <input class="form-control" id="title" name="title" type="text" value="{{$news->title}}" />
                         </div>
                          <div class="form-group">
-                         <img src="{{$news->mainImgpath}}" style="height:200px; width:400px">
+                         <img src="{{URL::to('/uploads')}}/{{$news->mainImgpath}}" style="height:200px; width:400px">
                          <br>
                             <label for="exampleInputFile">choose another image</label>
                             <input type="file"  class="form-control-file" name="mainImg" aria-describedby="fileHelp">
