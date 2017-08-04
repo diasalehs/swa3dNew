@@ -6,7 +6,7 @@
   <div class="card card-inverse">
 
   
-    <img class="card-img" src="uploads/{{$news->mainImgpath}}" alt="Card image">
+    <img class="card-img" src="{{URL::to('/uploads')}}/{{$news->mainImgpath}}" alt="Card image">
 
     <div class="card-img-overlay">
       <h1 class="card-title">{{$news->title}}</h1>
