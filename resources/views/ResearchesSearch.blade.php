@@ -52,5 +52,5 @@
           </div>
 
 
-{{ $researches->setpath('results?search='.$text)->render() }}
+{{ $researches->setpath('results?search='.$text)->render('vendor.pagination.custom') }}
 @endsection('content')

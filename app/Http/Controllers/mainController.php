@@ -437,7 +437,7 @@ class mainController extends Controller
         $results= researches::where('title','like','%'.$request['search'].'%')->paginate(2);
  
         $resultstags= researches::whereHas('tags',function($query)use ($request){
-         return $query->where('name',$request['search']);
+         return $query->where('name','like','%'.$request['search'].'%');
         })->paginate(2);
  
         $total= $results->total() + $resultstags->total();

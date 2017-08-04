@@ -28,7 +28,7 @@ Route::get('/rateVolunteers/{eventId}', ['uses'=>'eventController@rateVolunteers
 
 Route::post('/post', ['uses'=>'postController@create'])->name('post');
 
-
+ 
 Route::get('/', ['uses'=>'mainController@main','as'=>'main']);
 Route::get('/researchView/{researchID}',['uses'=>'mainController@researchView','as'=>'researchView']);
 Route::get('/researchView/download/{researchID}',['uses'=>'mainController@download','as'=>'download']);
