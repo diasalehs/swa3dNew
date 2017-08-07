@@ -3,12 +3,12 @@
 @section('content')
 <div class="viewProfile" style="">
 @include('events.includes.header')
-<div class="container "style="margin-bottom:50px;margin-top:30px;">
+<div class="container-fluid "style="margin-bottom:50px;margin-top:30px;">
   <div class="row ">
 @include('events.includes.sidebar')
 {{-- --}}
 
-    <div class="col-sm-12 col-md-8" >
+    <div class="col-sm-12 col-md-8  event-content" >
 
   <h3 class="greencolor ">Volunteers </h3>
   <hr />
@@ -43,7 +43,13 @@
 </table>
 
 @if($mine && ($archived == 0 || $archived == 2))
-<button  type="submit" class="btn col-3 btn-green">Accept</button>
+<div class="row" style="margin-top:20px">
+
+<div class="col-md-6 offset-md-3 col-sm-12">
+
+<button  type="submit" class="btn btn-block btn-green">Accept</button>
+</div>
+</div>
 </form>
 
 @endif

@@ -3,12 +3,12 @@
 @section('content')
 <div class="viewProfile" style="">
 @include('events.includes.header')
-<div class="container " style= "margin-bottom:50px;margin-top:30px;">
+<div class="container-fluid " style= "margin-bottom:50px;margin-top:30px;">
   <div class="row ">
 @include('events.includes.sidebar')
 {{-- --}}
 
-    <div class="col-sm-12 col-md-8" >
+    <div class="col-sm-12 col-md-8 col-lg-9" >
 
       <div class="card">
         <div class="card-header">
@@ -26,7 +26,7 @@
           Goals
         </div>
         <div class="card-block">
-          <p class=" card-text"style="text-align:justify;">{{$lesson->goals}}</p> 
+          <p class=" card-text"style="text-align:justify;">{{$lesson->goals}}</p>
 
         </div>
 

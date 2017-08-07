@@ -1,5 +1,4 @@
-<div class="col-sm-12 col-md-4  col-lg-3 " style="    border-right: 1px solid #ccc;
-">
+<div class="col-sm-12 col-md-4  col-lg-3 nav-side-menu-div" style="">
 
 <div class=" nav-side-menu" style="  ">
     <div class="brand">Menu</div>
@@ -51,3 +50,17 @@
 </div>
 
 </div>
+@section('scripts')
+<script type="text/javascript">
+$(window).scroll(function() {
+  sessionStorage.scrollTop = $(this).scrollTop();
+});
+
+$(document).ready(function() {
+  if (sessionStorage.scrollTop != "undefined") {
+    $(window).scrollTop(sessionStorage.scrollTop);
+  }
+});
+
+ </script>
+ @endsection

@@ -17,7 +17,7 @@
 </ul>
 
 
-        <div class="col-lg-8 offset-md-2">
+        <div class="col-lg-10 offset-md-1" >
             <div class="card">
                 <div class="card-header">Create Event</div>
                 <div class="card-block">
@@ -49,7 +49,7 @@
 
 
                         <div class=" form-group{{ $errors->has('country') ? ' has-error' : '' }}">
-                        <label for="name" class=" form-control-label">Your Country</label>
+                        <label for="name" class=" form-control-label">Country</label>
                         <div class="">
                                @include('includes.countriesModal')
 
@@ -62,7 +62,7 @@
                 </div>
                                               {{--  --}}{{--  --}}
                   <div id="palestineCity"  class="form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
-                      <label for="email" class=" form-control-label">Your city name</label>
+                      <label for="email" class=" form-control-label">City name</label>
                       <div class="">
                           <select id="palC" name="cityName"  class="form-control">
                             <option value="nablus">Nablus</option>
@@ -77,8 +77,8 @@
                       </div>
                   </div>
                                               {{--  --}}{{--  --}}
-                <div id="otherCity" style="display:none" class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
-                    <label for="email" class="form-control-label">Your city name</label>
+                <div id="otherCity" style="display:none" class=" form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
+                    <label for="email" class="form-control-label">City name</label>
                     <div class="">
                         <input id="otherC" name="x"  type="text" class="form-control" value="{{ old('cityName') }}"
                          />
@@ -116,8 +116,10 @@
                                   @endif
                           </div>
 
-                  <label class="control-label " for="intrests">intrests</label>
+                  <label class="control-label " for="intrests">Intrests</label>
 <br>
+<br>
+
                         <div class="row">
                          @foreach($intrests as $i)
                           <div class="form-check col-4">
@@ -129,10 +131,11 @@
                           </div>
                           @endforeach
                       </div>
+                      <hr />
 
-                      <br><br>
-                     <label class="control-label " for="intrests">targets</label>
-<br>
+                     <label class="control-label " for="intrests">Targets</label>
+                     <br>
+                     <br>
                      <div class="row">
                          @foreach($targets as $t)
                           <div class="form-check col-4">
@@ -144,7 +147,7 @@
                           </div>
                           @endforeach
                       </div>
-
+<hr />
 
                           <div class="form-group">
                             <label  class="control-label" for="exampleSelect1">Privacy</label>
@@ -155,7 +158,7 @@
                         </div>
 
                           <div class="form-group{{ $errors->has('cover') ? ' has-error' : '' }}">
-                              <label for="name" class="control-label">uplode cover</label>
+                              <label for="name" class="control-label">Cover photo</label>
                                   <input id="name" type="file" accept="image/*" class="form-control" name="cover" />
                                   @if ($errors->has('cover'))
                                       <div class="alert alert-danger" role="alert">
@@ -186,7 +189,7 @@
                                   @endif
                           </div>
 
-                          <div class="form-group">
+                          <div class="form-group col-md-6 offset-md-3 col-sm-12">
                                   <button id="register" type="submit" class="btn  btn-green btn-block">Create Event</button>
                           </div>
 
@@ -200,3 +203,32 @@
               </div>
 
 @endsection
+@section('scripts')
+
+  <script type="text/javascript">
+
+  function yesnoCheck(that) {
+          if (that.value == "Palestine") {
+              document.getElementById("palestineCity").style.display = "block";
+              document.getElementById("otherCity").style.display = "none";
+              $('#palC').attr('name', 'cityName');
+              $('#otherC').attr('name', 'x');
+
+          } else {
+            document.getElementById("otherCity").style.display = "block";
+            document.getElementById("palestineCity").style.display = "none";
+            $('#otherC').attr('name', 'cityName');
+            $('#palC').attr('name', 'x');
+
+          }
+      }
+      function vyyesno(that) {
+              if (that.value == "0") {
+                  document.getElementById("vyn").style.display = "none";
+              } else {
+                document.getElementById("vyn").style.display = "block";
+              }
+          }
+          </script>
+
+ @endsection
