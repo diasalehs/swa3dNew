@@ -21,6 +21,7 @@
         </div>
 
       </div>
+      @if (Auth::user())
       <div class="card" style="margin-top:10px;">
         <div class="card-header">
           Goals
@@ -31,6 +32,8 @@
         </div>
 
       </div>
+      @endif
+      
 
 @if(Auth::guest())
           <div class="card card-outline-warning mb-3 text-center" style="border-color: var(--green); margin-top:30px;">
