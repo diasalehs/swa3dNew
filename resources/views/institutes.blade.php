@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container" style="margin-bottom:20px;">
+<div class="container-fluid" style="margin-bottom:20px;">
   <h1 class="mt-4 mb-3" style="color: var(--green);">Institutes<small></small></h1>
 
       <form id="myform" class="row" style="" method="GET" action="{{route('institutes')}}">
@@ -302,13 +302,12 @@
     <!-- Tab panes -->
 <hr />
 
-                    <div class="row justify-content-center">
+<div class="row justify-content-center" style="margin-right:0px; margin-left:0px;min-height:400px;">
 
-<table id="example" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
+<table id="inst" class=" table table-striped table-bordered table-responsive" cellspacing="0"  width="100%">
   <thead>
 
       <tr>
-<th></th>
           <th>English Name</th>
           <th>Arabic Name</th>
           <th>Rating</th>
@@ -322,8 +321,7 @@
   <tbody>
 @foreach($NGOs as $u)
 <tr>
-          <td>{{$u->user_id}}</td>
-          <td><a href="{{route('profile',[$u->user_id])}}">{{$u->nameInEnglish}}</a></td>
+          <td><a class="green-link"href="{{route('profile',[$u->user_id])}}">{{$u->nameInEnglish}}</a></td>
           <td>{{$u->nameInArabic}}</td>
           <td>{{$u->acc_avg}}  </td>
           <td>{{$u->cityName}}</td>

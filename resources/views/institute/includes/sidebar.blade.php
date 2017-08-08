@@ -9,12 +9,66 @@
         <small><a href="{{route('messenger',$user->email)}}">{{$user->email}}</a></small>
     </div>
     <hr>
-    <ul class="list-group">
-        <a href="{{route('home')}}" class="list-group-item justify-content-between">Dashboard   <span class="badge badge-default badge-pill"></span></a>
-        <a href="{{route('followers')}}" class="list-group-item  justify-content-between">Followers<span class="badge badge-default badge-pill">{{$followers->count()}}</span></a>
-        <a href="{{route('following')}}" class="list-group-item  justify-content-between">Following<span class="badge badge-default badge-pill">{{$following->count()}}</span></a>
-        <a href="{{route('myEvents')}}" class="list-group-item  justify-content-between">Events Manager</a>
-        <a href="{{route('messenger')}}" class="list-group-item  justify-content-between">Messenger</a>
-        <a href="{{route('myNews')}}" class="list-group-item  justify-content-between">My News</a>
+
+
+    <div class=" nav-side-menu" style="  ">
+        <div class="brand">Menu</div>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+            <div class="menu-list">
+
+                <ul id="menu-content" class="menu-content  collapse out">
+                      <a href="{{route('home')}}">
+                          <li style="  border-top: 1px solid  rgba(0,0,0,.125);    border-top-right-radius: .25rem;
+        border-top-left-radius: .25rem;">
+                            <i class="fa fa-user fa-lg"></i> Dashboard
+                          </li>
+                      </a>
+
+                      <a href="{{route('followers')}}">
+                       <li>
+                        <i class="fa fa-users fa-lg"></i> Followers
+                      </li>
+                      </a>
+                      <a href="{{route('following')}}">
+                      <li>
+                        <i class="fa fa-users fa-lg"></i> Following
+                      </li>
+                     </a>
+                     <a href="{{route('myEvents')}}">
+                     <li >
+                      <i class="fa fa-users fa-lg"></i> Events Manager
+                    </li>
+                  </a>
+                  <a href="{{route('messenger')}}">
+                  <li >
+                   <i class="fa fa-users fa-lg"></i> Messenger
+                 </li>
+               </a>
+               <a href="{{route('myNews')}}">
+               <li >
+                <i class="fa fa-users fa-lg"></i> My News
+              </li>
+            </a>
+                </ul>
+         </div>
+    </div>
+
  </div>
 @endif
+
+
+@section('scripts')
+<script type="text/javascript">
+$(window).scroll(function() {
+  sessionStorage.scrollTop = $(this).scrollTop();
+});
+
+$(document).ready(function() {
+  if (sessionStorage.scrollTop != "undefined") {
+    $(window).scrollTop(sessionStorage.scrollTop);
+  }
+});
+
+ </script>
+ @endsection
