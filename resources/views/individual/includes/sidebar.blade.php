@@ -15,7 +15,6 @@
     <hr>
     <ul class="list-group">
         <a href="{{route('home')}}" class="list-group-item justify-content-between">Dashboard  <span class="badge badge-default badge-pill"></span></a>
-        <a href="{{route('allusers')}}" class="list-group-item  justify-content-between">All users<span class="badge badge-default badge-pill">{{auth::user()->count()}}</span></a>
         <a href="{{route('followers')}}" class="list-group-item  justify-content-between">Followers<span class="badge badge-default badge-pill">{{$followers->count()}}</span></a>
         <a href="{{route('following')}}" class="list-group-item  justify-content-between">Following<span class="badge badge-default badge-pill">{{$following->count()}}</span></a>
         @if(auth::user()->Individuals->researcher == 1)
@@ -34,7 +33,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Change Availability</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Change Availability -not availabile-</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -43,15 +42,15 @@
         <form role="form" action="{{route('availability')}}" method="POST"> {{ csrf_field() }}
 
         <div class="form-group row">
-          <label for="example-datetime-local-input" class="col-4 col-form-label">Date and time</label>
+          <label for="example-datetime-local-input" class="col-4 col-form-label">From</label>
           <div class="col-8">
-            <input class="form-control" type="datetime-local" name="availableFrom" value="<?php echo date("Y-m-d"); ?>T13:45:00" id="example-datetime-local-input">
+            <input id="theDate" type="date" class="form-control" name="availableFrom"  min="" value="<?php echo date("Y-m-d"); ?>"/>
           </div>
         </div>
         <div class="form-group row">
-          <label for="example-datetime-local-input" class="col-4 col-form-label">Date and time</label>
+          <label for="example-datetime-local-input" class="col-4 col-form-label">To</label>
           <div class="col-8">
-            <input class="form-control" type="datetime-local" name="availableTo" value="<?php echo date("Y-m-d"); ?>T13:45:00" id="example-datetime-local-input">
+            <input id="theDate" type="date" class="form-control" name="availableTo"  min="" value="<?php echo date("Y-m-d"); ?>"/>
           </div>
           </div>
 

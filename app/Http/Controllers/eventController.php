@@ -17,6 +17,9 @@ use App\Lesson;
 use App\Review;
 use App\Post;
 use Image;
+use Illuminate\Validation\Rule;
+
+
 class eventController extends Controller
 {
     public function __construct()
@@ -204,6 +207,15 @@ class eventController extends Controller
             'country' => 'required|string',
             'startDate' => 'required|date|after:today',
             'endDate' => 'required|date|after:startDate',
+            'goals' => 'required',
+            'intrests' => 'required',
+            'targets' => 'required',
+            'open' =>
+            [
+                'required',
+                Rule::in(['1', '0']),
+            ],
+            'cover' => 'mimes:jpeg,bmp,png',
         ]);
         $event = new event();
         $event->title = $request['title'];
@@ -306,9 +318,18 @@ class eventController extends Controller
             'eventId' => 'required',
             'title' => 'required|string|max:100',
             'description' => 'required|string',
+            'country' => 'required|string',
             'startDate' => 'required|date|after:today',
             'endDate' => 'required|date|after:startDate',
-
+            'goals' => 'required',
+            'intrests' => 'required',
+            'targets' => 'required',
+            'open' =>
+            [
+                'required',
+                Rule::in(['1', '0']),
+            ],
+            'cover' => 'mimes:jpeg,bmp,png',
         ]);
 
         $eventId = $request['eventId'];

@@ -3,9 +3,6 @@
 body {
   font-family: 'Ubuntu', sans-serif !important;
   color: var(--dark-navy);
-  /*zoom: .9;
-  -moz-transform: scale(.5);
-  -moz-transform-origin: 0 0;*/
 }
 button{
   font-family: 'Ubuntu', sans-serif !important;
@@ -14,10 +11,7 @@ button{
 @media (min-width: 992px) {
 
 }
-td{
-  white-space: nowrap;
 
-}
 .nb-card {
     position: relative;
     display: block;
@@ -45,7 +39,8 @@ td{
 }
 .nav-side-menu {
   overflow: auto;
-  font-size: 16px;
+  font-family: verdana;
+  font-size: 14px;
   font-weight: 200;
   background-color: #fff;
   top: 0px;
@@ -69,8 +64,8 @@ td{
 .nav-side-menu ul,
 .nav-side-menu li {
   list-style: none;
-  padding: .75rem 1.25rem;
-  padding-left: 10px;
+  padding: 10px;
+  padding-left: 0px;
   margin: 0px;
   line-height: 35px;
   cursor: pointer;
@@ -119,7 +114,7 @@ td{
   vertical-align: middle;
 }
 .nav-side-menu li {
-  padding-left: 10px;
+  padding-left: 0px;
   border-left: 1px solid rgba(0,0,0,.125);
   border-right: 1px solid rgba(0,0,0,.125);
   border-bottom: 1px solid rgba(0,0,0,.125);
@@ -131,7 +126,7 @@ td{
 }
 .nav-side-menu a li  {
   text-decoration: none;
-  color: var(--green-hover);
+  color: var(--green);
 }
 .nav-side-menu li a i {
   padding-left: 10px;
@@ -146,19 +141,11 @@ td{
   -ms-transition: all .5s ease;
   transition: all .5s ease;
 }
-.nav-side-menu-div{
-   border-right: 1px solid #ccc;
-}
 @media (max-width: 767px) {
-  .nav-side-menu-div{
-     border-right: 0px solid #ccc;
-  }
   .nav-side-menu {
     position: relative;
     width: 100%;
     margin-bottom: 10px;
-    border-right: 0px solid #ccc;
-    border-radius: .25rem;
   }
   .nav-side-menu .toggle-btn {
     display: block;
@@ -169,7 +156,7 @@ td{
     z-index: 10 !important;
     padding: 3px;
     background-color: #ffffff;
-    color: var(--green);
+    color: #000;
     width: 40px;
     text-align: center;
   }
@@ -189,7 +176,26 @@ td{
 }
 
 
+#unacceptedT_length{
+  display: none;
+}
+#unacceptedT_info{
 
+  display: none;
+}
+#unacceptedT_wrapper div.row div.col-sm-12{
+
+}
+#dt-checkboxes-cell{
+  width: 20px;
+}
+#unacceptedT_wrapper,
+#example_wrapper{
+  padding: 0px;
+}
+#inviteT_wrapper{
+  padding: 0px;
+}
 div.dropdown-menu.open{
   max-height: 400px !important;
 }
@@ -198,7 +204,7 @@ ul.inner{
 
 }
 .min{
-  min-height: 800px;
+  min-height: 500px;
 }
 .btn{
   border-radius: 200px ;
@@ -947,14 +953,8 @@ border-bottom: 3px solid #51c2c0 !important;
   .login-btn{
         margin-bottom: 16px;
   }
-  .container-fluid{
-    padding: 0 20px;
-  }
   .mr-auto{
     margin-top: 20px;
-  }
-  .event-title{
-    font-size: 30px;
   }
   .top-5{
       padding-top: 10px;
@@ -1059,10 +1059,7 @@ border-bottom: 3px solid #51c2c0 !important;
     width: 300px !important;
 
   }
-  .event-title{
-      font-size: 35px;
-    }
-    .nav-item{
+  .  .nav-item{
     padding-right: 10px;
     padding-left: : 10px;
     }
@@ -1082,12 +1079,8 @@ border-bottom: 3px solid #51c2c0 !important;
   }
 }
 @media only screen and (min-width: 768px) {
-  .event-title{
-      font-size: 40px;
-    }
-    .container-fluid{
-      padding: 0 50px;
-    }
+
+
   .nav-tabs-main  .nav-item a{
       background-color: #eee;
       font-size: 20px;
@@ -1104,9 +1097,7 @@ border-bottom: 3px solid #51c2c0 !important;
     }
 }
 @media only screen and (min-width: 1201px) {
-  .event-title{
-      font-size: 45px;
-    }
+
   .mr-auto{
     margin-top: 0px;
   }
