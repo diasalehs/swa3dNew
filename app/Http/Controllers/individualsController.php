@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File; 
 use Illuminate\Http\Response;
 use App\Initiative;
+use App\Intrest;
+use App\UserTarget;
+use App\UserIntrest;
+use App\targetedGroups;
+
+
 class IndividualsController extends Controller
 {
     protected $user;
@@ -22,10 +28,8 @@ class IndividualsController extends Controller
     {
         $this->middleware(['auth','individual']);
         $this->middleware(function ($request, $next) {
-            $date = date('Y-m-d');
-            $user = Auth::user();
-            $this->date = $date;
-            $this->user = $user;
+            $this->date = date('Y-m-d');
+            $this->user = Auth::user();
             return $next($request);
         });
     }
@@ -43,7 +47,9 @@ class IndividualsController extends Controller
     public function makeInitiative()
     {
         list($user ,$date)=$this->slidbare();
-        return view('individual/makeInitiative');
+        $intrests = Intrest::get();
+        $targets = targetedGroups::get();
+        return view('individual/makeInitiative',compact('intrests','targets'));
     }
     /**
      * Show the form for creating a new resource.
@@ -52,36 +58,63 @@ class IndividualsController extends Controller
      */
     public function makeInitiativePost(Request $request)
     {
+        $$user = $this->user;
         $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'livingPlace' => 'required',
-            'cityName' => 'required',
+            'firstName' => 'required|regex:/^[a-zA-Z]+$/',
+            'lastName' => 'required|regex:/^[a-zA-Z]+$/',
+            'ARfirst' => 'required|alpha',
+            'ARlast' => 'required|alpha',
             'country' => 'required',
-            'currentWork' => 'required',
+            'cityName' => 'required_without:x',
+            'x' => 'required_without:cityName',
+            'intrests' => 'required',
+            'targets' => 'required',
             'preVoluntary' => 'required',
-            'voluntaryYears' => 'integer',
-            'dateOfBirth' => 'required',
+            'dateOfBirth' => 'required|date|before:today',
+            'password' => 'required|string|min:6|confirmed',
         ]);
         $adminId = $this->user->id;
         $user = new User();
-        $user->name = $request->name;
+        $user->name = "name";
         $user->userType = 3;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->flag = 1;
         $user->save();
+
         $Initiative = new Initiative();
         $Initiative->adminId = $adminId;
-        $Initiative->nameInEnglish = $user->name;
         $Initiative->user_id = $user->id;
-        $Initiative->nameInArabic = $user->name;
+        $Initiative->firstInEnglish = $request['firstName'];
+        $Initiative->lastInEnglish = $request['lastName'];
+        $Initiative->firstInArabic = $request['ARfirst'];
+        $Initiative->lastInArabic = $request['ARlast'];
+        $Initiative->nameInArabic =  "".$request['ARfirst']." ".$request['ARlast'];
+        $Initiative->nameInEnglish = "".$request['firstName']." ".$request['lastName'];
+
+        $Initiative->mobileNumber = $request->mobileNumber;
+        $Initiative->address = $request->address;
+        $user->name= $Initiative->nameInEnglish;
+        $user->save();
+
+        foreach ($request['intrests'] as $i)
+        {
+            $ui=new UserIntrest;
+            $ui->intrest_id = $i;
+            $ui->user_id=$user->id;
+            $ui->save();
+        }
+
+        foreach ($request['targets'] as $t) {
+            $ui=new UserTarget;
+            $ui->target_id = $t;
+            $ui->user_id=$user->id;
+            $ui->save();
+        }
+
         $Initiative->email = $user->email;
-        $Initiative->livingPlace = $request['livingPlace'];
         $Initiative->cityName = $request['cityName'];
         $Initiative->country = $request['country'];
-        $Initiative->currentWork = $request['currentWork'];
         $Initiative->preVoluntary = $request['preVoluntary'];
         if($request['preVoluntary'] == 1){
                 $Initiative->voluntaryYears = $request['voluntaryYears'];
@@ -203,7 +236,7 @@ class IndividualsController extends Controller
 
     public function myResearches(){
         list($user ,$date)=$this->slidbare();
-        $researches=researches::where('ind_id',$user->individuals->id)->get();
+        $researches=researches::where('ind_id',$user->individuals->id)->paginate(8);
         return view('individual/myResearches',compact('researches'));
     }
     
@@ -214,11 +247,13 @@ class IndividualsController extends Controller
      */
     public function editInitiative($initiativeId)
     {
-        $initiative = initiative::where('initiatives.id',$initiativeId)->first();
+        $initiative = Initiative::where('initiatives.id',$initiativeId)->first();
         $user = $this->user;
         if($initiative->adminId == $user->id){
+            $intrests = Intrest::get();
+            $targets = targetedGroups::get();
             list($user ,$date)=$this->slidbare();
-            return view('individual/editInitiative',compact('initiative'));
+            return view('individual/editInitiative',compact('user','initiative','targets','intrests'));
         }
     }
         /**
@@ -229,52 +264,87 @@ class IndividualsController extends Controller
     public function editInitiativePost(Request $request ,$initiativeId)
     {
         $user = $this->user;
-        $initiative = initiative::where('initiatives.id',$initiativeId)->first();
-            if($user->userType == 0 && $initiative)
+        $this->validate($request, [
+            'firstName' => 'required|regex:/^[a-zA-Z]+$/',
+            'lastName' => 'required|regex:/^[a-zA-Z]+$/',
+            'ARfirst' => 'required|alpha',
+            'ARlast' => 'required|alpha',
+            'country' => 'required',
+            'cityName' => 'required_without:x',
+            'x' => 'required_without:cityName',
+            'intrests' => 'required',
+            'targets' => 'required',
+            'preVoluntary' => 'required',
+            'dateOfBirth' => 'required|date|before:today',
+        ]);
+
+        $Initiative = Initiative::where('initiatives.id',$initiativeId)->first();
+        if($user->userType == 0 && $Initiative)
+        {
+            if($Initiative->adminId == $user->id)
             {
-                if($initiative->adminId == $user->id)
+                if(isset($request->password))
                 {
-                    $user = $initiative->user;
                     $this->validate($request, [
-                        'name' => 'required|string|max:255',
+                        'password' => 'required|string|min:6|confirmed',
                     ]);
-                    $user->name = $request['name'];
-                    if($user->email != $request['email'])
-                    {
-                        $this->validate($request, [
-                            'email' => 'required|string|email|max:255|unique:users',
-                        ]);
-                        $user->email = $request['email'];
-                    }
-                    if(isset($request->password))
-                    {
-                        $this->validate($request, [
-                            'password' => 'required|string|min:6|confirmed',
-                        ]);
-                        $user->password = bcrypt($request->password);
-                    }
-                    $user->save();
-                    $initiative->nameInEnglish = $user->name;
-                    $initiative->nameInArabic = $user->name;
-                    $initiative->email = $user->email;
-                    $initiative->livingPlace = $request['livingPlace'];
-                    $initiative->cityName = $request['cityName'];
-                    $initiative->country = $request['country'];
-                    $initiative->currentWork = $request['currentWork'];
-                    $initiative->preVoluntary = $request['preVoluntary'];
-                    if($request['preVoluntary'] == 1)
-                    {
-                        $initiative->voluntaryYears = $request['voluntaryYears'];
-                    }
-                    else
-                    {
-                        $initiative->voluntaryYears = 0;
-                    }
-                    $initiative->dateOfBirth =  $request['dateOfBirth'];
-                    $initiative->save();
+                    $user->password = bcrypt($request->password);
                 }
-                return redirect()->route('home');
+
+                $Initiative->firstInEnglish = $request['firstName'];
+                $Initiative->lastInEnglish = $request['lastName'];
+                $Initiative->firstInArabic = $request['ARfirst'];
+                $Initiative->lastInArabic = $request['ARlast'];
+                $Initiative->nameInArabic =  "".$request['ARfirst']." ".$request['ARlast'];
+                $Initiative->nameInEnglish = "".$request['firstName']." ".$request['lastName'];
+             
+                if ($request->hasFile('image'))
+                {
+                    $picture = $request->file('image');
+                    $imagename = time().'.'.$picture->getClientOriginalExtension();
+                    Image::make($picture)->save(public_path('pp/'.$imagename));
+
+                    $Initiative->picture = $imagename;
+                    $user->picture = $imagename;
+                }
+
+
+            
+                $Initiative->mobileNumber = $request->mobileNumber;
+                $Initiative->address = $request->address;
+                $user->name= $Initiative->nameInEnglish;
+
+                $user->save();
+
+                UserIntrest::where('user_id',$user->id)->delete();
+                foreach ($request['intrests'] as $i)
+                {
+                    $ui=new UserIntrest;
+                    $ui->intrest_id = $i;
+                    $ui->user_id=$user->id;
+                    $ui->save();
+                }
+
+                UserTarget::where('user_id',$user->id)->delete();
+                foreach ($request['targets'] as $t) {
+                    $ui=new UserTarget;
+                    $ui->target_id = $t;
+                    $ui->user_id=$user->id;
+                    $ui->save();
+                }
+
+                $Initiative->email = $user->email;
+                $Initiative->cityName = $request['cityName'];
+                $Initiative->country = $request['country'];
+                $Initiative->preVoluntary = $request['preVoluntary'];
+                if($request['preVoluntary'] == 1){
+                        $Initiative->voluntaryYears = $request['voluntaryYears'];
+                }else{$Initiative->voluntaryYears = 0;}
+                $Initiative->dateOfBirth =  $request['dateOfBirth'];
+                $Initiative->save();
             }
-            abort(403, 'Unauthorized action.');
+            return redirect()->route('home');
+        }
+        abort(403, 'Unauthorized action.');
     }
 }

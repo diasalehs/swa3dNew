@@ -87,18 +87,16 @@ class DatabaseSeeder extends Seeder
 	            $users->save();
 
 	            $initiative = new Initiative();
-  		        $initiative->nameInEnglish = $users->name;
-  		        $initiative->nameInArabic = $users->name;
-  		        $initiative->user_id = $users->id;
+	            $initiative->nameInEnglish = $users->name;
+		        $initiative->nameInArabic = $users->name;
+		        $initiative->user_id = $users->id;
+		        $initiative->cityName = "nablus";
+		        $initiative->country = "pal";
+		        $initiative->dateOfBirth = "2011-1-1";
+		        $initiative->email = $users->email;
+		        $initiative->preVoluntary = 0;
+		        $initiative->voluntaryYears = 0;
   		        $initiative->adminId = ($i-2);
-  		        $initiative->livingPlace = "camp";
-  		        $initiative->cityName = "nablus";
-  		        $initiative->country = "pal";
-  		        $initiative->currentWork = "all";
-  		        $initiative->dateOfBirth = "2011-1-1";
-  		        $initiative->email = $users->email;
-  		        $initiative->preVoluntary = 0;
-  		        $initiative->voluntaryYears = 0;
   		        $initiative->save();
 
 		        $i++;

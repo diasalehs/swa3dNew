@@ -10,6 +10,7 @@ use App\User;
 use App\Volunteer;
 use App\researches;
 use App\Initiative;
+use App\news;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -72,6 +73,18 @@ function boot()
             'eventsVolunteeredAt' => $eventsVolunteeredAt,
         );
         $view->with($data);
+    });
+
+    view()->composer('admin/includes/adminSidebar',function($view){
+        $user = Auth::user();
+        if($user->userType == 10) 
+        {
+            $news_count = news::where([['approved','0'],['publish','1']])->count();
+            $data = array(
+                'news_count' => $news_count,
+            );
+            $view->with($data);
+        }
     });
 
 }

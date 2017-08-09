@@ -22,6 +22,7 @@ class messageController extends Controller
         $sentMessages = message::join('users', 'messages.receiver_id' ,'=','users.id')->where('sender_id',$user->id)->get();
         $receivedMessages = message::join('users', 'messages.sender_id' ,'=','users.id')->where('receiver_id',$user->id)->get();
         $nofooter = true;
+        if($email == null) $email = " ";
         return view('messenger',compact('sentMessages','receivedMessages','email','nofooter'));
     }
 
@@ -31,16 +32,17 @@ class messageController extends Controller
             'email' => 'required|string|email|max:255|exists:users',
             'body' => 'required|string',
         ]);
-        $message = new message();
-        $message->title = $request['title'];
-        $message->body = $request['body'];
         $receiver = User::where('email',$request['email'])->first();
         if($receiver){
+            $message = new message();
+            $message->title = $request['title'];
+            $message->body = $request['body'];
             $message->receiver_id = $receiver->id;
             $message->sender_id = $user->id;
             $message->save();
+            $messageId = $message->id;
         }
-        return redirect()->route('message',compact('message'));
+        return redirect()->route('messenger');
     }
 
     public function message($messageId){

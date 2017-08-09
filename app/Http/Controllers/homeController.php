@@ -135,16 +135,12 @@ class homeController extends Controller
             $userInstitute = Auth::user()->Institute;
             return view('institute/profileViewEdit',compact('userInstitute','user','intrests','targets'));
         }
-        elseif ($user->userType == 3) {
-            $initiative = Auth::user()->initiative;
-            return view('initiative/editInitiative',compact('user','initiative','intrests','targets'));
-        }
 
         }
 
     public function profileEdit(Request $request)
     {
-        $user = Auth::user();
+        $user = $this->user;
         $this->validate($request, [
             'firstName' => 'required|regex:/^[a-zA-Z]+$/',
             'lastName' => 'required|regex:/^[a-zA-Z]+$/',
@@ -158,6 +154,13 @@ class homeController extends Controller
         ]);
         if($user->userType == 0)
         {
+            $this->validate($request, [
+                'gender' => 'required',
+                'currentWork' => 'required',
+                'educationalLevel' => 'required',
+                'preVoluntary' => 'required',
+                'dateOfBirth' => 'required|date|before:today',
+            ]);
             if(isset($request->password))
             {
                 $this->validate($request, [
@@ -166,7 +169,7 @@ class homeController extends Controller
                 $user->password = bcrypt($request->password);
             }
 
-            $Individuals = Auth::user()->Individuals;
+            $Individuals = $user->Individuals;
             $Individuals->firstInEnglish = $request['firstName'];
             $Individuals->lastInEnglish = $request['lastName'];
             $Individuals->firstInArabic = $request['ARfirst'];
@@ -227,6 +230,7 @@ class homeController extends Controller
         {
             $this->validate($request, [
                 'livingPlace' => 'required',
+                'license' => 'required|max:10|unique:institutes',
                 'establishmentYear' => 'required|date|after:01/01/1900',
                 'address' => 'required|max:30',
                 'mobileNumber' => 'required|digits:11',
@@ -276,74 +280,8 @@ class homeController extends Controller
 
 
         }
-        elseif($user->userType == 3)
-        {
-            $this->validate($request, [
-                'name' => 'required|string|max:255',
-            ]);
-            $user->name = $request['name'];
-            if($user->email != $request['email'])
-            {
-                $this->validate($request, [
-                    'email' => 'required|string|email|max:255|unique:users',
-                ]);
-                $user->email = $request['email'];
-            }
-            if(isset($request->password))
-            {
-                $this->validate($request, [
-                    'password' => 'required|string|min:6|confirmed',
-                ]);
-                $user->password = bcrypt($request->password);
-            }
-            $user->save();
-            $initiative = $user->initiative;
-            $initiative->nameInEnglish = $user->name;
-            $initiative->nameInArabic = $user->name;
-            $initiative->email = $user->email;
-            $initiative->livingPlace = $request['livingPlace'];
-            $initiative->cityName = $request['cityName'];
-            $initiative->country = $request['country'];
-            $initiative->currentWork = $request['currentWork'];
-            $initiative->preVoluntary = $request['preVoluntary'];
-            if($request['preVoluntary'] == 1)
-            {
-                $initiative->voluntaryYears = $request['voluntaryYears'];
-            }
-            else
-            {
-                $initiative->voluntaryYears = 0;
-            }
-            $initiative->dateOfBirth =  $request['dateOfBirth'];
-            $initiative->save();
-        }
         else return abort(403, 'Unauthorized action.');
         return redirect()->route('home');
-    }
-
-
-    public function message(){
-        $user = Auth::user();
-        $sentMessages = message::join('users', 'messages.receiver_id' ,'=','users.id')->where('sender_id',$user->id)->get();
-        $receivedMessages = message::join('users', 'messages.sender_id' ,'=','users.id')->where('receiver_id',$user->id)->get();
-        return view('messenger',compact('sentMessages','receivedMessages'));
-    }
-
-    public function sendMessage(Request $request){
-        $user = $this->user;
-        $message = new message();
-        $message->title = $request['title'];
-        $message->body = $request['body'];
-        $receiver = User::where('email',$request['email'])->first();
-        if($receiver){
-            $message->receiver_id = $receiver->id;
-            $message->sender_id = $user->id;
-            $message->save();
-        }
-
-        $sentMessages = message::join('users', 'messages.receiver_id' ,'=','users.id')->where('sender_id',$user->id)->get();
-        $receivedMessages = message::join('users', 'messages.sender_id' ,'=','users.id')->where('receiver_id',$user->id)->get();
-        return view('messenger',compact('sentMessages','receivedMessages'));
     }
 
 }

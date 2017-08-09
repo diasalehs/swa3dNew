@@ -1,4 +1,4 @@
-          <select name="country" class="form-control" onchange="yesnoCheck(this)">
+
             <option value="Afghanistan">Afghanistan</option>
                <option value="Albania">Albania</option>
                <option value="Algeria">Algeria</option>
@@ -241,4 +241,3 @@
 
 
 
-            </select>

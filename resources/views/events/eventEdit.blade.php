@@ -2,7 +2,7 @@
  @section('content')
 
 
-<div class="container"style="margin:20px auto;min-height:500px">
+<div class="container" style="margin:20px auto">
 
 <ul class="nav nav-tabs sw-nav-tabs " role="tablist">
   <li class="nav-item col-4 col-lg-3  first-tab">
@@ -15,12 +15,11 @@
     <a class="nav-link " href="{{route('makeEvent')}}" >Create Event</a>
   </li>
 </ul>
-<div class="col-lg-10 offset-md-1"style="margin-top:30px;">
-
-              <div class="card">
-                  <div class="card-header">Edit Event</div>
-                  <div class="card-block">
-
+<br>
+        <div class="col-lg-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">Create Event</div>
+                <div class="card-block">
                       <form  enctype="multipart/form-data"   class="" role="form" method="POST" action="{{route('eventEditPost') }}">{{ csrf_field() }}
 
                           <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -40,9 +39,11 @@
 
 
                         <div class=" form-group{{ $errors->has('country') ? ' has-error' : '' }}">
-                        <label for="name" class=" form-control-label">Country</label>
+                        <label for="name" class=" form-control-label">Your Country</label>
                         <div class="">
+                               <select name="country" class="form-control" onchange="yesnoCheck(this)">
                                @include('includes.countriesModal')
+                        </select>
 
                         @if ($errors->has('country'))
                             <div class="alert alert-danger" role="alert">
@@ -53,7 +54,7 @@
                 </div>
                                               {{--  --}}{{--  --}}
                   <div id="palestineCity"  class="form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
-                      <label for="email" class=" form-control-label">City name</label>
+                      <label for="email" class=" form-control-label">Your city name</label>
                       <div class="">
                           <select id="palC" name="cityName"  class="form-control">
                             <option value="nablus">Nablus</option>
@@ -67,22 +68,10 @@
                           @endif
                       </div>
                   </div>
-                  <div id="otherCity" style="display:none" class=" form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
-                      <label for="email" class="form-control-label">City name</label>
-                      <div class="">
-                          <input id="otherC" name="x"  type="text" class="form-control" value="{{ old('cityName') }}"
-                           />
-                          @if ($errors->has('cityName'))
-                              <div class="alert alert-danger" role="alert">
-                                  <strong>Warning!</strong> {{ $errors->first('cityName') }}
-                              </div>
-                          @endif
-                      </div>
-                  </div>
                           <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                                   <div class="form-group"> <!-- Description field -->
                                     <label class="control-label " for="description">Description</label>
-                                    <textarea class="form-control" value="{{ $event->description }}" required="required" name="description" id="description" rows="8">{{ $event->description }}</textarea>
+                                    <textarea class="form-control" value="{{ $event->description }}" required="required" name="description" id="description">{{ $event->description }}</textarea>
                                   </div>
                                   @if ($errors->has('description'))
                                       <div class="alert alert-danger" role="alert">
@@ -94,7 +83,7 @@
                           <div class="form-group {{ $errors->has('goals') ? ' has-error' : '' }}">
                                   <div class="form-group"> <!-- Description field -->
                                     <label class="control-label " for="goals">Goals</label>
-                                    <textarea class="form-control" value="{{ $lesson->goals }}" required="required" name="goals" id="goals" rows="8">{{ $lesson->goals }}</textarea>
+                                    <textarea class="form-control" value="{{ $lesson->goals }}" required="required" name="goals" id="goals" rows="6">{{ $lesson->goals }}</textarea>
                                   </div>
                                   @if ($errors->has('goals'))
                                       <div class="alert alert-danger" role="alert">
@@ -103,7 +92,7 @@
                                   @endif
                           </div>
 
-                      <label class="control-label " for="intrests">Intrests</label>
+                                            <label class="control-label " for="intrests">intrests</label>
 <br>
                         <div class="row">
                          @foreach($intrests as $i)
@@ -111,14 +100,14 @@
                             <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
                               <input name="intrests[]" value="{{$i->id}}" type="checkbox" class="custom-control-input">
                               <span class="custom-control-indicator"></span>
-                              <span class="custom-control-description" style="font-size:">{{$i->name}}</span>
+                              <span class="custom-control-description">{{$i->name}}</span>
                             </label>
                           </div>
                           @endforeach
                       </div>
 
                       <br><br>
-                     <label class="control-label " for="intrests">Targets</label>
+                     <label class="control-label " for="intrests">targets</label>
 <br>
                      <div class="row">
                          @foreach($targets as $t)
@@ -141,7 +130,7 @@
                         </div>
 
                           <div class="form-group{{ $errors->has('cover') ? ' has-error' : '' }}">
-                              <label for="name" class="control-label">Cover photo</label>
+                              <label for="name" class="control-label">uplode cover</label>
                                   <input id="name" type="file" accept="image/*" class="form-control" name="cover" value="{{ $event->cover }}"/>
                                   @if ($errors->has('cover'))
                                       <div class="alert alert-danger" role="alert">
@@ -172,7 +161,7 @@
                                   @endif
                           </div>
 
-                          <div class="form-group col-md-6 offset-md-3 col-sm-12">
+                          <div class="form-group">
                                   <button type="submit" class="btn btn-success btn-green btn-block">Edit Event</button>
                           </div>
 
@@ -182,35 +171,5 @@
         </div>
       </div>
 </div>
-</div>
 
 @endsection('content')
-@section('scripts')
-
-  <script type="text/javascript">
-
-  function yesnoCheck(that) {
-          if (that.value == "Palestine") {
-              document.getElementById("palestineCity").style.display = "block";
-              document.getElementById("otherCity").style.display = "none";
-              $('#palC').attr('name', 'cityName');
-              $('#otherC').attr('name', 'x');
-
-          } else {
-            document.getElementById("otherCity").style.display = "block";
-            document.getElementById("palestineCity").style.display = "none";
-            $('#otherC').attr('name', 'cityName');
-            $('#palC').attr('name', 'x');
-
-          }
-      }
-      function vyyesno(that) {
-              if (that.value == "0") {
-                  document.getElementById("vyn").style.display = "none";
-              } else {
-                document.getElementById("vyn").style.display = "block";
-              }
-          }
-          </script>
-
- @endsection

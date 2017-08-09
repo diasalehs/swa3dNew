@@ -1,4 +1,5 @@
-<div class="col-sm-12 col-md-4  col-lg-3 nav-side-menu-div" style="">
+<div class="col-sm-12 col-md-4  col-lg-3 " style="    border-right: 1px solid #ccc;
+">
 
 <div class=" nav-side-menu" style="  ">
     <div class="brand">Menu</div>

@@ -87,8 +87,6 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
             Route::get('/archiveMyEvents', ['uses'=>'eventController@archiveMyEvents'])->name('archiveMyEvents');
 
             //-------------------------------- messenger --------------------------------\\
-            Route::get('/message/{receiverId?}', ['uses'=>'homeController@message'])->name('message');
-            Route::post('/sendMessage/{receiverId?}', ['uses'=>'homeController@sendMessage'])->name('sendMessage');
             Route::get('/messenger/{email?}', ['uses'=>'messageController@messenger'])->name('messenger');
             Route::post('/sendMessage', ['uses'=>'messageController@sendMessage'])->name('sendMessage');
             Route::get('/message/{messageId}', ['uses'=>'messageController@message'])->name('message');

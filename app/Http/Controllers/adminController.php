@@ -21,10 +21,6 @@ class adminController extends Controller
     public function __construct()
     {
         $this->middleware('admin');
-        $this->middleware(function ($request, $next) {
-            $this->news_count = news::where([['approved','0'],['publish','1']])->count();
-            return $next($request);
-        });
     }
 
     public function slidbare()
@@ -35,9 +31,8 @@ class adminController extends Controller
 
     public function pollQuestion()
     {
-        list($news_count)=$this->slidbare();
         $pollQuestions = pollQuestion::get();
-        return view('admin/pollQuestion',compact('news_count','pollQuestions'));
+        return view('admin/pollQuestion',compact('pollQuestions'));
     }
 
     public function pollQuestionPost(Request $request)
@@ -73,16 +68,16 @@ class adminController extends Controller
 
     public function indexx()
     {    
-         return view('admin/adminNews',compact('news_count'));
+         return view('admin/adminNews');
 
 
         # code...
     }
     public function edit($newsID)
 
-    {   list($news_count)=$this->slidbare();
+    {   
         $news = news::find($newsID);
-        return view('admin.editingpage',["news"=>$news,"news_count"=>$news_count]);
+        return view('admin.editingpage',["news"=>$news]);
     }
      public function adminNewsView()
     {    
@@ -102,9 +97,8 @@ class adminController extends Controller
 
     public function approveNews()
     {   
-     list($news_count)=$this->slidbare();
         $news_record= news::where([['approved','0'],['publish','1']])->paginate(10);
-         return view('admin/unApprovedNews',["news_record"=>$news_record,"news_count"=>$news_count]);
+         return view('admin/unApprovedNews',["news_record"=>$news_record]);
 
 
         # code...

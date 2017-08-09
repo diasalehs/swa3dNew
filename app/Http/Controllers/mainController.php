@@ -67,7 +67,6 @@ class mainController extends Controller
         $researches=researches::orderby('created_at','desc')->take(3)->get();
         $events=event::orderby('startDate','desc')->take(3)->get();
 
-
            // $volRec = DB::table('individuals')->count();
            // $malesRec=individuals::where('gender','male')->count();
            // $femalesRec=individuals::where('gender','female')->count();
@@ -226,6 +225,7 @@ class mainController extends Controller
 
     }
     public function allEvents($event =null,Request $request=null) {
+
         $date = $this->date;
 
         if($event==1){

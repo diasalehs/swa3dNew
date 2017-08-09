@@ -3,12 +3,12 @@
 @section('content')
 <div class="viewProfile" style="">
 @include('events.includes.header')
-<div class="container-fluid "style="margin-bottom:50px;margin-top:30px;">
+<div class="container "style="margin-bottom:50px;margin-top:30px;">
   <div class="row ">
 @include('events.includes.sidebar')
 {{-- --}}
 
-    <div class="col-sm-12 col-md-8  event-content" >
+    <div class="col-sm-12 col-md-8" >
 
 
 @if($archived != 1)
@@ -31,6 +31,7 @@
                     <div class="progress-bar bg-green " role="progressbar"style="width: {{number_format(($lesson->yesGoalsCounter/($lesson->noGoalsCounter +$lesson->yesGoalsCounter)) *100 , 2, '.', '') }}%" aria-valuenow="{{$lesson->yesGoalsCounter}}" aria-valuemin="0" aria-valuemax="{{$lesson->yesGoalsCounter + $lesson->noGoalsCounter}}"></div>
                   </div>
                 </div>
+<<<<<<< HEAD
 
 
                 <div class="task-item">
@@ -39,6 +40,15 @@
                   <div class="progress">
                     <div class="progress-bar bg-pink" role="progressbar" style="width: {{number_format(($lesson->noGoalsCounter/($lesson->noGoalsCounter +$lesson->yesGoalsCounter)) *100 , 2, '.', '') }}%" aria-valuenow="{{$lesson->noGoalsCounter}}" aria-valuemin="0" aria-valuemax="{{$lesson->yesGoalsCounter + $lesson->noGoalsCounter}}"></div>
                   </div>
+=======
+            </div>
+            
+            <div class="task-item">
+                No
+                <span class="float-xs-right text-muted progress-primary">{{$lesson->yesGoalsCounter}}%</span>
+                <div id="progress-bar1">
+                    <progress class="progress progress-warning" value="{{$lesson->yesGoalsCounter}}" max="100"></progress>
+>>>>>>> c9b9248b7dd0db71698865c4a58efa09be77556a
                 </div>
 
                 </div>
