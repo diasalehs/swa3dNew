@@ -1,4 +1,4 @@
-<div class="col-sm-12 col-md-4  col-lg-3 " style="    border-right: 1px solid #ccc;
+<div class="col-sm-12 col-md-4  col-lg-3 side-div" style="   
 ">
 
 <div class=" nav-side-menu" style="  ">

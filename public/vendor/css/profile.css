@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 body {
   font-family: 'Ubuntu', sans-serif !important;
@@ -14,9 +13,8 @@ button{
     }
 }
 
-.container-fluid{
-		padding: 0 50px;
-}
+
+
 .profile-name-indi{
   color: #f1ae3a;
 }

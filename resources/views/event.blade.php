@@ -3,7 +3,7 @@
 @section('content')
 <div class="viewProfile" style="">
 @include('events.includes.header')
-<div class="container " style= "margin-bottom:50px;margin-top:30px;">
+<div class="container-fluid " style= "margin-bottom:50px;margin-top:30px;">
   <div class="row ">
 @include('events.includes.sidebar')
 {{-- --}}
@@ -27,7 +27,7 @@
           Goals
         </div>
         <div class="card-block">
-          <p class=" card-text"style="text-align:justify;">{{$lesson->goals}}</p> 
+          <p class=" card-text"style="text-align:justify;">{{$lesson->goals}}</p>
 
         </div>
 
