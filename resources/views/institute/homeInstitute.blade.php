@@ -6,8 +6,8 @@
       @include('institute/includes.sidebar')
         <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
           <div class="jumbotron" style="background-image: linear-gradient(rgba(19, 58, 83, 0.6),rgba(19, 58, 83, 0.6)),url({{ URL::to('/vendor/img/newlogo.png')}});
-          background-size:contain;background-repeat: no-repeat;
-          background-position: right top;
+          background-size:cover;background-repeat: no-repeat;
+          background-position: right ;
           background-attachment: fixed;
           ">
              <h1 class="display-4 " style="color:#fff">Hello, {{$user->nameInEnglish}}!</h1>

@@ -13,13 +13,13 @@
             @foreach($_3slides as $slide)
                 <!-- Slide One - Set the background image for this slide in the line below -->
                 <div class="carousel-item @if ($loop->first) active @endif "
-                  style="background-image:linear-gradient(rgba(0, 0, 0,.5),rgba(0, 0, 0, .5)), url({{ URL::to('/') }}/{{$slide->mainImgpath}}'); ">
+                  style="background-image:linear-gradient(rgba(0, 0, 0,.5),rgba(0, 0, 0, .5)), url('{{$slide->mainImgpath}}'); ">
                     <div class="carousel-caption d-none d-md-block " style="padding-bottom:40px;">
                         <h3>{{$slide->title}}</h3>
                         <p>{{$slide->textarea}}</p>
                     </div>
                 </div>
-            @endforeach
+                @endforeach
 
               </div>
 
@@ -144,9 +144,10 @@
     </div>
 
   <div class="tab-pane fade" id="dashboard" role="tabpanel">
-<div class="text-center ">
 
- @foreach($events as $event)
+
+        <div class="row">
+        @foreach($events as $event)
             <div class="col-lg-4 col-sm-6">
                 <div class="card research-card">
                     <h4 class="card-header"><span class="line-clamp-2 ">{{$event->title}}</span></h4>
@@ -157,13 +158,12 @@
                 </div>
             </div>
       @endforeach
-
-
-
+        </div>
+        <div class="text-center ">
                  <a href="{{route('upComingEvents')}}"> <button type="button" class="btn show-more-btn btn-pink more-researches">See more</button></a>
             </div>
-        
-  </div>
+
+
 </div>
 </div>
 

@@ -20,13 +20,11 @@
         </div>
     </div>
 @endforeach
-
 </div>
 
 </div>
 </div>
 
-    {{$researches->links('vendor.pagination.custom')}}
 </div>
 
 @endsection

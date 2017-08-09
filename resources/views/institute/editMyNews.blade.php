@@ -1,12 +1,13 @@
-
-@extends('institute/layouts.profileMaster')
+@extends('institute.layouts.profileMaster')
 
 @section('content')
 
-    <div class="container-fluid">
-    @include('institute/includes.sidebar')
+<div class="container-fluid" style="margin:120px auto">
+    <div class="row">
 
-        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+    @include('institute.includes.sidebar')
+    <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
+
             <div class="row">
                 <div class="col-lg-12">
                     <form enctype="multipart/form-data" method="POST"
@@ -25,11 +26,12 @@
                         </div>
                         <div class="form-group"> <!-- Message field -->
                             <label class="control-label " for="message">Body</label>
-                            <textarea  name="textarea">{{$news->textarea}}</textarea>
+                            <textarea  id="body"name="textarea">{{$news->textarea}}</textarea>
                         </div>
+                    
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <div class="form-group">
-                            <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+                        <div class="form-group  col-sm-12 col-md-4 offset-md-4">
+                            <button class="btn btn-green btn-block " name="submit" type="submit">Submit</button>
                         </div>
 
                     </form>
@@ -40,12 +42,14 @@
 
         </main>
 
-</div>
+      </div>
+    </div>
 
     @endsection('content')
+    @section('scripts')
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=cj3pbv1qaurvgj16g8omheozohrxpv8yemit6uehwf7sxtlm	"></script>    <script>tinymce.init({
-  selector: 'textarea',
-  height: 500,
+  selector: '#body',
+  height: 200,
   plugins: [
         "advlist autolink lists link image charmap print preview anchor",
         "searchreplace visualblocks code fullscreen",
@@ -55,3 +59,4 @@
  });
 
  </script>
+@endsection

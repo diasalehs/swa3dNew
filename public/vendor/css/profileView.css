@@ -23,3 +23,6 @@ body {
 .rate-table tbody tr td span{
   display: none;
 }
+.event-content{
+  min-height: 500px;
+}

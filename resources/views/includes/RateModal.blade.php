@@ -1,5 +1,3 @@
-@if((!$mine || $eventCloseAllowed) && $archived == 1)
-<!-- Modal -->
 <div class="modal fade" id="rate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -9,7 +7,6 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{route('rateInstitute',$event->id)}}" method="get">
       <div class="modal-body rate-modal">
         <label>cat1</label>
         <input type="text" name="cat1" class="cat1">
@@ -28,11 +25,9 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit"  class="btn btn-green">Save</button>
-        </div>
-        </form>
-        </div>
-        </div>
-        </div>
 
+      </div>
 
-@endif
+    </div>
+  </div>
+</div>

@@ -123,9 +123,7 @@
               <div class="col-sm-12 col-md-6 form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                 <label for="name" class=" form-control-label">Your Country</label>
                   <div class="">
-                    <select name="country" class="form-control" onchange="yesnoCheck(this)">
-                               @include('includes.countriesModal')
-                        </select>
+                    @include('includes.countriesModal')
 
                       @if ($errors->has('cityName'))
                           <div class="alert alert-danger" role="alert">
