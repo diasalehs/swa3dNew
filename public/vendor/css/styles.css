@@ -2,13 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 body {
   font-family: 'Ubuntu', sans-serif !important;
-<<<<<<< HEAD
-  /*zoom: .9;
-  -moz-transform: scale(.5);
-  -moz-transform-origin: 0 0;*/
-=======
+
   color: var(--dark-navy);
->>>>>>> c9b9248b7dd0db71698865c4a58efa09be77556a
 }
 button{
   font-family: 'Ubuntu', sans-serif !important;
@@ -17,7 +12,6 @@ button{
 @media (min-width: 992px) {
 
 }
-<<<<<<< HEAD
 .containerdiv {
   border: 0;
   position: relative;
@@ -37,8 +31,6 @@ button{
  }
 td{
   white-space: nowrap;
-=======
->>>>>>> c9b9248b7dd0db71698865c4a58efa09be77556a
 
 .nb-card {
     position: relative;
@@ -179,7 +171,6 @@ td{
   }
   .nav-side-menu .toggle-btn {
     display: block;
-<<<<<<< HEAD
   cursor: pointer;
   position: absolute;
   right: 10px;
@@ -201,7 +192,6 @@ width: 61px;
   .nav-side-menu .toggle-btn:hover {
     background-color: var(--gray);
 
-=======
     cursor: pointer;
     position: absolute;
     right: 10px;
@@ -212,7 +202,6 @@ width: 61px;
     color: #000;
     width: 40px;
     text-align: center;
->>>>>>> c9b9248b7dd0db71698865c4a58efa09be77556a
   }
   .brand {
     text-align: left !important;
@@ -230,26 +219,6 @@ width: 61px;
 }
 
 
-#unacceptedT_length{
-  display: none;
-}
-#unacceptedT_info{
-
-  display: none;
-}
-#unacceptedT_wrapper div.row div.col-sm-12{
-
-}
-#dt-checkboxes-cell{
-  width: 20px;
-}
-#unacceptedT_wrapper,
-#example_wrapper{
-  padding: 0px;
-}
-#inviteT_wrapper{
-  padding: 0px;
-}
 div.dropdown-menu.open{
   max-height: 400px !important;
 }

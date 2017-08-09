@@ -15,6 +15,7 @@
 
             <div class="menu-list">
 
+               <ul id="menu-content" class="menu-content  collapse out">
                       <a href="{{route('home')}}">
                           <li style="  border-top: 1px solid  rgba(0,0,0,.125);    border-top-right-radius: .25rem;
         border-top-left-radius: .25rem;">
