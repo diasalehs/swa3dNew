@@ -13,13 +13,13 @@
             @foreach($_3slides as $slide)
                 <!-- Slide One - Set the background image for this slide in the line below -->
                 <div class="carousel-item @if ($loop->first) active @endif "
-                  style="background-image:linear-gradient(rgba(0, 0, 0,.5),rgba(0, 0, 0, .5)), url({{$slide->mainImgpath}}'); ">
+                  style="background-image:linear-gradient(rgba(0, 0, 0,.5),rgba(0, 0, 0, .5)), url({{ URL::to('/') }}/{{$slide->mainImgpath}}'); ">
                     <div class="carousel-caption d-none d-md-block " style="padding-bottom:40px;">
                         <h3>{{$slide->title}}</h3>
                         <p>{{$slide->textarea}}</p>
                     </div>
                 </div>
-                @endforeach
+            @endforeach
 
               </div>
 
@@ -75,7 +75,7 @@
     <a class="nav-link" data-toggle="tab" id="rtab" href="#profile" role="tab">Researches</a>
   </li>
   <li class="nav-item col-4 col-lg-3 dashboard-tab-item">
-    <a class="nav-link" data-toggle="tab" id="dtab" href="#dashboard" role="tab">Dashboard</a>
+    <a class="nav-link" data-toggle="tab" id="dtab" href="#dashboard" role="tab">Events</a>
   </li>
 
 </ul>
@@ -144,96 +144,25 @@
     </div>
 
   <div class="tab-pane fade" id="dashboard" role="tabpanel">
-<div class="row tile_count">
+<div class="text-center ">
 
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-              <div class="count">2500</div>
-              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-              <div class="count">123.50</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-              <div class="count green">{{$malesRec}}</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-              <div class="count">{{$femalesRec}}</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-              <div class="count">2,315</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-              <div class="count">7,325</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-          </div>
-<br><br>
-            <div class="row mb-3">
-                <div class="col-xl-3 col-lg-6">
-                  <canvas height="300" width="300" id="myChart"></canvas>
-
-                  <a href="" style="text-decoration:none">
-
-                    <div class="card dashboard-card card-inverse card-success">
-                        <div class="card-block bg-success">
-                            <div class="rotate">
-                                <i class="fa fa-user fa-5x"></i>
-                            </div>
-                            <h6 class="text-uppercase">Volunteers</h6>
-                            <h1 class="display-1">{{$volRec}}</h1>
-                        </div>
+ @foreach($events as $event)
+            <div class="col-lg-4 col-sm-6">
+                <div class="card research-card">
+                    <h4 class="card-header"><span class="line-clamp-2 ">{{$event->title}}</span></h4>
+                    <div class="card-block">
+                        <a href="{{route('event',[$event->id])}}" style="align-self: center;"> Learn More</a>
                     </div>
-                  </a>
-                </div>
 
-                 <div class="col-xl-3 col-lg-6 ">
-                    <a href="#" style="text-decoration:none">
-                 <div class="card dashboard-card card-inverse card-danger">
-                        <div class="card-block bg-danger">
-                            <div class="rotate">
-                                <i class="fa fa-list fa-4x"></i>
-                            </div>
-
-                            <h6 class="text-uppercase">Institutes</h6>
-                            <h1 class="display-1">{{$insRec}}</h1>
-                        </div>
-                    </div>
-                </a>
-                </div>
-
-                <div class="col-xl-3 col-lg-6">
-                    <div class="card dashboard-card card-inverse card-info">
-                        <div class="card-block bg-info">
-                            <div class="rotate">
-                                <i class="fa fa-twitter fa-5x"></i>
-                            </div>
-                            <h6 class="text-uppercase">Events</h6>
-                            <h1 class="display-1">{{$eveRec}}</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <div class="card dashboard-card card-inverse card-warning">
-                        <div class="card-block bg-warning">
-                            <div class="rotate">
-                                <i class="fa fa-share fa-5x"></i>
-                            </div>
-                            <h6 class="text-uppercase">Researches</h6>
-                            <h1 class="display-1">{{$resRec}}</h1>
-                        </div>
-                    </div>
                 </div>
             </div>
+      @endforeach
+
+
+
+                 <a href="{{route('upComingEvents')}}"> <button type="button" class="btn show-more-btn btn-pink more-researches">See more</button></a>
+            </div>
+        
   </div>
 </div>
 </div>
