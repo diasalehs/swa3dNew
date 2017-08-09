@@ -2,7 +2,7 @@
  @section('content')
 
 
-<div class="container-fluid" style="margin:20px auto;min-height:500px">
+<div class="container" style="margin:20px auto;min-height:500px">
 
 <ul class="nav nav-tabs sw-nav-tabs " role="tablist" style="margin-bottom:30px;margin-top:40px;">
   <li class="nav-item col-4 col-lg-3  first-tab">

@@ -14,8 +14,9 @@ button{
     }
 }
 
-
-
+.container-fluid{
+		padding: 0 50px;
+}
 .profile-name-indi{
   color: #f1ae3a;
 }

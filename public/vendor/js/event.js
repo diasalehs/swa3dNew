@@ -47,6 +47,8 @@
 
                  });
 
+                   $("#unacceptedT_length").parent().hide();
+                   $("#unacceptedT_info").parent().hide();
 
-
+                
       });

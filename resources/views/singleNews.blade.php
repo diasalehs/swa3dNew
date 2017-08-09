@@ -6,30 +6,27 @@
   <div class="card card-inverse">
     <img class="card-img" src="{{URL::to('/uploads')}}/{{$news->mainImgpath}}" alt="Card image">
 
-    <div class="card-img-overlay" style="  justify-content: center;">
-
-      <br />
-
+    <div class="card-img-overlay">
+      <h1 class="card-title">{{$news->title}}</h1>
     </div>
   </div>
-  <div class="container" style="min-height:400px">
+  <div class="container">
     <div class="row">
 
         <div class="col-lg-9">
-          <br />
-          <h1 class="card-title greencolor">{{$news->title}}<br /></h1>
+
+            <hr>
+
             <!-- Date/Time -->
-            <p class=""><i class="fa fa-clock-o" aria-hidden="true"></i>
-      {{$news->created_at->diffForHumans()}}</p>
+            <p class="news-date"> Posted on {{$news->created_at}}</p>
 
             <hr>
 
             <!-- Post Content -->
-            {!! $news->textarea !!}
+            <p class="news-text"> {{$news->textarea}}</p>
 
-            <br />
-            <p class=""><i class="fa fa-clock-o" aria-hidden="true"></i>
-            {{$news->created_at->toFormattedDateString()}}</p>
+            <hr>
+
           </div>
         </div>
       </div>

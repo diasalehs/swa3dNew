@@ -3,12 +3,12 @@
 @section('content')
 <div class="viewProfile" style="">
 @include('events.includes.header')
-<div class="container-fluid "style="margin-bottom:50px;margin-top:30px;">
+<div class="container "style="margin-bottom:50px;margin-top:30px;">
   <div class="row ">
 @include('events.includes.sidebar')
 {{-- --}}
 
-    <div class="col-sm-12 col-md-8  event-content" >
+    <div class="col-sm-12 col-md-8" >
 
 
 @if($archived != 1)
@@ -31,7 +31,7 @@
                     <progress class="progress progress-danger" value="{{$lesson->noGoalsCounter}}" max="100"></progress>
                 </div>
             </div>
-
+            
             <div class="task-item">
                 No
                 <span class="float-xs-right text-muted progress-primary">{{$lesson->yesGoalsCounter}}%</span>
