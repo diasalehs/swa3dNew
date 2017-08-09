@@ -15,11 +15,11 @@
     <a class="nav-link " href="{{route('makeEvent')}}" >Create Event</a>
   </li>
 </ul>
-
-              <div class="card">
-                  <div class="card-header">Edit Event</div>
-                  <div class="card-block">
-
+<br>
+        <div class="col-lg-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">Create Event</div>
+                <div class="card-block">
                       <form  enctype="multipart/form-data"   class="" role="form" method="POST" action="{{route('eventEditPost') }}">{{ csrf_field() }}
 
                           <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
