@@ -1,13 +1,13 @@
 
 $('.c').starbox({
-    average: 0.5,
+    average: 0.0,
     autoUpdateAverage: true,
     ghosting: true,
     changeable:true,
     buttons:10
   });
   $('.showrate').starbox({
-  average: 0.5,
+  average: 0.0,
   autoUpdateAverage: false,
   ghosting: false,
   changeable:false,

@@ -33,7 +33,7 @@
 
       </div>
       @endif
-      
+
 
 @if(Auth::guest())
           <div class="card card-outline-warning mb-3 text-center" style="border-color: var(--green); margin-top:30px;">
@@ -62,6 +62,10 @@
 
 @endsection('content')
 @section('scripts')
+<script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
+
+<script src="{{URL::asset('vendor/js/RateJS.js')}} "></script>
+
 
 <script src="{{URL::asset('vendor/js/event.js')}} "></script>
 @endsection

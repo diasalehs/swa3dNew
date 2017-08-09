@@ -3,8 +3,10 @@
 @section('content')
 
 @if(Auth::check())
+<div class="container-fluid min"  >
 
-          <h1 class="pinkcolor col-md-8 col-sm-12">Events</h1>
+          <h1 class="pinkcolor col-md-8 col-sm-12 " style="margin-top:20px;">Events</h1>
+          <hr />
 
          <form id="myform"  action="{{route('Events')}}" class="" style="">
           <div class="row">
@@ -352,6 +354,7 @@
 
     </div>
 </div>
+</div>
 
 @endif
 
@@ -363,5 +366,31 @@
     <script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
+    <script>
+            $(document).ready(function() {
+            $('#example').DataTable( {
+                initComplete: function () {
+                    this.api().columns().every( function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo( $(column.footer()).empty() )
+                            .on( 'change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
 
+                                column
+                                    .search( val ? '^'+val+'$' : '', true, false )
+                                    .draw();
+                            } );
+
+                        column.data().unique().sort().each( function ( d, j ) {
+                            select.append( '<option value="'+d+'">'+d+'</option>' )
+                        } );
+                    } );
+                }
+            } );
+        } );
+
+    </script>
 @endsection

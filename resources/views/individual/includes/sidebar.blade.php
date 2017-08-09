@@ -13,20 +13,65 @@
         </button>
     </div>
     <hr>
-    <ul class="list-group">
-        <a href="{{route('home')}}" class="list-group-item justify-content-between">Dashboard  <span class="badge badge-default badge-pill"></span></a>
-        <a href="{{route('allusers')}}" class="list-group-item  justify-content-between">All users<span class="badge badge-default badge-pill">{{auth::user()->count()}}</span></a>
-        <a href="{{route('followers')}}" class="list-group-item  justify-content-between">Followers<span class="badge badge-default badge-pill">{{$followers->count()}}</span></a>
-        <a href="{{route('following')}}" class="list-group-item  justify-content-between">Following<span class="badge badge-default badge-pill">{{$following->count()}}</span></a>
+    <div class=" nav-side-menu" style="  ">
+        <div class="brand">Menu</div>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        <div class="menu-list">
+        <ul id="menu-content" class="menu-content  collapse out">
+          <a href="{{route('home')}}">
+              <li style="  border-top: 1px solid  rgba(0,0,0,.125);    border-top-right-radius: .25rem;
+border-top-left-radius: .25rem;">
+                <i class="fa fa-user fa-lg"></i> Dashboard
+              </li>
+          </a>
+          <a href="{{route('allusers')}}">
+          <li>
+            <i class="fa fa-users fa-lg"></i> All users
+          </li>
+         </a>
+          <a href="{{route('followers')}}">
+           <li>
+            <i class="fa fa-users fa-lg"></i> Followers
+          </li>
+          </a>
+          <a href="{{route('following')}}">
+          <li>
+            <i class="fa fa-users fa-lg"></i> Following
+          </li>
+         </a>
+
         @if(auth::user()->Individuals->researcher == 1)
-        <a href="{{route('myResearches')}}" class="list-group-item  justify-content-between">My Researches<span class="badge badge-default badge-pill">{{$researches->count()}}</span></a>
+        <a href="{{route('myResearches')}}">
+        <li>
+          <i class="fa fa-users fa-lg"></i> My Researches
+        </li>
+       </a>
         @endif
-        <a href="{{route('myUpComingEvents')}}" class="list-group-item  justify-content-between">My UpComing Events<span class="badge badge-default badge-pill">{{$myUpComingEvents->count()}}</span></a>
-        <a href="{{route('myArchiveEvents')}}" class="list-group-item  justify-content-between">My Archive Events<span class="badge badge-default badge-pill">{{$myArchiveEvents->count()}}</span></a>
-        <a href="{{route('messenger')}}" class="list-group-item  justify-content-between">Messenger</a>
-         <a href="{{route('myInitiatives')}}" class="list-group-item  justify-content-between">My Initiatives<span class="badge badge-default badge-pill">{{$myInitiatives->count()}}</span></a>
+        <a href="{{route('myUpComingEvents')}}">
+        <li>
+          <i class="fa fa-users fa-lg"></i> My UpComing Events
+        </li>
+       </a>
+       <a href="{{route('myArchiveEvents')}}">
+       <li>
+         <i class="fa fa-users fa-lg"></i> My Archive Events
+       </li>
+      </a>
+      <a href="{{route('messenger')}}">
+      <li>
+        <i class="fa fa-users fa-lg"></i> Messenger
+      </li>
+     </a>
+     <a href="{{route('myInitiatives')}}">
+     <li>
+       <i class="fa fa-users fa-lg"></i> My Initiatives
+     </li>
+    </a>
+
     </ul>
- </div>
+  </div>
+</div>
+</div>
 
 
 <!-- Modal -->
@@ -67,3 +112,18 @@
   </div>
 </div>
  @endif
+
+ @section('sidebarS')
+ <script type="text/javascript">
+ $(window).scroll(function() {
+   sessionStorage.scrollTop = $(this).scrollTop();
+ });
+
+ $(document).ready(function() {
+   if (sessionStorage.scrollTop != "undefined") {
+     $(window).scrollTop(sessionStorage.scrollTop);
+   }
+ });
+
+  </script>
+  @endsection

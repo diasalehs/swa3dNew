@@ -58,7 +58,7 @@
 @endif
 
 
-@section('scripts')
+@section('sidebarS')
 <script type="text/javascript">
 $(window).scroll(function() {
   sessionStorage.scrollTop = $(this).scrollTop();

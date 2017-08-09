@@ -35,7 +35,7 @@
                 @elseif($archived == 1)
                   <a class="btn btn-green" style="color:#fff" data-toggle="modal" data-target="#lessonsModal">Lessons Learned</a>
                   @if(!$mine && $eventCloseAllowed)
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate-modal">Rate!</button>
+                  <button type="button" class="btn btn-yellow" data-toggle="modal" data-target="#rate-modal">Rate!</button>
                   @endif
                 @endif
 

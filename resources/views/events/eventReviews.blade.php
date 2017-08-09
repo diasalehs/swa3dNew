@@ -23,22 +23,24 @@
                 <div class="card-block">
                   <p class=" card-text"style="text-align:justify;">{{$lesson->goals}}</p>
 
-                  <div class="task-item">
+                    <div class="task-item">
 
-                Yes
-                <span class="float-xs-right text-muted progress-info">{{$lesson->noGoalsCounter}}%</span>
-                <div id="progress-bar">
-                    <progress class="progress progress-danger" value="{{$lesson->noGoalsCounter}}" max="100"></progress>
+                  Yes -
+                  <span class="float-xs-right text-muted progress-info">{{$lesson->yesGoalsCounter}}  Votes ({{number_format(($lesson->yesGoalsCounter/($lesson->noGoalsCounter +$lesson->yesGoalsCounter)) *100 , 2, '.', '') }}%)</span>
+                  <div class="progress">
+                    <div class="progress-bar bg-green " role="progressbar"style="width: {{number_format(($lesson->yesGoalsCounter/($lesson->noGoalsCounter +$lesson->yesGoalsCounter)) *100 , 2, '.', '') }}%" aria-valuenow="{{$lesson->yesGoalsCounter}}" aria-valuemin="0" aria-valuemax="{{$lesson->yesGoalsCounter + $lesson->noGoalsCounter}}"></div>
+                  </div>
                 </div>
-            </div>
 
-            <div class="task-item">
-                No
-                <span class="float-xs-right text-muted progress-primary">{{$lesson->yesGoalsCounter}}%</span>
-                <div id="progress-bar1">
-                    <progress class="progress progress-warning" value="{{$lesson->yesGoalsCounter}}" max="100"></progress>
+
+                <div class="task-item">
+                    No -
+                    <span class="float-xs-right text-muted progress-primary">{{$lesson->noGoalsCounter}} Votes ({{number_format(($lesson->noGoalsCounter/($lesson->noGoalsCounter +$lesson->yesGoalsCounter)) *100 , 2, '.', '') }}%)</span>
+                  <div class="progress">
+                    <div class="progress-bar bg-pink" role="progressbar" style="width: {{number_format(($lesson->noGoalsCounter/($lesson->noGoalsCounter +$lesson->yesGoalsCounter)) *100 , 2, '.', '') }}%" aria-valuenow="{{$lesson->noGoalsCounter}}" aria-valuemin="0" aria-valuemax="{{$lesson->yesGoalsCounter + $lesson->noGoalsCounter}}"></div>
+                  </div>
                 </div>
-            </div>
+
                 </div>
 
               </div>
@@ -49,7 +51,7 @@
                 </div>
                 <div class="card-block">
                 @if($lesson->lessons == null)
-                  <p class=" card-text"style="text-align:justify;"><a href="{{route('profile',$event->user_id)}}" class="green-link">{{$event->user->name}}</a> didn't add lessons</p>
+                  <p class=" card-text"style="text-align:justify;"><a href="{{route('profile',$event->user_id)}}" class="green-link">{{$event->user->name}}</a> didn't add lessons.</p>
                 @else
                   <p class=" card-text"style="text-align:justify;">{{$lesson->lessons}}</p>
                 @endif
@@ -61,10 +63,10 @@
                 @foreach($reviews as $review)
                     <div class="card" style="margin-bottom:20px;">
                       <div class="card-block">
-                        <h4 class="card-title greencolor" ><a href="{{route('profile',$review->user_id)}}">{{$review->name}}</a></h4>
-                        <h5 class="card-title greencolor" >{{$review->positive}}</h4>
-                        <h5 class="card-title greencolor" >{{$review->negative}}</h4>
-                          {{$review->created_at}}
+                        <h4 class="card-title " ><a href="{{route('profile',$review->user_id)}}" class="green-link">{{$review->name}}</a></h4>
+                        <h6 class="card-title greencolor" >{{$review->positive}}</h6>
+                        <h6 class="card-title pinkcolor" >{{$review->negative}}</h6>
+                          <small>{{$review->created_at}}</small>
                       </div>
                     </div>
                 @endforeach
