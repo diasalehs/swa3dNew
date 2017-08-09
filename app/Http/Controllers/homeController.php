@@ -284,29 +284,4 @@ class homeController extends Controller
         return redirect()->route('home');
     }
 
-
-    public function message(){
-        $user = Auth::user();
-        $sentMessages = message::join('users', 'messages.receiver_id' ,'=','users.id')->where('sender_id',$user->id)->get();
-        $receivedMessages = message::join('users', 'messages.sender_id' ,'=','users.id')->where('receiver_id',$user->id)->get();
-        return view('messenger',compact('sentMessages','receivedMessages'));
-    }
-
-    public function sendMessage(Request $request){
-        $user = $this->user;
-        $message = new message();
-        $message->title = $request['title'];
-        $message->body = $request['body'];
-        $receiver = User::where('email',$request['email'])->first();
-        if($receiver){
-            $message->receiver_id = $receiver->id;
-            $message->sender_id = $user->id;
-            $message->save();
-        }
-
-        $sentMessages = message::join('users', 'messages.receiver_id' ,'=','users.id')->where('sender_id',$user->id)->get();
-        $receivedMessages = message::join('users', 'messages.sender_id' ,'=','users.id')->where('receiver_id',$user->id)->get();
-        return view('messenger',compact('sentMessages','receivedMessages'));
-    }
-
 }

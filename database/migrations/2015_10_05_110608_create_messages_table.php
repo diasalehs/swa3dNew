@@ -16,12 +16,12 @@ class CreateMessagesTable extends Migration
             $table->integer('receiver_id')->index();
             $table->string('title');
             $table->text('body');
-            $table->text('message');
             $table->boolean('is_seen')->default(0);
             $table->boolean('deleted_from_sender')->default(0);
             $table->boolean('deleted_from_receiver')->default(0);
-            $table->integer('user_id');
-            $table->integer('conversation_id');
+            // $table->text('message');
+            // $table->integer('user_id');
+            // $table->integer('conversation_id');
             $table->timestamps();
         });
     }
