@@ -31,4 +31,3 @@ $('.c').starbox({
       //alert($('#r'+r).starbox('getValue')*5);
 
    }
-     //  alert($('#r'+r).starbox('getValue'));

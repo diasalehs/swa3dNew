@@ -8,7 +8,7 @@
 @include('events.includes.sidebar')
 {{-- --}}
 
-    <div class="col-sm-12 col-md-8  event-content" >
+    <div class="col-sm-12 col-md-8" >
 
 
   <h3 class="greencolor ">Volunteers</h3>
@@ -44,7 +44,7 @@
 
 
 @if($archived == 0 && $mine)
-<div class="col-md-6 offset-md-3 col-sm-12">
+<div class="col-6">
   <button  type="submit" class="btn  btn-block btn-green">Remove</button>
 </div>
 </form>

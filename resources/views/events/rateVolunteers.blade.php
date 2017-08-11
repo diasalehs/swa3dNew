@@ -7,7 +7,7 @@
   <div class="row ">
 @include('events.includes.sidebar')
 {{-- --}}
-<div class="col-sm-12 col-md-8  event-content" >
+<div class="col-sm-12 col-md-8" >
 
 
   @if($mine && $archived == 1)

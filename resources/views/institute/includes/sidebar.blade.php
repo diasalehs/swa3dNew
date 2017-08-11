@@ -9,21 +9,19 @@
         <small><a href="{{route('messenger',$user->email)}}">{{$user->email}}</a></small>
     </div>
     <hr>
-
-
     <div class=" nav-side-menu" style="  ">
         <div class="brand">Menu</div>
         <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
             <div class="menu-list">
 
-                <ul id="menu-content" class="menu-content  collapse out">
+               <ul id="menu-content" class="menu-content  collapse out">
                       <a href="{{route('home')}}">
                           <li style="  border-top: 1px solid  rgba(0,0,0,.125);    border-top-right-radius: .25rem;
         border-top-left-radius: .25rem;">
                             <i class="fa fa-user fa-lg"></i> Dashboard
                           </li>
-                      </a>
+                    </a>
 
                       <a href="{{route('followers')}}">
                        <li>
@@ -43,7 +41,7 @@
                   <a href="{{route('messenger')}}">
                   <li >
                    <i class="fa fa-users fa-lg"></i> Messenger
-                 </li>
+                </li>
                </a>
                <a href="{{route('myNews')}}">
                <li >
@@ -52,9 +50,9 @@
             </a>
                 </ul>
          </div>
-    </div>
+       </div>
+     </div>
 
- </div>
 @endif
 
 

@@ -8,7 +8,7 @@
 @include('events.includes.sidebar')
 {{-- --}}
 
-    <div class="col-sm-12 col-md-8  event-content" >
+    <div class="col-sm-12 col-md-8" >
 
 
 @if($archived != 1)
@@ -39,6 +39,7 @@
                   <div class="progress">
                     <div class="progress-bar bg-pink" role="progressbar" style="width: {{number_format(($lesson->noGoalsCounter/($lesson->noGoalsCounter +$lesson->yesGoalsCounter)) *100 , 2, '.', '') }}%" aria-valuenow="{{$lesson->noGoalsCounter}}" aria-valuemin="0" aria-valuemax="{{$lesson->yesGoalsCounter + $lesson->noGoalsCounter}}"></div>
                   </div>
+
                 </div>
 
                 </div>
