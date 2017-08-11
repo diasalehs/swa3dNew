@@ -17,7 +17,7 @@
 </ul>
 
 
-        <div class="col-lg-8 offset-md-2">
+        <div class="col-sm-12 col-md-10 offset-md-1">
             <div class="card">
                 <div class="card-header">Create Event</div>
                 <div class="card-block">
@@ -117,11 +117,11 @@
                                   @endif
                           </div>
 
-                  <label class="control-label " for="intrests">intrests</label>
+                  <label class="control-label " for="intrests">Intrests</label>
 <br>
                         <div class="row">
                          @foreach($intrests as $i)
-                          <div class="form-check col-4">
+                          <div class="form-check col-md-4 col-lg-4 col-12">
                             <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
                               <input name="intrests[]" value="{{$i->id}}" type="checkbox" class="custom-control-input">
                               <span class="custom-control-indicator"></span>
@@ -132,11 +132,11 @@
                       </div>
 
                       <br><br>
-                     <label class="control-label " for="intrests">targets</label>
+                     <label class="control-label " for="intrests">Targets</label>
 <br>
                      <div class="row">
                          @foreach($targets as $t)
-                          <div class="form-check col-4">
+                          <div class="form-check col-md-4 col-lg-4 col-12">
                             <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
                               <input name="targets[]" value="{{$t->id}}" type="checkbox" class="custom-control-input">
                               <span class="custom-control-indicator"></span>
@@ -156,7 +156,7 @@
                         </div>
 
                           <div class="form-group{{ $errors->has('cover') ? ' has-error' : '' }}">
-                              <label for="name" class="control-label">uplode cover</label>
+                              <label for="name" class="control-label">Uplode cover photo</label>
                                   <input id="name" type="file" accept="image/*" class="form-control" name="cover" />
                                   @if ($errors->has('cover'))
                                       <div class="alert alert-danger" role="alert">
@@ -187,8 +187,11 @@
                                   @endif
                           </div>
 
-                          <div class="form-group">
-                                  <button id="register" type="submit" class="btn  btn-green btn-block">Create Event</button>
+                          <div class="form-group row justify-content-center">
+                            <div class="col-sm-12 col-md-4">
+                              <button id="register" type="submit" class="btn  btn-green btn-block">Create Event</button>
+
+                            </div>
                           </div>
 
                       </form>

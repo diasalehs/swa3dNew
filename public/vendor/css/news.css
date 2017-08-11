@@ -42,26 +42,11 @@ button{
     color: #f06493 !important;
 
 }
-.container-fluid{
-		padding: 0 50px;
-}
+
 .news{
   margin-bottom: 100px;
 }
-.news .card-title{
-  color: #fff;
-}
-.news .card-title::before {
-    height: 5px;
-    display: block;
-    width: 50px;
-    background: #fff;
-    border-right: 1px white;
-    content: '';
-    margin: auto;
-    margin-left: 0px;
-    margin-bottom: 10px;
-}
+
 .news .card{
   border: 0;
 }
@@ -71,9 +56,12 @@ button{
   object-fit: cover;
 }
 .news .card-img-overlay{
-    background-color: rgba(19, 58, 83, 0.5);
+    background-color: rgba(19, 58, 83, 0.3);
+    background-attachment: fixed;
+
     display: flex;
     align-items: center;
+    min-height: 300px;
 }
 .news .news-text{
   color: var(--dark-navy);

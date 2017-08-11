@@ -117,17 +117,31 @@
         text-align: center;
     }
     #myFooter .container{
-      width: 100%;
+      width: 98%;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+}
+@media screen and (min-width: 50px) {
+
+    #myFooter .container{
+      width: 95%;
       margin-left: 10px;
       margin-right: 10px;
     }
 }
 @media only screen and (min-width: 768px) {
-
+  #myFooter .container{
+    width: 98%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
   .brand-img{
     height: 180px;
     width: 180px;
+    object-fit: cover;
   }
+
 }
 
 

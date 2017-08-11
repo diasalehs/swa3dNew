@@ -18,6 +18,7 @@ use App\Review;
 use App\Post;
 use Image;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 
 class eventController extends Controller
@@ -66,7 +67,7 @@ class eventController extends Controller
             if($flag) $eventCloseAllowed = true;
             $lesson = Lesson::where('event_id',$event->id)->where('user_id',$event->user_id)->first();
             $reviews = Review::join('users','reviews.user_id','users.id')->where('event_id',$eventId)->get();
-            if($event->user_id == $user->id) 
+            if($event->user_id == $user->id)
             {
                 $mine = true;
                 if($user->userType == 1 || $user->userType == 3)
@@ -74,7 +75,7 @@ class eventController extends Controller
                     $eventVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',0)->get();
                 }
             }
-            if ($user->userType == 0 || $user->userType == 3) 
+            if ($user->userType == 0 || $user->userType == 3)
             {
                 $volunteer = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
                 if($volunteer) $request = true;
@@ -100,7 +101,7 @@ class eventController extends Controller
             for($j=0 ;$j < sizeof($request->invited) ;$j++)
             {
                 for($i=0 ;$i < sizeof($request->invitedEvent) ;$i++)
-                {   
+                {
                     $eventId = $request->invitedEvent[$i];
                     $user = $this->user;
                     $mine = event::where('id',$eventId)->where('user_id',$user->id)->first();
@@ -249,13 +250,13 @@ class eventController extends Controller
             $eveint= new  EventIntrest();
             $eveint->event_id=$event->id;
             $eveint->intrest_id=$i;
-            $eveint->save();       
+            $eveint->save();
         }
         foreach ($request['targets'] as $t) {
             $evetarget= new EventTarget();
             $evetarget->event_id=$event->id;
             $evetarget->target_id=$t;
-            $evetarget->save();     
+            $evetarget->save();
         }
         return redirect()->route('event',compact('event'));
     }
@@ -274,7 +275,7 @@ class eventController extends Controller
         return view('events/archiveMyEvents',compact('user','Aevents','Uevents'));
     }
 
-    
+
 
     public function eventDelete($eventId){
         list($user ,$date)=$this->slidbare();
@@ -370,7 +371,7 @@ class eventController extends Controller
                         $eveint= new  EventIntrest();
                         $eveint->event_id=$event->id;
                         $eveint->intrest_id=$i;
-                        $eveint->save();       
+                        $eveint->save();
                     }
 
                     EventTarget::where('event_id',$event->id)->delete();
@@ -378,7 +379,7 @@ class eventController extends Controller
                         $evetarget= new EventTarget();
                         $evetarget->event_id=$event->id;
                         $evetarget->target_id=$t;
-                        $evetarget->save();     
+                        $evetarget->save();
                     }
 
                     return redirect()->route('event',compact('event'));
@@ -452,13 +453,13 @@ class eventController extends Controller
                 if($event->user_id == $user->id)
                 {
                     for($i ;$i < sizeof($request->accepted) ;$i++)
-                    {   
+                    {
                         $volunteerId = $request->accepted[$i];
                         $volunteeruser = user::where('id',$volunteerId)->first();
                         $volunteer = volunteer::where('user_id',$volunteerId)->where('event_id',$eventId)->first();
                         $invite = invite::where('event_id',$eventId)->where('user_id',$volunteerId)->first();
                         if($volunteeruser)
-                        {   
+                        {
                             if($volunteer)
                             {
                                 $volunteer->accepted = 1;
@@ -500,7 +501,7 @@ class eventController extends Controller
                 if($event->user_id == $user->id)
                 {
                     for($i ;$i < sizeof($request->unaccepted) ;$i++)
-                    {   
+                    {
                         $volunteerId = $request->unaccepted[$i];
                         $volunteeruser = user::where('id',$volunteerId)->first();
                         $volunteer = volunteer::where('user_id',$volunteerId)->where('event_id',$eventId)->first();

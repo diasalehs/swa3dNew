@@ -12,6 +12,9 @@ button{
 @media (min-width: 992px) {
 
 }
+form textarea:focus {
+    border-color: #51c2c0 !important;
+}
 .containerdiv {
   border: 0;
   position: relative;
@@ -29,10 +32,17 @@ button{
  {
    max-width: 100px;
  }
-td{
-  white-space: nowrap;
+ #example_wrapper{
+   margin: 0px;
+   overflow-y: scroll;
+ }
 
-}
+ .page-item.active .page-link {
+     z-index: 2;
+     color: #fff;
+     background-color: var(--green);
+     border-color:  var(--green);;
+ }
 .nb-card {
     position: relative;
     display: block;

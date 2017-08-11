@@ -302,20 +302,21 @@
 
          <div class="row justify-content-center">
            <div class="col-4">
-           <button type="submit" form="myform" class="btn btn-block btn-green" >Search</button>
+           <button type="submit" form="myform" id="submit" class="btn btn-block btn-green" >Search</button>
          </div>
          </div>
         </form>
+        <hr />
 <div class="row">
          <div class="col-12" style="color: #333">
           <div class="row justify-content-center">
 
 
 
-<table id="example" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
+<table id="example" class=" table table-striped table-bordered table-responsive" cellspacing="0"  width="100% !important">
   <thead>
 
-      <tr><th></th>
+      <tr>
           <th>Name</th>
           <th>city</th>
           <th>Description</th>
@@ -325,14 +326,30 @@
 
       </tr>
   </thead>
+  <tfoot>
+    <tr>
+        <th>Name</th>
+        <th>city</th>
+        <th>Description</th>
+        <th>Start date</th>
+        <th>End Date</th>
+        <th>status</th>
 
+    </tr>
+          </tfoot>
   <tbody>
 @foreach($events as $u)
 
-<tr>    <td></td>
-          <td><a href="{{URL::to('/')}}/event/{{$u->id}}">{{$u->title}}</a></td>
+<tr>
+          <td><a class="green-link" href="{{URL::to('/')}}/event/{{$u->id}}">
+
+            {{ $value = str_limit($u->title, 40,$end = '...') }}</a></td>
           <td>{{$u->city}}</td>
-          <td>{{$u->description}}</td>
+          <td class="tdd">
+          {{ $value = str_limit($u->description, 40,$end = '...') }}
+
+
+        </td>
           <td>{{$u->startDate}}</td>
           <td>{{$u->endDate}}</td>
           <td>@if($u->open==1)public
@@ -367,30 +384,31 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
     <script>
-            $(document).ready(function() {
-            $('#example').DataTable( {
-                initComplete: function () {
-                    this.api().columns().every( function () {
-                        var column = this;
-                        var select = $('<select><option value=""></option></select>')
-                            .appendTo( $(column.footer()).empty() )
-                            .on( 'change', function () {
-                                var val = $.fn.dataTable.util.escapeRegex(
-                                    $(this).val()
-                                );
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            initComplete: function () {
+                this.api().columns().every( function () {
+                    var column = this;
+                    var select = $('<select><option value=""></option></select>')
+                        .appendTo( $(column.footer()).empty() )
+                        .on( 'change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
 
-                                column
-                                    .search( val ? '^'+val+'$' : '', true, false )
-                                    .draw();
-                            } );
-
-                        column.data().unique().sort().each( function ( d, j ) {
-                            select.append( '<option value="'+d+'">'+d+'</option>' )
+                            column
+                                .search( val ? '^'+val+'$' : '', true, false )
+                                .draw();
                         } );
+
+                    column.data().unique().sort().each( function ( d, j ) {
+                        select.append( '<option value="">'+d+'</option>' )
                     } );
-                }
-            } );
+                } );
+            }
         } );
+    } );
+
 
     </script>
 @endsection

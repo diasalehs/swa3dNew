@@ -22,11 +22,11 @@ use App\Post;
 use App\Review;
 use App\PollQuestion;
 use App\PollQuestionAnswer;
-
+use Illuminate\Support\Str;
 
 class mainController extends Controller
-{ 
-   
+{
+
 	public function __construct()
     {
         $this->middleware(function ($request, $next) {
@@ -166,7 +166,7 @@ class mainController extends Controller
             elseif ($user->userType==1) {
             $Iuser=$user->Institute;
             }
-            
+
             elseif ($user->userType==3) {
             $Iuser=$user->Initiative;
             }
@@ -378,7 +378,7 @@ class mainController extends Controller
             $eventVols = null;
             $eventAcceptedVols=null;
 
-        	if(Auth::check()) 
+        	if(Auth::check())
             {
                 $reviews = Review::join('users','reviews.user_id','users.id')->where('event_id',$eventId)->get();
                 $lesson = Lesson::where('event_id',$event->id)->where('user_id',$event->user_id)->first();
@@ -401,7 +401,7 @@ class mainController extends Controller
                         $eventVols = volunteer::join('users','volunteers.user_id','=','users.id')->where('event_id',$eventId)->where('accepted',0)->get();
                     }
                 }
-    		    if ($user->userType == 0 || $user->userType == 3) 
+    		    if ($user->userType == 0 || $user->userType == 3)
                 {
                     $volunteer = volunteer::where('event_id',$eventId)->where('user_id',$user->id)->first();
                     if($volunteer) $request = true;
@@ -411,7 +411,7 @@ class mainController extends Controller
         }
         return redirect()->route('errorPage')->withErrors("this event not found.");
 	}
-    
+
     public function researchView($researchID) {
         $research = researches::where('id',$researchID)->first();
         $user=Individuals::where('id',$research->ind_id)->first();
@@ -429,29 +429,29 @@ class mainController extends Controller
             $entry = researches::where('filename', '=', $research->filename)->firstOrFail();
 
         $file = Storage::disk('local')->get($entry->filename);
-        
+
         return (new Response($file, 200))
               ->header('Content-Type', $entry->mime);
     }
     public function Researches_search(Request $request) {
-  
+
         $results= researches::where('title','like','%'.$request['search'].'%')->paginate(2);
- 
+
         $resultstags= researches::whereHas('tags',function($query)use ($request){
          return $query->where('name','like','%'.$request['search'].'%');
         })->paginate(2);
- 
+
         $total= $results->total() + $resultstags->total();
         $items= array_merge($results->items(),$resultstags->items());
         $collection=collect($items)->unique();
- 
+
         $currentpage= \Illuminate\Pagination\LengthAwarePaginator::resolveCurrentPage();
         $researches=new \Illuminate\Pagination\LengthAwarePaginator($collection,$total,2,$currentpage);
         $text=$request['search'];
 
        return view('ResearchesSearch',compact('researches','text'));
- 
- 
+
+
       }
 
       public function institutes(Request $request)
@@ -473,7 +473,7 @@ class mainController extends Controller
                  // location &intrest & target
 
                  if(request()->has('target')){
-                   
+
                       $NGOs = DB::table('institutes')
                      ->join('user_intrests', 'institutes.user_id', '=', 'user_intrests.user_id')
                      ->join('user_targets', 'institutes.user_id', '=', 'user_targets.user_id')
@@ -483,10 +483,10 @@ class mainController extends Controller
                   }
 
              }
-             // location & target** id is userID in  individual (prevously was user.id)  changed to match the location and name ...and target id is target_id 
+             // location & target** id is userID in  individual (prevously was user.id)  changed to match the location and name ...and target id is target_id
 
              elseif(request()->has('target')){
-             
+
                    $NGOs= DB::table("institutes")->join('user_targets', function ($join) {
                  $join->on('institutes.user_id', '=', 'user_targets.user_id')
                  ->whereIn('user_targets.target_id',request('target'))
@@ -496,7 +496,7 @@ class mainController extends Controller
 
                 // location only filter
              else{
-              
+
                  $NGOs=institute::where('country','=',$request['location'])
                  ->get();
                  }
@@ -508,7 +508,7 @@ class mainController extends Controller
              // intrest & target
              if(request()->has('target')){
 
-              
+
 
                   $NGOs = DB::table('institutes')
                  ->join('user_intrests', 'institutes.user_id', '=', 'user_intrests.user_id')
@@ -520,7 +520,7 @@ class mainController extends Controller
                 // intrest only
              else {
 
-                     
+
                       $NGOs= DB::table("institutes")
                      ->join('user_intrests', function ($join) {
                      $join->on('institutes.user_id', '=', 'user_intrests.user_id')
@@ -528,10 +528,10 @@ class mainController extends Controller
                      ->get();
                 }
           }
-        
+
          // target only filter
           elseif(request()->has('target')){
-         
+
              $NGOs= DB::table("institutes")
              ->join('user_targets', function ($join) {
              $join->on('institutes.user_id', '=', 'user_targets.user_id')
@@ -539,7 +539,7 @@ class mainController extends Controller
              ;})
              ->get();
          }
-            
+
             // -------------
             $NGOss= array();
             $var=0;
@@ -555,7 +555,6 @@ class mainController extends Controller
           # code...
       }
 
-      
+
 
 }
-
