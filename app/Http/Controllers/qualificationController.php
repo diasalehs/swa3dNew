@@ -13,10 +13,8 @@ class qualificationController extends Controller
     {
         $this->middleware(['auth']);
         $this->middleware(function ($request, $next) {
-            $date = date('Y-m-d');
-            $user = Auth::user();
-            $this->date = $date;
-            $this->user = $user;
+            $this->date = date('Y-m-d');
+            $this->user = Auth::user();
             return $next($request);
         });
     }
@@ -41,18 +39,16 @@ class qualificationController extends Controller
             'achievementTo' => 'date|after:achievementFrom',
         ]);
 
-        for($i = 0 ;$i < sizeof($request->voluntaryWork) ;$i++)
-        {   
-            $qualification = new Qualification();
-            $qualification->user_id = $user->id;
-            $qualification->voluntaryWork = $request->voluntaryWork[$i];
-            $qualification->role = $request->role[$i];
-            $qualification->targetedSegment = $request->targetedSegment[$i];
-            $qualification->achievements = $request->achievements[$i];
-            $qualification->achievementFrom = $request->achievementFrom[$i];
-            $qualification->achievementTo = $request->achievementTo[$i];
-            $qualification->save();
-        }
+
+        $qualification = new Qualification();
+        $qualification->user_id = $user->id;
+        $qualification->voluntaryWork = $request->voluntaryWork;
+        $qualification->role = $request->role;
+        $qualification->targetedSegment = $request->targetedSegment;
+        $qualification->achievements = $request->achievements;
+        $qualification->achievementFrom = $request->achievementFrom;
+        $qualification->achievementTo = $request->achievementTo;
+        $qualification->save();
 
         return redirect()->back();
     }
@@ -69,19 +65,17 @@ class qualificationController extends Controller
             'achievementFromEdit' => 'required|date|before:today',
             'achievementToEdit' => 'date|after:achievementFromEdit',
         ]);
+  
+        $qualification = Qualification::findOrFail($request->id);
+        $qualification->user_id = $user->id;
+        $qualification->voluntaryWork = $request->voluntaryWorkEdit;
+        $qualification->role = $request->roleEdit;
+        $qualification->targetedSegment = $request->targetedSegmentEdit;
+        $qualification->achievements = $request->achievementsEdit;
+        $qualification->achievementFrom = $request->achievementFromEdit;
+        $qualification->achievementTo = $request->achievementToEdit;
+        $qualification->save();
 
-        for($i = 0 ;$i < sizeof($request->voluntaryWorkEdit) ;$i++)
-        {   
-            $qualification = Qualification::findOrFail($request->id[$i]);
-            $qualification->user_id = $user->id;
-            $qualification->voluntaryWork = $request->voluntaryWorkEdit[$i];
-            $qualification->role = $request->roleEdit[$i];
-            $qualification->targetedSegment = $request->targetedSegmentEdit[$i];
-            $qualification->achievements = $request->achievementsEdit[$i];
-            $qualification->achievementFrom = $request->achievementFromEdit[$i];
-            $qualification->achievementTo = $request->achievementToEdit[$i];
-            $qualification->save();
-        }
         return redirect()->back();
     }
 
