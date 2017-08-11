@@ -3,12 +3,12 @@
 @section('content')
 <div class="viewProfile" style="">
 @include('events.includes.header')
-<div class="container " style= "margin-bottom:50px;margin-top:30px;">
+<div class="container-fluid " style= "margin-bottom:50px;margin-top:30px;">
   <div class="row ">
 @include('events.includes.sidebar')
 {{-- --}}
 
-    <div class="col-sm-12 col-md-8" >
+    <div class="col-sm-12 col-md-8 col-lg-9" >
 
       <div class="card">
         <div class="card-header">
@@ -21,16 +21,19 @@
         </div>
 
       </div>
+      @if (Auth::user())
       <div class="card" style="margin-top:10px;">
         <div class="card-header">
           Goals
         </div>
         <div class="card-block">
-          <p class=" card-text"style="text-align:justify;">{{$lesson->goals}}</p> 
+          <p class=" card-text"style="text-align:justify;">{{$lesson->goals}}</p>
 
         </div>
 
       </div>
+      @endif
+
 
 @if(Auth::guest())
           <div class="card card-outline-warning mb-3 text-center" style="border-color: var(--green); margin-top:30px;">
@@ -59,6 +62,10 @@
 
 @endsection('content')
 @section('scripts')
+<script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
+
+<script src="{{URL::asset('vendor/js/RateJS.js')}} "></script>
+
 
 <script src="{{URL::asset('vendor/js/event.js')}} "></script>
 @endsection

@@ -236,7 +236,7 @@ class IndividualsController extends Controller
 
     public function myResearches(){
         list($user ,$date)=$this->slidbare();
-        $researches=researches::where('ind_id',$user->individuals->id)->get();
+        $researches=researches::where('ind_id',$user->individuals->id)->paginate(8);
         return view('individual/myResearches',compact('researches'));
     }
     

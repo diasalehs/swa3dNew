@@ -1,16 +1,17 @@
     <div class="row">
 
-            @if(count($events)==0)
-                <h2 class="greencolor">
-                  No events
-                </h2>
-            @endif
+
          <div class="col-12" style="color: #333">
+           @if(count($events)==0)
+               <h4 class="greencolor">
+                 No events
+               </h4>
+           @endif
           <div class="row justify-content-center">
 
           @foreach($events as $event)
 
-                        <?php 
+                        <?php
                           $volunteer = 0;
                           $mine = 0;
                           if(Auth::check())
@@ -61,5 +62,3 @@
     {{$events->links('vendor.pagination.custom')}}
 
   </div> --}}
-
-  

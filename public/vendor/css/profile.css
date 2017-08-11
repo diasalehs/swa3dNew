@@ -14,9 +14,8 @@ button{
     }
 }
 
-.container-fluid{
-		padding: 0 50px;
-}
+
+
 .profile-name-indi{
   color: #f1ae3a;
 }
@@ -125,25 +124,28 @@ button{
   }
   .mg{
       padding: 14px 40px;
-      width: 100%;
+      width: 46%;
 
   }
   .mg:hover{
       padding: 14px 40px;
-      width: 100%;
+      width: 46%;
   }
   .bv{
       padding: 14px 40px;
-      width: 100%;
+      width: 46%;
       margin: 5px 5px;
 
   }
   .bv:hover{
       padding: 14px 40px;
-      width: 100%;
+      width: 46%;
 
   }
   .yrp{
+    text-align: center;
+  }
+  .lead{
     text-align: center;
   }
 }
@@ -172,6 +174,24 @@ button{
   }
   .jumbotron h1{
     font-size: 50px;
+    }
+    .lead{
+      text-align: left;
+    }
+    .mg{
+        width: 300px;
+
+    }
+    .mg:hover{
+        width: 300px;
+    }
+    .bv{
+        width: 300px;
+        margin: 5px 5px;
+
+    }
+    .bv:hover{
+        width: 300px;
     }
 }
 @media only screen and (min-width: 1029px) {

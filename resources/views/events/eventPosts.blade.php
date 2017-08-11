@@ -3,12 +3,12 @@
 @section('content')
 <div class="viewProfile" style="">
 @include('events.includes.header')
-<div class="container "style="margin-bottom:50px;margin-top:30px;">
+<div class="container-fluid "style="margin-bottom:50px;margin-top:30px; ">
   <div class="row ">
 @include('events.includes.sidebar')
 {{-- --}}
 
-    <div class="col-sm-12 col-md-8" >
+    <div class="col-sm-12 col-md-8 event-content" >
 
 
 @if(count($posts) == 0)
@@ -40,10 +40,13 @@
 
 @endsection('content')
 @section('scripts')
-]
-<script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
+
+    <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
 
     <script src="{{URL::asset('vendor/js/event.js')}} "></script>
+    <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
+
+    <script src="{{URL::asset('vendor/js/RateJS.js')}} "></script>
 
 
 @endsection

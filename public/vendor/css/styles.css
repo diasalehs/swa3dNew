@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 body {
   font-family: 'Ubuntu', sans-serif !important;
-  color: var(--dark-navy);
+  /*zoom: .9;
+  -moz-transform: scale(.5);
+  -moz-transform-origin: 0 0;*/
 }
 button{
   font-family: 'Ubuntu', sans-serif !important;
@@ -11,11 +13,30 @@ button{
 @media (min-width: 992px) {
 
 }
+.containerdiv {
+  border: 0;
+  position: relative;
+  width: 100px;
+}
+.cornerimage {
+  border: 0;
+  position: absolute;
+  top: -1px;
+  left: 0;
+  overflow: hidden;
+ }
+ .cornerimage img,
+ .containerdiv img
+ {
+   max-width: 100px;
+ }
+td{
+  white-space: nowrap;
 
+}
 .nb-card {
     position: relative;
     display: block;
-    background-color: #fff;
     border-radius: 0.15rem;
     border: 1px solid rgba(0, 0, 0, 0.125);
     transition:all 0.3s ease-in-out;
@@ -24,7 +45,6 @@ button{
 .nb-card .card-header {
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
-    background-color: #FFF;
 }
 .nb-card .task-item {
     margin: 18px 20px;
@@ -34,13 +54,17 @@ button{
     width: 100%;
     margin-bottom: 1rem;
     vertical-align: baseline;
-    height: 0.4rem;
     margin-top: 4px;
+}
+.bg-green {
+    background-color: var(--green)!important;
+}
+.bg-pink {
+    background-color: var(--pink)!important;
 }
 .nav-side-menu {
   overflow: auto;
-  font-family: verdana;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 200;
   background-color: #fff;
   top: 0px;
@@ -52,8 +76,7 @@ button{
   line-height: 50px;
   display: block;
   text-align: center;
-  font-size: 14px;
-  height: 0px;
+  font-size: 1.25rem;  height: 0px;
   border-bottom: 1px solid rgba(0,0,0,.125);
   opacity: 0;
 }
@@ -64,8 +87,8 @@ button{
 .nav-side-menu ul,
 .nav-side-menu li {
   list-style: none;
-  padding: 10px;
-  padding-left: 0px;
+  padding: .75rem 1.25rem;
+  padding-left: 10px;
   margin: 0px;
   line-height: 35px;
   cursor: pointer;
@@ -114,7 +137,7 @@ button{
   vertical-align: middle;
 }
 .nav-side-menu li {
-  padding-left: 0px;
+  padding-left: 10px;
   border-left: 1px solid rgba(0,0,0,.125);
   border-right: 1px solid rgba(0,0,0,.125);
   border-bottom: 1px solid rgba(0,0,0,.125);
@@ -126,7 +149,7 @@ button{
 }
 .nav-side-menu a li  {
   text-decoration: none;
-  color: var(--green);
+  color: var(--green-hover);
 }
 .nav-side-menu li a i {
   padding-left: 10px;
@@ -141,24 +164,43 @@ button{
   -ms-transition: all .5s ease;
   transition: all .5s ease;
 }
+.nav-side-menu-div{
+   border-right: 1px solid #ccc;
+}
 @media (max-width: 767px) {
+  .nav-side-menu-div{
+     border-right: 0px solid #ccc;
+  }
   .nav-side-menu {
     position: relative;
     width: 100%;
     margin-bottom: 10px;
+    border-right: 0px solid #ccc;
+    border-radius: .25rem;
   }
   .nav-side-menu .toggle-btn {
     display: block;
-    cursor: pointer;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    z-index: 10 !important;
-    padding: 3px;
-    background-color: #ffffff;
-    color: #000;
-    width: 40px;
-    text-align: center;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  z-index: 10 !important;
+  padding: .25rem .75rem;
+  background-color: #ffffff;
+  color: var(--green);
+  width: 1.5em;
+  /* height: 1.5em; */
+  vertical-align: middle;
+  text-align: center;
+  transition: 1s ease;
+  border-radius: .25rem;
+  font-size: 26px;
+width: 61px;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+    }
+  .nav-side-menu .toggle-btn:hover {
+    background-color: var(--gray);
+
   }
   .brand {
     text-align: left !important;
@@ -176,26 +218,7 @@ button{
 }
 
 
-#unacceptedT_length{
-  display: none;
-}
-#unacceptedT_info{
 
-  display: none;
-}
-#unacceptedT_wrapper div.row div.col-sm-12{
-
-}
-#dt-checkboxes-cell{
-  width: 20px;
-}
-#unacceptedT_wrapper,
-#example_wrapper{
-  padding: 0px;
-}
-#inviteT_wrapper{
-  padding: 0px;
-}
 div.dropdown-menu.open{
   max-height: 400px !important;
 }
@@ -204,7 +227,7 @@ ul.inner{
 
 }
 .min{
-  min-height: 500px;
+  min-height: 800px;
 }
 .btn{
   border-radius: 200px ;
@@ -953,8 +976,14 @@ border-bottom: 3px solid #51c2c0 !important;
   .login-btn{
         margin-bottom: 16px;
   }
+  .container-fluid{
+    padding: 0 20px;
+  }
   .mr-auto{
     margin-top: 20px;
+  }
+  .event-title{
+    font-size: 30px;
   }
   .top-5{
       padding-top: 10px;
@@ -1059,7 +1088,10 @@ border-bottom: 3px solid #51c2c0 !important;
     width: 300px !important;
 
   }
-  .  .nav-item{
+  .event-title{
+      font-size: 35px;
+    }
+    .nav-item{
     padding-right: 10px;
     padding-left: : 10px;
     }
@@ -1079,8 +1111,12 @@ border-bottom: 3px solid #51c2c0 !important;
   }
 }
 @media only screen and (min-width: 768px) {
-
-
+  .event-title{
+      font-size: 40px;
+    }
+    .container-fluid{
+      padding: 0 50px;
+    }
   .nav-tabs-main  .nav-item a{
       background-color: #eee;
       font-size: 20px;
@@ -1097,7 +1133,9 @@ border-bottom: 3px solid #51c2c0 !important;
     }
 }
 @media only screen and (min-width: 1201px) {
-
+  .event-title{
+      font-size: 45px;
+    }
   .mr-auto{
     margin-top: 0px;
   }

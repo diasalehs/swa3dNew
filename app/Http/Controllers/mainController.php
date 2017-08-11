@@ -65,17 +65,18 @@ class mainController extends Controller
         ->take(3)->get();
         $pollQuestion= pollQuestion::orderBy('created_at','desc')->first();
         $researches=researches::orderby('created_at','desc')->take(3)->get();
+        $events=event::orderby('startDate','desc')->take(3)->get();
 
-           $volRec = DB::table('individuals')->count();
-           $malesRec=individuals::where('gender','male')->count();
-           $femalesRec=individuals::where('gender','female')->count();
-           $insRec= DB::table('institutes')->count();
-           $resRec=DB::table('researches')->count();
-           $eveRec=DB::table('events')->count();
+           // $volRec = DB::table('individuals')->count();
+           // $malesRec=individuals::where('gender','male')->count();
+           // $femalesRec=individuals::where('gender','female')->count();
+           // $insRec= DB::table('institutes')->count();
+           // $resRec=DB::table('researches')->count();
+           // $eveRec=DB::table('events')->count();
 
 
 
-         return view('main',compact('volunteers','_3slides','news_record','researches','volRec','insRec','resRec','eveRec','malesRec','femalesRec','pollQuestion'
+         return view('main',compact('volunteers','_3slides','news_record','researches','events','pollQuestion'
             ));
 	}
 

@@ -14,11 +14,11 @@
               <h1 class="display-4" style="color:#fff">Hello, {{$user->nameInEnglish}}!</h1>
               <p class="lead"style="color:#fff">This is a V simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
               <hr class="my-4"style="background-color: #fff">
-              <p class="lead">
+              <p class="lead" >
                 <a class="btn  btn-lg bv" href="{{route('upComingEvents')}}" role="button">Volunteer Now</a>
                 <a class="btn  btn-lg mg" href="{{route('makeInitiative')}}" role="button">Make Initiative</a>
 
-              
+
               </p>
             </div>
             <div class="row yrp">

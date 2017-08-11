@@ -11,7 +11,7 @@
               </div>
               <div class="modal-body">
 
-                  <form id="review" role="form" 
+                  <form id="review" role="form"
                   @if($mine)
                   action="{{route('lesson',$event->id)}}"
                   @elseif($eventCloseAllowed)
@@ -34,10 +34,11 @@
 
                     @else
 
-            <div class="col-sm-12 col-md-6 form-check form-check">
+            <div class="col-sm-12 col-md-12 form-check form-check">
                     @if($lesson != null)
                      Event Goals: {{$lesson->goals}}
                     @endif
+                    <br />
             <label >Did this event achevied his goals ?</label><br />
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="goals" id="inlineRadio1" value="1" checked> yes
@@ -66,7 +67,7 @@
                           </div>
                       @endif
                     </div>
-                    
+
                     @endif
                       </div>
               </div>
