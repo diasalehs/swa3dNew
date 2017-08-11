@@ -28,9 +28,9 @@
         @endif
         @if($mine)
           @if($open)
-            <a class='btn btn-danger'  href="{{route('closeProfile')}}">close</a>
+            <a class='btn btn-danger'  href="{{route('closeProfile')}}">make it private</a>
           @elseif(!$open)
-            <a class='btn btn-danger'  href="{{route('openProfile')}}">open</a>
+            <a class='btn btn-danger'  href="{{route('openProfile')}}">make it public</a>
           @endif
         @endif
       @endif

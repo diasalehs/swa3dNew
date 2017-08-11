@@ -5,6 +5,14 @@
     <div class="row">
       @include('individual/includes.sidebar')
 <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
+                              @if ($errors->first())
+                                  <div class="alert alert-danger" role="alert">
+                                      <strong>Warning!</strong> 
+                                      @foreach ($errors->all() as $error)
+                                          <li>{{ $error }}</li>
+                                      @endforeach
+                                  </div>
+                              @endif
   <div id="accordion" role="tablist" aria-multiselectable="true">
     <div class="card">
       <div class="card-header" role="tab" id="headingOne">

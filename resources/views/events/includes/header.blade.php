@@ -18,9 +18,9 @@
                     <a class="btn btn-pink" href="{{route('eventDelete',$event->id)}}">Delete</a>
                     <a class=" btn btn-yellow" href="{{route('eventEdit',$event->id)}}">Edit</a>
                     @if($event->open)
-                      <a class="btn btn-danger"  href="{{route('closeEvent',$event->id)}}">close</a>
+                      <a class="btn btn-danger"  href="{{route('closeEvent',$event->id)}}">make it private</a>
                     @elseif(!$event->open)
-                      <a class="btn btn-danger"  href="{{route('openEvent',$event->id)}}">open</a>
+                      <a class="btn btn-danger"  href="{{route('openEvent',$event->id)}}">make it public</a>
                     @endif
                   @else
                     @if($request)

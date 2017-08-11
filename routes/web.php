@@ -44,8 +44,8 @@ Auth::routes();
 Route::post('/allRegister', ['uses'=>'registerStep2Controller@allRegister','as'=>'allRegister']);
 Route::get('/step', ['uses'=>'stepController@step','as'=>'step']);
 Route::get('/choose', ['uses'=>'chooseController@choose','as'=>'choose']);
-Route::post('/registerer', function(\Illuminate\Http\Request $request) {
-    return view('auth/register',['user_type'=>$request['submit']]);
+Route::get('/registerer/{user_type}', function($user_type) {
+    return view('auth/register',compact('user_type'));
 })->name('registerer');
 
 Route::get('/errorPage', function() {return view('errorPage');})->name('errorPage');
@@ -176,6 +176,7 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 });
 
 Route::post('/qualification/add', ['uses'=>'qualificationController@create'])->name('addQualification');
+Route::post('/qualification/edit', ['uses'=>'qualificationController@edit'])->name('editQualification');
 Route::get('/qualification/{qualificationId}/destroy', ['uses'=>'qualificationController@destroy'])->name('deleteQualification');
 Route::get('/eventRank/{eventId}', ['uses'=>'profilesController@rateInstitute'])->name('rateInstitute');
 Route::POST('/eventRate/{eventId}',  ['uses' =>'profilesController@rate'])->name('rate');

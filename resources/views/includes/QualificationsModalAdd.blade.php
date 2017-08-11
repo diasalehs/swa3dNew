@@ -15,7 +15,7 @@
 
                   <div class="form-group col-md-6 col-sm-12 {{ $errors->has('voluntaryWork') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">Voluntary Work</label>
-                        <input id="voluntaryWork" type="tel" class="form-control" name="voluntaryWork[]" value="{{ old('voluntaryWork') }}"
+                        <input id="voluntaryWork" type="text" class="form-control" name="voluntaryWork[]" value="{{ old('voluntaryWork') }}"
                         required="required" autofocus="autofocus" />
                         @if ($errors->has('voluntaryWork'))
                             <div class="alert alert-danger" role="alert">
@@ -26,7 +26,7 @@
 
                 <div class="form-group col-md-6 col-sm-12 {{ $errors->has('role') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">Role</label>
-                        <input id="role" type="tel" class="form-control" name="role[]" value="{{ old('role') }}"
+                        <input id="role" type="text" class="form-control" name="role[]" value="{{ old('role') }}"
                         required="required" autofocus="autofocus" />
                         @if ($errors->has('role'))
                             <div class="alert alert-danger" role="alert">
@@ -37,7 +37,7 @@
 
                 <div class="form-group col-md-6 col-sm-12 {{ $errors->has('achievements') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">Achievements</label>
-                        <input id="achievements" type="tel" class="form-control" name="achievements[]" value="{{ old('achievements') }}"
+                        <input id="achievements" type="text" class="form-control" name="achievements[]" value="{{ old('achievements') }}"
                         required="required" autofocus="autofocus" />
                         @if ($errors->has('achievements'))
                             <div class="alert alert-danger" role="alert">
@@ -47,15 +47,18 @@
                 </div>
 
                 <div class="form-group col-md-6 col-sm-12 {{ $errors->has('targetedSegment') ? ' has-error' : '' }}">
-                    <label for="name" class="form-control-label">targeted segments</label>
-                        <input id="targetedSegment" type="text" class="form-control" name="targetedSegment[]" value="{{ old('targetedSegment') }}"
-                        required="required" autofocus="autofocus" />
-                        @if ($errors->has('targetedSegment'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Warning!</strong> {{ $errors->first('targetedSegment') }}
-                            </div>
-                        @endif
-                </div>
+                          <label for="name" class="form-control-label">targeted segments</label>
+                              <select name="targetedSegment[]" class="form-control" class="form-control" id="targetedSegment" required="required" autofocus="autofocus">
+                              @foreach($targets as $t)
+                              <option value="{{$t->id}}" selected>{{$t->name}}</option>
+                              @endforeach
+                              </select>
+                              @if ($errors->has('targetedSegment'))
+                                  <div class="alert alert-danger" role="alert">
+                                      <strong>Warning!</strong> {{ $errors->first('targetedSegment') }}
+                                  </div>
+                              @endif
+                      </div>
 
                 <div class="form-group col-md-6 col-sm-12 {{ $errors->has('achievementFrom') ? ' has-error' : '' }}">
                     <label for="name" class="form-control-label">Start Date</label>

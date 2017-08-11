@@ -94,8 +94,8 @@
           <td>{{$u->description}}</td>
           <td>{{$u->startDate}}</td>
           <td>{{$u->endDate}}</td>
-          <td>@if($u->open==1)open
-              @else closed
+          <td>@if($u->open==1)public
+              @else private
               @endif
           </td>
 </tr>

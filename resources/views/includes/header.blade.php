@@ -99,22 +99,9 @@ background-position-y: 7px;">
       <div class="modal-body">
         <div class="row justify-content-center">
 
-          <form class="" role="form" method="POST" action="{{ route('registerer') }}">{{ csrf_field() }}
-                  <div class="form-group">
-                  <div class=" ">
 
-                      <button type="submit" value="0" name="submit" class="btn  choose-btn ">Individual</button>
-                  </div>
-              </div>
-
-
-                  <div class="form-group">
-                  <div class=" ">
-                      <button type="submit" value="1" name="submit" class="btn  choose-btn ">Institute</button>
-                  </div>
-              </div>
-          </form>
-
+                    <a class="btn  choose-btn "  href="{{route('registerer',0)}}">Individual</a>
+                    <a class="btn  choose-btn "  href="{{route('registerer',1)}}">Institute</a>
 
 
         </div>
