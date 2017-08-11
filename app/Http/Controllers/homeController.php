@@ -221,6 +221,9 @@ class homeController extends Controller
             $Individuals->major= $request['Major'];
             $Individuals->preVoluntary = $request['preVoluntary'];
             if($request['preVoluntary'] == 1){
+                    $this->validate($request, [
+                        'voluntaryYears' => 'required|integer|greater_than_field:0',
+                    ]);
                     $Individuals->voluntaryYears = $request['voluntaryYears'];
             }else{$Individuals->voluntaryYears = 0;}
             $Individuals->dateOfBirth =  $request['dateOfBirth'];

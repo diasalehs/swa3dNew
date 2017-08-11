@@ -5,6 +5,14 @@
     <div class="row">
       @include('individual/includes.sidebar')
 <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
+                              @if ($errors->first())
+                                  <div class="alert alert-danger" role="alert">
+                                      <strong>Warning!</strong> 
+                                      @foreach ($errors->all() as $error)
+                                          <li>{{ $error }}</li>
+                                      @endforeach
+                                  </div>
+                              @endif
   <div id="accordion" role="tablist" aria-multiselectable="true">
     <div class="card">
       <div class="card-header" role="tab" id="headingOne">
@@ -119,7 +127,30 @@
                       @endif
                   </div>
               </div>
-              {{--  --}}{{--  --}}
+              {{--  --}}
+
+          <div class="col-sm-12 col-md-6 form-check form-check-inline">
+            <label for="exampleInputEmail1">Gender</label><br />
+
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male" 
+              checked
+              @if($userIndividual->gender == "male")
+                checked
+              @endif
+              > Male
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="female"
+              @if($userIndividual->gender == "male")
+                checked
+              @endif
+              > Female
+            </label>
+
+          </div>
+
+              {{--  --}}
               <div class="col-sm-12 col-md-6 form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                 <label for="name" class=" form-control-label">Your Country</label>
                   <div class="">
@@ -181,15 +212,47 @@
             <div class="col-sm-12 col-md-6 form-group">
                   <label  class=" form-control-label" for="exampleSelect1">Your Current Work</label>
                <div class="">
-                  <select name="currentWork" value="{{ $userIndividual->currentWork}}" class="form-control" id="exampleSelect1">
-                  <option value="School Student">School Student</option>
-                  <option value="University Student">University Student</option>
-                  <option value="Governmental Employee">Governmental Employee</option>
-                  <option value="Private sector Employee">Private sector Employee</option>
-                  <option value="NGO Employee">NGO Employee</option>
-                  <option value="Self-employed">Self-employed</option>
-                  <option value="Business Owner">Business Owner</option>
-                  <option value="Unemployed">Unemployed</option>
+                  <select name="currentWork"  class="form-control" id="exampleSelect1">
+                  <option value="School Student" 
+                  @if($userIndividual->currentWork == "School Student")
+                    selected
+                  @endif
+                  >School Student</option>
+                  <option value="University Student"
+                  @if($userIndividual->currentWork == "University Student")
+                    selected
+                  @endif
+                  >University Student</option>
+                  <option value="Governmental Employee"
+                  @if($userIndividual->currentWork == "Governmental Employee")
+                    selected
+                  @endif
+                  >Governmental Employee</option>
+                  <option value="Private sector Employee"
+                  @if($userIndividual->currentWork == "Private sector Employee")
+                    selected
+                  @endif
+                  >Private sector Employee</option>
+                  <option value="NGO Employee"
+                  @if($userIndividual->currentWork == "NGO Employee")
+                    selected
+                  @endif
+                  >NGO Employee</option>
+                  <option value="Self-employed"
+                  @if($userIndividual->currentWork == "Self-employed")
+                    selected
+                  @endif
+                  >Self-employed</option>
+                  <option value="Business Owner"
+                  @if($userIndividual->currentWork == "Business Owner")
+                    selected
+                  @endif
+                  >Business Owner</option>
+                  <option value="Unemployed"
+                  @if($userIndividual->currentWork == "Unemployed")
+                    selected
+                  @endif
+                  >Unemployed</option>
                   </select>
                </div>
             </div>
@@ -197,12 +260,32 @@
              <div class="col-sm-12 col-md-6 form-group">
                   <label  class=" form-control-label" for="exampleSelect1">Your educational level</label>
                <div class="">
-                  <select name="educationalLevel" value="{{  $userIndividual->educationalLevel}}" class="form-control" id="exampleSelect1">
-                  <option value="High School">High School</option>
-                  <option value="BSc">BSc</option>
-                  <option value="MSc">MSc</option>
-                  <option value="Diploma">Diploma</option>
-                  <option value="PhD">PhD</option>
+                  <select name="educationalLevel" class="form-control" id="exampleSelect1">
+                  <option value="High School"
+                  @if($userIndividual->educationalLevel == "High School")
+                    selected
+                  @endif
+                  >High School</option>
+                  <option value="BSc"
+                  @if($userIndividual->educationalLevel == "BSc")
+                    selected
+                  @endif
+                  >BSc</option>
+                  <option value="MSc"
+                  @if($userIndividual->educationalLevel == "MSc")
+                    selected
+                  @endif
+                  >MSc</option>
+                  <option value="Diploma"
+                  @if($userIndividual->educationalLevel == "Diploma")
+                    selected
+                  @endif
+                  >Diploma</option>
+                  <option value="PhD"
+                  @if($userIndividual->educationalLevel == "PhD")
+                    selected
+                  @endif
+                  >PhD</option>
                   </select>
                </div>
              </div>
@@ -211,16 +294,52 @@
             <div class="form-group col-sm-12 col-md-6">
                   <label  class=" form-control-label" for="exampleSelect1">Major Education Level</label>
                <div class="">
-                  <select name="Major" value="{{  $userIndividual->Major }}" class="form-control" id="exampleSelect1">
-                  <option value="IT">IT</option>
-                  <option value="Engineering">Engineering</option>
-                  <option value="Medicin"> Medicin</option>
-                  <option value="Law">Law</option>
-                  <option value="Art">Art</option>
-                  <option value="Business">Business</option>
-                  <option value="Social Science">Social Science</option>
-                  <option value="Litreture">Litreture</option>
-                  <option value="Other">Other</option>
+                  <select name="Major" class="form-control" id="exampleSelect1">
+                  <option value="IT"
+                  @if($userIndividual->Major == "IT")
+                    selected
+                  @endif
+                  >IT</option>
+                  <option value="Engineering"
+                  @if($userIndividual->Major == "Engineering")
+                    selected
+                  @endif
+                  >Engineering</option>
+                  <option value="Medicin"
+                  @if($userIndividual->Major == "Medicin")
+                    selected
+                  @endif
+                  > Medicin</option>
+                  <option value="Law"
+                  @if($userIndividual->Major == "Law")
+                    selected
+                  @endif
+                  >Law</option>
+                  <option value="Art"
+                  @if($userIndividual->Major == "Art")
+                    selected
+                  @endif
+                  >Art</option>
+                  <option value="Business"
+                  @if($userIndividual->Major == "Business")
+                    selected
+                  @endif
+                  >Business</option>
+                  <option value="Social Science"
+                  @if($userIndividual->Major == "Social Science")
+                    selected
+                  @endif
+                  >Social Science</option>
+                  <option value="Litreture"
+                  @if($userIndividual->Major == "Litreture")
+                    selected
+                  @endif
+                  >Litreture</option>
+                  <option value="Other"
+                  @if($userIndividual->Major == "Other")
+                    selected
+                  @endif
+                  >Other</option>
                   </select>
               </div>
               </div>
@@ -229,9 +348,17 @@
               <div class="col-sm-12 col-md-6 form-group">
                   <label  class="form-control-label" for="exampleSelect1">Do you have any expriments on Voluntary</label>
                <div class="">
-                  <select name="preVoluntary" value="{{ $userIndividual->preVoluntary}}" class="form-control" id="vy" onchange="vyyesno(this)">
-                  <option value="0">No</option>
-                  <option value="1" selected>Yes</option>
+                  <select name="preVoluntary" class="form-control" id="vy" onchange="vyyesno(this)">
+                  <option value="0"
+                  @if($userIndividual->preVoluntary == "0")
+                    selected
+                  @endif
+                  >No</option>
+                  <option value="1" 
+                  @if($userIndividual->preVoluntary == "1")
+                    selected
+                  @endif
+                  >Yes</option>
                   </select>
                </div>
               </div>

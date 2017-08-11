@@ -124,8 +124,8 @@
                           <div class="form-group">
                             <label  class="control-label" for="exampleSelect1">Privacy</label>
                             <select name="open" value="{{ $event->open }}" class="form-control" id="exampleSelect1">
-                            <option value="1">open</option>
-                            <option value="0">close</option>
+                            <option value="1">public</option>
+                            <option value="0">private</option>
                             </select>
                         </div>
 
