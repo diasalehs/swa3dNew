@@ -9,7 +9,7 @@
         <div class="alert alert-warning" role="alert">
         <strong>We sent you an Email !</strong> Please check your inbox to verify your account.
         </div>
-        @endif
+        @else
         @if(auth::user()->verified==1)
         <div class="alert alert-success" role="alert">
          <strong>Verified!</strong> You are good to go.
@@ -353,6 +353,7 @@
                     </form>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>

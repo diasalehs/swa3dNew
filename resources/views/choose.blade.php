@@ -8,21 +8,8 @@
                 <div class="card-block">
                   <div class="row justify-content-center">
 
-                    <form class="" role="form" method="POST" action="{{ route('registerer') }}">{{ csrf_field() }}
-                            <div class="form-group">
-                            <div class=" ">
-
-                                <button type="submit" value="0" name="submit" class="btn btn-success choose-btn ">Individual</button>
-                            </div>
-                        </div>
-
-
-                            <div class="form-group">
-                            <div class=" ">
-                                <button type="submit" value="1" name="submit" class="btn btn-success choose-btn ">Institute</button>
-                            </div>
-                        </div>
-                    </form>
+                    <a class="btn  choose-btn "  href="{{route('registerer',0)}}">Individual</a>
+                    <a class="btn  choose-btn "  href="{{route('registerer',1)}}">Institute</a>
 
 
 

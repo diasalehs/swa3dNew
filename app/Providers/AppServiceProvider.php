@@ -11,6 +11,7 @@ use App\Volunteer;
 use App\researches;
 use App\Initiative;
 use App\news;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,17 @@ class AppServiceProvider extends ServiceProvider
 function boot()
 {
     Schema::defaultStringLength(191);
+
+    Validator::extend('greater_than_field', function($attribute, $value, $parameters, $validator) {
+      $min_field = $parameters[0];
+      $data = $validator->getData();
+      return $value > $min_field;
+    });   
+
+    Validator::replacer('greater_than_field', function($message, $attribute, $rule, $parameters) {
+        $message = "must be greater than zero";
+      return str_replace(':field', $parameters[0], $message);
+    });
 
     view()->composer('individual/includes.sidebar',function($view){
         $date = date('Y-m-d');
