@@ -272,8 +272,8 @@
              
            </select>
          </div>
-         <input type="hidden" name="name" value="{{Request::input('name')}}">
-  
+{{--          <input type="hidden" name="name" value="{{Request::input('name')}}">
+ --}}  
          <div class="form-group  col-sm12 col-md-4">
            <label for="Select2">intrest</label>
            <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true"  data-live-search="true" multiple>
@@ -313,35 +313,38 @@
       <div class="tab-pane active" id="home" role="tabpanel">
 
 
-        <!-- Blog Post -->
-        <div class="row">
+<table id="example" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
+  <thead>
 
-        @foreach($users as $result)
-        <div class="col-lg-3 col-sm-4" style="margin-bottom:25px;">
-            <div class="card h-100">
-                        <a href="{{route('profile',[$result->user_id])}}">
-                            <!--{$result->mainImgpath}}-->
-                          <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->picture}}" alt="">
-                      </a>
-                        <div class="card-block">
-                          <a href="{{route('profile',[$result->user_id])}}"><h2 class="card-title">{{$result->nameInEnglish}}</h2></a>
-                    <p class="card-text">
-                      Volunteer
-                    </p>
-                </div>
-            </div>
-        </div>
+      <tr><th></th>
+          <th>English name</th>
+          <th>Arabic name</th>
+          <th>Country</th>
+          <th>City</th>
+          <th>Age</th>
+          <th>Gender</th>
 
-    @endforeach
-    </div>
+      </tr>
+  </thead>
 
-    <!-- Pagination -->
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-      {{$users->links('vendor.pagination.custom')}}
+  <tbody>
+@foreach($users as $u)
 
-    </ul>
-    </nav>
+<tr>    <td></td>
+          <td><a href="{{URL::to('/')}}/profile/{{$u->id}}">{{$u->nameInEnglish}}</a></td>
+          <td>{{$u->nameInArabic}}</td>
+          <td>{{$u->country}}</td>
+          <td>{{$u->cityName}}</td>
+          <td>{{$u->dateOfBirth}}</td>
+          <td>{{ $u->gender}}</td>
+</tr>
+@endforeach
+
+
+
+
+  </tbody>
+</table>
       </div>
 
 
@@ -350,35 +353,7 @@
           <div class="row">
                    <div class="col-12" style="color: #333">
                     <div class="row justify-content-center">
-         
-
-
-
-
-
-        @foreach($institutes as $result)
-        <div class="col-lg-3 col-sm-4" style="margin-bottom:25px;">
-            <div class="card h-100">
-                        <a href="{{route('profile',[$result->user_id])}}">
-                            <!--{$result->mainImgpath}}-->
-                          <img class="img-fluid rounded all-news-img" src="{{ URL::to('/') }}/pp/{{$result->picture}}" alt="">
-                      </a>
-                        <div class="card-block">
-                          <a href="{{route('profile',[$result->user_id])}}"><h2 class="card-title">{{$result->nameInEnglish}}</h2></a>
-                    <p class="card-text">
-                      Institute
-                   </p>
-                </div>
-            </div>
-        </div>
-
-    @endforeach
-
-
-
-
-
-
+         {{--  --}}
                           </div>
                           <br>
 
@@ -386,27 +361,42 @@
                   </div>
                </div>
                 </div>
-
-
-
-            <!-- Pagination -->
-            <nav aria-label="Page navigation example">
-              <ul class="pagination justify-content-center">
-                  {{$institutes->links('vendor.pagination.custom')}}  
-            </ul>
-            </nav>
-
-
           </div>
-
-
-
     </div>
-
-
-
 </div>
 
 <!-- /.container -->
 
+
+   <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
+    <script>
+            $(document).ready(function() {
+            $('#example').DataTable( {
+                initComplete: function () {
+                    this.api().columns().every( function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo( $(column.footer()).empty() )
+                            .on( 'change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search( val ? '^'+val+'$' : '', true, false )
+                                    .draw();
+                            } );
+
+                        column.data().unique().sort().each( function ( d, j ) {
+                            select.append( '<option value="'+d+'">'+d+'</option>' )
+                        } );
+                    } );
+                }
+            } );
+        } );
+
+    </script>
 @endsection('content')
