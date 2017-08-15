@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+Swa3ed - My Events
+@endsection
  @section('content')
 
 <div class="container" style="margin:20px auto; min-height:500px">

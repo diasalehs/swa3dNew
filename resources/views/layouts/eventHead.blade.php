@@ -1,5 +1,8 @@
 @extends('layouts.master')
+@section('title')
+  Swa3ed
 
+@endsection
 @section('content')
 <div class="viewProfile" style="">
 
@@ -42,7 +45,7 @@
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate-modal">Rate!</button>
                   @endif
                 @endif
-                
+
 </div>
 </div>
 </div>
@@ -147,7 +150,7 @@
         @endif
           @endif
 
-          
+
       </div>
 
 @if($archived == 1)
@@ -219,7 +222,7 @@
                           </div>
                       @endif
                     </div>
-                    
+
                     @endif
                       </div>
               </div>

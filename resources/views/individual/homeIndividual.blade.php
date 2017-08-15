@@ -50,3 +50,12 @@
 </div>
 
 @endsection
+@section('scripts')
+
+<script>
+ $(document).ready(function(){
+    $(window).scrollTop(0);
+});
+</script>
+
+@endsection

@@ -1,13 +1,14 @@
 @extends('individual/layouts.profileMaster')
 
 @section('content')
+
 <div class="container-fluid" style="margin:120px auto">
     <div class="row">
       @include('individual/includes.sidebar')
 <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
                               @if ($errors->first())
                                   <div class="alert alert-danger" role="alert">
-                                      <strong>Warning!</strong> 
+                                      <strong>Warning!</strong>
                                       @foreach ($errors->all() as $error)
                                           <li>{{ $error }}</li>
                                       @endforeach
@@ -133,7 +134,7 @@
             <label for="exampleInputEmail1">Gender</label><br />
 
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male" 
+              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male"
               checked
               @if($userIndividual->gender == "male")
                 checked
@@ -154,6 +155,7 @@
               <div class="col-sm-12 col-md-6 form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                 <label for="name" class=" form-control-label">Your Country</label>
                   <div class="">
+
                     @include('includes.countriesModal')
 
                       @if ($errors->has('cityName'))
@@ -213,7 +215,7 @@
                   <label  class=" form-control-label" for="exampleSelect1">Your Current Work</label>
                <div class="">
                   <select name="currentWork"  class="form-control" id="exampleSelect1">
-                  <option value="School Student" 
+                  <option value="School Student"
                   @if($userIndividual->currentWork == "School Student")
                     selected
                   @endif
@@ -354,7 +356,7 @@
                     selected
                   @endif
                   >No</option>
-                  <option value="1" 
+                  <option value="1"
                   @if($userIndividual->preVoluntary == "1")
                     selected
                   @endif

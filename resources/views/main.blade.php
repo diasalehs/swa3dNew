@@ -1,5 +1,8 @@
 @extends('layouts.master')
+@section('title')
+  Swa3ed
 
+@endsection
 @section('content')
 
  <header>

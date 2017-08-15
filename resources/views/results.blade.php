@@ -87,9 +87,9 @@
 
 
     <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
+    <script src="{{URL::asset('vendor/js/jquery.dataTables.min.js')}} "></script>
+    <script src="{{URL::asset('vendor/js/dataTables.bootstrap4.min.js')}} "></script>
+    <script src="{{URL::asset('vendor/js/dataTables.checkboxes.min.js')}} "></script>
     <script>
     $(document).ready(function() {
         $('#example').DataTable( {

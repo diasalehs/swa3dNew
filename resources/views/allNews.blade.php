@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
+<div class="container min">
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3 greencolor">All News <small></small></h1>

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="shortcut icon" href="{{ URL::to('/') }}/pp/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ URL::to('/') }}/pp/favicon.ico" type="image/x-icon">
 
     <title>@yield('title')</title>
 
@@ -24,10 +26,10 @@
     <link href="{{ URL::asset('vendor/css/footer.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/jstarbox.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/jquery.tag-editor.css')}}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap4.min.css"/>
-    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/css/dataTables.checkboxes.css" rel="stylesheet" />
-    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/awesome-bootstrap-checkbox.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('vendor/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('vendor/css/dataTables.checkboxes.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('vendor/css/bootstrap-datepicker.standalone.min.css')}}" rel="stylesheet">
 
     @yield('styles')
     <!-- Temporary navbar container fix -->

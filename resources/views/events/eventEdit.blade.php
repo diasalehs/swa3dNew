@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+Swa3ed | Edit Event
+@endsection
  @section('content')
 
 

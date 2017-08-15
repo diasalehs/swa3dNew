@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('title')
+Swa3ed - {{$event->title}}
+@endsection
 @section('content')
 <div class="viewProfile" style="">
 @include('events.includes.header')

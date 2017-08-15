@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('title')
+Swa3ed | Event Posts
+@endsection
 @section('content')
 <div class="viewProfile" style="">
 @include('events.includes.header')

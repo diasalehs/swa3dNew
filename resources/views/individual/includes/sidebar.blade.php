@@ -90,13 +90,13 @@ border-top-left-radius: .25rem;">
         <div class="form-group row">
           <label for="example-datetime-local-input" class="col-4 col-form-label">From</label>
           <div class="col-8">
-            <input id="theDate" type="date" class="form-control" name="availableFrom"  min="" value="<?php echo date("Y-m-d"); ?>"/>
+            <input  id="example-datetime-local-input"type="date" class="form-control datepicker" name="availableFrom"  min="" value="<?php echo date("Y-m-d"); ?>"/>
           </div>
         </div>
         <div class="form-group row">
-          <label for="example-datetime-local-input" class="col-4 col-form-label">To</label>
+          <label for="datetime-local-input" class="col-4 col-form-label">To</label>
           <div class="col-8">
-            <input id="theDate" type="date" class="form-control" name="availableTo"  min="" value="<?php echo date("Y-m-d"); ?>"/>
+            <input id="datetime-local-input" type="date" class="form-control datepicker" name="availableTo"  min="" value="<?php echo date("Y-m-d"); ?>"/>
           </div>
           </div>
 
