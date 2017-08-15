@@ -16,7 +16,7 @@ class Institute
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        if($user->userType == 1)
+        if(Auth::check() && $user->userType == 1)
         {
             return $next($request);
         }else

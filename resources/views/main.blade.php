@@ -4,7 +4,14 @@
 
 @endsection
 @section('content')
-
+                              @if ($errors->first())
+                                  <div class="alert alert-danger" role="alert">
+                                      <strong>Warning!</strong>
+                                      @foreach ($errors->all() as $error)
+                                          <li>{{ $error }}</li>
+                                      @endforeach
+                                  </div>
+                              @endif
  <header>
    <div id="carousel-example-generic" class="carousel slide">
           <ol class="carousel-indicators carousel-indicators-numbers">
@@ -25,6 +32,8 @@
                 @endforeach
 
               </div>
+
+
 
                 <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>

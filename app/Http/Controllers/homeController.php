@@ -39,10 +39,8 @@ class homeController extends Controller
     {
         $this->middleware(['auth']);
         $this->middleware(function ($request, $next) {
-            $date = date('Y-m-d');
-            $user = Auth::User();
-            $this->date = $date;
-            $this->user = $user;
+            $this->date = date('Y-m-d');
+            $this->user = Auth::User();
             return $next($request);
         });
     }

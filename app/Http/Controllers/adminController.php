@@ -21,6 +21,7 @@ class adminController extends Controller
     public function __construct()
     {
         $this->middleware('admin');
+        $this->news_count = news::where('approved','0')->count();
     }
 
     public function slidbare()
