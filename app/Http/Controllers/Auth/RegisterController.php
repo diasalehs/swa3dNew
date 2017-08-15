@@ -96,7 +96,7 @@ use Jrean\UserVerification\Facades\UserVerification;
 
             UserVerification::generate($user);
 
-            UserVerification::send($user, 'My Custom E-mail Subject');
+            UserVerification::send($user, 'Register');
 
             return $this->registered($request, $user)
                             ?: redirect($this->redirectPath());
