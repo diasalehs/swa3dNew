@@ -3,7 +3,7 @@
 @section('content')
 <div class="viewProfile" style="">
 @include('events.includes.header')
-<div class="container-fluid "style="margin-bottom:50px;margin-top:30px;">
+<div class="container-fluid min"style="margin-bottom:50px;margin-top:30px;">
   <div class="row ">
 @include('events.includes.sidebar')
 {{-- --}}

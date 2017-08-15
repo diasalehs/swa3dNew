@@ -20,6 +20,9 @@ form textarea:focus {
   position: relative;
   width: 100px;
 }
+.TFN select{
+  opacity: 0;
+}
 .cornerimage {
   border: 0;
   position: absolute;
@@ -242,7 +245,8 @@ ul.inner{
 
 }
 .min{
-  min-height: 800px;
+  min-height: 550px;
+  margin-bottom: 20px;
 }
 .btn{
   border-radius: 200px ;

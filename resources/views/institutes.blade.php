@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container-fluid" style="margin-bottom:20px;">
+<div class="container-fluid min" style="margin-bottom:20px;">
   <h1 class="mt-4 mb-3" style="color: var(--green);">Institutes<small></small></h1>
 
       <form id="myform" class="row" style="" method="GET" action="{{route('institutes')}}">
@@ -302,9 +302,14 @@
     <!-- Tab panes -->
 <hr />
 
-<div class="row justify-content-center" style="margin-right:0px; margin-left:0px;min-height:400px;">
 
-<table id="inst" class=" table table-striped table-bordered table-responsive" cellspacing="0"  width="100%">
+<div class="row">
+
+       <div class="col-12" style="color: #333">
+
+        <div class="row justify-content-center">
+
+<table id="example" class=" table table-striped table-bordered table-responsive" cellspacing="0"  width="100%">
   <thead>
 
       <tr>
@@ -317,6 +322,18 @@
 
       </tr>
   </thead>
+  <tfoot>
+
+      <tr>
+          <th class="TFN">English Name</th>
+          <th>Arabic Name</th>
+          <th>Rating</th>
+          <th>City</th>
+          <th>Address</th>
+          <th>Email</th>
+
+      </tr>
+  </tfoot>
 
   <tbody>
 @foreach($NGOs as $u)
@@ -341,7 +358,9 @@
 
 
 
-    </div>
+</div>
+</div>
+</div>
 
 
 
@@ -362,7 +381,31 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
 
-    <script src="{{URL::asset('vendor/js/eventAcc.js')}} "></script>
+    <script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            initComplete: function () {
+                this.api().columns().every( function () {
+                    var column = this;
+                    var select = $('<select><option value=""></option></select>')
+                        .appendTo( $(column.footer()).empty() )
+                        .on( 'change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
 
+                            column
+                                .search( val ? '^'+val+'$' : '', true, false )
+                                .draw();
+                        } );
+
+                    column.data().unique().sort().each( function ( d, j ) {
+                        select.append( '<option value="'+d+'">'+d+'</option>' )
+                    } );
+                } );
+            }
+        } );
+    } );
+    </script>
 
 @endsection

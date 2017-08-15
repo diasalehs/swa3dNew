@@ -328,7 +328,7 @@
   </thead>
   <tfoot>
     <tr>
-        <th>Name</th>
+        <th class="TFN">Name</th>
         <th>city</th>
         <th>Description</th>
         <th>Start date</th>
@@ -402,13 +402,12 @@
                         } );
 
                     column.data().unique().sort().each( function ( d, j ) {
-                        select.append( '<option value="">'+d+'</option>' )
+                        select.append( '<option value="'+d+'">'+d+'</option>' )
                     } );
                 } );
             }
         } );
     } );
-
 
     </script>
 @endsection
