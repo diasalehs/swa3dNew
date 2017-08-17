@@ -20,7 +20,7 @@
           <h1 class="card-title greencolor">{{$news->title}}<br /></h1>
             <!-- Date/Time -->
             <p class=""><i class="fa fa-clock-o" aria-hidden="true"></i>
-      {{$news->created_at->diffForHumans()}}</p>
+              {{$news->created_at->diffForHumans()}}</p>
 
             <hr>
 
