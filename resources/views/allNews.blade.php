@@ -14,10 +14,10 @@
     </ol>
     <div class="row justify-content-center">
 
-      <form method="get" class="col-sm-12 col-md-6" action="{{route('Researches_search')}}" role="foحشrm" id="form-buscar">
+      <form method="get" class="col-sm-12 col-md-6" action="{{route('newsSearch')}}" role="form" id="form-buscar">
         <div class="form-group" >
           <div class="input-group">
-            <input id="1" class="form-control" type="text" name="search" placeholder="Search..." style="    border-color: var(--green) !important;
+            <input id="1" class="form-control" type="text" name="search" placeholder="Search for news title..." style="    border-color: var(--green) !important;
   " required/>
             <span class="input-group-btn">
               <button class="btn btn-green" style="  outline: 0 !important;
@@ -36,8 +36,8 @@
         <div class="card-block">
             <div class="row">
                 <div class="col-lg-6">
-                    <a href="#">
-                      <img class="img-fluid rounded all-news-img" style="" src="{{$anew->mainImgpath}}" alt="">
+                    <a href="{{route('view',[$anew->id])}}">
+                      <img class="img-fluid rounded all-news-img" style="" src="{{ URL::to('/uploads') }}/{{$anew->mainImgpath}}" alt="">
                   </a>
 
               </div>
