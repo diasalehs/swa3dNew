@@ -7,7 +7,8 @@ use App\targetedGroups;
 class stepController extends Controller
 {
 	public function step() {
-		if(Auth::attempt() || Auth::user()){
+		if(Auth::check())
+		{
 			if(Auth::user()->flag == 0){
 			$intrests = Intrest::get();
 			$targets = targetedGroups::get();

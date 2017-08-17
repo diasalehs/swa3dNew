@@ -19,10 +19,8 @@ class searchController extends Controller
     {
         $this->middleware(['auth']);
         $this->middleware(function ($request, $next) {
-            $date = date('Y-m-d');
-            $user = Auth::user();
-            $this->date = $date;
-            $this->user = $user;
+            $this->date = date('Y-m-d');
+            $this->user = Auth::user();
             return $next($request);
         });
     }
@@ -35,8 +33,7 @@ class searchController extends Controller
     }
 
     public function basic(Request $request)
-
-        {
+    {
         $users = DB::table('individuals')
         ->where('nameInEnglish', 'like','%'.$request['name'].'%')
         ->orwhere('nameInArabic', 'like','%'.$request['name'].'%')
@@ -51,8 +48,7 @@ class searchController extends Controller
     }
 
     public function basicSearch(Request $request)
-
-     {  
+    {  
 
         if(request()->has('location')){
              // intrest in location

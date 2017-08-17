@@ -12,7 +12,10 @@ use App\UserTarget;
 
 class registerStep2Controller extends Controller 
 {
-	// check the user type !!
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
 	public function allRegister(Request $request){
         	$user = Auth::user();

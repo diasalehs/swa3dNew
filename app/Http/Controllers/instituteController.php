@@ -19,10 +19,8 @@ class instituteController extends Controller
     {
     	$this->middleware(['auth','institute']);
         $this->middleware(function ($request, $next) {
-            $date = date('Y-m-d');
-            $user = Auth::user();
-            $this->date = $date;
-            $this->user = $user;
+            $this->date = date('Y-m-d');
+            $this->user = Auth::user();
             return $next($request);
         });
     }

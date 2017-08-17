@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\tags;
 use App\Invite;
+use Image;
 use App\researches_tags;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File; 
