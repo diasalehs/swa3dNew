@@ -1,5 +1,8 @@
 @extends('layouts.master')
+@section('title')
+  Swa3ed - Coming Events
 
+@endsection
 @section('content')
 
 

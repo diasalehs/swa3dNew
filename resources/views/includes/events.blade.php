@@ -31,7 +31,9 @@
        <div class="card card-inverse event">
                 <img class="card-img" src="{{URL::to('/')}}/events/{{$event->cover}}" alt="Card image">
                 <div class="card-img-overlay">
-                  <h4 class="card-title line-clamp-2">{{$event->title}}</h4>
+                  <h4 class="card-title line-clamp-2">
+                      {{ $value = str_limit($event->title, 100,$end = '...') }}
+                    </h4>
                   <div class="card-bottom">
                     <p class="card-text "><small>{{$event->startDate}} To {{$event->endDate}} - in {{$event->country}}</small></p>
                     <a href="{{route('event',$event->id)}}" class="btn btn-green" >View</a>

@@ -5,7 +5,7 @@ Swa3ed - UpComing Events
 @section('content')
 
 
-<div class="container min" style="margin:30px auto; padding:5px;">
+<div class="container min" style="margin:30px auto;">
 
   @if(Auth::guest())
 

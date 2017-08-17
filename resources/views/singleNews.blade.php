@@ -1,12 +1,15 @@
 @extends('layouts.master')
+@section('title')
+  Swa3ed - {{$news->title}}
 
+@endsection
 @section('content')
 
 <div class="news">
   <div class="card card-inverse">
-    <img class="card-img" src="{{URL::to('/uploads')}}/{{$news->mainImgpath}}" alt="Card image">
+    <img class="card-img cover-photo-high" src="{{URL::to('/uploads')}}/{{$news->mainImgpath}}" alt="Card image">
 
-    <div class="card-img-overlay" style="  justify-content: center;">
+    <div class="card-img-overlay" style="background-color:rgba(19, 58, 83, 0.3);  justify-content: center;">
 
       <br />
 

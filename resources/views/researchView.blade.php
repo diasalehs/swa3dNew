@@ -1,5 +1,8 @@
 @extends('layouts.master')
+@section('title')
+  Swa3ed - {{$research->title}}
 
+@endsection
 @section('content')
 
 <div class="research" >

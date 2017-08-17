@@ -1,5 +1,8 @@
 @extends('layouts.master')
+@section('title')
+  Swa3ed - Search
 
+@endsection
 @section('content')
 <div class="container" style="margin-top:10px; min-height:600px;" >
 

@@ -1,5 +1,8 @@
 @extends('layouts.master')
+@section('title')
+  Swa3ed - All Events
 
+@endsection
 @section('content')
 
 @if(Auth::check())

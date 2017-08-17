@@ -22,8 +22,10 @@ Swa3ed | Event Posts
               @foreach($posts as $post)
                   <div class="card" style="margin-bottom:20px;">
                     <div class="card-block">
+                      <h6 class="pinkcolor">User Name</h6>
+
                       <h4 class="card-title greencolor" >{{$post->body}}</h4>
-                        {{$post->created_at}}
+                        <small>{{$post->created_at->diffForHumans()}}</small>
                     </div>
                   </div>
               @endforeach

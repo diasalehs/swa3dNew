@@ -22,14 +22,14 @@
                         </div>
                         <div class="form-group"> <!-- Message field -->
                             <label class="control-label " for="message">Discription</label>
-                            <textarea name="textarea"></textarea>
+                            <textarea class="form-control" rows="5" name="textarea"></textarea>
                         </div>
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <button class="btn btn-primary " name="submit" type="submit">Submit</button>
                         </div>
-                        
-                    </form>		
+
+                    </form>
                 </div>
             </div>
 
