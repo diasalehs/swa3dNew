@@ -47,10 +47,10 @@
                 <p style="display:none">
                   {{$value = str_limit( $anew->textarea , 150,$end = '...') }}
                 </p>
-                  <p id="news-t">
+                  <div id="news-t">
                       {!!$value !!}
 
-                  </p>
+                  </div>
 
 
 
