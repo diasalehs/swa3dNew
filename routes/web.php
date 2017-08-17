@@ -45,7 +45,8 @@ Route::post('/allRegister', ['uses'=>'registerStep2Controller@allRegister','as'=
 Route::get('/step', ['uses'=>'stepController@step','as'=>'step']);
 Route::get('/choose', ['uses'=>'chooseController@choose','as'=>'choose']);
 Route::get('/registerer/{user_type}', function($user_type) {
-    return view('auth/register',compact('user_type'));
+    if(Auth::check()) return redirect()->back()->withErrors('already registered !');
+    else return view('auth/register',compact('user_type'));
 })->name('registerer');
 
 Route::get('/errorPage', function() {return view('errorPage');})->name('errorPage');

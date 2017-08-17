@@ -16,7 +16,7 @@ class Individual
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        if($user->userType == 0)
+        if(Auth::check() && $user->userType == 0)
         {
             return $next($request);
         }else

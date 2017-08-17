@@ -17,7 +17,7 @@ class Admin
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        if($user->userType == 10)
+        if(Auth::check() && $user->userType == 10)
         {
             return $next($request);
         }else
