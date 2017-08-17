@@ -22,7 +22,7 @@ class CreateNewsTable extends Migration
             $table->boolean('achievement')->unsigned()->default(0);
             $table->boolean('activity')->unsigned()->default(0);
             $table->boolean('publish')->unsigned()->default(0);
-            $table->string('mainImgpath')->default('default.jpg');
+            $table->string('mainImgpath')->default('default.png');
             $table->string ('textarea',9999);
             $table->timestamps();
         });

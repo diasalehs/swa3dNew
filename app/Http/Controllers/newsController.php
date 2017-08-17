@@ -120,6 +120,12 @@ class newsController extends Controller
 
 # code...
     }
+    public function newsSearch(Request $request)
+
+    {
+        $news=news::where('title','like','%'.$request['search'].'%')->paginate(8);
+            return view('allNews',["news"=>$news]);      
+    }
     public function allNews()
 
     {    

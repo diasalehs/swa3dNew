@@ -36,6 +36,7 @@ Route::get('/view/{newsId}',  ['uses' =>'newsController@view', 'as'=>'view']);
 Route::get('/allNews',  ['uses' =>'newsController@allNews', 'as'=>'allNews']);
 Route::get('/allResearches',  ['uses' =>'mainController@allResearches', 'as'=>'allResearches']);
 Route::get('/allResearches/results',  ['uses' =>'mainController@Researches_search', 'as'=>'Researches_search']);
+Route::get('/allNews/results',  ['uses' =>'newsController@newsSearch', 'as'=>'newsSearch']);
 Route::get('/results/',  ['uses' =>'searchController@basic', 'as'=>'search']);
 Route::get('/results/filter',  ['uses' =>'searchController@basicSearch', 'as'=>'basicSearch']);
 
