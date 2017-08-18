@@ -1,5 +1,8 @@
 @extends('institute/layouts.profileMaster')
+@section('title')
+  Swa3ed - Home
 
+@endsection
 @section('content')
 <div class="container-fluid" style="margin:120px auto">
     <div class="row">
@@ -47,5 +50,14 @@
 
     </div>
 </div>
+
+@endsection
+@section('scripts')
+
+<script>
+ $(document).ready(function(){
+    $(window).scrollTop(0);
+});
+</script>
 
 @endsection

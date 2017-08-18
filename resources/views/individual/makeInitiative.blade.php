@@ -4,7 +4,7 @@
 <div class="container-fluid" style="margin:120px auto">
     <div class="row ">
     @include('individual/includes.sidebar')
-        <div class="col-lg-6">
+        <div class="offset-md-1  col-md-7 col-sm-12 col-lg-7 ">
 
             <div class="card">
 

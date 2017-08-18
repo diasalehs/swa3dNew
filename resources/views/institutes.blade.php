@@ -1,5 +1,8 @@
 @extends('layouts.master')
+@section('title')
+  Swa3ed - Institutes
 
+@endsection
 @section('content')
 <div class="container-fluid min" style="margin-bottom:20px;">
   <h1 class="mt-4 mb-3" style="color: var(--green);">Institutes<small></small></h1>

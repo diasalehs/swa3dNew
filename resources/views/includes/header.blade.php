@@ -97,13 +97,11 @@ background-position-y: 7px;">
         </button>
       </div>
       <div class="modal-body">
+        <div class="row justify-content-center" style="margin-bottom:20px;">
+                    <a class="btn col-md-8 col-sm-12 btn-green "  href="{{route('registerer',0)}}">Individual</a>
+        </div>
         <div class="row justify-content-center">
-
-
-                    <a class="btn  choose-btn "  href="{{route('registerer',0)}}">Individual</a>
-                    <a class="btn  choose-btn "  href="{{route('registerer',1)}}">Institute</a>
-
-
+                    <a class="btn col-md-8 col-sm-12 btn-green "  href="{{route('registerer',1)}}">Institute</a>
         </div>
       </div>
       <div class="modal-footer">

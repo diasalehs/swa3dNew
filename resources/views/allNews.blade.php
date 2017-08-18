@@ -1,5 +1,8 @@
 @extends('layouts.master')
+@section('title')
+  Swa3ed - All News
 
+@endsection
 @section('content')
 <div class="container min">
 
@@ -36,20 +39,31 @@
         <div class="card-block">
             <div class="row">
                 <div class="col-lg-6">
-                    <a href="{{route('view',[$anew->id])}}">
-                      <img class="img-fluid rounded all-news-img" style="" src="{{ URL::to('/uploads') }}/{{$anew->mainImgpath}}" alt="">
+                    <a href="#">
+                      <img class="img-fluid rounded cover-photo" style="" src="{{URL::to('/uploads')}}/{{$anew->mainImgpath}}" alt="">
                   </a>
-
               </div>
               <div class="col-lg-6">
-                <h2 class="card-title greencolor">{{$anew->title}}</h2>
-                <p class="card-text line-clamp">{{$anew->textarea}}</p>
+                <h2 class="card-title greencolor"><a class="green-link" href="{{route('view',[$anew->id])}}">{{$anew->title}}</a></h2>
+                <p class="card-text">
+                  {{$value=""}}
+                <p style="display:none">
+                  {{$value = str_limit( $anew->textarea , 150,$end = '...') }}
+                </p>
+                  <div id="news-t">
+                      {!!$value !!}
+
+                  </div>
+
+
+
+                </p>
                 <a href="{{route('view',[$anew->id])}}" class="btn btn-primary btn-green">Read More &rarr;</a>
             </div>
         </div>
     </div>
-    <div class="card-footer text-mute">
-        Posted on {{$anew->created_at}}
+    <div class="card-footer text-mute" style="text-align:center">
+        Posted on: {{$anew->created_at->toFormattedDateString()}}
     </div>
 </div>
 @endforeach

@@ -1,7 +1,6 @@
     <!-- Footer -->
     <footer class="py-5">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
         </div>
         <!-- /.container -->
     </footer>
@@ -41,7 +40,7 @@
        if(x < max_fields){ //max input box allowed
         //text box increment
            $(wrapper).append('<div style="margin:0px;" class="row form-group"><label for="name" class="form-control-label">Answer'+ x +'</label><input type="text"class="form-control col-sm-10 col-md-6 " style=" margin-bottom:6px;"name="answers[]"/><a href="#" class="remove_field col-sm-2 col-md-3">Remove</a></div>'); //add input box
-              x++; 
+              x++;
        }
    });
 

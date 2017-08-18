@@ -1,6 +1,9 @@
 
 @extends('individual/layouts.profileMaster')
+@section('title')
+  Swa3ed - Home
 
+@endsection
 @section('content')
 <div class="container-fluid" style="margin:120px auto">
     <div class="row">

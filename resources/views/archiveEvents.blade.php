@@ -1,5 +1,8 @@
 @extends('layouts.master')
+@section('title')
+  Swa3ed - Archived Events
 
+@endsection
 @section('content')
 
 <div class="container min" style="margin:30px auto; padding:5px;">

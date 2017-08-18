@@ -1,17 +1,30 @@
 @extends('layouts.app')
+@section('title')
+Swa3ed - Register
+@endsection
  @section('content')
-<script type="text/javascript"> p</script>
-<div class="container" style="margin:100px auto">
+<div class="container " style="margin:100px auto; min-height:50vh">
     <div class="row " >
 
         <div class="col-lg-10 offset-md-1">
-        @if(auth::user()->verified==0)
-        <div class="alert alert-warning" role="alert">
-        We've sent you an Email to <strong> {{ auth::user()->email}}!</strong> Please check your inbox to verify your account.
+        @if(auth::user()->verified==0) 
+
+        <div class="alert alert-warning" role="alert" style="">
+          <h4 class="alert-heading">We've sent you an email to <strong> {{ auth::user()->email}}!</strong> </h4>
+          <p> Please check your inbox to verify your account.</p>
+          <hr  style="background-color:#333">
+          <p class="mb-0">
+              This may take up to 5-10 minutes.
+          </p>
         </div>
+
         @else
         @if(auth::user()->verified==1)
+
         <div class="alert alert-success" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
          <strong>Verified!</strong> You are good to go.
         </div>
             @endif
@@ -347,8 +360,8 @@
                       <br />
 
                         <div class="form-group">
-                            <div class="col-md-3 offset-md-4">
-                                <button type="submit" class="btn btn-success btn-block">Register</button>
+                            <div class="col-md-3 offset-md-4 col-sm-12">
+                                <button type="submit" class="btn btn-green btn-block">Register</button>
                             </div>
                         </div>
 

@@ -1,5 +1,8 @@
 @extends('layouts.master')
+@section('title')
+  Swa3ed - {{$user->nameInEnglish}}
 
+@endsection
 @section('content')
 
 <div class="viewProfile">
