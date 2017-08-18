@@ -7,7 +7,7 @@
         <div class="col-lg-10 offset-md-1">
         @if(auth::user()->verified==0)
         <div class="alert alert-warning" role="alert">
-        <strong>We sent you an Email !</strong> Please check your inbox to verify your account.
+        We've sent you an Email to <strong> {{ auth::user()->email}}!</strong> Please check your inbox to verify your account.
         </div>
         @else
         @if(auth::user()->verified==1)
