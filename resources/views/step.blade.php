@@ -7,14 +7,14 @@ Swa3ed - Register
     <div class="row " >
 
         <div class="col-lg-10 offset-md-1">
-        @if(auth::user()->verified==0) 
+        @if(auth::user()->verified==0)
 
         <div class="alert alert-warning" role="alert" style="">
           <h4 class="alert-heading">We've sent you an email to <strong> {{ auth::user()->email}}!</strong> </h4>
           <p> Please check your inbox to verify your account.</p>
           <hr  style="background-color:#333">
           <p class="mb-0">
-              This may take up to 5-10 minutes.
+              <small>This may take up to 5 minutes.</small>
           </p>
         </div>
 
