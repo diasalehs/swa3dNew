@@ -18,7 +18,7 @@
   <div class="container" style="min-height:400px">
     <div class="row">
 
-        <div class="col-lg-9">
+        <div class="col-md-9 col-sm-12">
           <br />
           <h1 class="card-title greencolor">{{$news->title}}<br /></h1>
             <!-- Date/Time -->
@@ -33,6 +33,9 @@
             <br />
             <p class=""><i class="fa fa-clock-o" aria-hidden="true"></i>
             {{$news->created_at->toFormattedDateString()}}</p>
+          </div>
+          <div class="col-md-3">
+
           </div>
         </div>
       </div>

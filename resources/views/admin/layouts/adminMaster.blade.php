@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="shortcut icon" href="{{ URL::to('/') }}/pp/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ URL::to('/') }}/pp/favicon.ico" type="image/x-icon">
 
     <title>Swa3ed - Admin</title>
 
