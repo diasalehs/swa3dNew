@@ -164,6 +164,8 @@
                 <div class="card research-card">
                     <h4 class="card-header"><span class="line-clamp-2 ">{{$event->title}}</span></h4>
                     <div class="card-block">
+                    <a href=""><img  class="card-img-top img-fluid" src="{{URL::to('/events')}}/{{$event->cover}}" alt=""></a>
+
                         <a href="{{route('event',[$event->id])}}" style="align-self: center;"> Learn More</a>
                     </div>
 
