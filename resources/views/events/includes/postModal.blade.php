@@ -18,7 +18,7 @@
                     <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
                         <label for="title" class="col-lg-4 form-control-label">Post Body</label>
                         <div class="col-lg-12">
-                            <textarea class="form-control" required="required" name="body" id="body">{{ old('body') }}</textarea>
+                            <textarea class="form-control" required="required" name="body" rows="5" id="body">{{ old('body') }}</textarea>
                             @if ($errors->has('body'))
                                 <div class="alert alert-danger" role="alert">
                                     <strong>Warning!</strong> {{ $errors->first('body') }}

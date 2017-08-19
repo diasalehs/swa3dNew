@@ -4,11 +4,22 @@
 
 @endsection
 @section('content')
-<div class="container-fluid min" style="margin-bottom:20px;">
-  <h1 class="mt-4 mb-3" style="color: var(--green);">Institutes<small></small></h1>
+<div class="container " style="margin-bottom:20px; margin-top:20px;">
+  <div id="accordion" role="tablist" aria-multiselectable="true">
+<div class="card">
+<div class="card-header" role="tab" id="headingOne">
+<h5 class="mb-0">
+  <a data-toggle="collapse" class="green-link" data-parent="#accordion"aria-expanded="true" href="#collapseOne" aria-controls="collapseOne">
+    Filter Institutes
+  </a>
+</h5>
+</div>
+
+<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+<div class="card-block">
 
       <form id="myform" class="row" style="" method="GET" action="{{route('institutes')}}">
-          <div class="form-group  col-sm12 col-md-3">
+          <div class="form-group  col-sm12 col-md-4">
             <label for="location" >Country</label>
 
               <select name="location" class="form-control" onchange="yesnoCheck(this);">
@@ -254,7 +265,7 @@
             </select>
 
           </div>
-          <div class="form-group  col-sm12 col-md-3">
+          <div class="form-group  col-sm12 col-md-4">
 
           <label for="Select1" style="align-self: flex-start;">target</label>
            <select name="target[]"class="form-control selectpicker" id="Select1"data-actions-box="true" data-size="5"  data-live-search="true"multiple>
@@ -269,7 +280,7 @@
            </select>
          </div>
 
-         <div class="form-group  col-sm12 col-md-3">
+         <div class="form-group  col-sm12 col-md-4">
            <label for="Select2">intrest</label>
            <select name="intrest[]" class="form-control selectpicker" id="Select2" data-actions-box="true"  data-live-search="true" multiple>
 
@@ -294,22 +305,27 @@
              <option value="18">Health</option>
            </select>
          </div>
-         <div class="form-group  col-sm12 col-md-3">
-           <label for="Select2" style="opacity:0">submit</label>
-
-         <button type="submit" form="myform" class="btn btn-block btn-green" >Search</button>
-        </div>
+       </div>
+           <div class="row justify-content-center " style="margin-bottom:20px;">
+             <div class="col-4">
+               <button type="submit" form="myform" class="btn btn-block btn-green" >Search</button>
+             </div>
+           </div>
         </form>
-
+    </div>
+  </div>
+</div>
+</div>
 
     <!-- Tab panes -->
-<hr />
+<div class="container-fluid min">
 
 
 <div class="row">
 
        <div class="col-12" style="color: #333">
-
+         <h3 class="mt-4 mb-3" style="color: var(--green); text-align:center;">Institutes<small></small></h3>
+         <hr />
         <div class="row justify-content-center">
 
 <table id="example" class=" table table-striped table-bordered table-responsive" cellspacing="0"  width="100%">
@@ -364,10 +380,10 @@
 </div>
 </div>
 </div>
-
-
-
 </div>
+
+
+
 
 <!-- /.container -->
 

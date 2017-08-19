@@ -1,14 +1,30 @@
 @extends('institute/layouts.profileMaster')
+@section('title')
+  Swa3ed - Find Volunteers
 
+@endsection
 @section('content')
 
 
 
-<div class="container-fluid" style="margin:120px auto">
+<div class="container-fluid" style="margin:120px auto; ">
     <div class="row">
       @include('institute/includes.sidebar')
 
-      <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333">
+      <div class="col-sm-12  col-md-8  col-lg-9" style="color: #333;padding-left:10px; padding-right:10px">
+        <div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" class="green-link" data-parent="#accordion"aria-expanded="true" href="#collapseOne" aria-controls="collapseOne">
+          Filter Voulunteers
+        </a>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="card-block">
+
 
             <form id="myform" class="" style="" method="GET" action="{{route('volunteersSearch')}}">
               <div class="row">
@@ -304,16 +320,21 @@
 
             <div class="row justify-content-center">
               <div class="col-4">
-                <button type="submit" form="myform" class="btn btn-block btn-green" >Search</button>
+                <button type="submit" form="myform" class="btn btn-block btn-green" >Search for volunteers</button>
               </div>
             </div>
 
         </form>
+      </div>
+    </div>
+  </div>
+
+</div>
         <hr />
 
 
 <form id="frm-invite" method="post" action="{{route('invite')}}" >{{ csrf_field() }}
-
+  @include('includes/inviteToEvent')
 <table id="inviteT" class=" table table-striped table-bordered table-responsive" cellspacing="0"  width="100%">
   <thead>
 
@@ -324,7 +345,7 @@
           <th>Age</th>
           <th>Gender</th>
           <th>City</th>
-          <th>Volutery Experience</th>
+          <th>Voluntery Experience</th>
           <th>Education</th>
 
       </tr>
@@ -336,7 +357,7 @@
           <td>{{$u->user_id}}</td>
           <td>{{$u->nameInEnglish}}</td>
           <td>{{$u->nameInArabic}}</td>
-          <td>
+          <td width="20px">
            <?php
                $time = date_create($u->dateOfBirth);
                echo date("Y")-date_format($time, 'Y');
@@ -354,12 +375,17 @@
 
   </tbody>
 </table>
+<div class="row justify-content-center">
 
+    <div class="col-sm-12 col-md-4">
+      <label for="" style="opacity:0">Events</label>
 
+      <button  type="submit" class="btn form-control btn-green">Invite</button>
+    </div>
+</div>
 <br />
 
 
-@include('includes/inviteToEvent')
 
 </form>
       </div>
@@ -368,9 +394,9 @@
 
 @endsection
 @section('scripts')
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-2.2.4/dt-1.10.15/fh-3.1.2/r-2.1.1/se-1.2.2/datatables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.9/js/dataTables.checkboxes.min.js"></script>
+<script src="{{URL::asset('vendor/js/jquery.dataTables.min.js')}} "></script>
+<script src="{{URL::asset('vendor/js/dataTables.bootstrap4.min.js')}} "></script>
+<script src="{{URL::asset('vendor/js/dataTables.checkboxes.min.js')}} "></script>
 <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
 
 <script type="text/javascript">
