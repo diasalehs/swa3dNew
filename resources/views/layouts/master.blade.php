@@ -56,7 +56,7 @@
 
 <body>
     @include('includes.header')
-    <div class="main">
+    <div class="main-cont" style="margin-top:78px">
         @yield('content')
     </div>
 

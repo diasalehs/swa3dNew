@@ -3,6 +3,19 @@
   Swa3ed
 
 @endsection
+@section('styles')
+
+<link href="{{ URL::asset('vendor/css/style.css')}}" rel="stylesheet">
+<link href="{{ URL::asset('vendor/css/custom.css')}}" rel="stylesheet">
+<link href="{{ URL::asset('vendor/css/demo.css')}}" rel="stylesheet">
+<noscript>
+<link href="{{ URL::asset('vendor/css/styleNoJS.css')}}" rel="stylesheet">
+</noscript>
+
+
+
+
+@endsection
 @section('content')
                               @if ($errors->first())
                                   <div class="alert alert-danger" role="alert">
@@ -12,46 +25,62 @@
                                       @endforeach
                                   </div>
                               @endif
- <header>
-   <div id="carousel-example-generic" class="carousel slide">
-          <ol class="carousel-indicators carousel-indicators-numbers">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active">1</li>
-            <li data-target="#carousel-example-generic" data-slide-to="1">2</li>
-            <li data-target="#carousel-example-generic" data-slide-to="2">3</li>
-          </ol>
-            <div class="carousel-inner" role="listbox">
-            @foreach($_3slides as $slide)
-                <!-- Slide One - Set the background image for this slide in the line below -->
-                <div class="carousel-item @if ($loop->first) active @endif "
-                  style="background-image:linear-gradient(rgba(0, 0, 0,.5),rgba(0, 0, 0, .5)), url('{{$slide->mainImgpath}}'); ">
-                    <div class="carousel-caption d-none d-md-block " style="padding-bottom:40px;">
-                        <h3>{{$slide->title}}</h3>
-                        <p>{{$slide->textarea}}</p>
-                    </div>
-                </div>
-                @endforeach
+<header style="">
 
-              </div>
+                              <div class=" demo-1" >
 
 
 
-                <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel-example-generic" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
+                                  <div id="slider" class="sl-slider-wrapper">
 
+                              <div class="sl-slider">
+                                @foreach($_3slides as $slide)
+                                @endforeach
 
-              </div>
-    </header>
+                                <div class="sl-slide bg-4" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+                                  <div class="sl-slide-inner"style="background-image:linear-gradient(rgba(0, 0, 0,.2),rgba(0, 0, 0, .7)), url('{{$_3slides[0]->mainImgpath}}');background-size:cover ">
+                                    <div class="deco" style="background-image: url('{{$_3slides[0]->mainImgpath}}');background-size:cover;	border-color: var(--green); "></div>
+                                    <h2><a href="#" class="green-link">{{$value = str_limit($_3slides[0]->title, 70,$end = '...')  }}</a></h2>
+                                    <blockquote><p>{{$value = str_limit($_3slides[0]->textarea, 120,$end = '...')  }}</p><cite>Ralph Waldo Emerson</cite></blockquote>
+                                  </div>
+                                </div>
+                                <div class="sl-slide bg-4" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
+                                  <div class="sl-slide-inner"style="background-image:linear-gradient(rgba(0, 0, 0,.2),rgba(0, 0, 0, .7)), url('{{$_3slides[1]->mainImgpath}}');background-size:cover ">
+                                    <div class="deco" style="background-image: url('{{$_3slides[1]->mainImgpath}}');background-size:cover;border-color: var(--yellow); "></div>
+                                    <h2><a href="#" class="yellow-link">{{$value = str_limit($_3slides[1]->title, 70,$end = '...')  }}</a></h2>
+                                    <blockquote><p>{{$value = str_limit($_3slides[1]->textarea, 120,$end = '...')  }}</p><cite>Ralph Waldo Emerson</cite></blockquote>
+                                  </div>
+                                </div>
+                                  <div class="sl-slide bg-4" data-orientation="horizontal"  data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+                                    <div class="sl-slide-inner"style="background-image:linear-gradient(rgba(0, 0, 0,.2),rgba(0, 0, 0, .7)), url('{{$_3slides[2]->mainImgpath}}');background-size:cover ">
+                                      <div class="deco" style="background-image: url('{{$_3slides[2]->mainImgpath}}');background-size:cover;border-color: var(--pink); "></div>
+                                      <h2><a href="#" class="pink-link">{{$value = str_limit($_3slides[2]->title, 70,$end = '...')  }}</a></h2>
+                                      <blockquote><p>{{$value = str_limit($_3slides[2]->textarea, 120,$end = '...')  }}</p><cite>Ralph Waldo Emerson</cite></blockquote>
+                                    </div>
+                                  </div>
 
+                              </div><!-- /sl-slider -->
+
+                              <nav id="nav-arrows" class="nav-arrows">
+                                <span class="nav-arrow-prev">Previous</span>
+                                <span class="nav-arrow-next">Next</span>
+                              </nav>
+
+                              <nav id="nav-dots" class="nav-dots">
+                                <span class="nav-dot-current"></span>
+                                <span></span>
+                                <span></span>
+                              </nav>
+
+                            </div><!-- /slider-wrapper -->
+
+                              </div>
+                            </header>
+<hr />
     <!-- Page Content -->
 
 @if($pollQuestion)
-    <div class="container ">
+    <div class=" " >
         <div class="row justify-content-center" style="margin-top:20px;">
           <div class="col-6">
 
@@ -78,25 +107,8 @@
   </div>
   @endif
         <!-- Nav tabs -->
-<ul class="nav nav-tabs nav-tabs-main row justify-content-center" id="nnnn"role="tablist">
+        <div class="" style="margin-top:700px">
 
-  <li class="nav-item col-4 col-lg-3 news-tab-item">
-    <a class="nav-link active" id="ntab" data-toggle="tab" href="#home" role="tab">News</a>
-  </li>
-  <li class="nav-item col-4 col-lg-3 researchs-tab-item">
-    <a class="nav-link" data-toggle="tab" id="rtab" href="#profile" role="tab">Researches</a>
-  </li>
-  <li class="nav-item col-4 col-lg-3 dashboard-tab-item">
-    <a class="nav-link" data-toggle="tab" id="dtab" href="#dashboard" role="tab">Events</a>
-  </li>
-
-</ul>
-
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane fade show active" id="home" role="tabpanel">
-    <div class="section">
-        <h1 class="my-4 news-section-title text-center"></h1>
 
         <div class="row">
 
@@ -119,13 +131,10 @@
           @endforeach
             </div>
 
-            </div>
             <div class="text-center ">
               <a href="{{route('allNews')}}"><button type="button" class="btn  show-more-btn btn-green">More News</button></a>
           </div>
 
-  </div><!-- news tab -->
-  <div class="tab-pane fade" id="profile" role="tabpanel">
     <div class="section researches">
         <h1 class="my-4 research-section-title text-center"></h1>
   <!-- Marketing Icons Section -->
@@ -153,9 +162,7 @@
             <div class="text-center ">
                  <a href="{{route('allResearches')}}"> <button type="button" class="btn show-more-btn btn-pink more-researches">More Researches</button></a>
             </div>
-    </div>
 
-  <div class="tab-pane fade" id="dashboard" role="tabpanel">
 
 
         <div class="row">
@@ -178,15 +185,12 @@
             </div>
 
 
-</div>
-</div>
-
         <!-- Marketing Icons Section -->
         <div class="top-5" style="  background-repeat: no-repeat;
     background-position: right top;
     background-size: contain" >
 
-        <div class="container text-center ">
+        <div class=" text-center ">
           <h1>Top 5 volunteers</h1>
           <div class="row justify-content-center">
 
@@ -203,15 +207,79 @@
           </div>
         </div>
       </div>
+    </div>
 
 @endsection('content')
 @section('scripts')
+<script src="{{URL::asset('vendor/js/jquery.ba-cond.min.js')}} "></script>
+<script src="{{URL::asset('vendor/js/modernizr.custom.79639.js')}} "></script>
+<script src="{{URL::asset('vendor/js/jquery.slitslider.js')}} "></script>
+<script type="text/javascript">
+  $(function() {
 
-    <script>
-    $(document).ready(function()
-        {
+    var Page = (function() {
 
+      var $navArrows = $( '#nav-arrows' ),
+        $nav = $( '#nav-dots > span' ),
+        slitslider = $( '#slider' ).slitslider( {
+          onBeforeChange : function( slide, pos ) {
 
-      });
-    </script>
+            $nav.removeClass( 'nav-dot-current' );
+            $nav.eq( pos ).addClass( 'nav-dot-current' );
+
+          }
+        } ),
+
+        init = function() {
+
+          initEvents();
+
+        },
+        initEvents = function() {
+
+          // add navigation events
+          $navArrows.children( ':last' ).on( 'click', function() {
+
+            slitslider.next();
+            return false;
+
+          } );
+
+          $navArrows.children( ':first' ).on( 'click', function() {
+
+            slitslider.previous();
+            return false;
+
+          } );
+
+          $nav.each( function( i ) {
+
+            $( this ).on( 'click', function( event ) {
+
+              var $dot = $( this );
+
+              if( !slitslider.isActive() ) {
+
+                $nav.removeClass( 'nav-dot-current' );
+                $dot.addClass( 'nav-dot-current' );
+
+              }
+
+              slitslider.jump( i + 1 );
+              return false;
+
+            } );
+
+          } );
+
+        };
+
+        return { init : init };
+
+    })();
+
+    Page.init();
+
+    			});
+    		</script>
 @endsection
