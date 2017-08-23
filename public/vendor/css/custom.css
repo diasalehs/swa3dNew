@@ -37,7 +37,6 @@
 	text-align: center;
 	line-height: 50px;
 	bottom: 50%;
-	margin: 0 0 -120px 0;
 }
 
 .demo-1 .sl-slide blockquote {
@@ -52,7 +51,6 @@
 	color: #8b8b8b;
 	z-index: 2;
 	bottom: 50%;
-	margin: 0 0 -200px 0;
 	padding: 0;
 }
 
@@ -187,8 +185,7 @@
 	left: 10%;
 	text-align: center;
 	line-height: 50px;
-	bottom: 50%;
-	margin: 0 0 -120px 0;
+	top: 30vh;
 }
 
 .demo-1 .sl-slide blockquote {
@@ -202,8 +199,7 @@
 	height: 70px;
 	color: #8b8b8b;
 	z-index: 2;
-	bottom: 50%;
-	margin: 0 0 -200px 0;
+	top: 50vh;
 	padding: 0;
 }
 
@@ -403,6 +399,7 @@
 /* Media Queries for custom slider */
 
 @media screen and (min-width: 100px) {
+
 	.demo-1 .deco {
 		width: 130px;
 		height: 130px;
@@ -419,14 +416,12 @@
 	}
 
 	.demo-1 .sl-slide blockquote {
-		margin-bottom: -120px;
 		font-size: 15px;
 	}
 
 	.demo-1 .sl-slide h2 {
 		line-height: 22px;
 		font-size: 20px;
-		margin-bottom: -40px;
 		letter-spacing: 3px;
 	}
 
@@ -468,14 +463,12 @@
 	}
 
 	.demo-1 .sl-slide blockquote {
-		margin-bottom: -120px;
 		font-size: 15px;
 	}
 
 	.demo-1 .sl-slide h2 {
 		line-height: 22px;
 		font-size: 20px;
-		margin-bottom: -40px;
 		letter-spacing: 3px;
 	}
 
@@ -505,7 +498,6 @@
 		width: 200px;
 		height: 200px;
 		margin-left: -100px;
-		margin-bottom: 50px;
 	}
 
 	.demo-1 [data-icon]:after {
@@ -517,14 +509,12 @@
 	}
 
 	.demo-1 .sl-slide blockquote {
-		margin-bottom: -120px;
 		font-size: 15px;
 	}
 
 	.demo-1 .sl-slide h2 {
 		line-height: 22px;
 		font-size: 20px;
-		margin-bottom: -40px;
 		letter-spacing: 3px;
 	}
 
@@ -541,6 +531,7 @@
 	}
 
 	.demo-2 .sl-slider h2 {
+		margin: 0px;
 		font-size: 36px;
 	}
 
@@ -578,7 +569,6 @@
 		text-align: center;
 		line-height: 50px;
 		bottom: 50%;
-		margin: 0 0 -120px 0;
 	}
 
 	.demo-1 .sl-slide blockquote {
@@ -593,7 +583,6 @@
 		color: #8b8b8b;
 		z-index: 2;
 		bottom: 50%;
-		margin: 0 0 -200px 0;
 		padding: 0;
 	}
 
