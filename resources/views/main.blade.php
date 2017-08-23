@@ -167,7 +167,7 @@
         @foreach($events as $event)
         <?php  $i++;?>
         <div class="col-12 " style="margin-top:10px;">
-          <h5><a href="{{route('researchView',[$research->id])}}" class="navy-link" >
+          <h5><a href="{{route('event',$event->id)}}" class="navy-link" >
             {{$value = str_limit( $event->title , 70,$end = '...') }}</a></h5>
             <p style="display:none">
               {{$value = str_limit( $event->description , 100,$end = '...') }}
