@@ -1,7 +1,7 @@
 .demo-1 .sl-slider-wrapper {
 	position: absolute;
 	width: 100%;
-	height: 80vh;
+	height: 88vh;
 	top: 76px;
 	left: 0px;
 
@@ -10,9 +10,85 @@
 
 /* Custom navigation arrows */
 
+.demo-1 .deco {
+	width: 240px;
+	height: 240px;
+	border: 5px solid #ddd;
+	border: 5px solid rgba(150,150,150,0.4);
+	border-radius: 50%;
+	position: absolute;
+	bottom: 50%;
+	left: 50%;
+	margin: 0 0 0 -120px;
+}
+
+
+.demo-1 .sl-slide h2 {
+	color: #000;
+	text-shadow: 0 0 1px #000;
+	padding: 20px;
+	position: absolute;
+	font-size: 34px;
+	font-weight: 700;
+	letter-spacing: 6px;
+	text-transform: uppercase;
+	width: 80%;
+	left: 10%;
+	text-align: center;
+	line-height: 50px;
+	bottom: 50%;
+	margin: 0 0 -120px 0;
+}
+
+.demo-1 .sl-slide blockquote {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	left: 0;
+	font-weight: 400;
+	font-size: 19px;
+	line-height: 22px;
+	height: 70px;
+	color: #8b8b8b;
+	z-index: 2;
+	bottom: 50%;
+	margin: 0 0 -200px 0;
+	padding: 0;
+}
+
+.demo-1 .sl-slide blockquote p{
+	margin: 0 auto;
+	width: 60%;
+	max-width: 400px;
+	position: relative;
+}
+
+.demo-1 .sl-slide blockquote p:before {
+	color: #f0f0f0;
+	color: rgba(244,244,244,0.65);
+	font-family: "Bookman Old Style", Bookman, Garamond, serif;
+	position: absolute;
+	line-height: 60px;
+	width: 75px;
+	height: 75px;
+	font-size: 200px;
+	z-index: -1;
+	left: -80px;
+	top: 35px;
+	content: '\201C';
+}
+
+.demo-1 .sl-slide blockquote cite {
+	font-size: 10px;
+	padding-top: 10px;
+	display: inline-block;
+	font-style: normal;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+}
 .nav-arrows span {
 	position: absolute;
-	z-index: 2000;
+	z-index: 2;
 	top: 50%;
 	width: 40px;
 	height: 40px;
@@ -326,7 +402,7 @@
 
 /* Media Queries for custom slider */
 
-@media screen and (max-width: 660px) {
+@media screen and (min-width: 100px) {
 	.demo-1 .deco {
 		width: 130px;
 		height: 130px;
@@ -374,4 +450,181 @@
 		font-size: 16px;
 	}
 
+}
+@media screen and (min-width:300px) {
+	.demo-1 .deco {
+		width: 130px;
+		height: 130px;
+		margin-left: -65px;
+		margin-bottom: 50px;
+	}
+
+	.demo-1 [data-icon]:after {
+		width: 110px;
+		height: 110px;
+		line-height: 110px;
+		font-size: 40px;
+		margin: -55px 0 0 -55px;
+	}
+
+	.demo-1 .sl-slide blockquote {
+		margin-bottom: -120px;
+		font-size: 15px;
+	}
+
+	.demo-1 .sl-slide h2 {
+		line-height: 22px;
+		font-size: 20px;
+		margin-bottom: -40px;
+		letter-spacing: 3px;
+	}
+
+	.demo-1 .sl-slide blockquote p:before {
+		line-height: 10px;
+		width: 40px;
+		height: 40px;
+		font-size: 120px;
+		left: -45px;
+	}
+
+	.demo-2 .sl-slider-wrapper {
+		height: 500px;
+	}
+
+	.demo-2 .sl-slider h2 {
+		font-size: 36px;
+	}
+
+	.demo-2 .sl-slider blockquote {
+		font-size: 16px;
+	}
+
+}
+@media screen and (min-width:570px) {
+	.demo-1 .deco {
+		width: 200px;
+		height: 200px;
+		margin-left: -100px;
+		margin-bottom: 50px;
+	}
+
+	.demo-1 [data-icon]:after {
+		width: 110px;
+		height: 110px;
+		line-height: 110px;
+		font-size: 40px;
+		margin: -55px 0 0 -55px;
+	}
+
+	.demo-1 .sl-slide blockquote {
+		margin-bottom: -120px;
+		font-size: 15px;
+	}
+
+	.demo-1 .sl-slide h2 {
+		line-height: 22px;
+		font-size: 20px;
+		margin-bottom: -40px;
+		letter-spacing: 3px;
+	}
+
+	.demo-1 .sl-slide blockquote p:before {
+		line-height: 10px;
+		width: 40px;
+		height: 40px;
+		font-size: 120px;
+		left: -45px;
+	}
+
+	.demo-2 .sl-slider-wrapper {
+		height: 500px;
+	}
+
+	.demo-2 .sl-slider h2 {
+		font-size: 36px;
+	}
+
+	.demo-2 .sl-slider blockquote {
+		font-size: 19px;
+	}
+
+}
+@media screen and (min-width:768px) {
+
+	.demo-1 .deco {
+		width: 240px;
+		height: 240px;
+		border: 5px solid #ddd;
+		border: 5px solid rgba(150,150,150,0.4);
+		border-radius: 50%;
+		position: absolute;
+		bottom: 50%;
+		left: 50%;
+		margin: 0 0 0 -120px;
+	}
+
+
+	.demo-1 .sl-slide h2 {
+		color: #000;
+		text-shadow: 0 0 1px #000;
+		padding: 20px;
+		position: absolute;
+		font-size: 34px;
+		font-weight: 700;
+		letter-spacing: 6px;
+		text-transform: uppercase;
+		width: 80%;
+		left: 10%;
+		text-align: center;
+		line-height: 50px;
+		bottom: 50%;
+		margin: 0 0 -120px 0;
+	}
+
+	.demo-1 .sl-slide blockquote {
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		left: 0;
+		font-weight: 400;
+		font-size: 19px;
+		line-height: 22px;
+		height: 70px;
+		color: #8b8b8b;
+		z-index: 2;
+		bottom: 50%;
+		margin: 0 0 -200px 0;
+		padding: 0;
+	}
+
+	.demo-1 .sl-slide blockquote p{
+		margin: 0 auto;
+		width: 60%;
+		max-width: 400px;
+		position: relative;
+	}
+
+	.demo-1 .sl-slide blockquote p:before {
+		color: #f0f0f0;
+		color: rgba(244,244,244,0.65);
+		font-family: "Bookman Old Style", Bookman, Garamond, serif;
+		position: absolute;
+		line-height: 60px;
+		width: 75px;
+		height: 75px;
+		font-size: 200px;
+		z-index: -1;
+		left: -80px;
+		top: 35px;
+		content: '\201C';
+	}
+
+	.demo-1 .sl-slide blockquote cite {
+		font-size: 10px;
+		padding-top: 10px;
+		display: inline-block;
+		font-style: normal;
+		text-transform: uppercase;
+		letter-spacing: 4px;
+	}
 }

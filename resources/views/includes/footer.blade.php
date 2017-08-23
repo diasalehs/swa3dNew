@@ -1,5 +1,7 @@
     <!-- Footer -->
     <footer id="myFooter" style="background-image: linear-gradient(rgba(19, 58, 83, 0.9),rgba(19, 58, 83, 0.9)),url({{ URL::to('/vendor/img/newlogo.png')}});">
+
+
         <div class="container">
             <div class="row">
                 <div class="col-sm-2 block col-md-3">
@@ -63,6 +65,9 @@
 
     $(document).ready(function()
         {
+
+          $('#errormodal').modal('show')
+
           $('input[type="date"]').datepicker({
               todayBtn: "linked",
               todayHighlight: true,
