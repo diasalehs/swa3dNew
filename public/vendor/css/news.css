@@ -1,6 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);body,button{font-family:Ubuntu,sans-serif!important}
 #news-t *{
     font-size:17px;
+    display: inline;
+
   }
   .cover-photo{
     max-height: 240px;

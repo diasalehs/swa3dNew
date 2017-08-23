@@ -17,6 +17,7 @@
     <link href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/styles.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/footer.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('vendor/css/bootstrap-datepicker.standalone.min.css')}}" rel="stylesheet">
 
 </head>
 <body>

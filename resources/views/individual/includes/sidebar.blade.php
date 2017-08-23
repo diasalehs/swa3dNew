@@ -3,7 +3,11 @@
     <div class="text-center">
 
     <div class=" circular--landscape">
+      <a class="text-change"data-toggle="modal" data-target="#changePhoto">
+             Change photo
+         </a>
         <img class="profile-pic text-center" src="{{ URL::to('/') }}/pp/{{$user->picture}}">
+
     </div>
         <h5  class="profile-name-indi"><a href="{{route('profile',$user->id)}}">{{$user->name}}</a></h5>
         <small><a href="{{route('messenger',$user->email)}}">{{$user->email}}</a></small>
@@ -72,7 +76,42 @@ border-top-left-radius: .25rem;">
   </div>
 </div>
 </div>
+<div class="modal fade" id="changePhoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form enctype="multipart/form-data" role="form" method="POST" action="{{ route('profileEdit') }}">{{ csrf_field() }}
+          <div class="form-group col-sm-12 col-md-12 {{ $errors->has('picture') ? ' has-error' : '' }}">
+              <label for="picture" class="form-control-label">Profile Picture</label>
+              <div class="">
+                  <input id="picture" type="file" accept="image/*"  class="form-control" name="image" value="{{ $user->picture}}"
+                  autofocus="autofocus" />
+                  @if ($errors->has('picture'))
+                          <div class="alert alert-danger" role="alert">
+                          <strong>Warning!</strong> {{ $errors->first('picture') }}
+                       </div>
+                  @endif
+              </div>
+          </div>
 
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-green">Save changes</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="avModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -31,7 +31,7 @@
     <link href="{{ URL::asset('vendor/css/bootstrap-select.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('vendor/css/bootstrap-datepicker.standalone.min.css')}}" rel="stylesheet">
 
-
+bootstrap-multiselect
 </head>
 <body>
     <div id="app">
