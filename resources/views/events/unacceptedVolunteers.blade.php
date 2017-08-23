@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-Swa3ed - Accept Volunteers 
+Swa3ed - Accept Volunteers
 @endsection
 @section('content')
 <div class="viewProfile" style="">
@@ -34,7 +34,7 @@ Swa3ed - Accept Volunteers
 
       <tr>
         <td>{{$eventVol->id}}</td>
-        <td><a href="{{route('profile',[$eventVol->id])}}"></a>{{$eventVol->name}}</td>
+        <td><a class="green-link" href="{{route('profile',[$eventVol->id])}}">{{$eventVol->name}}</a></td>
 
       </tr>
       @endforeach
@@ -45,7 +45,13 @@ Swa3ed - Accept Volunteers
 </table>
 
 @if($mine && ($archived == 0 || $archived == 2))
-<button  type="submit" class="btn col-3 btn-green">Accept</button>
+<div class="row justify-content-center">
+  <div class="col-4">
+    <button  type="submit" class="btn btn-block btn-green">Accept</button>
+
+  </div>
+
+</div>
 </form>
 
 @endif

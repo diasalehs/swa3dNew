@@ -17,9 +17,9 @@ Swa3ed - Volunteers
   <hr />
 
 @if($archived == 0 && $mine)
-<form id="frm-unaccepted" action="{{ route('unAcceptVolunteer',$event->id)}}" method="POST" >{{ csrf_field() }}
+<form id="frm-unacceptedn" action="{{ route('unAcceptVolunteer',$event->id)}}" method="POST" >{{ csrf_field() }}
 @endif
-<table id="unacceptedT" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
+<table id="unacceptedTa" class=" table table-striped table-bordered" cellspacing="0"  width="100%">
   <thead>
       <tr>
           <th>
@@ -34,7 +34,7 @@ Swa3ed - Volunteers
 
       <tr>
         <td>{{$eventAcceptedVol->id}}</td>
-        <td><a href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a></td>
+        <td><a class="green-link" href="{{route('profile',[$eventAcceptedVol->id])}}">{{$eventAcceptedVol->name}}</a></td>
       </tr>
       @endforeach
 
@@ -42,13 +42,17 @@ Swa3ed - Volunteers
 
   </tbody>
 </table>
-<div class="row" style="margin-top:20px;">
 
 
 @if($archived == 0 && $mine)
-<div class="col-6">
-  <button  type="submit" class="btn  btn-block btn-green">Remove</button>
+<div class="row justify-content-center">
+  <div class="col-4">
+    <button  type="submit" class="btn btn-block btn-green">Remove</button>
+
+  </div>
+
 </div>
+
 </form>
 
 @endif

@@ -3,7 +3,7 @@
     $(document).ready(function()
         {
 
-                 var table = $('#unacceptedT').DataTable({
+                 var table = $('#unacceptedTa').DataTable({
                     'columnDefs': [
                        {
                           'targets': 0,
@@ -28,7 +28,7 @@
                  });
 
                  // Handle form submission event
-                 $('#frm-unaccepted').on('submit', function(e){
+                 $('#frm-unacceptedn').on('submit', function(e){
                     var form = this;
 
                     var rows_selected = table.column(0).checkboxes.selected();

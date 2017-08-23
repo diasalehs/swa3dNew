@@ -2,12 +2,7 @@
 
 $(document).ready(function()
     {
-      var table = $('#inst').DataTable({
-         'columnDefs': [
-            {
-               'targets': 0,
-              'order': [[1, 'asc']]
-      });
+    
 
              var table = $('#example').DataTable({
                 'columnDefs': [

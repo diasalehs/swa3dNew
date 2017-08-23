@@ -5,9 +5,12 @@
   }
 
 body {
-  zoom: .87;
+  zoom: .92;
 
 
+}
+.addpadding{
+  margin: 5px;
 }
 .navy-link{color:var(--newnavy)!important;
   transition:all .3s}
@@ -21,7 +24,9 @@ body {
   border-radius:200px!important;-webkit-box-shadow:0 0 0 0 var(--newnavy)!important;
   box-shadow:0 0 0 0 var(--navy)!important
 }
-  .btn-navy:hover{background-color:var(--navy-hover);color:#fff}
+  .btn-navy:hover{
+    background-color:var(--dark-navy);
+    color:#fff}
 .dash{
   padding: 30px;
   display: flex;
