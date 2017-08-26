@@ -31,19 +31,32 @@
           @endforeach
 
           <div class="sl-slide bg-4" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-            <div class="sl-slide-inner"style="background-image:linear-gradient(rgba(0, 0, 0,.3),rgba(0, 0, 0, .9)), url('{{$_3slides[0]->mainImgpath}}');background-size:cover ">
-              <h2><a href="#" class="green-link">{{$value = str_limit($_3slides[0]->title, 60,$end = '...')  }}</a></h2>
+            <div class="sl-slide-inner"style="background-image:linear-gradient(rgba(0, 0, 0,.3),rgba(0, 0, 0, .9)), url('{{$_3slides[0]->mainImgpath}}');background-size:cover;    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center; ">
+
+              <h2><a href="#" class="green-link">{{$value = str_limit($_3slides[0]->title, 90,$end = '...')  }}</a></h2>
               <blockquote><p>{{$value = str_limit($_3slides[0]->textarea, 120,$end = '...')  }}</p><cite>Ralph Waldo Emerson</cite></blockquote>
             </div>
           </div>
           <div class="sl-slide bg-4" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
-            <div class="sl-slide-inner"style="background-image:linear-gradient(rgba(0, 0, 0,.3),rgba(0, 0, 0, .9)), url('{{$_3slides[1]->mainImgpath}}');background-size:cover ">
+            <div class="sl-slide-inner"style="background-image:linear-gradient(rgba(0, 0, 0,.3),rgba(0, 0, 0, .9)), url('{{$_3slides[1]->mainImgpath}}');background-size:cover;   display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;  ">
               <h2><a href="#" class="yellow-link">{{$value = str_limit($_3slides[1]->title, 60,$end = '...')  }}</a></h2>
               <blockquote><p>{{$value = str_limit($_3slides[1]->textarea, 120,$end = '...')  }}</p><cite>Ralph Waldo Emerson</cite></blockquote>
             </div>
           </div>
             <div class="sl-slide bg-4" data-orientation="horizontal"  data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
-              <div class="sl-slide-inner"style="background-image:linear-gradient(rgba(0, 0, 0,.3),rgba(0, 0, 0, .9)), url('{{$_3slides[2]->mainImgpath}}');background-size:cover ">
+              <div class="sl-slide-inner"style="background-image:linear-gradient(rgba(0, 0, 0,.3),rgba(0, 0, 0, .9)), url('{{$_3slides[2]->mainImgpath}}');background-size:cover;   display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-content: center;
+      justify-content: center;  ">
                 <h2><a href="#" class="pink-link">{{$value = str_limit($_3slides[2]->title, 60,$end = '...')  }}</a></h2>
                 <blockquote><p>{{$value = str_limit($_3slides[2]->textarea, 120,$end = '...')  }}</p><cite>Ralph Waldo Emerson</cite></blockquote>
               </div>
