@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container" style="margin-top:10px; min-height:600px;" >
+<div class="container" style="margin-top:10px; min-height:80vh;" >
 
     <!-- Page Heading/Breadcrumbs -->
     <div class="row">

@@ -6,10 +6,22 @@
 @section('content')
 
 @if(Auth::check())
-<div class="container-fluid min"  >
+<div class="container " style="margin-top:20px;margin-bottom:20px;" >
 
-          <h1 class="pinkcolor col-md-8 col-sm-12 " style="margin-top:20px;">Events</h1>
-          <hr />
+  <div id="accordion" role="tablist" aria-multiselectable="true">
+<div class="card">
+<div class="card-header" role="tab" id="headingOne">
+<h5 class="mb-0">
+  <a data-toggle="collapse" class="green-link" data-parent="#accordion"aria-expanded="true" href="#collapseOne" aria-controls="collapseOne">
+    Filter Events
+  </a>
+</h5>
+</div>
+
+<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+<div class="card-block">
+
+
 
          <form id="myform"  action="{{route('Events')}}" class="" style="">
           <div class="row">
@@ -309,9 +321,18 @@
          </div>
          </div>
         </form>
-        <hr />
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+        <div class="container-fluid min">
+
+
 <div class="row">
          <div class="col-12" style="color: #333">
+           <h3 class="mt-4 mb-3" style="color: var(--green); text-align:center;">Events<small></small></h3>
+           <hr />
           <div class="row justify-content-center">
 
 

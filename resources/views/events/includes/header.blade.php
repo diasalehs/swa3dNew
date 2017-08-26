@@ -34,12 +34,18 @@ align-items: center;
           {{$event->endDate}} - in {{ucfirst($event->city)}}, {{$event->country}} |
           @if(!$event->open)
              (<i class="fa fa-user-secret" aria-hidden="true"></i> Private Event).
+               @if($mine)
                 <a class="  green-link"  href="{{route('openEvent',$event->id)}}">
                   Make it public</a>
+                  @endif
+
           @elseif($event->open)
             (<i class="fa fa-users" aria-hidden="true"></i> Public Event).
+              @if($mine)
             <a class="  pink-link"  href="{{route('closeEvent',$event->id)}}">
                Make it private</a>
+               @endif
+
           @endif
            <br />   Created by <a href="{{route('profile',$event->user_id)}}" class="yellow-link">{{$event->user->name}}</a>
 
@@ -64,7 +70,7 @@ align-items: center;
                     @endif
                   @endif
                   @if($mine || $eventCloseAllowed)
-                  <a class="btn addpadding btn-green" style="color:#fff" data-toggle="modal" data-target="#postModal"><i class="fa fa-plus" aria-hidden="true"></i> Create a Post</a>
+                  <a class="btn addpadding btn-green" style="color:#fff" data-toggle="modal" data-target="#postModal"><i class="fa fa-plus" aria-hidden="true"></i> Write Post</a>
                   @endif
                 @elseif($archived == 1)
                   <a class="btn addpadding btn-green" style="color:#fff" data-toggle="modal" data-target="#lessonsModal">Lessons Learned</a>

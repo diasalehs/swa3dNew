@@ -9,16 +9,16 @@
   <div class="card card-inverse">
     <img class="card-img cover-photo-high" src="{{URL::to('/uploads')}}/{{$news->mainImgpath}}" alt="Card image">
 
-    <div class="card-img-overlay" style="background-color:rgba(19, 58, 83, 0.3);  justify-content: center;">
+    <div class="card-img-overlay" style="background-color:rgba(19, 58, 83, 0.2);  justify-content: center;">
 
       <br />
 
     </div>
   </div>
-  <div class="container" style="min-height:400px">
+  <div class="container" style="min-height:600px">
     <div class="row">
 
-        <div class="col-md-9 col-sm-12">
+        <div class="col-md-12 col-sm-12">
           <br />
           <h1 class="card-title greencolor">{{$news->title}}<br /></h1>
             <!-- Date/Time -->
