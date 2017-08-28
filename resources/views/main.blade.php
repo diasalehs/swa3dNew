@@ -203,7 +203,8 @@
 <div class="row"id="tester" style="margin:0px;height:150px; background-image: linear-gradient(rgba(19, 58, 83, 0.9),rgba(19, 58, 83, 0.9));">
   <div class="col-4 dash"style="border-top:4px solid var(--green); color:var(--green);">
     <h5 class="" style="">Volunteers</h5>
-    <span id="volunteersDatabase" style="display:none">3131</span>
+    
+    <span id="volunteersDatabase" style="display:none">{{ $volRec }}</span>
 
     <h1 id="volunteersC">
 
@@ -212,14 +213,14 @@
   </div>
   <div class="col-4 dash"style=" border-top:4px solid var(--pink); color:var(--pink)">
     <h5 class="" style="">Institutes</h5>
-    <span id="institutesDatabase" style="display:none">3131</span>
+    <span id="institutesDatabase" style="display:none">{{ $insRec }}</span>
     <h1 id="institutesC">
 
     </h1>
     </div>
   <div class="col-4 dash"style="border-top:4px solid var(--yellow); color:var(--yellow);">
     <h5 class=""  style="">Events</h5>
-    <span id="eventsDatabase" style="display:none">3131</span>
+    <span id="eventsDatabase" style="display:none">{{ $eveRec }}</span>
     <h1 id="eventsC">
 
     </h1>

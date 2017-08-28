@@ -86,7 +86,7 @@ border-top-left-radius: .25rem;">
         </button>
       </div>
       <div class="modal-body">
-        <form enctype="multipart/form-data" role="form" method="POST" action="{{ route('profileEdit') }}">{{ csrf_field() }}
+        <form enctype="multipart/form-data" role="form" method="POST" action="{{ route('pictureEdit') }}">{{ csrf_field() }}
           <div class="form-group col-sm-12 col-md-12 {{ $errors->has('picture') ? ' has-error' : '' }}">
               <label for="picture" class="form-control-label">Profile Picture</label>
               <div class="">

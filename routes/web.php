@@ -57,6 +57,7 @@ Route::get('/initiativeProfile', function() {return view('initiativeProfile');})
 //-------------------------------- just for users - auth --------------------------------\\
 Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
 {
+
     Route::get('/followers', ['uses'=>'followController@followers'])->name('followers');
     Route::get('/following', ['uses'=>'followController@following'])->name('following');
     Route::get('/closeProfile', ['uses'=>'profilesController@closeProfile'])->name('closeProfile');
@@ -164,6 +165,8 @@ Route::group(['prefix'=>'','routeMiddleware'=>'auth'], function()
             Route::get('/myArchiveEvents', ['uses'=>'IndividualsController@myArchiveEvents'])->name('myArchiveEvents');
         });
     });
+
+    Route::post('/pictureEdit', ['uses'=>'homeController@pictureEdit'])->name('pictureEdit');
 
 
     Route::get('/follow/{userId}', ['uses'=>'followController@follow'])->name('follow');

@@ -450,18 +450,6 @@
         <div class="card-block">
           <div class="row">
 
-          <div class="form-group col-sm-12 col-md-6 {{ $errors->has('picture') ? ' has-error' : '' }}">
-              <label for="picture" class="form-control-label">Profile Picture</label>
-              <div class="">
-                  <input id="picture" type="file" accept="image/*"  class="form-control" name="image" value="{{ $user->picture}}"
-                  autofocus="autofocus" />
-                  @if ($errors->has('picture'))
-                          <div class="alert alert-danger" role="alert">
-                          <strong>Warning!</strong> {{ $errors->first('picture') }}
-                       </div>
-                  @endif
-              </div>
-          </div>
 
             <div class="form-group col-sm-12 col-md-6 {{ $errors->has('mobileNumber') ? ' has-error' : '' }}">
                 <label for="mobileNumber" class="form-control-label">Mobile Number</label>

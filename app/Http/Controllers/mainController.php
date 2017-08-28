@@ -67,16 +67,17 @@ class mainController extends Controller
         $researches=researches::orderby('created_at','desc')->take(3)->get();
         $events=event::orderby('startDate','desc')->take(3)->get();
 
-           // $volRec = DB::table('individuals')->count();
+
+            $volRec = DB::table('individuals')->count();
            // $malesRec=individuals::where('gender','male')->count();
            // $femalesRec=individuals::where('gender','female')->count();
-           // $insRec= DB::table('institutes')->count();
+            $insRec= DB::table('institutes')->count();
            // $resRec=DB::table('researches')->count();
-           // $eveRec=DB::table('events')->count();
+            $eveRec=DB::table('events')->count();
 
 
 
-         return view('main',compact('volunteers','_3slides','news_record','researches','events','pollQuestion'
+         return view('main',compact('volunteers','_3slides','news_record','researches','events','pollQuestion','volRec','insRec','eveRec'
             ));
 	}
 

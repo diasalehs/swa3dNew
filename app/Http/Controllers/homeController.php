@@ -136,6 +136,29 @@ class homeController extends Controller
 
         }
 
+
+
+        public function pictureEdit(Request $request)
+        {
+               $user = $this->user;
+            $Individuals = $user->Individuals;
+
+                 if ($request->hasFile('image'))
+            {
+                $picture = $request->file('image');
+                $imagename = time().'.'.$picture->getClientOriginalExtension();
+                Image::make($picture)->save(public_path('pp/'.$imagename));
+
+                $Individuals->picture = $imagename;
+                $user->picture = $imagename;
+                
+            }
+                        $user->save();
+            return redirect()->route('home');
+
+
+            # code...
+        }
     public function profileEdit(Request $request)
     {
         $user = $this->user;
