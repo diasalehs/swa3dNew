@@ -62,7 +62,6 @@
 
 
 <!-- Javascript Requirements -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 <!-- Laravel Javascript Validation -->
@@ -70,29 +69,7 @@
 
     {!! JsValidator::formRequest('App\Http\Requests\registerFormRequest', '#Register') !!}
 
-    <script type="text/javascript">
 
-    $(document).ready(function()
-        {
-
-          $('#errormodal').modal('show')
-
-          $('input[type="date"]').datepicker({
-              todayBtn: "linked",
-              todayHighlight: true,
-              format: "yyyy-mm-dd",
-              autoclose:true,
-
-          });
-          $('.selectpicker').selectpicker();
-
-          $('.carousel').carousel({
-              interval: 5000 //changes the speed
-          });
-
-        });
-
-    </script>
 
 
 </body>
