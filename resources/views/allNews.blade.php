@@ -35,9 +35,7 @@
 
     <!-- Blog Post -->
     @foreach($news as $anew)
-    <?php if(count($news) < 1){
-      echo "No results found!";
-    } ?>
+
     <div class="card mb-4">
         <div class="card-block">
             <div class="row">
@@ -76,6 +74,10 @@
     {{$news->links('vendor.pagination.custom')}}
 
 </nav>
+    {{ count($news) }}
+  @php
+    echo "News Found!"
+  @endphp
 
 </div>
 

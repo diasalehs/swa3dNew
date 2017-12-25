@@ -32,7 +32,6 @@
       </div>
     </form>
   </div>
-
 <div class="row">
              @foreach($researches as $research)
             <div class="col-lg-4 col-sm-6">
@@ -52,6 +51,10 @@
           </div>
 
 {{ $researches->links('vendor.pagination.custom')}}
+  {{ count($researches) }}
+  @php
+    echo "Researches Found!"
+  @endphp
 </div>
 
 @endsection('content')
