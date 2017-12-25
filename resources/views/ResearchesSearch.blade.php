@@ -38,8 +38,13 @@
       </div>
     </form>
   </div>
+@if($researches->isEmpty())
+                               <h4 class='text-center pinkcolor'style='margin-top:90px'>No Result Found</h4>
 
+              
+              @else
 <div class="row">
+            
              @foreach($researches as $research)
             <div class="col-lg-4 col-sm-6">
                 <div class="card research-card">
@@ -53,6 +58,7 @@
             </div>
             @endforeach
           </div>
+            @endif
 
 
 {{ $researches->setpath('results?search='.$text)->render('vendor.pagination.custom') }}

@@ -34,10 +34,12 @@
     </div>
 
     <!-- Blog Post -->
+     @if($news->isEmpty())
+      <h4 class='text-center greencolor'style='margin-top:90px'>No Result Found</h4>
+    
+    @else
     @foreach($news as $anew)
-    <?php if(count($news) < 1){
-      echo "No results found!";
-    } ?>
+   
     <div class="card mb-4">
         <div class="card-block">
             <div class="row">
@@ -70,7 +72,7 @@
     </div>
 </div>
 @endforeach
-
+@endif
 <!-- Pagination -->
 <nav aria-label="Page navigation example">
     {{$news->links('vendor.pagination.custom')}}

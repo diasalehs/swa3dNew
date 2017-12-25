@@ -4,8 +4,13 @@
 
 @endsection
 @section('content')
-<div class="container " style="margin-bottom:20px; margin-top:20px;">
-  
+<div class="container " style="margin-bottom:10px; color: var(--dark-navy); margin-top:20px;">
+     <h1 class="greencolor text-center col-md-12 col-sm-12">Institutes</h1>
+         <hr />
+
+  <div class="jumbotron " style="padding: 15px 5px; background-color: #ebebeb">
+  <div class="container">
+    <p class="lead pinkcolor">Search institutes by:</p>
 
       <form id="myform" class="row" style="" method="GET" action="{{route('institutes')}}">
           <div class="form-group  col-sm12 col-md-4">
@@ -296,72 +301,72 @@
          </div>
        </div>
            <div class="row justify-content-center " style="margin-bottom:20px;">
-             <div class="col-4">
-               <button type="submit" form="myform" class="btn btn-block btn-green" >Search</button>
+             <div class="col-4 text-center">
+               <button type="submit" form="myform" style="padding-left: 50px;padding-right: 50px;" class="btn  btn-green" >Search</button>
              </div>
            </div>
         </form>
-  
+  </div>
+</div>
 
     <!-- Tab panes -->
-<div class="container-fluid min">
+<div class="container min">
 
 
 <div class="row">
 
        <div class="col-12" style="color: #333">
-         <h3 class="mt-4 mb-3" style="color: var(--green); text-align:center;">Institutes<small></small></h3>
-         <hr />
+         
         <div class="row justify-content-center">
 
-<table id="example" class=" table table-striped table-bordered table-responsive" cellspacing="0"  width="100%">
-  <thead>
-
-      <tr>
-          <th>English Name</th>
-          <th>Arabic Name</th>
-          <th>Rating</th>
-          <th>City</th>
-          <th>Address</th>
-          <th>Email</th>
-
-      </tr>
-  </thead>
-  <tfoot>
-
-      <tr>
-          <th class="TFN">English Name</th>
-          <th>Arabic Name</th>
-          <th>Rating</th>
-          <th>City</th>
-          <th>Address</th>
-          <th>Email</th>
-
-      </tr>
-  </tfoot>
-
-  <tbody>
+<?php $i=1 ?>
+   @if(count($NGOs) ==0)
+     <h4 class='text-center greencolor'style='margin-top:90px'>No Result Found</h4>
+    
+    @else
 @foreach($NGOs as $u)
+<div class="col-sm-12 col-md-4">
+<div class="card" style="">
+  <a href="{{route('profile',[$u->user_id])}}" class=""><img class="card-img-top" style="    max-width: 100%;
+    width: 100%;
+    object-fit: cover;
+    max-height: 204px;" src="{{ URL::to('/') }}/pp/{{$u->picture}}" alt="Card image cap"></a>
+  <div class="card-block">
+    <a href="{{route('profile',[$u->user_id])}}" class="card-link green-link"><h4 class="card-title">{{$u->nameInEnglish}}</h4></a>
+    
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item text-center"style="border-bottom: 0px;">{{$u->cityName}}</li>
+    <li class="list-group-item"style="border-bottom: 0px;">{{$u->email}}</li>
+    <li class="list-group-item" style=" border-bottom: 1px solid rgba(0,0,0,.125);">
+      <span id="<?php echo "shr"."$i"; ?>" style="display:none">{{$u->acc_avg}}</span>
+
+     <div class="containerdiv" style="display:inline-block">
+
+          <div>
+          <img src="{{ URL::to('/') }}/vendor/images/stars_blank.png" alt="img">
+          </div>
+          <div class="cornerimage <?php echo "cornerimage"."$i"; $i++;?>" style="width:0%;top: 1px;">
+          <img src="{{ URL::to('/') }}/vendor/images/stars_full.png" alt="">
+          </div>
+
+      </div>
+    </li>
+  </ul>
+ 
+</div>
+</div>
 <tr>
-          <td><a class="green-link"href="{{route('profile',[$u->user_id])}}">{{$u->nameInEnglish}}</a></td>
+          <!-- <td><a class="green-link"href="{{route('profile',[$u->user_id])}}">{{$u->nameInEnglish}}</a></td>
           <td>{{$u->nameInArabic}}</td>
           <td>{{$u->acc_avg}}  </td>
           <td>{{$u->cityName}}</td>
           <td>{{$u->address}}</td>
           <td>{{$u->email}}</td>
-      </tr>
+      </tr> -->
 @endforeach
 
-
-
-
-  </tbody>
-</table>
-
-
-<br />
-
-
+@endif
 
 </div>
 </div>
@@ -377,40 +382,17 @@
 
 @section('scripts')
 
-    <script src="{{URL::asset('vendor/js/jstarbox.js')}} "></script>
+<script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
+   
+<script>
+     for (i = 1; i <= <?php echo(count($NGOs)) ?>; i++) { 
+          var rate= $('#shr'+i).text()*20;
+          $(".cornerimage"+i).animate({width: rate}, 1000, 'linear'); 
+     }
+     // window.alert ("<?php echo(count($NGOs)) ?>");
+     // var rate= $('#shr1').text()*20;
+     // $(".cornerimage1").animate({width: rate}, 1000, 'linear');
+</script>
 
-    <script src="{{URL::asset('vendor/js/RateJS.js')}} "></script>
-
-    <script src="{{URL::asset('vendor/js/bootstrap-select.js')}} "></script>
-    <script src="{{URL::asset('vendor/js/jquery.dataTables.min.js')}} "></script>
-    <script src="{{URL::asset('vendor/js/dataTables.bootstrap4.min.js')}} "></script>
-    <script src="{{URL::asset('vendor/js/dataTables.checkboxes.min.js')}} "></script>
-
-    <script>
-    $(document).ready(function() {
-        $('#example').DataTable( {
-            initComplete: function () {
-                this.api().columns().every( function () {
-                    var column = this;
-                    var select = $('<select><option value=""></option></select>')
-                        .appendTo( $(column.footer()).empty() )
-                        .on( 'change', function () {
-                            var val = $.fn.dataTable.util.escapeRegex(
-                                $(this).val()
-                            );
-
-                            column
-                                .search( val ? '^'+val+'$' : '', true, false )
-                                .draw();
-                        } );
-
-                    column.data().unique().sort().each( function ( d, j ) {
-                        select.append( '<option value="'+d+'">'+d+'</option>' )
-                    } );
-                } );
-            }
-        } );
-    } );
-    </script>
 
 @endsection
