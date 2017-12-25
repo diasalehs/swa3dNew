@@ -9,11 +9,11 @@
                 <div class="card-header">Register</div>
                 <div class="card-block">
                   <div class="row justify-content-center">
-                        <form class="col-lg-12" role="form" method="POST" action="{{ route('register') }}">{{ csrf_field() }}
+
+                        <form class="col-lg-12" role="form" method="POST" id="Register" action="{{ route('register') }}">{{ csrf_field() }}
 
                             <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class=" form-control-label">Name</label>
-                                <div class="">
                                     <input id="name" type="text" minlength="4" min="4" class="form-control" name="name" value="{{ old('name') }}"
                                     required="required" autofocus="autofocus" />
                                     @if ($errors->has('name'))
@@ -21,7 +21,6 @@
                                             <strong>Warning!</strong> {{ $errors->first('name') }}
                                             </div>
                                     @endif
-                                </div>
                             </div>
 
 
