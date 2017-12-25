@@ -180,7 +180,7 @@ class homeController extends Controller
                 'currentWork' => 'required',
                 'educationalLevel' => 'required',
                 'preVoluntary' => 'required',
-                'dateOfBirth' => 'required|date|before:today',
+                'dateOfBirth' => 'required|date|before:01/01/2010',
             ]);
             if(isset($request->password))
             {
@@ -255,7 +255,7 @@ class homeController extends Controller
             $this->validate($request, [
                 'livingPlace' => 'required',
                 'license' => 'required|max:10|unique:institutes',
-                'establishmentYear' => 'required|date|after:01/01/1900',
+                'establishmentYear' => 'required|date|before:today',
                 'address' => 'required|max:30',
                 'mobileNumber' => 'required|digits:11',
             ]);

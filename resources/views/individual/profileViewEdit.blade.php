@@ -310,7 +310,7 @@
                   @endif
                   >Engineering</option>
                   <option value="Medicin"
-                  @if($userIndividual->Major == "Medicin")
+                  @if($userIndividual->Major == "Medicine")
                     selected
                   @endif
                   > Medicin</option>
@@ -350,7 +350,7 @@
               {{-- Yes or No Options only (If Yes, the next field will appear) --}}
 
               <div class="col-sm-12 col-md-6 form-group">
-                  <label  class="form-control-label" for="exampleSelect1">Do you have any expriments on Voluntary</label>
+                  <label  class="form-control-label" for="exampleSelect1">Do you have volunteer Experience</label>
                <div class="">
                   <select name="preVoluntary" class="form-control" id="vy" onchange="vyyesno(this)">
                   <option value="0"
@@ -384,7 +384,7 @@
 
                               {{--  --}}
                 <div class="col-12" style="margin-top:20px;">
-                  <h4 class="greencolor">Your targets</h4>
+                  <h4 class="greencolor">Groups you would like to work with</h4>
                   <hr />
                 </div>
                 <br />

@@ -66,7 +66,7 @@ Swa3ed - Register
                         </div>
                         {{--  --}}{{--  --}}
                         <div class="col-sm-12 col-md-6 form-group{{ $errors->has('ARfirst') ? ' has-error' : '' }}">
-                            <label for="email" class="form-control-label">Your Arabic First</label>
+                            <label for="email" class="form-control-label">First name in Arabic</label>
                             <div class="">
                                 <input id="name" type="text" class="form-control" name="ARfirst" value="{{ old('ARfirst') }}"
                                 required="required" />
@@ -79,7 +79,7 @@ Swa3ed - Register
                         </div>
                         {{--  --}}{{--  --}}
                         <div class="col-sm-12 col-md-6 form-group{{ $errors->has('ARlast') ? ' has-error' : '' }}">
-                            <label for="email" class=" form-control-label">Your Arabic last</label>
+                            <label for="email" class=" form-control-label">Last name in Arabic</label>
                             <div class="">
                                 <input id="name" type="text" class="form-control" name="ARlast" value="{{ old('ARlast') }}"
                                 required="required" />
@@ -92,7 +92,7 @@ Swa3ed - Register
                         </div>
                         {{--  --}}{{--  --}}
                         <div class="col-sm-12 col-md-6 form-group{{ $errors->has('country') ? ' has-error' : '' }}">
-                          <label for="name" class=" form-control-label">Your Country</label>
+                          <label for="name" class=" form-control-label">Country</label>
                           <div class="" >
                           <select name="country" class="form-control" onchange="yesnoCheck(this)">
                                @include('includes.countriesModal')
@@ -107,7 +107,7 @@ Swa3ed - Register
                 </div>
                 {{--  --}}{{--  --}}
                 <div id="palestineCity"  class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
-                    <label for="email" class=" form-control-label">Your city name</label>
+                    <label for="email" class=" form-control-label">City</label>
                     <div class="">
                         <select id="palC" name="cityName"  class="form-control">
                           <option value="nablus">Nablus</option>
@@ -123,7 +123,7 @@ Swa3ed - Register
                 </div>
                 {{--  --}}{{--  --}}
                 <div id="otherCity" style="display:none" class="col-sm-12 col-md-6 form-group{{ $errors->has('x') ? ' has-error' : '' }}">
-                    <label for="email" class="form-control-label">Your city name</label>
+                    <label for="email" class="form-control-label">City</label>
                     <div class="">
                         <input id="otherC" name="x"  type="text" class="form-control" value="{{ old('x') }}"
                          />
@@ -139,7 +139,7 @@ Swa3ed - Register
 
                 {{--  --}}
                 <div class="col-sm-12 col-md-6 form-group{{ $errors->has('dateOfBirth') ? ' has-error' : '' }}">
-                    <label for="name" class=" form-control-label">Your date of birth</label>
+                    <label for="name" class=" form-control-label">date of birth</label>
                     <div class="">
                         <input id="theDate" type="date" class="form-control" name="dateOfBirth"  min="" value="{{ old('dateOfBirth') }}"
                         />
@@ -167,7 +167,7 @@ Swa3ed - Register
 
                 {{--  --}}
               <div class="col-sm-12 col-md-6 form-group">
-                    <label  class=" form-control-label" for="exampleSelect1">Your Current Work</label>
+                    <label  class=" form-control-label" for="exampleSelect1">Current Work</label>
                 <div class="">
                     <select name="currentWork" value="{{ old('currentWork') }}" class="form-control" id="exampleSelect1">
                     <option value="School Student">School Student</option>
@@ -183,7 +183,7 @@ Swa3ed - Register
                 </div>
                 {{--  --}}
                 <div class="col-sm-12 col-md-6 form-group">
-                    <label  class=" form-control-label" for="exampleSelect1">Your educational level</label>
+                    <label  class=" form-control-label" for="exampleSelect1">Educational level</label>
                 <div class="">
                     <select name="educationalLevel" value="{{ old('educationalLevel') }}" class="form-control" id="exampleSelect1">
                     <option value="High School">High School</option>
@@ -201,7 +201,7 @@ Swa3ed - Register
                     <select name="Major" value="{{ old('Major') }}" class="form-control" id="exampleSelect1">
                     <option value="BSc">IT</option>
                     <option value="Engineering">Engineering</option>
-                    <option value="Medicin">Medicin</option>
+                    <option value="Medicin">Medicine</option>
                     <option value="law">law</option>
                     <option value="Art">Art</option>
                     <option value="Business">Business</option>
@@ -213,7 +213,7 @@ Swa3ed - Register
                 </div>
                 {{--  --}}
                 <div class="col-sm-12 col-md-6 form-group">
-                    <label  class="form-control-label" for="exampleSelect1">Do you have any expriments on Voluntary</label>
+                    <label  class="form-control-label" for="exampleSelect1">Do you have volunteer Experience</label>
                 <div class="">
                     <select name="preVoluntary" value="{{ old('preVoluntary') }}" class="form-control" id="vy" onchange="vyyesno(this)">
                     <option value="0">No</option>
@@ -309,7 +309,7 @@ Swa3ed - Register
 
                 {{--  --}}
                 <div class="col-12" style="margin-top:20px;">
-                  <h4 class="greencolor">Your targets</h4>
+                  <h4 class="greencolor">Groups you would like to work with</h4>
                   <hr />
                 </div>
                 <br />
@@ -333,7 +333,7 @@ Swa3ed - Register
 
                 {{--  --}}
                 <div class="col-12" style="margin-top:20px;">
-                  <h4 class="greencolor">Your intresets</h4>
+                  <h4 class="greencolor">Intresets</h4>
                   <hr />
                 </div>
                 <br />

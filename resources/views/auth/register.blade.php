@@ -14,7 +14,7 @@
                             <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class=" form-control-label">Name</label>
                                 <div class="">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
+                                    <input id="name" type="text" minlength="4" min="4" class="form-control" name="name" value="{{ old('name') }}"
                                     required="required" autofocus="autofocus" />
                                     @if ($errors->has('name'))
                                             <div class="alert alert-danger" role="alert">

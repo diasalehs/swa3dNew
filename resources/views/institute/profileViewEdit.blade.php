@@ -15,7 +15,7 @@
                         </div>
                         {{--  --}}
                         <div class="  col-sm-12 col-md-6 form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
-                            <label for="email" class=" form-control-label">First Name</label>
+                            <label for="email" class=" form-control-label">First name</label>
                             <div class="">
                                 <input id="name" type="text" class="form-control" name="firstName" value="{{ $userInstitute->firstInEnglish }}"
                                 required="required" />
@@ -29,7 +29,7 @@
                         {{--  --}}
                         {{--  --}}
                         <div class="col-sm-12 col-md-6 form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
-                            <label for="email" class="form-control-label">Last Name</label>
+                            <label for="email" class="form-control-label">Last name</label>
                             <div class="">
                                 <input id="name" type="text" class="form-control" name="lastName" value="{{ $userInstitute->lastInEnglish }}"
                                 required="required" />
@@ -42,7 +42,7 @@
                         </div>
                         {{--  --}}{{--  --}}
                         <div class="col-sm-12 col-md-6 form-group{{ $errors->has('ARfirst') ? ' has-error' : '' }}">
-                            <label for="email" class="form-control-label">Your Arabic First</label>
+                            <label for="email" class="form-control-label">First name in Arabic</label>
                             <div class="">
                                 <input id="name" type="text" class="form-control" name="ARfirst" value="{{ $userInstitute->firstInArabic }}"
                                 required="required" />
@@ -55,7 +55,7 @@
                         </div>
                         {{--  --}}{{--  --}}
                         <div class="col-sm-12 col-md-6 form-group{{ $errors->has('ARlast') ? ' has-error' : '' }}">
-                            <label for="email" class=" form-control-label">Your Arabic last</label>
+                            <label for="email" class=" form-control-label">Last name in Arabic</label>
                             <div class="">
                                 <input id="name" type="text" class="form-control" name="ARlast" value="{{ $userInstitute->lastInArabic }}"
                                 required="required" />
@@ -89,7 +89,7 @@
 
                         {{--  --}}{{--  --}}
                         <div class="col-sm-12 col-md-6 form-group{{ $errors->has('country') ? ' has-error' : '' }}">
-                          <label for="name" class=" form-control-label">Your Country</label>
+                          <label for="name" class=" form-control-label">Country</label>
                           <div class="" >
                           <select name="country" class="form-control" onchange="yesnoCheck(this)">
                                @include('includes.countriesModal')
@@ -104,12 +104,10 @@
                 </div>
                 {{--  --}}{{--  --}}
                 <div id="palestineCity"  class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
-                    <label for="email" class=" form-control-label">Your city name</label>
+                    <label for="email" class=" form-control-label">City</label>
                     <div class="">
                         <select id="palC" name="cityName"  class="form-control">
-                          <option value="nablus">Nablus</option>
-                          <option value="jericho">Jericho (Ariha)</option>
-                          <option value="qabatiya   ">Qabatiya  </option>
+                          @include('includes.citiesModal')
                         </select>
                         @if ($errors->has('cityName'))
                             <div class="alert alert-danger" role="alert">
@@ -120,7 +118,7 @@
                 </div>
                 {{--  --}}{{--  --}}
                 <div id="otherCity" style="display:none" class="col-sm-12 col-md-6 form-group{{ $errors->has('x') ? ' has-error' : '' }}">
-                    <label for="email" class="form-control-label">Your city name</label>
+                    <label for="email" class="form-control-label">City</label>
                     <div class="">
                         <input id="otherC" name="x"  type="text" class="form-control" value="{{ $userInstitute->x }}"
                          />
@@ -189,7 +187,7 @@
 
                 {{--  --}}
                 <div class="col-12" style="margin-top:20px;">
-                  <h4 class="greencolor">Your targets</h4>
+                  <h4 class="greencolor">Groups you would like to work with</h4>
                   <hr />
                 </div>
                 <br />
@@ -213,7 +211,7 @@
 
                 {{--  --}}
                 <div class="col-12" style="margin-top:20px;">
-                  <h4 class="greencolor">Your intresets</h4>
+                  <h4 class="greencolor">Intresets</h4>
                   <hr />
                 </div>
                 <br />
