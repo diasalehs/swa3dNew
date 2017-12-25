@@ -5,18 +5,7 @@
 @endsection
 @section('content')
 <div class="container " style="margin-bottom:20px; margin-top:20px;">
-  <div id="accordion" role="tablist" aria-multiselectable="true">
-<div class="card">
-<div class="card-header" role="tab" id="headingOne">
-<h5 class="mb-0">
-  <a data-toggle="collapse" class="green-link" data-parent="#accordion"aria-expanded="true" href="#collapseOne" aria-controls="collapseOne">
-    Filter Institutes
-  </a>
-</h5>
-</div>
-
-<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-<div class="card-block">
+  
 
       <form id="myform" class="row" style="" method="GET" action="{{route('institutes')}}">
           <div class="form-group  col-sm12 col-md-4">
@@ -312,10 +301,7 @@
              </div>
            </div>
         </form>
-    </div>
-  </div>
-</div>
-</div>
+  
 
     <!-- Tab panes -->
 <div class="container-fluid min">

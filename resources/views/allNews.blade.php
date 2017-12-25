@@ -35,6 +35,9 @@
 
     <!-- Blog Post -->
     @foreach($news as $anew)
+    <?php if(count($news) < 1){
+      echo "No results found!";
+    } ?>
     <div class="card mb-4">
         <div class="card-block">
             <div class="row">
@@ -44,7 +47,7 @@
                   </a>
               </div>
               <div class="col-lg-6">
-                <h2 class="card-title greencolor"><a class="green-link" href="{{route('view',[$anew->id])}}">{{$anew->title}}</a></h2>
+                <h2 class="card-title greencolor"><a class="green-link" href="{{route('view',[$anew->id])}}">{{$anew->title}}dccdcd</a></h2>
                 <p class="card-text">
                   {{$value=""}}
                 <p style="display:none">
