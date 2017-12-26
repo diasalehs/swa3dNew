@@ -72,6 +72,7 @@ use Illuminate\Auth\Events\Registered;
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'userType'=>$data['userType'],
+                
             ]);
         }
 
