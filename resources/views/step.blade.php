@@ -31,7 +31,7 @@ Swa3ed - Register
 
             <div class="card">
                 <div class="card-block">
-                    <form class="" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
+                    <form id="step" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
                       <div class="row">
                         <div class="col-12">
                           <h4 class="greencolor">Basic information</h4>
@@ -295,7 +295,7 @@ Swa3ed - Register
                         <div class="form-group col-sm-12 col-md-6 {{ $errors->has('mobileNumber') ? ' has-error' : '' }}">
                 <label for="mobileNumber" class="form-control-label">Mobile Number</label>
                 <div class="">
-                    <input id="mobileNumber" type="phone" class="form-control" name="mobileNumber" value="{{ old('mobileNumber') }}" />
+                    <input id="mobileNumber" type="phone" class="form-control" name="mobileNumber" value="{{ old('mobileNumber') }}" required="required" />
                     @if ($errors->has('mobileNumber'))
                             <div class="alert alert-danger" role="alert">
                             <strong>Warning!</strong> {{ $errors->first('mobileNumber') }}

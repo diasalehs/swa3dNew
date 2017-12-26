@@ -69,6 +69,7 @@
 
     {!! JsValidator::formRequest('App\Http\Requests\registerFormRequest', '#Register') !!}
 
+    {!! JsValidator::formRequest('App\Http\Requests\stepFormRequest', '#step') !!}
 
 
 

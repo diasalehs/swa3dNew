@@ -76,6 +76,7 @@ use Jrean\UserVerification\Facades\UserVerification;
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'userType'=>$data['userType'],
+                'verified'=>1,
             ]);
         }
 
