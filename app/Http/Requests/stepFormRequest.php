@@ -29,8 +29,8 @@ class stepFormRequest extends FormRequest
                 return [
                     'firstName' => 'required|regex:/^[a-zA-Z]+$/',
                     'lastName' => 'required|regex:/^[a-zA-Z]+$/',
-                    'ARfirst' => 'required|alpha',
-                    'ARlast' => 'required|alpha',
+                    'FirstNameInArabic' => 'required|alpha',
+                    'LastNameInArabic' => 'required|alpha',
                     'country' => 'required',
                     'cityName' => 'required_without:x',
                     'x' => 'required_without:cityName',
@@ -41,13 +41,14 @@ class stepFormRequest extends FormRequest
                     'educationalLevel' => 'required',
                     'preVoluntary' => 'required',
                     'dateOfBirth' => 'required|date|before:01/01/2010',
+                    'mobileNumber' => 'required|digits:11'
                 ];
             }elseif(Auth::User()->userType == 1){
                 return [
                     'firstName' => 'required|regex:/^[a-zA-Z]+$/',
                     'lastName' => 'required|regex:/^[a-zA-Z]+$/',
-                    'ARfirst' => 'required|alpha',
-                    'ARlast' => 'required|alpha',
+                    'FirstNameInArabic' => 'required|alpha',
+                    'LastNameInArabic' => 'required|alpha',
                     'country' => 'required',
                     'cityName' => 'required_without:x',
                     'x' => 'required_without:cityName',

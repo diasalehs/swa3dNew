@@ -65,27 +65,27 @@ Swa3ed - Register
                             </div>
                         </div>
                         {{--  --}}{{--  --}}
-                        <div class="col-sm-12 col-md-6 form-group{{ $errors->has('ARfirst') ? ' has-error' : '' }}">
+                        <div class="col-sm-12 col-md-6 form-group{{ $errors->has('FirstNameInArabic') ? ' has-error' : '' }}">
                             <label for="email" class="form-control-label">First name in Arabic</label>
                             <div class="">
-                                <input id="name" type="text" class="form-control" name="ARfirst" value="{{ old('ARfirst') }}"
+                                <input id="name" type="text" class="form-control" name="FirstNameInArabic" value="{{ old('FirstNameInArabic') }}"
                                 required="required" />
-                                @if ($errors->has('ARfirst'))
+                                @if ($errors->has('FirstNameInArabic'))
                                     <div class="alert alert-danger" role="alert">
-                                        <strong>Warning!</strong> {{ $errors->first('ARfirst') }}
+                                        <strong>Warning!</strong> {{ $errors->first('FirstNameInArabic') }}
                                     </div>
                                 @endif
                             </div>
                         </div>
                         {{--  --}}{{--  --}}
-                        <div class="col-sm-12 col-md-6 form-group{{ $errors->has('ARlast') ? ' has-error' : '' }}">
+                        <div class="col-sm-12 col-md-6 form-group{{ $errors->has('LastNameInArabic') ? ' has-error' : '' }}">
                             <label for="email" class=" form-control-label">Last name in Arabic</label>
                             <div class="">
-                                <input id="name" type="text" class="form-control" name="ARlast" value="{{ old('ARlast') }}"
+                                <input id="name" type="text" class="form-control" name="LastNameInArabic" value="{{ old('LastNameInArabic') }}"
                                 required="required" />
-                                @if ($errors->has('ARlast'))
+                                @if ($errors->has('LastNameInArabic'))
                                     <div class="alert alert-danger" role="alert">
-                                        <strong>Warning!</strong> {{ $errors->first('ARlast') }}
+                                        <strong>Warning!</strong> {{ $errors->first('LastNameInArabic') }}
                                     </div>
                                 @endif
                             </div>
@@ -110,9 +110,7 @@ Swa3ed - Register
                     <label for="email" class=" form-control-label">City</label>
                     <div class="">
                         <select id="palC" name="cityName"  class="form-control">
-                          <option value="nablus">Nablus</option>
-                          <option value="jericho">Jericho (Ariha)</option>
-                          <option value="qabatiya	">Qabatiya	</option>
+                            @include('includes.citiesModal')
                         </select>
                         @if ($errors->has('cityName'))
                             <div class="alert alert-danger" role="alert">
@@ -139,9 +137,9 @@ Swa3ed - Register
 
                 {{--  --}}
                 <div class="col-sm-12 col-md-6 form-group{{ $errors->has('dateOfBirth') ? ' has-error' : '' }}">
-                    <label for="name" class=" form-control-label">date of birth</label>
+                    <label for="name" class=" form-control-label">Date of birth</label>
                     <div class="">
-                        <input id="theDate" type="date" class="form-control" name="dateOfBirth"  min="" value="{{ old('dateOfBirth') }}"
+                        <input id="theDate" type="date" class="form-control" name="dateOfBirth"  min="" value="{{ old('dateOfBirth') }}" required="required"
                         />
                         @if ($errors->has('dateOfBirth'))
                             <div class="alert alert-danger" role="alert">
@@ -155,7 +153,7 @@ Swa3ed - Register
             <label for="exampleInputEmail1">Gender</label><br />
 
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male" checked> Male
+              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male"  checked> Male
             </label>
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="female"> Female
@@ -216,8 +214,8 @@ Swa3ed - Register
                     <label  class="form-control-label" for="exampleSelect1">Do you have volunteer Experience</label>
                 <div class="">
                     <select name="preVoluntary" value="{{ old('preVoluntary') }}" class="form-control" id="vy" onchange="vyyesno(this)">
-                    <option value="0">No</option>
-                    <option value="1" selected>Yes</option>
+                    <option value="0" selected>No</option>
+                    <option value="1">Yes</option>
                     </select>
                 </div>
                 </div>
@@ -234,6 +232,17 @@ Swa3ed - Register
                         @endif
                     </div>
                 </div>
+
+
+            <div class="form-group col-sm-12 col-md-6 {{ $errors->has('mobileNumber') ? ' has-error' : '' }}">
+                <label for="mobileNumber" class="form-control-label">Mobile Number</label>
+                    <input id="mobileNumber" type="phone" class="form-control" name="mobileNumber" value="{{ old('mobileNumber') }}" required="required" />
+                    @if ($errors->has('mobileNumber'))
+                            <div class="alert alert-danger" role="alert">
+                            <strong>Warning!</strong> {{ $errors->first('mobileNumber') }}
+                         </div>
+                    @endif
+            </div>
 
 @else
 
