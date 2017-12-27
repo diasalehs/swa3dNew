@@ -31,7 +31,7 @@ Swa3ed - Register
 
             <div class="card">
                 <div class="card-block">
-                    <form class="" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
+                    <form id="step" role="form" method="POST" action="{{ route('allRegister') }}">{{ csrf_field() }}
                       <div class="row">
                         <div class="col-12">
                           <h4 class="greencolor">Basic information</h4>
@@ -65,34 +65,34 @@ Swa3ed - Register
                             </div>
                         </div>
                         {{--  --}}{{--  --}}
-                        <div class="col-sm-12 col-md-6 form-group{{ $errors->has('ARfirst') ? ' has-error' : '' }}">
-                            <label for="email" class="form-control-label">Your Arabic First</label>
+                        <div class="col-sm-12 col-md-6 form-group{{ $errors->has('FirstNameInArabic') ? ' has-error' : '' }}">
+                            <label for="email" class="form-control-label">First name in Arabic</label>
                             <div class="">
-                                <input id="name" type="text" class="form-control" name="ARfirst" value="{{ old('ARfirst') }}"
+                                <input id="name" type="text" class="form-control" name="FirstNameInArabic" value="{{ old('FirstNameInArabic') }}"
                                 required="required" />
-                                @if ($errors->has('ARfirst'))
+                                @if ($errors->has('FirstNameInArabic'))
                                     <div class="alert alert-danger" role="alert">
-                                        <strong>Warning!</strong> {{ $errors->first('ARfirst') }}
+                                        <strong>Warning!</strong> {{ $errors->first('FirstNameInArabic') }}
                                     </div>
                                 @endif
                             </div>
                         </div>
                         {{--  --}}{{--  --}}
-                        <div class="col-sm-12 col-md-6 form-group{{ $errors->has('ARlast') ? ' has-error' : '' }}">
-                            <label for="email" class=" form-control-label">Your Arabic last</label>
+                        <div class="col-sm-12 col-md-6 form-group{{ $errors->has('LastNameInArabic') ? ' has-error' : '' }}">
+                            <label for="email" class=" form-control-label">Last name in Arabic</label>
                             <div class="">
-                                <input id="name" type="text" class="form-control" name="ARlast" value="{{ old('ARlast') }}"
+                                <input id="name" type="text" class="form-control" name="LastNameInArabic" value="{{ old('LastNameInArabic') }}"
                                 required="required" />
-                                @if ($errors->has('ARlast'))
+                                @if ($errors->has('LastNameInArabic'))
                                     <div class="alert alert-danger" role="alert">
-                                        <strong>Warning!</strong> {{ $errors->first('ARlast') }}
+                                        <strong>Warning!</strong> {{ $errors->first('LastNameInArabic') }}
                                     </div>
                                 @endif
                             </div>
                         </div>
                         {{--  --}}{{--  --}}
                         <div class="col-sm-12 col-md-6 form-group{{ $errors->has('country') ? ' has-error' : '' }}">
-                          <label for="name" class=" form-control-label">Your Country</label>
+                          <label for="name" class=" form-control-label">Country</label>
                           <div class="" >
                           <select name="country" class="form-control" onchange="yesnoCheck(this)">
                                @include('includes.countriesModal')
@@ -107,12 +107,10 @@ Swa3ed - Register
                 </div>
                 {{--  --}}{{--  --}}
                 <div id="palestineCity"  class="col-sm-12 col-md-6 form-group{{ $errors->has('cityName') ? ' has-error' : '' }}">
-                    <label for="email" class=" form-control-label">Your city name</label>
+                    <label for="email" class=" form-control-label">City</label>
                     <div class="">
                         <select id="palC" name="cityName"  class="form-control">
-                          <option value="nablus">Nablus</option>
-                          <option value="jericho">Jericho (Ariha)</option>
-                          <option value="qabatiya	">Qabatiya	</option>
+                            @include('includes.citiesModal')
                         </select>
                         @if ($errors->has('cityName'))
                             <div class="alert alert-danger" role="alert">
@@ -123,7 +121,7 @@ Swa3ed - Register
                 </div>
                 {{--  --}}{{--  --}}
                 <div id="otherCity" style="display:none" class="col-sm-12 col-md-6 form-group{{ $errors->has('x') ? ' has-error' : '' }}">
-                    <label for="email" class="form-control-label">Your city name</label>
+                    <label for="email" class="form-control-label">City</label>
                     <div class="">
                         <input id="otherC" name="x"  type="text" class="form-control" value="{{ old('x') }}"
                          />
@@ -139,9 +137,9 @@ Swa3ed - Register
 
                 {{--  --}}
                 <div class="col-sm-12 col-md-6 form-group{{ $errors->has('dateOfBirth') ? ' has-error' : '' }}">
-                    <label for="name" class=" form-control-label">Your date of birth</label>
+                    <label for="name" class=" form-control-label">Date of birth</label>
                     <div class="">
-                        <input id="theDate" type="date" class="form-control" name="dateOfBirth"  min="" value="{{ old('dateOfBirth') }}"
+                        <input id="theDate" type="date" class="form-control" name="dateOfBirth"  min="" value="{{ old('dateOfBirth') }}" required="required"
                         />
                         @if ($errors->has('dateOfBirth'))
                             <div class="alert alert-danger" role="alert">
@@ -155,7 +153,7 @@ Swa3ed - Register
             <label for="exampleInputEmail1">Gender</label><br />
 
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male" checked> Male
+              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male"  checked> Male
             </label>
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="female"> Female
@@ -167,7 +165,7 @@ Swa3ed - Register
 
                 {{--  --}}
               <div class="col-sm-12 col-md-6 form-group">
-                    <label  class=" form-control-label" for="exampleSelect1">Your Current Work</label>
+                    <label  class=" form-control-label" for="exampleSelect1">Current Work</label>
                 <div class="">
                     <select name="currentWork" value="{{ old('currentWork') }}" class="form-control" id="exampleSelect1">
                     <option value="School Student">School Student</option>
@@ -183,7 +181,7 @@ Swa3ed - Register
                 </div>
                 {{--  --}}
                 <div class="col-sm-12 col-md-6 form-group">
-                    <label  class=" form-control-label" for="exampleSelect1">Your educational level</label>
+                    <label  class=" form-control-label" for="exampleSelect1">Educational level</label>
                 <div class="">
                     <select name="educationalLevel" value="{{ old('educationalLevel') }}" class="form-control" id="exampleSelect1">
                     <option value="High School">High School</option>
@@ -201,7 +199,7 @@ Swa3ed - Register
                     <select name="Major" value="{{ old('Major') }}" class="form-control" id="exampleSelect1">
                     <option value="BSc">IT</option>
                     <option value="Engineering">Engineering</option>
-                    <option value="Medicin">Medicin</option>
+                    <option value="Medicin">Medicine</option>
                     <option value="law">law</option>
                     <option value="Art">Art</option>
                     <option value="Business">Business</option>
@@ -213,11 +211,11 @@ Swa3ed - Register
                 </div>
                 {{--  --}}
                 <div class="col-sm-12 col-md-6 form-group">
-                    <label  class="form-control-label" for="exampleSelect1">Do you have any expriments on Voluntary</label>
+                    <label  class="form-control-label" for="exampleSelect1">Do you have volunteer Experience</label>
                 <div class="">
                     <select name="preVoluntary" value="{{ old('preVoluntary') }}" class="form-control" id="vy" onchange="vyyesno(this)">
-                    <option value="0">No</option>
-                    <option value="1" selected>Yes</option>
+                    <option value="0" selected>No</option>
+                    <option value="1">Yes</option>
                     </select>
                 </div>
                 </div>
@@ -234,6 +232,17 @@ Swa3ed - Register
                         @endif
                     </div>
                 </div>
+
+
+            <div class="form-group col-sm-12 col-md-6 {{ $errors->has('mobileNumber') ? ' has-error' : '' }}">
+                <label for="mobileNumber" class="form-control-label">Mobile Number</label>
+                    <input id="mobileNumber" type="phone" class="form-control" name="mobileNumber" value="{{ old('mobileNumber') }}" required="required" />
+                    @if ($errors->has('mobileNumber'))
+                            <div class="alert alert-danger" role="alert">
+                            <strong>Warning!</strong> {{ $errors->first('mobileNumber') }}
+                         </div>
+                    @endif
+            </div>
 
 @else
 
@@ -295,7 +304,7 @@ Swa3ed - Register
                         <div class="form-group col-sm-12 col-md-6 {{ $errors->has('mobileNumber') ? ' has-error' : '' }}">
                 <label for="mobileNumber" class="form-control-label">Mobile Number</label>
                 <div class="">
-                    <input id="mobileNumber" type="phone" class="form-control" name="mobileNumber" value="{{ old('mobileNumber') }}" />
+                    <input id="mobileNumber" type="phone" class="form-control" name="mobileNumber" value="{{ old('mobileNumber') }}" required="required" />
                     @if ($errors->has('mobileNumber'))
                             <div class="alert alert-danger" role="alert">
                             <strong>Warning!</strong> {{ $errors->first('mobileNumber') }}
@@ -309,7 +318,7 @@ Swa3ed - Register
 
                 {{--  --}}
                 <div class="col-12" style="margin-top:20px;">
-                  <h4 class="greencolor">Your targets</h4>
+                  <h4 class="greencolor">Groups you would like to work with</h4>
                   <hr />
                 </div>
                 <br />
@@ -333,7 +342,7 @@ Swa3ed - Register
 
                 {{--  --}}
                 <div class="col-12" style="margin-top:20px;">
-                  <h4 class="greencolor">Your intresets</h4>
+                  <h4 class="greencolor">Intresets</h4>
                   <hr />
                 </div>
                 <br />

@@ -60,22 +60,18 @@
   <script src="{{URL::asset('vendor/js/bootstrap.min.js')}} "></script>
 
 
-    <script type="text/javascript">
+<!-- Javascript Requirements -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-    $(document).ready(function()
-        {
+<!-- Laravel Javascript Validation -->
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 
-          $('#errormodal').modal('show')
+    {!! JsValidator::formRequest('App\Http\Requests\registerFormRequest', '#Register') !!}
 
-          $('input[type="date"]').datepicker({
-              todayBtn: "linked",
-              todayHighlight: true,
-              format: "yyyy-mm-dd",
-              autoclose:true,
+    {!! JsValidator::formRequest('App\Http\Requests\stepFormRequest', '#step') !!}
 
-          });
-          $('.selectpicker').selectpicker();
 
+<<<<<<< HEAD
           $('.carousel').carousel({
               interval: 5 //changes the speed
           });
@@ -87,6 +83,9 @@
     </script>
       @yield('scripts')
 
+=======
+
+>>>>>>> 38e7b332e3dcd68dacef228f77c1c4553f229e78
 </body>
 
 </html>

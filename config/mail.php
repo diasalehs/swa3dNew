@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'mail'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'noreply@swa3ed.net'),
-        'name' => env('MAIL_FROM_NAME', 'swa3ed'),
+        'name' => env('MAIL_FROM_NAME', 'Swa3ed'),
     ],
 
     /*

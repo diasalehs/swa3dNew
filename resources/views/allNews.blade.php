@@ -39,7 +39,7 @@
     
     @else
     @foreach($news as $anew)
-   
+
     <div class="card mb-4">
         <div class="card-block">
             <div class="row">
@@ -78,6 +78,10 @@
     {{$news->links('vendor.pagination.custom')}}
 
 </nav>
+    {{ count($news) }}
+  @php
+    echo "News Found!"
+  @endphp
 
 </div>
 

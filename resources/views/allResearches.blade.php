@@ -32,7 +32,6 @@
       </div>
     </form>
   </div>
-
 <div class="row">
             @if($researches->isEmpty())
                <h4 class='text-center pinkcolor'style='margin-top:90px'>No Result Found</h4>
@@ -57,6 +56,10 @@
           </div>
 
 {{ $researches->links('vendor.pagination.custom')}}
+  {{ count($researches) }}
+  @php
+    echo "Researches Found!"
+  @endphp
 </div>
 
 @endsection('content')

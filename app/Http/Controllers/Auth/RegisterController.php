@@ -7,9 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use App\Http\Requests\registerFormRequest;
 use Illuminate\Auth\Events\Registered;
-use Jrean\UserVerification\Traits\VerifiesUsers;
-use Jrean\UserVerification\Facades\UserVerification;
 
     class RegisterController extends Controller
     {
@@ -25,8 +24,6 @@ use Jrean\UserVerification\Facades\UserVerification;
         */
 
         use RegistersUsers;
-
-        use VerifiesUsers;
 
         /**
          * Where to redirect users after registration.
@@ -75,6 +72,7 @@ use Jrean\UserVerification\Facades\UserVerification;
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'userType'=>$data['userType'],
+                
             ]);
         }
 
@@ -93,10 +91,6 @@ use Jrean\UserVerification\Facades\UserVerification;
             event(new Registered($user));
 
             $this->guard()->login($user);
-
-            UserVerification::generate($user);
-
-            UserVerification::send($user, 'Register');
 
             return $this->registered($request, $user)
                             ?: redirect($this->redirectPath());

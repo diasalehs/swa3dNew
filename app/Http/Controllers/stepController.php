@@ -7,6 +7,8 @@ use App\targetedGroups;
 class stepController extends Controller
 {
 	public function step() {
+		Auth::user()->verified=1;
+		Auth::user()->save();
 		if(Auth::check())
 		{
 			if(Auth::user()->flag == 0){
