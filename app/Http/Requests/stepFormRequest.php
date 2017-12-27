@@ -41,7 +41,7 @@ class stepFormRequest extends FormRequest
                     'educationalLevel' => 'required',
                     'preVoluntary' => 'required',
                     'dateOfBirth' => 'required|date|before:01/01/2010',
-                    'mobileNumber' => 'required|digits:11'
+                    'mobileNumber' => 'required|digits:10'
                 ];
             }elseif(Auth::User()->userType == 1){
                 return [
@@ -58,7 +58,7 @@ class stepFormRequest extends FormRequest
                     'license' => 'required|max:10|unique:institutes',
                     'establishmentYear' => 'required|date|before:today',
                     'address' => 'required|max:30',
-                    'mobileNumber' => 'required|digits:11'
+                    'mobileNumber' => 'required|digits:10'
                 ];
             }
         }

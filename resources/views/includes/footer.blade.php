@@ -71,21 +71,8 @@
     {!! JsValidator::formRequest('App\Http\Requests\stepFormRequest', '#step') !!}
 
 
-<<<<<<< HEAD
-          $('.carousel').carousel({
-              interval: 5 //changes the speed
-          });
-
-        });
-
-
-
-    </script>
       @yield('scripts')
 
-=======
-
->>>>>>> 38e7b332e3dcd68dacef228f77c1c4553f229e78
 </body>
 
 </html>

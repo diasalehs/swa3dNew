@@ -46,7 +46,7 @@ class registerStep2Controller extends Controller
                                 'educationalLevel' => 'required',
                                 'preVoluntary' => 'required',
                                 'dateOfBirth' => 'required|date|before:01/01/2010',
-                                'mobileNumber' => 'required|digits:11'
+                                'mobileNumber' => 'required|digits:10'
                             ]);
 
                         	$Individuals = new Individuals();
@@ -100,7 +100,7 @@ class registerStep2Controller extends Controller
                                 'license' => 'required|max:10|unique:institutes',
                                 'establishmentYear' => 'required|date|after:01/01/1900',
                                 'address' => 'required|max:30',
-                                'mobileNumber' => 'required|digits:11',
+                                'mobileNumber' => 'required|digits:10',
                             ]);
 
                             $Institute = new tempInstitute();
