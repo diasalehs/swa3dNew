@@ -1142,7 +1142,6 @@ form input:focus {
         height: auto
     }
 }
-=======
 
 input:valid { border-color: var(--green); }  
 input:invalid { border-color: var(--yellow); }  
