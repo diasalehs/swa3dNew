@@ -56,7 +56,6 @@
     <script src="{{URL::asset('vendor/js/bootstrap-datepicker.min.js')}} "></script>
 
   @yield('sidebarS')
-  @yield('scripts')
   <script src="{{URL::asset('vendor/js/popper.min.js')}} "></script>
   <script src="{{URL::asset('vendor/js/bootstrap.min.js')}} "></script>
 
@@ -78,7 +77,7 @@
           $('.selectpicker').selectpicker();
 
           $('.carousel').carousel({
-              interval: 5000 //changes the speed
+              interval: 5 //changes the speed
           });
 
         });
@@ -86,6 +85,8 @@
 
 
     </script>
+      @yield('scripts')
+
 </body>
 
 </html>

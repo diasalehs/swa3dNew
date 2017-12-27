@@ -8,6 +8,7 @@
 <link href="{{ URL::asset('vendor/css/style.css')}}" rel="stylesheet">
 <link href="{{ URL::asset('vendor/css/custom.css')}}" rel="stylesheet">
 <link href="{{ URL::asset('vendor/css/demo.css')}}" rel="stylesheet">
+<link href="{{ URL::asset('vendor/css/slider.css')}}" rel="stylesheet">
 <noscript>
 <link href="{{ URL::asset('vendor/css/styleNoJS.css')}}" rel="stylesheet">
 </noscript>
@@ -18,66 +19,38 @@
 @endsection
 @section('content')
 
-<header style="margin-bottom:93vh" >
-
-        <div class=" demo-1" >
-
-
-
-            <div id="slider" class="sl-slider-wrapper">
-
-        <div class="sl-slider">
-          @foreach($_3slides as $slide)
-          @endforeach
-
-          <div class="sl-slide bg-4" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-            <div class="sl-slide-inner"style="background-image:linear-gradient(rgba(0, 0, 0,.3),rgba(0, 0, 0, .9)), url('{{$_3slides[0]->mainImgpath}}');background-size:cover;    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center; ">
-
-              <h2><a href="#" class="green-link">{{$value = str_limit($_3slides[0]->title, 90,$end = '...')  }}</a></h2>
-              <blockquote><p>{{$value = str_limit($_3slides[0]->textarea, 120,$end = '...')  }}</p><cite>Ralph Waldo Emerson</cite></blockquote>
-            </div>
-          </div>
-          <div class="sl-slide bg-4" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
-            <div class="sl-slide-inner"style="background-image:linear-gradient(rgba(0, 0, 0,.3),rgba(0, 0, 0, .9)), url('{{$_3slides[1]->mainImgpath}}');background-size:cover;   display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;  ">
-              <h2><a href="#" class="yellow-link">{{$value = str_limit($_3slides[1]->title, 60,$end = '...')  }}</a></h2>
-              <blockquote><p>{{$value = str_limit($_3slides[1]->textarea, 120,$end = '...')  }}</p><cite>Ralph Waldo Emerson</cite></blockquote>
-            </div>
-          </div>
-            <div class="sl-slide bg-4" data-orientation="horizontal"  data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
-              <div class="sl-slide-inner"style="background-image:linear-gradient(rgba(0, 0, 0,.3),rgba(0, 0, 0, .9)), url('{{$_3slides[2]->mainImgpath}}');background-size:cover;   display: flex;
-      flex-direction: column;
-      align-items: center;
-      align-content: center;
-      justify-content: center;  ">
-                <h2><a href="#" class="pink-link">{{$value = str_limit($_3slides[2]->title, 60,$end = '...')  }}</a></h2>
-                <blockquote><p>{{$value = str_limit($_3slides[2]->textarea, 120,$end = '...')  }}</p><cite>Ralph Waldo Emerson</cite></blockquote>
-              </div>
-            </div>
-
-        </div><!-- /sl-slider -->
-
-        <nav id="nav-arrows" class="nav-arrows">
-          <span class="nav-arrow-prev">Previous</span>
-          <span class="nav-arrow-next">Next</span>
-        </nav>
-
-        <nav id="nav-dots" class="nav-dots">
-          <span class="nav-dot-current"></span>
-          <span></span>
-          <span></span>
-        </nav>
-
-      </div><!-- /slider-wrapper -->
-
+<header  style="height: 90vh;margin-bottom: 40px;">
+  <div id="carouselExampleIndicators" style="height: 90vh;" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators carousel-indicators-numbers">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">1</li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1">2</li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2">3</li>
+  </ol>
+ 
+    @foreach($_3slides as $slide)
+          @if ($loop->first)   
+    <div class="carousel-item active  " style="height: 90vh">
+      @else
+    <div class="carousel-item" style="height: 90vh">
+      @endif
+      <img class="d-block img-fluid" src="{{$slide->mainImgpath}}" style="width:100%; max-height:100%" alt="First slide">
+        <div class="carousel-caption d-none d-md-block" style="    bottom: 55px;">
+          <h3>Company name</h3>
+          <p class="lead">{{$value = str_limit($slide->textarea, 120,$end = '...')  }}</p>
         </div>
+    </div>
+ @endforeach
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
       </header>
 
 
@@ -114,7 +87,7 @@
         <div class="row"  style="margin-bottom:20px;min-height:600px;">
 
 
-        <div class="col-md-4">
+        <div class="col-md-4" style="border-right: 1px solid var(--navy)">
           <h2 class="greencolor text-center">News</h2>
           <?php  $i=0;?>
           <hr />
@@ -137,11 +110,11 @@
 
           @endforeach
           <div class="text-center ">
-            <a href="{{route('allNews')}}"><button type="button" style="margin-top:20px;" class="btn btn-block btn-green">More News</button></a>
+            <a href="{{route('allNews')}}"><button type="button" style="margin-top:20px; padding-left: 35px; padding-right: 35px" class="btn btn-green">More News</button></a>
         </div>
             </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4"style="border-right: 1px solid var(--navy)">
           <h2 class="pinkcolor text-center">Researches</h2>
           <?php  $i=0;?>
           <hr />
@@ -163,7 +136,7 @@
       <?php if($i<3) echo "<hr />";?>
       @endforeach
         <div class="text-center ">
-             <a href="{{route('allResearches')}}"> <button type="button" style="margin-top:20px;margin-bottom:20px;"  class="btn btn-block btn-green ">More Researches</button></a>
+             <a href="{{route('allResearches')}}"> <button type="button" style="margin-top:20px;margin-bottom:20px;padding-left: 35px; padding-right: 35px"  class="btn btn-green ">More Researches</button></a>
         </div>
         </div>
         <!-- /.row -->
@@ -194,12 +167,12 @@
 
       @endforeach
       <div class="text-center ">
-           <a href="{{route('upComingEvents')}}"> <button type="button" style="margin-top:20px;margin-bottom:20px;"  class="btn btn-block btn-green ">More Events</button></a>
+           <a href="{{route('upComingEvents')}}"> <button type="button" style="margin-top:20px;margin-bottom:20px;padding-left: 35px; padding-right: 35px"  class="btn  btn-green ">More Events</button></a>
       </div>
     </div>
   </div>
 </div>
-
+<!-- 
 <div class="row"id="tester" style="margin:0px;height:150px; background-image: linear-gradient(rgba(19, 58, 83, 0.9),rgba(19, 58, 83, 0.9));">
   <div class="col-4 dash"style="border-top:4px solid var(--green); color:var(--green);">
     <h5 class="" style="">Volunteers</h5>
@@ -227,9 +200,9 @@
   </div>
 
 
-</div>
+</div> -->
         <!-- Marketing Icons Section -->
-        <div class="top-5" style="  background-repeat: no-repeat;
+        <div class="top-5" style="/*background-image: linear-gradient(rgba(79, 198, 194, 0.8),rgba(79, 198, 194, 0.5)),url({{ URL::to('/vendor/img/stars.jpg')}});*/  background-repeat: repeat;
     background-position: right top;
     background-size: contain;margin-top:0px" >
 
@@ -239,7 +212,7 @@
 
              @foreach($volunteers as $volunteer)
               <div  class="col-lg-2 col-sm-2 col-xs-2 user">
-                  <a href="{{route('profile',$volunteer->user_id)}}"><img class="img-fluid" src="{{ URL::to('/') }}/pp/{{$volunteer->picture}}" alt=""></a>
+                  <a href="{{route('profile',$volunteer->user_id)}}"><img class="img-fluid" src="{{ URL::to('/') }}/pp/{{$volunteer->picture}}" style="    border-radius: 50%;" alt=""></a>
                   <div class="text-center">
                    <a href="{{route('profile',$volunteer->user_id)}}"><h5 class="profile-name " style="margin-bottom: 0px;">{{$volunteer->nameInEnglish}}</h5></a>
                     <small><a href="{{route('messenger',$volunteer->email)}}">{{$volunteer->email}}</a></small>
@@ -254,15 +227,18 @@
 
 @endsection('content')
 @section('scripts')
+
 <script src="{{URL::asset('vendor/js/countUp.min.js')}} "></script>
 <script src="{{URL::asset('vendor/js/jquery.ba-cond.min.js')}} "></script>
 <script src="{{URL::asset('vendor/js/modernizr.custom.79639.js')}} "></script>
-<script src="{{URL::asset('vendor/js/jquery.slitslider.js')}} "></script>
+
+<!-- <script src="{{URL::asset('vendor/js/jquery.slitslider.js')}} "></script> -->
 
     <script type="text/javascript">
-
+    
     $(document).ready(function()
         {
+         
           var options = {
             useEasing : true,
             useGrouping : true,
@@ -307,73 +283,27 @@
 
 
     </script>
+    <script >
+      var $item = $('.carousel .item'); 
+var $wHeight = $(window).height();
+$item.eq(0).addClass('active');
+$item.height($wHeight); 
+$item.addClass('full-screen');
 
-<script type="text/javascript">
-  $(function() {
+$('.carousel img').each(function() {
+  var $src = $(this).attr('src');
+  var $color = $(this).attr('data-color');
+  $(this).parent().css({
+    'background-image' : 'linear-gradient(rgba(0, 0, 0,.4),rgba(0, 0, 0, .6)),url(' + $src + ')',
+    'background-color' : $color,
 
-    var Page = (function() {
+  });
+  $(this).remove();
+});
+$(window).on('resize', function (){
+  $wHeight = $(window).height();
+  $item.height($wHeight);
+});
+    </script>
 
-      var $navArrows = $( '#nav-arrows' ),
-        $nav = $( '#nav-dots > span' ),
-        slitslider = $( '#slider' ).slitslider( {
-          onBeforeChange : function( slide, pos ) {
-
-            $nav.removeClass( 'nav-dot-current' );
-            $nav.eq( pos ).addClass( 'nav-dot-current' );
-
-          }
-        } ),
-
-        init = function() {
-
-          initEvents();
-
-        },
-        initEvents = function() {
-
-          // add navigation events
-          $navArrows.children( ':last' ).on( 'click', function() {
-
-            slitslider.next();
-            return false;
-
-          } );
-
-          $navArrows.children( ':first' ).on( 'click', function() {
-
-            slitslider.previous();
-            return false;
-
-          } );
-
-          $nav.each( function( i ) {
-
-            $( this ).on( 'click', function( event ) {
-
-              var $dot = $( this );
-
-              if( !slitslider.isActive() ) {
-
-                $nav.removeClass( 'nav-dot-current' );
-                $dot.addClass( 'nav-dot-current' );
-
-              }
-
-              slitslider.jump( i + 1 );
-              return false;
-
-            } );
-
-          } );
-
-        };
-
-        return { init : init };
-
-    })();
-
-    Page.init();
-
-    			});
-    		</script>
 @endsection

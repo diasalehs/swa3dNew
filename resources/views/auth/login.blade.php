@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@section('title')
+  Swa3ed - Login
+
+@endsection
 @section('content')
 <div class="container "style="margin: 120px auto; min-height:70vh" >
     <div class="row justify-content-center">

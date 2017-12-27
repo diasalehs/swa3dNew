@@ -36,7 +36,7 @@ background-position-y: 7px;">
           <li class="nav-item HeaderSearchli">
 
           <form action="{{route('search')}}" method="get" >
-            <input type="text" name="name" id="HeaderSearch" class="HeaderSearch form-control" placeholder="&#xF002; Search Swa3ed.." style="font-family:Arial,FontAwesome">
+            <input type="text" name="name" id="HeaderSearch" class="HeaderSearch form-control" placeholder="&#xF002; Search Swa3ed.." style="font-family:Arial,FontAwesome;    height: 41px;">
             <button type="submit" style="display: none;"></button>
           </form>
 
@@ -96,7 +96,7 @@ background-position-y: 7px;">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Join us</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Join us As</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

@@ -735,12 +735,12 @@ form input:focus {
     box-shadow: 0 0 0 0 var(--green)!important
 }
 .HeaderSearch {
-    width: 47px!important;
+    width: 48px!important;
     -webkit-transition: width .4s ease-in-out;
     -o-transition: width .4s ease-in-out;
     transition: width .4s ease-in-out;
     position: relative;
-    top: 3px;
+    top: 0px;
     cursor: pointer;
     background-color: #f7f7f7;
     border-radius: 300px!important;
@@ -954,13 +954,18 @@ form input:focus {
     color: #fff;
     margin-top: 30px;
     margin-bottom: 20px;
-    display: block
+    display: inline-block;
+ /*   background: var(--green-hover);
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 20px 20px;*/
+
 }
 .top-5 h1:after {
     height: 5px;
     display: block;
     width: 100px;
-    background: #fff;
+    background: var(--yellow);;
     border-right: 1px #fff;
     content: '';
     margin: 10px auto auto

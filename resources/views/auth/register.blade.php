@@ -1,6 +1,10 @@
 @extends('layouts.app')
+@section('title')
+  Swa3ed - Register
+
+@endsection
  @section('content')
-<div class="container" style="margin-top:100px;margin-bottom:40px;">
+<div class="container" style="margin-top:100px;margin-bottom:130px;">
     <div class="row justify-content-center">
         <div class="col-lg-6">
 
