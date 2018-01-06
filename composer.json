@@ -8,15 +8,16 @@
         "php": ">=5.6.4",
         "barryvdh/laravel-debugbar": "^2.4",
         "intervention/image": "^2.3",
-        "jrean/laravel-user-verification": "4.1",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "nahid/talk": "^2.2"
+        "nahid/talk": "^2.2",
+         "proengsoft/laravel-jsvalidation": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7"
+        "phpunit/phpunit": "~5.7",
+        "proengsoft/laravel-jsvalidation": "^2.0"
     },
     "autoload": {
         "classmap": [
@@ -44,7 +45,8 @@
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+            "php artisan optimize",
+            "php artisan vendor:publish --provider=\"Proengsoft\\JsValidation\\JsValidationServiceProvider\" --tag=public --force"
         ]
     },
     "config": {

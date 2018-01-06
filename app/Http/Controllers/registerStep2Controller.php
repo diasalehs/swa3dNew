@@ -23,8 +23,8 @@ class registerStep2Controller extends Controller
             $this->validate($request, [
                 'firstName' => 'required|regex:/^[a-zA-Z]+$/',
                 'lastName' => 'required|regex:/^[a-zA-Z]+$/',
-                'ARfirst' => 'required|alpha',
-                'ARlast' => 'required|alpha',
+                'FirstNameInArabic' => 'required|alpha',
+                'LastNameInArabic' => 'required|alpha',
                 'country' => 'required',
                 'cityName' => 'required_without:x',
                 'x' => 'required_without:cityName',
@@ -45,15 +45,16 @@ class registerStep2Controller extends Controller
                                 'currentWork' => 'required',
                                 'educationalLevel' => 'required',
                                 'preVoluntary' => 'required',
-                                'dateOfBirth' => 'required|date|before:today',
+                                'dateOfBirth' => 'required|date|before:01/01/2010',
+                                'mobileNumber' => 'required|digits:10'
                             ]);
 
                         	$Individuals = new Individuals();
                             $Individuals->nameInEnglish = $request['firstName'];
                             $Individuals->lastInEnglish = $request['lastName'];
-                            $Individuals->firstInArabic = $request['ARfirst'];
-                            $Individuals->lastInArabic = $request['ARlast'];
-                            $Individuals->nameInArabic =  "".$request['ARfirst']." ".$request['ARlast'];
+                            $Individuals->firstInArabic = $request['FirstNameInArabic'];
+                            $Individuals->lastInArabic = $request['LastNameInArabic'];
+                            $Individuals->nameInArabic =  "".$request['FirstNameInArabic']." ".$request['LastNameInArabic'];
                             $Individuals->nameInEnglish = "".$request['firstName']." ".$request['lastName'];
                             $Individuals->user_id = $user->id;
                             $Individuals->email = $user->email;
@@ -64,6 +65,7 @@ class registerStep2Controller extends Controller
                             $Individuals->educationalLevel = $request['educationalLevel'];
                             $Individuals->major= $request['Major'];
                             $Individuals->preVoluntary = $request['preVoluntary'];
+                            $Individuals->mobileNumber = $request['mobileNumber'];
                             if($request['preVoluntary'] == 1){
                                 $this->validate($request, [
                                     'voluntaryYears' => 'integer|required_with:preVoluntary',
@@ -98,15 +100,15 @@ class registerStep2Controller extends Controller
                                 'license' => 'required|max:10|unique:institutes',
                                 'establishmentYear' => 'required|date|after:01/01/1900',
                                 'address' => 'required|max:30',
-                                'mobileNumber' => 'required|digits:11',
+                                'mobileNumber' => 'required|digits:10',
                             ]);
 
                             $Institute = new tempInstitute();
                             $Institute->firstInEnglish = $request['firstName'];
                             $Institute->lastInEnglish = $request['lastName'];
-                            $Institute->firstInArabic = $request['ARfirst'];
-                            $Institute->lastInArabic = $request['ARlast'];
-                            $Institute->nameInArabic =  "".$request['ARfirst']." ".$request['ARlast'];
+                            $Institute->firstInArabic = $request['FirstNameInArabic'];
+                            $Institute->lastInArabic = $request['LastNameInArabic'];
+                            $Institute->nameInArabic =  "".$request['FirstNameInArabic']." ".$request['LastNameInArabic'];
                             $Institute->nameInEnglish = "".$request['firstName']." ".$request['lastName'];
                             $Institute->user_id = $user->id;
                             $Institute->email = $user->email;

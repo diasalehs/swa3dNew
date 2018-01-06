@@ -221,7 +221,8 @@ class mainController extends Controller
 
             return view('upComingEvents',compact('events','localevents','volEvents','user','userevent'));
         }
-
+         $events = event::where('startDate','>',$date)->orderBy('startDate','asc')
+        ->take(5)->get();
         return view('upComingEvents',compact('events'));
 
     }

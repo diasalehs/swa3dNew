@@ -62,7 +62,7 @@
 @foreach($users as $u)
 
 <tr>
-          <td><a class="green-link" href="{{URL::to('/')}}/profile/{{$u->id}}">{{$u->nameInEnglish}}</a></td>
+          <td><a class="green-link" href="{{URL::to('/')}}/profile/{{$u->user_id}}">{{$u->nameInEnglish}}</a></td>
           <td>{{$u->nameInArabic}}</td>
           <td>{{$u->country}}</td>
           <td>{{$u->cityName}}</td>

@@ -56,36 +56,29 @@
     <script src="{{URL::asset('vendor/js/bootstrap-datepicker.min.js')}} "></script>
 
   @yield('sidebarS')
-  @yield('scripts')
   <script src="{{URL::asset('vendor/js/popper.min.js')}} "></script>
   <script src="{{URL::asset('vendor/js/bootstrap.min.js')}} "></script>
 
 
-    <script type="text/javascript">
+<!-- Javascript Requirements -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-    $(document).ready(function()
-        {
+<!-- Laravel Javascript Validation -->
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+<script>
+    {!! JsValidator::formRequest('App\Http\Requests\registerFormRequest', '#Register') !!}
 
-          $('#errormodal').modal('show')
+    {!! JsValidator::formRequest('App\Http\Requests\stepFormRequest', '#step') !!}
 
-          $('input[type="date"]').datepicker({
-              todayBtn: "linked",
-              todayHighlight: true,
-              format: "yyyy-mm-dd",
-              autoclose:true,
 
-          });
-          $('.selectpicker').selectpicker();
-
-          $('.carousel').carousel({
-              interval: 5000 //changes the speed
-          });
+      @yield('scripts')
 
         });
 
 
 
     </script>
+
 </body>
 
 </html>

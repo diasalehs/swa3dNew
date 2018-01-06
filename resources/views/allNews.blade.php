@@ -34,7 +34,12 @@
     </div>
 
     <!-- Blog Post -->
+     @if($news->isEmpty())
+      <h4 class='text-center greencolor'style='margin-top:90px'>No Result Found</h4>
+    
+    @else
     @foreach($news as $anew)
+
     <div class="card mb-4">
         <div class="card-block">
             <div class="row">
@@ -44,7 +49,7 @@
                   </a>
               </div>
               <div class="col-lg-6">
-                <h2 class="card-title greencolor"><a class="green-link" href="{{route('view',[$anew->id])}}">{{$anew->title}}</a></h2>
+                <h2 class="card-title greencolor"><a class="green-link" href="{{route('view',[$anew->id])}}">{{$anew->title}}dccdcd</a></h2>
                 <p class="card-text">
                   {{$value=""}}
                 <p style="display:none">
@@ -67,12 +72,16 @@
     </div>
 </div>
 @endforeach
-
+@endif
 <!-- Pagination -->
 <nav aria-label="Page navigation example">
     {{$news->links('vendor.pagination.custom')}}
 
 </nav>
+    {{ count($news) }}
+  @php
+    echo "News Found!"
+  @endphp
 
 </div>
 

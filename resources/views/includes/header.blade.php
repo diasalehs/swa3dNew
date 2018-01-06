@@ -11,27 +11,32 @@ background-position-y: 7px;">
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent" >
     <ul class="navbar-nav mr-auto" >
-      <li class="nav-item ">
-        <a class="nav-link" href="{{route('upComingEvents')}}">UpComing Events</a>
-
-      </li>
+       <li class="nav-item">
+       <a class="nav-link" href="#" >Get to know us</a>
+     </li>
+      <li class="nav-item">
+       <a class="nav-link" href="#">How to use the website</a>
+     </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('institutes')}}">Institutes</a>
+     </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="{{route('upComingEvents')}}">Events</a>
+
       </li>
+   
 
        <li class="nav-item">
-        <a class="nav-link" href="#">About us</a>
+        <a class="nav-link" href="{{route('allResearches')}}">Researches</a>
       </li>
-      <li class="nav-item">
-       <a class="nav-link" href="#" style="color: #f06493">DONATE NOW</a>
-     </li>
+     
     </ul>
     <div class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto nav-right">
           <li class="nav-item HeaderSearchli">
 
           <form action="{{route('search')}}" method="get" >
-            <input type="text" name="name" id="HeaderSearch" class="HeaderSearch form-control" placeholder="&#xF002; Search Swa3ed.." style="font-family:Arial,FontAwesome">
+            <input type="text" name="name" id="HeaderSearch" class="HeaderSearch form-control" placeholder="&#xF002; Search Swa3ed.." style="font-family:Arial,FontAwesome;    height: 41px;">
             <button type="submit" style="display: none;"></button>
           </form>
 
@@ -41,7 +46,7 @@ background-position-y: 7px;">
           </li>
             <li class="nav-item">
             @if (Auth::guest())
-              <a class="nav-link" data-toggle="modal" style="cursor:pointer"data-target="#myModal">Join Us</a>
+              <a class="nav-link" data-toggle="modal" style="cursor:pointer" data-target="#myModal">Join Us</a>
 
             </li>
 
@@ -91,7 +96,7 @@ background-position-y: 7px;">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Join us</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Join us As</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
