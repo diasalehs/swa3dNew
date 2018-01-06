@@ -164,7 +164,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Proengsoft\JsValidation\JsValidationServiceProvider::class,
-        
+        Jrean\UserVerification\UserVerificationServiceProvider::class,
+
 
 
         /*
@@ -234,6 +235,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Talk'      => Nahid\Talk\Facades\Talk::class,
+        'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class,
         'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
 
 
