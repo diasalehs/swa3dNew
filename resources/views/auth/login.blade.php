@@ -31,12 +31,17 @@
                         <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="form-control-label">Password</label>
                                 <input id="password" type="password" class="form-control" name="password"
-                                required="required" />@if ($errors->has('password')) <span class="help-block">
+                                required="required" />
+                                <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
+
+
+
+                                @if ($errors->has('password')) <span class="help-block">
 
                                         <strong>{{ $errors->first('password') }}</strong>
 
                                     </span>
-@endif
+@endif      
                         </div>
                         <div class="form-group">
                                 <div class="form-check">
