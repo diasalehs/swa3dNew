@@ -87,12 +87,12 @@
         <div class="row"  style="margin-bottom:20px;min-height:600px;">
 
 
-        <div class="col-md-4" style="border-right: 1px solid var(--navy)">
+        <div class="col-md-4" style="">
           <h2 class="greencolor text-center">News</h2>
           <?php  $i=0;?>
           <hr />
 
-        @foreach($news_record as $news)
+         @foreach($news_record as $news)
         <?php  $i++;?>
 
             <div class="col-12 " style="margin-top:10px;">
@@ -110,11 +110,11 @@
 
           @endforeach
           <div class="text-center ">
-            <a href="{{route('allNews')}}"><button type="button" style="margin-top:20px; padding-left: 35px; padding-right: 35px" class="btn btn-green">More News</button></a>
+            <a href="{{route('allNews')}}"><button type="button" style="margin-top:20px;" class="btn btn-block btn-green">More News</button></a>
         </div>
             </div>
 
-        <div class="col-md-4"style="border-right: 1px solid var(--navy)">
+        <div class="col-md-4">
           <h2 class="pinkcolor text-center">Researches</h2>
           <?php  $i=0;?>
           <hr />
@@ -136,7 +136,7 @@
       <?php if($i<3) echo "<hr />";?>
       @endforeach
         <div class="text-center ">
-             <a href="{{route('allResearches')}}"> <button type="button" style="margin-top:20px;margin-bottom:20px;padding-left: 35px; padding-right: 35px"  class="btn btn-green ">More Researches</button></a>
+             <a href="{{route('allResearches')}}"> <button type="button" style="margin-top:20px;margin-bottom:20px;"  class="btn btn-block btn-green ">More Researches</button></a>
         </div>
         </div>
         <!-- /.row -->
@@ -166,8 +166,9 @@
 
 
       @endforeach
+
       <div class="text-center ">
-           <a href="{{route('upComingEvents')}}"> <button type="button" style="margin-top:20px;margin-bottom:20px;padding-left: 35px; padding-right: 35px"  class="btn  btn-green ">More Events</button></a>
+           <a href="{{route('upComingEvents')}}"> <button type="button" style="margin-top:20px;margin-bottom:20px;padding-left: 35px; padding-right: 35px"  class="btn btn-block  btn-green ">More Events</button></a>
       </div>
     </div>
   </div>

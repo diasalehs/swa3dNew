@@ -65,13 +65,19 @@
 
 <!-- Laravel Javascript Validation -->
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-
+<script>
     {!! JsValidator::formRequest('App\Http\Requests\registerFormRequest', '#Register') !!}
 
     {!! JsValidator::formRequest('App\Http\Requests\stepFormRequest', '#step') !!}
 
 
       @yield('scripts')
+
+        });
+
+
+
+    </script>
 
 </body>
 
