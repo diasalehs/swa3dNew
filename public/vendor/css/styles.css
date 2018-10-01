@@ -1143,8 +1143,8 @@ form input:focus {
     }
 }
 
-input:valid { border-color: var(--cyan); }  
-input:invalid { border-color: var(--yellow); }  
+input:valid { border-color: var(--cyan); }
+input:invalid { border-color: var(--yellow); }
 
 .error-help-block{ color: var(--pink); }
 
