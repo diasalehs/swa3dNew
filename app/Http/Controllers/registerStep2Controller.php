@@ -23,8 +23,8 @@ class registerStep2Controller extends Controller
             $this->validate($request, [
                 'firstName' => 'required|regex:/^[a-zA-Z]+$/',
                 'lastName' => 'required|regex:/^[a-zA-Z]+$/',
-                'FirstNameInArabic' => 'required|alpha',
-                'LastNameInArabic' => 'required|alpha',
+                'ARfirst' => 'required|alpha',
+                'ARlast' => 'required|alpha',
                 'country' => 'required',
                 'cityName' => 'required_without:x',
                 'x' => 'required_without:cityName',
@@ -52,9 +52,9 @@ class registerStep2Controller extends Controller
                         	$Individuals = new Individuals();
                             $Individuals->nameInEnglish = $request['firstName'];
                             $Individuals->lastInEnglish = $request['lastName'];
-                            $Individuals->firstInArabic = $request['FirstNameInArabic'];
-                            $Individuals->lastInArabic = $request['LastNameInArabic'];
-                            $Individuals->nameInArabic =  "".$request['FirstNameInArabic']." ".$request['LastNameInArabic'];
+                            $Individuals->firstInArabic = $request['ARfirst'];
+                            $Individuals->lastInArabic = $request['ARlast'];
+                            $Individuals->nameInArabic =  "".$request['ARfirst']." ".$request['ARlast'];
                             $Individuals->nameInEnglish = "".$request['firstName']." ".$request['lastName'];
                             $Individuals->user_id = $user->id;
                             $Individuals->email = $user->email;
@@ -65,7 +65,6 @@ class registerStep2Controller extends Controller
                             $Individuals->educationalLevel = $request['educationalLevel'];
                             $Individuals->major= $request['Major'];
                             $Individuals->preVoluntary = $request['preVoluntary'];
-                            $Individuals->mobileNumber = $request['mobileNumber'];
                             if($request['preVoluntary'] == 1){
                                 $this->validate($request, [
                                     'voluntaryYears' => 'integer|required_with:preVoluntary',
@@ -106,9 +105,9 @@ class registerStep2Controller extends Controller
                             $Institute = new tempInstitute();
                             $Institute->firstInEnglish = $request['firstName'];
                             $Institute->lastInEnglish = $request['lastName'];
-                            $Institute->firstInArabic = $request['FirstNameInArabic'];
-                            $Institute->lastInArabic = $request['LastNameInArabic'];
-                            $Institute->nameInArabic =  "".$request['FirstNameInArabic']." ".$request['LastNameInArabic'];
+                            $Institute->firstInArabic = $request['ARfirst'];
+                            $Institute->lastInArabic = $request['ARlast'];
+                            $Institute->nameInArabic =  "".$request['ARfirst']." ".$request['ARlast'];
                             $Institute->nameInEnglish = "".$request['firstName']." ".$request['lastName'];
                             $Institute->user_id = $user->id;
                             $Institute->email = $user->email;

@@ -29,8 +29,8 @@ class stepFormRequest extends FormRequest
                 return [
                     'firstName' => 'required|regex:/^[a-zA-Z]+$/',
                     'lastName' => 'required|regex:/^[a-zA-Z]+$/',
-                    'FirstNameInArabic' => 'required|alpha',
-                    'LastNameInArabic' => 'required|alpha',
+                    'ARfirst' => 'required|alpha',
+                    'ARlast' => 'required|alpha',
                     'country' => 'required',
                     'cityName' => 'required_without:x',
                     'x' => 'required_without:cityName',
@@ -47,8 +47,8 @@ class stepFormRequest extends FormRequest
                 return [
                     'firstName' => 'required|regex:/^[a-zA-Z]+$/',
                     'lastName' => 'required|regex:/^[a-zA-Z]+$/',
-                    'FirstNameInArabic' => 'required|alpha',
-                    'LastNameInArabic' => 'required|alpha',
+                    'ARfirst' => 'required|alpha',
+                    'ARlast' => 'required|alpha',
                     'country' => 'required',
                     'cityName' => 'required_without:x',
                     'x' => 'required_without:cityName',
